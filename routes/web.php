@@ -53,10 +53,20 @@ Route::get('/catalogo', [IndexController::class, 'catalogo'] )->name('catalogo')
 Route::get('/producto', [IndexController::class, 'producto'] )->name('producto');
 
 
-//Blog
+// Blog
 Route::get('/blog', [IndexController::class, 'blog'] )->name('blog');
 Route::get('/post', [IndexController::class, 'post'] )->name('post');
     
+
+// Contacto
+Route::get('/contacto', [IndexController::class, 'contacto'] )->name('contacto');
+
+// Carrito
+Route::get('/carrito', [IndexController::class, 'carrito'] )->name('carrito');
+Route::get('/detallesPago', [IndexController::class, 'detallesPago'] )->name('detallesPago');
+
+
+
 /*  */
 /* Route::get('/nosotros', [IndexController::class, 'nosotros'] )->name('nosotros');
 Route::get('/servicios', [IndexController::class, 'servicios'] )->name('servicios');

@@ -81,6 +81,21 @@ class IndexController extends Controller
     return view('public.post');
   }
 
+  public function contacto(){
+    
+    return view('public.contacto');
+  }
+
+  public function carrito(){
+    
+    return view('public.carrito');
+  }
+
+  public function detallesPago(){
+    
+    return view('public.detallesPago');
+  }
+
   /* public function catalogo($filtro, Request $request)
   {
     $categorias = null;
