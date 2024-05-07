@@ -36,6 +36,7 @@ export default {
                 moderat_300: ["moderat-300", "sans-serif"],
                 space_grotesk: ["Space Grotesk", "sans-serif"],
                 inter: ["Inter", "sans-serif"],
+                moderatItalic_500: ["moderat-italic", "sans-serif"],
             },
             fontSize: {
                 xs: ["0.75rem", { lineHeight: "1.5" }],

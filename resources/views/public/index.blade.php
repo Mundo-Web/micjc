@@ -668,13 +668,13 @@
         <section class="w-11/12 mx-auto py-16">
             <div class="flex flex-col gap-10">
                 <div class="flex flex-col justify-center gap-3 md:flex-row md:justify-between md:items-center">
-                    <div class="flex flex-col gap-5">
+                    <div class="flex flex-col gap-5 basis-8/12">
                         <h2 class="font-moderat_700 text-text44 md:text-text52 text-[#111111] leading-none md:leading-tight">Últimas publicaciones</h2>
-                        <p class="text-[#565656] text-text18 md:text-text22 font-moderat_400 w-full lg:w-2/3">Nam tempor diam quis urna maximus, ac laoreet arcu convallis. Aenean dignissim nec sem quis consequat.</p>
+                        <p class="text-[#565656] text-text18 md:text-text22 font-moderat_400">Nam tempor diam quis urna maximus, ac laoreet arcu convallis. Aenean dignissim nec sem quis consequat.</p>
                     </div>
 
-                    <div class="flex justify-center items-center">
-                        <a href="#" class="font-moderat_700 text-text16 md:text-text20 py-3 px-10 bg-[#0051FF] text-white w-full md:w-auto text-center">Ver más Publicaciones</a>
+                    <div class="flex justify-end items-center basis-4/12">
+                        <a href="#" class="font-moderat_700 text-text16 md:text-text20 py-3 px-5 bg-[#0051FF] text-white md:w-auto text-center w-full">Ver más Publicaciones</a>
                     </div>
                 </div>
 

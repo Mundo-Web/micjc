@@ -49,6 +49,11 @@
             font-family: "moderat-300";
             src: url({{ asset('fonts/Moderat-Mono-Light.woff') }}) format("woff");
         }
+
+        @font-face {
+            font-family: "moderat-italic";
+            src: url({{ asset('fonts/Moderat-Medium-Italic.woff') }}) format("woff");
+        }
     </style>
 
 </head>

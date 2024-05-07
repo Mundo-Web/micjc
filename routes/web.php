@@ -55,7 +55,7 @@ Route::get('/producto', [IndexController::class, 'producto'] )->name('producto')
 
 //Blog
 Route::get('/blog', [IndexController::class, 'blog'] )->name('blog');
-
+Route::get('/post', [IndexController::class, 'post'] )->name('post');
     
 /*  */
 /* Route::get('/nosotros', [IndexController::class, 'nosotros'] )->name('nosotros');

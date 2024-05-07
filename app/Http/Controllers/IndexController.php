@@ -76,6 +76,11 @@ class IndexController extends Controller
     return view('public.blog');
   }
 
+  public function post(){
+    
+    return view('public.post');
+  }
+
   /* public function catalogo($filtro, Request $request)
   {
     $categorias = null;
