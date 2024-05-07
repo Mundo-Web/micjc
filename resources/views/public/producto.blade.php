@@ -138,7 +138,7 @@
                                     <div class="rounded-full bg-[#000000] w-4 h-4 md:w-6 md:h-6"></div>
                                 </div>
                             </div>
-                            <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold">S/ 899.99</p>
+                            <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">S/ 899.99</p>
                         </div>
                     </div>
     
@@ -161,7 +161,7 @@
                                     <div class="rounded-full bg-[#000000] w-4 h-4 md:w-6 md:h-6"></div>
                                 </div>
                             </div>
-                            <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold">S/ 899.99</p>
+                            <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">S/ 899.99</p>
                         </div>
                     </div>
     
@@ -188,7 +188,7 @@
                                     <div class="rounded-full bg-[#000000] w-4 h-4 md:w-6 md:h-6"></div>
                                 </div>
                             </div>
-                            <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold">S/ 899.99</p>
+                            <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">S/ 899.99</p>
                         </div>
                     </div>
     
@@ -211,7 +211,7 @@
                                     <div class="rounded-full bg-[#000000] w-4 h-4 md:w-6 md:h-6"></div>
                                 </div>
                             </div>
-                            <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold">S/ 899.99</p>
+                            <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">S/ 899.99</p>
                         </div>
                     </div>
                 </div>

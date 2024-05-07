@@ -31,6 +31,19 @@
         background-position: center;
         background-image: url({{asset('images/img/image_3.png')}});        
     } */
+
+    .fondo__slider-desktop {
+        background-image: none;
+        background-position: center;
+        background-repeat:  no-repeat;
+        background-size: cover;
+    }
+
+    @media (min-width:768px){
+        .fondo__slider-desktop {
+            background-image: url({{asset('images/img/image_16.png')}});
+        }
+    }
     
 </style>
 
@@ -40,21 +53,20 @@
 @section('content')
 
     <main>
+
         <section class="w-11/12 mx-auto py-10"> 
             <div class="swiper productos__main-mobile">
                 <div class="swiper-wrapper">
-
-                    <div class="swiper-slide bg-[#0051FF] py-20 md:py-24" style="background-image: url({{asset('images/img/image_16.png')}}); background-repeat: no-repeat; background-size:cover;">
-                        <div class="grid grid-cols-1 md:grid-cols-2 md:gap-5">
-
-                            <div class="flex flex-col justify-center gap-5 order-1 md:order-2 px-5">
-                                <p class="text-white text-text18">Accesorios</p>
-                                <h1 class="text-text40 text-white leading-[56px] md:leading-tight">Descubre lo digital: Productos innovadores</h1>
-                                <p class="text-white text-text14">Selección de productos digitales que facilitan la forma en que realizamos nuestras tareas cotidianas.</p>
+                    <div class="swiper-slide bg-[#0051FF] pt-5 pb-20 md:py-24 fondo__slider-desktop" {{-- style="background-image: url({{asset('images/img/image_16.png')}}); background-repeat: no-repeat; background-size:cover;" --}}>
+                        <div class="grid grid-cols-1 lg:grid-cols-2">
+                            <div class="flex flex-col justify-center gap-5 order-1 lg:order-2 px-5 md:z-50 lg:-mx-[100px] w-full lg:w-11/12">
+                                <p class="text-white text-text18 md:text-text20 font-moderat_700">Accesorios</p>
+                                <h1 class="text-text40 md:text-text48 font-moderat_700 text-white leading-[56px] md:leading-tight">Descubre lo digital: Productos innovadores</h1>
+                                <p class="text-white text-text14 font-moderat_400 w-full lg:w-5/6">Selección de productos digitales que facilitan la forma en que realizamos nuestras tareas cotidianas.</p>
                                 
                                 <div class="flex justify-start items-center">
                                     <a href="#" class="flex justify-center items-center gap-2">
-                                        <span class="text-white text-text16">Ver productos</span>
+                                        <span class="text-white text-text16 font-moderat_700">Ver productos</span>
                                         <div>
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M5 12H19" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
@@ -65,25 +77,24 @@
                                 </div>
                             </div>                          
                             
-                            <div class="flex justify-end md:justify-end items-center py-10 order-2 md:order-1 relative" {{-- style="background-image: url({{asset('images/img/image_3.png')}}); background-repeat: no-repeat; background-size:cover;" --}}>
+                            <div class="flex justify-end md:justify-end  items-center py-10 order-2 lg:order-1 relative lg:z-10 pr-5" {{-- style="background-image: url({{asset('images/img/image_3.png')}}); background-repeat: no-repeat; background-size:cover;" --}}>
                                 <img src="{{asset('images/svg/image_18.svg')}}" alt="impresora" class="w-[200px] h-[200px] md:w-[450px] md:h-[450px]">
-                                <img src="{{asset('images/img/image_15.png')}}" alt="impresora" class="block md:hidden absolute mt-12 mr-20">
+                                <img src="{{asset('images/img/image_15.png')}}" alt="impresora" class="block md:hidden absolute mt-12 mr-16">
                                 <img src="{{asset('images/img/image_4.png')}}" alt="impresora" class="hidden md:block absolute mr-24">
                             </div>                         
                         </div>                       
                     </div>
 
-                    <div class="swiper-slide bg-[#0051FF] px-5 py-20 md:py-24" style="background-image: url({{asset('images/img/image_16.png')}}); background-repeat: no-repeat; background-size:cover;">
-                        <div class="grid grid-cols-1 md:grid-cols-2 md:gap-5">
-
-                            <div class="flex flex-col justify-center gap-5 order-1 md:order-2">
-                                <p class="text-white text-text18">Accesorios</p>
-                                <h1 class="text-text40 text-white leading-[56px] md:leading-tight">Descubre lo digital: Productos innovadores</h1>
-                                <p class="text-white text-text14">Selección de productos digitales que facilitan la forma en que realizamos nuestras tareas cotidianas.</p>
+                    <div class="swiper-slide bg-[#0051FF] pt-5 pb-20 md:py-24 fondo__slider-desktop" {{-- style="background-image: url({{asset('images/img/image_16.png')}}); background-repeat: no-repeat; background-size:cover;" --}}>
+                        <div class="grid grid-cols-1 lg:grid-cols-2">
+                            <div class="flex flex-col justify-center gap-5 order-1 lg:order-2 px-5 md:z-50 lg:-mx-[100px] w-full lg:w-11/12">
+                                <p class="text-white text-text18 md:text-text20 font-moderat_700">Accesorios</p>
+                                <h1 class="text-text40 md:text-text48 font-moderat_700 text-white leading-[56px] md:leading-tight">Descubre lo digital: Productos innovadores</h1>
+                                <p class="text-white text-text14 font-moderat_400 w-full lg:w-5/6">Selección de productos digitales que facilitan la forma en que realizamos nuestras tareas cotidianas.</p>
                                 
                                 <div class="flex justify-start items-center">
                                     <a href="#" class="flex justify-center items-center gap-2">
-                                        <span class="text-white text-text16">Ver productos</span>
+                                        <span class="text-white text-text16 font-moderat_700">Ver productos</span>
                                         <div>
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M5 12H19" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
@@ -94,25 +105,24 @@
                                 </div>
                             </div>                          
                             
-                            <div class="flex justify-end md:justify-end items-center py-10 order-2 md:order-1 relative">
+                            <div class="flex justify-end md:justify-end  items-center py-10 order-2 lg:order-1 relative lg:z-10 pr-5" {{-- style="background-image: url({{asset('images/img/image_3.png')}}); background-repeat: no-repeat; background-size:cover;" --}}>
                                 <img src="{{asset('images/svg/image_18.svg')}}" alt="impresora" class="w-[200px] h-[200px] md:w-[450px] md:h-[450px]">
-                                <img src="{{asset('images/img/image_15.png')}}" alt="impresora" class="block md:hidden absolute mt-12 mr-20">
+                                <img src="{{asset('images/img/image_15.png')}}" alt="impresora" class="block md:hidden absolute mt-12 mr-16">
                                 <img src="{{asset('images/img/image_4.png')}}" alt="impresora" class="hidden md:block absolute mr-24">
                             </div>                         
                         </div>                       
                     </div>
 
-                    <div class="swiper-slide bg-[#0051FF] px-5 py-20 md:py-24" style="background-image: url({{asset('images/img/image_16.png')}}); background-repeat: no-repeat; background-size:cover;">
-                        <div class="grid grid-cols-1 md:grid-cols-2 md:gap-5">
-
-                            <div class="flex flex-col justify-center gap-5 order-1 md:order-2">
-                                <p class="text-white text-text18">Accesorios</p>
-                                <h1 class="text-text40 text-white leading-[56px] md:leading-tight">Descubre lo digital: Productos innovadores</h1>
-                                <p class="text-white text-text14">Selección de productos digitales que facilitan la forma en que realizamos nuestras tareas cotidianas.</p>
+                    <div class="swiper-slide bg-[#0051FF] pt-5 pb-20 md:py-24 fondo__slider-desktop" {{-- style="background-image: url({{asset('images/img/image_16.png')}}); background-repeat: no-repeat; background-size:cover;" --}}>
+                        <div class="grid grid-cols-1 lg:grid-cols-2">
+                            <div class="flex flex-col justify-center gap-5 order-1 lg:order-2 px-5 md:z-50 lg:-mx-[100px] w-full lg:w-11/12">
+                                <p class="text-white text-text18 md:text-text20 font-moderat_700">Accesorios</p>
+                                <h1 class="text-text40 md:text-text48 font-moderat_700 text-white leading-[56px] md:leading-tight">Descubre lo digital: Productos innovadores</h1>
+                                <p class="text-white text-text14 font-moderat_400 w-full lg:w-5/6">Selección de productos digitales que facilitan la forma en que realizamos nuestras tareas cotidianas.</p>
                                 
                                 <div class="flex justify-start items-center">
                                     <a href="#" class="flex justify-center items-center gap-2">
-                                        <span class="text-white text-text16">Ver productos</span>
+                                        <span class="text-white text-text16 font-moderat_700">Ver productos</span>
                                         <div>
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M5 12H19" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
@@ -123,18 +133,14 @@
                                 </div>
                             </div>                          
                             
-                            <div class="flex justify-end md:justify-end items-center py-10 order-2 md:order-1 relative">
+                            <div class="flex justify-end md:justify-end  items-center py-10 order-2 lg:order-1 relative lg:z-10 pr-5" {{-- style="background-image: url({{asset('images/img/image_3.png')}}); background-repeat: no-repeat; background-size:cover;" --}}>
                                 <img src="{{asset('images/svg/image_18.svg')}}" alt="impresora" class="w-[200px] h-[200px] md:w-[450px] md:h-[450px]">
-                                <img src="{{asset('images/img/image_15.png')}}" alt="impresora" class="block md:hidden absolute mt-12 mr-20">
+                                <img src="{{asset('images/img/image_15.png')}}" alt="impresora" class="block md:hidden absolute mt-12 mr-16">
                                 <img src="{{asset('images/img/image_4.png')}}" alt="impresora" class="hidden md:block absolute mr-24">
                             </div>                         
                         </div>                       
                     </div>
-
                 </div>
-                {{-- <div class="relative pagination__mobile">
-                    <div class="swiper-pagination flex items-center absolute !bottom-[340px] !left-[15px]"></div>
-                </div>   --}}
                 <div class="relative pagination__mobile">
                     <div class="swiper-pagination flex !items-center !justify-center !bottom-[30px] md:!bottom-[50px]"></div>
                 </div>
@@ -142,29 +148,27 @@
                 <div class="hidden md:block">
                     <div class="swiper-button-next !text-white"></div>
                     <div class="swiper-button-prev !text-white"></div>
-                </div>
-                
-               
+                </div> 
             </div>
         </section>   
-{{-- a partir de aca --}}
+
         <section class="w-11/12 mx-auto py-5">
             <div class="grid grid-cols-2 md:grid-cols-4">
                 <div class="flex flex-col gap-3 items-start">
                     <p class="text-[#0711E5] text-text52 font-moderat_700">1k+</p>
-                    <p class="text-[#111111] text-text16 font-moderat_500 w-1/2 text-center">Clientes activos</p>
+                    <p class="text-[#111111] text-text16 font-moderat_500 w-full md:w-1/2 text-center">Clientes activos</p>
                 </div>
                 <div class="flex flex-col gap-3 items-end md:items-center">
                     <p class="text-[#0711E5] text-text52 font-moderat_700">45+</p>
-                    <p class="text-[#111111] text-text16 font-moderat_500 w-1/2 text-center">Marcas exclusivas</p>
+                    <p class="text-[#111111] text-text16 font-moderat_500 w-full md:w-1/2 text-center">Marcas exclusivas</p>
                 </div>
                 <div class="flex flex-col gap-3 items-start md:items-center">
                     <p class="text-[#0711E5] text-text52 font-moderat_700">10k+</p>
-                    <p class="text-[#111111] text-text16 font-moderat_500 w-1/2 text-center">Órdenes Procsadas Anualmente</p>
+                    <p class="text-[#111111] text-text16 font-moderat_500 w-full md:w-1/2 text-center">Órdenes Procesadas Anualmente</p>
                 </div>
                 <div class="flex flex-col gap-3 items-end">
                     <p class="text-[#0711E5] text-text52 font-moderat_700">1.8M+</p>
-                    <p class="text-[#111111] text-text16 font-moderat_500 w-1/2 text-center">Unidades entregadas Anualmente</p>
+                    <p class="text-[#111111] text-text16 font-moderat_500 w-full md:w-1/2 text-center">Unidades entregadas Anualmente</p>
                 </div>
             </div>
         </section>
@@ -329,7 +333,7 @@
                                 <div class="rounded-full bg-[#000000] w-4 h-4 md:w-6 md:h-6"></div>
                             </div>
                         </div>
-                        <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-medium">S/ 899.99</p>
+                        <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">S/ 899.99</p>
                     </div>
                 </div>
 
@@ -352,7 +356,7 @@
                                 <div class="rounded-full bg-[#000000] w-4 h-4 md:w-6 md:h-6"></div>
                             </div>
                         </div>
-                        <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-medium">S/ 899.99</p>
+                        <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">S/ 899.99</p>
                     </div>
                 </div>
 
@@ -379,7 +383,7 @@
                                 <div class="rounded-full bg-[#000000] w-4 h-4 md:w-6 md:h-6"></div>
                             </div>
                         </div>
-                        <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-medium">S/ 899.99</p>
+                        <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">S/ 899.99</p>
                     </div>
                 </div>
 
@@ -402,7 +406,7 @@
                                 <div class="rounded-full bg-[#000000] w-4 h-4 md:w-6 md:h-6"></div>
                             </div>
                         </div>
-                        <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-medium">S/ 899.99</p>
+                        <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">S/ 899.99</p>
                     </div>
                 </div>
             </div>
@@ -502,7 +506,7 @@
                                 <div class="rounded-full bg-[#000000] w-4 h-4 md:w-6 md:h-6"></div>
                             </div>
                         </div>
-                        <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-medium">S/ 899.99</p>
+                        <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">S/ 899.99</p>
                     </div>
                 </div>
 
@@ -525,7 +529,7 @@
                                 <div class="rounded-full bg-[#000000] w-4 h-4 md:w-6 md:h-6"></div>
                             </div>
                         </div>
-                        <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-medium">S/ 899.99</p>
+                        <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">S/ 899.99</p>
                     </div>
                 </div>
 
@@ -552,7 +556,7 @@
                                 <div class="rounded-full bg-[#000000] w-4 h-4 md:w-6 md:h-6"></div>
                             </div>
                         </div>
-                        <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-medium">S/ 899.99</p>
+                        <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">S/ 899.99</p>
                     </div>
                 </div>
 
@@ -575,7 +579,7 @@
                                 <div class="rounded-full bg-[#000000] w-4 h-4 md:w-6 md:h-6"></div>
                             </div>
                         </div>
-                        <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-medium">S/ 899.99</p>
+                        <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">S/ 899.99</p>
                     </div>
                 </div>
             </div>

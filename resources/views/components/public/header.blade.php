@@ -54,7 +54,7 @@
         </div>
     </div>
 
-    <div class="flex justify-end w-11/12 mx-auto mb-4 z-10">
+    <div class="flex justify-end w-11/12 mx-auto z-10">
         <div class="fixed bottom-6 sm:bottom-[2rem] lg:bottom-[4rem] z-20">
             <a target="_blank" href="https://api.whatsapp.com/send?phone=9999&text='texto'" rel="noopener">
                 <img src="{{ asset('images/svg/image_11.svg') }}" alt="whatsapp" class="w-20 h-20 md:w-full md:h-full">
