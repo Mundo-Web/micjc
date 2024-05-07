@@ -1,92 +1,59 @@
-<footer class="font-poppins bg-[#21201E] text-white mt-12 pb-10">
-  <div class="flex flex-col gap-10 md:flex-row md:justify-center w-11/12 mx-auto py-16 border-b-2 border-[#6C7275]">
-    <div class="basis-3/6 flex flex-col gap-10">
-      <div>
-        <a href="{{ route('index') }}">
-          <img src="{{ asset('/images/img/logo_footer_decotab.png') }}" alt="decotab" /></a>
-      </div>
-      <p class="font-medium text-[20px]">
-        Deco Tab es reconocido por la excelente calidad de sus productos, como Wall Panel, mármol UV y piedra PU. La
-        empresa cuenta con un equipo capacitado en la producción de estos materiales que harán de tu espacio más moderno
-        y acogedor. ¿Te encuentras interesado? Contamos con oficinas en Lima y realizamos envíos a nivel nacional.
-      </p>
-      @foreach ($datosgenerales as $item)
-        <div class="flex gap-5">
+<footer class="bg-[#0051FF] py-20">
+    <div class="grid grid-cols-1 lg:grid-cols-4 text-white w-11/12 mx-auto gap-12">
 
-          @if ($item->instagram)
-            <a href="{{ $item->instagram }}" target="_blank"><img src="{{ asset('/images/svg/instagram.svg') }}"
-                alt="instagram" /></a>
-          @endif
-
-          @if ($item->facebook)
-            <a href="{{ $item->facebook }}" target="_blank"><img src="{{ asset('/images/svg/facebook.svg') }}"
-                alt="facebook" /></a>
-          @endif
-
-          @if ($item->youtube)
-            <a href="{{ $item->youtube }}" target="_blank"><img src="{{ asset('/images/svg/youtube.svg') }}"
-                alt="youtube" /></a>
-          @endif
+        <div class="flex flex-col gap-5">
+            <div class="flex items-center">
+                <img src="{{asset('images/svg/image_12.svg')}}" alt="MICJC">
+            </div>
+            <div class="flex flex-col gap-5">
+                <div class="flex gap-2 items-center">
+                    <img src="{{asset('images/svg/image_13.svg')}}" alt="direccion">
+                    <p class="font-moderat_400 text-text12 md:text-text14">Av. Camino Real 356 - San Isidro. Lima - Perú</p>
+                </div>
+    
+                <div class="flex gap-2 items-center">
+                    <img src="{{asset('images/svg/image_14.svg')}}" alt="email">
+                    <p class="font-moderat_400 text-text12 md:text-text14">soporte@micjc.com.pe</p>
+                </div>
+    
+                <div class="flex gap-2 items-center">
+                    <img src="{{asset('images/svg/image_15.svg')}}" alt="facebook">
+                    <img src="{{asset('images/svg/image_16.svg')}}" alt="instagram">
+                    <p class="font-moderat_400 text-text12 md:text-text14">Mic&JC</p>
+                </div>
+    
+            </div>
         </div>
+
+        <div class="flex flex-col gap-5">
+            <p class="underline font-moderat_500 text-text14 md:text-text16">Términos de uso</p>
+            <p class="font-moderat_400 text-text12 md:text-text14">Políticas de privacidad</p>
+            <p class="font-moderat_400 text-text12 md:text-text14">Políticas de envío</p>
+            <p class="font-moderat_400 text-text12 md:text-text14">Políticas de devolución</p>
+        </div>
+
+        <div class="flex flex-col gap-5">
+            <p class="underline font-moderat_500 text-text14 md:text-text16">Menú</p>
+            <a class="font-moderat_400 text-text12 md:text-text14">Inicio</a>
+            <a class="font-moderat_400 text-text12 md:text-text14">Nosotros</a>
+            <a class="font-moderat_400 text-text12 md:text-text14">Productos</a>
+            <a class="font-moderat_400 text-text12 md:text-text14">Blog</a>
+            <a class="font-moderat_400 text-text12 md:text-text14">Contáctanos</a>
+        </div>
+
+        <div class="flex flex-col gap-5">
+            <p class="font-moderat_700 text-text24 md:text-text28">Suscribete a nuestro blog</p>
+            <p class="font-moderat_400 text-text12 md:text-text14">Mantente actualizado sobre las últimas noticias y ofertas.</p>
+            <form action=""> 
+                <div class="relative w-full rounded-lg flex justify-center items-center">
+                    <input type="text" placeholder="hola@hotmail.com" class="placeholder:text-[#565656] font-moderat_500 text-text12 md:text-text14 w-full border-none outline-none focus:outline-none pl-5 pr-4 py-4 text-[#565656]">
+                    <div class="absolute inset-y-0 right-0  flex items-center pl-3">
+                        <p class="text-[#0051FF] font-moderat_700 text-text12 md:text-text14 pr-5 pl-4 py-4">Suscriberme</p>                            
+                    </div>
+                </div>
+            </form>
+        </div>
+        
     </div>
 
-    <div class="basis-1/6 flex flex-col gap-5">
-      <h3 class="font-medium text-[16px]">Page</h3>
-
-      <a href="/" class="font-normal text-[14px]">Home</a>
-      <a href="{{ route('catalogo', 0) }}" class="font-normal text-[14px]">Catálogo</a>
-      <a href="{{ route('contacto') }}" class="font-normal text-[14px]">Contacto</a>
-    </div>
-
-    <div class="basis-1/6 flex flex-col gap-5">
-      <h3 class="font-medium text-[16px]">Info</h3>
-
-      <a href="#" class="font-normal text-[14px]">Política de envíos</a>
-      <a href="#" class="font-normal text-[14px]">Reembolso de vuelta</a>
-      <a href="#" class="font-normal text-[14px]">Soporte</a>
-      <a href="#" class="font-normal text-[14px]">FAQs</a>
-    </div>
-
-    <div class="basis-1/6 flex flex-col gap-5">
-
-
-      <h3 class="font-medium text-[16px]">Office</h3>
-      <p class="font-normal text-[14px]">{{ $item->address }}</p>
-      <p class="font-normal text-[14px]">
-        @if ($item->district && $item->city)
-          {{ $item->district }}, {{ $item->city }}
-        @elseif ($item->district)
-          {{ $item->district }}
-        @elseif ($item->city)
-          {{ $item->city }}
-        @endif
-      </p>
-      <p class="font-normal text-[14px]">{{ $item->country }}</p>
-      <p class="font-normal text-[14px]">{{ $item->cellphone }}</p>
-      @endforeach
-    </div>
-  </div>
-
-  <div class="mt-5 flex flex-col md:flex-row md:justify-between md:items-center gap-5 w-11/12 mx-auto">
-    <div class="flex flex-col md:flex-row gap-2">
-      <p class="font-normal text-[12px]">
-        Copyright &copy; 2023 Mundo Web. Reservados todos los derechos
-      </p>
-      <p class="hidden md:block">|</p>
-
-      <div class="flex gap-5">
-        <a href="#" class="font-normal text-[12px] text-[#6C7275]">Política de privacidad</a>
-        <a href="#" class="font-normal text-[12px] text-[#6C7275]">Términos y Condiciones</a>
-      </div>
-    </div>
-
-    <div class="flex flex-wrap gap-2 pb-5">
-      <img src="{{ asset('images/svg/visa.svg') }}" alt="visa" />
-      <img src="{{ asset('images/svg/american.svg') }}" alt="american" />
-      <img src="{{ asset('images/svg/mastercad.svg') }}" alt="mastercad" />
-      <img src="{{ asset('images/svg/stripe.svg') }}" alt="stripe" />
-      <img src="{{ asset('images/svg/paypal.svg') }}" alt="paypal" />
-      <img src="{{ asset('images/svg/pay.svg') }}" alt="pay" />
-    </div>
-  </div>
 </footer>

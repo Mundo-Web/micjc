@@ -61,7 +61,22 @@ class IndexController extends Controller
     return view('public.index', compact('productos', 'destacados', 'descuentos', 'general', 'benefit', 'faqs', 'testimonie', 'slider', 'categorias', 'category'));
   }
 
-  public function catalogo($filtro, Request $request)
+  public function catalogo(){
+    
+    return view('public.catalogo');
+  }
+
+  public function producto(){
+    
+    return view('public.producto');
+  }
+
+  public function blog(){
+    
+    return view('public.blog');
+  }
+
+  /* public function catalogo($filtro, Request $request)
   {
     $categorias = null;
     $productos = null;
@@ -118,11 +133,11 @@ class IndexController extends Controller
 
         $currentPage = LengthAwarePaginator::resolveCurrentPage();
         $productos = new LengthAwarePaginator(
-          $cleanedData->forPage($currentPage, 3), // Obtener los productos por página
-          $cleanedData->count(), // Contar todos los elementos
-          3, // Número de elementos por página
-          $currentPage, // Página actual
-          ['path' => request()->url()] // URL base para la paginación
+          $cleanedData->forPage($currentPage, 3), 
+          $cleanedData->count(), 
+          3, 
+          $currentPage, 
+          ['path' => request()->url()] 
         );
       }
 
@@ -185,7 +200,7 @@ class IndexController extends Controller
 
   public function pago()
   {
-    //
+
     $detalleUsuario = [];
     $user = auth()->user();
     if (!isNull($user)) {
@@ -249,11 +264,11 @@ class IndexController extends Controller
             'dir_av_calle' => 'required',
             'dir_numero' => 'required',
             'dir_bloq_lote' => 'required',
-            // Otras reglas de validación
+            
           ]);
 
           if ($validator->fails()) {
-            // Aquí puedes manejar el error como desees, por ejemplo, devolver una respuesta con los errores
+            
             return response()->json(['errors' => $validator->errors()], 422);
           } else {
             $datos = $request->all();
@@ -271,26 +286,26 @@ class IndexController extends Controller
         }
       }
     } catch (\Throwable $th) {
-      //throw $th;
+      
       return response()->json(['message' => $th], 400);
     }
   }
 
   private function guardarOrden()
   {
-    //almacenar venta, generar orden de pedido , guardar en tabla detalle de compra, li
+   
   }
 
   private function codigoVentaAleatorio()
   {
     $codigoAleatorio = '';
 
-    // Longitud deseada del código
+    
     $longitudCodigo = 10;
 
-    // Genera un código aleatorio de longitud 10
+    
     for ($i = 0; $i < $longitudCodigo; $i++) {
-      $codigoAleatorio .= mt_rand(0, 9); // Agrega un dígito aleatorio al código
+      $codigoAleatorio .= mt_rand(0, 9); 
     }
     return $codigoAleatorio;
   }
@@ -397,7 +412,7 @@ class IndexController extends Controller
   {
 
     $productos = Products::where('id', '=', $id)->get();
-    // $especificaciones = Specifications::where('product_id', '=', $id)->get();
+   
     $especificaciones = Specifications::where('product_id', '=', $id)
     ->where(function ($query) {
         $query->whereNotNull('tittle')
@@ -423,7 +438,7 @@ class IndexController extends Controller
 
 
     return view('public.product', compact('productos', 'atributos', 'valorAtributo', 'ProdComplementarios', 'productosConGalerias', 'especificaciones', 'url_env'));
-  }
+  } */
 
   //  --------------------------------------------
   /**

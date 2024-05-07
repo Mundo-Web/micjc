@@ -2,870 +2,843 @@
 
 @section('css_importados')
 
+<style>
+    .pagination__mobile .swiper-pagination > .swiper-pagination-bullet-active, .pagination__desktop .swiper-pagination > .swiper-pagination-bullet-active{
+        background-color: transparent;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        width: 20px;
+        height: 20px;
+        opacity: 1;
+        background-image: url({{asset('images/svg/image_8.svg')}});
+    }
+
+    .pagination__mobile .swiper-pagination-bullet:not(.swiper-pagination-bullet-active), .pagination__desktop .swiper-pagination-bullet:not(.swiper-pagination-bullet-active) {
+        background-color: transparent;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        width: 6px;
+        height: 6px;
+        opacity: 1;
+        background-image: url({{asset('images/svg/image_9.svg')}});
+    }
+
+   /*  .bg__mobile {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-image: url({{asset('images/img/image_3.png')}});        
+    } */
+    
+</style>
+
 @stop
 
 
 @section('content')
 
-    <main class="z-[15]">
-
-
-        <!------Slider Header ------>
-        @if ($slider->isEmpty())
-            {{-- <div class="w-full flex flex-row justify-center items-center">
-                <div class="p-5 text-xl font-bold">No tienes sliders visibles</div>
-            </div> --}}
-        @else
-            <div class="swiper header-slider">
+    <main>
+        <section class="w-11/12 mx-auto py-10"> 
+            <div class="swiper productos__main-mobile">
                 <div class="swiper-wrapper">
-                    @foreach ($slider as $item)
-                        <div class="swiper-slide rounded-2xl">
-                            <div style="background-image: 
-                                @if ($item->name_image) url('{{ asset($item->url_image . $item->name_image) }}')
-                                @else
-                                 url('{{ asset('images/img/noimagenslider.jpg') }}') @endif"
-                                class="bg-cover bg-center bg-no-repeat min-h-[700px] flex flex-col items-start py-16 md:justify-center bg-colorBackgroundHeader">
-                                <div class="flex justify-start items-center md:py-16 w-11/12 mx-auto">
-                                    <div class="text-white font-poppins flex flex-col gap-10">
-                                        <h1
-                                            class="font-semibold text-[32px] md:text-[48px] leading-none md:leading-tight pt-16">
-                                            {{ $item->title }}
-                                        </h1>
-                                        <p class="font-normal text-[16px] md:text-[18px]">
-                                            {{ $item->description }}
-                                        </p>
 
-                                        <div class="flex flex-col md:flex-row gap-5 md:gap-10 items-center">
-                                            @if (!empty($item->botontext1) && !empty($item->link1))
-                                                <a href="{{ $item->link1 }}"
-                                                    class="font-semibold text-[16px] bg-[#74A68D] text-white py-2 px-5 rounded-3xl md:duration-500 hover:bg-[#4e8569] w-full text-center md:w-auto">
-                                                    {{ $item->botontext1 }}</a>
-                                            @endif
+                    <div class="swiper-slide bg-[#0051FF] py-20 md:py-24" style="background-image: url({{asset('images/img/image_16.png')}}); background-repeat: no-repeat; background-size:cover;">
+                        <div class="grid grid-cols-1 md:grid-cols-2 md:gap-5">
 
-                                            @if (!empty($item->botontext2) && !empty($item->link2))
-                                                <a href="{{ $item->link2 }}"
-                                                    class="font-semibold text-[16px] border-2 border-white bg-transparent text-white py-2 px-5 rounded-3xl hover:bg-colorBackgroundHeader duration-500 w-full md:w-auto text-center">
-                                                    {{ $item->botontext2 }}</a>
-                                            @endif
-
-
+                            <div class="flex flex-col justify-center gap-5 order-1 md:order-2 px-5">
+                                <p class="text-white text-text18">Accesorios</p>
+                                <h1 class="text-text40 text-white leading-[56px] md:leading-tight">Descubre lo digital: Productos innovadores</h1>
+                                <p class="text-white text-text14">Selección de productos digitales que facilitan la forma en que realizamos nuestras tareas cotidianas.</p>
+                                
+                                <div class="flex justify-start items-center">
+                                    <a href="#" class="flex justify-center items-center gap-2">
+                                        <span class="text-white text-text16">Ver productos</span>
+                                        <div>
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M5 12H19" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M12 5L19 12L12 19" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>    
                                         </div>
-                                    </div>
+                                    </a>
                                 </div>
-                            </div>
+                            </div>                          
+                            
+                            <div class="flex justify-end md:justify-end items-center py-10 order-2 md:order-1 relative" {{-- style="background-image: url({{asset('images/img/image_3.png')}}); background-repeat: no-repeat; background-size:cover;" --}}>
+                                <img src="{{asset('images/svg/image_18.svg')}}" alt="impresora" class="w-[200px] h-[200px] md:w-[450px] md:h-[450px]">
+                                <img src="{{asset('images/img/image_15.png')}}" alt="impresora" class="block md:hidden absolute mt-12 mr-20">
+                                <img src="{{asset('images/img/image_4.png')}}" alt="impresora" class="hidden md:block absolute mr-24">
+                            </div>                         
+                        </div>                       
+                    </div>
+
+                    <div class="swiper-slide bg-[#0051FF] px-5 py-20 md:py-24" style="background-image: url({{asset('images/img/image_16.png')}}); background-repeat: no-repeat; background-size:cover;">
+                        <div class="grid grid-cols-1 md:grid-cols-2 md:gap-5">
+
+                            <div class="flex flex-col justify-center gap-5 order-1 md:order-2">
+                                <p class="text-white text-text18">Accesorios</p>
+                                <h1 class="text-text40 text-white leading-[56px] md:leading-tight">Descubre lo digital: Productos innovadores</h1>
+                                <p class="text-white text-text14">Selección de productos digitales que facilitan la forma en que realizamos nuestras tareas cotidianas.</p>
+                                
+                                <div class="flex justify-start items-center">
+                                    <a href="#" class="flex justify-center items-center gap-2">
+                                        <span class="text-white text-text16">Ver productos</span>
+                                        <div>
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M5 12H19" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M12 5L19 12L12 19" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>    
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>                          
+                            
+                            <div class="flex justify-end md:justify-end items-center py-10 order-2 md:order-1 relative">
+                                <img src="{{asset('images/svg/image_18.svg')}}" alt="impresora" class="w-[200px] h-[200px] md:w-[450px] md:h-[450px]">
+                                <img src="{{asset('images/img/image_15.png')}}" alt="impresora" class="block md:hidden absolute mt-12 mr-20">
+                                <img src="{{asset('images/img/image_4.png')}}" alt="impresora" class="hidden md:block absolute mr-24">
+                            </div>                         
+                        </div>                       
+                    </div>
+
+                    <div class="swiper-slide bg-[#0051FF] px-5 py-20 md:py-24" style="background-image: url({{asset('images/img/image_16.png')}}); background-repeat: no-repeat; background-size:cover;">
+                        <div class="grid grid-cols-1 md:grid-cols-2 md:gap-5">
+
+                            <div class="flex flex-col justify-center gap-5 order-1 md:order-2">
+                                <p class="text-white text-text18">Accesorios</p>
+                                <h1 class="text-text40 text-white leading-[56px] md:leading-tight">Descubre lo digital: Productos innovadores</h1>
+                                <p class="text-white text-text14">Selección de productos digitales que facilitan la forma en que realizamos nuestras tareas cotidianas.</p>
+                                
+                                <div class="flex justify-start items-center">
+                                    <a href="#" class="flex justify-center items-center gap-2">
+                                        <span class="text-white text-text16">Ver productos</span>
+                                        <div>
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M5 12H19" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M12 5L19 12L12 19" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>    
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>                          
+                            
+                            <div class="flex justify-end md:justify-end items-center py-10 order-2 md:order-1 relative">
+                                <img src="{{asset('images/svg/image_18.svg')}}" alt="impresora" class="w-[200px] h-[200px] md:w-[450px] md:h-[450px]">
+                                <img src="{{asset('images/img/image_15.png')}}" alt="impresora" class="block md:hidden absolute mt-12 mr-20">
+                                <img src="{{asset('images/img/image_4.png')}}" alt="impresora" class="hidden md:block absolute mr-24">
+                            </div>                         
+                        </div>                       
+                    </div>
+
+                </div>
+                {{-- <div class="relative pagination__mobile">
+                    <div class="swiper-pagination flex items-center absolute !bottom-[340px] !left-[15px]"></div>
+                </div>   --}}
+                <div class="relative pagination__mobile">
+                    <div class="swiper-pagination flex !items-center !justify-center !bottom-[30px] md:!bottom-[50px]"></div>
+                </div>
+
+                <div class="hidden md:block">
+                    <div class="swiper-button-next !text-white"></div>
+                    <div class="swiper-button-prev !text-white"></div>
+                </div>
+                
+               
+            </div>
+        </section>   
+{{-- a partir de aca --}}
+        <section class="w-11/12 mx-auto py-5">
+            <div class="grid grid-cols-2 md:grid-cols-4">
+                <div class="flex flex-col gap-3 items-start">
+                    <p class="text-[#0711E5] text-text52 font-moderat_700">1k+</p>
+                    <p class="text-[#111111] text-text16 font-moderat_500 w-1/2 text-center">Clientes activos</p>
+                </div>
+                <div class="flex flex-col gap-3 items-end md:items-center">
+                    <p class="text-[#0711E5] text-text52 font-moderat_700">45+</p>
+                    <p class="text-[#111111] text-text16 font-moderat_500 w-1/2 text-center">Marcas exclusivas</p>
+                </div>
+                <div class="flex flex-col gap-3 items-start md:items-center">
+                    <p class="text-[#0711E5] text-text52 font-moderat_700">10k+</p>
+                    <p class="text-[#111111] text-text16 font-moderat_500 w-1/2 text-center">Órdenes Procsadas Anualmente</p>
+                </div>
+                <div class="flex flex-col gap-3 items-end">
+                    <p class="text-[#0711E5] text-text52 font-moderat_700">1.8M+</p>
+                    <p class="text-[#111111] text-text16 font-moderat_500 w-1/2 text-center">Unidades entregadas Anualmente</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-11/12 mx-auto flex flex-col gap-7 pt-10">
+
+            <div class="flex flex-col items-start md:flex-row md:justify-between md:items-center gap-5">
+
+                <h2 class="text-[#111111] text-text32 md:text-text36 font-moderat_700 w-1/2">Nuestras Categorías</h2>
+
+                <div class="flex justify-start items-center">
+                    <a href="#" class="flex justify-center items-center gap-2">
+                        <span class="text-text16 text-[#0051FF] md:text-text20 font-moderat_700">Ver todas las categorías</span>
+                        <div>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 12H19" stroke="#0051FF" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M12 5L19 12L12 19" stroke="#0051FF" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>    
                         </div>
-                    @endforeach
-
-
+                    </a>
                 </div>
 
             </div>
-        @endif
 
-        <!------Valores agregados------>
-        <section>
-            <div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-                    <div class="group bg-colorBackgroundMainTop hover:bg-white p-14 md:duration-1000">
-                        <div class="pb-5 flex justify-center items-center md:justify-start">
-                            <svg width="44" height="40" viewBox="0 0 44 40" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M26 34V10M26 34H30M26 34H16M26 10C26 5.58172 22.4183 2 18 2H10C5.58172 2 2 5.58172 2 10V26C2 29.7304 4.55333 32.8645 8.00769 33.7499M26 10H32.4182C33.4344 10 34.4126 10.3868 35.154 11.0819L40.7358 16.3148C41.5424 17.071 42 18.1273 42 19.2329V30C42 32.2091 40.2091 34 38 34M38 34C38 36.2091 36.2091 38 34 38C31.7909 38 30 36.2091 30 34M38 34C38 31.7909 36.2091 30 34 30C31.7909 30 30 31.7909 30 34M16 34C16 36.2091 14.2091 38 12 38C9.79086 38 8 36.2091 8 34C8 33.916 8.00259 33.8326 8.00769 33.7499M16 34C16 31.7909 14.2091 30 12 30C9.87484 30 8.13677 31.6573 8.00769 33.7499"
-                                    stroke="white" stroke-width="2.5" class="group-hover:stroke-[#151515]" />
-                            </svg>
-                        </div>
-                        <div class="font-poppins text-center md:text-left">
-                            <h3 class="text-white group-hover:text-colorTextBlack font-semibold text-[24px]">
-                                Envío gratis
-                            </h3>
-                            <p class="text-white group-hover:text-colorTextBlack font-normal text-[16px]">
-                                compras superior a s/200
-                            </p>
+            <div class="grid grid-cols-1 grid-rows-1 lg:grid-cols-4 lg:grid-rows-2 gap-5 md:gap-12">
+
+                <div class="col-span-1 lg:row-span-2 lg:col-span-2 bg-[#F3F3F3] p-5 md:p-10 flex flex-col gap-5 justify-center">
+                    <div class="flex flex-col gap-5 w-full md:w-1/2">
+                        <h2 class="text-text28 md:text-text32 font-moderat_700 w-1/2">Tintas y cartuchos</h2>
+                        <p class="font-moderat_400 text-text12 md:text-text16">Nullam nec orci dui. Praesent tristique facilisis quam, a egestas lorem consectetur fringilla. Suspendisse cursus erat eget ante auctor, non hendrerit ipsum egestas.</p>
+    
+                        <div>
+                            <p class="font-moderat_400 text-text12 md:text-text16 text-[#111111]">Desde</p>
+                            <p class="font-moderat_700 text-text20 md:text-text24 text-[#111111]">S/. 99,99</p>
                         </div>
                     </div>
-                    <div class="group bg-colorBackgroundMainTop hover:bg-white p-10 md:duration-1000">
-                        <div class="pb-5 flex justify-center items-center md:justify-start">
-                            <svg width="49" height="48" viewBox="0 0 49 48" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <rect x="4.33398" y="8" width="40" height="32" rx="4" stroke="white"
-                                    stroke-width="2.5" class="group-hover:stroke-[#151515]" />
-                                <circle cx="4" cy="4" r="4" transform="matrix(1 0 0 -1 20.334 28)"
-                                    stroke="white" stroke-width="2.5" class="group-hover:stroke-[#151515]" />
-                                <circle cx="2" cy="2" r="2" transform="matrix(1 0 0 -1 34.334 26)"
-                                    fill="white" class="group-hover:stroke-[#151515]" />
-                                <circle cx="2" cy="2" r="2" transform="matrix(1 0 0 -1 10.334 26)"
-                                    fill="white" class="group-hover:stroke-[#151515]" />
-                            </svg>
+                    
+                    <div class="flex justify-end items-end md:items-center">
+                        <img src="{{asset('images/img/image_11.png')}}" alt="impresora" class="w-full flex md:hidden">
+                        <img src="{{asset('images/img/image_5.png')}}" alt="impresora" class="w-full hidden md:flex">
+                    </div>
+
+                    <div class="flex justify-start items-center">
+                        <a href="#" class="flex justify-center items-center gap-2">
+                            <span class="text-text16 text-[#0051FF] md:text-text20 font-moderat_700">Ver productos</span>
+                            <div>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5 12H19" stroke="#0051FF" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M12 5L19 12L12 19" stroke="#0051FF" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>    
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-span-1 lg:row-span-1 lg:col-span-2 flex justify-between bg-[#F3F3F3] pl-5 py-5 md:p-10 md:gap-10">
+
+                    <div class="flex flex-col gap-5 justify-center basis-3/6 md:basis-2/6">
+                    
+                        <h2 class="text-text28 md:text-text32 font-moderat_700">Toners</h2>
+                        <p class="font-moderat_400 text-text12 md:text-text16">Diseñada para ser transportada y utilizada en diferentes lugares. </p>
+                        <div>
+                            <p class="font-moderat_400 text-text12 md:text-text16 text-[#111111]">Desde</p>
+                            <p class="font-moderat_700 text-text20 md:text-text24 text-[#111111]">S/. 999,99</p>
                         </div>
-                        <div class="font-poppins text-center md:text-left">
-                            <h3 class="text-white group-hover:text-colorTextBlack font-semibold text-[24px]">
-                                Devolución de dinero
-                            </h3>
-                            <p class="text-white group-hover:text-colorTextBlack font-normal text-[16px]">
-                                Garantía de 30 días
-                            </p>
+                       
+                       
+                        <div class="flex justify-start items-center">
+                            <a href="#" class="flex justify-center items-center gap-2">
+                                <span class="text-text16 text-[#0051FF] md:text-text20 font-moderat_700">Ver productos</span>
+                                <div>
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M5 12H19" stroke="#0051FF" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M12 5L19 12L12 19" stroke="#0051FF" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>    
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-end items-end md:items-center basis-3/6 md:basis-4/6">
+                        <img src="{{asset('images/img/image_6.png')}}" alt="impresora" class="hidden md:block w-full">
+                        <img src="{{asset('images/img/image_8.png')}}" alt="impresora" class="block md:hidden w-full">
+                    </div>
+                    
+                </div>
+
+                <div class="col-span-1 lg:row-span-1 lg:col-span-2 bg-[#0051FF] flex justify-between text-white pr-5 py-5 gap-10 md:p-10"  style="background-image: url('{{ asset('images/img/image_9.png') }}'); background-repeat:no-repeat; background-size:cover;">
+
+                    <div class="flex justify-end items-end md:items-center basis-3/6 md:basis-4/6">
+                        <img src="{{asset('images/img/image_7.png')}}" alt="impresora" class="hidden md:block w-full">
+                        <img src="{{asset('images/img/image_10.png')}}" alt="impresora" class="block md:hidden w-full">
+                    </div>
+
+                    <div class="flex flex-col justify-center gap-5 basis-3/6 md:basis-2/6">
+                        <h2 class="text-text28 md:text-text32 font-moderat_700">Toners</h2>
+                        <p class="font-moderat_400 text-text12 md:text-text16">Diseñada para ser transportada y utilizada en diferentes lugares. </p>
+                        <div>
+                            <p class="font-moderat_400 text-text12 md:text-text16">Desde</p>
+                            <p class="font-moderat_700 text-text20 md:text-text24">S/. 999,99</p>
+                        </div>
+    
+                        <div class="flex justify-start items-center">
+                            <a href="#" class="flex justify-center items-center gap-2">
+                                <span class="text-text16 text-[#FFFFFF] md:text-text20 font-moderat_700">Ver productos</span>
+                                <div>
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M5 12H19" stroke="#FFFFFF" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M12 5L19 12L12 19" stroke="#FFFFFF" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>    
+                                </div>
+                            </a>
                         </div>
                     </div>
 
-                    <div class="group bg-colorBackgroundMainTop hover:bg-white p-10 md:duration-1000">
-                        <div class="pb-5 flex justify-center items-center md:justify-start">
-                            <svg width="49" height="48" viewBox="0 0 49 48" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M32.666 16H16.666M32.666 16C37.0843 16 40.666 19.5817 40.666 24V36C40.666 40.4183 37.0843 44 32.666 44H16.666C12.2477 44 8.66602 40.4183 8.66602 36V24C8.66602 19.5817 12.2477 16 16.666 16M32.666 16V12C32.666 7.58172 29.0843 4 24.666 4C20.2477 4 16.666 7.58172 16.666 12V16M24.666 32V28"
-                                    stroke="white" stroke-width="2.5" stroke-linecap="round"
-                                    class="group-hover:stroke-[#151515]" />
-                            </svg>
+                </div>
+            </div>
+
+
+
+        </section>
+
+        <section class="w-11/12 md:w-10/12 mx-auto pt-20">
+
+            <div class="flex justify-between items-center py-5">
+                <p class="font-moderat_700 text-text32 md:text-text36">Destacados</p>
+                <div class="flex justify-start items-center">
+                    <a href="#" class="flex justify-center items-center gap-2">
+                        <p class="text-[#3374FF] text-text16 font-moderat_700 md:text-text20 flex justify-center items-center gap-3">
+                            <span>Ver todos</span> 
+                            <span class="hidden md:block">los productos</span>
+                        </p>
+                        <div>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 12H19" stroke="#3374FF" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M12 5L19 12L12 19" stroke="#3374FF" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>    
                         </div>
-                        <div class="font-poppins text-center md:text-left">
-                            <h3 class="text-white group-hover:text-colorTextBlack font-semibold text-[24px]">
-                                Pagos seguros
-                            </h3>
-                            <p class="text-white group-hover:text-colorTextBlack font-normal text-[16px]">
-                                Asegurado por...
-                            </p>
+                    </a>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-5">
+                <div class="flex flex-col gap-5">
+                    <div class="bg-[#F3F3F3] flex flex-col justify-center pt-5 gap-20 relative">
+                        <div class="flex justify-start items-center absolute top-[5%] left-[5%]">
+                            <span class="font-space_grotesk font-medium text-text10 md:text-text20 bg-[#0051FF] text-white py-1 px-2">-20%</span>
+                        </div>
+                        <div class="flex justify-center items-center py-10 md:py-20">
+                            <img src="{{asset('images/img/image_17.png')}}" alt="impresora" class="w-[120px] h-[90px] md:w-auto md:h-auto">
                         </div>
                     </div>
 
-                    <div class="group bg-colorBackgroundMainTop hover:bg-white p-10 md:duration-1000">
-                        <div class="pb-5 flex justify-center items-center md:justify-start">
-                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M42 38V34.7081C42 33.0725 41.0042 31.6017 39.4856 30.9942L35.4173 29.3669C33.4857 28.5943 31.2844 29.4312 30.354 31.292L30 32C30 32 25 31 21 27C17 23 16 18 16 18L16.708 17.646C18.5688 16.7156 19.4057 14.5143 18.6331 12.5827L17.0058 8.51444C16.3983 6.99581 14.9275 6 13.2919 6H10C7.79086 6 6 7.79086 6 10C6 27.6731 20.3269 42 38 42C40.2091 42 42 40.2091 42 38Z"
-                                    stroke="white" stroke-width="2.5" stroke-linejoin="round"
-                                    class="group-hover:stroke-[#151515]" />
-                            </svg>
+                    <div class="flex flex-col gap-6">
+                        <div class="flex flex-col gap-3">
+                            <h3 class="font-moderat_500 text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
+                            <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2>
+                            <p class="font-moderat_400 text-text12 md:text-text20 text-[#565656]">Praesent non euismod arcu, eu dignissim erat. Aliquam erat volutpat...</p>
+                            <div class="flex justify-start items-center gap-2 md:gap-4">
+                                <div class="rounded-full bg-[#00AEEF] w-4 h-4 md:w-6 md:h-6"></div>
+                                <div class="rounded-full bg-[#EC008C] w-4 h-4 md:w-6 md:h-6"></div>
+                                <div class="rounded-full bg-[#FFF200] w-4 h-4 md:w-6 md:h-6"></div>
+                                <div class="rounded-full bg-[#000000] w-4 h-4 md:w-6 md:h-6"></div>
+                            </div>
                         </div>
-                        <div class="font-poppins text-center md:text-left">
-                            <h3 class="text-white group-hover:text-colorTextBlack font-semibold text-[24px]">
-                                Soporte 24/7
-                            </h3>
-                            <p class="text-white group-hover:text-colorTextBlack font-normal text-[16px]">
-                                Soporte telefónico y por correo electrónico
-                            </p>
+                        <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-medium">S/ 899.99</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-5">
+                    <div class="bg-[#F3F3F3] flex flex-col justify-center pt-5 gap-20 relative">
+                        <div class="flex justify-center items-center py-10 md:py-20">
+                            <img src="{{asset('images/img/image_17.png')}}" alt="impresora" class="w-[120px] h-[90px] md:w-auto md:h-auto">
                         </div>
+                    </div>
+
+                    <div class="flex flex-col gap-6">
+                        <div class="flex flex-col gap-3">
+                            <h3 class="font-moderat_500 text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
+                            <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2>
+                            <p class="font-moderat_400 text-text12 md:text-text20 text-[#565656]">Praesent non euismod arcu, eu dignissim erat. Aliquam erat volutpat...</p>
+                            <div class="flex justify-start items-center gap-2 md:gap-4">
+                                <div class="rounded-full bg-[#00AEEF] w-4 h-4 md:w-6 md:h-6"></div>
+                                <div class="rounded-full bg-[#EC008C] w-4 h-4 md:w-6 md:h-6"></div>
+                                <div class="rounded-full bg-[#FFF200] w-4 h-4 md:w-6 md:h-6"></div>
+                                <div class="rounded-full bg-[#000000] w-4 h-4 md:w-6 md:h-6"></div>
+                            </div>
+                        </div>
+                        <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-medium">S/ 899.99</p>
+                    </div>
+                </div>
+
+
+                <div class="flex flex-col gap-5">
+                    <div class="bg-[#F3F3F3] flex flex-col justify-center pt-5 gap-20 relative">
+                        <div class="flex justify-start items-center absolute top-[5%] left-[5%]">
+                            <span class="font-space_grotesk font-medium text-text10 md:text-text20 bg-[#0051FF] text-white py-1 px-2">-20%</span>
+                        </div>
+                        <div class="flex justify-center items-center py-10 md:py-20">
+                            <img src="{{asset('images/img/image_17.png')}}" alt="impresora" class="w-[120px] h-[90px] md:w-auto md:h-auto">
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col gap-6">
+                        <div class="flex flex-col gap-3">
+                            <h3 class="font-moderat_500 text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
+                            <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2>
+                            <p class="font-moderat_400 text-text12 md:text-text20 text-[#565656]">Praesent non euismod arcu, eu dignissim erat. Aliquam erat volutpat...</p>
+                            <div class="flex justify-start items-center gap-2 md:gap-4">
+                                <div class="rounded-full bg-[#00AEEF] w-4 h-4 md:w-6 md:h-6"></div>
+                                <div class="rounded-full bg-[#EC008C] w-4 h-4 md:w-6 md:h-6"></div>
+                                <div class="rounded-full bg-[#FFF200] w-4 h-4 md:w-6 md:h-6"></div>
+                                <div class="rounded-full bg-[#000000] w-4 h-4 md:w-6 md:h-6"></div>
+                            </div>
+                        </div>
+                        <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-medium">S/ 899.99</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-5">
+                    <div class="bg-[#F3F3F3] flex flex-col justify-center pt-5 gap-20 relative">
+                        <div class="flex justify-center items-center py-10 md:py-20">
+                            <img src="{{asset('images/img/image_17.png')}}" alt="impresora" class="w-[120px] h-[90px] md:w-auto md:h-auto">
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col gap-6">
+                        <div class="flex flex-col gap-3">
+                            <h3 class="font-moderat_500 text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
+                            <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2>
+                            <p class="font-moderat_400 text-text12 md:text-text20 text-[#565656]">Praesent non euismod arcu, eu dignissim erat. Aliquam erat volutpat...</p>
+                            <div class="flex justify-start items-center gap-2 md:gap-4">
+                                <div class="rounded-full bg-[#00AEEF] w-4 h-4 md:w-6 md:h-6"></div>
+                                <div class="rounded-full bg-[#EC008C] w-4 h-4 md:w-6 md:h-6"></div>
+                                <div class="rounded-full bg-[#FFF200] w-4 h-4 md:w-6 md:h-6"></div>
+                                <div class="rounded-full bg-[#000000] w-4 h-4 md:w-6 md:h-6"></div>
+                            </div>
+                        </div>
+                        <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-medium">S/ 899.99</p>
                     </div>
                 </div>
             </div>
         </section>
 
+        <section class="w-11/12 mx-auto bg-[#001232] text-white mt-20">
 
-        <!------Categorias destacadas - Grilla------>
-        @if ($category->isEmpty())
-            {{-- <div class="w-full flex flex-row justify-center items-center">
-                <div class="p-5 text-xl font-bold">No tienes categorías destacadas visibles</div>
-            </div> --}}
-        @else
-            <section class="mt-20">
-                <h2 class="block lg:hidden font-poppins font-semibold text-[40px] w-11/12 mx-auto">
-                    Categorías
-                </h2>
-                <div>
-                    @if (count($category->take(4)) == 1)
-
-                        <section class="mt-10 hidden lg:block relative">
-
-                            <div class="grid grid-cols-1 gap-4 w-10/12 mx-auto">
-
-                                @foreach ($category->take(1) as $index => $slide)
-                                    <div class="col-span-2 row-span-2">
-                                        <div class="bg-[#F3F5F7] flex flex-row h-full rounded-xl">
-                                            <div class="flex justify-start items-center basis-1/2">
-                                                @if ($slide->name_image)
-                                                    <img src="{{ asset($slide->url_image . $slide->name_image) }}"
-                                                        alt="{{ $slide->name }}" class="w-full h-30 object-contain" />
-                                                @else
-                                                    <img src="{{ asset('images/img/noimagen.jpg') }}"
-                                                        alt="imagen_alternativa" class="w-full h-30 object-contain" />
-                                                @endif
-                                            </div>
-
-                                            <div class="font-poppins basis-1/2 p-4 flex flex-col gap-2 justify-center">
-                                                <h2 class="font-semibold text-[24px]">
-                                                    {{ $slide->name }}
-                                                </h2>
-                                                <p class="my-2 font-normal text-[16px] mb-4">
-                                                    {{ $slide->description }}
-                                                </p>
-
-                                                <div>
-                                                    <a href="/catalogo/{{ $slide->id }}"
-                                                        class="font-semibold text-[16px] bg-transparent md:duration-500 py-2 px-8 rounded-3xl border-[1px] border-colorBorder">Ir
-                                                        a categoría
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-
-                            </div>
-
-                        </section>
-                    @elseif(count($category->take(4)) == 2)
-                        <section class="mt-10 hidden lg:block relative">
-
-                            <div class="grid grid-cols-4 gap-4 w-10/12 mx-auto">
-
-                                @foreach ($category->take(2) as $index => $slide)
-                                    <div class="col-span-2 row-span-1">
-                                        <div class="bg-[#F3F5F7] flex flex-row h-full rounded-xl">
-                                            <div class="flex justify-start items-center basis-1/2">
-                                                @if ($slide->name_image)
-                                                    <img src="{{ asset($slide->url_image . $slide->name_image) }}"
-                                                        alt="{{ $slide->name }}" class="w-full h-30 object-contain" />
-                                                @else
-                                                    <img src="{{ asset('images/img/noimagen.jpg') }}"
-                                                        alt="imagen_alternativa" class="w-full h-30 object-contain" />
-                                                @endif
-                                            </div>
-
-                                            <div
-                                                class="font-poppins basis-1/2 p-4 pb-6 flex flex-col gap-2 justify-center">
-                                                <h2 class="font-semibold text-[24px] truncate">
-                                                    {{ $slide->name }}
-                                                </h2>
-                                                <p class="my-2 font-normal text-[16px] mb-4">
-                                                    {{ $slide->description }}
-                                                </p>
-
-                                                <div>
-                                                    <a href="/catalogo/{{ $slide->id }}"
-                                                        class="font-semibold text-[16px] bg-transparent md:duration-500 py-3 px-[8%] rounded-3xl border-[1px] border-colorBorder">Comprar
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!--Fin Columna 1 -->
-                                @endforeach
-                            </div>
-                        </section>
-                    @elseif(count($category->take(4)) == 3)
-                        <section class="mt-10 hidden lg:block relative">
-
-                            <div class="grid grid-cols-4 gap-4 w-10/12 mx-auto">
-
-                                @foreach ($category->take(3) as $index => $slide)
-                                    <!-- Columna 1 2 y 3-->
-
-                                    <div
-                                        class="col-span-2 @if ($loop->first) row-span-2 @elseif(!$loop->first)  row-span-1 @endif">
-                                        <div
-                                            class="bg-[#F3F5F7] flex  @if ($loop->first) flex-col @elseif(!$loop->first) flex-row @endif  h-full rounded-xl">
-                                            <div class="flex justify-start items-center basis-1/2">
-                                                @if ($slide->name_image)
-                                                    <img src="{{ asset($slide->url_image . $slide->name_image) }}"
-                                                        alt="{{ $slide->name }}" class="w-full h-30 object-contain" />
-                                                @else
-                                                    <img src="{{ asset('images/img/noimagen.jpg') }}"
-                                                        alt="imagen_alternativa" class="w-full h-30 object-contain" />
-                                                @endif
-                                            </div>
-
-                                            <div
-                                                class="font-poppins basis-1/2 p-4 pb-6 flex flex-col gap-2 justify-center">
-                                                <h2 class="font-semibold text-[24px] truncate">
-                                                    {{ $slide->name }}
-                                                </h2>
-                                                <p class="my-2 font-normal text-[16px] mb-4">
-                                                    {{ $slide->description }}
-                                                </p>
-
-                                                <div>
-                                                    <a href="/catalogo/{{ $slide->id }}"
-                                                        class="font-semibold text-[16px] bg-transparent md:duration-500 py-3 px-[8%] rounded-3xl border-[1px] border-colorBorder">Comprar
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-
-                                    <!--Fin Columna 1 -->
-                                @endforeach
-                            </div>
-                        </section>
-                    @elseif(count($category->take(4)) == 4)
-                        <section class="mt-10 hidden lg:block relative">
-
-                            <div class="grid grid-cols-4 gap-4 w-10/12 mx-auto">
-
-                                @foreach ($category->take(4) as $index => $slide)
-                                    <!-- Columna 1 2 3 y 4-->
-
-                                    <div
-                                        class="@if ($loop->index == 0 || $loop->index == 1) col-span-2  @elseif($loop->index == 2 || $loop->index == 3) col-span-1 @endif  @if ($loop->first) row-span-2 @elseif(!$loop->first)  row-span-1 @endif">
-                                        <div
-                                            class="bg-[#F3F5F7] flex  @if ($loop->index == 0 || $loop->index == 2 || $loop->index == 3) flex-col @elseif($loop->index == 1) flex-row @endif  h-full rounded-xl">
-                                            <div class="flex justify-start items-center basis-1/2">
-                                                @if ($slide->name_image)
-                                                    <img src="{{ asset($slide->url_image . $slide->name_image) }}"
-                                                        alt="{{ $slide->name }}" class="w-full h-30 object-contain" />
-                                                @else
-                                                    <img src="{{ asset('images/img/noimagen.jpg') }}"
-                                                        alt="imagen_alternativa" class="w-full h-30 object-contain" />
-                                                @endif
-                                            </div>
-
-                                            <div
-                                                class="font-poppins basis-1/2 p-4 pb-6  flex flex-col gap-2 justify-center">
-                                                <h2 class="font-semibold text-[24px] truncate">
-                                                    {{ $slide->name }}
-                                                </h2>
-                                                <p class="my-2 font-normal text-[16px] mb-4">
-                                                    {{ $slide->description }}
-                                                </p>
-
-                                                <div>
-                                                    <a href="/catalogo/{{ $slide->id }} "
-                                                        class=" font-semibold text-[16px] bg-transparent md:duration-500 py-3 px-[8%]  rounded-3xl border-[1px] border-colorBorder">Ver
-                                                        categoría
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!--Fin Columna 1 -->
-                                @endforeach
-                            </div>
-                        </section>
-
-                    @endif
-
-
-                    <!------Categorias destacadas - carrusel------>
-                    <section class="block lg:hidden">
-                        <div class="swiper categorias">
-                            <!-- <div class="swiper-pagination-categorias mb-24"></div> -->
-                            <div class="swiper-wrapper mb-[32x]">
-                                @foreach ($category as $item)
-                                    <a href="/catalogo/{{ $item->id }}">
-                                        <div class="swiper-slide mt-0 mb-4">
-                                            <div class="flex flex-col p-4">
-                                                <div class="flex flex-col bg-[#F8F6F2] rounded-2xl">
-                                                    <h2 class="font-semibold text-[24px] text-center mt-5">
-                                                        {{ $item->name }}
-                                                    </h2>
-                                                    <div class="flex justify-center items-center">
-                                                        @if ($slide->name_image)
-                                                            <img src="{{ asset($slide->url_image . $slide->name_image) }}"
-                                                                alt="{{ $slide->name_image }}"
-                                                                class="w-full h-30 object-contain" />
-                                                        @else
-                                                            <img src="{{ asset('images/img/noimagen.jpg') }}"
-                                                                alt="imagen_alternativa"
-                                                                class="w-full h-30 object-contain" />
-                                                        @endif
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                @endforeach
-                            </div>
-                            <div class="swiper-pagination-categorias"></div>
+            <div class="flex flex-col gap-5 py-10 items-center">
+                <h2 class="text-white font-moderat_700 text-text32 md:text-text44 text-center">Nuestras marcas asociadas</h2>
+                <p class="font-moderat_400 text-text16 md:text-text20 text-center w-full md:w-2/3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu fermentum justo, ac fermentum nulla. Sed sed scelerisque urna, vitae ultrices libero. Pellentesque vehicula et urna in venenatis.</p>
+            </div>
+            
+            <div class="swiper productos_marcas w-10/12 mx-auto">
+                <div class="swiper-wrapper pt-5 pb-10">
+                    <div class="swiper-slide">
+                        <div class="flex justify-center items-center">
+                            <img src="{{asset('images/img/image_21.png')}}" alt="marcas">
                         </div>
-                    </section>
+                    </div>
 
+                    <div class="swiper-slide">
+                        <div class="flex justify-center items-center">
+                            <img src="{{asset('images/img/image_22.png')}}" alt="marcas">
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="flex justify-center items-center">
+                            <img src="{{asset('images/img/image_23.png')}}" alt="marcas">
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="flex justify-center items-center">
+                            <img src="{{asset('images/img/image_21.png')}}" alt="marcas">
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="flex justify-center items-center">
+                            <img src="{{asset('images/img/image_22.png')}}" alt="marcas">
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="flex justify-center items-center">
+                            <img src="{{asset('images/img/image_21.png')}}" alt="marcas">
+                        </div>
+                    </div>
                 </div>
-            </section>
-        @endif
+            </div>
+    
+            
 
-        <!-- Productos destacados -->
-        @if ($destacados->isEmpty())
-            {{-- <div class="w-full flex flex-row justify-center items-center">
-                <div class="p-5 text-xl font-bold">No tienes productos destacados visibles</div>
-            </div> --}}
-        @else
-            <section class="font-poppins">
-                <div class="grid grid-cols-1 gap-12 md:gap-0 md:grid-cols-4 grid-rows-1 pt-12 w-11/12 mx-auto">
-                    <div class="col-span-1 md:col-span-3 order-1 md:order-1 flex flex-col gap-2">
-                        <h2 class="font-medium text-[40px] mt-2 leading-none md:leading-tight">
-                            Productos destacados
-                        </h2>
-                        <p class="font-normal text-lg">
-                            Explora nuestra selección destacada: productos de calidad y tendencia que te encantarán.
-                            Descubre lo
-                            mejor de nuestra tienda en línea.
+
+        </section>
+
+        <section class="w-11/12 md:w-10/12 mx-auto pt-20">
+
+            <div class="flex justify-between items-center py-5">
+                <p class="font-moderat_700 text-text32 md:text-text36">En Oferta</p>
+                <div class="flex justify-start items-center">
+                    <a href="#" class="flex justify-center items-center gap-2">
+                        <p class="text-[#3374FF] text-text16 font-moderat_700 md:text-text20 flex justify-center items-center gap-3">
+                            <span>Ver todos</span> 
+                            <span class="hidden md:block">los productos</span>
                         </p>
+                        <div>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 12H19" stroke="#3374FF" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M12 5L19 12L12 19" stroke="#3374FF" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>    
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-5">
+                <div class="flex flex-col gap-5">
+                    <div class="bg-[#F3F3F3] flex flex-col justify-center pt-5 gap-20 relative">
+                        <div class="flex justify-start items-center absolute top-[5%] left-[5%]">
+                            <span class="font-space_grotesk font-medium text-text10 md:text-text20 bg-[#0051FF] text-white py-1 px-2">-20%</span>
+                        </div>
+                        <div class="flex justify-center items-center py-10 md:py-20">
+                            <img src="{{asset('images/img/image_17.png')}}" alt="impresora" class="w-[120px] h-[90px] md:w-auto md:h-auto">
+                        </div>
                     </div>
-                    <div class="col-span-1 md:col-span-1 order-3 md:order-2 flex justify-center items-center w-full">
-                        <a href="/catalogo/0"
-                            class="font-semibold text-[16px] bg-transparent md:duration-500 py-4 px-5 rounded-3xl border-[1px] border-colorBorder flex-initial w-full md:w-56 text-center inline-block">
-                            Ver todo
-                        </a>
+
+                    <div class="flex flex-col gap-6">
+                        <div class="flex flex-col gap-3">
+                            <h3 class="font-moderat_500 text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
+                            <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2>
+                            <p class="font-moderat_400 text-text12 md:text-text20 text-[#565656]">Praesent non euismod arcu, eu dignissim erat. Aliquam erat volutpat...</p>
+                            <div class="flex justify-start items-center gap-2 md:gap-4">
+                                <div class="rounded-full bg-[#00AEEF] w-4 h-4 md:w-6 md:h-6"></div>
+                                <div class="rounded-full bg-[#EC008C] w-4 h-4 md:w-6 md:h-6"></div>
+                                <div class="rounded-full bg-[#FFF200] w-4 h-4 md:w-6 md:h-6"></div>
+                                <div class="rounded-full bg-[#000000] w-4 h-4 md:w-6 md:h-6"></div>
+                            </div>
+                        </div>
+                        <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-medium">S/ 899.99</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-5">
+                    <div class="bg-[#F3F3F3] flex flex-col justify-center pt-5 gap-20 relative">
+                        <div class="flex justify-center items-center py-10 md:py-20">
+                            <img src="{{asset('images/img/image_17.png')}}" alt="impresora" class="w-[120px] h-[90px] md:w-auto md:h-auto">
+                        </div>
                     </div>
 
-                    <div class="col-span-1 md:col-span-4 order-2 md:order-3">
-                        <!-- grilla de productos destacados -->
-                        <div class="md:hidden grid grid-cols-2 gap-5">
+                    <div class="flex flex-col gap-6">
+                        <div class="flex flex-col gap-3">
+                            <h3 class="font-moderat_500 text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
+                            <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2>
+                            <p class="font-moderat_400 text-text12 md:text-text20 text-[#565656]">Praesent non euismod arcu, eu dignissim erat. Aliquam erat volutpat...</p>
+                            <div class="flex justify-start items-center gap-2 md:gap-4">
+                                <div class="rounded-full bg-[#00AEEF] w-4 h-4 md:w-6 md:h-6"></div>
+                                <div class="rounded-full bg-[#EC008C] w-4 h-4 md:w-6 md:h-6"></div>
+                                <div class="rounded-full bg-[#FFF200] w-4 h-4 md:w-6 md:h-6"></div>
+                                <div class="rounded-full bg-[#000000] w-4 h-4 md:w-6 md:h-6"></div>
+                            </div>
+                        </div>
+                        <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-medium">S/ 899.99</p>
+                    </div>
+                </div>
 
-                            @foreach ($destacados as $item)
-                                <div class="flex flex-col relative">
-                                    <div
-                                        class="bg-colorBackgroundProducts rounded-2xl pt-12 pb-5 md:pb-8 product_container basis-4/5 flex flex-col justify-center relative">
-                                        <div class="px-4">
-                                            <a
-                                                class="font-semibold text-[8px] md:text-[12px] bg-[#EB5D2C] py-2 px-2 flex-initial w-24 text-center text-white rounded-[5px] absolute top-[18px] z-10">
-                                                Nuevo
-                                            </a>
 
-                                           
-                                        </div>
-                                        <div>
-                                            <div class="relative flex justify-center items-center">
-                                                @if ($item->imagen)
-                                                    <img src="{{ asset($item->imagen) }}" alt="{{ $item->name }}"
-                                                        class="w-full h-30 object-contain" />
-                                                @else
-                                                    <img src="{{ asset('images/img/noimagen.jpg') }}"
-                                                        alt="imagen_alternativa" class="w-full h-30 object-contain" />
-                                                @endif
+                <div class="flex flex-col gap-5">
+                    <div class="bg-[#F3F3F3] flex flex-col justify-center pt-5 gap-20 relative">
+                        <div class="flex justify-start items-center absolute top-[5%] left-[5%]">
+                            <span class="font-space_grotesk font-medium text-text10 md:text-text20 bg-[#0051FF] text-white py-1 px-2">-20%</span>
+                        </div>
+                        <div class="flex justify-center items-center py-10 md:py-20">
+                            <img src="{{asset('images/img/image_17.png')}}" alt="impresora" class="w-[120px] h-[90px] md:w-auto md:h-auto">
+                        </div>
+                    </div>
 
-                                            </div>
+                    <div class="flex flex-col gap-6">
+                        <div class="flex flex-col gap-3">
+                            <h3 class="font-moderat_500 text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
+                            <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2>
+                            <p class="font-moderat_400 text-text12 md:text-text20 text-[#565656]">Praesent non euismod arcu, eu dignissim erat. Aliquam erat volutpat...</p>
+                            <div class="flex justify-start items-center gap-2 md:gap-4">
+                                <div class="rounded-full bg-[#00AEEF] w-4 h-4 md:w-6 md:h-6"></div>
+                                <div class="rounded-full bg-[#EC008C] w-4 h-4 md:w-6 md:h-6"></div>
+                                <div class="rounded-full bg-[#FFF200] w-4 h-4 md:w-6 md:h-6"></div>
+                                <div class="rounded-full bg-[#000000] w-4 h-4 md:w-6 md:h-6"></div>
+                            </div>
+                        </div>
+                        <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-medium">S/ 899.99</p>
+                    </div>
+                </div>
 
-                                            <!-- ------ -->
-                                            <div class="addProduct text-center flex justify-center">
-                                                <a href="{{ route('producto', $item->id) }}"
-                                                    class="font-semibold text-[9px] md:text-[16px] bg-[#74A68D] py-3 px-5 flex-initial w-32 md:w-56 text-center text-white rounded-3xl">
-                                                    Ver producto
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="my-2 flex flex-col items-start gap-2 basis-1/5 px-2">
-                                        {{-- <div class="flex items-center gap-2">
-                                    <div class="flex md:gap-2 py-2">
-                                        <img src="./images/svg/start.svg" alt="estrella" />
-                                        <img src="./images/svg/start.svg" alt="estrella" />
-                                        <img src="./images/svg/start.svg" alt="estrella" />
-                                        <img src="./images/svg/start_sin_color.svg" alt="estrella" />
-                                        <img src="./images/svg/start_sin_color.svg" alt="estrella" />
-                                    </div>
-                                    <p class="font-semibold text-[14px] text-[#6C7275]">(35)</p>
-                                </div> --}}
-                                        <h2 class="font-semibold text-[12px] md:text-[16px] text-[#141718]">
-                                            {{ $item->producto }}
-                                        </h2>
-                                        <p class="font-semibold text-[8px] md:text-[14px] text-[#121212] flex gap-5">
-                                            @if ($item->descuento == 0)
-                                                <span>{{ $item->precio }}</span>
-                                            @else
-                                                <span>{{ $item->descuento }}</span>
-                                                <span
-                                                    class="font-normal text-[14px] text-[#6C7275] line-through">{{ $item->precio }}</span>
-                                            @endif
-                                        </p>
-                                    </div>
+                <div class="flex flex-col gap-5">
+                    <div class="bg-[#F3F3F3] flex flex-col justify-center pt-5 gap-20 relative">
+                        <div class="flex justify-center items-center py-10 md:py-20">
+                            <img src="{{asset('images/img/image_17.png')}}" alt="impresora" class="w-[120px] h-[90px] md:w-auto md:h-auto">
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col gap-6">
+                        <div class="flex flex-col gap-3">
+                            <h3 class="font-moderat_500 text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
+                            <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2>
+                            <p class="font-moderat_400 text-text12 md:text-text20 text-[#565656]">Praesent non euismod arcu, eu dignissim erat. Aliquam erat volutpat...</p>
+                            <div class="flex justify-start items-center gap-2 md:gap-4">
+                                <div class="rounded-full bg-[#00AEEF] w-4 h-4 md:w-6 md:h-6"></div>
+                                <div class="rounded-full bg-[#EC008C] w-4 h-4 md:w-6 md:h-6"></div>
+                                <div class="rounded-full bg-[#FFF200] w-4 h-4 md:w-6 md:h-6"></div>
+                                <div class="rounded-full bg-[#000000] w-4 h-4 md:w-6 md:h-6"></div>
+                            </div>
+                        </div>
+                        <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-medium">S/ 899.99</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-[#FBFBFB] pt-10 mt-10">
+            <div class="w-11/12 mx-auto flex flex-col gap-3 items-center">
+                <h2 class="font-moderat_700 text-text32 md:text-text44 text-center">Clientes satisfechos</h2>
+                <p class="font-moderat_400 text-text14 text-[#565656] text-center w-full md:w-2/3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu fermentum justo, ac fermentum nulla. Sed sed scelerisque urna, vitae ultrices libero. Pellentesque vehicula et urna in venenatis.                 
+                </p>
+            </div>
+
+            <div class="w-11/12 md:w-9/12 mx-auto">
+                <div class="swiper testimonios">
+                    <div class="swiper-wrapper pt-16 pb-32">
+                      <div class="swiper-slide">
+                        <div class="flex flex-col gap-5 bg-[#FFFFFF] border-[1.5px] border-gray-100 shadow-md p-8">
+                            <div class="flex justify-start items-center gap-5">
+                                <div class="flex justify-center items-center">
+                                    <img src="{{asset('images/img/image_24.png')}}" alt="usuario" class="rounded-full">
                                 </div>
-                            @endforeach
-                        </div>
-
-                        <!-- carrousel productos destacados -->
-                        <div class="hidden md:block">
-                            <div class="swiper productos-destacados my-5">
-                                <div class="swiper-pagination-productos-destacados mb-80 md:mb-32"></div>
-                                <div class="swiper-wrapper mt-[80px]">
-
-                                    @foreach ($destacados as $item)
-                                        <div class="swiper-slide rounded-2xl">
-                                            <div class="flex flex-col relative">
-                                                <div
-                                                    class="bg-colorBackgroundProducts rounded-2xl pt-12 pb-5 md:pb-8 product_container basis-4/5 flex flex-col justify-center relative">
-                                                    @foreach ($item->tags as $tags)
-                                                        <div class="px-4">
-                                                            <!-- <a
-                                                                class="font-semibold text-[8px] md:text-[12px] bg-[#EB5D2C] py-2 px-2 flex-initial w-24 text-center text-white rounded-[5px] absolute top-[18px] z-10">
-                                                                Nuevo
-                                                            </a> -->
-                                                            
-                                                                <span
-                                                                    class="font-semibold text-[8px] md:text-[12px] bg-[#EB5D2C] py-2 px-2 flex-initial w-24 text-center text-white rounded-[5px] absolute top-[18px] z-10">
-                                                                    {{ $tags->name }}
-                                                                </span>
-                                                        
-                                                        </div>
-                                                    @endforeach
-                                                    <div>
-                                                        <div class="relative flex justify-center items-center">
-                                                            @if ($item->imagen)
-                                                                <img src="{{ asset($item->imagen) }}"
-                                                                    alt="{{ $item->name }}"
-                                                                    class="w-full h-30 object-contain" />
-                                                            @else
-                                                                <img src="{{ asset('images/img/noimagen.jpg') }}"
-                                                                    alt="imagen_alternativa"
-                                                                    class="w-full h-30 object-contain" />
-                                                            @endif
-                                                        </div>
-
-                                                        <!-- ------ -->
-                                                        <div class="addProduct text-center flex justify-center">
-                                                            <a href="{{ route('producto', $item->id) }}"
-                                                                class="font-semibold text-[9px] md:text-[16px] bg-[#74A68D] py-3 px-5 flex-initial w-32 md:w-56 text-center text-white rounded-3xl">
-                                                                Ver producto
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="my-2 flex flex-col items-start gap-2 basis-1/5 px-2">
-                                                    {{-- <div class="flex items-center gap-2">
-                                                    <div class="flex gap-2 py-2">
-                                                        <img src="./images/svg/start.svg" alt="estrella" />
-                                                        <img src="./images/svg/start.svg" alt="estrella" />
-                                                        <img src="./images/svg/start.svg" alt="estrella" />
-                                                        <img src="./images/svg/start_sin_color.svg" alt="estrella" />
-                                                        <img src="./images/svg/start_sin_color.svg" alt="estrella" />
-                                                    </div>
-                                                    <p class="font-semibold text-[14px] text-[#6C7275]">
-                                                        (35)
-                                                    </p>
-                                                </div> --}}
-                                                    <h2 class="font-semibold text-[16px] text-[#141718]">
-                                                        {{ $item->producto }}
-                                                    </h2>
-                                                    <p class="font-semibold text-[14px] text-[#121212] flex gap-5">
-                                                        @if ($item->descuento == 0)
-                                                            <span>{{ $item->precio }}</span>
-                                                        @else
-                                                            <span>{{ $item->descuento }}</span>
-                                                            <span
-                                                                class="font-normal text-[14px] text-[#6C7275] line-through">{{ $item->precio }}</span>
-                                                        @endif
-
-
-
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
-
-                                </div>
-                                {{-- <div class="swiper-pagination-productos-destacados"></div>  --}}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        @endif
-
-        <!-- Productos en oferta -->
-        @if ($descuentos->isEmpty())
-            {{-- <div class="w-full flex flex-row justify-center items-center">
-                <div class="p-5 text-xl font-bold">No tienes productos en oferta visibles</div>
-            </div> --}}
-        @else
-            <section class="font-poppins mt-10 mb-20">
-                <div class="grid grid-cols-1 gap-12 md:gap-0 md:grid-cols-4 grid-rows-1 pt-12 w-11/12 mx-auto">
-                    <div class="col-span-1 md:col-span-3 order-1 md:order-1">
-                        <h2 class="font-medium text-[40px] mt-2 leading-none md:leading-tight">
-                            Productos en Oferta
-                        </h2>
-
-                        <p class="font-normal text-lg basis-3/6">
-                            Descuentos irresistibles en productos seleccionados. ¡Aprovecha nuestras ofertas y ahorra en tus
-                            compras favoritas! ¡No te lo pierdas
-                        </p>
-                    </div>
-
-                    <div class="col-span-1 md:col-span-1 order-3 md:order-2 flex justify-center items-center w-full">
-                        <a href="/catalogo/0"
-                            class="font-semibold text-[16px] bg-transparent md:duration-500 py-4 px-5 rounded-3xl border-[1px] border-colorBorder flex-initial w-full md:w-56 text-center inline-block">
-                            Ver todo
-                        </a>
-                    </div>
-
-                    <div class="col-span-1 md:col-span-4 order-2 md:order-3">
-                        <!-- grilla de productos en oferta -->
-                        <div class="md:hidden grid grid-cols-2 gap-5">
-
-                            @foreach ($descuentos as $item)
-                                <div class="flex flex-col relative">
-                                    <div
-                                        class="bg-colorBackgroundProducts rounded-2xl pt-12 pb-5 md:pb-8 product_container basis-4/5 flex flex-col justify-center relative">
-                                        <div class="px-4">
-                                            <a
-                                                class="font-semibold text-[8px] md:text-[12px] bg-[#EB5D2C] py-2 px-2 flex-initial w-24 text-center text-white rounded-[5px] absolute top-[18px] z-10">
-                                                En programación
-                                            </a>
-                                        </div>
-                                        <div>
-                                            <div class="relative flex justify-center items-center">
-                                                @if ($item->imagen)
-                                                    <img src="{{ asset($item->imagen) }}" alt="{{ $item->name }}"
-                                                        class="w-full h-30 object-contain" />
-                                                @else
-                                                    <img src="{{ asset('images/img/noimagen.jpg') }}"
-                                                        alt="imagen_alternativa" class="w-full h-30 object-contain" />
-                                                @endif
-                                            </div>
-
-                                            <!-- ------ -->
-                                            <div class="addProduct text-center flex justify-center">
-                                                <a href="{{ route('producto', $item->id) }}"
-                                                    class="font-semibold text-[9px] md:text-[16px] bg-[#74A68D] py-3 px-5 flex-initial w-32 md:w-56 text-center text-white rounded-3xl">
-                                                    Ver producto
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="my-2 flex flex-col items-start gap-2 basis-1/5 px-2">
-                                        {{-- <div class="flex items-center gap-2">
-                                        <div class="flex md:gap-2 py-2">
-                                            <img src="./images/svg/start.svg" alt="estrella" />
-                                            <img src="./images/svg/start.svg" alt="estrella" />
-                                            <img src="./images/svg/start.svg" alt="estrella" />
-                                            <img src="./images/svg/start_sin_color.svg" alt="estrella" />
-                                            <img src="./images/svg/start_sin_color.svg" alt="estrella" />
-                                        </div>
-                                        <p class="font-semibold text-[14px] text-[#6C7275]">(35)</p>
-                                    </div> --}}
-                                        <h2 class="font-semibold text-[12px] md:text-[16px] text-[#141718]">
-                                            {{ $item->producto }}
-                                        </h2>
-                                        <p class="font-semibold text-[8px] md:text-[14px] text-[#121212] flex gap-5">
-                                            @if ($item->descuento == 0)
-                                                <span>{{ $item->price }}</span>
-                                            @else
-                                                <span>{{ $item->descuento }}</span>
-                                                <span
-                                                    class="font-normal text-[14px] text-[#6C7275] line-through">{{ $item->precio }}</span>
-                                            @endif
-                                        </p>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-
-                        <!-- carrousel productos oferta -->
-                        <div class="hidden md:block">
-                            <div class="swiper productos-oferta my-5">
-                                <div class="swiper-pagination-productos-oferta mb-80 md:mb-32"></div>
-
-                                <div class="swiper-wrapper mt-[80px]">
-
-                                    @foreach ($descuentos as $item)
-                                        <div class="swiper-slide rounded-2xl">
-                                            <div class="flex flex-col relative">
-                                                <div
-                                                    class="bg-colorBackgroundProducts rounded-2xl pt-12 pb-5 md:pb-8 product_container basis-4/5 flex flex-col justify-center relative">
-                                                    <div class="px-4">
-                                                        <a
-                                                            class="font-semibold text-[8px] md:text-[12px] bg-[#EB5D2C] py-2 px-2 flex-initial w-32 text-center text-white rounded-[5px] absolute top-[18px] z-10">
-                                                            En programación
-                                                        </a>
-                                                    </div>
-                                                    <div>
-                                                        <div class="relative flex justify-center items-center">
-
-                                                            @if ($item->imagen)
-                                                                <img src="{{ asset($item->imagen) }}"
-                                                                    alt="{{ $item->name }}"
-                                                                    class="w-full h-30 object-contain" />
-                                                            @else
-                                                                <img src="{{ asset('images/img/noimagen.jpg') }}"
-                                                                    alt="imagen_alternativa"
-                                                                    class="w-full h-30 object-contain" />
-                                                            @endif
-                                                        </div>
-
-                                                        <!-- ------ -->
-                                                        <div class="addProduct text-center flex justify-center">
-                                                            <a href="{{ route('producto', $item->id) }}"
-                                                                class="font-semibold text-[9px] md:text-[16px] bg-[#74A68D] py-3 px-5 flex-initial w-32 md:w-56 text-center text-white rounded-3xl">
-                                                                Ver producto
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="my-2 flex flex-col items-start gap-2 basis-1/5 px-2">
-                                                    {{-- <div class="flex items-center gap-2">
-                                                        <div class="flex gap-2 py-2">
-                                                            <img src="./images/svg/start.svg" alt="estrella" />
-                                                            <img src="./images/svg/start.svg" alt="estrella" />
-                                                            <img src="./images/svg/start.svg" alt="estrella" />
-                                                            <img src="./images/svg/start_sin_color.svg" alt="estrella" />
-                                                            <img src="./images/svg/start_sin_color.svg" alt="estrella" />
-                                                        </div>
-                                                        <p class="font-semibold text-[14px] text-[#6C7275]">
-                                                            (35)
-                                                        </p>
-                                                    </div> --}}
-                                                    <h2 class="font-semibold text-[16px] text-[#141718]">
-                                                        {{ $item->producto }}
-                                                    </h2>
-                                                    <p class="font-semibold text-[14px] text-[#121212] flex gap-5">
-
-                                                        @if ($item->descuento == 0)
-                                                            <span>{{ $item->price }}</span>
-                                                        @else
-                                                            <span>{{ $item->descuento }}</span>
-                                                            <span
-                                                                class="font-normal text-[14px] text-[#6C7275] line-through">{{ $item->precio }}</span>
-                                                        @endif
-
-
-
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
-
-                                </div>
-                                <!-- <div class="swiper-pagination-productos-oferta"></div> -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        @endif
-
-        <!-- Beneficios -->
-
-        @if ($benefit->isEmpty())
-            {{-- <div class="w-full flex flex-row justify-center items-center">
-                <div class="p-5 text-xl font-bold">No tienes beneficios visibles</div>
-            </div> --}}
-        @else
-            <section>
-                <div class="flex flex-col gap-5 lg:grid lg:grid-cols-2 lg:grid-rows-[700px] h-[100%]">
-                    <div class="basis-1/2 flex items-center justify-center">
-                        <img src="{{ asset('/images/img/vestibulo.png') }}" alt="vestibulo"
-                            class="w-full h-full object-cover object-center" />
-                    </div>
-                    <div class="basis-1/2 beneficioRelative px-5 md:px-10">
-                        <div class="swiper myBeneficios h-full">
-                            <div class="swiper-wrapper">
-                                @foreach ($benefit as $item)
-                                    <div class="swiper-slide">
-                                        <div class="flex flex-col gap-5 my-12">
-                                            <p class="font-semibold text-[24px]">{{ $item->titulo }}</p>
-
-                                            <h2 class="font-semibold text-[48px] leading-none md:leading-tight">
-                                                {{ $item->descripcionshort }}
-                                            </h2>
-
-                                            <div class="font-normal text-[18px]">
-                                                {!! $item->descripcion !!}
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                            <div class="swiper-pagination-beneficios"></div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        @endif
-
-        <!-- FAQS -->
-
-        @if ($faqs->isEmpty())
-            {{-- <div class="w-full flex flex-row justify-center items-center">
-                <div class="p-5 text-xl font-bold">No tienes faqs visibles</div>
-            </div> --}}
-        @else
-            <section class="my-12">
-                <div class="bg-[#F5F5F5] font-poppins">
-                    <div
-                        class="relative bg-[#F5F5F5] px-6 pt-10 pb-8 mt-8 ring-gray-900/5 sm:mx-auto sm:rounded-lg sm:px-10">
-                        <div class="mx-auto px-5">
-                            <div class="flex flex-col items-center">
-                                <h2
-                                    class="font-semibold text-[40px] text-[#151515] text-center leading-none md:leading-tight">
-                                    Preguntas frecuentes
-                                </h2>
-                            </div>
-                            <div class="mx-auto mt-8 grid max-w-[900px] divide-y divide-neutral-200">
-
-                                @foreach ($faqs as $faq)
-                                    <div class="py-5">
-                                        <details class="group">
-                                            <summary
-                                                class="flex cursor-pointer list-none items-center justify-between font-medium">
-                                                <span class="font-bold text-[20px] text-[#151515]">
-                                                    {!! $faq->pregunta !!}</span>
-                                                <span class="transition group-open:rotate-180">
-                                                    <svg width="18" height="20" viewBox="0 0 18 20"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M16.2923 11.3882L9.00065 18.3327M9.00065 18.3327L1.70898 11.3882M9.00065 18.3327L9.00065 1.66602"
-                                                            stroke="#EB5D2C" stroke-width="3.33333"
-                                                            stroke-linecap="round" stroke-linejoin="round" />
-                                                    </svg>
-                                                </span>
-                                            </summary>
-                                            <p class="group-open:animate-fadeIn mt-3 text-neutral-600">
-                                                {{ $faq->respuesta }}
-                                            </p>
-                                        </details>
-                                    </div>
-                                @endforeach
-
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                </div>
-            </section>
-        @endif
-
-        <!-- Testimonios -->
-
-        @if ($testimonie->isEmpty())
-            {{-- <div class="w-full flex flex-row justify-center items-center">
-                <div class="p-5 text-xl font-bold">No tienes testimonios visibles</div>
-            </div> --}}
-        @else
-            <section class="font-poppins text-[#151515] w-full testimoniosRelative">
-                <h2 class="w-11/12 mx-auto font-semibold text-[40px] text-center md:text-left">
-                    Testimonios
-                </h2>
-
-                <div class="swiper myTestimonios mt-5">
-                    <div class="swiper-pagination-testimonios"></div>
-                    <div class="swiper-wrapper mb-12 md:mt-[80px]">
-                        @foreach ($testimonie as $item)
-                            <div class="swiper-slide">
-                                <div class="carousel-cell bg-[#F5F5F5] p-10">
-                                    {{-- <div class="flex gap-2 py-2">
-                                <img src="./images/svg/start.svg" alt="estrella" />
-                                <img src="./images/svg/start.svg" alt="estrella" />
-                                <img src="./images/svg/start_sin_color.svg" alt="estrella" />
-                                <img src="./images/svg/start_sin_color.svg" alt="estrella" />
-                            </div> --}}
-                                    <div class="flex gap-5 items-center">
-                                        <p class="font-bold text-[20px]">{{ $item->name }}</p>
-                                        <img src="{{ asset('/images/svg/check.svg') }}" alt="check" />
-                                    </div>
-                                    <p class="font-normal text-[16px]">
-                                        {{ $item->testimonie }}
-                                    </p>
+                                <div class="flex flex-col gap-2 justify-center">
+                                    <h3 class="font-moderat_500 text-text24 md:text-text32 text-[#111111]">Mascota feliz</h3>
+                                    <p class="font-moderat_400 text-text12 md:text-text16 text-[#111111]">Lima - Perú</p>
                                 </div>
                             </div>
-                        @endforeach
+                            <div>
+                                <p class="text-[#565656] font-moderat_400 text-text14 md:text-text18">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                            </div>
+                        </div>
+                      </div>
+
+                      <div class="swiper-slide">
+                        <div class="flex flex-col gap-5 bg-[#FFFFFF] border-[1.5px] border-gray-100 shadow-md p-8">
+                            <div class="flex justify-start items-center gap-5">
+                                <div class="flex justify-center items-center">
+                                    <img src="{{asset('images/img/image_24.png')}}" alt="usuario" class="rounded-full">
+                                </div>
+                                <div class="flex flex-col gap-2 justify-center">
+                                    <h3 class="font-moderat_500 text-text24 md:text-text32 text-[#111111]">Mascota feliz</h3>
+                                    <p class="font-moderat_400 text-text12 md:text-text16 text-[#111111]">Lima - Perú</p>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="text-[#565656] font-moderat_400 text-text14 md:text-text18">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                            </div>
+                        </div>
+                      </div>
+
+                      <div class="swiper-slide">
+                        <div class="flex flex-col gap-5 bg-[#FFFFFF] border-[1.5px] border-gray-100 shadow-md p-8">
+                            <div class="flex justify-start items-center gap-5">
+                                <div class="flex justify-center items-center">
+                                    <img src="{{asset('images/img/image_24.png')}}" alt="usuario" class="rounded-full">
+                                </div>
+                                <div class="flex flex-col gap-2 justify-center">
+                                    <h3 class="font-moderat_500 text-text24 md:text-text32 text-[#111111]">Mascota feliz</h3>
+                                    <p class="font-moderat_400 text-text12 md:text-text16 text-[#111111]">Lima - Perú</p>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="text-[#565656] font-moderat_400 text-text14 md:text-text18">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {{-- <div style=".swiper-button-prev::after{background-color: 50px}">
+                        <div class="swiper-button-next !top-[90%] !w-64"></div>
+                        <div class="swiper-button-prev !top-[90%] !w-64"></div>
+                    </div> --}}
+                    {{-- <div class="swiper-button-next absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-[#0051FF] opacity-20 rounded-full flex justify-center items-center px-5">
+
+
+                    </div> --}}
+                    <div class="swiper-button-prev"></div> 
+                    <div class="swiper-button-next"></div> 
+                    {{-- <div class="swiper-button-prev absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-gray-800 w-8 h-8 rounded-full flex justify-center items-center text-white">
+
+                    </div> --}}
+                </div>
+            </div>
+        </section>
+
+
+        <section class="w-11/12 mx-auto py-16">
+            <div class="flex flex-col gap-10">
+                <div class="flex flex-col justify-center gap-3 md:flex-row md:justify-between md:items-center">
+                    <div class="flex flex-col gap-5">
+                        <h2 class="font-moderat_700 text-text44 md:text-text52 text-[#111111] leading-none md:leading-tight">Últimas publicaciones</h2>
+                        <p class="text-[#565656] text-text18 md:text-text22 font-moderat_400 w-full lg:w-2/3">Nam tempor diam quis urna maximus, ac laoreet arcu convallis. Aenean dignissim nec sem quis consequat.</p>
+                    </div>
+
+                    <div class="flex justify-center items-center">
+                        <a href="#" class="font-moderat_700 text-text16 md:text-text20 py-3 px-10 bg-[#0051FF] text-white w-full md:w-auto text-center">Ver más Publicaciones</a>
                     </div>
                 </div>
-            </section>
 
-        @endif
+                <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-10">
 
+                    <div class="flex flex-col gap-5">
+                        <div>
+                            <img src="{{asset('images/img/image_12.png')}}" alt="publicacion" class="w-full">
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <p class="font-moderat_700 text-text12 md:text-text20 text-[#0051FF]">Categoría</p>
+                            <h2 class="text-[#082252] font-moderat_700 text-text16 md:text-text28">Integer porta cursus metus, sit amet malesuada</h2>
+                            <p class="text-[#565656] font-moderat_400 text-text12 md:text-text20 ">Praesent non euismod arcu, eu dignissim erat. Aliquam erat volutpat...</p>
+                        </div>
+
+                        <div class="flex justify-start items-center text-text9 md:text-text14 text-[#0051FF] font-moderat_500 gap-1 md:gap-2">  
+                            <p class="hidden lg:block">29 de julio de 2023</p>
+                            <p class="block lg:hidden">29/07/2023</p>
+                            <img src="{{asset('images/svg/image_17.svg')}}" alt="point" class="w-[3px] md:w-[6px]">
+                            <p>Leído hace 5 min</p>
+                        </div>
+                        
+                    </div>
+
+                    <div class="flex flex-col gap-5">
+                        <div>
+                            <img src="{{asset('images/img/image_13.png')}}" alt="publicacion" class="w-full">
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <p class="font-moderat_700 text-text12 md:text-text20 text-[#0051FF]">Categoría</p>
+                            <h2 class="text-[#082252] font-moderat_700 text-text16 md:text-text28">Integer porta cursus metus, sit amet malesuada</h2>
+                            <p class="text-[#565656] font-moderat_400 text-text12 md:text-text20 ">Praesent non euismod arcu, eu dignissim erat. Aliquam erat volutpat...</p>
+                        </div>
+
+                        <div class="flex justify-start items-center text-text9 md:text-text14 text-[#0051FF] font-moderat_500 gap-1 md:gap-2">  
+                            <p class="hidden lg:block">29 de julio de 2023</p>
+                            <p class="block lg:hidden">29/07/2023</p>
+                            <img src="{{asset('images/svg/image_17.svg')}}" alt="point" class="w-[3px] md:w-[6px]">
+                            <p>Leído hace 5 min</p>
+                        </div>
+                        
+                    </div>
+
+                    <div class="flex flex-col gap-5">
+                        <div>
+                            <img src="{{asset('images/img/image_14.png')}}" alt="publicacion" class="w-full">
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <p class="font-moderat_700 text-text12 md:text-text20 text-[#0051FF]">Categoría</p>
+                            <h2 class="text-[#082252] font-moderat_700 text-text16 md:text-text28">Integer porta cursus metus, sit amet malesuada</h2>
+                            <p class="text-[#565656] font-moderat_400 text-text12 md:text-text20 ">Praesent non euismod arcu, eu dignissim erat. Aliquam erat volutpat...</p>
+                        </div>
+
+                        <div class="flex justify-start items-center text-text9 md:text-text14 text-[#0051FF] font-moderat_500 gap-1 md:gap-2">  
+                            <p class="hidden lg:block">29 de julio de 2023</p>
+                            <p class="block lg:hidden">29/07/2023</p>
+                            <img src="{{asset('images/svg/image_17.svg')}}" alt="point" class="w-[3px] md:w-[6px]">
+                            <p>Leído hace 5 min</p>
+                        </div>
+                        
+                    </div>
+
+
+                    <div class="flex lg:hidden flex-col gap-5">
+                        <div>
+                            <img src="{{asset('images/img/image_12.png')}}" alt="publicacion" class="w-full">
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <p class="font-moderat_700 text-text12 md:text-text20 text-[#0051FF]">Categoría</p>
+                            <h2 class="text-[#082252] font-moderat_700 text-text16 md:text-text28">Integer porta cursus metus, sit amet malesuada</h2>
+                            <p class="text-[#565656] font-moderat_400 text-text12 md:text-text20 ">Praesent non euismod arcu, eu dignissim erat. Aliquam erat volutpat...</p>
+                        </div>
+
+                        <div class="flex justify-start items-center text-text9 md:text-text14 text-[#0051FF] font-moderat_500 gap-1 md:gap-2">  
+                            <p class="hidden lg:block">29 de julio de 2023</p>
+                            <p class="block lg:hidden">29/07/2023</p>
+                            <img src="{{asset('images/svg/image_17.svg')}}" alt="point" class="w-[3px] md:w-[6px]">
+                            <p>Leído hace 5 min</p>
+                        </div>
+                        
+                    </div>
+
+                </div>
+            </div>
+        </section>
     </main>
 
-
 @section('scripts_importados')
-    <script></script>
+    <script>
+        var swiper = new Swiper(".productos__main-mobile", {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            }
+
+        });
+
+        var swiper = new Swiper(".productos_marcas", {
+            slidesPerView: 5,
+            spaceBetween: 30,
+            loop: true,
+            grabCursor: true,
+            centeredSlides: false,
+            initialSlide: 0, 
+            autoplay: {
+                delay: 1500,
+                disableOnInteraction: false,
+            },
+
+            breakpoints: {
+                0: {
+                    slidesPerView: 2,
+                    centeredSlides: true,
+                    loop: true,
+                },
+                1024: {
+                    slidesPerView: 5,
+                    centeredSlides: false,
+
+                },
+            },
+
+        });
+
+        var swiper = new Swiper(".testimonios", {
+            slidesPerView: 2,
+            spaceBetween: 30,
+            loop: true,
+            grabCursor: true,
+            centeredSlides: false,
+            initialSlide: 0, 
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            breakpoints: {
+                0: {
+                    slidesPerView: 1,
+                },
+                1024: {
+                    slidesPerView: 2,
+                },
+            },
+
+        });
+
+        var swiper = new Swiper(".productos__main-desktop", {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            }
+
+        });
+    </script>
 @stop
 
 @stop
