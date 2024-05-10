@@ -10,9 +10,9 @@
 
 @section('content')
 <main>
-    <section class="mt-12 mb-0 md:my-12">
+    <section class=" mb-0 md:my-12">
       <div class="flex flex-col w-11/12 mx-auto">
-        <div class="flex flex-col gap-10 my-5">
+        <div class="flex flex-col gap-10 my-5" data-aos="fade-up" data-aos-offset="150">
           <div class="flex gap-1 text-text14 xl:text-text18">
             <a href="index.html" class="font-moderat_500 text-[#565656]"
               >Home</a
@@ -24,14 +24,14 @@
       </div>
     </section>
 
-    <section class="my-8 md:my-16">
+    <section class="mb-8 md:mb-16">
       <div
         class="flex flex-col gap-12 md:flex-row md:gap-28 w-full md:w-11/12 mx-auto"
       >
         <div class="bg-white py-5 md:py-0">
           <div class="w-11/12 md:w-full mx-auto">
             <div class="basis-5/12 flex flex-col gap-5">
-              <div class="flex flex-col gap-5">
+              <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
                 <div
                   class="rounded-full w-24 h-24 bg-[#E9EDEF] flex justify-center items-center relative"
                 >
@@ -59,22 +59,22 @@
                 </div>
 
                 <div class="text-[#111111]">
-                  <p class="font-moderat_700 text-text24 xl:text-text28">
+                  <p class="font-moderat_700 text-text24 md:text-text28">
                     Ademir Neyra
                   </p>
 
-                  <p class="font-moderat_500 text-text12 xl:text-text16 text-[#8896A8]">
+                  <p class="font-moderat_Medium text-text12 md:text-text16 text-[#8896A8]">
                     ademirneyra@gmail.com
                   </p>
                 </div>
               </div>
-              <div class="flex flex-col gap-4">
-                <div
+              <div class="flex flex-col gap-4" data-aos="fade-up" data-aos-offset="150">
+                <div 
                   class="text-textWhite bg-[#0051FF] py-3 px-5 cursor-pointer border-none md:w-80 w-full flex justify-between items-center"
                 >
                   <a
                     href="miCuenta.html"
-                    class="font-moderat_700 text-text16 xl:text-text18 text-white"
+                    class="font-moderat_Bold text-text16 md:text-text18 text-white"
                   >
                     Mi cuenta
                   </a>
@@ -100,7 +100,7 @@
                 >
                   <a
                     href="direccion.html"
-                    class="font-moderat_700 text-text16 xl:text-text18 text-[#565656]"
+                    class="font-moderat_Bold text-text16 md:text-text18 text-[#565656]"
                   >
                     Dirección
                   </a>
@@ -126,7 +126,7 @@
                 >
                   <a
                     href="historial.html"
-                    class="font-moderat_700 text-text16 xl:text-text18 text-[#565656]"
+                    class="font-moderat_Bold text-text16 md:text-text18 text-[#565656]"
                   >
                     Historial de pedidos
                   </a>
@@ -150,7 +150,7 @@
 
                 <a
                   href="#"
-                  class="bg-[#F3F5F7] text-[#151515] font-moderat_700 text-text16 xl:text-text18 py-3 px-4 flex justify-between items-center md:w-80 mt-0 md:mt-[200px] w-full"
+                  class="bg-[#F3F5F7] text-[#151515] font-moderat_Bold text-text16 md:text-text18 py-3 px-4 flex justify-between items-center md:w-80 mt-0 md:mt-[200px] w-full"
                 >
                   <span>Cerrar Sesión</span>
                   <img src="{{asset('images/svg/image_33.svg')}}" alt="cerrar" />
@@ -159,52 +159,52 @@
             </div>
           </div>
         </div>
-        <div class="basis-7/12 w-11/12 md:w-full mx-auto">
+        <div class="basis-7/12 w-11/12 md:w-full mx-auto" data-aos="fade-up" data-aos-offset="150">
           <form action="#" class="flex flex-col gap-5 mb-10">
             <h2
               class="text-text20 xl:text-text22 font-moderat_700 text-[#151515]"
             >
               Detalles de la cuenta
             </h2>
-            <div class="flex flex-col gap-2">
+            <div class="flex flex-col gap-2" data-aos="fade-up" data-aos-offset="150">
               <label
                 for="nombre_user"
-                class="font-moderat_500 text-text12 xl:text-text14 text-[#6C7275]"
+                class="font-moderat_Medium text-text12 md:text-text14 text-[#6C7275]"
                 >Nombre</label
               >
               <input
                 id="nombre_user"
                 type="text"
                 placeholder="Nombre"
-                class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-moderat_400 text-text16 xl:text-text18 border-[1px] border-gray-200 text-[#6C7275] focus:ring-0  focus:border-black" 
+                class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-moderat_Regular text-text16 md:text-text18 border-[1px] border-gray-200 text-[#6C7275] focus:ring-0  focus:border-black" 
               />
             </div>
 
-            <div class="flex flex-col gap-2">
+            <div class="flex flex-col gap-2" data-aos="fade-up" data-aos-offset="150">
               <label
                 for="apellido_user"
-                class="font-moderat_500 text-text12 xl:text-text14 text-[#6C7275]"
-                >Nombre</label
+                class="font-moderat_Medium text-text12 md:text-text14 text-[#6C7275]"
+                >Apellido</label
               >
               <input
                 id="apellido_user"
                 type="text"
                 placeholder="Apellido"
-                class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-moderat_400 text-text16 xl:text-text18 border-[1px] border-gray-200 text-[#6C7275] focus:ring-0  focus:border-black"
+                class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-moderat_Regular text-text16 md:text-text18 border-[1px] border-gray-200 text-[#6C7275] focus:ring-0  focus:border-black"
               />
             </div>
 
-            <div class="flex flex-col gap-2">
+            <div class="flex flex-col gap-2" data-aos="fade-up" data-aos-offset="150">
               <label
                 for="email_user"
-                class="font-moderat_500 text-text12 xl:text-text14 text-[#6C7275]"
+                class="font-moderat_Medium text-text12 md:text-text14 text-[#6C7275]"
                 >E-mail</label
               >
               <input
                 id="email_user"
                 type="email"
                 placeholder="hola@gmail.com"
-                class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-moderat_400 text-text16 xl:text-text18 border-[1px] border-gray-200 text-[#6C7275] focus:ring-0  focus:border-black"
+                class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-moderat_Regular text-text16 md:text-text18 border-[1px] border-gray-200 text-[#6C7275] focus:ring-0  focus:border-black"
               />
             </div>
 
@@ -213,64 +213,66 @@
             </div>
 
             <h2
-              class="text-text20 xl:text-text22 font-moderat_700 text-[#151515]"
+              class="text-text20 md:text-text22 font-moderat_700 text-[#151515]"
             >
               Contraseña
             </h2>
 
-            <div class="flex flex-col gap-2">
+            <div class="flex flex-col gap-2" data-aos="fade-up" data-aos-offset="150">
               <label
                 for="contrasenia_anterior"
-                class="font-moderat_500 text-text12 xl:text-text14 text-[#6C7275]"
+                class="font-moderat_Medium text-text12 md:text-text14 text-[#6C7275]"
                 >Contraseña anterior</label
               >
               <input
                 id="contrasenia_anterior"
                 type="password"
                 placeholder="*************"
-                class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-moderat_400 text-text16 xl:text-text20 border-[1px] border-gray-200 text-[#6C7275] focus:ring-0  focus:border-black"
+                class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-moderat_Regular text-text16 md:text-text18 border-[1px] border-gray-200 text-[#6C7275] focus:ring-0  focus:border-black"
               />
             </div>
 
-            <div class="flex flex-col gap-2">
+            <div class="flex flex-col gap-2" data-aos="fade-up" data-aos-offset="150">
               <label
                 for="contrasenia_nueva"
-                class="font-moderat_500 text-text12 xl:text-text14 text-[#6C7275]"
+                class="font-moderat_Medium text-text12 md:text-text14 text-[#6C7275]"
                 >Nueva Contraseña</label
               >
               <input
                 id="contrasenia_nueva"
                 type="password"
                 placeholder="*************"
-                class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-moderat_400 text-text16 xl:text-text20 border-[1px] border-gray-200 text-[#6C7275] focus:ring-0  focus:border-black"
+                class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-moderat_Regular text-text16 md:text-text18 border-[1px] border-gray-200 text-[#6C7275] focus:ring-0  focus:border-black"
               />
             </div>
 
-            <div class="flex flex-col gap-2">
+            <div class="flex flex-col gap-2" data-aos="fade-up" data-aos-offset="150">
               <label
                 for="repetir_contrasenia"
-                class="font-moderat_500 text-text12 xl:text-text14 text-[#6C7275]"
+                class="font-moderat_Medium text-text12 md:text-text14 text-[#6C7275]"
                 >Repetir nueva contraseña</label
               >
               <input
                 id="repetir_contrasenia"
                 type="password"
                 placeholder="*************"
-                class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-moderat_400 text-text16 xl:text-text20 border-[1px] border-gray-200 text-[#6C7275] focus:ring-0  focus:border-black"
+                class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-moderat_Regular text-text16 md:text-text18 border-[1px] border-gray-200 text-[#6C7275] focus:ring-0  focus:border-black"
               />
             </div>
 
             <div class="flex gap-5 flex-col md:flex-row">
               <input
+              data-aos="fade-up" data-aos-offset="150"
                 type="submit"
                 value="Guardar cambios"
-                class="text-white bg-[#0051FF] py-3 px-5  cursor-pointer border-2 font-moderat_700 text-text18 text-center border-none inline-block"
+                class="text-white bg-[#0051FF] py-3 px-5  cursor-pointer border-2 font-moderat_Bold text-text18 text-center border-none inline-block"
               />
 
               <input
+              data-aos="fade-up" data-aos-offset="150"
                 type="submit"
                 value="Cancelar"
-                class="text-[#FFFFFF] py-3 px-5 cursor-pointer font-moderat_700 text-text18 text-center inline-block border-[1px] border-[#151515] bg-[#001232]"
+                class="text-[#FFFFFF] py-3 px-5 cursor-pointer font-moderat_Bold text-text18 text-center inline-block border-[1px] border-[#151515] bg-[#001232]"
               />
             </div>
           </form>
@@ -280,28 +282,24 @@
 
     <section class="bg-[#F3F3F3] w-11/12 mx-auto">
 
-        <div
-            class="flex flex-col md:flex-row justify-between items-center gap-5 pt-5 md:pt-10 pl-5 md:pl-10 pr-5 md:pr-10 mb-20">
-            <div class="flex flex-col gap-6">
-                <div class="flex flex-col gap-3">
-                    <p class="text-[#02173C] font-moderat_700 text-text32 leading-[38px]">¿Aún tienes alguna duda?</h2>
-                    <p class="text-[#02173C] font-moderat_400 text-text18">Vestibulum ante ipsum primis in faucibus
-                        orci luctus et ultrices posuere.</p>
-                </div>
+      <div class="flex flex-col md:flex-row justify-between items-center gap-5 pt-5 md:pt-10 pl-5 md:pl-10 pr-5 md:pr-10 mb-20">
+          <div class="flex flex-col gap-6" data-aos="fade-up" data-aos-offset="150">
+              <div class="flex flex-col gap-3">
+                  <p class="text-[#02173C] font-moderat_700 text-text32 leading-[38px]">¿Aún tienes alguna duda?</h2>
+                  <p class="text-[#02173C] font-moderat_Regular text-text18">Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere.</p>
+              </div>
+             
+              <div class="flex justify-start items-center pb-8">
+                  <a href="#" class="text-[#FFFFFF] font-moderat_Bold text-text16 py-3 bg-[#001232] px-5 w-full text-center md:inline-flex md:w-auto">Ponerse en contacto</a>
+              </div>
+          </div>
 
-                <div class="flex justify-start items-center pb-8">
-                    <a href="#"
-                        class="text-[#FFFFFF] font-moderat_700 text-text16 py-3 bg-[#001232] px-5 w-full text-center md:inline-flex md:w-auto">Ponerse
-                        en contacto</a>
-                </div>
-            </div>
+          <div>
+              <img src="{{asset('images/img/image_42.png')}}" alt="contacto">
+          </div>
+      </div>
 
-            <div>
-                <img src="{{ asset('images/img/image_42.png') }}" alt="contacto">
-            </div>
-        </div>
-
-    </section>
+  </section>
   </main>
 
 

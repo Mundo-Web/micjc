@@ -7,27 +7,27 @@
 
 @section('content')
     <main>
-        <section class="w-11/12 md:w-10/12 mx-auto pt-12">
+        <section class="w-11/12 md:w-10/12 mx-auto pt-5">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16">
                 <div class="flex flex-col md:flex-row justify-center items-center gap-5 md:gap-0">
                     <div class="flex flex-row justify-between md:flex-col md:justify-start md:items-center h-full md:gap-10 md:basis-1/4 order-2 md:order-1 w-full">
-                        <img src="{{asset('images/img/image_26.png')}}" alt="computer" class="w-[70px] h-[90px]">
-                        <img src="{{asset('images/img/image_27.png')}}" alt="computer" class="w-[70px] h-[90px]">
-                        <img src="{{asset('images/img/image_28.png')}}" alt="computer" class="w-[70px] h-[90px]">
-                        <img src="{{asset('images/img/image_29.png')}}" alt="computer" class="w-[70px] h-[90px]">
+                        <img src="{{asset('images/img/image_26.png')}}" alt="computer" class="w-[70px] h-[90px]" data-aos="fade-up" data-aos-offset="150">
+                        <img src="{{asset('images/img/image_27.png')}}" alt="computer" class="w-[70px] h-[90px]" data-aos="fade-up" data-aos-offset="150">
+                        <img src="{{asset('images/img/image_28.png')}}" alt="computer" class="w-[70px] h-[90px]" data-aos="fade-up" data-aos-offset="150">
+                        <img src="{{asset('images/img/image_29.png')}}" alt="computer" class="w-[70px] h-[90px]" data-aos="fade-up" data-aos-offset="150">
                     </div>
 
                     <div class="md:basis-3/4 flex justify-center items-center order-1 md:order-2 w-full">
-                        <img src="{{asset('images/img/image_25.png')}}" alt="computer" class="w-full h-full">
+                        <img src="{{asset('images/img/image_25.png')}}" alt="computer" class="w-full h-full" data-aos="fade-up" data-aos-offset="150">
                     </div>
                 </div>
 
                 <div class="flex flex-col gap-5">
-                    <div class="flex flex-col gap-5 pb-10 border-b-2 border-[#DDDDDD]">
+                    <div class="flex flex-col gap-5 pb-10 border-b-2 border-[#DDDDDD]" data-aos="fade-up" data-aos-offset="150">
                         <h2 class="font-moderat_700 text-text40 md:text-text44 text-[#111111]">Laptop HP</h2>
-                        <p class="font-moderat_700 text-text24 md:text-text28 text-[#111111]">S/ 1999.99</p>
+                        <p class="font-moderat_Bold text-text24 md:text-text28 text-[#111111]">S/ 1999.99</p>
                         <div class="flex justify-start items-center gap-5">
-                            <p class="font-moderat_700 text-text16 md:text-text20 text-[#1F1F1F]">Color:</p>
+                            <p class="font-moderat_Bold text-text16 md:text-text20 text-[#1F1F1F]">Color:</p>
                             <div class="flex justify-start items-center gap-4">
                                 <div class="rounded-full bg-[#00AEEF] w-6 h-6"></div>
                                 <div class="rounded-full bg-[#EC008C] w-6 h-6"></div>
@@ -36,8 +36,10 @@
                         <div>
                             <input type="number" class="border-2 rounded-lg w-16" value="01" step="1">
                         </div>
-                        <p class="text-[#565656] text-text16 md:text-text20">Nullam nec iaculis libero, vitae commodo magna. Quisque tincidunt dolor et augue tempus, vitae interdum purus interdum. Mauris sagittis risus ac purus mollis efficitur. Sed maximus aliquam lectus, id luctus justo luctus ut.</p>
-                        <div class="flex justify-between items-center text-white font-moderat_700 text-text14 md:text-text16 gap-5 pt-3">
+
+                        <p class="text-[#565656] text-text16 md:text-text20 font-moderat_Regular">Nullam nec iaculis libero, vitae commodo magna. Quisque tincidunt dolor et augue tempus, vitae interdum purus interdum. Mauris sagittis risus ac purus mollis efficitur. Sed maximus aliquam lectus, id luctus justo luctus ut.</p>
+
+                        <div class="flex justify-between items-center text-white font-moderat_Bold text-text14 md:text-text16 gap-5 pt-3" data-aos="fade-up" data-aos-offset="150">
                             <a href="#" class="bg-[#0051FF] w-full py-3 px-2 md:px-10 text-center">Quiero comprar</a>
                             <a href="#" class="bg-[#25D366] flex justify-center items-center w-full py-3 px-2 md:px-10 text-center gap-2">
                                 <span>Cotizar aquí</span>  
@@ -51,24 +53,24 @@
                     </div>
                     
 
-                    <div class="pt-5">
-                        <p class="font-inter font-bold text-text14 md:text-text16 text-[#111111]">
-                            Categoría: <span class="text-[#565656] font-moderat_400 text-text14">Laptops</span>
+                    <div class="pt-5" data-aos="fade-up" data-aos-offset="150">
+                        <p class="font-inter font-medium text-text14 md:text-text16 text-[#111111]">
+                            Categoría: <span class="text-[#565656] font-moderat_Regular text-text14">Laptops</span>
                         </p>
-                        <p class="font-inter font-bold text-text14 md:text-text16 text-[#111111]">
-                            SKU: <span class="text-[#565656] font-moderat_400 text-text14">HP159356</span>
+                        <p class="font-inter font-medium text-text14 md:text-text16 text-[#111111]">
+                            SKU: <span class="text-[#565656] font-moderat_Regular text-text14">HP159356</span>
                         </p>
-                        <p class="font-inter font-bold text-text14 md:text-text16 text-[#111111]">
+                        <p class="font-inter font-medium text-text14 md:text-text16 text-[#111111]">
                             Marca: <span class="text-[#565656] font-moderat_400 text-text14">Hp</span>
                         </p>
                     </div>
                 </div>
             </div>
 
-            <div class="flex flex-col gap-5 pt-10 md:pt-16">
+            <div class="flex flex-col gap-5 pt-10 md:pt-16" data-aos="fade-up" data-aos-offset="150">
 
                 <h3 class="font-moderat_700 text-text28 md:text-text32 text-[#111111]">Descripción</h3>
-                <div class="text-[#565656] text-text16 md:text-text20 font-moderat_400 flex flex-col gap-5">
+                <div class="text-[#565656] text-text16 md:text-text20 font-moderat_Regular flex flex-col gap-5">
                     <p>
                         Nullam nec iaculis libero, vitae commodo magna. Quisque tincidunt dolor et augue tempus, vitae interdum purus interdum. Mauris sagittis risus ac purus mollis efficitur. Sed maximus aliquam lectus, id luctus justo luctus ut. Nunc vestibulum quam erat, a imperdiet nunc sodales elementum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Suspendisse pellentesque sem commodo erat mollis dictum vel sit amet augue. Aliquam bibendum molestie nibh, ac bibendum mi semper sed. Aenean purus velit, posuere vitae dolor eget, tincidunt efficitur ante. Nullam fermentum placerat sem quis laoreet.
                     </p>
@@ -81,9 +83,9 @@
 
             <div class="pt-10 md:pt-16 flex flex-col gap-5">
                 <h3 class="font-moderat_700 text-text28 md:text-text32 text-[#111111]">Características técnicas</h3>
-                <div class="mx-6">
+                <div class="mx-6" data-aos="fade-up" data-aos-offset="150">
                     <ul
-                      class="font-normal text-text16 md:text-text20 list-disc text-[#565656]"
+                      class="font-moderat_Regular text-text16 md:text-text20 list-disc text-[#565656]"
                     >
                       <li>Core i5</li>
                       <li>8 generación</li>
@@ -101,7 +103,7 @@
                     <p class="font-moderat_700 text-text32 md:text-text36">Productos relacionados</p>
                     <div class="flex md:hidden justify-start items-center">
                         <a href="#" class="flex flex-row justify-center items-center gap-2">
-                            <p class="text-[#3374FF] text-text16 font-moderat_700 md:text-text20 flex justify-center items-center gap-3">
+                            <p class="text-[#3374FF] text-text16 font-moderat_Bold md:text-text20 flex justify-center items-center gap-3">
                                 Ver todo
                             </p>
                             <div>
@@ -115,10 +117,10 @@
                 </div>
         
                 <div class="grid grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-5">
-                    <div class="flex flex-col gap-5">
+                    <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
                         <div class="bg-[#F3F3F3] flex flex-col justify-center pt-5 gap-20 relative">
                             <div class="flex justify-start items-center absolute top-[5%] left-[5%]">
-                                <span class="font-space_grotesk font-medium text-text10 md:text-text20 bg-[#0051FF] text-white py-1 px-2">
+                                <span class="font-moderat_500 text-text10 md:text-text20 bg-[#0051FF] text-white py-1 px-2">
                                     Lanzamiento</span>
                             </div>
                             <div class="flex justify-center items-center py-10 md:py-20">
@@ -128,9 +130,10 @@
     
                         <div class="flex flex-col gap-6">
                             <div class="flex flex-col gap-3">
-                                <h3 class="font-moderat_500 text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
+                                <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
                                 <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2>
-                                <p class="font-moderat_400 text-text12 md:text-text20 text-[#565656]">Praesent non euismod arcu, eu dignissim erat. Aliquam erat volutpat...</p>
+                                <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non euismod
+                                    arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                                 <div class="flex justify-start items-center gap-2 md:gap-4">
                                     <div class="rounded-full bg-[#00AEEF] w-4 h-4 md:w-6 md:h-6"></div>
                                     <div class="rounded-full bg-[#EC008C] w-4 h-4 md:w-6 md:h-6"></div>
@@ -138,11 +141,12 @@
                                     <div class="rounded-full bg-[#000000] w-4 h-4 md:w-6 md:h-6"></div>
                                 </div>
                             </div>
-                            <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">S/ 899.99</p>
+                            <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">S/
+                                899.99</p>
                         </div>
                     </div>
     
-                    <div class="flex flex-col gap-5">
+                    <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
                         <div class="bg-[#F3F3F3] flex flex-col justify-center pt-5 gap-20 relative">
                             <div class="flex justify-center items-center py-10 md:py-20">
                                 <img src="{{asset('images/img/image_17.png')}}" alt="impresora" class="w-[120px] h-[90px] md:w-auto md:h-auto">
@@ -151,9 +155,10 @@
     
                         <div class="flex flex-col gap-6">
                             <div class="flex flex-col gap-3">
-                                <h3 class="font-moderat_500 text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
+                                <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
                                 <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2>
-                                <p class="font-moderat_400 text-text12 md:text-text20 text-[#565656]">Praesent non euismod arcu, eu dignissim erat. Aliquam erat volutpat...</p>
+                                <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non euismod
+                                    arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                                 <div class="flex justify-start items-center gap-2 md:gap-4">
                                     <div class="rounded-full bg-[#00AEEF] w-4 h-4 md:w-6 md:h-6"></div>
                                     <div class="rounded-full bg-[#EC008C] w-4 h-4 md:w-6 md:h-6"></div>
@@ -161,15 +166,16 @@
                                     <div class="rounded-full bg-[#000000] w-4 h-4 md:w-6 md:h-6"></div>
                                 </div>
                             </div>
-                            <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">S/ 899.99</p>
+                            <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">S/
+                                899.99</p>
                         </div>
                     </div>
     
     
-                    <div class="flex flex-col gap-5">
+                    <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
                         <div class="bg-[#F3F3F3] flex flex-col justify-center pt-5 gap-20 relative">
                             <div class="flex justify-start items-center absolute top-[5%] left-[5%]">
-                                <span class="font-space_grotesk font-medium text-text10 md:text-text20 bg-[#0051FF] text-white py-1 px-2">-20%</span>
+                                <span class="font-moderat_500 text-text10 md:text-text20 bg-[#0051FF] text-white py-1 px-2">-20%</span>
                             </div>
                             <div class="flex justify-center items-center py-10 md:py-20">
                                 <img src="{{asset('images/img/image_17.png')}}" alt="impresora" class="w-[120px] h-[90px] md:w-auto md:h-auto">
@@ -178,9 +184,10 @@
     
                         <div class="flex flex-col gap-6">
                             <div class="flex flex-col gap-3">
-                                <h3 class="font-moderat_500 text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
+                                <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
                                 <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2>
-                                <p class="font-moderat_400 text-text12 md:text-text20 text-[#565656]">Praesent non euismod arcu, eu dignissim erat. Aliquam erat volutpat...</p>
+                                <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non euismod
+                                    arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                                 <div class="flex justify-start items-center gap-2 md:gap-4">
                                     <div class="rounded-full bg-[#00AEEF] w-4 h-4 md:w-6 md:h-6"></div>
                                     <div class="rounded-full bg-[#EC008C] w-4 h-4 md:w-6 md:h-6"></div>
@@ -188,11 +195,12 @@
                                     <div class="rounded-full bg-[#000000] w-4 h-4 md:w-6 md:h-6"></div>
                                 </div>
                             </div>
-                            <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">S/ 899.99</p>
+                            <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">S/
+                                899.99</p>
                         </div>
                     </div>
     
-                    <div class="flex flex-col gap-5">
+                    <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
                         <div class="bg-[#F3F3F3] flex flex-col justify-center pt-5 gap-20 relative">
                             <div class="flex justify-center items-center py-10 md:py-20">
                                 <img src="{{asset('images/img/image_17.png')}}" alt="impresora" class="w-[120px] h-[90px] md:w-auto md:h-auto">
@@ -201,9 +209,10 @@
     
                         <div class="flex flex-col gap-6">
                             <div class="flex flex-col gap-3">
-                                <h3 class="font-moderat_500 text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
+                                <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
                                 <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2>
-                                <p class="font-moderat_400 text-text12 md:text-text20 text-[#565656]">Praesent non euismod arcu, eu dignissim erat. Aliquam erat volutpat...</p>
+                                <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non euismod
+                                    arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                                 <div class="flex justify-start items-center gap-2 md:gap-4">
                                     <div class="rounded-full bg-[#00AEEF] w-4 h-4 md:w-6 md:h-6"></div>
                                     <div class="rounded-full bg-[#EC008C] w-4 h-4 md:w-6 md:h-6"></div>
@@ -211,7 +220,8 @@
                                     <div class="rounded-full bg-[#000000] w-4 h-4 md:w-6 md:h-6"></div>
                                 </div>
                             </div>
-                            <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">S/ 899.99</p>
+                            <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">S/
+                                899.99</p>
                         </div>
                     </div>
                 </div>

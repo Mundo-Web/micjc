@@ -91,19 +91,19 @@
             <div class="swiper productos__main-mobile">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide bg-[#0051FF] pt-5 pb-20 md:py-24 fondo__slider-desktop" {{-- style="background-image: url({{asset('images/img/image_16.png')}}); background-repeat: no-repeat; background-size:cover;" --}}>
-                        <div class="grid grid-cols-1 lg:grid-cols-2">
+                        <div class="grid grid-cols-1 lg:grid-cols-2" data-aos="fade-up" data-aos-offset="150">
                             <div
                                 class="flex flex-col justify-center gap-5 order-1 lg:order-2 px-5 md:z-50 lg:-mx-[100px] w-full lg:w-11/12">
-                                <p class="text-white text-text18 md:text-text20 font-moderat_700">Accesorios</p>
+                                <p class="text-white text-text18 md:text-text20 font-moderat_Bold">Accesorios</p>
                                 <h1
                                     class="text-text40 md:text-text48 font-moderat_700 text-white leading-[56px] md:leading-tight">
                                     Descubre lo digital: Productos innovadores</h1>
-                                <p class="text-white text-text14 font-moderat_400 w-full lg:w-5/6">Selección de productos
+                                <p class="text-white text-text14 md:text-text16 font-moderat_Regular w-full lg:w-5/6">Selección de productos
                                     digitales que facilitan la forma en que realizamos nuestras tareas cotidianas.</p>
 
                                 <div class="flex justify-start items-center">
                                     <a href="#" class="flex justify-center items-center gap-2">
-                                        <span class="text-white text-text16 font-moderat_700">Ver productos</span>
+                                        <span class="text-white text-text16 font-moderat_Bold">Ver productos</span>
                                         <div>
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -221,23 +221,23 @@
 
         <section class="w-11/12 mx-auto py-5">
             <div class="grid grid-cols-2 md:grid-cols-4">
-                <div class="flex flex-col gap-3 items-start">
-                    <p class="text-[#0711E5] text-text52 font-moderat_700">1k+</p>
-                    <p class="text-[#111111] text-text16 font-moderat_500 w-full md:w-1/2 text-center">Clientes activos</p>
+                <div class="flex flex-col gap-3 items-start w-full">
+                    <p class="text-[#0711E5] text-text52 font-moderat_700 text-center w-full md:text-left">1k+</p>
+                    <p class="text-[#111111] text-text16 font-moderat_Medium w-full md:w-1/2 text-center md:text-left">Clientes activos</p>
                 </div>
-                <div class="flex flex-col gap-3 items-end md:items-center">
-                    <p class="text-[#0711E5] text-text52 font-moderat_700">45+</p>
-                    <p class="text-[#111111] text-text16 font-moderat_500 w-full md:w-1/2 text-center">Marcas exclusivas
+                <div class="flex flex-col gap-3 items-end md:items-center w-full">
+                    <p class="text-[#0711E5] text-text52 font-moderat_700 w-full text-center">45+</p>
+                    <p class="text-[#111111] text-text16 font-moderat_Medium w-full md:w-1/2 text-center">Marcas exclusivas
                     </p>
                 </div>
-                <div class="flex flex-col gap-3 items-start md:items-center">
-                    <p class="text-[#0711E5] text-text52 font-moderat_700">10k+</p>
-                    <p class="text-[#111111] text-text16 font-moderat_500 w-full md:w-1/2 text-center">Órdenes Procesadas
+                <div class="flex flex-col gap-3 items-start md:items-center w-full">
+                    <p class="text-[#0711E5] text-text52 font-moderat_700 w-full text-center">10k+</p>
+                    <p class="text-[#111111] text-text16 font-moderat_Medium w-full md:w-1/2 text-center">Órdenes Procesadas
                         Anualmente</p>
                 </div>
-                <div class="flex flex-col gap-3 items-end">
-                    <p class="text-[#0711E5] text-text52 font-moderat_700">1.8M+</p>
-                    <p class="text-[#111111] text-text16 font-moderat_500 w-full md:w-1/2 text-center">Unidades entregadas
+                <div class="flex flex-col gap-3 items-end w-full">
+                    <p class="text-[#0711E5] text-text52 font-moderat_700 w-full text-center md:text-right">1.8M+</p>
+                    <p class="text-[#111111] text-text16 font-moderat_Medium w-full md:w-1/2 text-center">Unidades entregadas
                         Anualmente</p>
                 </div>
             </div>
@@ -251,7 +251,7 @@
 
                 <div class="flex justify-start items-center">
                     <a href="#" class="flex justify-center items-center gap-2">
-                        <span class="text-text16 text-[#0051FF] md:text-text20 font-moderat_700">Ver todas las
+                        <span class="text-text16 text-[#0051FF] md:text-text20 font-moderat_Bold">Ver todas las
                             categorías</span>
                         <div>
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -270,16 +270,16 @@
             <div class="grid grid-cols-1 grid-rows-1 lg:grid-cols-4 lg:grid-rows-2 gap-5 md:gap-12">
 
                 <div
-                    class="col-span-1 lg:row-span-2 lg:col-span-2 bg-[#F3F3F3] p-5 md:p-10 flex flex-col gap-5 justify-center">
+                    class="col-span-1 lg:row-span-2 lg:col-span-2 bg-[#F3F3F3] p-5 md:p-10 flex flex-col gap-5 justify-center" data-aos="fade-up" data-aos-offset="150">
                     <div class="flex flex-col gap-5 w-full md:w-1/2">
                         <h2 class="text-text28 md:text-text32 font-moderat_700 w-1/2">Tintas y cartuchos</h2>
-                        <p class="font-moderat_400 text-text12 md:text-text16">Nullam nec orci dui. Praesent tristique
+                        <p class="font-moderat_Regular text-text12 md:text-text16">Nullam nec orci dui. Praesent tristique
                             facilisis quam, a egestas lorem consectetur fringilla. Suspendisse cursus erat eget ante auctor,
                             non hendrerit ipsum egestas.</p>
 
                         <div>
-                            <p class="font-moderat_400 text-text12 md:text-text16 text-[#111111]">Desde</p>
-                            <p class="font-moderat_700 text-text20 md:text-text24 text-[#111111]">S/. 99,99</p>
+                            <p class="font-moderat_Regular text-text12 md:text-text16 text-[#111111]">Desde</p>
+                            <p class="font-moderat_Bold text-text20 md:text-text24 text-[#111111]">S/. 99,99</p>
                         </div>
                     </div>
 
@@ -290,7 +290,7 @@
 
                     <div class="flex justify-start items-center">
                         <a href="#" class="flex justify-center items-center gap-2">
-                            <span class="text-text16 text-[#0051FF] md:text-text20 font-moderat_700">Ver productos</span>
+                            <span class="text-text16 text-[#0051FF] md:text-text20 font-moderat_Bold">Ver productos</span>
                             <div>
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -305,22 +305,22 @@
                 </div>
 
                 <div
-                    class="col-span-1 lg:row-span-1 lg:col-span-2 flex justify-between bg-[#F3F3F3] pl-5 py-5 md:p-10 md:gap-10">
+                    class="col-span-1 lg:row-span-1 lg:col-span-2 flex justify-between bg-[#F3F3F3] pl-5 py-5 md:p-10 md:gap-10" data-aos="fade-up" data-aos-offset="150">
 
                     <div class="flex flex-col gap-5 justify-center basis-3/6 md:basis-2/6">
 
                         <h2 class="text-text28 md:text-text32 font-moderat_700">Toners</h2>
-                        <p class="font-moderat_400 text-text12 md:text-text16">Diseñada para ser transportada y utilizada
+                        <p class="font-moderat_Regular text-text12 md:text-text16">Diseñada para ser transportada y utilizada
                             en diferentes lugares. </p>
                         <div>
-                            <p class="font-moderat_400 text-text12 md:text-text16 text-[#111111]">Desde</p>
-                            <p class="font-moderat_700 text-text20 md:text-text24 text-[#111111]">S/. 999,99</p>
+                            <p class="font-moderat_Regular text-text12 md:text-text16 text-[#111111]">Desde</p>
+                            <p class="font-moderat_Bold text-text20 md:text-text24 text-[#111111]">S/. 999,99</p>
                         </div>
 
 
                         <div class="flex justify-start items-center">
                             <a href="#" class="flex justify-center items-center gap-2">
-                                <span class="text-text16 text-[#0051FF] md:text-text20 font-moderat_700">Ver
+                                <span class="text-text16 text-[#0051FF] md:text-text20 font-moderat_Bold">Ver
                                     productos</span>
                                 <div>
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -344,7 +344,7 @@
 
                 <div
                     class="col-span-1 lg:row-span-1 lg:col-span-2 bg-[#0051FF] flex justify-between text-white pr-5 py-5 gap-10 md:p-10 fondo__categorias-producto"{{-- 
-                    style="background-image: url('{{ asset('images/img/image_9.png') }}'); background-repeat:no-repeat; background-size:cover;" --}}>
+                    style="background-image: url('{{ asset('images/img/image_9.png') }}'); background-repeat:no-repeat; background-size:cover;" --}} data-aos="fade-up" data-aos-offset="150">
 
                     <div class="flex justify-end items-end md:items-center basis-3/6 md:basis-4/6">
                         <img src="{{ asset('images/img/image_7.png') }}" alt="impresora" class="hidden md:block w-full">
@@ -353,17 +353,17 @@
                     </div>
 
                     <div class="flex flex-col justify-center gap-5 basis-3/6 md:basis-2/6">
-                        <h2 class="text-text28 md:text-text32 font-moderat_700">Impresoras</h2>
-                        <p class="font-moderat_400 text-text12 md:text-text16">Diseñada para ser transportada y utilizada
+                        <h2 class="text-text28 md:text-text32 font-moderat_700 text-right">Impresoras</h2>
+                        <p class="font-moderat_Regular text-text12 md:text-text16 text-right">Diseñada para ser transportada y utilizada
                             en diferentes lugares.</p>
                         <div>
-                            <p class="font-moderat_400 text-text12 md:text-text16">Desde</p>
-                            <p class="font-moderat_700 text-text20 md:text-text24">S/. 999,99</p>
+                            <p class="font-moderat_Regular text-text12 md:text-text16 text-right">Desde</p>
+                            <p class="font-moderat_Bold text-text20 md:text-text24 text-right">S/. 999,99</p>
                         </div>
 
-                        <div class="flex justify-start items-center">
+                        <div class="flex justify-end items-center">
                             <a href="#" class="flex justify-center items-center gap-2">
-                                <span class="text-text16 text-[#FFFFFF] md:text-text20 font-moderat_700">Ver
+                                <span class="text-text16 text-[#FFFFFF] md:text-text20 font-moderat_Bold text-right">Ver
                                     productos</span>
                                 <div>
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -392,7 +392,7 @@
                 <div class="flex justify-start items-center">
                     <a href="#" class="flex justify-center items-center gap-2">
                         <p
-                            class="text-[#3374FF] text-text16 font-moderat_700 md:text-text20 flex justify-center items-center gap-3">
+                            class="text-[#3374FF] text-text16 font-moderat_Bold md:text-text20 flex justify-center items-center gap-3">
                             <span>Ver todos</span>
                             <span class="hidden md:block">los productos</span>
                         </p>
@@ -409,7 +409,7 @@
                 </div>
             </div>
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-5">
-                <div class="flex flex-col gap-5">
+                <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
                     <div class="bg-[#F3F3F3] flex flex-col justify-center pt-5 gap-20 relative">
                         <div class="flex justify-start items-center absolute top-[5%] left-[5%]">
                             <span
@@ -423,9 +423,9 @@
 
                     <div class="flex flex-col gap-6">
                         <div class="flex flex-col gap-3">
-                            <h3 class="font-moderat_500 text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
+                            <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
                             <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2>
-                            <p class="font-moderat_400 text-text12 md:text-text20 text-[#565656]">Praesent non euismod
+                            <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non euismod
                                 arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                             <div class="flex justify-start items-center gap-2 md:gap-4">
                                 <div class="rounded-full bg-[#00AEEF] w-4 h-4 md:w-6 md:h-6"></div>
@@ -439,7 +439,7 @@
                     </div>
                 </div>
 
-                <div class="flex flex-col gap-5">
+                <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
                     <div class="bg-[#F3F3F3] flex flex-col justify-center pt-5 gap-20 relative">
                         <div class="flex justify-center items-center py-10 md:py-20">
                             <img src="{{ asset('images/img/image_17.png') }}" alt="impresora"
@@ -449,9 +449,9 @@
 
                     <div class="flex flex-col gap-6">
                         <div class="flex flex-col gap-3">
-                            <h3 class="font-moderat_500 text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
+                            <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
                             <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2>
-                            <p class="font-moderat_400 text-text12 md:text-text20 text-[#565656]">Praesent non euismod
+                            <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non euismod
                                 arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                             <div class="flex justify-start items-center gap-2 md:gap-4">
                                 <div class="rounded-full bg-[#00AEEF] w-4 h-4 md:w-6 md:h-6"></div>
@@ -466,7 +466,7 @@
                 </div>
 
 
-                <div class="flex flex-col gap-5">
+                <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
                     <div class="bg-[#F3F3F3] flex flex-col justify-center pt-5 gap-20 relative">
                         <div class="flex justify-start items-center absolute top-[5%] left-[5%]">
                             <span
@@ -480,9 +480,9 @@
 
                     <div class="flex flex-col gap-6">
                         <div class="flex flex-col gap-3">
-                            <h3 class="font-moderat_500 text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
+                            <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
                             <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2>
-                            <p class="font-moderat_400 text-text12 md:text-text20 text-[#565656]">Praesent non euismod
+                            <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non euismod
                                 arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                             <div class="flex justify-start items-center gap-2 md:gap-4">
                                 <div class="rounded-full bg-[#00AEEF] w-4 h-4 md:w-6 md:h-6"></div>
@@ -496,7 +496,7 @@
                     </div>
                 </div>
 
-                <div class="flex flex-col gap-5">
+                <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
                     <div class="bg-[#F3F3F3] flex flex-col justify-center pt-5 gap-20 relative">
                         <div class="flex justify-center items-center py-10 md:py-20">
                             <img src="{{ asset('images/img/image_17.png') }}" alt="impresora"
@@ -506,9 +506,9 @@
 
                     <div class="flex flex-col gap-6">
                         <div class="flex flex-col gap-3">
-                            <h3 class="font-moderat_500 text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
+                            <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
                             <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2>
-                            <p class="font-moderat_400 text-text12 md:text-text20 text-[#565656]">Praesent non euismod
+                            <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non euismod
                                 arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                             <div class="flex justify-start items-center gap-2 md:gap-4">
                                 <div class="rounded-full bg-[#00AEEF] w-4 h-4 md:w-6 md:h-6"></div>
@@ -526,10 +526,10 @@
 
         <section class="w-11/12 mx-auto bg-[#001232] text-white mt-20 fondo__marcas">
 
-            <div class="flex flex-col gap-5 py-10 items-center">
-                <h2 class="text-white font-moderat_700 text-text32 md:text-text44 text-center">Nuestras marcas asociadas
+            <div class="flex flex-col gap-5 py-10 items-center" data-aos="fade-up" data-aos-offset="150">
+                <h2 class="text-white font-moderat_Bold text-text32 md:text-text44 text-center">Nuestras marcas asociadas
                 </h2>
-                <p class="font-moderat_400 text-text16 md:text-text20 text-center w-full md:w-2/3">Lorem ipsum dolor sit
+                <p class="font-moderat_Regular text-text16 md:text-text20 text-center w-full md:w-2/3">Lorem ipsum dolor sit
                     amet, consectetur adipiscing elit. Vivamus eu fermentum justo, ac fermentum nulla. Sed sed scelerisque
                     urna, vitae ultrices libero. Pellentesque vehicula et urna in venenatis.</p>
             </div>
@@ -586,7 +586,7 @@
                 <div class="flex justify-start items-center">
                     <a href="#" class="flex justify-center items-center gap-2">
                         <p
-                            class="text-[#3374FF] text-text16 font-moderat_700 md:text-text20 flex justify-center items-center gap-3">
+                            class="text-[#3374FF] text-text16 font-moderat_Bold md:text-text20 flex justify-center items-center gap-3">
                             <span>Ver todos</span>
                             <span class="hidden md:block">los productos</span>
                         </p>
@@ -603,7 +603,7 @@
                 </div>
             </div>
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-5">
-                <div class="flex flex-col gap-5">
+                <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
                     <div class="bg-[#F3F3F3] flex flex-col justify-center pt-5 gap-20 relative">
                         <div class="flex justify-start items-center absolute top-[5%] left-[5%]">
                             <span
@@ -617,9 +617,9 @@
 
                     <div class="flex flex-col gap-6">
                         <div class="flex flex-col gap-3">
-                            <h3 class="font-moderat_500 text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
+                            <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
                             <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2>
-                            <p class="font-moderat_400 text-text12 md:text-text20 text-[#565656]">Praesent non euismod
+                            <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non euismod
                                 arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                             <div class="flex justify-start items-center gap-2 md:gap-4">
                                 <div class="rounded-full bg-[#00AEEF] w-4 h-4 md:w-6 md:h-6"></div>
@@ -633,7 +633,7 @@
                     </div>
                 </div>
 
-                <div class="flex flex-col gap-5">
+                <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
                     <div class="bg-[#F3F3F3] flex flex-col justify-center pt-5 gap-20 relative">
                         <div class="flex justify-center items-center py-10 md:py-20">
                             <img src="{{ asset('images/img/image_17.png') }}" alt="impresora"
@@ -643,9 +643,9 @@
 
                     <div class="flex flex-col gap-6">
                         <div class="flex flex-col gap-3">
-                            <h3 class="font-moderat_500 text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
+                            <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
                             <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2>
-                            <p class="font-moderat_400 text-text12 md:text-text20 text-[#565656]">Praesent non euismod
+                            <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non euismod
                                 arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                             <div class="flex justify-start items-center gap-2 md:gap-4">
                                 <div class="rounded-full bg-[#00AEEF] w-4 h-4 md:w-6 md:h-6"></div>
@@ -660,7 +660,7 @@
                 </div>
 
 
-                <div class="flex flex-col gap-5">
+                <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
                     <div class="bg-[#F3F3F3] flex flex-col justify-center pt-5 gap-20 relative">
                         <div class="flex justify-start items-center absolute top-[5%] left-[5%]">
                             <span
@@ -674,9 +674,9 @@
 
                     <div class="flex flex-col gap-6">
                         <div class="flex flex-col gap-3">
-                            <h3 class="font-moderat_500 text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
+                            <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
                             <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2>
-                            <p class="font-moderat_400 text-text12 md:text-text20 text-[#565656]">Praesent non euismod
+                            <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non euismod
                                 arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                             <div class="flex justify-start items-center gap-2 md:gap-4">
                                 <div class="rounded-full bg-[#00AEEF] w-4 h-4 md:w-6 md:h-6"></div>
@@ -690,7 +690,7 @@
                     </div>
                 </div>
 
-                <div class="flex flex-col gap-5">
+                <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
                     <div class="bg-[#F3F3F3] flex flex-col justify-center pt-5 gap-20 relative">
                         <div class="flex justify-center items-center py-10 md:py-20">
                             <img src="{{ asset('images/img/image_17.png') }}" alt="impresora"
@@ -700,9 +700,9 @@
 
                     <div class="flex flex-col gap-6">
                         <div class="flex flex-col gap-3">
-                            <h3 class="font-moderat_500 text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
+                            <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
                             <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2>
-                            <p class="font-moderat_400 text-text12 md:text-text20 text-[#565656]">Praesent non euismod
+                            <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non euismod
                                 arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                             <div class="flex justify-start items-center gap-2 md:gap-4">
                                 <div class="rounded-full bg-[#00AEEF] w-4 h-4 md:w-6 md:h-6"></div>
@@ -719,16 +719,16 @@
         </section>
 
         <section class="bg-[#FBFBFB] pt-10 mt-10 pb-32">
-            <div class="w-11/12 mx-auto flex flex-col gap-3 items-center">
+            <div class="w-11/12 mx-auto flex flex-col gap-3 items-center" data-aos="fade-up" data-aos-offset="150">
                 <h2 class="font-moderat_700 text-text32 md:text-text44 text-center">Clientes satisfechos</h2>
-                <p class="font-moderat_400 text-text14 text-[#565656] text-center w-full md:w-2/3">Lorem ipsum dolor sit
+                <p class="font-moderat_Regular text-text14 text-[#565656] text-center w-full md:w-2/3">Lorem ipsum dolor sit
                     amet, consectetur adipiscing elit. Vivamus eu fermentum justo, ac fermentum nulla. Sed sed scelerisque
                     urna, vitae ultrices libero. Pellentesque vehicula et urna in venenatis.
                 </p>
             </div>
 
 
-            <div class="mt-16 w-11/12 lg:w-9/12 mx-auto  relative">
+            <div class="mt-16 w-11/12 lg:w-9/12 mx-auto  relative" data-aos="fade-up" data-aos-offset="150">
                 <div class="swiper testimonios rounded-2xl">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
@@ -739,14 +739,14 @@
                                             class="rounded-full">
                                     </div>
                                     <div class="flex flex-col gap-2 justify-center">
-                                        <h3 class="font-moderat_500 text-text24 md:text-text32 text-[#111111]">Mascota
+                                        <h3 class="font-moderat_Medium text-text24 md:text-text32 text-[#111111]">Mascota
                                             feliz</h3>
-                                        <p class="font-moderat_400 text-text12 md:text-text16 text-[#111111]">Lima - Perú
+                                        <p class="font-moderat_Regular text-text12 md:text-text16 text-[#111111]">Lima - Perú
                                         </p>
                                     </div>
                                 </div>
                                 <div>
-                                    <p class="text-[#565656] font-moderat_400 text-text14 md:text-text18">Sed ut
+                                    <p class="text-[#565656] font-moderat_Regular text-text14 md:text-text18">Sed ut
                                         perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
                                         laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
                                         architecto beatae vitae dicta sunt explicabo.</p>
@@ -762,14 +762,14 @@
                                             class="rounded-full">
                                     </div>
                                     <div class="flex flex-col gap-2 justify-center">
-                                        <h3 class="font-moderat_500 text-text24 md:text-text32 text-[#111111]">Mascota
+                                        <h3 class="font-moderat_Medium text-text24 md:text-text32 text-[#111111]">Mascota
                                             feliz</h3>
-                                        <p class="font-moderat_400 text-text12 md:text-text16 text-[#111111]">Lima - Perú
+                                        <p class="font-moderat_Regular text-text12 md:text-text16 text-[#111111]">Lima - Perú
                                         </p>
                                     </div>
                                 </div>
                                 <div>
-                                    <p class="text-[#565656] font-moderat_400 text-text14 md:text-text18">Sed ut
+                                    <p class="text-[#565656] font-moderat_Regular text-text14 md:text-text18">Sed ut
                                         perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
                                         laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
                                         architecto beatae vitae dicta sunt explicabo.</p>
@@ -786,14 +786,60 @@
                                             class="rounded-full">
                                     </div>
                                     <div class="flex flex-col gap-2 justify-center">
-                                        <h3 class="font-moderat_500 text-text24 md:text-text32 text-[#111111]">Mascota
+                                        <h3 class="font-moderat_Medium text-text24 md:text-text32 text-[#111111]">Mascota
                                             feliz</h3>
-                                        <p class="font-moderat_400 text-text12 md:text-text16 text-[#111111]">Lima - Perú
+                                        <p class="font-moderat_Regular text-text12 md:text-text16 text-[#111111]">Lima - Perú
                                         </p>
                                     </div>
                                 </div>
                                 <div>
-                                    <p class="text-[#565656] font-moderat_400 text-text14 md:text-text18">Sed ut
+                                    <p class="text-[#565656] font-moderat_Regular text-text14 md:text-text18">Sed ut
+                                        perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+                                        laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
+                                        architecto beatae vitae dicta sunt explicabo.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="flex flex-col gap-5 bg-[#FFFFFF] border-[1.5px] border-gray-100 shadow-md p-8">
+                                <div class="flex justify-start items-center gap-5">
+                                    <div class="flex justify-center items-center">
+                                        <img src="{{ asset('images/img/image_24.png') }}" alt="usuario"
+                                            class="rounded-full">
+                                    </div>
+                                    <div class="flex flex-col gap-2 justify-center">
+                                        <h3 class="font-moderat_Medium text-text24 md:text-text32 text-[#111111]">Mascota
+                                            feliz</h3>
+                                        <p class="font-moderat_Regular text-text12 md:text-text16 text-[#111111]">Lima - Perú
+                                        </p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-[#565656] font-moderat_Regular text-text14 md:text-text18">Sed ut
+                                        perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+                                        laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
+                                        architecto beatae vitae dicta sunt explicabo.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="flex flex-col gap-5 bg-[#FFFFFF] border-[1.5px] border-gray-100 shadow-md p-8">
+                                <div class="flex justify-start items-center gap-5">
+                                    <div class="flex justify-center items-center">
+                                        <img src="{{ asset('images/img/image_24.png') }}" alt="usuario"
+                                            class="rounded-full">
+                                    </div>
+                                    <div class="flex flex-col gap-2 justify-center">
+                                        <h3 class="font-moderat_Medium text-text24 md:text-text32 text-[#111111]">Mascota
+                                            feliz</h3>
+                                        <p class="font-moderat_Regular text-text12 md:text-text16 text-[#111111]">Lima - Perú
+                                        </p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-[#565656] font-moderat_Regular text-text14 md:text-text18">Sed ut
                                         perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
                                         laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
                                         architecto beatae vitae dicta sunt explicabo.</p>
@@ -818,33 +864,33 @@
                         <h2
                             class="font-moderat_700 text-text44 md:text-text52 text-[#111111] leading-none md:leading-tight">
                             Últimas publicaciones</h2>
-                        <p class="text-[#565656] text-text18 md:text-text22 font-moderat_400">Nam tempor diam quis urna
+                        <p class="text-[#565656] text-text18 md:text-text22 font-moderat_Regular">Nam tempor diam quis urna
                             maximus, ac laoreet arcu convallis. Aenean dignissim nec sem quis consequat.</p>
                     </div>
 
                     <div class="flex justify-end items-center basis-4/12">
                         <a href="#"
-                            class="font-moderat_700 text-text16 md:text-text20 py-3 px-5 bg-[#0051FF] text-white md:w-auto text-center w-full">Ver
+                            class="font-moderat_Bold text-text16 md:text-text20 py-3 px-5 bg-[#0051FF] text-white md:w-auto text-center w-full">Ver
                             más Publicaciones</a>
                     </div>
                 </div>
 
                 <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-10">
 
-                    <div class="flex flex-col gap-5">
+                    <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
                         <div>
                             <img src="{{ asset('images/img/image_12.png') }}" alt="publicacion" class="w-full">
                         </div>
                         <div class="flex flex-col gap-2">
-                            <p class="font-moderat_700 text-text12 md:text-text20 text-[#0051FF]">Categoría</p>
-                            <h2 class="text-[#082252] font-moderat_700 text-text16 md:text-text28">Integer porta cursus
+                            <p class="font-moderat_Bold text-text12 md:text-text20 text-[#0051FF]">Categoría</p>
+                            <h2 class="text-[#082252] font-moderat_Bold text-text16 md:text-text28">Integer porta cursus
                                 metus, sit amet malesuada</h2>
-                            <p class="text-[#565656] font-moderat_400 text-text12 md:text-text20 ">Praesent non euismod
+                            <p class="text-[#565656] font-moderat_Regular text-text12 md:text-text20 ">Praesent non euismod
                                 arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                         </div>
 
                         <div
-                            class="flex justify-start items-center text-text9 md:text-text14 text-[#0051FF] font-moderat_500 gap-1 md:gap-2">
+                            class="flex justify-start items-center text-text10 md:text-text14 text-[#0051FF] font-moderat_Medium gap-1 md:gap-2">
                             <p class="hidden lg:block">29 de julio de 2023</p>
                             <p class="block lg:hidden">29/07/2023</p>
                             <img src="{{ asset('images/svg/image_17.svg') }}" alt="point" class="w-[3px] md:w-[6px]">
@@ -853,20 +899,20 @@
 
                     </div>
 
-                    <div class="flex flex-col gap-5">
+                    <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
                         <div>
                             <img src="{{ asset('images/img/image_13.png') }}" alt="publicacion" class="w-full">
                         </div>
                         <div class="flex flex-col gap-2">
-                            <p class="font-moderat_700 text-text12 md:text-text20 text-[#0051FF]">Categoría</p>
-                            <h2 class="text-[#082252] font-moderat_700 text-text16 md:text-text28">Integer porta cursus
+                            <p class="font-moderat_Bold text-text12 md:text-text20 text-[#0051FF]">Categoría</p>
+                            <h2 class="text-[#082252] font-moderat_Bold text-text16 md:text-text28">Integer porta cursus
                                 metus, sit amet malesuada</h2>
-                            <p class="text-[#565656] font-moderat_400 text-text12 md:text-text20 ">Praesent non euismod
+                            <p class="text-[#565656] font-moderat_Regular text-text12 md:text-text20 ">Praesent non euismod
                                 arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                         </div>
 
                         <div
-                            class="flex justify-start items-center text-text9 md:text-text14 text-[#0051FF] font-moderat_500 gap-1 md:gap-2">
+                            class="flex justify-start items-center text-text10 md:text-text14 text-[#0051FF] font-moderat_Medium gap-1 md:gap-2">
                             <p class="hidden lg:block">29 de julio de 2023</p>
                             <p class="block lg:hidden">29/07/2023</p>
                             <img src="{{ asset('images/svg/image_17.svg') }}" alt="point" class="w-[3px] md:w-[6px]">
@@ -875,20 +921,20 @@
 
                     </div>
 
-                    <div class="flex flex-col gap-5">
+                    <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
                         <div>
                             <img src="{{ asset('images/img/image_14.png') }}" alt="publicacion" class="w-full">
                         </div>
                         <div class="flex flex-col gap-2">
-                            <p class="font-moderat_700 text-text12 md:text-text20 text-[#0051FF]">Categoría</p>
-                            <h2 class="text-[#082252] font-moderat_700 text-text16 md:text-text28">Integer porta cursus
+                            <p class="font-moderat_Bold text-text12 md:text-text20 text-[#0051FF]">Categoría</p>
+                            <h2 class="text-[#082252] font-moderat_Bold text-text16 md:text-text28">Integer porta cursus
                                 metus, sit amet malesuada</h2>
-                            <p class="text-[#565656] font-moderat_400 text-text12 md:text-text20 ">Praesent non euismod
+                            <p class="text-[#565656] font-moderat_Regular text-text12 md:text-text20 ">Praesent non euismod
                                 arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                         </div>
 
                         <div
-                            class="flex justify-start items-center text-text9 md:text-text14 text-[#0051FF] font-moderat_500 gap-1 md:gap-2">
+                            class="flex justify-start items-center text-text10 md:text-text14 text-[#0051FF] font-moderat_Medium gap-1 md:gap-2">
                             <p class="hidden lg:block">29 de julio de 2023</p>
                             <p class="block lg:hidden">29/07/2023</p>
                             <img src="{{ asset('images/svg/image_17.svg') }}" alt="point" class="w-[3px] md:w-[6px]">
@@ -898,20 +944,20 @@
                     </div>
 
 
-                    <div class="flex lg:hidden flex-col gap-5">
+                    <div class="flex lg:hidden flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
                         <div>
                             <img src="{{ asset('images/img/image_12.png') }}" alt="publicacion" class="w-full">
                         </div>
                         <div class="flex flex-col gap-2">
-                            <p class="font-moderat_700 text-text12 md:text-text20 text-[#0051FF]">Categoría</p>
-                            <h2 class="text-[#082252] font-moderat_700 text-text16 md:text-text28">Integer porta cursus
+                            <p class="font-moderat_Bold text-text12 md:text-text20 text-[#0051FF]">Categoría</p>
+                            <h2 class="text-[#082252] font-moderat_Bold text-text16 md:text-text28">Integer porta cursus
                                 metus, sit amet malesuada</h2>
-                            <p class="text-[#565656] font-moderat_400 text-text12 md:text-text20 ">Praesent non euismod
+                            <p class="text-[#565656] font-moderat_Regular text-text12 md:text-text20 ">Praesent non euismod
                                 arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                         </div>
 
                         <div
-                            class="flex justify-start items-center text-text9 md:text-text14 text-[#0051FF] font-moderat_500 gap-1 md:gap-2">
+                            class="flex justify-start items-center text-text10 md:text-text14 text-[#0051FF] font-moderat_Medium gap-1 md:gap-2">
                             <p class="hidden lg:block">29 de julio de 2023</p>
                             <p class="block lg:hidden">29/07/2023</p>
                             <img src="{{ asset('images/svg/image_17.svg') }}" alt="point" class="w-[3px] md:w-[6px]">
