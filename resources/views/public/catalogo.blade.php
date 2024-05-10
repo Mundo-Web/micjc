@@ -58,9 +58,9 @@
                         {{-- style="background-image: url({{asset('images/img/image_3.png')}}); background-repeat: no-repeat; background-size:cover;" --}}>
                         <img src="{{ asset('images/svg/image_18.svg') }}" alt="impresora"
                             class="w-[200px] h-[200px] md:w-[450px] md:h-[450px]">
-                        <img src="{{ asset('images/img/image_15.png') }}" alt="impresora"
-                            class="block md:hidden absolute mt-12 mr-16">
-                        <img src="{{ asset('images/img/image_4.png') }}" alt="impresora"
+                        <img src="{{ asset('images/img/image_59.png') }}" alt="impresora"
+                            class="block md:hidden absolute mt-12 mr-16 w-[226px] h-[228px]">
+                        <img src="{{ asset('images/img/image_58.png') }}" alt="impresora"
                             class="hidden md:block absolute mr-24">
                     </div>
                 </div>
