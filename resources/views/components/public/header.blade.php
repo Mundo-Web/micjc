@@ -81,7 +81,7 @@
                 <div class="modal__list">
   
                   <div class="flex justify-between border-b-[1px] pb-5">
-                    <div class="flex justify-center items-center gap-5">
+                    <div class="flex justify-center items-center gap-2">
                       <div class="rounded-md p-4">
                         <img
                           src="{{asset('images/img/image_57.png')}}"
@@ -91,12 +91,12 @@
                       </div>
                       <div class="flex flex-col gap-3 py-2">
                         <h3
-                          class="font-moderat_Bold text-text14 xl:text-text18 text-[#151515]"
+                          class="font-moderat_Bold text-text14 md:text-text18 text-[#151515]"
                         >
                           Producto 1
                         </h3>
                         <p
-                          class="font-moderat_Regular text-[12px] xl:text-text16 text-[#6C7275]"
+                          class="font-moderat_Regular text-[12px] md:text-text16 text-[#6C7275]"
                         >
                           Color: Black
                         </p>
@@ -116,7 +116,7 @@
                       class="flex flex-col justify-start py-2 gap-5 items-center pr-2"
                     >
                       <p
-                        class="font-moderat_Bold text-[14px] xl:text-text18 text-[#151515]"
+                        class="font-moderat_Bold text-[14px] md:text-text18 text-[#151515]"
                       >
                         s/ 19.19
                       </p>
