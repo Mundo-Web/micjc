@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}" />
+   {{--  <link rel="stylesheet" href="{{ asset('css/styles.css') }}" /> --}}
 
     {{-- Aqui van los CSS --}}
     @yield('css_importados')
@@ -77,6 +77,24 @@
     @yield('scripts_importados')
     {{-- @vite(['resources/js/functions.js']) --}}
     {{-- <script src="{{ asset('js/functions.js') }}"></script> --}}
+    <script>
+        const addToCart = document.querySelector('.bag__carrito');
+        /* const closeModal = document.querySelector(".jsModalClose"); */
+
+        addToCart.addEventListener("click", (event) => {
+            const modal = document.getElementById('jsModalCarrito');
+            modal.classList.add("active");
+        });
+
+        //CERRAMOS MODAL CUANDO HACEMOS CLICK FUERA DEL CONTENDINO DEL MODAL
+        window.onclick = (event) => {
+            const modal = document.querySelector(".modal.active");
+
+            if (event.target == modal) {
+                modal.classList.remove("active");
+            }
+        };
+    </script>
 
 </body>
 

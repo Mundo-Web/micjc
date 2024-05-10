@@ -303,7 +303,7 @@
                       id="bordered-radio-1"
                       name="bordered-radio"
                       value=""
-                      class="accent-[#000000] w-5 h-5 cursor-pointer"
+                      class="focus:ring-transparent w-5 h-5 cursor-pointer"
                     />
                     <label
                       for="bordered-radio-1"
@@ -321,7 +321,7 @@
                       id="bordered-radio-2"
                       name="bordered-radio"
                       value=""
-                      class="accent-[#000000] w-5 h-5 cursor-pointer"
+                      class="focus:ring-transparent w-5 h-5 cursor-pointer"
                     />
                     <label
                       for="bordered-radio-2"
@@ -340,7 +340,7 @@
                       id="bordered-radio-3"
                       name="bordered-radio"
                       value=""
-                      class="w-5 h-5 accent-[#000000] cursor-pointer"
+                      class="w-5 h-5 focus:ring-transparent cursor-pointer"
                     />
                     <label
                       for="bordered-radio-3"
@@ -367,7 +367,7 @@
                 </div>
 
                 <a
-                  href="detallesPago.html"
+                  href="{{route('detallesPago')}}"
                   class="text-white bg-[#0051FF] w-full py-3 cursor-pointer font-moderat_700 text-text16 xl:text-text18 inline-block text-center hover:bg-sky-900 md:duration-300"
                 >
                   Siguiente

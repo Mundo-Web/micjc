@@ -25,10 +25,10 @@
     <main>
         <section class="w-11/12 mx-auto">
             <div class="bg-[#0051FF] py-5 fondo__contacto-desktop" {{-- style="background-image: url({{asset('images/img/image_16.png')}}); background-repeat: no-repeat; background-size:cover;" --}}>
-                <div class="grid grid-cols-1 lg:grid-cols-2">
-                    <div class="flex flex-col justify-center gap-5 order-1 lg:order-2 px-5 md:z-50 lg:-mx-[90px] w-full lg:w-11/12">
+                <div class="grid grid-cols-1 md:grid-cols-2">
+                    <div class="flex flex-col justify-center gap-5 order-1 md:order-2 px-5 md:z-50 md:-mx-[90px] w-full lg:w-11/12">
                         <h1 class="text-text40 md:text-text48 font-moderat_700 text-white leading-[56px] md:leading-tight">Contacto</h1>
-                        <p class="text-white text-text14 font-moderat_400 w-full lg:w-5/6 hidden md:block">Escríbenos</p>
+                        <p class="text-white text-text14 font-moderat_400 w-full md:w-5/6 hidden md:block">Escríbenos</p>
                         
                         <div class="flex md:hidden justify-start items-center">
                             <a href="#" class="flex justify-center items-center gap-2">
@@ -43,7 +43,7 @@
                         </div>
                     </div>                          
                     
-                    <div class="flex justify-end md:justify-end  items-center py-10 md:py-0 order-2 lg:order-1 relative lg:z-10 pr-5" {{-- style="background-image: url({{asset('images/img/image_3.png')}}); background-repeat: no-repeat; background-size:cover;" --}}>
+                    <div class="flex justify-end md:justify-end  items-center py-10 md:py-0 order-2 md:order-1 relative lg:z-10 pr-5" {{-- style="background-image: url({{asset('images/img/image_3.png')}}); background-repeat: no-repeat; background-size:cover;" --}}>
                         <img src="{{asset('images/svg/image_18.svg')}}" alt="impresora" class="w-[200px] h-[200px] md:w-[300px] md:h-[450px]">
                         <img src="{{asset('images/img/image_44.png')}}" alt="impresora" class="block md:hidden absolute mt-12 mr-16">
                         <img src="{{asset('images/img/image_43.png')}}" alt="impresora" class="hidden md:block absolute mr-24">
@@ -173,6 +173,8 @@
             </div>
 
         </section>
+
+   
     </main>
 
 

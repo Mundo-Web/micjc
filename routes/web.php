@@ -64,8 +64,15 @@ Route::get('/contacto', [IndexController::class, 'contacto'] )->name('contacto')
 // Carrito
 Route::get('/carrito', [IndexController::class, 'carrito'] )->name('carrito');
 Route::get('/detallesPago', [IndexController::class, 'detallesPago'] )->name('detallesPago');
+Route::get('/exito', [IndexController::class, 'exito'] )->name('exito');
 
-
+Route::get('/miCuenta', [IndexController::class, 'miCuenta'] )->name('miCuenta');
+Route::get('/miDireccion', [IndexController::class, 'miDireccion'] )->name('miDireccion');
+Route::get('/historial', [IndexController::class, 'historial'] )->name('historial');
+Route::get('/crearCuenta', [IndexController::class, 'crearCuenta'] )->name('crearCuenta');
+Route::get('/ingresar', [IndexController::class, 'ingresar'] )->name('ingresar');
+Route::get('/olvide', [IndexController::class, 'olvide'] )->name('olvide');
+Route::get('/restaurar', [IndexController::class, 'restaurar'] )->name('restaurar');
 
 /*  */
 /* Route::get('/nosotros', [IndexController::class, 'nosotros'] )->name('nosotros');
@@ -90,7 +97,7 @@ Route::post('carrito/buscarProducto', [CarritoController::class, 'buscarProducto
 
 
 
-/* Route::middleware(['auth:sanctum', 'verified', 'can:Admin'])->group(function () {
+Route::middleware(['auth:sanctum', 'verified', 'can:Admin'])->group(function () {
 
     Route::prefix('admin')->group(function () {
         
@@ -206,4 +213,4 @@ Route::middleware(['auth:sanctum', 'verified', 'can:Customer'])->group(function 
  Route::post('/micuenta/actualizarPerfil', [IndexController::class, 'actualizarPerfil'] )->name('actualizarPerfil');
 
 
-}); */
+});

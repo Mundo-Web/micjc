@@ -96,6 +96,47 @@ class IndexController extends Controller
     return view('public.detallesPago');
   }
 
+  public function exito(){
+    
+    return view('public.exito');
+  }
+
+  public function miCuenta(){
+    
+    return view('public.miCuenta');
+  }
+
+  public function miDireccion(){
+    
+    return view('public.miDireccion');
+  }
+
+  public function historial(){
+    
+    return view('public.historial');
+  }
+
+  public function crearCuenta(){
+    
+    return view('public.crearCuenta');
+  }
+
+  public function ingresar(){
+    
+    return view('public.ingresar');
+  }
+
+  public function olvide(){
+    
+    return view('public.olvide');
+  }
+
+  public function restaurar(){
+    
+    return view('public.restaurar');
+  }
+
+
   /* public function catalogo($filtro, Request $request)
   {
     $categorias = null;
