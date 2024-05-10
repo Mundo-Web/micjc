@@ -24,8 +24,8 @@
             </div>
 
             <div class="flex justify-between lg:justify-center lg:gap-10 items-center row-span-1 col-span-2 xl:row-span-1 xl:col-span-7 2xl:col-span-8  order-3 xl:order-2 text-text16 md:text-text20 font-moderat_500">
-                <a href="#" class="enlaces__after text-[#0051FF]">Inicio</a>
-                <a href="{{route('producto')}}" class="text-[#000000]">Productos</a>
+                <a href="{{route('index')}}" class="enlaces__after text-[#0051FF]">Inicio</a>
+                <a href="{{route('catalogo')}}" class="text-[#000000]">Productos</a>
                 <a href="{{route('blog')}}" class="text-[#000000]">Blog</a>
                 <a href="{{route('contacto')}}" class="text-[#000000]">Contáctanos</a>
             </div>
