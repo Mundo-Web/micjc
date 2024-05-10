@@ -442,12 +442,11 @@
 
                                             <input id="nombre_calle" type="text"
                                                 placeholder="Ingresa el nombre de la calle"
-                                                class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-moderat_Regular text-text16 md:text-text18 border-[1.5px] border-gray-200 text-[#565656]" />
+                                                class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-moderat_Regular text-text16 md:text-text18 border-[1px] border-gray-200 text-[#6C7275] focus:ring-0  focus:border-black" />
                                         </div>
                                     </div>
                                     <div>
-                                        <div class="flex flex-col md:flex-row gap-5" data-aos="fade-up"
-                                            data-aos-offset="150">
+                                        <div class="flex flex-col md:flex-row gap-5">
                                             <div class="basis-1/2 flex flex-col gap-2">
                                                 <label for="numero_calle"
                                                     class="font-moderat_Medium text-text12 md:text-text14  text-[#565656]">Número
@@ -455,18 +454,17 @@
 
                                                 <input id="numero_calle" type="text"
                                                     placeholder="Ingresa el número de la calle"
-                                                    class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-moderat_Regular text-text16 md:text-text18 border-[1.5px] border-gray-200 text-[#565656]" />
+                                                    class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-moderat_Regular text-text16 md:text-text18 border-[1px] border-gray-200 text-[#6C7275] focus:ring-0  focus:border-black" />
                                             </div>
 
-                                            <div class="basis-1/2 flex flex-col gap-2" data-aos="fade-up"
-                                                data-aos-offset="150">
+                                            <div class="basis-1/2 flex flex-col gap-2">
                                                 <label for="direccion"
                                                     class="font-moderat_Medium text-text12 md:text-text14  text-[#565656]">Dpto./
                                                     Interior/ Piso/ Lote/ Bloque
                                                     (opcional)</label>
 
                                                 <input id="direccion" type="text" placeholder="Ejem. Casa 3, Dpto 101"
-                                                    class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-moderat_Regular text-text16 md:text-text18 border-[1.5px] border-gray-200 text-[#565656]" />
+                                                    class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-moderat_Regular text-text16 md:text-text18 border-[1px] border-gray-200 text-[#6C7275] focus:ring-0  focus:border-black" />
                                             </div>
                                         </div>
                                     </div>

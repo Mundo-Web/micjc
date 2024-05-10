@@ -38,7 +38,7 @@
                                   id="email"
                                   type="email"
                                   {{-- placeholder="Contraseña" --}}
-                                  class="w-full py-3 md:py-5 pl-4 pr-12 focus:outline-none placeholder-gray-400 font-moderat_Medium text-text16 xl:text-text18 border-b-[1.5px] border-gray-200"
+                                  class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-moderat_Regular text-text16 md:text-text18 border-[1px] border-gray-200 text-[#6C7275] focus:ring-0  focus:border-black"
                                 />
                                 <!-- Imagen -->
                                 <img

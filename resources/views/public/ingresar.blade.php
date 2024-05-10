@@ -38,7 +38,7 @@
                                   id="email"
                                   type="email"
                                   {{-- placeholder="Contraseña" --}}
-                                  class="w-full py-3 md:py-5 pl-4 pr-12 focus:outline-none placeholder-gray-400 font-moderat_Medium text-text16 xl:text-text18 border-b-[1.5px] border-gray-200"
+                                  class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-moderat_Regular text-text16 md:text-text18 border-[1px] border-gray-200 text-[#6C7275] focus:ring-0  focus:border-black"
                                 />
                                 <!-- Imagen -->
                                 <img
@@ -58,7 +58,7 @@
                                   id="password"
                                   type="text"
                                   {{-- placeholder="Contraseña" --}}
-                                  class="w-full py-3 md:py-5 pl-4 pr-12 focus:outline-none placeholder-gray-400 font-moderat_Medium text-text16 xl:text-text18 border-b-[1.5px] border-gray-200"
+                                  class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-moderat_Regular text-text16 md:text-text18 border-[1px] border-gray-200 text-[#6C7275] focus:ring-0  focus:border-black"
                                 />
                                 <!-- Imagen -->
                                 <img
@@ -88,16 +88,16 @@
                 </div>
 
                 <div class="flex flex-col gap-5">
-                    <a href="" class="bg-[#0051FF] text-white font-moderat_Bold py-4 text-center text-text14 md:text-text18" data-aos="fade-up" data-aos-offset="150">
+                    <a href="" class="bg-[#0051FF] text-white font-moderat_Bold py-3 text-center text-text14 md:text-text18" data-aos="fade-up" data-aos-offset="150">
                         Ingresar
                     </a>
-                    <a href="" class="text-[#111111] font-moderat_Bold py-4 text-center text-text14 md:text-text18 flex items-center justify-center gap-2 lg:gap-3 border-[#111111] border-2" data-aos="fade-up" data-aos-offset="150">
+                    <a href="" class="text-[#111111] font-moderat_Bold py-3 text-center text-text14 md:text-text18 flex items-center justify-center gap-2 lg:gap-3 border-[#111111] border-2" data-aos="fade-up" data-aos-offset="150">
                         <div>
                             <img src="{{asset('images/svg/image_37.svg')}}" alt="google">
                         </div>
                         <span>Ingresar con mi cuenta de Google</span>
                     </a>
-                    <a href="" class="text-[#111111] font-moderat_Bold py-4 text-center text-text14 md:text-text18 flex items-center justify-center gap-2 lg:gap-3 border-[#111111] border-2" data-aos="fade-up" data-aos-offset="150">
+                    <a href="" class="text-[#111111] font-moderat_Bold py-3 text-center text-text14 md:text-text18 flex items-center justify-center gap-2 lg:gap-3 border-[#111111] border-2" data-aos="fade-up" data-aos-offset="150">
                         <div>
                             <img src="{{asset('images/svg/image_38.svg')}}" alt="facebook">
                         </div>

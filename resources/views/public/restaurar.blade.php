@@ -30,7 +30,7 @@
 
                 <div>
                     <form action="" id="formCrearCuenta" class="flex flex-col gap-5">
-                        <div>
+                        <div class="flex flex-col gap-2">
                             <label for="full_name" class="font-moderat_Regular text-text14 md:text-text16 text-[#111111]">Nueva contraseña</label>
                             <div class="relative w-full" data-aos="fade-up" data-aos-offset="150" class="flex flex-col gap-2">
                                 <!-- Input -->
@@ -38,7 +38,7 @@
                                   id="password"
                                   type="text"
                                   {{-- placeholder="Contraseña" --}}
-                                  class="w-full py-3 md:py-5 pl-4 pr-12 focus:outline-none placeholder-gray-400 font-moderat_Medium text-text16 xl:text-text18 border-b-[1.5px] border-gray-200"
+                                  class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-moderat_Regular text-text16 md:text-text18 border-[1px] border-gray-200 text-[#6C7275] focus:ring-0  focus:border-black"
                                 />
                                 <!-- Imagen -->
                                 <img
@@ -60,7 +60,7 @@
                                   id="repeat__password"
                                   type="password"
                                   {{-- placeholder="Contraseña" --}}
-                                  class="w-full py-3 md:py-5 pl-4 pr-12 focus:outline-none placeholder-gray-400 font-moderat_Medium text-text16 xl:text-text18 border-b-[1.5px] border-gray-200"
+                                  class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-moderat_Regular text-text16 md:text-text18 border-[1px] border-gray-200 text-[#6C7275] focus:ring-0  focus:border-black"
                                 />
                                 <!-- Imagen -->
                                 <img
@@ -76,7 +76,7 @@
                 </div>
 
                 <div class="flex flex-col gap-5">
-                    <a href="" class="bg-[#0051FF] text-white font-moderat_Bold py-4 text-center text-text16 md:text-text18">
+                    <a href="" class="bg-[#0051FF] text-white font-moderat_Bold py-3 text-center text-text16 md:text-text18">
                         Restaurar contraseña
                     </a>
                     

@@ -18,7 +18,9 @@
         }
 
         .categorias::before,
-        .subcategoria::before, .marca::before, .ordenar::before {
+        .subcategoria::before,
+        .marca::before,
+        .ordenar::before {
             background-image: url({{ asset('images/svg/image_50.svg') }});
         }
     </style>
@@ -36,7 +38,9 @@
                         <p class="text-white text-text18 md:text-text20 font-moderat_Bold blobk lg:hidden">Accesorios</p>
                         <h1 class="text-text40 md:text-text48 font-moderat_700 text-white leading-[56px] md:leading-tight">
                             Catálogo</h1>
-                        <p class="text-white text-text14 md:text-text16 font-moderat_Regular w-full lg:w-5/6 hidden lg:block">Productos digitales</p>
+                        <p
+                            class="text-white text-text14 md:text-text16 font-moderat_Regular w-full lg:w-5/6 hidden lg:block">
+                            Productos digitales</p>
 
                         <div class="flex lg:hidden justify-start items-center">
                             <a href="#" class="flex justify-center items-center gap-2">
@@ -71,69 +75,281 @@
             <div>
 
                 <div class="flex flex-col gap-5 lg:flex-row lg:justify-between lg:gap-0 pb-10">
-
                     <div class="flex flex-col lg:flex-row lg:justify-start gap-3">
-                        <div class="dropdown w-auto"  data-aos="fade-up" data-aos-offset="150">
+                        <div class="relative inline-block text-left w-auto">
+                            <div class="group">
+                                <button type="button"
+                                    class="focus:outline-none font-moderat_Bold text-text16 xl:text-text18 mr-20 text-[#0051FF] border-[1.5px] border-gray-200 py-3 px-4 flex justify-between items-center w-full">
+
+                                    <span>Categorías</span>
+
+                                    <!-- Dropdown arrow -->
+                                    <svg width="12" height="7" viewBox="0 0 12 7" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 1L6.00081 5.58L11 1" stroke="#0051FF" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+
+                                </button>
+
+                                <!-- Dropdown menu -->
+                                <div
+                                    class="absolute left-0 w-full  origin-top-left bg-white divide-y divide-gray-100 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300  z-[100]">
+                                    <div class="flex flex-col justify-start">
+                                        <a href=""
+                                            class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">Suministro
+                                            de computo</a>
+                                        <a href=""
+                                            class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">Impresoras</a>
+                                        <a href=""
+                                            class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">Laptops
+                                            y Monitores</a>
+                                        <a href=""
+                                            class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">Accesorios
+                                            y periféricos</a>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="relative inline-block text-left w-auto">
+                            <div class="group">
+                                <button type="button"
+                                    class="focus:outline-none font-moderat_Bold text-text16 xl:text-text18 mr-20 text-[#0051FF] border-[1.5px] border-gray-200 py-3 px-4 flex justify-between items-center w-full">
+
+                                    <span>Sub Categorías</span>
+
+                                    <!-- Dropdown arrow -->
+                                    <svg width="12" height="7" viewBox="0 0 12 7" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 1L6.00081 5.58L11 1" stroke="#0051FF" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+
+                                </button>
+
+                                <!-- Dropdown menu -->
+                                <div
+                                    class="absolute left-0 w-full  origin-top-left bg-white divide-y divide-gray-100 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300  z-[100]">
+                                    <div class="flex flex-col justify-start ">
+                                        <a href=""
+                                        class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">Tintas
+                                        para impresora</a>
+                                    <a href=""
+                                        class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">Toner
+                                        para Impresoras</a>
+                                    <a href=""
+                                        class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">Cabezal
+                                        para Impresoras</a>
+                                    <a href=""
+                                        class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">Tambor
+                                        para Impresoras</a>
+                                    <a href=""
+                                        class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">Drum
+                                        para Impresoras</a>
+                                    <a href=""
+                                        class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">Cinta
+                                        para Impresoras</a>
+                                    <a href=""
+                                        class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">Unidad
+                                        de Imagen</a>
+                                    <a href=""
+                                        class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">Kit
+                                        de mantenimiento</a>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="relative inline-block text-left w-auto">
+                            <div class="group">
+                                <button type="button"
+                                    class="focus:outline-none font-moderat_Bold text-text16 xl:text-text18 mr-20 text-[#0051FF] border-[1.5px] border-gray-200 py-3 px-4 flex justify-between items-center w-full">
+
+                                    <span>Marca</span>
+
+                                    <!-- Dropdown arrow -->
+                                    <svg width="12" height="7" viewBox="0 0 12 7" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 1L6.00081 5.58L11 1" stroke="#0051FF" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+
+                                </button>
+
+                                <!-- Dropdown menu -->
+                                <div
+                                    class="absolute left-0 w-full  origin-top-left bg-white divide-y divide-gray-100 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300  z-[100]">
+                                    <div class="flex flex-col justify-start ">
+                                        <a href=""
+                                    class="bg-[#0051FF] bg-opacity-25 w-full py-3  text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">Todas</a>
+                                <a href=""
+                                    class="bg-[#0051FF] bg-opacity-25 w-full py-3  text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">HP</a>
+                                <a href=""
+                                    class="bg-[#0051FF] bg-opacity-25 w-full py-3  text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">EPSON</a>
+                                <a href=""
+                                    class="bg-[#0051FF] bg-opacity-25 w-full py-3  text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">CANON</a>
+                                <a href=""
+                                    class="bg-[#0051FF] bg-opacity-25 w-full py-3  text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">BROTHER</a>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="relative inline-block text-left w-auto">
+                        <div class="group">
+                            <button type="button"
+                                class="focus:outline-none font-moderat_Bold text-text16 xl:text-text18 mr-20 text-[#0051FF] border-[1.5px] border-gray-200 py-3 px-4 flex justify-between items-center w-full">
+
+                                <span>Ordenar</span>
+
+                                <!-- Dropdown arrow -->
+                                <svg width="12" height="7" viewBox="0 0 12 7" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 1L6.00081 5.58L11 1" stroke="#0051FF" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+
+                            </button>
+
+                            <!-- Dropdown menu -->
+                            <div
+                                class="absolute left-0 w-full  origin-top-left bg-white divide-y divide-gray-100 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300  z-[100]">
+                                <div class="flex flex-col justify-start ">
+                                    <a href=""
+                                class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">De
+                                menor a mayor</a>
+                            <a href=""
+                                class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">De
+                                mayor a menor</a>
+                            <a href=""
+                                class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">A
+                                - Z</a>
+                            <a href=""
+                                class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">Z
+                                - A</a>
+                            <a href=""
+                                class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">BROTHER</a>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- <div class="flex flex-col lg:flex-row lg:justify-start gap-3">
+                        <div class="dropdown w-auto relative" data-aos="fade-up" data-aos-offset="150">
                             <label
                                 class="categorias focus:outline-none font-moderat_Bold text-text16 xl:text-text18 mr-20 text-[#0051FF] border-[1.5px] border-gray-200  py-6 px-4">
                                 Categorias
                             </label>
+
                             <div class="list">
-                               <a href="" class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">Suministro de computo</a>
-                               <a href="" class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">Impresoras</a>
-                               <a href="" class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">Laptops y Monitores</a>
-                               <a href="" class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">Accesorios y periféricos</a>
+                                <a href=""
+                                    class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">Suministro
+                                    de computo</a>
+                                <a href=""
+                                    class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">Impresoras</a>
+                                <a href=""
+                                    class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">Laptops
+                                    y Monitores</a>
+                                <a href=""
+                                    class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">Accesorios
+                                    y periféricos</a>
                             </div>
                         </div>
 
-                        <div class="dropdown w-auto"  data-aos="fade-up" data-aos-offset="150">
+                        <div class="dropdown w-auto" data-aos="fade-up" data-aos-offset="150">
                             <label
                                 class="subcategoria focus:outline-none text-text16 xl:text-text18 mr-20 text-[#0051FF] border-[1.5px] border-gray-200  py-6 px-4 font-moderat_Bold">
                                 Suministro
                             </label>
                             <div class="list">
-                               <a href="" class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">Tintas para impresora</a>
-                               <a href="" class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">Toner para Impresoras</a>
-                               <a href="" class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">Cabezal para Impresoras</a>
-                               <a href="" class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">Tambor para Impresoras</a>
-                               <a href="" class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">Drum para Impresoras</a>
-                               <a href="" class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">Cinta para Impresoras</a>
-                               <a href="" class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">Unidad de Imagen</a>
-                               <a href="" class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">Kit de mantenimiento</a>
+                                <a href=""
+                                    class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">Tintas
+                                    para impresora</a>
+                                <a href=""
+                                    class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">Toner
+                                    para Impresoras</a>
+                                <a href=""
+                                    class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">Cabezal
+                                    para Impresoras</a>
+                                <a href=""
+                                    class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">Tambor
+                                    para Impresoras</a>
+                                <a href=""
+                                    class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">Drum
+                                    para Impresoras</a>
+                                <a href=""
+                                    class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">Cinta
+                                    para Impresoras</a>
+                                <a href=""
+                                    class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">Unidad
+                                    de Imagen</a>
+                                <a href=""
+                                    class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">Kit
+                                    de mantenimiento</a>
                             </div>
                         </div>
 
-                        <div class="dropdown auto"  data-aos="fade-up" data-aos-offset="150">
+                        <div class="dropdown auto" data-aos="fade-up" data-aos-offset="150">
                             <label
                                 class="marca focus:outline-none font-moderat_Bold text-text16 xl:text-text18 mr-20 text-[#0051FF] border-[1.5px] border-gray-200  py-6 px-4">
-                               Marca
+                                Marca
                             </label>
                             <div class="list">
-                               <a href="" class="bg-[#0051FF] bg-opacity-25 w-full py-3  text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">Todas</a>
-                               <a href="" class="bg-[#0051FF] bg-opacity-25 w-full py-3  text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">HP</a>
-                               <a href="" class="bg-[#0051FF] bg-opacity-25 w-full py-3  text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">EPSON</a>
-                               <a href="" class="bg-[#0051FF] bg-opacity-25 w-full py-3  text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">CANON</a>
-                               <a href="" class="bg-[#0051FF] bg-opacity-25 w-full py-3  text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">BROTHER</a>
+                                <a href=""
+                                    class="bg-[#0051FF] bg-opacity-25 w-full py-3  text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">Todas</a>
+                                <a href=""
+                                    class="bg-[#0051FF] bg-opacity-25 w-full py-3  text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">HP</a>
+                                <a href=""
+                                    class="bg-[#0051FF] bg-opacity-25 w-full py-3  text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">EPSON</a>
+                                <a href=""
+                                    class="bg-[#0051FF] bg-opacity-25 w-full py-3  text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">CANON</a>
+                                <a href=""
+                                    class="bg-[#0051FF] bg-opacity-25 w-full py-3  text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">BROTHER</a>
                             </div>
                         </div>
-    
-                    </div>
-                    
-                    <div class="dropdown w-auto hidden md:block"  data-aos="fade-up" data-aos-offset="150">
+
+                    </div> 
+
+                    <div class="dropdown w-auto hidden md:block" data-aos="fade-up" data-aos-offset="150">
                         <label
                             class="ordenar focus:outline-none font-moderat_Bold text-text16 xl:text-text18 mr-20 text-[#0051FF] border-[1.5px] border-gray-200  py-6 px-4">
-                           Ordenar
+                            Ordenar
                         </label>
                         <div class="list">
-                           <a href="" class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">De menor a mayor</a>
-                           <a href="" class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">De mayor a menor</a>
-                           <a href="" class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">A - Z</a>
-                           <a href="" class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">Z - A</a>
-                           <a href="" class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">BROTHER</a>
+                            <a href=""
+                                class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">De
+                                menor a mayor</a>
+                            <a href=""
+                                class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">De
+                                mayor a menor</a>
+                            <a href=""
+                                class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">A
+                                - Z</a>
+                            <a href=""
+                                class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">Z
+                                - A</a>
+                            <a href=""
+                                class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">BROTHER</a>
                         </div>
-                    </div>
+                    </div>--}}
                 </div>
-                
+
                 <div>
                     <div class="grid grid-cols-2 lg:grid-cols-4 gap-5 md:gap-10">
                         <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
@@ -145,8 +361,8 @@
                                 </div>
                                 <div class="flex justify-center items-center py-10 md:py-20">
 
-                                    <a href="{{route('producto')}}"><img src="{{ asset('images/img/image_17.png') }}" alt="impresora"
-                                        class="w-[120px] h-[90px] md:w-auto md:h-auto"></a>
+                                    <a href="{{ route('producto') }}"><img src="{{ asset('images/img/image_17.png') }}"
+                                            alt="impresora" class="w-[120px] h-[90px] md:w-auto md:h-auto"></a>
 
                                 </div>
                             </div>
@@ -154,8 +370,12 @@
                             <div class="flex flex-col gap-6">
                                 <div class="flex flex-col gap-3">
                                     <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
-                                    <a href="{{route('producto')}}"><h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2></a>
-                                    <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non euismod
+                                    <a href="{{ route('producto') }}">
+                                        <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP
+                                        </h2>
+                                    </a>
+                                    <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non
+                                        euismod
                                         arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                                     <div class="flex justify-start items-center gap-2 md:gap-4">
                                         <div class="rounded-full bg-[#00AEEF] w-4 h-4 md:w-6 md:h-6"></div>
@@ -164,25 +384,31 @@
                                         <div class="rounded-full bg-[#000000] w-4 h-4 md:w-6 md:h-6"></div>
                                     </div>
                                 </div>
-                                <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">S/
+                                <p
+                                    class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">
+                                    S/
                                     899.99</p>
                             </div>
                         </div>
 
                         <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
                             <div class="bg-[#F3F3F3] flex flex-col justify-center pt-5 gap-20 relative">
-                             
+
                                 <div class="flex justify-center items-center py-10 md:py-20">
-                                    <a href="{{route('producto')}}"><img src="{{ asset('images/img/image_17.png') }}" alt="impresora"
-                                        class="w-[120px] h-[90px] md:w-auto md:h-auto"></a>
+                                    <a href="{{ route('producto') }}"><img src="{{ asset('images/img/image_17.png') }}"
+                                            alt="impresora" class="w-[120px] h-[90px] md:w-auto md:h-auto"></a>
                                 </div>
                             </div>
 
                             <div class="flex flex-col gap-6">
                                 <div class="flex flex-col gap-3">
                                     <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
-                                    <a href="{{route('producto')}}"><h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2></a>
-                                    <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non euismod
+                                    <a href="{{ route('producto') }}">
+                                        <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP
+                                        </h2>
+                                    </a>
+                                    <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non
+                                        euismod
                                         arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                                     <div class="flex justify-start items-center gap-2 md:gap-4">
                                         <div class="rounded-full bg-[#00AEEF] w-4 h-4 md:w-6 md:h-6"></div>
@@ -191,25 +417,31 @@
                                         <div class="rounded-full bg-[#000000] w-4 h-4 md:w-6 md:h-6"></div>
                                     </div>
                                 </div>
-                                <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">S/
+                                <p
+                                    class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">
+                                    S/
                                     899.99</p>
                             </div>
                         </div>
 
                         <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
                             <div class="bg-[#F3F3F3] flex flex-col justify-center pt-5 gap-20 relative">
-                            
+
                                 <div class="flex justify-center items-center py-10 md:py-20">
-                                    <a href="{{route('producto')}}"><img src="{{ asset('images/img/image_17.png') }}" alt="impresora"
-                                        class="w-[120px] h-[90px] md:w-auto md:h-auto"></a>
+                                    <a href="{{ route('producto') }}"><img src="{{ asset('images/img/image_17.png') }}"
+                                            alt="impresora" class="w-[120px] h-[90px] md:w-auto md:h-auto"></a>
                                 </div>
                             </div>
 
                             <div class="flex flex-col gap-6">
                                 <div class="flex flex-col gap-3">
                                     <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
-                                    <a href="{{route('producto')}}"><h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2></a>
-                                    <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non euismod
+                                    <a href="{{ route('producto') }}">
+                                        <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP
+                                        </h2>
+                                    </a>
+                                    <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non
+                                        euismod
                                         arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                                     <div class="flex justify-start items-center gap-2 md:gap-4">
                                         <div class="rounded-full bg-[#00AEEF] w-4 h-4 md:w-6 md:h-6"></div>
@@ -218,37 +450,9 @@
                                         <div class="rounded-full bg-[#000000] w-4 h-4 md:w-6 md:h-6"></div>
                                     </div>
                                 </div>
-                                <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">S/
-                                    899.99</p>
-                            </div>
-                        </div>
-
-                        <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
-                            <div class="bg-[#F3F3F3] flex flex-col justify-center pt-5 gap-20 relative">
-                                <div class="flex justify-start items-center absolute top-[5%] left-[5%]">
-                                    <span
-                                        class="font-moderat_500 text-text10 md:text-text20 bg-[#0051FF] text-white py-1 px-2">-20%</span>
-                                </div>
-                                <div class="flex justify-center items-center py-10 md:py-20">
-                                    <a href="{{route('producto')}}"><img src="{{ asset('images/img/image_17.png') }}" alt="impresora"
-                                        class="w-[120px] h-[90px] md:w-auto md:h-auto"></a>
-                                </div>
-                            </div>
-
-                            <div class="flex flex-col gap-6">
-                                <div class="flex flex-col gap-3">
-                                    <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
-                                    <a href="{{route('producto')}}"><h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2></a>
-                                    <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non euismod
-                                        arcu, eu dignissim erat. Aliquam erat volutpat...</p>
-                                    <div class="flex justify-start items-center gap-2 md:gap-4">
-                                        <div class="rounded-full bg-[#00AEEF] w-4 h-4 md:w-6 md:h-6"></div>
-                                        <div class="rounded-full bg-[#EC008C] w-4 h-4 md:w-6 md:h-6"></div>
-                                        <div class="rounded-full bg-[#FFF200] w-4 h-4 md:w-6 md:h-6"></div>
-                                        <div class="rounded-full bg-[#000000] w-4 h-4 md:w-6 md:h-6"></div>
-                                    </div>
-                                </div>
-                                <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">S/
+                                <p
+                                    class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">
+                                    S/
                                     899.99</p>
                             </div>
                         </div>
@@ -260,16 +464,20 @@
                                         class="font-moderat_500 text-text10 md:text-text20 bg-[#0051FF] text-white py-1 px-2">-20%</span>
                                 </div>
                                 <div class="flex justify-center items-center py-10 md:py-20">
-                                    <a href="{{route('producto')}}"><img src="{{ asset('images/img/image_17.png') }}" alt="impresora"
-                                        class="w-[120px] h-[90px] md:w-auto md:h-auto"></a>
+                                    <a href="{{ route('producto') }}"><img src="{{ asset('images/img/image_17.png') }}"
+                                            alt="impresora" class="w-[120px] h-[90px] md:w-auto md:h-auto"></a>
                                 </div>
                             </div>
 
                             <div class="flex flex-col gap-6">
                                 <div class="flex flex-col gap-3">
                                     <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
-                                    <a href="{{route('producto')}}"><h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2></a>
-                                    <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non euismod
+                                    <a href="{{ route('producto') }}">
+                                        <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP
+                                        </h2>
+                                    </a>
+                                    <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non
+                                        euismod
                                         arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                                     <div class="flex justify-start items-center gap-2 md:gap-4">
                                         <div class="rounded-full bg-[#00AEEF] w-4 h-4 md:w-6 md:h-6"></div>
@@ -278,34 +486,9 @@
                                         <div class="rounded-full bg-[#000000] w-4 h-4 md:w-6 md:h-6"></div>
                                     </div>
                                 </div>
-                                <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">S/
-                                    899.99</p>
-                            </div>
-                        </div>
-
-                        <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
-                            <div class="bg-[#F3F3F3] flex flex-col justify-center pt-5 gap-20 relative">
-                               
-                                <div class="flex justify-center items-center py-10 md:py-20">
-                                    <a href="{{route('producto')}}"><img src="{{ asset('images/img/image_17.png') }}" alt="impresora"
-                                        class="w-[120px] h-[90px] md:w-auto md:h-auto"></a>
-                                </div>
-                            </div>
-
-                            <div class="flex flex-col gap-6">
-                                <div class="flex flex-col gap-3">
-                                    <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
-                                    <a href="{{route('producto')}}"><h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2></a>
-                                    <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non euismod
-                                        arcu, eu dignissim erat. Aliquam erat volutpat...</p>
-                                    <div class="flex justify-start items-center gap-2 md:gap-4">
-                                        <div class="rounded-full bg-[#00AEEF] w-4 h-4 md:w-6 md:h-6"></div>
-                                        <div class="rounded-full bg-[#EC008C] w-4 h-4 md:w-6 md:h-6"></div>
-                                        <div class="rounded-full bg-[#FFF200] w-4 h-4 md:w-6 md:h-6"></div>
-                                        <div class="rounded-full bg-[#000000] w-4 h-4 md:w-6 md:h-6"></div>
-                                    </div>
-                                </div>
-                                <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">S/
+                                <p
+                                    class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">
+                                    S/
                                     899.99</p>
                             </div>
                         </div>
@@ -317,16 +500,20 @@
                                         class="font-moderat_500 text-text10 md:text-text20 bg-[#0051FF] text-white py-1 px-2">-20%</span>
                                 </div>
                                 <div class="flex justify-center items-center py-10 md:py-20">
-                                    <a href="{{route('producto')}}"><img src="{{ asset('images/img/image_17.png') }}" alt="impresora"
-                                        class="w-[120px] h-[90px] md:w-auto md:h-auto"></a>
+                                    <a href="{{ route('producto') }}"><img src="{{ asset('images/img/image_17.png') }}"
+                                            alt="impresora" class="w-[120px] h-[90px] md:w-auto md:h-auto"></a>
                                 </div>
                             </div>
 
                             <div class="flex flex-col gap-6">
                                 <div class="flex flex-col gap-3">
                                     <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
-                                    <a href="{{route('producto')}}"><h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2></a>
-                                    <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non euismod
+                                    <a href="{{ route('producto') }}">
+                                        <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP
+                                        </h2>
+                                    </a>
+                                    <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non
+                                        euismod
                                         arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                                     <div class="flex justify-start items-center gap-2 md:gap-4">
                                         <div class="rounded-full bg-[#00AEEF] w-4 h-4 md:w-6 md:h-6"></div>
@@ -335,25 +522,31 @@
                                         <div class="rounded-full bg-[#000000] w-4 h-4 md:w-6 md:h-6"></div>
                                     </div>
                                 </div>
-                                <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">S/
+                                <p
+                                    class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">
+                                    S/
                                     899.99</p>
                             </div>
                         </div>
 
                         <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
                             <div class="bg-[#F3F3F3] flex flex-col justify-center pt-5 gap-20 relative">
-                                
+
                                 <div class="flex justify-center items-center py-10 md:py-20">
-                                    <a href="{{route('producto')}}"><img src="{{ asset('images/img/image_17.png') }}" alt="impresora"
-                                        class="w-[120px] h-[90px] md:w-auto md:h-auto"></a>
+                                    <a href="{{ route('producto') }}"><img src="{{ asset('images/img/image_17.png') }}"
+                                            alt="impresora" class="w-[120px] h-[90px] md:w-auto md:h-auto"></a>
                                 </div>
                             </div>
 
                             <div class="flex flex-col gap-6">
                                 <div class="flex flex-col gap-3">
                                     <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
-                                    <a href="{{route('producto')}}"><h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2></a>
-                                    <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non euismod
+                                    <a href="{{ route('producto') }}">
+                                        <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP
+                                        </h2>
+                                    </a>
+                                    <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non
+                                        euismod
                                         arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                                     <div class="flex justify-start items-center gap-2 md:gap-4">
                                         <div class="rounded-full bg-[#00AEEF] w-4 h-4 md:w-6 md:h-6"></div>
@@ -362,64 +555,9 @@
                                         <div class="rounded-full bg-[#000000] w-4 h-4 md:w-6 md:h-6"></div>
                                     </div>
                                 </div>
-                                <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">S/
-                                    899.99</p>
-                            </div>
-                        </div>
-
-                        <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
-                            <div class="bg-[#F3F3F3] flex flex-col justify-center pt-5 gap-20 relative">
-                                <div class="flex justify-start items-center absolute top-[5%] left-[5%]">
-                                    <span
-                                        class="font-moderat_500 text-text10 md:text-text20 bg-[#0051FF] text-white py-1 px-2">-20%</span>
-                                </div>
-                                <div class="flex justify-center items-center py-10 md:py-20">
-                                    <a href="{{route('producto')}}"><img src="{{ asset('images/img/image_17.png') }}" alt="impresora"
-                                        class="w-[120px] h-[90px] md:w-auto md:h-auto"></a>
-                                </div>
-                            </div>
-
-                            <div class="flex flex-col gap-6">
-                                <div class="flex flex-col gap-3">
-                                    <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
-                                    <a href="{{route('producto')}}"><h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2></a>
-                                    <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non euismod
-                                        arcu, eu dignissim erat. Aliquam erat volutpat...</p>
-                                    <div class="flex justify-start items-center gap-2 md:gap-4">
-                                        <div class="rounded-full bg-[#00AEEF] w-4 h-4 md:w-6 md:h-6"></div>
-                                        <div class="rounded-full bg-[#EC008C] w-4 h-4 md:w-6 md:h-6"></div>
-                                        <div class="rounded-full bg-[#FFF200] w-4 h-4 md:w-6 md:h-6"></div>
-                                        <div class="rounded-full bg-[#000000] w-4 h-4 md:w-6 md:h-6"></div>
-                                    </div>
-                                </div>
-                                <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">S/
-                                    899.99</p>
-                            </div>
-                        </div>
-
-                        <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
-                            <div class="bg-[#F3F3F3] flex flex-col justify-center pt-5 gap-20 relative">
-                               
-                                <div class="flex justify-center items-center py-10 md:py-20">
-                                    <a href="{{route('producto')}}"><img src="{{ asset('images/img/image_17.png') }}" alt="impresora"
-                                        class="w-[120px] h-[90px] md:w-auto md:h-auto"></a>
-                                </div>
-                            </div>
-
-                            <div class="flex flex-col gap-6">
-                                <div class="flex flex-col gap-3">
-                                    <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
-                                    <a href="{{route('producto')}}"><h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2></a>
-                                    <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non euismod
-                                        arcu, eu dignissim erat. Aliquam erat volutpat...</p>
-                                    <div class="flex justify-start items-center gap-2 md:gap-4">
-                                        <div class="rounded-full bg-[#00AEEF] w-4 h-4 md:w-6 md:h-6"></div>
-                                        <div class="rounded-full bg-[#EC008C] w-4 h-4 md:w-6 md:h-6"></div>
-                                        <div class="rounded-full bg-[#FFF200] w-4 h-4 md:w-6 md:h-6"></div>
-                                        <div class="rounded-full bg-[#000000] w-4 h-4 md:w-6 md:h-6"></div>
-                                    </div>
-                                </div>
-                                <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">S/
+                                <p
+                                    class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">
+                                    S/
                                     899.99</p>
                             </div>
                         </div>
@@ -431,16 +569,20 @@
                                         class="font-moderat_500 text-text10 md:text-text20 bg-[#0051FF] text-white py-1 px-2">-20%</span>
                                 </div>
                                 <div class="flex justify-center items-center py-10 md:py-20">
-                                    <a href="{{route('producto')}}"><img src="{{ asset('images/img/image_17.png') }}" alt="impresora"
-                                        class="w-[120px] h-[90px] md:w-auto md:h-auto"></a>
+                                    <a href="{{ route('producto') }}"><img src="{{ asset('images/img/image_17.png') }}"
+                                            alt="impresora" class="w-[120px] h-[90px] md:w-auto md:h-auto"></a>
                                 </div>
                             </div>
 
                             <div class="flex flex-col gap-6">
                                 <div class="flex flex-col gap-3">
                                     <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
-                                    <a href="{{route('producto')}}"><h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2></a>
-                                    <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non euismod
+                                    <a href="{{ route('producto') }}">
+                                        <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP
+                                        </h2>
+                                    </a>
+                                    <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non
+                                        euismod
                                         arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                                     <div class="flex justify-start items-center gap-2 md:gap-4">
                                         <div class="rounded-full bg-[#00AEEF] w-4 h-4 md:w-6 md:h-6"></div>
@@ -449,25 +591,31 @@
                                         <div class="rounded-full bg-[#000000] w-4 h-4 md:w-6 md:h-6"></div>
                                     </div>
                                 </div>
-                                <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">S/
+                                <p
+                                    class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">
+                                    S/
                                     899.99</p>
                             </div>
                         </div>
 
                         <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
                             <div class="bg-[#F3F3F3] flex flex-col justify-center pt-5 gap-20 relative">
-                              
+
                                 <div class="flex justify-center items-center py-10 md:py-20">
-                                    <a href="{{route('producto')}}"><img src="{{ asset('images/img/image_17.png') }}" alt="impresora"
-                                        class="w-[120px] h-[90px] md:w-auto md:h-auto"></a>
+                                    <a href="{{ route('producto') }}"><img src="{{ asset('images/img/image_17.png') }}"
+                                            alt="impresora" class="w-[120px] h-[90px] md:w-auto md:h-auto"></a>
                                 </div>
                             </div>
 
                             <div class="flex flex-col gap-6">
                                 <div class="flex flex-col gap-3">
                                     <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
-                                    <a href="{{route('producto')}}"><h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2></a>
-                                    <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non euismod
+                                    <a href="{{ route('producto') }}">
+                                        <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP
+                                        </h2>
+                                    </a>
+                                    <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non
+                                        euismod
                                         arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                                     <div class="flex justify-start items-center gap-2 md:gap-4">
                                         <div class="rounded-full bg-[#00AEEF] w-4 h-4 md:w-6 md:h-6"></div>
@@ -476,34 +624,9 @@
                                         <div class="rounded-full bg-[#000000] w-4 h-4 md:w-6 md:h-6"></div>
                                     </div>
                                 </div>
-                                <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">S/
-                                    899.99</p>
-                            </div>
-                        </div>
-
-                        <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
-                            <div class="bg-[#F3F3F3] flex flex-col justify-center pt-5 gap-20 relative">
-                                
-                                <div class="flex justify-center items-center py-10 md:py-20">
-                                    <a href="{{route('producto')}}"><img src="{{ asset('images/img/image_17.png') }}" alt="impresora"
-                                        class="w-[120px] h-[90px] md:w-auto md:h-auto"></a>
-                                </div>
-                            </div>
-
-                            <div class="flex flex-col gap-6">
-                                <div class="flex flex-col gap-3">
-                                    <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
-                                    <a href="{{route('producto')}}"><h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2></a>
-                                    <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non euismod
-                                        arcu, eu dignissim erat. Aliquam erat volutpat...</p>
-                                    <div class="flex justify-start items-center gap-2 md:gap-4">
-                                        <div class="rounded-full bg-[#00AEEF] w-4 h-4 md:w-6 md:h-6"></div>
-                                        <div class="rounded-full bg-[#EC008C] w-4 h-4 md:w-6 md:h-6"></div>
-                                        <div class="rounded-full bg-[#FFF200] w-4 h-4 md:w-6 md:h-6"></div>
-                                        <div class="rounded-full bg-[#000000] w-4 h-4 md:w-6 md:h-6"></div>
-                                    </div>
-                                </div>
-                                <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">S/
+                                <p
+                                    class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">
+                                    S/
                                     899.99</p>
                             </div>
                         </div>
@@ -515,16 +638,20 @@
                                         class="font-moderat_500 text-text10 md:text-text20 bg-[#0051FF] text-white py-1 px-2">-20%</span>
                                 </div>
                                 <div class="flex justify-center items-center py-10 md:py-20">
-                                    <a href="{{route('producto')}}"><img src="{{ asset('images/img/image_17.png') }}" alt="impresora"
-                                        class="w-[120px] h-[90px] md:w-auto md:h-auto"></a>
+                                    <a href="{{ route('producto') }}"><img src="{{ asset('images/img/image_17.png') }}"
+                                            alt="impresora" class="w-[120px] h-[90px] md:w-auto md:h-auto"></a>
                                 </div>
                             </div>
 
                             <div class="flex flex-col gap-6">
                                 <div class="flex flex-col gap-3">
                                     <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
-                                    <a href="{{route('producto')}}"><h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2></a>
-                                    <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non euismod
+                                    <a href="{{ route('producto') }}">
+                                        <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP
+                                        </h2>
+                                    </a>
+                                    <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non
+                                        euismod
                                         arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                                     <div class="flex justify-start items-center gap-2 md:gap-4">
                                         <div class="rounded-full bg-[#00AEEF] w-4 h-4 md:w-6 md:h-6"></div>
@@ -533,7 +660,42 @@
                                         <div class="rounded-full bg-[#000000] w-4 h-4 md:w-6 md:h-6"></div>
                                     </div>
                                 </div>
-                                <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">S/
+                                <p
+                                    class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">
+                                    S/
+                                    899.99</p>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
+                            <div class="bg-[#F3F3F3] flex flex-col justify-center pt-5 gap-20 relative">
+
+                                <div class="flex justify-center items-center py-10 md:py-20">
+                                    <a href="{{ route('producto') }}"><img src="{{ asset('images/img/image_17.png') }}"
+                                            alt="impresora" class="w-[120px] h-[90px] md:w-auto md:h-auto"></a>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-col gap-6">
+                                <div class="flex flex-col gap-3">
+                                    <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
+                                    <a href="{{ route('producto') }}">
+                                        <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP
+                                        </h2>
+                                    </a>
+                                    <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non
+                                        euismod
+                                        arcu, eu dignissim erat. Aliquam erat volutpat...</p>
+                                    <div class="flex justify-start items-center gap-2 md:gap-4">
+                                        <div class="rounded-full bg-[#00AEEF] w-4 h-4 md:w-6 md:h-6"></div>
+                                        <div class="rounded-full bg-[#EC008C] w-4 h-4 md:w-6 md:h-6"></div>
+                                        <div class="rounded-full bg-[#FFF200] w-4 h-4 md:w-6 md:h-6"></div>
+                                        <div class="rounded-full bg-[#000000] w-4 h-4 md:w-6 md:h-6"></div>
+                                    </div>
+                                </div>
+                                <p
+                                    class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">
+                                    S/
                                     899.99</p>
                             </div>
                         </div>
@@ -545,16 +707,20 @@
                                         class="font-moderat_500 text-text10 md:text-text20 bg-[#0051FF] text-white py-1 px-2">-20%</span>
                                 </div>
                                 <div class="flex justify-center items-center py-10 md:py-20">
-                                    <a href="{{route('producto')}}"><img src="{{ asset('images/img/image_17.png') }}" alt="impresora"
-                                        class="w-[120px] h-[90px] md:w-auto md:h-auto"></a>
+                                    <a href="{{ route('producto') }}"><img src="{{ asset('images/img/image_17.png') }}"
+                                            alt="impresora" class="w-[120px] h-[90px] md:w-auto md:h-auto"></a>
                                 </div>
                             </div>
 
                             <div class="flex flex-col gap-6">
                                 <div class="flex flex-col gap-3">
                                     <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
-                                    <a href="{{route('producto')}}"><h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2></a>
-                                    <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non euismod
+                                    <a href="{{ route('producto') }}">
+                                        <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP
+                                        </h2>
+                                    </a>
+                                    <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non
+                                        euismod
                                         arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                                     <div class="flex justify-start items-center gap-2 md:gap-4">
                                         <div class="rounded-full bg-[#00AEEF] w-4 h-4 md:w-6 md:h-6"></div>
@@ -563,7 +729,75 @@
                                         <div class="rounded-full bg-[#000000] w-4 h-4 md:w-6 md:h-6"></div>
                                     </div>
                                 </div>
-                                <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">S/
+                                <p
+                                    class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">
+                                    S/
+                                    899.99</p>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
+                            <div class="bg-[#F3F3F3] flex flex-col justify-center pt-5 gap-20 relative">
+
+                                <div class="flex justify-center items-center py-10 md:py-20">
+                                    <a href="{{ route('producto') }}"><img src="{{ asset('images/img/image_17.png') }}"
+                                            alt="impresora" class="w-[120px] h-[90px] md:w-auto md:h-auto"></a>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-col gap-6">
+                                <div class="flex flex-col gap-3">
+                                    <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
+                                    <a href="{{ route('producto') }}">
+                                        <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP
+                                        </h2>
+                                    </a>
+                                    <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non
+                                        euismod
+                                        arcu, eu dignissim erat. Aliquam erat volutpat...</p>
+                                    <div class="flex justify-start items-center gap-2 md:gap-4">
+                                        <div class="rounded-full bg-[#00AEEF] w-4 h-4 md:w-6 md:h-6"></div>
+                                        <div class="rounded-full bg-[#EC008C] w-4 h-4 md:w-6 md:h-6"></div>
+                                        <div class="rounded-full bg-[#FFF200] w-4 h-4 md:w-6 md:h-6"></div>
+                                        <div class="rounded-full bg-[#000000] w-4 h-4 md:w-6 md:h-6"></div>
+                                    </div>
+                                </div>
+                                <p
+                                    class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">
+                                    S/
+                                    899.99</p>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
+                            <div class="bg-[#F3F3F3] flex flex-col justify-center pt-5 gap-20 relative">
+
+                                <div class="flex justify-center items-center py-10 md:py-20">
+                                    <a href="{{ route('producto') }}"><img src="{{ asset('images/img/image_17.png') }}"
+                                            alt="impresora" class="w-[120px] h-[90px] md:w-auto md:h-auto"></a>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-col gap-6">
+                                <div class="flex flex-col gap-3">
+                                    <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
+                                    <a href="{{ route('producto') }}">
+                                        <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP
+                                        </h2>
+                                    </a>
+                                    <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non
+                                        euismod
+                                        arcu, eu dignissim erat. Aliquam erat volutpat...</p>
+                                    <div class="flex justify-start items-center gap-2 md:gap-4">
+                                        <div class="rounded-full bg-[#00AEEF] w-4 h-4 md:w-6 md:h-6"></div>
+                                        <div class="rounded-full bg-[#EC008C] w-4 h-4 md:w-6 md:h-6"></div>
+                                        <div class="rounded-full bg-[#FFF200] w-4 h-4 md:w-6 md:h-6"></div>
+                                        <div class="rounded-full bg-[#000000] w-4 h-4 md:w-6 md:h-6"></div>
+                                    </div>
+                                </div>
+                                <p
+                                    class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">
+                                    S/
                                     899.99</p>
                             </div>
                         </div>
@@ -575,16 +809,20 @@
                                         class="font-moderat_500 text-text10 md:text-text20 bg-[#0051FF] text-white py-1 px-2">-20%</span>
                                 </div>
                                 <div class="flex justify-center items-center py-10 md:py-20">
-                                    <a href="{{route('producto')}}"><img src="{{ asset('images/img/image_17.png') }}" alt="impresora"
-                                        class="w-[120px] h-[90px] md:w-auto md:h-auto"></a>
+                                    <a href="{{ route('producto') }}"><img src="{{ asset('images/img/image_17.png') }}"
+                                            alt="impresora" class="w-[120px] h-[90px] md:w-auto md:h-auto"></a>
                                 </div>
                             </div>
 
                             <div class="flex flex-col gap-6">
                                 <div class="flex flex-col gap-3">
                                     <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
-                                    <a href="{{route('producto')}}"><h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2></a>
-                                    <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non euismod
+                                    <a href="{{ route('producto') }}">
+                                        <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP
+                                        </h2>
+                                    </a>
+                                    <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non
+                                        euismod
                                         arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                                     <div class="flex justify-start items-center gap-2 md:gap-4">
                                         <div class="rounded-full bg-[#00AEEF] w-4 h-4 md:w-6 md:h-6"></div>
@@ -593,7 +831,81 @@
                                         <div class="rounded-full bg-[#000000] w-4 h-4 md:w-6 md:h-6"></div>
                                     </div>
                                 </div>
-                                <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">S/
+                                <p
+                                    class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">
+                                    S/
+                                    899.99</p>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
+                            <div class="bg-[#F3F3F3] flex flex-col justify-center pt-5 gap-20 relative">
+                                <div class="flex justify-start items-center absolute top-[5%] left-[5%]">
+                                    <span
+                                        class="font-moderat_500 text-text10 md:text-text20 bg-[#0051FF] text-white py-1 px-2">-20%</span>
+                                </div>
+                                <div class="flex justify-center items-center py-10 md:py-20">
+                                    <a href="{{ route('producto') }}"><img src="{{ asset('images/img/image_17.png') }}"
+                                            alt="impresora" class="w-[120px] h-[90px] md:w-auto md:h-auto"></a>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-col gap-6">
+                                <div class="flex flex-col gap-3">
+                                    <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
+                                    <a href="{{ route('producto') }}">
+                                        <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP
+                                        </h2>
+                                    </a>
+                                    <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non
+                                        euismod
+                                        arcu, eu dignissim erat. Aliquam erat volutpat...</p>
+                                    <div class="flex justify-start items-center gap-2 md:gap-4">
+                                        <div class="rounded-full bg-[#00AEEF] w-4 h-4 md:w-6 md:h-6"></div>
+                                        <div class="rounded-full bg-[#EC008C] w-4 h-4 md:w-6 md:h-6"></div>
+                                        <div class="rounded-full bg-[#FFF200] w-4 h-4 md:w-6 md:h-6"></div>
+                                        <div class="rounded-full bg-[#000000] w-4 h-4 md:w-6 md:h-6"></div>
+                                    </div>
+                                </div>
+                                <p
+                                    class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">
+                                    S/
+                                    899.99</p>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
+                            <div class="bg-[#F3F3F3] flex flex-col justify-center pt-5 gap-20 relative">
+                                <div class="flex justify-start items-center absolute top-[5%] left-[5%]">
+                                    <span
+                                        class="font-moderat_500 text-text10 md:text-text20 bg-[#0051FF] text-white py-1 px-2">-20%</span>
+                                </div>
+                                <div class="flex justify-center items-center py-10 md:py-20">
+                                    <a href="{{ route('producto') }}"><img src="{{ asset('images/img/image_17.png') }}"
+                                            alt="impresora" class="w-[120px] h-[90px] md:w-auto md:h-auto"></a>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-col gap-6">
+                                <div class="flex flex-col gap-3">
+                                    <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
+                                    <a href="{{ route('producto') }}">
+                                        <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP
+                                        </h2>
+                                    </a>
+                                    <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non
+                                        euismod
+                                        arcu, eu dignissim erat. Aliquam erat volutpat...</p>
+                                    <div class="flex justify-start items-center gap-2 md:gap-4">
+                                        <div class="rounded-full bg-[#00AEEF] w-4 h-4 md:w-6 md:h-6"></div>
+                                        <div class="rounded-full bg-[#EC008C] w-4 h-4 md:w-6 md:h-6"></div>
+                                        <div class="rounded-full bg-[#FFF200] w-4 h-4 md:w-6 md:h-6"></div>
+                                        <div class="rounded-full bg-[#000000] w-4 h-4 md:w-6 md:h-6"></div>
+                                    </div>
+                                </div>
+                                <p
+                                    class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">
+                                    S/
                                     899.99</p>
                             </div>
                         </div>
@@ -604,33 +916,25 @@
 
                     <div class="flex items-center gap-2 justify-center md:justify-end">
                         <p class="text-[#111111] font-space_grotesk font-medium text-text16 md:text-text20">
-                          Pág.
+                            Pág.
                         </p>
                         <nav class="flex justify-between" aria-label="Pagination">
-                          <div
-                            class="flex items-center text-[16px] xl:text-text20 text-textGray"
-                          >
-                            <a
-                              class="rounded-lg px-4 py-2 font-space_grotesk font-medium text-[#0711E5]"
-                              href="#"
-                            >
-                              1
-                            </a>
-                            <p>|</p>
-                            <a
-                              class="rounded-lg px-4 py-2 font-space_grotesk font-medium text-text16 md:text-text20"
-                              href="#"
-                              >2
-                            </a>
-                            <p>|</p>
-                            <a
-                              class="rounded-lg px-4 py-2 font-space_grotesk font-medium text-text16 md:text-text20"
-                              href="#"
-                              >3
-                            </a>
-                          </div>
+                            <div class="flex items-center text-[16px] xl:text-text20 text-textGray">
+                                <a class="rounded-lg px-4 py-2 font-space_grotesk font-medium text-[#0711E5]"
+                                    href="#">
+                                    1
+                                </a>
+                                <p>|</p>
+                                <a class="rounded-lg px-4 py-2 font-space_grotesk font-medium text-text16 md:text-text20"
+                                    href="#">2
+                                </a>
+                                <p>|</p>
+                                <a class="rounded-lg px-4 py-2 font-space_grotesk font-medium text-text16 md:text-text20"
+                                    href="#">3
+                                </a>
+                            </div>
                         </nav>
-                      </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -638,64 +942,7 @@
 
 
 @section('scripts_importados')
-    <script>
-
-    var categorias = document.querySelector(".categorias");
-        categorias.onclick = function() {
-            this.classList.toggle("open");
-            let list = this.nextElementSibling;
-            if (list.style.maxHeight) {
-                list.style.maxHeight = null;
-                list.style.boxShadow = null;
-            } else {
-                list.style.maxHeight = list.scrollHeight + "px";
-                /* list.style.boxShadow =
-                    "0 1px 2px 0 rgba(0, 0, 0, 0.15),0 1px 3px 1px rgba(0, 0, 0, 0.1)"; */
-            }
-        };
-
-        var subcategoria = document.querySelector(".subcategoria");
-        subcategoria.onclick = function() {
-            this.classList.toggle("open");
-            let list = this.nextElementSibling;
-            if (list.style.maxHeight) {
-                list.style.maxHeight = null;
-                list.style.boxShadow = null;
-            } else {
-                list.style.maxHeight = list.scrollHeight + "px";
-                /* list.style.boxShadow =
-                    "0 1px 2px 0 rgba(0, 0, 0, 0.15),0 1px 3px 1px rgba(0, 0, 0, 0.1)"; */
-            }
-        };
-
-        var marca = document.querySelector(".marca");
-        marca.onclick = function() {
-            this.classList.toggle("open");
-            let list = this.nextElementSibling;
-            if (list.style.maxHeight) {
-                list.style.maxHeight = null;
-                list.style.boxShadow = null;
-            } else {
-                list.style.maxHeight = list.scrollHeight + "px";
-                /* list.style.boxShadow =
-                    "0 1px 2px 0 rgba(0, 0, 0, 0.15),0 1px 3px 1px rgba(0, 0, 0, 0.1)"; */
-            }
-        };
-
-        var ordenar = document.querySelector(".ordenar");
-        ordenar.onclick = function() {
-            this.classList.toggle("open");
-            let list = this.nextElementSibling;
-            if (list.style.maxHeight) {
-                list.style.maxHeight = null;
-                list.style.boxShadow = null;
-            } else {
-                list.style.maxHeight = list.scrollHeight + "px";
-                /* list.style.boxShadow =
-                    "0 1px 2px 0 rgba(0, 0, 0, 0.15),0 1px 3px 1px rgba(0, 0, 0, 0.1)"; */
-            }
-        };
-    </script>
+   
 @stop
 
 @stop

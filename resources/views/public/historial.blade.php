@@ -165,7 +165,7 @@
           <h2
             class="text-[#151515] font-moderat_700 text-text20 xl:text-text22 pt-5 md:pt-5 pb-10"
           >
-            Historial de pedidos
+            Historial de compras
           </h2>
           <!-- para destop tabla -->
           <div class="hidden lg:block">

@@ -61,19 +61,19 @@
 
                     <form action="" id="formContacto" class="flex flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
                         <div class="w-full">
-                            <input required type="text" id="full_name" name="full_name" placeholder="Nombre completo" class="border-b-[1.5px] border-[#082252] border-t-0 border-l-0 border-r-0 w-full focus:outline-none focus:border-transparent font-moderat_Regular text-text16 md:text-text18 py-3">
+                            <input required type="text" id="full_name" name="full_name" placeholder="Nombre completo" class="border-b-[1.5px] border-[#082252] border-t-0 border-l-0 border-r-0 w-full focus:outline-none focus:border-transparent font-moderat_Regular text-text16 md:text-text18 py-3 focus:ring-black">
                         </div>
 
                         <div class="w-full">
-                            <input required type="tel" id="phone" name="phone" placeholder="Teléfono" class="border-b-[1.5px] border-[#082252] border-t-0 border-l-0 border-r-0 w-full focus:outline-none focus:border-transparent font-moderat_Regular text-text16 md:text-text18 py-3">
+                            <input required type="tel" id="phone" name="phone" placeholder="Teléfono" class="border-b-[1.5px] border-[#082252] border-t-0 border-l-0 border-r-0 w-full focus:outline-none focus:border-transparent font-moderat_Regular text-text16 md:text-text18 py-3 focus:ring-black">
                         </div>
 
                         <div class="w-full">
-                            <input required type="email" id="email" name="email" placeholder="E-mail" class="border-b-[1.5px] border-[#082252] border-t-0 border-l-0 border-r-0 w-full focus:outline-none focus:border-transparent font-moderat_Regular text-text16 md:text-text18 py-3">
+                            <input required type="email" id="email" name="email" placeholder="E-mail" class="border-b-[1.5px] border-[#082252] border-t-0 border-l-0 border-r-0 w-full focus:outline-none focus:border-transparent font-moderat_Regular text-text16 md:text-text18 py-3 focus:ring-black">
                         </div>
 
                         <div class="w-full">
-                            <input required type="text" id="message" name="message" placeholder="Mensaje" class="border-b-[1.5px] border-[#082252] border-t-0 border-l-0 border-r-0 w-full focus:outline-none focus:border-transparent font-moderat_Regular text-text16 md:text-text18 py-3">
+                            <input required type="text" id="message" name="message" placeholder="Mensaje" class="border-b-[1.5px] border-[#082252] border-t-0 border-l-0 border-r-0 w-full focus:outline-none focus:border-transparent font-moderat_Regular text-text16 md:text-text18 py-3 focus:ring-black">
                         </div>
 
                         <div class="flex justify-center items-center pt-3">
