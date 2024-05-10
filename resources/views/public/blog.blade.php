@@ -30,7 +30,8 @@
                         <div class="flex flex-col gap-3">
                             <div class="flex flex-col gap-2">
                                 <p class="font-moderat_Bold text-text12 md:text-text20 text-[#0051FF]">Categoría</p>
-                                <h2 class="text-[#082252] font-moderat_700 text-text16 md:text-text28">Integer porta cursus metus, sit amet malesuada</h2>
+                                <a href="{{route('post')}}"><h2 class="text-[#082252] font-moderat_700 text-text16 md:text-text28">Integer porta cursus metus, sit amet malesuada</h2></a>
+                                
                                 <p class="text-[#565656] font-moderat_Regular text-text12 md:text-text20 ">Praesent non euismod arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                             </div>
     
@@ -51,7 +52,7 @@
                         <div class="flex flex-col gap-3 justify-center">
                             <div class="flex flex-col gap-2">
                                 <p class="font-moderat_Bold text-text12 md:text-text20 text-[#0051FF]">Categoría</p>
-                                <h2 class="text-[#082252] font-moderat_700 text-text16 md:text-text28 leading-none">Aenean dignissim nec sem quis consequat</h2>
+                                <a href="{{route('post')}}"><h2 class="text-[#082252] font-moderat_700 text-text16 md:text-text28">Integer porta cursus metus, sit amet malesuada</h2></a>
                                 <p class="text-[#565656] font-moderat_Regular text-text12 md:text-text20 leading-tight">Praesent non euismod arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                             </div>
     
@@ -72,7 +73,7 @@
                         <div class="flex flex-col gap-3 justify-center">
                             <div class="flex flex-col gap-2">
                                 <p class="font-moderat_Bold text-text12 md:text-text20 text-[#0051FF]">Categoría</p>
-                                <h2 class="text-[#082252] font-moderat_700 text-text16 md:text-text28 leading-none">Aenean dignissim nec sem quis consequat</h2>
+                                <a href="{{route('post')}}"><h2 class="text-[#082252] font-moderat_700 text-text16 md:text-text28">Integer porta cursus metus, sit amet malesuada</h2></a>
                                 <p class="text-[#565656] font-moderat_Regular text-text12 md:text-text20 leading-tight">Praesent non euismod arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                             </div>
     
@@ -105,7 +106,7 @@
                         </div>
                         <div class="flex flex-col gap-2">
                             <p class="font-moderat_Bold text-text12 md:text-text20 text-[#0051FF]">Categoría</p>
-                            <h2 class="text-[#082252] font-moderat_700 text-text16 md:text-text28">Integer porta cursus metus, sit amet malesuada</h2>
+                            <a href="{{route('post')}}"><h2 class="text-[#082252] font-moderat_700 text-text16 md:text-text28">Integer porta cursus metus, sit amet malesuada</h2></a>
                             <p class="text-[#565656] font-moderat_Regular text-text12 md:text-text20 ">Praesent non euismod arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                         </div>
 
@@ -124,7 +125,7 @@
                         </div>
                         <div class="flex flex-col gap-2">
                             <p class="font-moderat_Bold text-text12 md:text-text20 text-[#0051FF]">Categoría</p>
-                            <h2 class="text-[#082252] font-moderat_700 text-text16 md:text-text28">Integer porta cursus metus, sit amet malesuada</h2>
+                            <a href="{{route('post')}}"><h2 class="text-[#082252] font-moderat_700 text-text16 md:text-text28">Integer porta cursus metus, sit amet malesuada</h2></a>
                             <p class="text-[#565656] font-moderat_Regular text-text12 md:text-text20 ">Praesent non euismod arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                         </div>
 
@@ -143,7 +144,7 @@
                         </div>
                         <div class="flex flex-col gap-2">
                             <p class="font-moderat_Bold text-text12 md:text-text20 text-[#0051FF]">Categoría</p>
-                            <h2 class="text-[#082252] font-moderat_700 text-text16 md:text-text28">Integer porta cursus metus, sit amet malesuada</h2>
+                            <a href="{{route('post')}}"><h2 class="text-[#082252] font-moderat_700 text-text16 md:text-text28">Integer porta cursus metus, sit amet malesuada</h2></a>
                             <p class="text-[#565656] font-moderat_Regular text-text12 md:text-text20 ">Praesent non euismod arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                         </div>
 
@@ -162,7 +163,7 @@
                         </div>
                         <div class="flex flex-col gap-2">
                             <p class="font-moderat_Bold text-text12 md:text-text20 text-[#0051FF]">Categoría</p>
-                            <h2 class="text-[#082252] font-moderat_700 text-text16 md:text-text28">Integer porta cursus metus, sit amet malesuada</h2>
+                            <a href="{{route('post')}}"><h2 class="text-[#082252] font-moderat_700 text-text16 md:text-text28">Integer porta cursus metus, sit amet malesuada</h2></a>
                             <p class="text-[#565656] font-moderat_Regular text-text12 md:text-text20 ">Praesent non euismod arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                         </div>
 
@@ -181,7 +182,7 @@
                         </div>
                         <div class="flex flex-col gap-2">
                             <p class="font-moderat_700 text-text12 md:text-text20 text-[#0051FF]">Categoría</p>
-                            <h2 class="text-[#082252] font-moderat_700 text-text16 md:text-text28">Integer porta cursus metus, sit amet malesuada</h2>
+                            <a href="{{route('post')}}"><h2 class="text-[#082252] font-moderat_700 text-text16 md:text-text28">Integer porta cursus metus, sit amet malesuada</h2></a>
                             <p class="text-[#565656] font-moderat_400 text-text12 md:text-text20 ">Praesent non euismod arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                         </div>
 
@@ -200,7 +201,7 @@
                         </div>
                         <div class="flex flex-col gap-2">
                             <p class="font-moderat_700 text-text12 md:text-text20 text-[#0051FF]">Categoría</p>
-                            <h2 class="text-[#082252] font-moderat_700 text-text16 md:text-text28">Integer porta cursus metus, sit amet malesuada</h2>
+                            <a href="{{route('post')}}"><h2 class="text-[#082252] font-moderat_700 text-text16 md:text-text28">Integer porta cursus metus, sit amet malesuada</h2></a>
                             <p class="text-[#565656] font-moderat_400 text-text12 md:text-text20 ">Praesent non euismod arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                         </div>
 

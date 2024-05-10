@@ -121,9 +121,9 @@
                                 {{-- style="background-image: url({{asset('images/img/image_3.png')}}); background-repeat: no-repeat; background-size:cover;" --}}>
                                 <img src="{{ asset('images/svg/image_18.svg') }}" alt="impresora"
                                     class="w-[200px] h-[200px] md:w-[450px] md:h-[450px]">
-                                <img src="{{ asset('images/img/image_15.png') }}" alt="impresora"
-                                    class="block md:hidden absolute mt-12 mr-16">
-                                <img src="{{ asset('images/img/image_4.png') }}" alt="impresora"
+                                <img src="{{ asset('images/img/image_59.png') }}" alt="impresora"
+                                    class="block md:hidden absolute mt-12 mr-16 w-[226px] h-[228px]">
+                                <img src="{{ asset('images/img/image_58.png') }}" alt="impresora"
                                     class="hidden md:block absolute mr-24">
                             </div>
                         </div>
@@ -160,9 +160,9 @@
                                 {{-- style="background-image: url({{asset('images/img/image_3.png')}}); background-repeat: no-repeat; background-size:cover;" --}}>
                                 <img src="{{ asset('images/svg/image_18.svg') }}" alt="impresora"
                                     class="w-[200px] h-[200px] md:w-[450px] md:h-[450px]">
-                                <img src="{{ asset('images/img/image_15.png') }}" alt="impresora"
-                                    class="block md:hidden absolute mt-12 mr-16">
-                                <img src="{{ asset('images/img/image_4.png') }}" alt="impresora"
+                                <img src="{{ asset('images/img/image_59.png') }}" alt="impresora"
+                                    class="block md:hidden absolute mt-12 mr-16 w-[226px] h-[228px]">
+                                <img src="{{ asset('images/img/image_58.png') }}" alt="impresora"
                                     class="hidden md:block absolute mr-24">
                             </div>
                         </div>
@@ -199,9 +199,9 @@
                                 {{-- style="background-image: url({{asset('images/img/image_3.png')}}); background-repeat: no-repeat; background-size:cover;" --}}>
                                 <img src="{{ asset('images/svg/image_18.svg') }}" alt="impresora"
                                     class="w-[200px] h-[200px] md:w-[450px] md:h-[450px]">
-                                <img src="{{ asset('images/img/image_15.png') }}" alt="impresora"
-                                    class="block md:hidden absolute mt-12 mr-16">
-                                <img src="{{ asset('images/img/image_4.png') }}" alt="impresora"
+                                <img src="{{ asset('images/img/image_59.png') }}" alt="impresora"
+                                    class="block md:hidden absolute mt-12 mr-16 w-[226px] h-[228px]">
+                                <img src="{{ asset('images/img/image_58.png') }}" alt="impresora"
                                     class="hidden md:block absolute mr-24">
                             </div>
                         </div>
@@ -272,7 +272,8 @@
                 <div
                     class="col-span-1 lg:row-span-2 lg:col-span-2 bg-[#F3F3F3] p-5 md:p-10 flex flex-col gap-5 justify-center" data-aos="fade-up" data-aos-offset="150">
                     <div class="flex flex-col gap-5 w-full md:w-1/2">
-                        <h2 class="text-text28 md:text-text32 font-moderat_700 w-1/2">Tintas y cartuchos</h2>
+                        <a href="{{route('catalogo')}}"><h2 class="text-text28 md:text-text32 font-moderat_700 w-1/2">Tintas y cartuchos</h2></a>
+                        
                         <p class="font-moderat_Regular text-text12 md:text-text16">Nullam nec orci dui. Praesent tristique
                             facilisis quam, a egestas lorem consectetur fringilla. Suspendisse cursus erat eget ante auctor,
                             non hendrerit ipsum egestas.</p>
@@ -308,8 +309,8 @@
                     class="col-span-1 lg:row-span-1 lg:col-span-2 flex justify-between bg-[#F3F3F3] pl-5 py-5 md:p-10 md:gap-10" data-aos="fade-up" data-aos-offset="150">
 
                     <div class="flex flex-col gap-5 justify-center basis-3/6 md:basis-2/6">
-
-                        <h2 class="text-text28 md:text-text32 font-moderat_700">Toners</h2>
+                        <a href="{{route('catalogo')}}"><h2 class="text-text28 md:text-text32 font-moderat_700">Toners</h2></a>
+                        
                         <p class="font-moderat_Regular text-text12 md:text-text16">Diseñada para ser transportada y utilizada
                             en diferentes lugares. </p>
                         <div>
@@ -353,7 +354,8 @@
                     </div>
 
                     <div class="flex flex-col justify-center gap-5 basis-3/6 md:basis-2/6">
-                        <h2 class="text-text28 md:text-text32 font-moderat_700 text-right">Impresoras</h2>
+                        <a href="{{route('catalogo')}}"><h2 class="text-text28 md:text-text32 font-moderat_700 text-right">Impresoras</h2></a>
+                        
                         <p class="font-moderat_Regular text-text12 md:text-text16 text-right">Diseñada para ser transportada y utilizada
                             en diferentes lugares.</p>
                         <div>
@@ -416,15 +418,17 @@
                                 class="font-space_grotesk font-medium text-text10 md:text-text20 bg-[#0051FF] text-white py-1 px-2">-20%</span>
                         </div>
                         <div class="flex justify-center items-center py-10 md:py-20">
-                            <img src="{{ asset('images/img/image_17.png') }}" alt="impresora"
-                                class="w-[120px] h-[90px] md:w-auto md:h-auto">
+                            <a href="{{route('producto')}}"><img src="{{ asset('images/img/image_17.png') }}" alt="impresora"
+                                class="w-[120px] h-[90px] md:w-auto md:h-auto"></a>
+                            
                         </div>
                     </div>
 
                     <div class="flex flex-col gap-6">
                         <div class="flex flex-col gap-3">
                             <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
-                            <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2>
+                            <a href="{{route('producto')}}"><h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2></a>
+                            
                             <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non euismod
                                 arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                             <div class="flex justify-start items-center gap-2 md:gap-4">
@@ -442,15 +446,15 @@
                 <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
                     <div class="bg-[#F3F3F3] flex flex-col justify-center pt-5 gap-20 relative">
                         <div class="flex justify-center items-center py-10 md:py-20">
-                            <img src="{{ asset('images/img/image_17.png') }}" alt="impresora"
-                                class="w-[120px] h-[90px] md:w-auto md:h-auto">
+                            <a href="{{route('producto')}}"><img src="{{ asset('images/img/image_17.png') }}" alt="impresora"
+                                class="w-[120px] h-[90px] md:w-auto md:h-auto"></a>
                         </div>
                     </div>
 
                     <div class="flex flex-col gap-6">
                         <div class="flex flex-col gap-3">
                             <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
-                            <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2>
+                            <a href="{{route('producto')}}"><h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2></a>
                             <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non euismod
                                 arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                             <div class="flex justify-start items-center gap-2 md:gap-4">
@@ -473,15 +477,16 @@
                                 class="font-space_grotesk font-medium text-text10 md:text-text20 bg-[#0051FF] text-white py-1 px-2">-20%</span>
                         </div>
                         <div class="flex justify-center items-center py-10 md:py-20">
-                            <img src="{{ asset('images/img/image_17.png') }}" alt="impresora"
-                                class="w-[120px] h-[90px] md:w-auto md:h-auto">
+                            <a href="{{route('producto')}}"><img src="{{ asset('images/img/image_17.png') }}" alt="impresora"
+                                class="w-[120px] h-[90px] md:w-auto md:h-auto"></a>
                         </div>
                     </div>
 
                     <div class="flex flex-col gap-6">
                         <div class="flex flex-col gap-3">
                             <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
-                            <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2>
+                            
+                            <a href="{{route('producto')}}"><h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2></a>
                             <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non euismod
                                 arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                             <div class="flex justify-start items-center gap-2 md:gap-4">
@@ -499,15 +504,15 @@
                 <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
                     <div class="bg-[#F3F3F3] flex flex-col justify-center pt-5 gap-20 relative">
                         <div class="flex justify-center items-center py-10 md:py-20">
-                            <img src="{{ asset('images/img/image_17.png') }}" alt="impresora"
-                                class="w-[120px] h-[90px] md:w-auto md:h-auto">
+                            <a href="{{route('producto')}}"><img src="{{ asset('images/img/image_17.png') }}" alt="impresora"
+                                class="w-[120px] h-[90px] md:w-auto md:h-auto"></a>
                         </div>
                     </div>
 
                     <div class="flex flex-col gap-6">
                         <div class="flex flex-col gap-3">
                             <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
-                            <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2>
+                            <a href="{{route('producto')}}"><h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2></a>
                             <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non euismod
                                 arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                             <div class="flex justify-start items-center gap-2 md:gap-4">
@@ -610,15 +615,15 @@
                                 class="font-space_grotesk font-medium text-text10 md:text-text20 bg-[#0051FF] text-white py-1 px-2">-20%</span>
                         </div>
                         <div class="flex justify-center items-center py-10 md:py-20">
-                            <img src="{{ asset('images/img/image_17.png') }}" alt="impresora"
-                                class="w-[120px] h-[90px] md:w-auto md:h-auto">
+                            <a href="{{route('producto')}}"><img src="{{ asset('images/img/image_17.png') }}" alt="impresora"
+                                class="w-[120px] h-[90px] md:w-auto md:h-auto"></a>
                         </div>
                     </div>
 
                     <div class="flex flex-col gap-6">
                         <div class="flex flex-col gap-3">
                             <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
-                            <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2>
+                            <a href="{{route('producto')}}"><h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2></a>
                             <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non euismod
                                 arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                             <div class="flex justify-start items-center gap-2 md:gap-4">
@@ -636,15 +641,16 @@
                 <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
                     <div class="bg-[#F3F3F3] flex flex-col justify-center pt-5 gap-20 relative">
                         <div class="flex justify-center items-center py-10 md:py-20">
-                            <img src="{{ asset('images/img/image_17.png') }}" alt="impresora"
-                                class="w-[120px] h-[90px] md:w-auto md:h-auto">
+                            <a href="{{route('producto')}}"><img src="{{ asset('images/img/image_17.png') }}" alt="impresora"
+                                class="w-[120px] h-[90px] md:w-auto md:h-auto"></a>
                         </div>
                     </div>
 
                     <div class="flex flex-col gap-6">
                         <div class="flex flex-col gap-3">
                             <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
-                            <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2>
+                            
+                            <a href="{{route('producto')}}"><h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2></a>
                             <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non euismod
                                 arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                             <div class="flex justify-start items-center gap-2 md:gap-4">
@@ -667,15 +673,15 @@
                                 class="font-space_grotesk font-medium text-text10 md:text-text20 bg-[#0051FF] text-white py-1 px-2">-20%</span>
                         </div>
                         <div class="flex justify-center items-center py-10 md:py-20">
-                            <img src="{{ asset('images/img/image_17.png') }}" alt="impresora"
-                                class="w-[120px] h-[90px] md:w-auto md:h-auto">
+                            <a href="{{route('producto')}}"><img src="{{ asset('images/img/image_17.png') }}" alt="impresora"
+                                class="w-[120px] h-[90px] md:w-auto md:h-auto"></a>
                         </div>
                     </div>
 
                     <div class="flex flex-col gap-6">
                         <div class="flex flex-col gap-3">
                             <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
-                            <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2>
+                            <a href="{{route('producto')}}"><h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2></a>
                             <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non euismod
                                 arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                             <div class="flex justify-start items-center gap-2 md:gap-4">
@@ -693,15 +699,15 @@
                 <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
                     <div class="bg-[#F3F3F3] flex flex-col justify-center pt-5 gap-20 relative">
                         <div class="flex justify-center items-center py-10 md:py-20">
-                            <img src="{{ asset('images/img/image_17.png') }}" alt="impresora"
-                                class="w-[120px] h-[90px] md:w-auto md:h-auto">
+                            <a href="{{route('producto')}}"><img src="{{ asset('images/img/image_17.png') }}" alt="impresora"
+                                class="w-[120px] h-[90px] md:w-auto md:h-auto"></a>
                         </div>
                     </div>
 
                     <div class="flex flex-col gap-6">
                         <div class="flex flex-col gap-3">
                             <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
-                            <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2>
+                            <a href="{{route('producto')}}"><h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2></a>
                             <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non euismod
                                 arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                             <div class="flex justify-start items-center gap-2 md:gap-4">
@@ -883,8 +889,9 @@
                         </div>
                         <div class="flex flex-col gap-2">
                             <p class="font-moderat_Bold text-text12 md:text-text20 text-[#0051FF]">Categoría</p>
-                            <h2 class="text-[#082252] font-moderat_Bold text-text16 md:text-text28">Integer porta cursus
-                                metus, sit amet malesuada</h2>
+                            <a href="{{route('post')}}"><h2 class="text-[#082252] font-moderat_Bold text-text16 md:text-text28">Integer porta cursus
+                                metus, sit amet malesuada</h2></a>
+                            
                             <p class="text-[#565656] font-moderat_Regular text-text12 md:text-text20 ">Praesent non euismod
                                 arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                         </div>
@@ -905,8 +912,8 @@
                         </div>
                         <div class="flex flex-col gap-2">
                             <p class="font-moderat_Bold text-text12 md:text-text20 text-[#0051FF]">Categoría</p>
-                            <h2 class="text-[#082252] font-moderat_Bold text-text16 md:text-text28">Integer porta cursus
-                                metus, sit amet malesuada</h2>
+                            <a href="{{route('post')}}"><h2 class="text-[#082252] font-moderat_Bold text-text16 md:text-text28">Integer porta cursus
+                                metus, sit amet malesuada</h2></a>
                             <p class="text-[#565656] font-moderat_Regular text-text12 md:text-text20 ">Praesent non euismod
                                 arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                         </div>
@@ -927,8 +934,8 @@
                         </div>
                         <div class="flex flex-col gap-2">
                             <p class="font-moderat_Bold text-text12 md:text-text20 text-[#0051FF]">Categoría</p>
-                            <h2 class="text-[#082252] font-moderat_Bold text-text16 md:text-text28">Integer porta cursus
-                                metus, sit amet malesuada</h2>
+                            <a href="{{route('post')}}"><h2 class="text-[#082252] font-moderat_Bold text-text16 md:text-text28">Integer porta cursus
+                                metus, sit amet malesuada</h2></a>
                             <p class="text-[#565656] font-moderat_Regular text-text12 md:text-text20 ">Praesent non euismod
                                 arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                         </div>
@@ -950,8 +957,8 @@
                         </div>
                         <div class="flex flex-col gap-2">
                             <p class="font-moderat_Bold text-text12 md:text-text20 text-[#0051FF]">Categoría</p>
-                            <h2 class="text-[#082252] font-moderat_Bold text-text16 md:text-text28">Integer porta cursus
-                                metus, sit amet malesuada</h2>
+                            <a href="{{route('post')}}"><h2 class="text-[#082252] font-moderat_Bold text-text16 md:text-text28">Integer porta cursus
+                                metus, sit amet malesuada</h2></a>
                             <p class="text-[#565656] font-moderat_Regular text-text12 md:text-text20 ">Praesent non euismod
                                 arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                         </div>

@@ -124,14 +124,15 @@
                                     Lanzamiento</span>
                             </div>
                             <div class="flex justify-center items-center py-10 md:py-20">
-                                <img src="{{asset('images/img/image_17.png')}}" alt="impresora" class="w-[120px] h-[90px] md:w-auto md:h-auto">
+                                <a href="{{route('producto')}}"><img src="{{ asset('images/img/image_17.png') }}" alt="impresora"
+                                    class="w-[120px] h-[90px] md:w-auto md:h-auto"></a>
                             </div>
                         </div>
     
                         <div class="flex flex-col gap-6">
                             <div class="flex flex-col gap-3">
                                 <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
-                                <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2>
+                                <a href="{{route('producto')}}"><h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2></a>
                                 <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non euismod
                                     arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                                 <div class="flex justify-start items-center gap-2 md:gap-4">
@@ -149,14 +150,15 @@
                     <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
                         <div class="bg-[#F3F3F3] flex flex-col justify-center pt-5 gap-20 relative">
                             <div class="flex justify-center items-center py-10 md:py-20">
-                                <img src="{{asset('images/img/image_17.png')}}" alt="impresora" class="w-[120px] h-[90px] md:w-auto md:h-auto">
+                                <a href="{{route('producto')}}"><img src="{{ asset('images/img/image_17.png') }}" alt="impresora"
+                                    class="w-[120px] h-[90px] md:w-auto md:h-auto"></a>
                             </div>
                         </div>
     
                         <div class="flex flex-col gap-6">
                             <div class="flex flex-col gap-3">
                                 <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
-                                <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2>
+                                <a href="{{route('producto')}}"><h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2></a>
                                 <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non euismod
                                     arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                                 <div class="flex justify-start items-center gap-2 md:gap-4">
@@ -178,14 +180,15 @@
                                 <span class="font-moderat_500 text-text10 md:text-text20 bg-[#0051FF] text-white py-1 px-2">-20%</span>
                             </div>
                             <div class="flex justify-center items-center py-10 md:py-20">
-                                <img src="{{asset('images/img/image_17.png')}}" alt="impresora" class="w-[120px] h-[90px] md:w-auto md:h-auto">
+                                <a href="{{route('producto')}}"><img src="{{ asset('images/img/image_17.png') }}" alt="impresora"
+                                    class="w-[120px] h-[90px] md:w-auto md:h-auto"></a>
                             </div>
                         </div>
     
                         <div class="flex flex-col gap-6">
                             <div class="flex flex-col gap-3">
                                 <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
-                                <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2>
+                                <a href="{{route('producto')}}"><h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2></a>
                                 <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non euismod
                                     arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                                 <div class="flex justify-start items-center gap-2 md:gap-4">
@@ -203,14 +206,15 @@
                     <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
                         <div class="bg-[#F3F3F3] flex flex-col justify-center pt-5 gap-20 relative">
                             <div class="flex justify-center items-center py-10 md:py-20">
-                                <img src="{{asset('images/img/image_17.png')}}" alt="impresora" class="w-[120px] h-[90px] md:w-auto md:h-auto">
+                                <a href="{{route('producto')}}"><img src="{{ asset('images/img/image_17.png') }}" alt="impresora"
+                                    class="w-[120px] h-[90px] md:w-auto md:h-auto"></a>
                             </div>
                         </div>
     
                         <div class="flex flex-col gap-6">
                             <div class="flex flex-col gap-3">
                                 <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">Tintas</h3>
-                                <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2>
+                                <a href="{{route('producto')}}"><h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">Tintas HP</h2></a>
                                 <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">Praesent non euismod
                                     arcu, eu dignissim erat. Aliquam erat volutpat...</p>
                                 <div class="flex justify-start items-center gap-2 md:gap-4">
