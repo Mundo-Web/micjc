@@ -62,7 +62,7 @@
                             <div class="flex flex-col gap-4">
                                 <div
                                     class="text-textBlack py-3 px-5 rounded-2xl cursor-pointer border-none md:w-80 flex justify-between items-center w-full">
-                                    <a href="historial.html"
+                                    <a href="{{route('miCuenta')}}"
                                         class="font-moderat_Bold text-text16 md:text-text18 text-[#565656]">
                                         Mi cuenta
                                     </a>
@@ -77,7 +77,7 @@
                                 </div>
                                 <div
                                     class="text-textWhite bg-[#0051FF] py-3 px-5 cursor-pointer border-none md:w-80 w-full flex justify-between items-center">
-                                    <a href="miCuenta.html" class="font-moderat_Bold text-text16 md:text-text18 text-white">
+                                    <a href="{{route('miDireccion')}}" class="font-moderat_Bold text-text16 md:text-text18 text-white">
                                         Dirección
                                     </a>
                                     <span>
@@ -91,7 +91,7 @@
                                 </div>
                                 <div
                                     class="text-textBlack py-3 px-5 rounded-2xl cursor-pointer border-none md:w-80 flex justify-between items-center w-full">
-                                    <a href="historial.html"
+                                    <a href="{{route('historial')}}"
                                         class="font-moderat_Bold text-text16 md:text-text18 text-[#565656]">
                                         Historial de pedidos
                                     </a>

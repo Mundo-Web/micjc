@@ -24,21 +24,21 @@
                 <div class="flex flex-col gap-3">
                     <p class="font-moderat_500 text-[#0051FF] text-text16 md:text-text18">Restaura</p>
                     <p class="font-moderat_700 text-text36 text-[#111111] leading-[36px] w-full md:w-2/3">Ops, olvidé mi contraseña</p>
-                    <p class="font-moderat_400 text-text14 md:text-text16">Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+                    <p class="font-moderat_Regular text-text14 md:text-text16">Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
                 </div>
                 
 
                 <div>
                     <form action="" id="formCrearCuenta" class="flex flex-col gap-5">
-                        <div>
-                            <label for="email" class="font-moderat_400 text-text14 md:text-text16 text-[#111111]">Email</label>
-                            <div class="relative w-full">
+                        <div class="flex flex-col gap-2">
+                            <label for="email" class="font-moderat_Regular text-text14 md:text-text16 text-[#111111]">Email</label>
+                            <div class="relative w-full" data-aos="fade-up" data-aos-offset="150">
                                 <!-- Input -->
                                 <input
                                   id="email"
                                   type="email"
                                   {{-- placeholder="Contraseña" --}}
-                                  class="w-full py-3 md:py-5 pl-4 pr-12 focus:outline-none placeholder-gray-400 font-moderat_500 text-text16 xl:text-text18 border-b-[1.5px] border-gray-200"
+                                  class="w-full py-3 md:py-5 pl-4 pr-12 focus:outline-none placeholder-gray-400 font-moderat_Medium text-text16 xl:text-text18 border-b-[1.5px] border-gray-200"
                                 />
                                 <!-- Imagen -->
                                 <img
@@ -53,8 +53,8 @@
                     </form>
                 </div>
 
-                <div class="flex flex-col gap-5">
-                    <a href="" class="bg-[#0051FF] text-white font-moderat_700 py-4 text-center text-text14 md:text-text18">
+                <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
+                    <a href="" class="bg-[#0051FF] text-white font-moderat_Bold py-4 text-center text-text16 md:text-text18">
                         Enviar
                     </a>
                     

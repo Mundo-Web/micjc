@@ -3,7 +3,8 @@
 
         <div class="flex flex-col gap-5">
             <div class="flex items-center">
-                <img src="{{asset('images/svg/image_12.svg')}}" alt="MICJC">
+                <a href="{{route('index')}}"><img src="{{asset('images/svg/image_12.svg')}}" alt="MICJC"></a>
+                
             </div>
             <div class="flex flex-col gap-5">
                 <div class="flex gap-2 items-center">
@@ -17,8 +18,8 @@
                 </div>
     
                 <div class="flex gap-2 items-center">
-                    <img src="{{asset('images/svg/image_15.svg')}}" alt="facebook">
-                    <img src="{{asset('images/svg/image_16.svg')}}" alt="instagram">
+                    <a href="#"><img src="{{asset('images/svg/image_15.svg')}}" alt="facebook"></a>
+                    <a href="#"><img src="{{asset('images/svg/image_16.svg')}}" alt="instagram"></a>                  
                     <p class="font-moderat_Regular text-text12 md:text-text14">Mic&JC</p>
                 </div>
     
@@ -34,11 +35,11 @@
 
         <div class="flex flex-col gap-5">
             <p class="underline font-moderat_500 text-text14 md:text-text16">Menú</p>
-            <a class="font-moderat_Regular text-text12 md:text-text14">Inicio</a>
-            <a class="font-moderat_Regular text-text12 md:text-text14">Nosotros</a>
-            <a class="font-moderat_Regular text-text12 md:text-text14">Productos</a>
-            <a class="font-moderat_Regular text-text12 md:text-text14">Blog</a>
-            <a class="font-moderat_Regular text-text12 md:text-text14">Contáctanos</a>
+            <a href="{{route('index')}}" class="font-moderat_Regular text-text12 md:text-text14">Inicio</a>
+            <a href="{{ route('index')}}" class="font-moderat_Regular text-text12 md:text-text14">Nosotros</a>
+            <a href="{{route('producto')}}" class="font-moderat_Regular text-text12 md:text-text14">Productos</a>
+            <a href="{{route('blog')}}" class="font-moderat_Regular text-text12 md:text-text14">Blog</a>
+            <a href="{{route('contacto')}}" class="font-moderat_Regular text-text12 md:text-text14">Contáctanos</a>
         </div>
 
         <div class="flex flex-col gap-5">

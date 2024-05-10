@@ -7,8 +7,9 @@
             </div>
             <div class="flex justify-center items-center gap-2">
                 <div class="flex justify-center items-center gap-2">
-                    <img src="{{ asset('images/svg/image_1.svg') }}" alt="facebook" class="cursor-pointer">
-                    <img src="{{ asset('images/svg/image_2.svg') }}" alt="instagram" class="cursor-pointer">
+                  <a href="#"><img src="{{ asset('images/svg/image_1.svg') }}" alt="facebook" class="cursor-pointer"></a>
+                    <a href="#"><img src="{{ asset('images/svg/image_2.svg') }}" alt="instagram" class="cursor-pointer"></a>
+                    
                 </div>
                 <p class="font-moderat_500 text-text12 md:text-text14">MIC&JC</p>
             </div>
@@ -19,7 +20,7 @@
         <div class="grid grid-rows-3 grid-cols-2 xl:grid-cols-12 xl:grid-rows-1">
 
             <div class="flex justify-start items-center row-span-1 col-span-1 xl:row-span-1 xl:col-span-1 2xl:col-span-1 order-1 xl:order-1">
-                <img src="{{asset('images/svg/image_3.svg')}}" alt="MICJC">
+                <a href="{{route('index')}}"><img src="{{asset('images/svg/image_3.svg')}}" alt="MICJC"></a>
             </div>
 
             <div class="flex justify-between lg:justify-center lg:gap-10 items-center row-span-1 col-span-2 xl:row-span-1 xl:col-span-7 2xl:col-span-8  order-3 xl:order-2 text-text16 md:text-text20 font-moderat_500">
@@ -44,7 +45,7 @@
             </div>
 
             <div class="flex justify-end items-center gap-5 row-span-1 col-span-1 xl:row-span-1 xl:col-span-2 2xl:col-span-1 order-2 xl:order-4">
-                <img src="{{asset('images/svg/image_4.svg')}}" alt="user">
+              <a href="{{route('miCuenta')}}"><img src="{{asset('images/svg/image_4.svg')}}" alt="user"></a>
                 <img src="{{asset('images/svg/image_5.svg')}}" alt="bag" class="bag__carrito cursor-pointer">
                 <div class="flex justify-center items-center font-moderat_700 relative ">
                     <img src="{{asset('images/svg/image_10.svg')}}" alt="bag">
@@ -73,114 +74,90 @@
           <div class="modal__info flex flex-col justify-between">
 
               <div class="modal__header">
-                <h2><i class="fa-brands fa-opencart"></i>Carrito</h2>
+                <p class="font-moderat_Medium text-text28">Carrito</p>
               </div>
   
               <div class="modal__body">
                 <div class="modal__list">
   
-                  <div class="modal__item">
-                    <div class="modal__thumb">
-                      <img src="{{asset('images/img/naranja.jpg')}}" alt="Naranja" />
+                  <div class="flex justify-between border-b-[1px] pb-5">
+                    <div class="flex justify-center items-center gap-5">
+                      <div class="rounded-md p-4">
+                        <img
+                          src="{{asset('images/img/image_57.png')}}"
+                          alt="producto"
+                          class="w-24"
+                        />
+                      </div>
+                      <div class="flex flex-col gap-3 py-2">
+                        <h3
+                          class="font-moderat_Bold text-text14 xl:text-text18 text-[#151515]"
+                        >
+                          Producto 1
+                        </h3>
+                        <p
+                          class="font-moderat_Regular text-[12px] xl:text-text16 text-[#6C7275]"
+                        >
+                          Color: Black
+                        </p>
+                        <div
+                          class="flex justify-center text-[#151515]"
+                        >
+                          <div>
+                              <input type="number"
+                                  class="border-2 rounded-lg w-16 h-8 text-text16 font-moderat_Regular"
+                                  value="01" step="1">
+                          </div>
+  
+                        </div>
+                      </div>
                     </div>
-                    <div class="modal__text-product">
-                      <p>Naranja</p>
-                      <p><strong>$9.00 / kg</strong></p>
-                    </div>
-                  </div>
-
-                  <div class="modal__item">
-                    <div class="modal__thumb">
-                      <img src="{{asset('images/img/naranja.jpg')}}" alt="Naranja" />
-                    </div>
-                    <div class="modal__text-product">
-                      <p>Naranja</p>
-                      <p><strong>$9.00 / kg</strong></p>
-                    </div>
-                  </div>
-
-                  <div class="modal__item">
-                    <div class="modal__thumb">
-                      <img src="{{asset('images/img/naranja.jpg')}}" alt="Naranja" />
-                    </div>
-                    <div class="modal__text-product">
-                      <p>Naranja</p>
-                      <p><strong>$9.00 / kg</strong></p>
-                    </div>
-                  </div>
-
-                  <div class="modal__item">
-                    <div class="modal__thumb">
-                      <img src="{{asset('images/img/naranja.jpg')}}" alt="Naranja" />
-                    </div>
-                    <div class="modal__text-product">
-                      <p>Naranja</p>
-                      <p><strong>$9.00 / kg</strong></p>
-                    </div>
-                  </div>
-
-
-                  <div class="modal__item">
-                    <div class="modal__thumb">
-                      <img src="{{asset('images/img/naranja.jpg')}}" alt="Naranja" />
-                    </div>
-                    <div class="modal__text-product">
-                      <p>Naranja</p>
-                      <p><strong>$9.00 / kg</strong></p>
-                    </div>
-                  </div>
-
-                  <div class="modal__item">
-                    <div class="modal__thumb">
-                      <img src="{{asset('images/img/naranja.jpg')}}" alt="Naranja" />
-                    </div>
-                    <div class="modal__text-product">
-                      <p>Naranja</p>
-                      <p><strong>$9.00 / kg</strong></p>
+                    <div
+                      class="flex flex-col justify-start py-2 gap-5 items-center pr-2"
+                    >
+                      <p
+                        class="font-moderat_Bold text-[14px] xl:text-text18 text-[#151515]"
+                      >
+                        s/ 19.19
+                      </p>
+                      <div>
+                        <a href="#">
+                          <img
+                            src="{{asset('images/svg/image_54.svg')}}"
+                            alt="close"
+                          />
+                        </a>
+                      </div>
                     </div>
                   </div>
 
-
-                  <div class="modal__item">
-                    <div class="modal__thumb">
-                      <img src="{{asset('images/img/naranja.jpg')}}" alt="Naranja" />
-                    </div>
-                    <div class="modal__text-product">
-                      <p>Naranja</p>
-                      <p><strong>$9.00 / kg</strong></p>
-                    </div>
-                  </div>
-
-                  <div class="modal__item">
-                    <div class="modal__thumb">
-                      <img src="{{asset('images/img/naranja.jpg')}}" alt="Naranja" />
-                    </div>
-                    <div class="modal__text-product">
-                      <p>Naranja</p>
-                      <p><strong>$9.00 / kg</strong></p>
-                    </div>
-                  </div>
-
-                  
-          
-                 
-                  
                 </div>
               </div>
             
             
             <div class="modal__footer">
-              <div class="modal__list-price">
-                <ul>
-                  <li>Subtotal: <strong>$14.00</strong></li>
-                  <li>Descuento: <strong>$0.00</strong></li>
-                </ul>
-                <h4 class="modal__total-cart">Total: $14.00</h4>
-              </div>
+              <div class="flex flex-col gap-2 pt-36">
+                <div
+                  class="text-[#141718] flex justify-between items-center"
+                >
+                  <p class="font-moderat_Regular text-[16px]">Subtotal</p>
+                  <p class="font-moderat_Bold text-[16px]">s/ 99.00</p>
+                </div>
 
-              <div class="modal__btns">
-                <a href="{{route('carrito')}}" class="btn-border">Ir al carrito</a>
-                <a href="#" class="btn-primary">Comprar Ahora</a>
+                <div
+                  class="text-[#141718] font-moderat_Medium text-[20px] flex justify-between items-center"
+                >
+                  <p>Total</p>
+                  <p>s/ 234.00</p>
+                </div>
+                <div>
+                  <a
+                    href="{{route('carrito')}}"
+                    class="font-moderat_Bold text-base bg-[#0051FF] py-3 px-5 text-white cursor-pointer w-full inline-block text-center"
+                  >
+                    Checkout
+                  </a>
+                </div>
               </div>
             </div>
           </div>

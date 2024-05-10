@@ -434,7 +434,7 @@
                                     </div>
 
                                     <div class="pt-10" data-aos="fade-up" data-aos-offset="150">
-                                        <a href="mensajeExito.html"
+                                        <a href="{{route('exito')}}"
                                             class="text-white bg-[#0051FF] w-full py-3 cursor-pointer border-2 font-moderat_Bold text-text16 xl:text-text18 inline-block text-center border-none">Pagar</a>
                                     </div>
                                 </div>

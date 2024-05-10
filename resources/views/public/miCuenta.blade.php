@@ -73,7 +73,7 @@
                   class="text-textWhite bg-[#0051FF] py-3 px-5 cursor-pointer border-none md:w-80 w-full flex justify-between items-center"
                 >
                   <a
-                    href="miCuenta.html"
+                    href="{{route('miCuenta')}}"
                     class="font-moderat_Bold text-text16 md:text-text18 text-white"
                   >
                     Mi cuenta
@@ -99,7 +99,7 @@
                   class="text-textBlack py-3 px-5 rounded-2xl cursor-pointer border-none md:w-80 w-full flex justify-between items-center"
                 >
                   <a
-                    href="direccion.html"
+                    href="{{route('miDireccion')}}"
                     class="font-moderat_Bold text-text16 md:text-text18 text-[#565656]"
                   >
                     Dirección
@@ -125,7 +125,7 @@
                   class="text-textBlack py-3 px-5 rounded-2xl cursor-pointer border-none md:w-80 flex justify-between items-center w-full"
                 >
                   <a
-                    href="historial.html"
+                    href="{{route('historial')}}"
                     class="font-moderat_Bold text-text16 md:text-text18 text-[#565656]"
                   >
                     Historial de pedidos

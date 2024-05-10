@@ -130,19 +130,19 @@
                     </div>
 
                     <div class="swiper-slide bg-[#0051FF] pt-5 pb-20 md:py-24 fondo__slider-desktop" {{-- style="background-image: url({{asset('images/img/image_16.png')}}); background-repeat: no-repeat; background-size:cover;" --}}>
-                        <div class="grid grid-cols-1 lg:grid-cols-2">
+                        <div class="grid grid-cols-1 lg:grid-cols-2" data-aos="fade-up" data-aos-offset="150">
                             <div
                                 class="flex flex-col justify-center gap-5 order-1 lg:order-2 px-5 md:z-50 lg:-mx-[100px] w-full lg:w-11/12">
-                                <p class="text-white text-text18 md:text-text20 font-moderat_700">Accesorios</p>
+                                <p class="text-white text-text18 md:text-text20 font-moderat_Bold">Accesorios</p>
                                 <h1
                                     class="text-text40 md:text-text48 font-moderat_700 text-white leading-[56px] md:leading-tight">
                                     Descubre lo digital: Productos innovadores</h1>
-                                <p class="text-white text-text14 font-moderat_400 w-full lg:w-5/6">Selección de productos
+                                <p class="text-white text-text14 md:text-text16 font-moderat_Regular w-full lg:w-5/6">Selección de productos
                                     digitales que facilitan la forma en que realizamos nuestras tareas cotidianas.</p>
 
                                 <div class="flex justify-start items-center">
                                     <a href="#" class="flex justify-center items-center gap-2">
-                                        <span class="text-white text-text16 font-moderat_700">Ver productos</span>
+                                        <span class="text-white text-text16 font-moderat_Bold">Ver productos</span>
                                         <div>
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -169,19 +169,19 @@
                     </div>
 
                     <div class="swiper-slide bg-[#0051FF] pt-5 pb-20 md:py-24 fondo__slider-desktop" {{-- style="background-image: url({{asset('images/img/image_16.png')}}); background-repeat: no-repeat; background-size:cover;" --}}>
-                        <div class="grid grid-cols-1 lg:grid-cols-2">
+                        <div class="grid grid-cols-1 lg:grid-cols-2" data-aos="fade-up" data-aos-offset="150">
                             <div
                                 class="flex flex-col justify-center gap-5 order-1 lg:order-2 px-5 md:z-50 lg:-mx-[100px] w-full lg:w-11/12">
-                                <p class="text-white text-text18 md:text-text20 font-moderat_700">Accesorios</p>
+                                <p class="text-white text-text18 md:text-text20 font-moderat_Bold">Accesorios</p>
                                 <h1
                                     class="text-text40 md:text-text48 font-moderat_700 text-white leading-[56px] md:leading-tight">
                                     Descubre lo digital: Productos innovadores</h1>
-                                <p class="text-white text-text14 font-moderat_400 w-full lg:w-5/6">Selección de productos
+                                <p class="text-white text-text14 md:text-text16 font-moderat_Regular w-full lg:w-5/6">Selección de productos
                                     digitales que facilitan la forma en que realizamos nuestras tareas cotidianas.</p>
 
                                 <div class="flex justify-start items-center">
                                     <a href="#" class="flex justify-center items-center gap-2">
-                                        <span class="text-white text-text16 font-moderat_700">Ver productos</span>
+                                        <span class="text-white text-text16 font-moderat_Bold">Ver productos</span>
                                         <div>
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -250,7 +250,7 @@
                 <h2 class="text-[#111111] text-text32 md:text-text36 font-moderat_700 w-1/2">Nuestras Categorías</h2>
 
                 <div class="flex justify-start items-center">
-                    <a href="#" class="flex justify-center items-center gap-2">
+                    <a href="{{route('catalogo')}}" class="flex justify-center items-center gap-2">
                         <span class="text-text16 text-[#0051FF] md:text-text20 font-moderat_Bold">Ver todas las
                             categorías</span>
                         <div>
@@ -390,7 +390,7 @@
             <div class="flex justify-between items-center py-5">
                 <p class="font-moderat_700 text-text32 md:text-text36">Destacados</p>
                 <div class="flex justify-start items-center">
-                    <a href="#" class="flex justify-center items-center gap-2">
+                    <a href="{{route('catalogo')}}" class="flex justify-center items-center gap-2">
                         <p
                             class="text-[#3374FF] text-text16 font-moderat_Bold md:text-text20 flex justify-center items-center gap-3">
                             <span>Ver todos</span>
@@ -584,7 +584,7 @@
             <div class="flex justify-between items-center py-5">
                 <p class="font-moderat_700 text-text32 md:text-text36">En Oferta</p>
                 <div class="flex justify-start items-center">
-                    <a href="#" class="flex justify-center items-center gap-2">
+                    <a href="{{route('catalogo')}}" class="flex justify-center items-center gap-2">
                         <p
                             class="text-[#3374FF] text-text16 font-moderat_Bold md:text-text20 flex justify-center items-center gap-3">
                             <span>Ver todos</span>
@@ -869,7 +869,7 @@
                     </div>
 
                     <div class="flex justify-end items-center basis-4/12">
-                        <a href="#"
+                        <a href="{{route('blog')}}"
                             class="font-moderat_Bold text-text16 md:text-text20 py-3 px-5 bg-[#0051FF] text-white md:w-auto text-center w-full">Ver
                             más Publicaciones</a>
                     </div>

@@ -24,21 +24,21 @@
                 <div class="flex flex-col gap-3">
                     <p class="font-moderat_500 text-[#0051FF] text-text16 md:text-text18">Vamos a crear</p>
                     <p class="font-moderat_700 text-text36 text-[#111111] leading-[36px] w-full md:w-2/3">Crear una nueva cuenta</p>
-                    <p class="font-moderat_400 text-text14 md:text-text16">Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+                    <p class="font-moderat_Regular text-text14 md:text-text16">Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
                 </div>
                 
 
                 <div>
                     <form action="" id="formCrearCuenta" class="flex flex-col gap-5">
-                        <div>
-                            <label for="full_name" class="font-moderat_400 text-text14 md:text-text16 text-[#111111]">Nombre completo</label>
+                        <div data-aos="fade-up" data-aos-offset="150" class="flex flex-col gap-2">
+                            <label for="full_name" class="font-moderat_Regular text-text14 md:text-text16 text-[#111111]">Nombre completo</label>
                             <div class="relative w-full">
                                 <!-- Input -->
                                 <input
                                   id="full_name"
                                   type="text"
                                   {{-- placeholder="Contraseña" --}}
-                                  class="w-full py-3 md:py-5 pl-4 pr-12 focus:outline-none placeholder-gray-400 font-moderat_500 text-text16 xl:text-text18 border-b-[1.5px] border-gray-200"
+                                  class="w-full py-3 md:py-5 pl-4 pr-12 focus:outline-none placeholder-gray-400 font-moderat_Medium text-text16 xl:text-text18 border-b-[1.5px] border-gray-200"
                                 />
                                 <!-- Imagen -->
                                 <img
@@ -50,15 +50,15 @@
                             </div>
                         </div>
 
-                        <div>
-                            <label for="email" class="font-moderat_400 text-text14 md:text-text16 text-[#111111]">Email</label>
+                        <div data-aos="fade-up" data-aos-offset="150" class="flex flex-col gap-2">
+                            <label for="email" class="font-moderat_Regular text-text14 md:text-text16 text-[#111111]">Email</label>
                             <div class="relative w-full">
                                 <!-- Input -->
                                 <input
                                   id="email"
                                   type="email"
                                   {{-- placeholder="Contraseña" --}}
-                                  class="w-full py-3 md:py-5 pl-4 pr-12 focus:outline-none placeholder-gray-400 font-moderat_500 text-text16 xl:text-text18 border-b-[1.5px] border-gray-200"
+                                  class="w-full py-3 md:py-5 pl-4 pr-12 focus:outline-none placeholder-gray-400 font-moderat_Medium text-text16 xl:text-text18 border-b-[1.5px] border-gray-200"
                                 />
                                 <!-- Imagen -->
                                 <img
@@ -71,15 +71,15 @@
                         </div>
 
 
-                        <div>
-                            <label for="full_name" class="font-moderat_400 text-text14 md:text-text16 text-[#111111]">Contraseña</label>
+                        <div data-aos="fade-up" data-aos-offset="150" class="flex flex-col gap-2">
+                            <label for="full_name" class="font-moderat_Regular text-text14 md:text-text16 text-[#111111]">Contraseña</label>
                             <div class="relative w-full">
                                 <!-- Input -->
                                 <input
                                   id="password"
                                   type="text"
                                   {{-- placeholder="Contraseña" --}}
-                                  class="w-full py-3 md:py-5 pl-4 pr-12 focus:outline-none placeholder-gray-400 font-moderat_500 text-text16 xl:text-text18 border-b-[1.5px] border-gray-200"
+                                  class="w-full py-3 md:py-5 pl-4 pr-12 focus:outline-none placeholder-gray-400 font-moderat_Medium text-text16 xl:text-text18 border-b-[1.5px] border-gray-200"
                                 />
                                 <!-- Imagen -->
                                 <img
@@ -93,15 +93,15 @@
                             </div>
                         </div>
 
-                        <div>
-                            <label for="repeat__password" class="font-moderat_400 text-text14 md:text-text16 text-[#111111]">Confirmar contraseña</label>
+                        <div data-aos="fade-up" data-aos-offset="150" class="flex flex-col gap-2"> 
+                            <label for="repeat__password" class="font-moderat_Regular text-text14 md:text-text16 text-[#111111]">Confirmar contraseña</label>
                             <div class="relative w-full">
                                 <!-- Input -->
                                 <input
                                   id="repeat__password"
                                   type="password"
                                   {{-- placeholder="Contraseña" --}}
-                                  class="w-full py-3 md:py-5 pl-4 pr-12 focus:outline-none placeholder-gray-400 font-moderat_500 text-text16 xl:text-text18 border-b-[1.5px] border-gray-200"
+                                  class="w-full py-3 md:py-5 pl-4 pr-12 focus:outline-none placeholder-gray-400 font-moderat_Medium text-text16 xl:text-text18 border-b-[1.5px] border-gray-200"
                                 />
                                 <!-- Imagen -->
                                 <img
@@ -116,16 +116,16 @@
                 </div>
 
                 <div class="flex flex-col gap-5">
-                    <a href="" class="bg-[#0051FF] text-white font-moderat_700 py-4 text-center text-text14 md:text-text18">
+                    <a href="" data-aos="fade-up" data-aos-offset="150" class="bg-[#0051FF] text-white font-moderat_Bold py-4 text-center text-text16 md:text-text18">
                         Crear cuenta
                     </a>
-                    <a href="" class="text-[#111111] font-moderat_700 py-4 text-center text-text14 md:text-text18 flex items-center justify-center gap-2 lg:gap-3 border-[#111111] border-2">
+                    <a href="" data-aos="fade-up" data-aos-offset="150" class="text-[#111111] font-moderat_Bold py-4 text-center text-text16 md:text-text18 flex items-center justify-center gap-2 lg:gap-3 border-[#111111] border-2">
                         <div>
                             <img src="{{asset('images/svg/image_37.svg')}}" alt="">
                         </div>
                         <span>Ingresar con mi cuenta de Google</span>
                     </a>
-                    <a href="" class="text-[#111111] font-moderat_700 py-4 text-center text-text14 md:text-text18 flex items-center justify-center gap-2 lg:gap-3 border-[#111111] border-2">
+                    <a href="" data-aos="fade-up" data-aos-offset="150" class="text-[#111111] font-moderat_Bold py-4 text-center text-text16 md:text-text18 flex items-center justify-center gap-2 lg:gap-3 border-[#111111] border-2">
                         <div>
                             <img src="{{asset('images/svg/image_38.svg')}}" alt="">
                         </div>
