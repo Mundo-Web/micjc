@@ -9,11 +9,6 @@
         .input-box-provincia::before, .input-box-distrito::before {
             background-image: url({{ asset('images/svg/image_31.svg') }});
         }
-
-
-        /*  .input-box.open::before {
-                background-image: url({{ asset('images/svg/image_31.svg') }});
-              } */
     </style>
 
 @stop

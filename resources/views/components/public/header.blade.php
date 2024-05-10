@@ -1,4 +1,4 @@
-<header>
+<header class="{{-- z-[600] relative --}}">
 
     <div class="bg-[#0051FF] py-5">
         <div class="flex justify-between items-center w-11/12 mx-auto text-white">

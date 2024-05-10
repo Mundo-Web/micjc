@@ -28,11 +28,11 @@
         }
 
         /*  .bg__mobile {
-                background-repeat: no-repeat;
-                background-size: cover;
-                background-position: center;
-                background-image: url({{ asset('images/img/image_3.png') }});
-            } */
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-position: center;
+                    background-image: url({{ asset('images/img/image_3.png') }});
+                } */
 
         .fondo__slider-desktop {
             background-image: none;
@@ -41,14 +41,14 @@
             background-size: cover;
         }
 
-        .fondo__categorias-producto{
+        .fondo__categorias-producto {
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
             background-image: url({{ asset('images/img/image_47.png') }});
         }
 
-        .fondo__marcas{
+        .fondo__marcas {
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
@@ -60,14 +60,23 @@
                 background-image: url({{ asset('images/img/image_16.png') }});
             }
 
-            .fondo__categorias-producto{
-            background-image: url({{ asset('images/img/image_48.png') }});
+            .fondo__categorias-producto {
+                background-image: url({{ asset('images/img/image_48.png') }});
             }
 
 
-            .fondo__marcas{
-            background-image: url({{ asset('images/img/image_49.png') }});
+            .fondo__marcas {
+                background-image: url({{ asset('images/img/image_49.png') }});
+            }
         }
+
+        .custom-swiper-buttons .swiper-button-prev:after {
+            background-image: url({{ asset('images/svg/image_53.svg') }});
+        }
+
+
+        .custom-swiper-buttons .swiper-button-next:after {
+            background-image: url({{ asset('images/svg/image_52.svg') }});
         }
     </style>
 
@@ -333,7 +342,8 @@
 
                 </div>
 
-                <div class="col-span-1 lg:row-span-1 lg:col-span-2 bg-[#0051FF] flex justify-between text-white pr-5 py-5 gap-10 md:p-10 fondo__categorias-producto"{{-- 
+                <div
+                    class="col-span-1 lg:row-span-1 lg:col-span-2 bg-[#0051FF] flex justify-between text-white pr-5 py-5 gap-10 md:p-10 fondo__categorias-producto"{{-- 
                     style="background-image: url('{{ asset('images/img/image_9.png') }}'); background-repeat:no-repeat; background-size:cover;" --}}>
 
                     <div class="flex justify-end items-end md:items-center basis-3/6 md:basis-4/6">
@@ -344,7 +354,8 @@
 
                     <div class="flex flex-col justify-center gap-5 basis-3/6 md:basis-2/6">
                         <h2 class="text-text28 md:text-text32 font-moderat_700">Impresoras</h2>
-                        <p class="font-moderat_400 text-text12 md:text-text16">Diseñada para ser transportada y utilizada en diferentes lugares.</p>
+                        <p class="font-moderat_400 text-text12 md:text-text16">Diseñada para ser transportada y utilizada
+                            en diferentes lugares.</p>
                         <div>
                             <p class="font-moderat_400 text-text12 md:text-text16">Desde</p>
                             <p class="font-moderat_700 text-text20 md:text-text24">S/. 999,99</p>
@@ -707,7 +718,7 @@
             </div>
         </section>
 
-        <section class="bg-[#FBFBFB] pt-10 mt-10">
+        <section class="bg-[#FBFBFB] pt-10 mt-10 pb-32">
             <div class="w-11/12 mx-auto flex flex-col gap-3 items-center">
                 <h2 class="font-moderat_700 text-text32 md:text-text44 text-center">Clientes satisfechos</h2>
                 <p class="font-moderat_400 text-text14 text-[#565656] text-center w-full md:w-2/3">Lorem ipsum dolor sit
@@ -716,9 +727,10 @@
                 </p>
             </div>
 
-            <div class="w-11/12 md:w-9/12 mx-auto">
-                <div class="swiper testimonios">
-                    <div class="swiper-wrapper pt-16 pb-32">
+
+            <div class="mt-16 w-11/12 lg:w-9/12 mx-auto  relative">
+                <div class="swiper testimonios rounded-2xl">
+                    <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <div class="flex flex-col gap-5 bg-[#FFFFFF] border-[1.5px] border-gray-100 shadow-md p-8">
                                 <div class="flex justify-start items-center gap-5">
@@ -764,6 +776,7 @@
                                 </div>
                             </div>
                         </div>
+
 
                         <div class="swiper-slide">
                             <div class="flex flex-col gap-5 bg-[#FFFFFF] border-[1.5px] border-gray-100 shadow-md p-8">
@@ -788,22 +801,13 @@
                             </div>
                         </div>
                     </div>
-
-                    {{-- <div style=".swiper-button-prev::after{background-color: 50px}">
-                        <div class="swiper-button-next !top-[90%] !w-64"></div>
-                        <div class="swiper-button-prev !top-[90%] !w-64"></div>
-                    </div> --}}
-                    {{-- <div class="swiper-button-next absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-[#0051FF] opacity-20 rounded-full flex justify-center items-center px-5">
-
-
-                    </div> --}}
+                </div>
+                <div class="custom-swiper-buttons lg:flex lg:absolute block ">
                     <div class="swiper-button-prev"></div>
                     <div class="swiper-button-next"></div>
-                    {{-- <div class="swiper-button-prev absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-gray-800 w-8 h-8 rounded-full flex justify-center items-center text-white">
-
-                    </div> --}}
                 </div>
             </div>
+   
         </section>
 
 
@@ -988,7 +992,7 @@
         });
     </script>
 
-    
+
 @stop
 
 @stop

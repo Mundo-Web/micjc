@@ -5,7 +5,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"> --}}
 
     <style>
-
+        .input-box::before,
+        .input-box-provincia::before, .input-box-distrito::before {
+            background-image: url({{ asset('images/svg/image_31.svg') }});
+        }
     </style>
 
 @stop
@@ -15,7 +18,7 @@
     <main>
 
         {{--  --}}
-        <section class="mt-12 mb-0 md:mt-8 md:mb-10">
+        <section class="mb-0 md:mt-8 md:mb-10">
             <div class="flex flex-col w-11/12 mx-auto">
                 <div class="flex flex-col gap-10 my-5">
                     <div class="flex gap-1 text-text14 xl:text-text18">
@@ -27,7 +30,7 @@
             </div>
         </section>
 
-        <section class="my-8 md:my-16">
+        <section class="mb-8 md:my-16">
             <div class="flex flex-col gap-12 md:flex-row md:gap-28 w-full md:w-11/12 mx-auto">
                 <div class="bg-white py-5 md:py-0">
                     <div class="w-11/12 md:w-full mx-auto">
@@ -122,13 +125,12 @@
                                 </p>
 
                                 {{-- apertura del modal --}}
-                                <label for="tw-modal"
-                                    class="flex justify-between items-center gap-1 cursor-pointer rounded text-white ">
+                                <button {{--  id="open-modal-btn" --}} class="px-4 py-2 flex gap-2 items-center open-modal-btn">
                                     <img src="{{ asset('images/svg/image_34.svg') }}" alt="editar" />
                                     <span class="font-moderat_700 text-text16 xl:text-text18 text-[#0051FF]">
                                         Editar
                                     </span>
-                                </label>
+                                </button>
                                 {{-- ------- --}}
 
 
@@ -151,13 +153,12 @@
                                     Dirección de Envío
                                 </p>
                                 {{-- apertura del modal --}}
-                                <label for="tw-modal"
-                                    class="flex justify-between items-center gap-1 cursor-pointer rounded text-white ">
+                                <button {{-- id="open-modal-btn" --}} class="px-4 py-2 flex gap-2 items-center open-modal-btn">
                                     <img src="{{ asset('images/svg/image_34.svg') }}" alt="editar" />
                                     <span class="font-moderat_700 text-text16 xl:text-text18 text-[#0051FF]">
                                         Editar
                                     </span>
-                                </label>
+                                </button>
                                 {{-- ------- --}}
                             </div>
 
@@ -175,157 +176,288 @@
                 </div>
             </div>
         </section>
-    </main>
 
-
-
-    {{-- modal editar --}}
-
-    <div class="relative flex z-[500] flex-col items-center justify-center overflow-hidden bg-gray-50">
         <div>
-            <input type="checkbox" id="tw-modal" class="peer fixed appearance-none opacity-0">
-            <label for="tw-modal"
-                class="pointer-events-none invisible fixed inset-0 flex cursor-pointer items-center justify-center overflow-hidden overscroll-contain bg-slate-700/30 opacity-0 transition-all duration-200 ease-in-out peer-checked:pointer-events-auto peer-checked:visible peer-checked:opacity-100 {{-- peer-checked:[&>*]:translate-y-0  --}}{{-- peer-checked::[&>*]:scale-100 --}}">
 
-                <label
-                    class="max-h-[calc(100vh-5em)] h-fit max-w-lg {{-- scale-90 --}} overflow-y-auto overscroll-y-contain rounded-md bg-white p-6 text-black shadow-2xl transition">
+            <div class="fixed z-[500] inset-0 hidden  modal-wrapper">
+                <div
+                    class="flex items-center justify-center  min-h-screen bg-opacity-75 transition-all backdrop-filter backdrop-blur-sm px-5 md:px-0">
 
-                    <div class="w-full flex flex-col justify-center h-[500px] md:h-[700px]">
-                        <div class="flex flex-col gap-5 w-full">
-                            <div class="flex justify-between items-center w-full">
-                                <h2 class="font-boldDisplay text-text20 xl:text-text24 text-[#151515]">
+                    <div class="flex flex-col items-center  contenedor  bg-white p-5 lg:py-10 lg:px-5 w-auto  mx-auto shadow-xl rounded-xl">
+                        <div class="">
+                            <div class="flex justify-end items-end w-full pr-5 py-5">
+                                <button class="close-modal-btn">
+                                    <img src="{{asset('images/svg/image_51.svg')}}" alt="close">
+                                </button>
+                            </div>
+                            
+                            <div class="flex flex-col gap-5 overflow-y-scroll h-[400px] lg:h-[500px] max-w-[600px] scroll-direccion px-5">
+                                <h2 class="font-moderat_700 text-text20 xl:text-text22 text-[#151515]">
                                     Dirección de envío
                                 </h2>
-
-                                <label for="tw-modal" class="peer-checked:visible cursor-pointer">
-                                    <img src="{{ asset('images/svg/image_35.svg') }}" alt="close" />
-                                </label>
-                            </div>
-
-                            <div class="overflow-y-scroll h-[400px] md:h-auto md:overflow-auto flex flex-col gap-10">
                                 <div class="flex flex-col gap-5">
                                     <div class="flex flex-col gap-5">
-                                        <div class="flex flex-col gap-2">
-                                            <p
-                                                class="font-mediumDisplay text-text12 xl:text-text16 text-[#6C7275]">Departamento
-                                              </p>
+                                        <div class="flex flex-col gap-2 z-[45]">
+                                            <label
+                                                class="font-moderat_500 text-text12  text-[#565656]">Departamento</label>
+    
                                             <div>
                                                 <!-- combo -->
                                                 <div class="dropdown w-full">
-                                                  <label
-                                                      class="input-box focus:outline-none font-regularDisplay text-text16 xl:text-text20 mr-20 text-[#6C7275] border-[1.5px] border-gray-200  py-6 px-4">
-                                                      Selecciona un departamento
-                                                  </label>
-                                                  <div class="list overflow-y-scroll h-[200px] scroll-departamento">
-                                                      <div class="w-full">
-                                                          <!-- Ejemplo de explicacion para la obtencion del combo -->
-                                                          <input type="radio" name="drop1" id="id1"
-                                                              depa-atributo="1" class="radio Arequipa" />
-
-                                                          <label for="id1"
-                                                              class="font-regularDisplay text-text18 xl:text-text22 hover:font-bold md:duration-100 hover:text-white departamento">
-                                                              Arequipa
-                                                          </label>
-                                                      </div>
-
-                                                      <div class="w-full">
-                                                                <input type="radio" name="drop1" id="id2"
-                                                                    depa-atributo="2" class="radio Lima" />
-                                                                <label for="id2"
-                                                                    class="font-regularDisplay text-text18 xl:text-text22 hover:font-bold md:duration-100 hover:text-white departamento">
-                                                                    Lima
-                                                                </label>
-                                                            </div>
-
-                            
-                                                  </div>
-                                              </div>
+                                                    <div
+                                                        class="input-box focus:outline-none font-regularDisplay text-text16 xl:text-text20 mr-20 text-[#6C7275] border-[1.5px] border-gray-200  py-6 px-4">
+                                                        Selecciona un departamento
+                                                    </div>
+                                                    <div class="list overflow-y-scroll h-[200px] scroll-departamento">
+                                                        <div class="w-full">
+                                                            <!-- Ejemplo de explicacion para la obtencion del combo -->
+                                                            <input type="radio" name="drop1" id="id1"
+                                                                depa-atributo="1" class="radio Arequipa" />
+    
+                                                            <label for="id1"
+                                                                class="font-regularDisplay text-text18 xl:text-text22 hover:font-bold md:duration-100 hover:text-white departamento">
+                                                                Arequipa
+                                                            </label>
+                                                        </div>
+    
+                                                        <div class="w-full">
+                                                            <input type="radio" name="drop1" id="id2"
+                                                                depa-atributo="2" class="radio Lima" />
+                                                            <label for="id2"
+                                                                class="font-regularDisplay text-text18 xl:text-text22 hover:font-bold md:duration-100 hover:text-white departamento">
+                                                                Lima
+                                                            </label>
+                                                        </div>
+    
+                                                        <div class="w-full">
+                                                            <input type="radio" name="drop1" id="id3"
+                                                                depa-atributo="3" class="radio Huancavelica" />
+                                                            <label for="id3"
+                                                                class="font-regularDisplay text-text18 xl:text-text22 hover:font-bold md:duration-100 hover:text-white departamento">
+                                                                Huancavelica
+                                                            </label>
+                                                        </div>
+    
+                                                        <div class="w-full">
+                                                            <input type="radio" name="drop1" id="id4"
+                                                                depa-atributo="4" class="radio Trujillo" />
+                                                            <label for="id4"
+                                                                class="font-regularDisplay text-text18 xl:text-text22 hover:font-bold md:duration-100 hover:text-white departamento">
+                                                                Trujillo
+                                                            </label>
+                                                        </div>
+    
+                                                        <div class="w-full">
+                                                            <input type="radio" name="drop1" id="id5"
+                                                                depa-atributo="5" class="radio Huanuco" />
+                                                            <label for="id5"
+                                                                class="font-regularDisplay text-text18 xl:text-text22 hover:font-bold md:duration-100 hover:text-white departamento">
+                                                                Huanuco
+                                                            </label>
+                                                        </div>
+    
+                                                        <div class="w-full">
+                                                            <input type="radio" name="drop1" id="id6"
+                                                                depa-atributo="6" class="radio Tumbes" />
+                                                            <label for="id6"
+                                                                class="font-regularDisplay text-text18 xl:text-text22 hover:font-bold md:duration-100 hover:text-white departamento">
+                                                                Tumbes
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-
-
+    
                                         <div class="flex flex-col gap-2 z-[40]">
-                                          <p class="font-moderat_500 text-text12  text-[#565656]">
-                                              Provincia
-                                          </p>
-
-                                          <div>
-                                              <!-- combo -->
-                                              <div class="dropdown-provincia w-full">
-                                                  <div
-                                                      class="input-box-provincia focus:outline-none font-regularDisplay text-text16 xl:text-text20 mr-20 text-[#6C7275] border-[1.5px] border-gray-200 py-6 px-4">
-                                                      Selecciona una provincia
-                                                  </div>
-                                                  <div
-                                                      class="list-provincia overflow-y-scroll h-[200px] scroll-provincia">
-                                                      <div class="w-full">
-                                                          <input type="radio" name="drop2" id="id7"
-                                                              class="radio-provincia" />
-
-                                                          <label for="id7"
-                                                              class="font-regularDisplay text-text18 xl:text-text22 hover:font-bold md:duration-100 hover:text-white provincia">
-                                                              Provincia 1
-                                                          </label>
-                                                      </div>
-
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </div>
-
-
-
+                                            <label class="font-moderat_500 text-text12  text-[#565656]">
+                                                Provincia
+                                            </label>
+    
+                                            <div>
+                                                <!-- combo -->
+                                                <div class="dropdown-provincia w-full">
+                                                    <div
+                                                        class="input-box-provincia focus:outline-none font-regularDisplay text-text16 xl:text-text20 mr-20 text-[#6C7275] border-[1.5px] border-gray-200 py-6 px-4">
+                                                        Selecciona una provincia
+                                                    </div>
+                                                    <div
+                                                        class="list-provincia overflow-y-scroll h-[200px] scroll-provincia">
+                                                        <div class="w-full">
+                                                            <input type="radio" name="drop2" id="id7"
+                                                                class="radio-provincia" />
+    
+                                                            <label for="id7"
+                                                                class="font-regularDisplay text-text18 xl:text-text22 hover:font-bold md:duration-100 hover:text-white provincia">
+                                                                Provincia 1
+                                                            </label>
+                                                        </div>
+    
+                                                        <div class="w-full">
+                                                            <input type="radio" name="drop2" id="id8"
+                                                                class="radio-provincia" />
+    
+                                                            <label for="id8"
+                                                                class="font-regularDisplay text-text18 xl:text-text22 hover:font-bold md:duration-100 hover:text-white provincia">
+                                                                Provincia 2
+                                                            </label>
+                                                        </div>
+    
+                                                        <div class="w-full">
+                                                            <input type="radio" name="drop2" id="id9"
+                                                                class="radio-provincia" />
+    
+                                                            <label for="id9"
+                                                                class="font-regularDisplay text-text18 xl:text-text22 hover:font-bold md:duration-100 hover:text-white provincia">
+                                                                Provincia 3
+                                                            </label>
+                                                        </div>
+    
+                                                        <div class="w-full">
+                                                            <input type="radio" name="drop2" id="id10"
+                                                                class="radio-provincia" />
+    
+                                                            <label for="id10"
+                                                                class="font-regularDisplay text-text18 xl:text-text22 hover:font-bold md:duration-100 hover:text-white provincia">
+                                                                Provincia 4
+                                                            </label>
+                                                        </div>
+    
+                                                        <div class="w-full">
+                                                            <input type="radio" name="drop2" id="id11"
+                                                                class="radio-provincia" />
+    
+                                                            <label for="id11"
+                                                                class="font-regularDisplay text-text18 xl:text-text22 hover:font-bold md:duration-100 hover:text-white provincia">
+                                                                Provincia 5
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+    
+                                        <div class="flex flex-col gap-2 z-[30]">
+                                            <label class="font-moderat_500 text-text12  text-[#565656]">
+                                                Distrito
+                                            </label>
+    
+                                            <div>
+                                                <!-- combo -->
+                                                <div class="dropdown-distrito w-full">
+                                                    <div
+                                                        class="input-box-distrito focus:outline-none font-regularDisplay text-text16 xl:text-text20 mr-20 text-[#6C7275] border-[1.5px] border-gray-200 py-6 px-4">
+                                                        Selecciona un distrito
+                                                    </div>
+                                                    <div
+                                                        class="list-distrito overflow-y-scroll h-[200px] scroll-distrito">
+                                                        <div class="w-full">
+                                                            <input type="radio" name="drop3" id="id12"
+                                                                class="radio-distrito" />
+    
+                                                            <label for="id12"
+                                                                class="font-regularDisplay text-text18 xl:text-text22 hover:font-bold md:duration-100 hover:text-white distrito">
+                                                                Distrito 1
+                                                            </label>
+                                                        </div>
+    
+                                                        <div class="w-full">
+                                                            <input type="radio" name="drop3" id="id13"
+                                                                class="radio-distrito" />
+    
+                                                            <label for="id13"
+                                                                class="font-regularDisplay text-text18 xl:text-text22 hover:font-bold md:duration-100 hover:text-white distrito">
+                                                                Distrito 2
+                                                            </label>
+                                                        </div>
+    
+                                                        <div class="w-full">
+                                                            <input type="radio" name="drop3" id="id14"
+                                                                class="radio-distrito" />
+    
+                                                            <label for="id14"
+                                                                class="font-regularDisplay text-text18 xl:text-text22 hover:font-bold md:duration-100 hover:text-white distrito">
+                                                                Distrito 3
+                                                            </label>
+                                                        </div>
+    
+                                                        <div class="w-full">
+                                                            <input type="radio" name="drop3" id="id15"
+                                                                class="radio-distrito" />
+    
+                                                            <label for="id15"
+                                                                class="font-regularDisplay text-text18 xl:text-text22 hover:font-bold md:duration-100 hover:text-white distrito">
+                                                                Distrito 4
+                                                            </label>
+                                                        </div>
+    
+                                                        <div class="w-full">
+                                                            <input type="radio" name="drop3" id="id16"
+                                                                class="radio-distrito" />
+    
+                                                            <label for="id16"
+                                                                class="font-regularDisplay text-text18 xl:text-text22 hover:font-bold md:duration-100 hover:text-white distrito">
+                                                                Distrito 5
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+    
                                         <div class="flex flex-col gap-2">
                                             <label for="nombre_calle"
-                                                class="font-mediumDisplay text-text12 xl:text-text16 text-[#6C7275]">Avenida
-                                                / Calle / Jirón</label>
+                                                class="font-moderat_500 text-text12  text-[#565656]">Avenida / Calle /
+                                                Jirón</label>
+    
                                             <input id="nombre_calle" type="text"
                                                 placeholder="Ingresa el nombre de la calle"
-                                                class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-regularDisplay text-text16 xl:text-text20 border-[1.5px] border-gray-200 rounded-xl" />
+                                                class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-moderat_400 text-text16 xl:text-text18 border-[1.5px] border-gray-200 text-[#565656]" />
                                         </div>
                                     </div>
                                     <div>
                                         <div class="flex flex-col md:flex-row gap-5">
                                             <div class="basis-1/2 flex flex-col gap-2">
                                                 <label for="numero_calle"
-                                                    class="font-mediumDisplay text-text12 xl:text-text16 text-[#6C7275]">Número</label>
+                                                    class="font-moderat_500 text-text12  text-[#565656]">Número
+                                                </label>
+    
                                                 <input id="numero_calle" type="text"
-                                                    placeholder="Ingresa el número de la callle"
-                                                    class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-regularDisplay text-text16 xl:text-text20 border-[1.5px] border-gray-200 rounded-xl" />
+                                                    placeholder="Ingresa el número de la calle"
+                                                    class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-moderat_400 text-text16 xl:text-text18 border-[1.5px] border-gray-200 text-[#565656]" />
                                             </div>
-
+    
                                             <div class="basis-1/2 flex flex-col gap-2">
                                                 <label for="direccion"
-                                                    class="font-mediumDisplay text-text12 xl:text-text16 text-[#6C7275]">Dpto./
+                                                    class="font-moderat_500 text-text12  text-[#565656]">Dpto./
                                                     Interior/ Piso/ Lote/ Bloque
                                                     (opcional)</label>
-                                                <input id="direccion" type="text" placeholder="Ejem. Casa 3, Dpto 101"
-                                                    class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-regularDisplay text-text16 xl:text-text20 border-[1.5px] border-gray-200 rounded-xl" />
+    
+                                                <input id="direccion" type="text"
+                                                    placeholder="Ejem. Casa 3, Dpto 101"
+                                                    class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-moderat_400 text-text16 xl:text-text18 border-[1.5px] border-gray-200 text-[#565656]" />
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="flex flex-col md:flex-row gap-5 w-full">
-                                    <input type="submit" value="Guardar cambios"
-                                        class="text-white bg-bgBlack py-3 rounded-2xl cursor-pointer border-2 font-boldDisplay text-text16 xl:text-text20 text-center border-none inline-block w-full" />
-
-                                    <a href="#"
-                                        class="modal__close-mostrar text-[#151515] py-3 rounded-2xl cursor-pointer font-boldDisplay text-text16 xl:text-text20 text-center inline-block border-[1px] border-[#151515] w-full">Cancelar</a>
-                                </div>
-                            </div>
-                        </div>
+                            </div></div>
+                        
                     </div>
 
 
-                </label>
+                </div>
+            </div>
+    </main>
 
-            </label>
 
 
-        </div>
+    {{-- modal editar --}}
 
-    </div>
+
+
+
+
+
 
 
 
@@ -333,12 +465,30 @@
 
 @section('scripts_importados')
     <script>
+        const body = document.body;
+        const openModalBtn = document.querySelectorAll(".open-modal-btn");
+        const closeModalBtn = document.querySelector(".close-modal-btn");
+        const modalWrapper = document.querySelector(".modal-wrapper");
+
+        openModalBtn.forEach(openModal => {
+            openModal.addEventListener("click", (e) => {
+                /* body.classList.add('overflow-hidden'); */
+                modalWrapper.classList.remove('hidden');
+            })
+        });
+
+        closeModalBtn.addEventListener("click", (e) => {
+            /* body.classList.remove('overflow-hidden'); */
+            modalWrapper.classList.add('hidden');
+        })
+    </script>
+
+    <script>
         /* departamento */
         var input = document.querySelector(".input-box");
-        
+
         input.onclick = function() {
-            console.log(input)
-       /*      console.log(this) */
+            console.log("click");
             this.classList.toggle("open");
             let list = this.nextElementSibling;
             if (list.style.maxHeight) {
@@ -363,11 +513,8 @@
         /* provincia */
 
         var inputProvincia = document.querySelector(".input-box-provincia");
-        
         inputProvincia.onclick = function() {
-            console.log(inputProvincia)
-        /*     console.log(this) */
-            inputProvincia.classList.toggle("open-provincia");
+            this.classList.toggle("open-provincia");
             let listProvincia = this.nextElementSibling;
             if (listProvincia.style.maxHeight) {
                 listProvincia.style.maxHeight = null;
@@ -389,10 +536,28 @@
 
         /* distrito */
 
-        
-       
-    </script>
+        var inputDistrito = document.querySelector(".input-box-distrito");
+        inputDistrito.onclick = function() {
+            this.classList.toggle("open-distrito");
+            let listDistrito = this.nextElementSibling;
+            if (listDistrito.style.maxHeight) {
+                listDistrito.style.maxHeight = null;
+                listDistrito.style.boxShadow = null;
+            } else {
+                listDistrito.style.maxHeight = listDistrito.scrollHeight + "px";
+                listDistrito.style.boxShadow =
+                    "0 1px 2px 0 rgba(0, 0, 0, 0.15),0 1px 3px 1px rgba(0, 0, 0, 0.1)";
+            }
+        };
 
+        var radDistrito = document.querySelectorAll(".radio-distrito");
+        radDistrito.forEach((item) => {
+            item.addEventListener("change", () => {
+                inputDistrito.innerHTML = item.nextElementSibling.innerHTML;
+                inputDistrito.click();
+            });
+        });
+    </script>
 @stop
 
 @stop
