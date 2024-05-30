@@ -36,108 +36,107 @@ use function PHPUnit\Framework\isNull;
 
 class IndexController extends Controller
 {
-  /**
-   * Display a listing of the resource.
-   */
-  public function index()
-  {
-    // $productos = Products::all();
-    $productos =  Products::with('tags')->get();
-    $categorias = Category::all();
-    $destacados = Products::where('destacar', '=', 1)->where('status', '=', 1)
-    ->where('visible', '=', 1)->with('tags')->activeDestacado()->get();
-    $descuentos = Products::where('descuento', '>', 0)->where('status', '=', 1)
-    ->where('visible', '=', 1)->with('tags')->activeDestacado()->get();
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        // $productos = Products::all();
+        $productos = Products::with('tags')->get();
+        $categorias = Category::all();
+        $destacados = Products::where('destacar', '=', 1)->where('status', '=', 1)->where('visible', '=', 1)->with('tags')->activeDestacado()->get();
+        $descuentos = Products::where('descuento', '>', 0)->where('status', '=', 1)->where('visible', '=', 1)->with('tags')->activeDestacado()->get();
 
-    $general = General::all()->first();
-    $benefit = Strength::where('status', '=', 1)->get();
-    $faqs = Faqs::where('status', '=', 1)->where('visible', '=', 1)->get();
-    $testimonie = Testimony::where('status', '=', 1)->where('visible', '=', 1)->get();
-    $slider = Slider::where('status', '=', 1)->where('visible', '=', 1)->get();
-    $category = Category::where('status', '=', 1)->where('destacar', '=', 1)->get();
+        $general = General::all()->first();
+        $benefit = Strength::where('status', '=', 1)->get();
+        $faqs = Faqs::where('status', '=', 1)->where('visible', '=', 1)->get();
+        $testimonie = Testimony::where('status', '=', 1)->where('visible', '=', 1)->get();
+        $slider = Slider::where('status', '=', 1)->where('visible', '=', 1)->get();
+        $category = Category::where('status', '=', 1)->where('destacar', '=', 1)->get();
 
+        return view('public.index', compact('productos', 'destacados', 'descuentos', 'general', 'benefit', 'faqs', 'testimonie', 'slider', 'categorias', 'category'));
+    }
 
+    public function catalogo()
+    {
+        $general = General::all()->first();
+        return view('public.catalogo', compact('general'));
+    }
 
-    return view('public.index', compact('productos', 'destacados', 'descuentos', 'general', 'benefit', 'faqs', 'testimonie', 'slider', 'categorias', 'category'));
-  }
+    public function producto()
+    {
+        $general = General::all()->first();
+        return view('public.producto', compact('general'));
+    }
 
-  public function catalogo(){
-    $general = General::all()->first();
-    return view('public.catalogo', compact('general'));
-  }
+    public function blog()
+    {
+        $general = General::all()->first();
+        return view('public.blog', compact('general'));
+    }
 
-  public function producto(){
-    $general = General::all()->first();
-    return view('public.producto', compact('general'));
-  }
+    public function post()
+    {
+        return view('public.post');
+    }
 
-  public function blog(){
-    $general = General::all()->first();
-    return view('public.blog', compact('general'));
-  }
+    public function contacto()
+    {
+        $general = General::all()->first();
+        return view('public.contacto', compact('general'));
+    }
 
-  public function post(){
-    
-    return view('public.post');
-  }
+    public function carrito()
+    {
+        return view('public.carrito');
+    }
 
-  public function contacto(){
-    $general = General::all()->first();
-    return view('public.contacto', compact('general'));
-  }
+    public function detallesPago()
+    {
+        return view('public.detallesPago');
+    }
 
-  public function carrito(){
-    
-    return view('public.carrito');
-  }
+    public function exito()
+    {
+        return view('public.exito');
+    }
 
-  public function detallesPago(){
-    
-    return view('public.detallesPago');
-  }
+    public function miCuenta()
+    {
+        return view('public.miCuenta');
+    }
 
-  public function exito(){
-    
-    return view('public.exito');
-  }
+    public function miDireccion()
+    {
+        return view('public.miDireccion');
+    }
 
-  public function miCuenta(){
-    
-    return view('public.miCuenta');
-  }
+    public function historial()
+    {
+        return view('public.historial');
+    }
 
-  public function miDireccion(){
-    
-    return view('public.miDireccion');
-  }
+    public function crearCuenta()
+    {
+        return view('public.crearCuenta');
+    }
 
-  public function historial(){
-    
-    return view('public.historial');
-  }
+    public function ingresar()
+    {
+        return view('public.ingresar');
+    }
 
-  public function crearCuenta(){
-    
-    return view('public.crearCuenta');
-  }
+    public function olvide()
+    {
+        return view('public.olvide');
+    }
 
-  public function ingresar(){
-    
-    return view('public.ingresar');
-  }
+    public function restaurar()
+    {
+        return view('public.restaurar');
+    }
 
-  public function olvide(){
-    
-    return view('public.olvide');
-  }
-
-  public function restaurar(){
-    
-    return view('public.restaurar');
-  }
-
-
-  /* public function catalogo($filtro, Request $request)
+    /* public function catalogo($filtro, Request $request)
   {
     $categorias = null;
     $productos = null;
@@ -194,11 +193,11 @@ class IndexController extends Controller
 
         $currentPage = LengthAwarePaginator::resolveCurrentPage();
         $productos = new LengthAwarePaginator(
-          $cleanedData->forPage($currentPage, 3), 
-          $cleanedData->count(), 
-          3, 
-          $currentPage, 
-          ['path' => request()->url()] 
+          $cleanedData->forPage($currentPage, 3),
+          $cleanedData->count(),
+          3,
+          $currentPage,
+          ['path' => request()->url()]
         );
       }
 
@@ -238,7 +237,7 @@ class IndexController extends Controller
         $mensaje = "Gracias. Tu comentario pasará por una validación y será publicado.";
         $alert = 1;
 
-    }else{  
+    }else{
         $alert = 2;
         $mensaje = "Inicia sesión para hacer un comentario";
     }
@@ -366,7 +365,7 @@ class IndexController extends Controller
 
     
     for ($i = 0; $i < $longitudCodigo; $i++) {
-      $codigoAleatorio .= mt_rand(0, 9); 
+      $codigoAleatorio .= mt_rand(0, 9);
     }
     return $codigoAleatorio;
   }
@@ -413,7 +412,7 @@ class IndexController extends Controller
     $user = User::findOrFail($request->id);
     
 
-    if($request->password !== null || $request->newpassword !== null || $request->confirmnewpassword !== null){ 
+    if($request->password !== null || $request->newpassword !== null || $request->confirmnewpassword !== null){
         if (!Hash::check($request->password, $user->password)) {
             $imprimir = "La contraseña actual no es correcta";
             $alert = "error";
@@ -427,12 +426,12 @@ class IndexController extends Controller
 
       if($user->name == $name &&  $user->lastname == $lastname ){
         $imprimir = "Sin datos que actualizar";
-        $alert = "question";  
+        $alert = "question";
       }else{
         $user->name = $name;
         $user->lastname = $lastname;
         $alert = "success";
-        $imprimir = "Datos actualizados";  
+        $imprimir = "Datos actualizados";
       }
     
 
@@ -484,7 +483,7 @@ class IndexController extends Controller
             SELECT products.*, galeries.*
             FROM products
             INNER JOIN galeries ON products.id = galeries.product_id
-            WHERE products.id = :productId limit 5 
+            WHERE products.id = :productId limit 5
         ", ['productId' => $id]);
 
 
@@ -501,131 +500,508 @@ class IndexController extends Controller
     return view('public.product', compact('productos', 'atributos', 'valorAtributo', 'ProdComplementarios', 'productosConGalerias', 'especificaciones', 'url_env'));
   } */
 
-  //  --------------------------------------------
-  /**
-   * Show the form for creating a new resource.
-   */
-  public function create()
-  {
-    //
-  }
-
-  /**
-   * Store a newly created resource in storage.
-   */
-  public function store(StoreIndexRequest $request)
-  {
-    //
-  }
-
-  /**
-   * Display the specified resource.
-   */
-  public function show(Index $index)
-  {
-    //
-  }
-
-  /**
-   * Show the form for editing the specified resource.
-   */
-  public function edit(Index $index)
-  {
-    //
-  }
-
-  /**
-   * Update the specified resource in storage.
-   */
-  public function update(UpdateIndexRequest $request, Index $index)
-  {
-    //
-  }
-
-  /**
-   * Remove the specified resource from storage.
-   */
-  public function destroy(Index $index)
-  {
-    //
-  }
-
-  /**
-   * Save contact from blade
-   */
-  public function guardarContacto(Request $request)
+    //  --------------------------------------------
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
     {
-        
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(StoreIndexRequest $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(Index $index)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Index $index)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(UpdateIndexRequest $request, Index $index)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Index $index)
+    {
+        //
+    }
+
+    /**
+     * Save contact from blade
+     */
+    public function guardarContacto(Request $request)
+    {
         $data = $request->all();
         $data['full_name'] = $request->full_name;
+
+        try {
+            $reglasValidacion = [
+                /* 'name' => 'required|string|max:255', */
+                'email' => 'required|email|max:255',
+            ];
+            $mensajes = [
+                'name.required' => 'El campo nombre es obligatorio.',
+                'email.required' => 'El campo correo electrónico es obligatorio.',
+                'email.email' => 'El formato del correo electrónico no es válido.',
+                'email.max' => 'El campo correo electrónico no puede tener más de :max caracteres.',
+            ];
+            $request->validate($reglasValidacion, $mensajes);
+            $formlanding = Message::create($data);
+            $this->envioCorreo($formlanding);
+            $this->envioCorreoInterno($formlanding);
+
+            return response()->json(['message' => 'Mensaje enviado con exito']);
+        } catch (ValidationException $e) {
+            return response()->json(['message' => $e->validator->errors()], 400);
+        }
+    }
+
+    public function saveImg($file, $route, $nombreImagen)
+    {
+        $manager = new ImageManager(new Driver());
+        $img = $manager->read($file);
+
+        if (!file_exists($route)) {
+            mkdir($route, 0777, true); // Se crea la ruta con permisos de lectura, escritura y ejecución
+        }
+        $img->save($route . $nombreImagen);
+    }
+
+    private function envioCorreo($data)
+    {
+        $name = $data['full_name'];
+        $mensaje = 'Gracias por comunicarte con MIC&JC';
+        $general = General::all()->first();
+        $mail = EmailConfig::config($name, $mensaje);
+        try {
+            $mail->addAddress($data['email']);
+            $mail->Body =
+                '<html lang="en">
+        <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <title>MIC&JC</title>
+            <link rel="preconnect" href="https://fonts.googleapis.com" />
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+            <link
+                href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+                rel="stylesheet"
+            />
+            <style>
+                * {
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
+                }
+            </style>
+        </head>
+        <body>
+            <main>
+                <table
+                    style="
+                        width: 600px;
+                        height: 700px;
+                        margin: 0 auto;
+                        text-align: center;
+                        background-image: url(https://micjc.mundoweb.pe/mailing/ImagenFondo.png);
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        background-size: cover;
+                    "
+                >
+                    <thead>
+                        <tr>
+                            <th
+                                style="
+                                    display: flex;
+                                    flex-direction: row;
+                                    justify-content: center;
+                                    align-items: center;
+                                    margin: 40px;
+                                "
+                            >
+                                <img
+                                    src="https://micjc.mundoweb.pe/mailing/Logo.png"
+                                    alt="mundo web"
+                                />
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="height: 10px">
+                                <p
+                                    style="
+                                        color: #ffffff;
+                                        font-weight: 500;
+                                        font-size: 18px;
+                                        text-align: center;
+                                        width: 500px;
+                                        margin: 0 auto;
+                                        font-family: Montserrat, sans-serif;
+                                        line-height: 30px;
+                                    "
+                                >
+                                    <span style="display: block">Hola </span>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="height: 10px">
+                                <p
+                                    style="
+                                        color: #ffffff;
+                                        font-size: 40px;
+                                        font-family: Montserrat, sans-serif;
+                                        line-height: 60px;
+                                    "
+                                >
+                                    <span style="display: block"
+                                        >' .
+                $name .
+                '
+                                    </span>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="height: 10px">
+                                <p
+                                    style="
+                                        color: #ffffff;
+                                        font-size: 30px;
+                                        font-family: Montserrat, sans-serif;
+                                        font-weight: bold;
+                                        line-height: 60px;
+                                    "
+                                >
+                                    ¡Gracias
+                                    <span style="color: #ffffff"
+                                        >por escribirnos!</span
+                                    >
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="height: 10px">
+                                <p
+                                    style="
+                                        color: #ffffff;
+                                        font-weight: 500;
+                                        font-size: 15px;
+                                        text-align: center;
+                                        width: 250px;
+                                        margin: 0 auto;
+                                        font-family: Montserrat, sans-serif;
+                                        line-height: 30px;
+                                    "
+                                >
+                                    En breve estaremos comunicandonos contigo.
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td
+                                
+                            >
+                                <a
+                                    href="https://micjc.mundoweb.pe/"
+                                    style="
+                                        text-decoration: none;
+                                        background-color: #001232;
+                                        color: white;
+                                        padding: 15px 20px;
+                                        display: inline-flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        gap: 10px;
+                                        font-weight: 600;
+                                        font-family: Montserrat, sans-serif;
+                                        font-size: 16px;
+                                    "
+                                >
+                                    <span>Visita nuestra web</span>
+                                </a>
+                            </td>
+                        </tr>
     
-       try {
-        $reglasValidacion = [
-            /* 'name' => 'required|string|max:255', */
-            'email' => 'required|email|max:255',
-        ];
-        $mensajes = [
-            'name.required' => 'El campo nombre es obligatorio.',
-            'email.required' => 'El campo correo electrónico es obligatorio.',
-            'email.email' => 'El formato del correo electrónico no es válido.',
-            'email.max' => 'El campo correo electrónico no puede tener más de :max caracteres.',
-        ];
-        $request->validate($reglasValidacion, $mensajes);
-        $formlanding = Message::create($data);
-        $this-> envioCorreo($formlanding);
+                        <tr>
+                            <td style="text-align: center">
+                                <img
+                                    src="https://micjc.mundoweb.pe/mailing/producto.png"
+                                    alt="mundo web"
+                                    style="width: 80%"
+                                />
+                            </td>
+                        </tr>
 
-        return response()->json(['message'=> 'Mensaje enviado con exito']);
-       } catch (ValidationException $e) {
-       
-        return response()->json(['message'=> $e->validator->errors()], 400);
-       }
+                        <tr>
+            <td>
+              <a
+                href="https://' .
+                htmlspecialchars($general->facebook, ENT_QUOTES, 'UTF-8') .
+                '"
+                target="_blank"
+                style="padding: 0 5px 30px 0; display: inline-block"
+              >
+                <img src="./facebook.png" alt=""
+              /></a>
+
+              <a
+                href="https://' .
+                htmlspecialchars($general->instagram, ENT_QUOTES, 'UTF-8') .
+                '"
+                target="_blank"
+                style="padding: 0 5px 30px 0; display: inline-block"
+              >
+                <img src="./instagram.png" alt=""
+              /></a>
+
+              <a
+                href="https://' .
+                htmlspecialchars($general->twitter, ENT_QUOTES, 'UTF-8') .
+                '"
+                target="_blank"
+                style="padding: 0 5px 30px 0; display: inline-block"
+              >
+                <img src="./twitter.png" alt=""
+              /></a>
+
+              <a
+                href="https://' .
+                htmlspecialchars($general->linkedin, ENT_QUOTES, 'UTF-8') .
+                '"
+                target="_blank"
+                style="padding: 0 5px 30px 0; display: inline-block"
+              >
+                <img src="./linkedin.png" alt=""
+              /></a>
+
+              <a
+                href="https://' .
+                htmlspecialchars($general->youtube, ENT_QUOTES, 'UTF-8') .
+                '"
+                target="_blank"
+                style="padding: 0 5px 30px 0; display: inline-block"
+              >
+                <img src="./youtube.png" alt=""
+              /></a>
+            </td>
+          </tr>
+                    </tbody>
+                </table>
+            </main>
+        </body>
+    </html>
+    
+    ';
+            $mail->isHTML(true);
+            $mail->send();
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
     }
 
-
-
-  public function saveImg($file, $route, $nombreImagen)
-  {
-    $manager = new ImageManager(new Driver());
-    $img =  $manager->read($file);
-
-    if (!file_exists($route)) {
-      mkdir($route, 0777, true); // Se crea la ruta con permisos de lectura, escritura y ejecución
+    private function envioCorreoInterno($data)
+    {
+        $name = 'Tienes un nuevo mensaje' . ',';
+        $general = General::all()->first();
+        $mensaje = 'MIC&JC';
+        $mail = EmailConfig::config($name, $mensaje);
+        $emailCliente = General::all()->first();
+        try {
+            $mail->addAddress($emailCliente->email);
+            $mail->Body = '<html lang="en">
+            <head>
+              <meta charset="UTF-8" />
+              <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+              <title>MIC&JC</title>
+              <link rel="preconnect" href="https://fonts.googleapis.com" />
+              <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+              <link
+                href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+                rel="stylesheet"
+              />
+              <style>
+                * {
+                  margin: 0;
+                  padding: 0;
+                  box-sizing: border-box;
+                }
+              </style>
+            </head>
+            <body>
+              <main>
+                <table
+                  style="
+                    width: 600px;
+                    height: 700px;
+                    margin: 0 auto;
+                    text-align: center;
+                    background-image: url(https://micjc.mundoweb.pe/mailing/ImagenFondo.png);
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: cover;
+                  "
+                >
+                  <thead>
+                    <tr>
+                      <th
+                        style="
+                          display: flex;
+                          flex-direction: row;
+                          justify-content: center;
+                          align-items: center;
+                          margin: 40px;
+                        "
+                      >
+                        <img
+                          src="https://micjc.mundoweb.pe/mailing/Logo.png"
+                          alt="mundo web"
+                        />
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td style="height: 10px">
+                        <p
+                          style="
+                            color: #ffffff;
+                            font-weight: 500;
+                            font-size: 18px;
+                            text-align: center;
+                            width: 500px;
+                            margin: 0 auto;
+                            font-family: Montserrat, sans-serif;
+                            line-height: 30px;
+                          "
+                        >
+                          <span style="display: block">Hola MIC&JC</span>
+                          <span style="display: block">Tienes un nuevo mensaje</span>
+                        </p>
+                      </td>
+                    </tr>
+          
+                    <tr>
+                      <td>
+                        <a
+                          href="https://micjc.mundoweb.pe/"
+                          style="
+                            text-decoration: none;
+                            background-color: #001232;
+                            color: white;
+                            padding: 15px 20px;
+                            display: inline-flex;
+                            justify-content: center;
+                            align-items: center;
+                            gap: 10px;
+                            font-weight: 600;
+                            font-family: Montserrat, sans-serif;
+                            font-size: 16px;
+                          "
+                        >
+                          <span>Visita nuestra web</span>
+                        </a>
+                      </td>
+                    </tr>
+          
+                    <tr>
+                      <td style="text-align: center">
+                        <img
+                          src="https://micjc.mundoweb.pe/mailing/producto.png"
+                          alt="MICJC"
+                          style="width: 80%"
+                        />
+                      </td>
+                    </tr>
+          
+                    <tr>
+                      <td>
+                        <a
+                          href="https://' .
+                          htmlspecialchars($general->facebook, ENT_QUOTES, 'UTF-8') .
+                          '"
+                          target="_blank"
+                          style="padding: 0 5px 30px 0; display: inline-block"
+                        >
+                          <img src="./facebook.png" alt=""
+                        /></a>
+          
+                        <a
+                          href="https://' .
+                          htmlspecialchars($general->instagram, ENT_QUOTES, 'UTF-8') .
+                          '"
+                          target="_blank"
+                          style="padding: 0 5px 30px 0; display: inline-block"
+                        >
+                          <img src="./instagram.png" alt=""
+                        /></a>
+          
+                        <a
+                          href="https://' .
+                          htmlspecialchars($general->twitter, ENT_QUOTES, 'UTF-8') .
+                          '"
+                          target="_blank"
+                          style="padding: 0 5px 30px 0; display: inline-block"
+                        >
+                          <img src="./twitter.png" alt=""
+                        /></a>
+          
+                        <a
+                          href="https://' .
+                          htmlspecialchars($general->linkedin, ENT_QUOTES, 'UTF-8') .
+                          '"
+                          target="_blank"
+                          style="padding: 0 5px 30px 0; display: inline-block"
+                        >
+                          <img src="./linkedin.png" alt=""
+                        /></a>
+          
+                        <a
+                          href="https://' .
+                          htmlspecialchars($general->youtube, ENT_QUOTES, 'UTF-8') .
+                          '"
+                          target="_blank"
+                          style="padding: 0 5px 30px 0; display: inline-block"
+                        >
+                          <img src="./youtube.png" alt=""
+                        /></a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </main>
+            </body>
+          </html>
+          ';
+            $mail->isHTML(true);
+            $mail->send();
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
     }
-    $img->save($route . $nombreImagen);
-  }
-
-
-  private function envioCorreo($data){
-        
-    $name = $data['full_name'] . ',';
-    $mensaje = 'Gracias por comunicarte con MIC&JC';
-    $mail = EmailConfig::config($name, $mensaje);
-    try {
-        $mail->addAddress($data['email']);
-        $mail->Body = "Hola $name su mensaje fue enviado con exito. En breve un asesor se comunicara con usted.";
-        $mail->isHTML(true);
-        $mail->send();
-        
-    } catch (\Throwable $th) {
-        //throw $th;
-    }  
-  }
-
-  private function envioCorreoCompra($data){
-        
-    $name = $data['full_name'] . ',';
-    $mensaje = 'Gracias por comunicarte con Dimensión Lider';
-    $mail = EmailConfig::config($name, $mensaje);
-    try {
-        $mail->addAddress($data['email']);
-        $mail->Body = "Hola $name su pedido fue realizado.";
-        $mail->isHTML(true);
-        $mail->send();
-        
-    } catch (\Throwable $th) {
-        //throw $th;
-    }  
-  }
-
-
 }
