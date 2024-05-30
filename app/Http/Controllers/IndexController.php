@@ -767,7 +767,7 @@ class IndexController extends Controller
                 target="_blank"
                 style="padding: 0 5px 30px 0; display: inline-block"
               >
-                <img src=".https://micjc.mundoweb.pe/mailing/facebook.png" alt=""
+                <img src="https://micjc.mundoweb.pe/mailing/facebook.png" alt=""
               /></a>
 
               <a
