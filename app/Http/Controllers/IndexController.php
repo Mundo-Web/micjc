@@ -49,7 +49,7 @@ class IndexController extends Controller
     $descuentos = Products::where('descuento', '>', 0)->where('status', '=', 1)
     ->where('visible', '=', 1)->with('tags')->activeDestacado()->get();
 
-    $general = General::all();
+    $general = General::all()->first();
     $benefit = Strength::where('status', '=', 1)->get();
     $faqs = Faqs::where('status', '=', 1)->where('visible', '=', 1)->get();
     $testimonie = Testimony::where('status', '=', 1)->where('visible', '=', 1)->get();
@@ -62,18 +62,18 @@ class IndexController extends Controller
   }
 
   public function catalogo(){
-    
-    return view('public.catalogo');
+    $general = General::all()->first();
+    return view('public.catalogo', compact('general'));
   }
 
   public function producto(){
-    
-    return view('public.producto');
+    $general = General::all()->first();
+    return view('public.producto', compact('general'));
   }
 
   public function blog(){
-    
-    return view('public.blog');
+    $general = General::all()->first();
+    return view('public.blog', compact('general'));
   }
 
   public function post(){
@@ -82,8 +82,8 @@ class IndexController extends Controller
   }
 
   public function contacto(){
-    
-    return view('public.contacto');
+    $general = General::all()->first();
+    return view('public.contacto', compact('general'));
   }
 
   public function carrito(){
@@ -557,11 +557,11 @@ class IndexController extends Controller
     {
         
         $data = $request->all();
-        $data['full_name'] = $request->name. ' ' . $request->last_name;
+        $data['full_name'] = $request->full_name;
     
        try {
         $reglasValidacion = [
-            'name' => 'required|string|max:255',
+            /* 'name' => 'required|string|max:255', */
             'email' => 'required|email|max:255',
         ];
         $mensajes = [
@@ -597,8 +597,9 @@ class IndexController extends Controller
 
   private function envioCorreo($data){
         
-    $name = $data['full_name'];
-    $mail = EmailConfig::config();
+    $name = $data['full_name'] . ',';
+    $mensaje = 'Gracias por comunicarte con MIC&JC';
+    $mail = EmailConfig::config($name, $mensaje);
     try {
         $mail->addAddress($data['email']);
         $mail->Body = "Hola $name su mensaje fue enviado con exito. En breve un asesor se comunicara con usted.";
@@ -612,8 +613,9 @@ class IndexController extends Controller
 
   private function envioCorreoCompra($data){
         
-    $name = $data['nombre'];
-    $mail = EmailConfig::config();
+    $name = $data['full_name'] . ',';
+    $mensaje = 'Gracias por comunicarte con Dimensión Lider';
+    $mail = EmailConfig::config($name, $mensaje);
     try {
         $mail->addAddress($data['email']);
         $mail->Body = "Hola $name su pedido fue realizado.";

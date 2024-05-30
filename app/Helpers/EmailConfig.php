@@ -6,7 +6,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 
 class EmailConfig
 {
-    static  function config(): PHPMailer
+    static  function config($name, $mensaje): PHPMailer
     {
         $mail = new PHPMailer(true);
         // $mail->SMTPDebug = SMTP::DEBUG_SERVER;
@@ -14,12 +14,12 @@ class EmailConfig
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
         $mail->Username = 'hola@mundoweb.pe';
-        $mail->Password = 'rzhfwaxrddnppppr';
+        $mail->Password = 'uohombtocndviqyz';
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mail->Port = 465;
-        $mail->Subject = 'Notificación de informacion Recibida';
+        $mail->Subject = '' . $name . ' '.$mensaje. '';
         $mail->CharSet = 'UTF-8';
-        $mail->setFrom('info@decotab.com', 'Decotab');
+        $mail->setFrom('hola@mundoweb.pe', 'MIC&JC');
         return $mail;
     }
 }

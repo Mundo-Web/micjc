@@ -74,6 +74,11 @@ Route::get('/ingresar', [IndexController::class, 'ingresar'] )->name('ingresar')
 Route::get('/olvide', [IndexController::class, 'olvide'] )->name('olvide');
 Route::get('/restaurar', [IndexController::class, 'restaurar'] )->name('restaurar');
 
+Route::post('guardarContactos', [IndexController::class, 'guardarContacto'] )->name('guardarContactos'); 
+
+
+
+
 /*  */
 /* Route::get('/nosotros', [IndexController::class, 'nosotros'] )->name('nosotros');
 Route::get('/servicios', [IndexController::class, 'servicios'] )->name('servicios');

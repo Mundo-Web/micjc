@@ -7,11 +7,15 @@
             </div>
             <div class="flex justify-center items-center gap-2">
                 <div class="flex justify-center items-center gap-2">
-                  <a href="#"><img src="{{ asset('images/svg/image_1.svg') }}" alt="facebook" class="cursor-pointer"></a>
-                    <a href="#"><img src="{{ asset('images/svg/image_2.svg') }}" alt="instagram" class="cursor-pointer"></a>
-                    
+                  @if ($general->facebook != null)
+                  <a target="_blank" href="https://{{ $general->facebook }}"><img src="{{ asset('images/svg/image_1.svg') }}" alt="facebook" class="cursor-pointer"></a>
+                  @endif
+
+                  @if ($general->instagram != null)
+                  <a target="_blank" href="https://{{ $general->instagram }}"><img src="{{ asset('images/svg/image_2.svg') }}" alt="instagram" class="cursor-pointer"></a>
+                  @endif
                 </div>
-                <p class="font-moderat_500 text-text12 md:text-text14">MIC&JC</p>
+                <a href="{{route('index')}}" class="font-moderat_Regular text-text12 md:text-text14">Mic&JC</a>
             </div>
         </div>
     </div>
@@ -57,7 +61,7 @@
 
     <div class="flex justify-end w-11/12 mx-auto z-10">
         <div class="fixed bottom-6 sm:bottom-[2rem] lg:bottom-[4rem] z-20">
-            <a target="_blank" href="https://api.whatsapp.com/send?phone=9999&text='texto'" rel="noopener">
+            <a target="_blank" href="https://api.whatsapp.com/send?phone={{$general->whatsapp}}&text={{$general->mensaje_whatsapp}}" rel="noopener">
                 <img src="{{ asset('images/svg/image_11.svg') }}" alt="whatsapp" class="w-20 h-20 md:w-full md:h-full">
             </a>
         </div>
