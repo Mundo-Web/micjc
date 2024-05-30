@@ -767,7 +767,7 @@ class IndexController extends Controller
                 target="_blank"
                 style="padding: 0 5px 30px 0; display: inline-block"
               >
-                <img src="./facebook.png" alt=""
+                <img src=".https://micjc.mundoweb.pe/mailing/facebook.png" alt=""
               /></a>
 
               <a
@@ -777,7 +777,7 @@ class IndexController extends Controller
                 target="_blank"
                 style="padding: 0 5px 30px 0; display: inline-block"
               >
-                <img src="./instagram.png" alt=""
+                <img src="https://micjc.mundoweb.pe/mailing/instagram.png" alt=""
               /></a>
 
               <a
@@ -787,7 +787,7 @@ class IndexController extends Controller
                 target="_blank"
                 style="padding: 0 5px 30px 0; display: inline-block"
               >
-                <img src="./twitter.png" alt=""
+                <img src="https://micjc.mundoweb.pe/mailing/twitter.png" alt=""
               /></a>
 
               <a
@@ -797,7 +797,7 @@ class IndexController extends Controller
                 target="_blank"
                 style="padding: 0 5px 30px 0; display: inline-block"
               >
-                <img src="./linkedin.png" alt=""
+                <img src="https://micjc.mundoweb.pe/mailing/linkedin.png" alt=""
               /></a>
 
               <a
@@ -807,7 +807,7 @@ class IndexController extends Controller
                 target="_blank"
                 style="padding: 0 5px 30px 0; display: inline-block"
               >
-                <img src="./youtube.png" alt=""
+                <img src="https://micjc.mundoweb.pe/mailing/youtube.png" alt=""
               /></a>
             </td>
           </tr>
@@ -948,7 +948,7 @@ class IndexController extends Controller
                           target="_blank"
                           style="padding: 0 5px 30px 0; display: inline-block"
                         >
-                          <img src="./facebook.png" alt=""
+                          <img src="https://micjc.mundoweb.pe/mailing/facebook.png" alt=""
                         /></a>
           
                         <a
@@ -958,7 +958,7 @@ class IndexController extends Controller
                           target="_blank"
                           style="padding: 0 5px 30px 0; display: inline-block"
                         >
-                          <img src="./instagram.png" alt=""
+                          <img src="https://micjc.mundoweb.pe/mailing/instagram.png" alt=""
                         /></a>
           
                         <a
@@ -968,7 +968,7 @@ class IndexController extends Controller
                           target="_blank"
                           style="padding: 0 5px 30px 0; display: inline-block"
                         >
-                          <img src="./twitter.png" alt=""
+                          <img src="https://micjc.mundoweb.pe/mailing/twitter.png" alt=""
                         /></a>
           
                         <a
@@ -978,7 +978,7 @@ class IndexController extends Controller
                           target="_blank"
                           style="padding: 0 5px 30px 0; display: inline-block"
                         >
-                          <img src="./linkedin.png" alt=""
+                          <img src="https://micjc.mundoweb.pe/mailing/linkedin.png" alt=""
                         /></a>
           
                         <a
@@ -988,7 +988,7 @@ class IndexController extends Controller
                           target="_blank"
                           style="padding: 0 5px 30px 0; display: inline-block"
                         >
-                          <img src="./youtube.png" alt=""
+                          <img src="https://micjc.mundoweb.pe/mailing/youtube.png" alt=""
                         /></a>
                       </td>
                     </tr>
