@@ -36,7 +36,7 @@
 
 
 
-                  <td>{{ $logo->url_image }}</td>
+                  <td><img src="{{ asset($logo->url_image) }}" alt=""></td>
                   <td>
                     <form action=" " method="POST">
                       @csrf

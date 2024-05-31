@@ -18,7 +18,7 @@ class LogosClientController extends Controller
      */
     public function index()
     {
-        $logos = ClientLogos::where("status", "=", true)->get();
+        $logos = ClientLogos::where('status', '=', true)->get();
         return view('pages.logos.index', compact('logos'));
     }
 
@@ -27,70 +27,47 @@ class LogosClientController extends Controller
      */
     public function create()
     {
-        
-       
         return view('pages.logos.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
+
+    public function saveImg($file, $route, $nombreImagen)
+    {
+        $manager = new ImageManager(new Driver());
+        $img = $manager->read($file);
+        $img->coverDown(160, 40, 'center'); /* recorte de imageness ->avisar */
+
+        if (!file_exists($route)) {
+            mkdir($route, 0777, true); // Se crea la ruta con permisos de lectura, escritura y ejecución
+        }
+
+        $img->save($route . $nombreImagen);
+    }
+
     public function store(Request $request)
     {
         $request->validate([
-            'title'=>'required',
+            'title' => 'required',
         ]);
 
         $post = new ClientLogos();
 
-        if($request->hasFile("imagen")){
-           
-            $manager = new ImageManager(new Driver());
-            
-            $nombreImagen = Str::random(10) . '_' . $request->file('imagen')->getClientOriginalName();
-               
-            $img =  $manager->read($request->file('imagen'));
+        if ($request->hasFile('imagen')) {
+            $file = $request->file('imagen');
+            $routeImg = 'storage/images/imagen/';
+            $nombreImagen = Str::random(10) . '_' . $file->getClientOriginalName();
+            $this->saveImg($file, $routeImg, $nombreImagen);
 
-            //seteamos el tamaño de que deben de tener las imagenes que se suban
-             $qwidth = 808;
-             $qheight = 445;
-
-            // Obtener las dimensiones de la imagen que se esta subiendo
-            $width = $img->width();
-            $height = $img->height();
-
-            if($width > $height){
-                //dd('Horizontal');
-                //si es horizontal igualamos el alto de la imagen a alto que queremos
-                
-                // $img->resize(height: 445)->crop(808, 445);
-
-            }else{
-                //dd('Vertical');
-                //En caso sea vertical la imagen
-                //gualamos el ancho y cropeamos
-                
-                // $img->resize(width: 808)->crop(808, 445);
-           }
-                     
-            $ruta = 'storage/images/logos/';
-            if (!file_exists($ruta)) {
-                mkdir($ruta, 0777, true); // Se crea la ruta con permisos de lectura, escritura y ejecución
-            }
-            
-            $img->save($ruta.$nombreImagen);
-            
-           
-            
-            $post->url_image =  $ruta.$nombreImagen; 
+            $post->url_image = $routeImg . $nombreImagen;
         }
 
         $post->title = $request->title;
         $post->description = $request->description;
-        
-        $post->status = 1;
 
-       
+        $post->status = 1;
 
         $post->save();
         return redirect()->route('logos.index')->with('success', 'Publicación creado exitosamente.');
@@ -125,17 +102,12 @@ class LogosClientController extends Controller
      */
     public function destroy(string $id)
     {
-       
-
-        
     }
 
-    function deleteLogo(Request $request) {
+    function deleteLogo(Request $request)
+    {
+        $logo = ClientLogos::findOrfail($request->id);
 
-        $logo = ClientLogos::findOrfail($request->id); 
-        
-        
-    
         // Eliminar la imagen si existe
         if ($logo->url_image && file_exists($logo->url_image)) {
             unlink($logo->url_image);
@@ -143,6 +115,6 @@ class LogosClientController extends Controller
 
         // Eliminar el logo de la base de datos
         $logo->delete();
-        return response()->json(['message'=>'Logo eliminado']);
+        return response()->json(['message' => 'Logo eliminado']);
     }
 }

@@ -541,41 +541,15 @@
 
             <div class="swiper productos_marcas w-10/12 mx-auto">
                 <div class="swiper-wrapper pt-5 pb-10">
-                    <div class="swiper-slide">
-                        <div class="flex justify-center items-center">
-                            <img src="{{ asset('images/img/image_21.png') }}" alt="marcas">
+                    @foreach ($logos as $logo)
+                        <div class="swiper-slide">
+                            <div class="flex justify-center items-center">
+                                <img src="{{ asset($logo->url_image) }}" alt="marcas">
+                            </div>
                         </div>
-                    </div>
+                    @endforeach
 
-                    <div class="swiper-slide">
-                        <div class="flex justify-center items-center">
-                            <img src="{{ asset('images/img/image_22.png') }}" alt="marcas">
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <div class="flex justify-center items-center">
-                            <img src="{{ asset('images/img/image_23.png') }}" alt="marcas">
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <div class="flex justify-center items-center">
-                            <img src="{{ asset('images/img/image_21.png') }}" alt="marcas">
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <div class="flex justify-center items-center">
-                            <img src="{{ asset('images/img/image_22.png') }}" alt="marcas">
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <div class="flex justify-center items-center">
-                            <img src="{{ asset('images/img/image_21.png') }}" alt="marcas">
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
 

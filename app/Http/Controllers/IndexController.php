@@ -16,6 +16,7 @@ use App\Models\Slider;
 use App\Models\Strength;
 use App\Models\Testimony;
 use App\Models\Category;
+use App\Models\ClientLogos;
 use App\Models\Specifications;
 use App\Models\User;
 use App\Models\UserDetails;
@@ -54,7 +55,9 @@ class IndexController extends Controller
         $slider = Slider::where('status', '=', 1)->where('visible', '=', 1)->get();
         $category = Category::where('status', '=', 1)->where('destacar', '=', 1)->get();
 
-        return view('public.index', compact('productos', 'destacados', 'descuentos', 'general', 'benefit', 'faqs', 'testimonie', 'slider', 'categorias', 'category'));
+        $logos = ClientLogos::where('status', 1)->get();
+
+        return view('public.index', compact('productos', 'destacados', 'descuentos', 'general', 'benefit', 'faqs', 'testimonie', 'slider', 'categorias', 'category', 'logos'));
     }
 
     public function catalogo()

@@ -11,11 +11,11 @@
                 <div class="flex gap-2 items-center">
                     <img src="{{ asset('images/svg/image_13.svg') }}" alt="direccion">
                     <p class="font-moderat_Regular text-text12 md:text-text14">
-                       {{--  Av. Camino Real 356 - San Isidro. Lima -
+                        {{--  Av. Camino Real 356 - San Isidro. Lima -
                         Perú --}}
 
-                        {{$general->address}} - {{$general->district}} - Perú
-                    
+                        {{ $general->address }} - {{ $general->district }} - Perú
+
                     </p>
                 </div>
 
@@ -25,21 +25,19 @@
                 </div>
 
                 <div class="flex gap-2 items-center">
-                    
+
                     @if ($general->facebook != null)
                         <a target="_blank" href="https://{{ $general->facebook }}">
-                            <img
-                                src="{{ asset('images/svg/image_15.svg') }}" alt="facebook">
-                            </a>
+                            <img src="{{ asset('images/svg/image_15.svg') }}" alt="facebook">
+                        </a>
                     @endif
                     @if ($general->instagram != null)
                         <a target="_blank" href="https://{{ $general->instagram }}">
-                            <img
-                                src="{{ asset('images/svg/image_16.svg') }}" alt="instagram">
-                            </a>
+                            <img src="{{ asset('images/svg/image_16.svg') }}" alt="instagram">
+                        </a>
                     @endif
-                    <a href="{{route('index')}}" class="font-moderat_Regular text-text12 md:text-text14">Mic&JC</a>
-                   
+                    <a href="{{ route('index') }}" class="font-moderat_Regular text-text12 md:text-text14">Mic&JC</a>
+
                 </div>
 
             </div>
@@ -65,13 +63,15 @@
             <p class="font-moderat_700 text-text24 md:text-text28">Suscribete a nuestro blog</p>
             <p class="font-moderat_Regular text-text12 md:text-text14">Mantente actualizado sobre las últimas noticias y
                 ofertas.</p>
-            <form action="">
+            <form action="" id="formInscripcion">
+                @csrf
                 <div class="relative w-full rounded-lg flex justify-center items-center">
-                    <input type="text" placeholder="hola@hotmail.com"
+                    <input type="email" placeholder="hola@hotmail.com" name="email" id="email"
                         class="placeholder:text-[#565656] font-moderat_Medium text-text12 md:text-text14 w-full border-none outline-none focus:outline-none pl-5 pr-4 py-4 text-[#565656]">
+                        <input type="text" name="tipo" value="Inscripción" hidden />
                     <div class="absolute inset-y-0 right-0  flex items-center pl-3">
-                        <p class="text-[#0051FF] font-moderat_700 text-text12 md:text-text14 pr-5 pl-4 py-4">Suscriberme
-                        </p>
+                        <button type="submit" class="text-[#0051FF] font-moderat_700 text-text12 md:text-text14 pr-5 pl-4 py-4">Suscriberme
+                        </button>
                     </div>
                 </div>
             </form>
@@ -80,3 +80,4 @@
     </div>
 
 </footer>
+
