@@ -44,20 +44,14 @@ class IndexController extends Controller
     {
         // $productos = Products::all();
         $productos = Products::with('tags')->get();
-        $categorias = Category::all();
-        $destacados = Products::where('destacar', '=', 1)->where('status', '=', 1)->where('visible', '=', 1)->with('tags')->activeDestacado()->get();
-        $descuentos = Products::where('descuento', '>', 0)->where('status', '=', 1)->where('visible', '=', 1)->with('tags')->activeDestacado()->get();
-
+        
         $general = General::all()->first();
-        $benefit = Strength::where('status', '=', 1)->get();
-        $faqs = Faqs::where('status', '=', 1)->where('visible', '=', 1)->get();
-        $testimonie = Testimony::where('status', '=', 1)->where('visible', '=', 1)->get();
-        $slider = Slider::where('status', '=', 1)->where('visible', '=', 1)->get();
-        $category = Category::where('status', '=', 1)->where('destacar', '=', 1)->get();
-
+        
+        $testimonios = Testimony::where('status', '=', 1)->where('visible', '=', 1)->get();
+        
         $logos = ClientLogos::where('status', 1)->get();
 
-        return view('public.index', compact('productos', 'destacados', 'descuentos', 'general', 'benefit', 'faqs', 'testimonie', 'slider', 'categorias', 'category', 'logos'));
+        return view('public.index', compact('productos', 'general', 'testimonios', 'logos'));
     }
 
     public function catalogo()
