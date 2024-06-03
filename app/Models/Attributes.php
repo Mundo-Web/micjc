@@ -15,8 +15,17 @@ class Attributes extends Model
     'color',
     'status'];
 
+    
+    public function products()
+    {
+        return $this->belongsToMany(Products::class, 'attribute_product_values', 'attribute_id', 'product_id')
+            ->withPivot('attribute_value_id');
+    }
+
     public function values()
     {
-        return $this->hasMany(Attributes::class, 'attribute_id');
+        return $this->hasMany(AttributesValues::class, 'attribute_id');
+
+        
     }
 }

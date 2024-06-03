@@ -27,11 +27,14 @@ use App\Http\Controllers\GalerieController;
 use App\Http\Controllers\LogosClientController;
 
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\MarcaController;
 use App\Http\Controllers\NewsletterSubscriberController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\StrengthController;
+use App\Http\Controllers\SubCategoriaController;
+use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\ValoresAtributosController;
 
 use App\Http\Controllers\TagController;
@@ -52,6 +55,7 @@ use App\Models\AboutUs;
 Route::get('/', [IndexController::class, 'index'] )->name('index');
 Route::get('/catalogo', [IndexController::class, 'catalogo'] )->name('catalogo');
 Route::get('/producto', [IndexController::class, 'producto'] )->name('producto');
+Route::get('/productotest', [IndexController::class, 'producto'] )->name('productotest');
 
 
 // Blog
@@ -198,6 +202,15 @@ Route::middleware(['auth:sanctum', 'verified', 'can:Admin'])->group(function () 
 
          /* subscripciones */
         Route::get('/subscripciones', [NewsletterSubscriberController::class, 'showSubscripciones'])->name('subscripciones') ;
+
+        Route::resource('/subcategoria', SubCategoriaController::class);
+        Route::post('/subcategoria/obtener', [SubCategoriaController::class, 'obtener'])->name('subcategoria.obtener');
+        
+        Route::resource('/marcas', MarcaController::class);
+        Route::post('/marcas/deleteMarca', [MarcaController::class, 'deleteMarca'] )->name('marcas.deleteMarca');
+        Route::post('/marcas/updateVisible', [MarcaController::class, 'updateVisible'] )->name('marcas.updateVisible');
+
+
 
         
         Route::fallback(function() {

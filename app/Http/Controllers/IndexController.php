@@ -17,7 +17,9 @@ use App\Models\Strength;
 use App\Models\Testimony;
 use App\Models\Category;
 use App\Models\ClientLogos;
+use App\Models\Marca;
 use App\Models\Specifications;
+use App\Models\SubCategoria;
 use App\Models\User;
 use App\Models\UserDetails;
 use Illuminate\Http\Request;
@@ -37,103 +39,135 @@ use function PHPUnit\Framework\isNull;
 
 class IndexController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        // $productos = Products::all();
-        $productos = Products::with('tags')->get();
-        
-        $general = General::all()->first();
-        
-        $testimonios = Testimony::where('status', '=', 1)->where('visible', '=', 1)->get();
-        
-        $logos = ClientLogos::where('status', 1)->get();
+  /**
+   * Display a listing of the resource.
+   */
+  public function index()
+  {
+    // $productos = Products::all();
+    $productos = Products::with('tags')->get();
 
-        return view('public.index', compact('productos', 'general', 'testimonios', 'logos'));
+    $general = General::all()->first();
+
+    $testimonios = Testimony::where('status', '=', 1)->where('visible', '=', 1)->get();
+
+    $logos = ClientLogos::where('status', 1)->get();
+
+    return view('public.index', compact('productos', 'general', 'testimonios', 'logos'));
+  }
+
+  public function catalogo(Request $request)
+  {
+
+    $categoria = $request->input('cat');
+    $subcategoria = $request->input('subcat');
+    $marca = $request->input('marca');
+
+
+    $general = General::all()->first();
+    $productos = Products::select('products.*')->where('status', '1');
+
+    if(isset($categoria)){
+      $productos->where('categoria_id', $categoria);
+    }
+    if(isset($subcategoria)){
+      $productos->where('sub_cat_id', $subcategoria);
+    }
+    if(isset($marca)){
+      $productos->where('marca_id', $marca);
     }
 
-    public function catalogo()
-    {
-        $general = General::all()->first();
-        return view('public.catalogo', compact('general'));
-    }
+    $productos = $productos->get();
 
-    public function producto()
-    {
-        $general = General::all()->first();
-        return view('public.producto', compact('general'));
-    }
+    dump($productos);
 
-    public function blog()
-    {
-        $general = General::all()->first();
-        return view('public.blog', compact('general'));
-    }
+    $categorias = Category::join('products', 'products.categoria_id', '=', 'categories.id')
+      ->select('categories.id', 'categories.name')
+      ->distinct()->get();
 
-    public function post()
-    {
-        return view('public.post');
-    }
+    // $SubCategorias = SubCategoria::where('status','1')->where('visible','1')->get();
+    $marcas = Marca::where('status', '1')->where('visible', '1')->get();
 
-    public function contacto()
-    {
-        $general = General::all()->first();
-        return view('public.contacto', compact('general'));
-    }
 
-    public function carrito()
-    {
-        return view('public.carrito');
-    }
 
-    public function detallesPago()
-    {
-        return view('public.detallesPago');
-    }
+    $valoresAttr = AttributesValues::all();
+    return view('public.catalogo', compact('general', 'productos', 'categorias', 'valoresAttr',  'marcas'));
+  }
 
-    public function exito()
-    {
-        return view('public.exito');
-    }
+  public function producto()
+  {
+    $general = General::all()->first();
+    return view('public.producto', compact('general'));
+  }
 
-    public function miCuenta()
-    {
-        return view('public.miCuenta');
-    }
+  public function blog()
+  {
+    $general = General::all()->first();
+    return view('public.blog', compact('general'));
+  }
 
-    public function miDireccion()
-    {
-        return view('public.miDireccion');
-    }
+  public function post()
+  {
+    return view('public.post');
+  }
 
-    public function historial()
-    {
-        return view('public.historial');
-    }
+  public function contacto()
+  {
+    $general = General::all()->first();
+    return view('public.contacto', compact('general'));
+  }
 
-    public function crearCuenta()
-    {
-        return view('public.crearCuenta');
-    }
+  public function carrito()
+  {
+    return view('public.carrito');
+  }
 
-    public function ingresar()
-    {
-        return view('public.ingresar');
-    }
+  public function detallesPago()
+  {
+    return view('public.detallesPago');
+  }
 
-    public function olvide()
-    {
-        return view('public.olvide');
-    }
+  public function exito()
+  {
+    return view('public.exito');
+  }
 
-    public function restaurar()
-    {
-        return view('public.restaurar');
-    }
+  public function miCuenta()
+  {
+    return view('public.miCuenta');
+  }
 
-    /* public function catalogo($filtro, Request $request)
+  public function miDireccion()
+  {
+    return view('public.miDireccion');
+  }
+
+  public function historial()
+  {
+    return view('public.historial');
+  }
+
+  public function crearCuenta()
+  {
+    return view('public.crearCuenta');
+  }
+
+  public function ingresar()
+  {
+    return view('public.ingresar');
+  }
+
+  public function olvide()
+  {
+    return view('public.olvide');
+  }
+
+  public function restaurar()
+  {
+    return view('public.restaurar');
+  }
+
+  /* public function catalogo($filtro, Request $request)
   {
     $categorias = null;
     $productos = null;
@@ -497,106 +531,106 @@ class IndexController extends Controller
     return view('public.product', compact('productos', 'atributos', 'valorAtributo', 'ProdComplementarios', 'productosConGalerias', 'especificaciones', 'url_env'));
   } */
 
-    //  --------------------------------------------
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+  //  --------------------------------------------
+  /**
+   * Show the form for creating a new resource.
+   */
+  public function create()
+  {
+    //
+  }
+
+  /**
+   * Store a newly created resource in storage.
+   */
+  public function store(StoreIndexRequest $request)
+  {
+    //
+  }
+
+  /**
+   * Display the specified resource.
+   */
+  public function show(Index $index)
+  {
+    //
+  }
+
+  /**
+   * Show the form for editing the specified resource.
+   */
+  public function edit(Index $index)
+  {
+    //
+  }
+
+  /**
+   * Update the specified resource in storage.
+   */
+  public function update(UpdateIndexRequest $request, Index $index)
+  {
+    //
+  }
+
+  /**
+   * Remove the specified resource from storage.
+   */
+  public function destroy(Index $index)
+  {
+    //
+  }
+
+  /**
+   * Save contact from blade
+   */
+  public function guardarContacto(Request $request)
+  {
+    $data = $request->all();
+    $data['full_name'] = $request->full_name;
+
+    try {
+      $reglasValidacion = [
+        /* 'name' => 'required|string|max:255', */
+        'email' => 'required|email|max:255',
+      ];
+      $mensajes = [
+        'name.required' => 'El campo nombre es obligatorio.',
+        'email.required' => 'El campo correo electrónico es obligatorio.',
+        'email.email' => 'El formato del correo electrónico no es válido.',
+        'email.max' => 'El campo correo electrónico no puede tener más de :max caracteres.',
+      ];
+      $request->validate($reglasValidacion, $mensajes);
+      $formlanding = Message::create($data);
+      $this->envioCorreo($formlanding);
+      $this->envioCorreoInterno($formlanding);
+
+      return response()->json(['message' => 'Mensaje enviado con exito']);
+    } catch (ValidationException $e) {
+      return response()->json(['message' => $e->validator->errors()], 400);
     }
+  }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreIndexRequest $request)
-    {
-        //
+  public function saveImg($file, $route, $nombreImagen)
+  {
+    $manager = new ImageManager(new Driver());
+    $img = $manager->read($file);
+
+    if (!file_exists($route)) {
+      mkdir($route, 0777, true); // Se crea la ruta con permisos de lectura, escritura y ejecución
     }
+    $img->save($route . $nombreImagen);
+  }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Index $index)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Index $index)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateIndexRequest $request, Index $index)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Index $index)
-    {
-        //
-    }
-
-    /**
-     * Save contact from blade
-     */
-    public function guardarContacto(Request $request)
-    {
-        $data = $request->all();
-        $data['full_name'] = $request->full_name;
-
-        try {
-            $reglasValidacion = [
-                /* 'name' => 'required|string|max:255', */
-                'email' => 'required|email|max:255',
-            ];
-            $mensajes = [
-                'name.required' => 'El campo nombre es obligatorio.',
-                'email.required' => 'El campo correo electrónico es obligatorio.',
-                'email.email' => 'El formato del correo electrónico no es válido.',
-                'email.max' => 'El campo correo electrónico no puede tener más de :max caracteres.',
-            ];
-            $request->validate($reglasValidacion, $mensajes);
-            $formlanding = Message::create($data);
-            $this->envioCorreo($formlanding);
-            $this->envioCorreoInterno($formlanding);
-
-            return response()->json(['message' => 'Mensaje enviado con exito']);
-        } catch (ValidationException $e) {
-            return response()->json(['message' => $e->validator->errors()], 400);
-        }
-    }
-
-    public function saveImg($file, $route, $nombreImagen)
-    {
-        $manager = new ImageManager(new Driver());
-        $img = $manager->read($file);
-
-        if (!file_exists($route)) {
-            mkdir($route, 0777, true); // Se crea la ruta con permisos de lectura, escritura y ejecución
-        }
-        $img->save($route . $nombreImagen);
-    }
-
-    private function envioCorreo($data)
-    {
-        $name = $data['full_name'];
-        $mensaje = 'Gracias por comunicarte con MIC&JC';
-        $general = General::all()->first();
-        $mail = EmailConfig::config($name, $mensaje);
-        try {
-            $mail->addAddress($data['email']);
-            $mail->Body =
-                '<html lang="en">
+  private function envioCorreo($data)
+  {
+    $name = $data['full_name'];
+    $mensaje = 'Gracias por comunicarte con MIC&JC';
+    $general = General::all()->first();
+    $mail = EmailConfig::config($name, $mensaje);
+    try {
+      $mail->addAddress($data['email']);
+      $mail->Body =
+        '<html lang="en">
         <head>
             <meta charset="UTF-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -678,8 +712,8 @@ class IndexController extends Controller
                                 >
                                     <span style="display: block"
                                         >' .
-                $name .
-                '
+        $name .
+        '
                                     </span>
                                 </p>
                             </td>
@@ -759,8 +793,8 @@ class IndexController extends Controller
             <td>
               <a
                 href="https://' .
-                htmlspecialchars($general->facebook, ENT_QUOTES, 'UTF-8') .
-                '"
+        htmlspecialchars($general->facebook, ENT_QUOTES, 'UTF-8') .
+        '"
                 target="_blank"
                 style="padding: 0 5px 30px 0; display: inline-block"
               >
@@ -769,8 +803,8 @@ class IndexController extends Controller
 
               <a
                 href="https://' .
-                htmlspecialchars($general->instagram, ENT_QUOTES, 'UTF-8') .
-                '"
+        htmlspecialchars($general->instagram, ENT_QUOTES, 'UTF-8') .
+        '"
                 target="_blank"
                 style="padding: 0 5px 30px 0; display: inline-block"
               >
@@ -779,8 +813,8 @@ class IndexController extends Controller
 
               <a
                 href="https://' .
-                htmlspecialchars($general->twitter, ENT_QUOTES, 'UTF-8') .
-                '"
+        htmlspecialchars($general->twitter, ENT_QUOTES, 'UTF-8') .
+        '"
                 target="_blank"
                 style="padding: 0 5px 30px 0; display: inline-block"
               >
@@ -789,8 +823,8 @@ class IndexController extends Controller
 
               <a
                 href="https://' .
-                htmlspecialchars($general->linkedin, ENT_QUOTES, 'UTF-8') .
-                '"
+        htmlspecialchars($general->linkedin, ENT_QUOTES, 'UTF-8') .
+        '"
                 target="_blank"
                 style="padding: 0 5px 30px 0; display: inline-block"
               >
@@ -799,8 +833,8 @@ class IndexController extends Controller
 
               <a
                 href="https://' .
-                htmlspecialchars($general->youtube, ENT_QUOTES, 'UTF-8') .
-                '"
+        htmlspecialchars($general->youtube, ENT_QUOTES, 'UTF-8') .
+        '"
                 target="_blank"
                 style="padding: 0 5px 30px 0; display: inline-block"
               >
@@ -815,23 +849,23 @@ class IndexController extends Controller
     </html>
     
     ';
-            $mail->isHTML(true);
-            $mail->send();
-        } catch (\Throwable $th) {
-            //throw $th;
-        }
+      $mail->isHTML(true);
+      $mail->send();
+    } catch (\Throwable $th) {
+      //throw $th;
     }
+  }
 
-    private function envioCorreoInterno($data)
-    {
-        $name = 'Tienes un nuevo mensaje' . ',';
-        $general = General::all()->first();
-        $mensaje = 'MIC&JC';
-        $mail = EmailConfig::config($name, $mensaje);
-        $emailCliente = General::all()->first();
-        try {
-            $mail->addAddress($emailCliente->email);
-            $mail->Body = '<html lang="en">
+  private function envioCorreoInterno($data)
+  {
+    $name = 'Tienes un nuevo mensaje' . ',';
+    $general = General::all()->first();
+    $mensaje = 'MIC&JC';
+    $mail = EmailConfig::config($name, $mensaje);
+    $emailCliente = General::all()->first();
+    try {
+      $mail->addAddress($emailCliente->email);
+      $mail->Body = '<html lang="en">
             <head>
               <meta charset="UTF-8" />
               <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -940,8 +974,8 @@ class IndexController extends Controller
                       <td>
                         <a
                           href="https://' .
-                          htmlspecialchars($general->facebook, ENT_QUOTES, 'UTF-8') .
-                          '"
+        htmlspecialchars($general->facebook, ENT_QUOTES, 'UTF-8') .
+        '"
                           target="_blank"
                           style="padding: 0 5px 30px 0; display: inline-block"
                         >
@@ -950,8 +984,8 @@ class IndexController extends Controller
           
                         <a
                           href="https://' .
-                          htmlspecialchars($general->instagram, ENT_QUOTES, 'UTF-8') .
-                          '"
+        htmlspecialchars($general->instagram, ENT_QUOTES, 'UTF-8') .
+        '"
                           target="_blank"
                           style="padding: 0 5px 30px 0; display: inline-block"
                         >
@@ -960,8 +994,8 @@ class IndexController extends Controller
           
                         <a
                           href="https://' .
-                          htmlspecialchars($general->twitter, ENT_QUOTES, 'UTF-8') .
-                          '"
+        htmlspecialchars($general->twitter, ENT_QUOTES, 'UTF-8') .
+        '"
                           target="_blank"
                           style="padding: 0 5px 30px 0; display: inline-block"
                         >
@@ -970,8 +1004,8 @@ class IndexController extends Controller
           
                         <a
                           href="https://' .
-                          htmlspecialchars($general->linkedin, ENT_QUOTES, 'UTF-8') .
-                          '"
+        htmlspecialchars($general->linkedin, ENT_QUOTES, 'UTF-8') .
+        '"
                           target="_blank"
                           style="padding: 0 5px 30px 0; display: inline-block"
                         >
@@ -980,8 +1014,8 @@ class IndexController extends Controller
           
                         <a
                           href="https://' .
-                          htmlspecialchars($general->youtube, ENT_QUOTES, 'UTF-8') .
-                          '"
+        htmlspecialchars($general->youtube, ENT_QUOTES, 'UTF-8') .
+        '"
                           target="_blank"
                           style="padding: 0 5px 30px 0; display: inline-block"
                         >
@@ -995,10 +1029,10 @@ class IndexController extends Controller
             </body>
           </html>
           ';
-            $mail->isHTML(true);
-            $mail->send();
-        } catch (\Throwable $th) {
-            //throw $th;
-        }
+      $mail->isHTML(true);
+      $mail->send();
+    } catch (\Throwable $th) {
+      //throw $th;
     }
+  }
 }
