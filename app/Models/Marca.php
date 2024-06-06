@@ -15,4 +15,8 @@ class Marca extends Model
         'visible'
     ];
 
+    public function productos()
+    {
+        return $this->hasMany(Products::class);
+    }
 }

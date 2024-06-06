@@ -42,7 +42,7 @@
                 autocomplete="current-password"
                 class="w-full py-5 pl-4 pr-12 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-b-[1.5px] border-gray-200" />
               <!-- Imagen -->
-              <img src="./images/svg/pass_eyes.svg" alt="password"
+              <img src="{{ asset('images/svg/pass_eyes.svg') }}" alt="password"
                 class="absolute right-4 top-1/2 transform -translate-y-1/2 cursor-pointer" />
             </div>
 

@@ -79,7 +79,7 @@ class IndexController extends Controller
 
     $productos = $productos->get();
 
-    dump($productos);
+    
 
     $categorias = Category::join('products', 'products.categoria_id', '=', 'categories.id')
       ->select('categories.id', 'categories.name')
@@ -94,10 +94,18 @@ class IndexController extends Controller
     return view('public.catalogo', compact('general', 'productos', 'categorias', 'valoresAttr',  'marcas'));
   }
 
-  public function producto()
+  public function producto(Request $request, String $id)
   {
+    
     $general = General::all()->first();
-    return view('public.producto', compact('general'));
+
+    $producto = Products::find($id);
+    $especificaciones = Specifications::where('product_id', '=', $id)->get();
+
+    
+    $productosRelacionados = Products::where('marca_id', '=', $producto->marca_id)->where('id', '!=' , $id)->get();
+
+    return view('public.producto', compact('general', 'producto', 'especificaciones', 'productosRelacionados'));
   }
 
   public function blog()

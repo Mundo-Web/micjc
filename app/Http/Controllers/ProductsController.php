@@ -46,6 +46,8 @@ class ProductsController extends Controller
     $tags = Tag::where("status", "=", true)->get();
     $categoria = Category::all();
 
+
+
     $marcas= Marca::where('status', 1 )->get();
     
     return view('pages.products.create', compact('atributos', 'valorAtributo', 'categoria', 'tags', 'marcas'));
@@ -79,10 +81,7 @@ class ProductsController extends Controller
       $request->merge(['descuento' => 0]);
       $data['descuento'];
     } */
-    
-
-
-
+   
 
     // $valorprecio = $request->input('precio') - 0.1;
 
@@ -183,6 +182,36 @@ class ProductsController extends Controller
 
       $producto->tags()->sync($tagsSeleccionados);
 
+
+      if (isset($data['filesGallery'])) {
+
+        foreach ($data['filesGallery'] as $file) {
+          # code...
+
+          // data:image/png; base64,code
+          [$first, $code] = explode(';base64,', $file);
+          $imageData = base64_decode($code);
+          $routeImg = 'storage/images/gallery/';
+
+          $ext = ExtendFile::getExtention(str_replace("data:", '', $first));
+
+
+
+          $nombreImagen = Str::random(10) . '.' . $ext;
+
+          // Verificar si la ruta no existe y crearla si es necesario
+          if (!file_exists($routeImg)) {
+            mkdir($routeImg, 0777, true); // Se crea la ruta con permisos de lectura, escritura y ejecución
+          }
+
+          // Guardar los datos binarios en un archivo
+          file_put_contents($routeImg . $nombreImagen, $imageData);
+          $dataGalerie['imagen'] = $routeImg . $nombreImagen;
+          $dataGalerie['product_id'] = $producto->id;
+          $dataGalerie['type_img'] = 'gall';
+          Galerie::create($dataGalerie);
+        }
+      }
 
       foreach ($data as $key => $value) {
 

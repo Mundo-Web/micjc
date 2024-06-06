@@ -54,7 +54,7 @@ use App\Models\AboutUs;
 /* Las rutas publicas */
 Route::get('/', [IndexController::class, 'index'] )->name('index');
 Route::get('/catalogo', [IndexController::class, 'catalogo'] )->name('catalogo');
-Route::get('/producto', [IndexController::class, 'producto'] )->name('producto');
+Route::get('/producto/{id}', [IndexController::class, 'producto'] )->name('producto');
 Route::get('/productotest', [IndexController::class, 'producto'] )->name('productotest');
 
 

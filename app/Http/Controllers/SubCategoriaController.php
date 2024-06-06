@@ -80,7 +80,7 @@ class SubCategoriaController extends Controller
     }
 
     public function obtener(Request $request)  {
-        dump($request->all());
+        
 
         $subCategoria = SubCategoria::where('status', 1)->where('visible', 1)->where('categoria_id',$request->id )->get();
         return response()->json(['message' => 'obteniendo categorias' , 'subCategoria'=> $subCategoria]);

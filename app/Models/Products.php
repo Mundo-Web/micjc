@@ -37,6 +37,10 @@ class Products extends Model
   {
       return $this->belongsTo(Category::class);
   }
+  public function marca()
+  {
+      return $this->belongsTo(Marca::class, 'marca_id');
+  }
 
 /*   public function collection()
   {
