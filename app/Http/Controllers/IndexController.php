@@ -167,7 +167,6 @@ class IndexController extends Controller
 
     $addresDetail = AddressUser::find($N_orden[0]['address_id']);
 
-    dump($addresDetail);
 
     //consultar n orden
     // traer los datos necesarios para armar el token
@@ -377,7 +376,6 @@ class IndexController extends Controller
         UserDetails::create($request->all());
         $datos = $request->all();
         $datos = $datos['data'];
-        dump($datos);
         $this->guardarOrden();
         // $this-> envioCorreoCompra($datos);
         return response()->json(['message' => 'Data procesada correctamente', 'codigoCompra' => $codigoAleatorio],);
