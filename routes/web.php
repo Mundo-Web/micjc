@@ -223,6 +223,7 @@ Route::middleware(['auth:sanctum', 'verified', 'can:Admin'])->group(function () 
 
         Route::resource('/subcategoria', SubCategoriaController::class);
         Route::post('/subcategoria/obtener', [SubCategoriaController::class, 'obtener'])->name('subcategoria.obtener');
+        Route::post('/subcategoria/deleteSubCategory', [SubCategoriaController::class, 'deleteSubCategory'])->name('subcategoria.deleteSubCategory');
         
         Route::resource('/marcas', MarcaController::class);
         Route::post('/marcas/deleteMarca', [MarcaController::class, 'deleteMarca'] )->name('marcas.deleteMarca');

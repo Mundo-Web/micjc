@@ -19,4 +19,9 @@ class Marca extends Model
     {
         return $this->hasMany(Products::class);
     }
+
+    public function subcategoria()
+    {
+        return $this->belongsToMany(Marca::class, 'subcategories_x_marcas', 'subcat_id', 'marca_id');
+    }
 }

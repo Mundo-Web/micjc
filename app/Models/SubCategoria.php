@@ -22,4 +22,9 @@ class SubCategoria extends Model
         return $this->belongsTo(Category::class, 'categoria_id');
     }
 
+    public function marcas()
+  {
+      return $this->belongsToMany(Marca::class, 'subcategories_x_marcas', 'subcat_id', 'marca_id');
+  }
+
 }

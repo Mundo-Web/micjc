@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Marca;
 use App\Models\SubCategoria;
 use App\Models\Subcategory;
 use Illuminate\Http\Request;
@@ -26,7 +27,8 @@ class SubCategoriaController extends Controller
     {
         //
         $categorias = Category::all();
-        return view('pages.subCategorias.create', compact('categorias'));
+        $marcas = Marca::all();
+        return view('pages.subCategorias.create', compact('categorias', 'marcas'));
     }
 
     /**
@@ -35,10 +37,13 @@ class SubCategoriaController extends Controller
     public function store(Request $request)
     {
         //
+        $MarcasSelected = $request->input('marcas_id');
+
         
         $data = $request->except('_token');
 
-        SubCategoria::create($data);
+        $subcat = SubCategoria::create($data);
+        $subcat->marcas()->sync($MarcasSelected);
 
        
         return redirect()->route('subcategoria.index')->with('success', 'Producto creado exitosamente.');
@@ -77,6 +82,9 @@ class SubCategoriaController extends Controller
     public function destroy(SubCategoria $subCategoria)
     {
         //
+    }
+    public function deleteSubCategory(Request $request){
+        SubCategoria::find($request -> id)->delete();
     }
 
     public function obtener(Request $request)  {

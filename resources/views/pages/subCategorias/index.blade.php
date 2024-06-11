@@ -120,7 +120,7 @@
 
             $.ajax({
 
-              url: '{{ route('categorias.deleteCategory') }}',
+              url: '{{ route('subcategoria.deleteSubCategory') }}',
               method: 'POST',
               data: {
                 _token: $('input[name="_token"]').val(),
