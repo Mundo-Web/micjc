@@ -64,7 +64,8 @@ class SubCategoriaController extends Controller
     public function edit(String $id)
     {
        $subCategoria  = SubCategoria::find($id);
-        return view('pages.subCategorias.edit', compact('subCategoria'));
+       $allMarcas = Marca::all();
+        return view('pages.subCategorias.edit', compact('subCategoria','allMarcas'));
     }
 
     /**
@@ -73,6 +74,8 @@ class SubCategoriaController extends Controller
     public function update(Request $request, String $id)
     {
         $subCategoria  = SubCategoria::find($id)->update($request->all());
+        $subCategoria  = SubCategoria::find($id);
+        $subCategoria->marcas()->sync($request->input('marcas_id'));
        return redirect()->route('subcategoria.index')->with('success', 'Producto actualizado exitosamente.');
     }
 

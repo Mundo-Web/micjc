@@ -34,6 +34,24 @@
                     placeholder="Nombre">
                 </div>
               </div>
+              <div class="md:col-span-5 flex justify-between gap-4 ">
+
+                <div class="w-full">
+                  <div class="relative mb-2  mt-2">
+                    <select id="marcas_id" name="marcas_id[]" multiple class="mt-1">
+
+                      @foreach ($allMarcas as $item)
+                        <option value="{{ $item->id }}"
+                          {{ in_array($item->id, $subCategoria->marcas->pluck('id')->toArray()) ? 'selected' : '' }}>
+                          {{ $item->name }}</option>
+                      @endforeach
+                    </select>
+                  </div>
+
+
+
+                </div>
+              </div>
 
               <div class="md:col-span-5">
                 <label for="description">Descripción</label>
@@ -82,3 +100,8 @@
 
 
 </x-app-layout>
+<script>
+  $('#marcas_id').select2({
+    placeholder: 'Seleccionar Marca...',
+  });
+</script>
