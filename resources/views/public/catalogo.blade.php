@@ -1,4 +1,5 @@
 @extends('components.public.matrix')
+@section('title', 'Productos | ' . config('app.name', 'Laravel'))
 
 @section('css_importados')
 
@@ -204,10 +205,10 @@
 
 
                   </div>
-                  <div class="flex justify-center items-center py-10 md:py-20">
+                  <div class="flex justify-center items-center py-2 md:py-2">
 
                     <a href="{{ route('producto', $item->id) }}"><img src="{{ asset($item->imagen) }}" alt="impresora"
-                        class="w-[120px] h-[90px] md:w-auto md:h-auto"></a>
+                        class="object-cover md:w-auto md:h-auto hover:scale-125 transition-all duration-200"></a>
 
                   </div>
                 </div>
@@ -338,6 +339,13 @@
       window.location.href = url.toString();
     }
   </script>
+
+  <script>
+    var appUrl = '{{ env('APP_URL') }}';
+  </script>
+
+
+  <script src="{{ asset('js/carrito.js') }}"></script>
 
 @stop
 

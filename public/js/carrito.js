@@ -35,9 +35,9 @@ let articulosCarrito = [];
 
     }
 
-    function deleteOnCarBtn(id, operacion, colorId, talla) {
+    function deleteOnCarBtn(id, operacion) {
       const prodRepetido = articulosCarrito.map(item => {
-        if (item.id === id && item.cantidad > 0 && item.color.id === colorId && item.talla === talla) {
+        if (item.id === id && item.cantidad > 0 ) {
           item.cantidad -= Number(1);
           return item; // retorna el objeto actualizado 
         } else {
@@ -52,12 +52,12 @@ let articulosCarrito = [];
 
     }
 
-    function addOnCarBtn(id, operacion, colorId, talla) {
+    function addOnCarBtn(id, operacion) {
 
-      console.log(id,colorId)
+     
 
       const prodRepetido = articulosCarrito.map(item => {
-        if (item.id === id && item.color.id === colorId && item.talla === talla) {
+        if (item.id === id ) {
           item.cantidad += Number(1);
           return item; // retorna el objeto actualizado 
         } else {
@@ -73,17 +73,18 @@ let articulosCarrito = [];
 
     }
 
-    function deleteItem(id, colorId, talla) {
+    function deleteItem(id) {
 
       
       articulosCarrito = articulosCarrito.filter(objeto => {
-        return !(objeto.id === id && objeto.color.id === colorId && objeto.talla == talla);
+        return !(objeto.id === id );
 
       } );
 
       Local.set('carrito', articulosCarrito)
       limpiarHTML()
       PintarCarrito()
+      pintarCantidad()
     }
 
   
@@ -111,28 +112,26 @@ let articulosCarrito = [];
       let itemsCarrito = $('#itemsCarrito')
 
       articulosCarrito.forEach(element => {
-        let plantilla = `<div class="flex justify-between bg-white font-poppins border-b-[1px] border-[#E8ECEF] pb-5">
+        let plantilla = `<div class="flex justify-between border-b-[1px] pb-5">
               <div class="flex justify-center items-center gap-5">
                 <div class="bg-[#F3F5F7] rounded-md p-4">
                   
-                  <img src="${appUrl}/${element.caratula}" alt="producto" class="w-24" />
+                  <img src="${appUrl}/${element.imagen}" alt="producto" class="w-24" />
 
                 </div>
                 <div class="flex flex-col gap-3 py-2">
                   <h3 class="font-semibold text-[14px] text-[#151515]">
                     ${element.producto} 
                   </h3>
-                  <p class="font-normal text-[12px] text-[${element.color.hex}]">
-                    ${element.color.valor} ${element.talla}
-                  </p>
+                 
                   <div class="flex w-20 justify-center text-[#151515] border-[1px] border-[#6C7275] rounded-md">
-                    <button type="button" onClick="(deleteOnCarBtn(${element.id}, '-', ${element.color.id},'${element.talla}'))" class="  w-8 h-8 flex justify-center items-center ">
+                    <button type="button" onClick="(deleteOnCarBtn(${element.id}, '-'))" class="  w-8 h-8 flex justify-center items-center ">
                       <span  class="text-[20px]">-</span>
                     </button>
                     <div class="w-8 h-8 flex justify-center items-center">
                       <span  class="font-semibold text-[12px]">${element.cantidad }</span>
                     </div>
-                    <button type="button" onClick="(addOnCarBtn(${element.id}, '+', ${element.color.id},'${element.talla}'))" class="  w-8 h-8 flex justify-center items-center ">
+                    <button type="button" onClick="(addOnCarBtn(${element.id}, '+'))" class="  w-8 h-8 flex justify-center items-center ">
                       <span class="text-[20px]">+</span>
                     </button>
                   </div>
@@ -143,7 +142,7 @@ let articulosCarrito = [];
                   S/ ${Number(element.descuento) !== 0 ? element.descuento : element.precio}
                 </p>
                 <div class="flex items-center">
-                  <button type="button" onClick="(deleteItem(${element.id}, ${element.color.id},'${element.talla}'))" class="  w-8 h-8 flex justify-center items-center ">
+                  <button type="button" onClick="(deleteItem(${element.id}, '${element.talla}'))" class="  w-8 h-8 flex justify-center items-center ">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
                   </svg>
@@ -170,30 +169,14 @@ let articulosCarrito = [];
       let url = window.location.href;
       let partesURl = url.split('/')
       let item = partesURl[partesURl.length - 1]
-      let cantidad = Number($('#cantidadSpan span').text())
+      let cantidad = Number($('#cantidadInput').val())
       item = item.replace('#', '')
 
    
 
-      let color = $(".color").data('id');
-      let talla = $('.tallaSelected').text()
-      console.log(talla)
+      console.log(cantidad)
       // id='nodescuento'
-      if(talla == ''){
-        Swal.fire({
-
-          icon: "warning",
-          title: `Seleccione primero una talla`,
-          showConfirmButton: true
-
-
-        });
-        return 
-
-      }
-
-      console.log(color)
-
+     
 
       $.ajax({
 
@@ -203,12 +186,12 @@ let articulosCarrito = [];
           _token: $('input[name="_token"]').val(),
           id: item,
           cantidad,
-          colorId: color
+          
 
         },
         success: function(success) {
 
-          console.log(success.valorAtributo.attribute_id)
+          console.log(success)
 
           let {
             producto,
@@ -227,22 +210,14 @@ let articulosCarrito = [];
             precio,
             imagen,
             cantidad,
-            color : {
-              id : success.valorAtributo.id , 
-              valor: success.valorAtributo.valor , 
-              hex:  success.valorAtributo.color
-            },
-            caratula: success.caratula.images[0].name_imagen,
-            talla: talla.trim()
+            
           }
 
           console.log(detalleProducto)
           console.log(articulosCarrito)
 
           // validar si es un color diferente y pintarlo 
-          let existeArticulo = articulosCarrito.some(item => item.id === detalleProducto.id && 
-            item.color.id === detalleProducto.color.id 
-            && item.talla == detalleProducto.talla
+          let existeArticulo = articulosCarrito.some(item => item.id === detalleProducto.id 
           )
           if (existeArticulo) {
             //sumar al articulo actual 
@@ -268,6 +243,9 @@ let articulosCarrito = [];
           PintarCarrito()
           mostrarTotalItems()
 
+          //actualizar contador de articulos carrito
+          pintarCantidad()
+
           Swal.fire({
 
             icon: "success",
@@ -287,3 +265,34 @@ let articulosCarrito = [];
 
       // articulosCarrito = {...articulosCarrito , detalleProducto }
     })
+
+   
+  
+    function pintarCantidad() {
+      let carritoCantidad = Local.get('carrito')
+      
+      console.log('header exito', carritoCantidad)
+
+      if (typeof carritoCantidad !== 'undefined' && carritoCantidad !== null) {
+        console.log('diferente a nulo')
+        // La variable carritoCantidad está definida y no es null
+       let total = carritoCantidad.length
+        if (total == 0) {
+
+          $('#imgCantidad').attr('hidden', true);
+
+
+        } else {
+          $('#spanCantidad').text(total)
+
+        }
+
+
+      } else {
+
+        $('#imgCantidad').attr('hidden', true);
+      }
+
+    }
+    pintarCantidad()
+ 

@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
+  <link rel="icon" type="image/svg+xml" href="{{ asset('images/svg/favicon.svg') }}">
   <title>{{ $attributes['title'] ?? 'Pagina' }} | {{ config('app.name', 'Laravel') }}</title>
 
   <!-- Fonts -->
@@ -34,9 +35,8 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
-  <!-- TinyMCE -->
-  <script src="https://cdn.tiny.cloud/1/f8pxockwvzct5flngx2358m29yuf251y8sfpiucedku5vxaj/tinymce/7/tinymce.min.js"
-    referrerpolicy="origin"></script>
+  <!-- Include the Quill library -->
+  <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet" />
 
   <!-- Select2 -->
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />

@@ -1,6 +1,6 @@
 @extends('components.public.matrix')
 
-
+@section('title', 'Producto | ' . config('app.name', 'Laravel'))
 
 
 @section('content')
@@ -36,7 +36,7 @@
 
             </div>
             <div>
-              <input type="number" class="border-2 rounded-lg w-16" value="01" step="1">
+              <input type="number" id="cantidadInput" class="border-2 rounded-lg w-16" value="01" step="1">
             </div>
 
             <p class="text-[#565656] text-text16 md:text-text20 font-moderat_Regular">{{ $producto->extract }}</p>
@@ -44,7 +44,8 @@
             <div
               class="flex justify-between items-center text-white font-moderat_Bold text-text14 md:text-text16 gap-5 pt-3"
               data-aos="fade-up" data-aos-offset="150">
-              <a href="#" class="bg-[#0051FF] w-full py-3 px-2 md:px-10 text-center">Quiero comprar</a>
+              <button href="#" id='btnAgregarCarrito'
+                class="bg-[#0051FF] w-full py-3 px-2 md:px-10 text-center">Quiero comprar</button>
               <a href="#"
                 class="bg-[#25D366] flex justify-center items-center w-full py-3 px-2 md:px-10 text-center gap-2">
                 <span>Cotizar aquí</span>
@@ -167,7 +168,12 @@
 
 @section('scripts_importados')
 
-  <script></script>
+  <script>
+    var appUrl = '{{ env('APP_URL') }}';
+  </script>
+
+
+  <script src="{{ asset('js/carrito.js') }}"></script>
 
   {{-- <script src="{{ asset('js/storage.extend.js') }}"></script> --}}
 @stop

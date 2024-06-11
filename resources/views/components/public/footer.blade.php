@@ -44,9 +44,12 @@
 
     <div class="flex flex-col gap-5">
       <p class="underline font-moderat_500 text-text14 md:text-text16">Términos de uso</p>
-      <p class="font-moderat_Regular text-text12 md:text-text14">Políticas de privacidad</p>
-      <p class="font-moderat_Regular text-text12 md:text-text14">Políticas de envío</p>
-      <p class="font-moderat_Regular text-text12 md:text-text14">Políticas de devolución</p>
+      <a href="/politica_privacidad" class="font-moderat_Regular text-text12 md:text-text14">Políticas de privacidad</a>
+      <a href="/term_condiciones" class="font-moderat_Regular text-text12 md:text-text14">Términos y condiciones</a>
+      <a href="/libro-de-reclamaciones" class="font-moderat_Regular text-text12 md:text-text14">Libro de
+        Reclamaciones</a>
+      {{-- <a href="/politicas-de-devolucion" class="font-moderat_Regular text-text12 md:text-text14">Políticas de
+        devolución</a> --}}
     </div>
 
     <div class="flex flex-col gap-5">

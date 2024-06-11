@@ -2,142 +2,148 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-   {{--  <link rel="stylesheet" href="{{ asset('css/styles.css') }}" /> --}}
-
-    {{-- Aqui van los CSS --}}
-    @yield('css_importados')
-
-    {{-- Swipper --}}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-    {{-- Alpine --}}
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-    {{-- Sweet Alert --}}
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Index</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  @vite(['resources/css/app.css', 'resources/js/app.js'])
+  <title>@yield('title', config('app.name', 'Laravel'))</title>
+  {{-- <title>{{ $attributes['title'] ?? 'Pagina' }} | {{ config('app.name', 'Laravel') }}</title> --}}
 
 
-    <style>
-        @font-face {
-            font-family: "moderat-700";
-            src: url({{ asset('fonts/Moderat-Mono-Bold.woff') }}) format("woff");
-        }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-        @font-face {
-            font-family: "moderat-500";
-            src: url({{ asset('fonts/Moderat-Mono-Medium.woff') }}) format("woff");
-        }
+  {{-- colocar favicon --}}
+  <link rel="icon" type="image/svg+xml" href="{{ asset('images/svg/favicon.svg') }}">
 
-        @font-face {
-            font-family: "moderat-400";
-            src: url({{ asset('fonts/Moderat-Mono-Regular.woff') }}) format("woff");
-        }
+  {{--  <link rel="stylesheet" href="{{ asset('css/styles.css') }}" /> --}}
 
-        @font-face {
-            font-family: "moderat-300";
-            src: url({{ asset('fonts/Moderat-Mono-Light.woff') }}) format("woff");
-        }
+  {{-- Aqui van los CSS --}}
+  @yield('css_importados')
 
-        @font-face {
-            font-family: "moderat-italic";
-            src: url({{ asset('fonts/Moderat-Medium-Italic.woff') }}) format("woff");
-        }
+  {{-- Swipper --}}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-        @font-face {
-            font-family: "moderat-Medium";
-            src: url({{ asset('fonts/Moderat-Medium.woff') }}) format("woff");
-        }
+  {{-- Alpine --}}
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-        @font-face {
-            font-family: "moderat-Regular";
-            src: url({{ asset('fonts/Moderat-Regular.woff') }}) format("woff");
-        }
+  {{-- Sweet Alert --}}
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-        @font-face {
-            font-family: "moderat-Bold";
-            src: url({{ asset('fonts/Moderat-Bold.woff') }}) format("woff");
-        }
-    </style>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+
+  <style>
+    @font-face {
+      font-family: "moderat-700";
+      src: url({{ asset('fonts/Moderat-Mono-Bold.woff') }}) format("woff");
+    }
+
+    @font-face {
+      font-family: "moderat-500";
+      src: url({{ asset('fonts/Moderat-Mono-Medium.woff') }}) format("woff");
+    }
+
+    @font-face {
+      font-family: "moderat-400";
+      src: url({{ asset('fonts/Moderat-Mono-Regular.woff') }}) format("woff");
+    }
+
+    @font-face {
+      font-family: "moderat-300";
+      src: url({{ asset('fonts/Moderat-Mono-Light.woff') }}) format("woff");
+    }
+
+    @font-face {
+      font-family: "moderat-italic";
+      src: url({{ asset('fonts/Moderat-Medium-Italic.woff') }}) format("woff");
+    }
+
+    @font-face {
+      font-family: "moderat-Medium";
+      src: url({{ asset('fonts/Moderat-Medium.woff') }}) format("woff");
+    }
+
+    @font-face {
+      font-family: "moderat-Regular";
+      src: url({{ asset('fonts/Moderat-Regular.woff') }}) format("woff");
+    }
+
+    @font-face {
+      font-family: "moderat-Bold";
+      src: url({{ asset('fonts/Moderat-Bold.woff') }}) format("woff");
+    }
+  </style>
 
 </head>
 
 <body>
-    <div></div>
-    @include('components.public.header')
+  <div></div>
+  @include('components.public.header')
 
-    <div class="main">
-        {{-- Aqui va el contenido de cada pagina --}}
-        @yield('content')
+  <div class="main">
+    {{-- Aqui va el contenido de cada pagina --}}
+    @yield('content')
 
-    </div>
-
-
-
-    @include('components.public.footer')
+  </div>
 
 
 
-    @yield('scripts_importados')
-    {{-- @vite(['resources/js/functions.js']) --}}
-    {{-- <script src="{{ asset('js/functions.js') }}"></script> --}}
-    <script>
-        const addToCart = document.querySelector('.bag__carrito');
-        /* const closeModal = document.querySelector(".jsModalClose"); */
+  @include('components.public.footer')
 
-        addToCart.addEventListener("click", (event) => {
-            const modal = document.getElementById('jsModalCarrito');
-            modal.classList.add("active");
-        });
 
-        //CERRAMOS MODAL CUANDO HACEMOS CLICK FUERA DEL CONTENDINO DEL MODAL
-        window.onclick = (event) => {
-            const modal = document.querySelector(".modal.active");
 
-            if (event.target == modal) {
-                modal.classList.remove("active");
-            }
-        };
-    </script>
-<script>
+  @yield('scripts_importados')
+  {{-- @vite(['resources/js/functions.js']) --}}
+  {{-- <script src="{{ asset('js/functions.js') }}"></script> --}}
+  <script>
+    const addToCart = document.querySelector('.bag__carrito');
+    /* const closeModal = document.querySelector(".jsModalClose"); */
+
+    addToCart.addEventListener("click", (event) => {
+      const modal = document.getElementById('jsModalCarrito');
+      modal.classList.add("active");
+    });
+
+    //CERRAMOS MODAL CUANDO HACEMOS CLICK FUERA DEL CONTENDINO DEL MODAL
+    window.onclick = (event) => {
+      const modal = document.querySelector(".modal.active");
+
+      if (event.target == modal) {
+        modal.classList.remove("active");
+      }
+    };
+  </script>
+  <script>
     function alerta(message) {
-        Swal.fire({
-            title: message,
-            icon: "error",
-        });
+      Swal.fire({
+        title: message,
+        icon: "error",
+      });
     }
 
     function validarEmail(value) {
-        const regex =
-            /^(([^<>()\[\]\\.,;:\s@”]+(\.[^<>()\[\]\\.,;:\s@”]+)*)|(“.+”))@((\[[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}])|(([a-zA-Z\-0–9]+\.)+[a-zA-Z]{2,}))$/
+      const regex =
+        /^(([^<>()\[\]\\.,;:\s@”]+(\.[^<>()\[\]\\.,;:\s@”]+)*)|(“.+”))@((\[[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}])|(([a-zA-Z\-0–9]+\.)+[a-zA-Z]{2,}))$/
 
-        if (!regex.test(value)) {
-            alerta("Por favor, asegúrate de ingresar una dirección de correo electrónico válida");
-            return false;
-        }
-        return true;
+      if (!regex.test(value)) {
+        alerta("Por favor, asegúrate de ingresar una dirección de correo electrónico válida");
+        return false;
+      }
+      return true;
     }
 
 
     $('#formInscripcion').submit(function(e) {
 
-        e.preventDefault();
+      e.preventDefault();
 
-        Swal.fire({
+      Swal.fire({
 
-            title: 'Procesando información',
-            html: `Registrando... 
+        title: 'Procesando información',
+        html: `Registrando... 
   <div class="max-w-2xl mx-auto overflow-hidden flex justify-center items-center mt-4">
       <div role="status">
       <svg aria-hidden="true" class="w-8 h-8 text-blue-600 animate-spin dark:text-gray-600 " viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -148,50 +154,50 @@
       </div>
   </div>
   `,
-            allowOutsideClick: false,
-            onBeforeOpen: () => {
-                Swal.showLoading();
-            }
-        });
+        allowOutsideClick: false,
+        onBeforeOpen: () => {
+          Swal.showLoading();
+        }
+      });
 
 
-        if (!validarEmail($('#email').val())) {
-            return;
-        };
-        $.ajax({
-            url: '{{ route('guardarUserNewsLetter') }}',
-            method: 'POST',
-            data: $(this).serialize(),
-            success: function(response) {
-                Swal.close();
-                Swal.fire({
-                    title: response.message,
-                    icon: "success",
-                });
-                $('#formInscripcion')[0].reset();
-            },
-            error: function(response) {
-                let message = ''
+      if (!validarEmail($('#email').val())) {
+        return;
+      };
+      $.ajax({
+        url: '{{ route('guardarUserNewsLetter') }}',
+        method: 'POST',
+        data: $(this).serialize(),
+        success: function(response) {
+          Swal.close();
+          Swal.fire({
+            title: response.message,
+            icon: "success",
+          });
+          $('#formInscripcion')[0].reset();
+        },
+        error: function(response) {
+          let message = ''
 
-                let isDuplicado = response.responseJSON.message.includes('Duplicate entry')
-                console.log(isDuplicado)
+          let isDuplicado = response.responseJSON.message.includes('Duplicate entry')
+          console.log(isDuplicado)
 
-                if (isDuplicado) {
-                    message =
-                        'El correo que ha ingresado ya existe. Utilice  otra direccion de correo'
-                } else {
-                    message = response.responseJSON.message
-                }
-                Swal.close();
-                Swal.fire({
-                    title: message,
-                    icon: "error",
-                });
-            }
-        });
+          if (isDuplicado) {
+            message =
+              'El correo que ha ingresado ya existe. Utilice  otra direccion de correo'
+          } else {
+            message = response.responseJSON.message
+          }
+          Swal.close();
+          Swal.fire({
+            title: message,
+            icon: "error",
+          });
+        }
+      });
 
     })
-</script>
+  </script>
 
 </body>
 

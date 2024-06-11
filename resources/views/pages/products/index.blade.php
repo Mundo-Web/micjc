@@ -34,7 +34,7 @@
                 <th>Peso</th>
                 <th>Imagen</th>
                 <th>Destacar</th>
-                <th>Recomendar</th>
+                <th>Liquidacion</th>
                 <th>Visible</th>
                 <th>Acciones</th>
               </tr>
@@ -80,8 +80,8 @@
                               dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-600 before:inline-block before:size-6
                               before:bg-white checked:before:bg-blue-200 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow 
                               before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-gray-400 dark:checked:before:bg-blue-200"
-                        id='{{ 'v_' . $item->id }}' data-field='recomendar' data-idService='{{ $item->id }}'
-                        data-titleService='{{ $item->producto }}' {{ $item->recomendar == 1 ? 'checked' : '' }}>
+                        id='{{ 'v_' . $item->id }}' data-field='liquidacion' data-idService='{{ $item->id }}'
+                        data-titleService='{{ $item->producto }}' {{ $item->liquidacion == 1 ? 'checked' : '' }}>
                       <label for="{{ 'v_' . $item->id }}"></label>
                     </form>
 
@@ -139,7 +139,7 @@
                 <th>Peso</th>
                 <th>Imagen</th>
                 <th>Destacar</th>
-                <th>Recomendar</th>
+                <th>Liquidacion</th>
                 <th>Visible</th>
                 <th>Acciones</th>
               </tr>

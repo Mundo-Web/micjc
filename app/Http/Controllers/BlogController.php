@@ -44,6 +44,7 @@ class BlogController extends Controller
   public function store(Request $request)
   {
 
+    dump($request->all());
     
     $request->validate([
       'title' => 'required',
@@ -59,27 +60,12 @@ class BlogController extends Controller
 
       $img =  $manager->read($request->file('imagen'));
 
-      //seteamos el tamaño de que deben de tener las imagenes que se suban
-      $qwidth = 808;
-      $qheight = 445;
+      $img->coverDown(640, 640, 'center');
 
-      // Obtener las dimensiones de la imagen que se esta subiendo
-      $width = $img->width();
-      $height = $img->height();
-
-      if ($width > $height) {
-        //dd('Horizontal');
-        //si es horizontal igualamos el alto de la imagen a alto que queremos
-        $img->resize(height: 445)->crop(808, 445);
-      } else {
-        //dd('Vertical');
-        //En caso sea vertical la imagen
-        //gualamos el ancho y cropeamos
-        $img->resize(width: 808)->crop(808, 445);
-      }
-
-
-      $ruta = storage_path() . '/app/public/images/posts/';
+      $ruta = 'storage/images/posts/';
+      if (!file_exists($ruta)) {
+        mkdir($ruta, 0777, true); // Se crea la ruta con permisos de lectura, escritura y ejecución
+    }
 
       $img->save($ruta . $nombreImagen);
 
@@ -137,14 +123,14 @@ class BlogController extends Controller
       $manager = new ImageManager(new Driver());
 
 
-      $ruta = storage_path() . '/app/public/images/posts/' . $old_name;
+      $ruta = 'storage/images/posts/' . $old_name;
 
       // dd($ruta);
       if (File::exists($ruta)) {
         File::delete($ruta);
       }
 
-      $rutanueva = storage_path() . '/app/public/images/posts/';
+      $rutanueva = 'storage/images/posts/';
       $nombreImagen = Str::random(10) . '_' . $request->file('imagen')->getClientOriginalName();
 
       $img =  $manager->read($request->file('imagen'));

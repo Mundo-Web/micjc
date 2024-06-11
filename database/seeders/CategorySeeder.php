@@ -15,7 +15,7 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         //
-        $cat = ['Suministro de Computo', 'Impresoras', 'Laptos y Monitores', 'Accesorios y Perifericos'];
+        $cat = ['Tintas y cartuchos', 'Impresoras', 'Laptos y Monitores', 'Accesorios y Perifericos'];
         for ($i = 0; $i < 4; $i++) {
             Category::create([
                 'name' => $cat[$i],

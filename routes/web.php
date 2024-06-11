@@ -27,8 +27,12 @@ use App\Http\Controllers\GalerieController;
 use App\Http\Controllers\LogosClientController;
 
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\LibroReclamacionesController;
 use App\Http\Controllers\MarcaController;
 use App\Http\Controllers\NewsletterSubscriberController;
+use App\Http\Controllers\PedidosController;
+use App\Http\Controllers\PoliticasdePrivacidadController;
+use App\Http\Controllers\PriceController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\StaffController;
@@ -38,6 +42,7 @@ use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\ValoresAtributosController;
 
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\TerminosycondicionesController;
 use App\Models\AboutUs;
 
 /*
@@ -60,7 +65,7 @@ Route::get('/productotest', [IndexController::class, 'producto'] )->name('produc
 
 // Blog
 Route::get('/blog', [IndexController::class, 'blog'] )->name('blog');
-Route::get('/post', [IndexController::class, 'post'] )->name('post');
+Route::get('/post/{id}', [IndexController::class, 'post'] )->name('post');
     
 
 // Contacto
@@ -68,12 +73,13 @@ Route::get('/contacto', [IndexController::class, 'contacto'] )->name('contacto')
 
 // Carrito
 Route::get('/carrito', [IndexController::class, 'carrito'] )->name('carrito');
+
 Route::get('/detallesPago', [IndexController::class, 'detallesPago'] )->name('detallesPago');
+Route::post('/procesar/pago',[IndexController::class, 'procesarPago'])->name('procesar.pago');
 Route::get('/exito', [IndexController::class, 'exito'] )->name('exito');
 
-Route::get('/miCuenta', [IndexController::class, 'miCuenta'] )->name('miCuenta');
-Route::get('/miDireccion', [IndexController::class, 'miDireccion'] )->name('miDireccion');
-Route::get('/historial', [IndexController::class, 'historial'] )->name('historial');
+
+
 Route::get('/crearCuenta', [IndexController::class, 'crearCuenta'] )->name('crearCuenta');
 Route::get('/ingresar', [IndexController::class, 'ingresar'] )->name('ingresar');
 Route::get('/olvide', [IndexController::class, 'olvide'] )->name('olvide');
@@ -82,8 +88,12 @@ Route::get('/restaurar', [IndexController::class, 'restaurar'] )->name('restaura
 Route::post('guardarContactos', [IndexController::class, 'guardarContacto'] )->name('guardarContactos'); 
 Route::post('guardarUserNewsLetter', [NewsletterSubscriberController::class, 'guardarUserNewsLetter'])->name('guardarUserNewsLetter');
 
+Route::post('carrito/buscarProducto', [CarritoController::class, 'buscarProducto'] )->name('carrito.buscarProducto'); 
+Route::post('/procesarcarrito', [IndexController::class, 'procesarCarrito'])->name('procesar.carrito');
 
-
+Route::post('/getProvincia', [PriceController::class, 'getProvincias'])->name('prices.getProvincias');
+Route::post('/getDistrito', [PriceController::class, 'getDistrito'])->name('prices.getDistrito');
+Route::post('/calculeEnvio', [PriceController::class, 'calculeEnvio'])->name('prices.calculeEnvio');
 
 /*  */
 /* Route::get('/nosotros', [IndexController::class, 'nosotros'] )->name('nosotros');
@@ -94,17 +104,25 @@ Route::get('/contacto', [IndexController::class, 'contacto'] )->name('contacto')
 /* Proceso de pago */
 /* Route::get('/carrito', [IndexController::class, 'carrito'] )->name('carrito');
 Route::get('/pago', [IndexController::class, 'pago'] )->name('pago');
-Route::post('/procesar/pago',[IndexController::class, 'procesarPago'])->name('procesar.pago');
+
 Route::get('/agradecimiento', [IndexController::class, 'agradecimiento'] )->name('agradecimiento'); */
 /* Catálogo y producto */
 /* Route::get('/producto/{id}', [IndexController::class, 'producto'] )->name('producto');
 Route::get('/catalogo/{filtro}', [IndexController::class, 'catalogo'] )->name('catalogo');
-Route::post('carrito/buscarProducto', [CarritoController::class, 'buscarProducto'] )->name('carrito.buscarProducto'); */
 /* Página 404 */
 /* Route::get('/404', [IndexController::class, 'error'] )->name('error'); */
 /* Formulario de contacto */
 /* Route::post('guardarContactos', [IndexController::class, 'guardarContacto'] )->name('guardarContactos'); */
 
+
+
+Route::get('/politica_privacidad', [IndexController::class, 'politicaprivacidad'])->name('politica_privacidad');
+Route::get('/term_condiciones', [IndexController::class, 'term_condiciones'])->name('term_condiciones');
+
+Route::get('/libro-de-reclamaciones', [IndexController::class, 'librodereclamaciones'] )->name('librodereclamaciones');
+
+Route::get('/obtenerProvincia/{departmentId}', [IndexController::class, 'obtenerProvincia'])->name('obtenerProvincia');
+Route::get('/obtenerDistritos/{provinceId}', [IndexController::class, 'obtenerDistritos'])->name('obtenerDistritos');
 
 
 
@@ -210,7 +228,26 @@ Route::middleware(['auth:sanctum', 'verified', 'can:Admin'])->group(function () 
         Route::post('/marcas/deleteMarca', [MarcaController::class, 'deleteMarca'] )->name('marcas.deleteMarca');
         Route::post('/marcas/updateVisible', [MarcaController::class, 'updateVisible'] )->name('marcas.updateVisible');
 
+        //Pedidos
+        Route::get('/orders', [PedidosController::class, 'listadoPedidos'])->name('orders');
+        Route::get('/orders/{id}', [PedidosController::class, 'verPedido'])->name('verPedido');
 
+        
+        Route::resource('/verPoliticasPrivacidad', PoliticasdePrivacidadController::class);
+        Route::post('verPoliticasPrivacidad/delete', [PoliticasdePrivacidadController::class, 'delete'])->name('PoliticasPrivacidad.delete');
+
+
+        Route::resource('terminoscondiciones', TerminosycondicionesController::class);
+        Route::post('terminoscondiciones/delete', [TerminosycondicionesController::class, 'delete'])->name('terminoscondiciones.delete');
+       
+        Route::post('guardarformulario', [LibroReclamacionesController::class, 'storePublic'] )->name('guardarFormReclamo');
+
+        Route::resource('/reclamo', LibroReclamacionesController::class);
+        Route::post('/reclamo/borrar', [LibroReclamacionesController::class, 'borrar'])->name('reclamo.borrar');
+
+
+        //Precios
+        Route::resource('/prices', PriceController::class);
 
         
         Route::fallback(function() {
@@ -225,7 +262,10 @@ Route::middleware(['auth:sanctum', 'verified', 'can:Admin'])->group(function () 
 
 Route::middleware(['auth:sanctum', 'verified', 'can:Customer'])->group(function () {
 
- Route::get('/micuenta', [IndexController::class, 'micuenta'] )->name('micuenta');
+ Route::get('/micuenta', [IndexController::class, 'micuenta'] )->name('miCuenta');
+ Route::get('/miDireccion', [IndexController::class, 'miDireccion'] )->name('miDireccion');
+Route::get('/historial', [IndexController::class, 'historial'] )->name('historial');
+ 
  Route::get('/micuenta/pedidos', [IndexController::class, 'pedidos'] )->name('pedidos');
  Route::get('/micuenta/direccion', [IndexController::class, 'direccion'] )->name('direccion');
 
