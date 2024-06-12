@@ -283,6 +283,8 @@ let articulosCarrito = [];
 
 
         } else {
+          $('#imgCantidad').attr('hidden', false);
+
           $('#spanCantidad').text(total)
 
         }
