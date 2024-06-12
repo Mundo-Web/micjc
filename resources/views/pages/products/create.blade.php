@@ -877,20 +877,6 @@
     $('document').ready(function() {
       let valorInput = 1
 
-      tinymce.init({
-        selector: 'textarea#description',
-        height: 500,
-        plugins: [
-          'advlist', 'autolink', 'lists', 'link', 'charmap', 'preview',
-          'searchreplace', 'visualblocks', 'code', 'fullscreen',
-          'insertdatetime', 'table'
-        ],
-        toolbar: 'undo redo | blocks | ' +
-          'bold italic backcolor | alignleft aligncenter ' +
-          'alignright alignjustify | bullist numlist outdent indent | ' +
-          'removeformat | help',
-        content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px;}'
-      });
 
       $("#AddEspecifiacion").on('click', function(e) {
         e.preventDefault()
@@ -1024,7 +1010,7 @@
         $('#subCategoria').append(
           '<option value="">Seleccionar Categoria</option>'
         )
-        $('#subCategoria').toggleClass('opacity-15')
+        // $('#subCategoria').toggleClass('opacity-15')
         $.each(res.subCategoria, function(key, value) {
           $('#subCategoria').append(
             '<option value="' + value['id'] + '">' + value['name'] + '</option>'
