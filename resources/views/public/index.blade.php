@@ -31,11 +31,11 @@
     }
 
     /*  .bg__mobile {
-                                                                                                                                                      background-repeat: no-repeat;
-                                                                                                                                                      background-size: cover;
-                                                                                                                                                      background-position: center;
-                                                                                                                                                      background-image: url({{ asset('images/img/image_3.png') }});
-                                                                                                                                                  } */
+                                                                                                                                                            background-repeat: no-repeat;
+                                                                                                                                                            background-size: cover;
+                                                                                                                                                            background-position: center;
+                                                                                                                                                            background-image: url({{ asset('images/img/image_3.png') }});
+                                                                                                                                                        } */
 
     .fondo__slider-desktop {
       background-image: none;
@@ -579,7 +579,7 @@
                   </a>
 
                   <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">
-                    {!! $item->description !!}
+                    {!! Str::limit($item->description, 200, '...') !!}
                   </p>
                   <div class="flex justify-start items-center gap-2 md:gap-4">
 
