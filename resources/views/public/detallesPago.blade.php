@@ -727,6 +727,11 @@
         },
         error: function(error) {
           console.log(error);
+          Swal.fire({
+            title: `Opps!!`,
+            text: `${error.responseJSON.errors}`,
+            icon: "error",
+          })
         }
       });
 
