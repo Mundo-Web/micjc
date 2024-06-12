@@ -627,27 +627,8 @@
                           d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                       </svg>
                     </div>
-                    <select id="selectMarcas" name="marca_id"
-                      class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
-                      <div class="flex flex-col justify-start ">
-                        <option
-                          class="bg-[#0051FF] bg-opacity-25 w-full py-3  text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">
-                          Todas</option>
-
-                        @foreach ($marcas as $item)
-                          <option value="{{ $item->id }}"
-                            class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-
-                            {{ $item->name }}</option>
-                        @endforeach
-
-
-                      </div>
-
-
-
-                    </select>
+                    <x-marcasSelect :data=[] name="marca_id" value="" id="selectMarcas" />
                   </div>
                 </div>
                 <div class="md:col-span-5 mt-2">
@@ -1046,6 +1027,30 @@
         $('#subCategoria').toggleClass('opacity-15')
         $.each(res.subCategoria, function(key, value) {
           $('#subCategoria').append(
+            '<option value="' + value['id'] + '">' + value['name'] + '</option>'
+          )
+        });
+      });
+    })
+    $("#subCategoria").on('change', function(e) {
+      let subcategoria = $('#subCategoria').val();
+      console.log(subcategoria)
+      $.ajax({
+        url: "{{ route('marcas.obtener') }}",
+        dataType: "json",
+        method: 'POST',
+        data: {
+          _token: $('input[name="_token"]').val(),
+          id: subcategoria
+        }
+      }).done(function(res) {
+        $('#selectMarcas').empty();
+        $('#selectMarcas').append(
+          '<option value="">Seleccionar Categoria</option>'
+        )
+        $('#selectMarcas').toggleClass('bg-opacity-25')
+        $.each(res.marcas, function(key, value) {
+          $('#selectMarcas').append(
             '<option value="' + value['id'] + '">' + value['name'] + '</option>'
           )
         });

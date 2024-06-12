@@ -228,6 +228,7 @@ Route::middleware(['auth:sanctum', 'verified', 'can:Admin'])->group(function () 
         Route::resource('/marcas', MarcaController::class);
         Route::post('/marcas/deleteMarca', [MarcaController::class, 'deleteMarca'] )->name('marcas.deleteMarca');
         Route::post('/marcas/updateVisible', [MarcaController::class, 'updateVisible'] )->name('marcas.updateVisible');
+        Route::post('/marcas/obtener', [MarcaController::class, 'obtener'] )->name('marcas.obtener');
 
         //Pedidos
         Route::get('/orders', [PedidosController::class, 'listadoPedidos'])->name('orders');

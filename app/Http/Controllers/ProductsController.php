@@ -12,6 +12,7 @@ use App\Models\ImagenProducto;
 use App\Models\Marca;
 use App\Models\Products;
 use App\Models\Specifications;
+use App\Models\SubCategoria;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -375,10 +376,12 @@ class ProductsController extends Controller
     $valorAtributo = AttributesValues::where("status", "=", true)->get();
     $especificacion = Specifications::where("product_id", "=", $id)->get();
     $allTags = Tag::all();
+    $allMarcas = Marca::all();
     $categoria = Category::all();
+    $allSubcategorias = SubCategoria::all();
     
 
-    return view('pages.products.edit', compact('product', 'atributos', 'valorAtributo', 'allTags', 'categoria', 'especificacion'));
+    return view('pages.products.edit', compact('product', 'atributos', 'valorAtributo', 'allTags', 'categoria', 'especificacion', 'allMarcas', 'allSubcategorias'));
   }
 
   /**
@@ -394,7 +397,6 @@ class ProductsController extends Controller
     $data = $request->all();
     $atributos = null;
 
-    
 
     $request->validate([
       'producto' => 'required',

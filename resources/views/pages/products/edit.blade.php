@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout title="Editar Producto">
 
 
   <div class="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
@@ -200,7 +200,7 @@
                           d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                       </svg>
                     </div>
-                    <select name="categoria_id"
+                    <select name="categoria_id" id="categorias"
                       class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                       <option value="">Seleccionar Categoria </option>
                       @foreach ($categoria as $item)
@@ -211,7 +211,55 @@
                     </select>
                   </div>
                 </div>
+                <div class="md:col-span-5">
+                  <label for="costo_x_art">Sub Categoria</label>
+                  <div class="relative mb-2  mt-2">
+                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                      <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" xmlns="http://www.w3.org/2000/svg"
+                        fill="none" width="512" height="512" x="0" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                      </svg>
+                    </div>
+                    <select id="subCategoria" name="sub_cat_id"
+                      class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
+                      <div class="flex flex-col justify-start ">
+
+                        @foreach ($allSubcategorias as $subCat)
+                          @if ($product->sub_cat_id == $subCat->id)
+                            <option selected value="{{ $subCat->id }}"
+                              class="bg-[#0051FF] bg-opacity-25 w-full py-3  text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">
+
+                              {{ $subCat->name }}</option>
+                          @endif
+                        @endforeach
+
+
+                      </div>
+
+
+
+                    </select>
+                  </div>
+                </div>
+                <div class="md:col-span-5">
+                  <label for="costo_x_art">Marcas</label>
+                  <div class="relative mb-2  mt-2">
+                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                      <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" xmlns="http://www.w3.org/2000/svg"
+                        fill="none" width="512" height="512" x="0" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                      </svg>
+                    </div>
+
+                    <x-marcasSelect :data="$allMarcas" name="marca_id" value="{{ $product->marca_id }}"
+                      id="selectMarcas" />
+                  </div>
+                </div>
                 <div class="md:col-span-5 mt-2">
                   <div class=" flex items-end justify-between gap-2 ">
                     <label for="especificacion">Especificacion </label>
@@ -579,6 +627,56 @@
           .nextSibling); // Insertar el input antes del siguiente elemento después del botón
 
       })
+    })
+  </script>
+  <script>
+    $("#categorias").on('change', function(e) {
+      let categoria = $('#categorias').val();
+      console.log(categoria)
+      $.ajax({
+        url: "{{ route('subcategoria.obtener') }}",
+        dataType: "json",
+        method: 'POST',
+        data: {
+          _token: $('input[name="_token"]').val(),
+          id: categoria
+        }
+      }).done(function(res) {
+        $('#subCategoria').empty();
+        $('#subCategoria').append(
+          '<option value="">Seleccionar Categoria</option>'
+        )
+        // $('#subCategoria').toggleClass('opacity-15')
+        $.each(res.subCategoria, function(key, value) {
+          $('#subCategoria').append(
+            '<option value="' + value['id'] + '">' + value['name'] + '</option>'
+          )
+        });
+      });
+    })
+    $("#subCategoria").on('change', function(e) {
+      let subcategoria = $('#subCategoria').val();
+      console.log(subcategoria)
+      $.ajax({
+        url: "{{ route('marcas.obtener') }}",
+        dataType: "json",
+        method: 'POST',
+        data: {
+          _token: $('input[name="_token"]').val(),
+          id: subcategoria
+        }
+      }).done(function(res) {
+        $('#selectMarcas').empty();
+        $('#selectMarcas').append(
+          '<option value="">Seleccionar Categoria</option>'
+        )
+        // $('#selectMarcas').toggleClass('bg-opacity-25')
+        $.each(res.marcas, function(key, value) {
+          $('#selectMarcas').append(
+            '<option value="' + value['id'] + '">' + value['name'] + '</option>'
+          )
+        });
+      });
     })
   </script>
 </x-app-layout>

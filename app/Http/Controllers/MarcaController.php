@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Marca;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MarcaController extends Controller
 {
@@ -42,6 +43,18 @@ class MarcaController extends Controller
     public function show(Marca $marca)
     {
         //
+    }
+    public function obtener(Request $request){
+
+        $marcas = DB::select('SELECT
+                marcas.* 
+            FROM
+                subcategories_x_marcas
+                INNER JOIN marcas ON subcategories_x_marcas.marca_id = marcas.id 
+            WHERE
+                subcat_id = ?',
+        [$request->id]);
+        return response()->json(['marcas'=>$marcas]);
     }
 
     /**
