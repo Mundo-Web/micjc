@@ -104,7 +104,7 @@ class IndexController extends Controller
       
 
     }
-    $productos = $productos->get();
+    $productos = $productos->paginate(10);
 
 
 

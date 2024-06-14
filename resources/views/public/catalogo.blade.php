@@ -252,7 +252,7 @@
         </div>
 
         <div data-aos="fade-up" data-aos-offset="150" class="py-10">
-
+          {{ $productos }}
           {{-- <div class="flex items-center gap-2 justify-center md:justify-end">
             <p class="text-[#111111] font-space_grotesk font-medium text-text16 md:text-text20">
               Pág.
