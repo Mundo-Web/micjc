@@ -104,7 +104,7 @@ class IndexController extends Controller
       
 
     }
-    $productos = $productos->paginate(10);
+    $productos = $productos->paginate(12);
 
 
 
