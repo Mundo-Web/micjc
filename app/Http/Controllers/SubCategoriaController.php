@@ -96,4 +96,17 @@ class SubCategoriaController extends Controller
         $subCategoria = SubCategoria::where('status', 1)->where('visible', 1)->where('categoria_id',$request->id )->get();
         return response()->json(['message' => 'obteniendo categorias' , 'subCategoria'=> $subCategoria]);
     }
+    public function obtenerD(Request $request)  {
+        
+
+      
+
+        $subCategoria = SubCategoria::join('products', 'products.sub_cat_id', '=', 'sub_categorias.id')
+        ->select('sub_categorias.id', 'sub_categorias.name')
+        
+         ->where('products.categoria_id', '=', $request->id )
+        ->distinct()->get();
+        
+        return response()->json(['message' => 'obteniendo categorias' , 'subCategoria'=> $subCategoria]);
+    }
 }

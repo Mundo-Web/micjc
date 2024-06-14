@@ -119,4 +119,15 @@ class MarcaController extends Controller
       ]);
       return response()->json(['message' => 'registro actualizado']);
     }
+
+    public function marcaDependiente(Request $request){
+        $selectMarcas = Marca::join('products', 'products.marca_id', '=', 'marcas.id')
+        ->select('marcas.id', 'marcas.name')
+        
+         ->where('products.sub_cat_id', '=', $request->id )
+        ->distinct()->get();
+
+        return response()->json(['message' => 'obteniendo categorias' , 'selectMarcas'=> $selectMarcas]);
+
+    }
 }

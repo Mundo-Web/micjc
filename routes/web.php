@@ -95,6 +95,8 @@ Route::post('/getProvincia', [PriceController::class, 'getProvincias'])->name('p
 Route::post('/getDistrito', [PriceController::class, 'getDistrito'])->name('prices.getDistrito');
 Route::post('/calculeEnvio', [PriceController::class, 'calculeEnvio'])->name('prices.calculeEnvio');
 
+Route::post('/marca/marcadependiente', [MarcaController::class, 'marcaDependiente'])->name('marca.marcaDependiente');
+
 /*  */
 /* Route::get('/nosotros', [IndexController::class, 'nosotros'] )->name('nosotros');
 Route::get('/servicios', [IndexController::class, 'servicios'] )->name('servicios');
@@ -223,6 +225,7 @@ Route::middleware(['auth:sanctum', 'verified', 'can:Admin'])->group(function () 
 
         Route::resource('/subcategoria', SubCategoriaController::class);
         Route::post('/subcategoria/obtener', [SubCategoriaController::class, 'obtener'])->name('subcategoria.obtener');
+        Route::post('/subcategoria/obtenerd', [SubCategoriaController::class, 'obtenerD'])->name('subcategoria.obtenerDepend');
         Route::post('/subcategoria/deleteSubCategory', [SubCategoriaController::class, 'deleteSubCategory'])->name('subcategoria.deleteSubCategory');
         
         Route::resource('/marcas', MarcaController::class);

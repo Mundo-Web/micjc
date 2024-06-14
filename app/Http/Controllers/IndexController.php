@@ -73,6 +73,7 @@ class IndexController extends Controller
     $categoria = $request->input('cat');
     $subcategoria = $request->input('subcat');
     $marca = $request->input('marca');
+    $orden = $request->input('order');
 
 
     $general = General::all()->first();
@@ -88,6 +89,21 @@ class IndexController extends Controller
       $productos->where('marca_id', $marca);
     }
 
+    if(isset($orden)){
+      if($orden === 'mayorAmenor'){
+        $productos->orderBy('id', 'DESC');
+      }elseif($orden === 'menorAmayor'){
+        $productos->orderBy('id', 'ASC');
+      }
+      elseif($orden === 'nameAsc'){
+        $productos->orderBy('producto', 'ASC');
+      }
+      elseif($orden === 'nameDesc'){
+        $productos->orderBy('producto', 'DESC');
+      }
+      
+
+    }
     $productos = $productos->get();
 
 

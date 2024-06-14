@@ -4,16 +4,57 @@
 
 
 @section('content')
+  <style>
+    .images-container {
+      width: 90%;
+      text-align: center;
+      /* margin: 60px auto 60px; */
+    }
+
+    .container-enlarge {
+      display: inline-block;
+      position: relative;
+      z-index: 50;
+      /* margin: 15px; */
+
+    }
+
+    .container-enlarge>img {
+      height: auto;
+      max-width: 100%;
+      width: 150px;
+      border-radius: 5px;
+    }
+
+    .container-enlarge span {
+      position: absolute;
+      top: -9999em;
+      left: -9999em;
+    }
+
+    .container-enlarge:hover span {
+      top: -120px;
+      left: 115px;
+      width: 300px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, .25);
+      z-index: 150;
+    }
+  </style>
+
   <main>
     <section class="w-11/12 md:w-10/12 mx-auto pt-5">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16">
         <div class="flex flex-col md:flex-row justify-center items-center gap-5 md:gap-0">
           <div
-            class="flex flex-row justify-between md:flex-col md:justify-start md:items-center h-full md:gap-10 md:basis-1/4 order-2 md:order-1 w-full">
+            class=" flex flex-row justify-between md:flex-col md:justify-start md:items-center h-full md:gap-10 md:basis-1/4 order-2 md:order-1 w-full ">
             @isset($producto->galeria)
               @foreach ($producto->galeria as $item)
-                <img src="{{ asset($item->imagen) }}" alt="computer" class="w-[70px] h-[90px] object-cover" data-aos="fade-up"
-                  data-aos-offset="150">
+                <div class="container-enlarge">
+                  <img src="{{ asset($item->imagen) }}" alt="computer" class="w-[70px] h-[90px] object-cover "
+                    data-aos-offset="150">
+                  <span><img src="{{ asset($item->imagen) }}" alt="computer" data-aos-offset="150"
+                      style="max-width: 150%;"></span>
+                </div>
               @endforeach
 
             @endisset
@@ -148,7 +189,8 @@
                   <a>
                     <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">{{ $item->producto }}</h2>
                   </a>
-                  <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">{!! $item->description !!}</p>
+                  <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]"> {!! Str::limit($item->description, 200, '...') !!}</p>
+
                   <div class="flex justify-start items-center gap-2 md:gap-4">
 
                   </div>
@@ -170,6 +212,16 @@
 
   <script>
     var appUrl = '{{ env('APP_URL') }}';
+  </script>
+  <script>
+    $(document).ready(function() {
+      $('.zoom').hover(function() {
+        console.log('haciendo el hover');
+        $(this).addClass('transition');
+      }, function() {
+        $(this).removeClass('transition');
+      });
+    });
   </script>
 
 

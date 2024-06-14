@@ -103,12 +103,12 @@
 
                 <!-- Dropdown menu -->
                 <select id="subCategoria"
-                  class="opacity-15 focus:outline-none font-moderat_Bold text-text16 xl:text-text18 mr-20 text-[#0051FF] border-[1.5px] border-gray-200 py-3 px-4 flex justify-between items-center w-full">
+                  class="focus:outline-none font-moderat_Bold text-text16 xl:text-text18 mr-20 text-[#0051FF] border-[1.5px] border-gray-200 py-3 px-4 flex justify-between items-center w-full">
                   <div class="flex flex-col justify-start ">
-                    <option
+                    <option value=""
                       class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">
-                      Eliga
-                      una categoria</option>
+                      Elija
+                      Sub-categoria</option>
 
                   </div>
 
@@ -126,15 +126,11 @@
                 <select id="selectMarcas"
                   class="focus:outline-none font-moderat_Bold text-text16 xl:text-text18 mr-20 text-[#0051FF] border-[1.5px] border-gray-200 py-3 px-4 flex justify-between items-center w-full">
                   <div class="flex flex-col justify-start ">
-                    <option
+                    <option value=""
                       class="bg-[#0051FF] bg-opacity-25 w-full py-3  text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">
-                      Todas</option>
+                      Elija Marca</option>
 
-                    @foreach ($marcas as $item)
-                      <option value="{{ $item->id }}"
-                        class="bg-[#0051FF] bg-opacity-25 w-full py-3  text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">
-                        {{ $item->name }}</option>
-                    @endforeach
+
 
 
                   </div>
@@ -167,20 +163,19 @@
               <div
                 class="absolute left-0 w-full  origin-top-left bg-white divide-y divide-gray-100 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300  z-[100]">
                 <div class="flex flex-col justify-start ">
-                  <a href=""
+                  <a onclick="Orderfn('menorAmayor')"
                     class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">De
                     menor a mayor</a>
-                  <a href=""
+                  <a onclick="Orderfn('mayorAmenor')"
                     class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">De
                     mayor a menor</a>
-                  <a href=""
+                  <a onclick="Orderfn('nameAsc')"
                     class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">A
                     - Z</a>
-                  <a href=""
+                  <a onclick="Orderfn('nameDesc')"
                     class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">Z
                     - A</a>
-                  <a href=""
-                    class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">BROTHER</a>
+                  {{-- <a href=""                    class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">BROTHER</a> --}}
                 </div>
 
 
@@ -221,7 +216,7 @@
                       </h2>
                     </a>
                     <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">
-                      {!! $item->description !!}</p>
+                      {!! Str::limit($item->description, 200, '...') !!}</p>
                     <div class="flex justify-start items-center gap-2 md:gap-4">
 
                       {{-- <div class="rounded-full bg-[#00AEEF] w-4 h-4 md:w-6 md:h-6"></div>
@@ -242,7 +237,7 @@
 
         <div data-aos="fade-up" data-aos-offset="150" class="py-10">
 
-          <div class="flex items-center gap-2 justify-center md:justify-end">
+          {{-- <div class="flex items-center gap-2 justify-center md:justify-end">
             <p class="text-[#111111] font-space_grotesk font-medium text-text16 md:text-text20">
               Pág.
             </p>
@@ -261,7 +256,7 @@
                 </a>
               </div>
             </nav>
-          </div>
+          </div> --}}
         </div>
       </div>
     </section>
@@ -275,7 +270,7 @@
         let categoria = $('#categorias').val();
         console.log(categoria)
         $.ajax({
-          url: "{{ route('subcategoria.obtener') }}",
+          url: "{{ route('subcategoria.obtenerDepend') }}",
           dataType: "json",
           method: 'POST',
           data: {
@@ -287,9 +282,34 @@
           $('#subCategoria').append(
             '<option value="">Seleccionar Categoria</option>'
           )
-          $('#subCategoria').toggleClass('opacity-15')
+          // $('#subCategoria').toggleClass('opacity-15')
           $.each(res.subCategoria, function(key, value) {
             $('#subCategoria').append(
+              '<option value="' + value['id'] + '">' + value['name'] + '</option>'
+            )
+          });
+        });
+      })
+
+      $("#subCategoria").on('change', function(e) {
+        let subcategoria = $('#subCategoria').val();
+        console.log(subcategoria)
+        $.ajax({
+          url: "{{ route('marca.marcaDependiente') }}",
+          dataType: "json",
+          method: 'POST',
+          data: {
+            _token: $('input[name="_token"]').val(),
+            id: subcategoria
+          }
+        }).done(function(res) {
+          $('#selectMarcas').empty();
+          $('#selectMarcas').append(
+            '<option value="">Seleccionar Marca</option>'
+          )
+          // $('#selectMarcas').toggleClass('opacity-15')
+          $.each(res.selectMarcas, function(key, value) {
+            $('#selectMarcas').append(
               '<option value="' + value['id'] + '">' + value['name'] + '</option>'
             )
           });
@@ -310,7 +330,7 @@
     })
   </script>
   <script>
-    function setUrl(categoria, subCat, marca) {
+    function setUrl(categoria, subCat, marca, order) {
 
       // Create a URL object based on the current window location
       let url = new URL(window.location.href);
@@ -322,13 +342,24 @@
 
       if (categoria) {
         params.set('cat', categoria);
+      } else {
+        params.delete('cat');
       }
 
       if (subCat) {
         params.set('subcat', subCat);
+      } else {
+        params.delete('subcat');
       }
       if (marca) {
         params.set('marca', marca);
+      } else {
+        params.delete('marca');
+      }
+      if (order) {
+        params.set('order', order)
+      } else {
+        params.delete('order');
       }
 
       // Update the path to include 'propiedades'
@@ -337,6 +368,19 @@
       // Set the updated search parameters
       url.search = params.toString();
       window.location.href = url.toString();
+    }
+
+    function Orderfn(orden) {
+      console.log(orden)
+      let categoria = document.getElementById('categorias').value ?? null;
+      let subCat = document.getElementById('subCategoria').value ?? null;
+
+      let marca = document.getElementById('selectMarcas').value ?? null;
+
+      console.log('categotia  = ', categoria)
+      console.log('subCat  = ', subCat)
+      console.log('marca  = ', marca)
+      setUrl(categoria, subCat, marca, orden)
     }
   </script>
 
