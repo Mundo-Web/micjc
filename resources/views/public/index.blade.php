@@ -31,11 +31,11 @@
     }
 
     /*  .bg__mobile {
-                                                                                                                                                            background-repeat: no-repeat;
-                                                                                                                                                            background-size: cover;
-                                                                                                                                                            background-position: center;
-                                                                                                                                                            background-image: url({{ asset('images/img/image_3.png') }});
-                                                                                                                                                        } */
+                                                                                                                                                              background-repeat: no-repeat;
+                                                                                                                                                              background-size: cover;
+                                                                                                                                                              background-position: center;
+                                                                                                                                                              background-image: url({{ asset('images/img/image_3.png') }});
+                                                                                                                                                          } */
 
     .fondo__slider-desktop {
       background-image: none;
@@ -575,11 +575,11 @@
                 <div class="flex flex-col gap-3">
                   <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">{{ $item->extracto }}</h3>
                   <a href="{{ route('producto', $item->id) }}">
-                    <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">{{ $item->producto }}</h2>
+                    <h2 class="font-moderat_700 text-text16 md:text-text24 text-[#111111]">{{ $item->producto }}</h2>
                   </a>
 
                   <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">
-                    {!! Str::limit($item->description, 200, '...') !!}
+                    {!! Str::limit($item->description, 150, '...') !!}
                   </p>
                   <div class="flex justify-start items-center gap-2 md:gap-4">
 
