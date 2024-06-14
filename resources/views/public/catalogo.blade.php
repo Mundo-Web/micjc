@@ -232,7 +232,7 @@
                       </h2>
                     </a>
                     <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">
-                      {!! Str::limit($item->description, 200, '...') !!}</p>
+                      {!! Str::limit($item->description, 110, '...') !!}</p>
                     <div class="flex justify-start items-center gap-2 md:gap-4">
 
                       {{-- <div class="rounded-full bg-[#00AEEF] w-4 h-4 md:w-6 md:h-6"></div>
