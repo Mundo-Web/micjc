@@ -80,7 +80,7 @@
 
                 <!-- Dropdown menu -->
                 <select id="categorias"
-                  class="focus:outline-none font-moderat_Bold text-text16 xl:text-text18 mr-20 text-[#0051FF] border-[1.5px] border-gray-200 py-3 px-4 flex justify-between items-center w-full">
+                  class="selectpicker focus:outline-none font-moderat_Bold text-text16 xl:text-text18 mr-20 text-[#0051FF] border-[1.5px] border-gray-200 py-3 px-4 flex justify-between items-center w-full">
                   <div class="flex flex-col justify-start">
                     <option value="">Categorías</option>
                     @foreach ($categorias as $cat)
@@ -103,7 +103,7 @@
 
                 <!-- Dropdown menu -->
                 <select id="subCategoria"
-                  class="focus:outline-none font-moderat_Bold text-text16 xl:text-text18 mr-20 text-[#0051FF] border-[1.5px] border-gray-200 py-3 px-4 flex justify-between items-center w-full">
+                  class="selectpicker focus:outline-none font-moderat_Bold text-text16 xl:text-text18 mr-20 text-[#0051FF] border-[1.5px] border-gray-200 py-3 px-4 flex justify-between items-center w-full">
                   <div class="flex flex-col justify-start ">
                     <option value=""
                       class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">
@@ -124,7 +124,7 @@
 
                 <!-- Dropdown menu -->
                 <select id="selectMarcas"
-                  class="focus:outline-none font-moderat_Bold text-text16 xl:text-text18 mr-20 text-[#0051FF] border-[1.5px] border-gray-200 py-3 px-4 flex justify-between items-center w-full">
+                  class=" selectpicker focus:outline-none font-moderat_Bold text-text16 xl:text-text18 mr-20 text-[#0051FF] border-[1.5px] border-gray-200 py-3 px-4 flex justify-between items-center w-full">
                   <div class="flex flex-col justify-start ">
                     <option value=""
                       class="bg-[#0051FF] bg-opacity-25 w-full py-3  text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">
@@ -146,21 +146,37 @@
 
           <div class="relative inline-block text-left w-auto">
             <div class="group">
-              <button type="button"
-                class="focus:outline-none font-moderat_Bold text-text16 xl:text-text18 mr-20 text-[#0051FF] border-[1.5px] border-gray-200 py-3 px-4 flex justify-between items-center w-full">
+              <select id="ordenItems"
+                class="selectpicker focus:outline-none font-moderat_Bold text-text16 xl:text-text18 mr-20 text-[#0051FF] border-[1.5px] border-gray-200 py-3 px-4 flex justify-between items-center w-full">
 
-                <span>Ordenar</span>
+                <option value="">Ordenar</option>
 
                 <!-- Dropdown arrow -->
-                <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                {{--  <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M1 1L6.00081 5.58L11 1" stroke="#0051FF" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round" />
-                </svg>
+                </svg> --}}
+                <option value="menorAmayor"
+                  class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">
+                  De
+                  menor a mayor</option>
+                <option value="mayorAmenor"
+                  class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">
+                  De
+                  mayor a menor</option>
+                <option value="nameAsc"
+                  class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">
+                  A
+                  - Z</option>
+                <option value="nameDesc"
+                  class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">
+                  Z
+                  - A</option>
 
-              </button>
+              </select>
 
               <!-- Dropdown menu -->
-              <div
+              {{--  <div
                 class="absolute left-0 w-full  origin-top-left bg-white divide-y divide-gray-100 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300  z-[100]">
                 <div class="flex flex-col justify-start ">
                   <a onclick="Orderfn('menorAmayor')"
@@ -175,12 +191,12 @@
                   <a onclick="Orderfn('nameDesc')"
                     class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">Z
                     - A</a>
-                  {{-- <a href=""                    class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">BROTHER</a> --}}
+                  <a href=""                    class="bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16">BROTHER</a>
                 </div>
 
 
 
-              </div>
+              </div> --}}
             </div>
           </div>
 
@@ -370,8 +386,8 @@
       window.location.href = url.toString();
     }
 
-    function Orderfn(orden) {
-      console.log(orden)
+    $('#ordenItems').on('change', function() {
+      let orden = $('#ordenItems').val();
       let categoria = document.getElementById('categorias').value ?? null;
       let subCat = document.getElementById('subCategoria').value ?? null;
 
@@ -381,11 +397,14 @@
       console.log('subCat  = ', subCat)
       console.log('marca  = ', marca)
       setUrl(categoria, subCat, marca, orden)
-    }
+    })
   </script>
 
   <script>
     var appUrl = '{{ env('APP_URL') }}';
+    $(document).ready(function() {
+      $('.selectpicker').select2();
+    });
   </script>
 
 

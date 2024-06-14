@@ -53,7 +53,7 @@
           <label for="costo_x_art" class="font-moderat_700">Departamento</label>
           <div class="relative mb-2  mt-2">
             <select name="departamento_id" id="departamento_id"
-              class="font-moderat_700 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              class="selectpicker font-moderat_700 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
               <option value="">Seleccionar Departamento </option>
               @foreach ($departamentos as $item)
                 <option value="{{ $item->id }}">{{ $item->description }}</option>
@@ -63,22 +63,22 @@
           </div>
         </div>
 
-        <div class="md:col-span-1 opacity-15" id="cont_provincia">
+        <div class="md:col-span-1 " id="cont_provincia">
 
           <label for="costo_x_art" class="font-moderat_700">Provincias</label>
           <div class="font-moderat_700 relative mb-2  mt-2">
             <select name="provincia_id" id="provincia_id"
-              class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              class=" selectpicker mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
               <option value="">Seleccionar Provincia </option>
             </select>
           </div>
         </div>
 
-        <div class="md:col-span-1 opacity-15" id="cont_distrito">
+        <div class="md:col-span-1 " id="cont_distrito">
           <label for="costo_x_art" class="font-moderat_700">Distrito</label>
           <div class="font-moderat_700 relative mb-2  mt-2">
             <select name="distrito_id" id="distrito_id"
-              class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              class="selectpicker mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
               <option value="">Seleccionar Distrito </option>
               {{-- @foreach ($departamentos as $item)
                     <option value="{{ $item->id }}">{{ $item->description }}</option>
@@ -254,6 +254,10 @@
       });
     }
     $(document).ready(function() {
+
+
+      $('.selectpicker').select2();
+
       let carrito = Local.get('carrito')
 
       pintarCarritoCheckout(carrito)
@@ -276,7 +280,7 @@
           $('#provincia_id').append(
             '<option value="">Seleccionar Provincia</option>'
           )
-          $('#cont_provincia').toggleClass('opacity-15')
+          // $('#cont_provincia').toggleClass('opacity-15')
           $.each(res, function(key, value) {
             $('#provincia_id').append(
               '<option value="' + value['id'] + '">' + value['description'] + '</option>'
@@ -305,7 +309,7 @@
           $('#distrito_id').append(
             '<option value="">Seleccionar Distrito</option>'
           )
-          $('#cont_distrito').toggleClass('opacity-15')
+          // $('#cont_distrito').toggleClass('opacity-15')
           $.each(res, function(key, value) {
             $('#distrito_id').append(
               '<option value="' + value['id'] + '">' + value['description'] + '</option>'

@@ -16,6 +16,7 @@
   {{-- colocar favicon --}}
   <link rel="icon" type="image/svg+xml" href="{{ asset('images/svg/favicon.svg') }}">
 
+
   {{--  <link rel="stylesheet" href="{{ asset('css/styles.css') }}" /> --}}
 
   {{-- Aqui van los CSS --}}
@@ -30,6 +31,8 @@
 
   {{-- Sweet Alert --}}
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+
 
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 

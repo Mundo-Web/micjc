@@ -30,7 +30,7 @@
         <div class="flex flex-col col-span-4 lg:col-span-1 gap-2">
           <label for="type_document" class="font-medium text-[12px] text-[#6C7275]">Tipo de documento</label>
           <select id="type_document" required name="type_document"
-            class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]">
+            class="selectpicker w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]">
             <option>RUC</option>
             <option>C.E</option>
             <option>PASAPORTE</option>
@@ -61,7 +61,7 @@
         <div class="flex flex-col col-span-4 lg:col-span-2 gap-2">
           <label for="department" class="font-medium text-[12px] text-[#6C7275]">Departamento</label>
           <select id="selectDepartamento" placeholder="Departamento" required name="department"
-            class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]">
+            class="selectpicker w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]">
             <option value="">Seleccionar departamento </option>
             @foreach ($departamentofiltro as $item)
               <option value="{{ $item->id }}">{{ $item->description }}</option>
@@ -72,7 +72,7 @@
         <div class="flex flex-col col-span-4 lg:col-span-1 gap-2">
           <label for="province" class="font-medium text-[12px] text-[#6C7275]">Provincia</label>
           <select id="selectProvincia" type="text" placeholder="Provincia" required name="province"
-            class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]">
+            class="selectpicker w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]">
             <option value="">Seleccionar provincia </option>
           </select>
         </div>
@@ -80,7 +80,7 @@
         <div class="flex flex-col col-span-4 lg:col-span-1 gap-2">
           <label for="district" class="font-medium text-[12px] text-[#6C7275]">Distrito</label>
           <select id="selectDistrito" type="text" required placeholder="Distrito" name="district"
-            class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]">
+            class="selectpicker w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]">
             <option value="">Seleccionar distrito </option>
           </select>
         </div>
@@ -100,7 +100,7 @@
           <label for="typeitem" class="font-medium text-[12px] text-[#6C7275]">¿Fue un producto o
             Servicio?</label>
           <select id="typeitem" required name="typeitem"
-            class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]">
+            class="selectpicker w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]">
             <option>Producto</option>
             <option>Servicio</option>
           </select>
@@ -109,7 +109,7 @@
         <div class="flex flex-col col-span-4 lg:col-span-2 gap-2">
           <label for="amounttotal" class="font-medium text-[12px] text-[#6C7275]">Monto reclamado</label>
           <input id="amounttotal" type="text" placeholder="Monto total reclamado" required name="amounttotal"
-            class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]" />
+            class="selectpicker w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]" />
         </div>
 
         {{-- <div class="flex flex-col col-span-4 lg:col-span-1 gap-2">
@@ -137,7 +137,7 @@
         <div class="flex flex-col col-span-4 gap-2">
           <label for="type_claim" class="font-medium text-[12px] text-[#6C7275]">¿Es un reclamo o queja?</label>
           <select id="type_claim" type="text" required name="type_claim"
-            class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]">
+            class="selectpicker w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]">
             <option>Reclamo</option>
             <option>Queja</option>
           </select>
@@ -276,6 +276,7 @@
 
   <script>
     $(document).ready(function() {
+      $('.selectpicker').select2();
       $('#selectDepartamento').change(function() {
         var departmentId = $(this).val();
         if (departmentId) {
