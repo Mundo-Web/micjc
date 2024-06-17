@@ -4,56 +4,25 @@
 
 
 @section('content')
-  <style>
-    .images-container {
-      width: 90%;
-      text-align: center;
-      /* margin: 60px auto 60px; */
-    }
 
-    .container-enlarge {
-      display: inline-block;
-      position: relative;
-      z-index: 50;
-      /* margin: 15px; */
-
-    }
-
-    .container-enlarge>img {
-      height: auto;
-      max-width: 100%;
-      width: 150px;
-      border-radius: 5px;
-    }
-
-    .container-enlarge span {
-      position: absolute;
-      top: -9999em;
-      left: -9999em;
-    }
-
-    .container-enlarge:hover span {
-      top: -120px;
-      left: 115px;
-      width: 300px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, .25);
-      z-index: 150;
-    }
-  </style>
 
   <main>
     <section class="w-11/12 md:w-10/12 mx-auto pt-5">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16">
         <div class="flex flex-col md:flex-row justify-center items-center gap-5 md:gap-0">
           <div
-            class=" flex flex-row justify-between md:flex-col md:justify-start md:items-center h-full md:gap-10 md:basis-1/4 order-2 md:order-1 w-full ">
+            class=" flex flex-row justify-between md:flex-col md:justify-start md:items-center h-full md:gap-10 md:basis-1/4 order-2 md:order-1 w-full  ">
             @isset($producto->galeria)
-              @foreach ($producto->galeria as $item)
-                <div class="container-enlarge">
-                  <img src="{{ asset($item->imagen) }}" alt="computer" class="w-[70px] h-[90px] object-cover "
+              <img id="imgGaleria" src="{{ asset($producto->imagen) }}" alt="computer"
+                class="w-[70px] h-[90px] object-cover  hover:scale-110 transition-all duration-300 cursor-pointer "
+                data-aos-offset="150">
+              @foreach ($producto->galeria->take(3) as $item)
+                <div class="">
+                  <img id="imgGaleria" src="{{ asset($item->imagen) }}" alt="computer"
+                    class="w-[70px] h-[90px] object-cover hover:scale-110 transition-all duration-300 cursor-pointer "
                     data-aos-offset="150">
-                  <span><img src="{{ asset($item->imagen) }}" alt="computer" data-aos-offset="150"
-                      style="max-width: 150%;"></span>
+                  {{-- <span><img src="{{ asset($item->imagen) }}" alt="computer" data-aos-offset="150"
+                      style="max-width: 150%;"></span> --}}
                 </div>
               @endforeach
 
@@ -63,8 +32,9 @@
 
           </div>
 
-          <div class="md:basis-3/4 flex justify-center items-center order-1 md:order-2 w-full">
-            <img src="{{ asset($producto->imagen) }}" alt="computer" class="w-full h-full" data-aos="fade-up"
+          <div id="containerCaratula"
+            class="md:basis-3/4 flex justify-center items-center order-1 md:order-2 w-full object-cover">
+            <img src="{{ asset($producto->imagen) }}" alt="computer" class="w-full h-full " data-aos="fade-up"
               data-aos-offset="150">
           </div>
         </div>
@@ -170,7 +140,7 @@
 
           @foreach ($productosRelacionados as $item)
             <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
-              <div class="bg-[#F3F3F3] flex flex-col justify-center pt-5 gap-20 relative">
+              <div class="bg-[#F3F3F3] md:w-[266px] md:h-[312px] flex flex-col justify-center pt-5 gap-20 relative">
                 <div class="flex justify-start items-center absolute top-[5%] left-[5%]">
                   @foreach ($item->tags as $tag)
                     <span class="font-moderat_500 text-text10 md:text-text20 bg-[#0051FF] text-white py-1 px-2">
@@ -179,28 +149,35 @@
                 </div>
                 <div class="flex justify-center items-center py-10 md:py-20">
                   <a href="{{ route('producto', $item->id) }}"><img src="{{ asset($item->imagen) }}" alt="impresora"
-                      class="w-[120px] h-[90px] md:w-auto md:h-auto"></a>
+                      class="w-[120px] h-[90px]  md:w-[266px] md:h-[292px] object-cover  "></a>
+
                 </div>
               </div>
 
               <div class="flex flex-col gap-6">
                 <div class="flex flex-col gap-3">
-                  <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">{{ $item->extract }}</h3>
-                  <a>
+                  <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">{{ $item->extracto }}</h3>
+                  <a href="{{ route('producto', $item->id) }}">
                     <h2 class="font-moderat_700 text-text16 md:text-text24 text-[#111111]">{{ $item->producto }}</h2>
                   </a>
-                  <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]"> {!! Str::limit($item->description, 150, '...') !!}</p>
 
+                  <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">
+                    {!! Str::limit($item->description, 150, '...') !!}
+                  </p>
                   <div class="flex justify-start items-center gap-2 md:gap-4">
 
                   </div>
+                  <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">
+                    S/ {{ $item->precio }}</p>
                 </div>
-                <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">S/
-                  {{ $item->precio }}</p>
               </div>
+
             </div>
           @endforeach
+          <div data-aos="fade-up" data-aos-offset="150" class="py-10">
+            {{ $productosRelacionados }}
 
+          </div>
         </div>
       </div>
     </section>
@@ -226,6 +203,18 @@
 
 
   <script src="{{ asset('js/carrito.js') }}"></script>
+
+  <script>
+    $(document).on('click', "#imgGaleria", function() {
+
+      let src = $(this).attr('src');
+      console.log(src);
+      let imagen = `<img src="${src}" alt="computer" class="w-full h-full object-cover" data-aos="fade-up"
+              data-aos-offset="150">`
+
+      $('#containerCaratula').html(imagen)
+    })
+  </script>
 
   {{-- <script src="{{ asset('js/storage.extend.js') }}"></script> --}}
 @stop

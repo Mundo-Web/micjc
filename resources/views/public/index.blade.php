@@ -31,11 +31,11 @@
     }
 
     /*  .bg__mobile {
-                                                                                                                                                              background-repeat: no-repeat;
-                                                                                                                                                              background-size: cover;
-                                                                                                                                                              background-position: center;
-                                                                                                                                                              background-image: url({{ asset('images/img/image_3.png') }});
-                                                                                                                                                          } */
+                                                                                                                                                                                                  background-repeat: no-repeat;
+                                                                                                                                                                                                  background-size: cover;
+                                                                                                                                                                                                  background-position: center;
+                                                                                                                                                                                                  background-image: url({{ asset('images/img/image_3.png') }});
+                                                                                                                                                                                              } */
 
     .fondo__slider-desktop {
       background-image: none;
@@ -557,7 +557,7 @@
 
           @foreach ($productosDestacados as $item)
             <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
-              <div class="bg-[#F3F3F3] flex flex-col justify-center pt-5 gap-20 relative">
+              <div class="bg-[#F3F3F3] md:w-[266px] md:h-[312px] flex flex-col justify-center pt-5 gap-20 relative">
                 <div class="flex justify-start items-center absolute top-[5%] left-[5%]">
                   @foreach ($item->tags as $tag)
                     <span class="font-moderat_500 text-text10 md:text-text20 bg-[#0051FF] text-white py-1 px-2">
@@ -566,7 +566,7 @@
                 </div>
                 <div class="flex justify-center items-center py-10 md:py-20">
                   <a href="{{ route('producto', $item->id) }}"><img src="{{ asset($item->imagen) }}" alt="impresora"
-                      class="w-[120px] h-[90px] md:w-auto md:h-auto"></a>
+                      class="w-[120px] h-[90px]  md:w-[266px] md:h-[292px] object-cover  "></a>
 
                 </div>
               </div>
@@ -629,7 +629,9 @@
 
     <section class="w-11/12 md:w-10/12 mx-auto pt-20">
 
+
       @if (count($ofertasProductos))
+
         <div class="flex justify-between items-center py-5">
           <p class="font-moderat_700 text-text32 md:text-text36">En Oferta</p>
           <div class="flex justify-start items-center">
@@ -654,7 +656,7 @@
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-5">
           @foreach ($ofertasProductos as $item)
             <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
-              <div class="bg-[#F3F3F3] flex flex-col justify-center pt-5 gap-20 relative">
+              <div class="bg-[#F3F3F3] md:w-[266px] md:h-[312px] flex flex-col justify-center pt-5 gap-20 relative">
                 <div class="flex justify-start items-center absolute top-[5%] left-[5%]">
                   @foreach ($item->tags as $tag)
                     <span class="font-moderat_500 text-text10 md:text-text20 bg-[#0051FF] text-white py-1 px-2">
@@ -663,7 +665,7 @@
                 </div>
                 <div class="flex justify-center items-center py-10 md:py-20">
                   <a href="{{ route('producto', $item->id) }}"><img src="{{ asset($item->imagen) }}" alt="impresora"
-                      class="w-[120px] h-[90px] md:w-auto md:h-auto"></a>
+                      class="w-[120px] h-[90px]  md:w-[266px] md:h-[292px] object-cover  "></a>
 
                 </div>
               </div>
@@ -672,11 +674,11 @@
                 <div class="flex flex-col gap-3">
                   <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">{{ $item->extracto }}</h3>
                   <a href="{{ route('producto', $item->id) }}">
-                    <h2 class="font-moderat_700 text-text16 md:text-text28 text-[#111111]">{{ $item->producto }}</h2>
+                    <h2 class="font-moderat_700 text-text16 md:text-text24 text-[#111111]">{{ $item->producto }}</h2>
                   </a>
 
                   <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">
-                    {!! $item->description !!}
+                    {!! Str::limit($item->description, 150, '...') !!}
                   </p>
                   <div class="flex justify-start items-center gap-2 md:gap-4">
 
@@ -717,7 +719,7 @@
                   <div class="flex flex-col gap-5 bg-[#FFFFFF] border-[1.5px] border-gray-100 shadow-md p-8">
                     <div class="flex justify-start items-center gap-5">
                       <div class="flex justify-center items-center">
-                        <img src="{{ asset('images/img/image_24.png') }}" alt="usuario" class="rounded-full">
+                        <img src="{{ asset($item->imagen) }}" alt="usuario" class="rounded-full">
                       </div>
                       <div class="flex flex-col gap-2 justify-center">
                         <h3 class="font-moderat_Medium text-text24 md:text-text32 text-[#111111]">
@@ -729,7 +731,7 @@
                     </div>
                     <div>
                       <p class="text-[#565656] font-moderat_Regular text-text14 md:text-text18">
-                        {{ $item->testimonie }}
+                        {!! $item->testimonie !!}
                       </p>
                     </div>
                   </div>
@@ -751,7 +753,7 @@
 
     <section class="w-11/12 mx-auto py-16">
       @if (count($blog) > 0)
-        {
+
 
         <div class="flex flex-col gap-10">
           <div class="flex flex-col justify-center gap-3 md:flex-row md:justify-between md:items-center">
@@ -786,7 +788,7 @@
                   </a>
 
                   <p class="text-[#565656] font-moderat_Regular text-text12 md:text-text20 ">
-                    {!! $item->description !!}
+                    {!! Str::limit($item->description, 150, '...') !!}
                   </p>
                 </div>
 
@@ -818,7 +820,8 @@
                   </a>
 
                   <p class="text-[#565656] font-moderat_Regular text-text12 md:text-text20 ">
-                    {!! $item->description !!}
+
+                    {!! Str::limit($item->description, 150, '...') !!}
                   </p>
                 </div>
 

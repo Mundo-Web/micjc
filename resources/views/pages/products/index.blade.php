@@ -26,7 +26,7 @@
               <tr>
                 <th>Producto</th>
                 <th>Extracto</th>
-                <th>Descripcion</th>
+
                 <th>Precio</th>
                 <th>Descuento</th>
                 <th>Costo por articulo</th>
@@ -45,7 +45,7 @@
                 <tr>
                   <td>{{ $item->producto }}</td>
                   <td>{{ $item->extract }}</td>
-                  <td>{{ $item->description }}</td>
+
                   <td>{{ $item->precio }}</td>
                   <td>{{ $item->descuento }}</td>
                   <td>{{ $item->costo_x_art }}</td>
@@ -131,7 +131,7 @@
               <tr>
                 <th>Producto</th>
                 <th>Extracto</th>
-                <th>Descripcion</th>
+
                 <th>Precio</th>
                 <th>Descuento</th>
                 <th>Costo por articulo</th>
@@ -159,10 +159,10 @@
   $('document').ready(function() {
 
     new DataTable('#tabladatos', {
-      responsive: true
+      // responsive: true
     });
 
-    $(".btn_swithc").on("change", function() {
+    $(document).on("change", '.btn_swithc', function() {
 
 
 

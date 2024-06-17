@@ -58,7 +58,7 @@ class ProductsController extends Controller
   {
     $manager = new ImageManager(new Driver());
     $img =  $manager->read($file);
-    $img->coverDown(1000, 1500, 'center');
+    $img->coverDown(620, 620, 'center');
 
     if (!file_exists($route)) {
       mkdir($route, 0777, true);
@@ -398,11 +398,26 @@ class ProductsController extends Controller
     $atributos = null;
 
 
+    dump($data);
     $request->validate([
       'producto' => 'required',
     ]);
 
-    
+    if ($request->hasFile("imagen")) {
+      $file = $request->file('imagen');
+      $routeImg = 'storage/images/productos/';
+      $nombreImagen = Str::random(10) . '_' . $file->getClientOriginalName();
+
+      $this->saveImg($file, $routeImg, $nombreImagen);
+
+      $data['imagen'] = $routeImg . $nombreImagen;
+      // $AboutUs->name_image = $nombreImagen;
+    } else {
+      $routeImg = 'images/img/';
+      $nombreImagen = 'noimagen.jpg';
+
+      $data['imagen'] = $routeImg . $nombreImagen;
+    }
 
     foreach ($request->all() as $key => $value) {
 

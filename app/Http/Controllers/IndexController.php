@@ -52,13 +52,13 @@ class IndexController extends Controller
   {
     // $productos = Products::all();
     $productos = Products::with('tags')->get();
-    $productosDestacados = Products::where('status', '=', 1)->where('visible', '=', 1)->where('destacar', '=', 1)->get();
-    $ofertasProductos = Products::where('status', '=', 1)->where('visible', '=', 1)->where('liquidacion', '=', 1)->get();
+    $productosDestacados = Products::where('status', '=', 1)->where('visible', '=', 1)->where('destacar', '=', 1)->orderBy('id', 'DESC')->limit(4)->get();
+    $ofertasProductos = Products::where('status', '=', 1)->where('visible', '=', 1)->where('liquidacion', '=', 1)->orderBy('id', 'DESC')->limit(4)->get();
 
     $general = General::all()->first();
 
     $testimonios = Testimony::where('status', '=', 1)->where('visible', '=', 1)->get();
-    $blog = Blog::where('status', '=', 1)->where('visible', '=', 1)->get();
+    $blog = Blog::where('status', '=', 1)->where('visible', '=', 1)->orderBy('id', 'DESC')->limit(3)->get();
 
     $logos = ClientLogos::where('status', 1)->get();
 
@@ -130,7 +130,7 @@ class IndexController extends Controller
     $especificaciones = Specifications::where('product_id', '=', $id)->get();
 
 
-    $productosRelacionados = Products::where('marca_id', '=', $producto->marca_id)->where('id', '!=', $id)->get();
+    $productosRelacionados = Products::where('marca_id', '=', $producto->marca_id)->where('id', '!=', $id)->paginate(4);
 
     return view('public.producto', compact('general', 'producto', 'especificaciones', 'productosRelacionados'));
   }
