@@ -28,7 +28,7 @@
                 <th>Extracto</th>
 
                 <th>Precio</th>
-                <th>Descuento</th>
+
                 <th>Costo por articulo</th>
                 <th>Stock</th>
                 <th>Peso</th>
@@ -47,7 +47,7 @@
                   <td>{{ $item->extract }}</td>
 
                   <td>{{ $item->precio }}</td>
-                  <td>{{ $item->descuento }}</td>
+
                   <td>{{ $item->costo_x_art }}</td>
                   <td>{{ $item->stock }}</td>
                   <td>{{ $item->peso }}</td>
@@ -133,7 +133,7 @@
                 <th>Extracto</th>
 
                 <th>Precio</th>
-                <th>Descuento</th>
+
                 <th>Costo por articulo</th>
                 <th>Stock</th>
                 <th>Peso</th>
