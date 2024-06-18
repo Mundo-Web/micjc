@@ -76,7 +76,7 @@
           <div class="pt-5" data-aos="fade-up" data-aos-offset="150">
             <p class="font-inter font-medium text-text14 md:text-text16 text-[#111111]">
               Categoría: <span
-                class="text-[#565656] font-moderat_Regular text-text14">{{ $producto->categoria->name }}</span>
+                class="text-[#565656] font-moderat_Regular text-text14">{{ $producto->categoria->name ?? '' }}</span>
             </p>
             <p class="font-inter font-medium text-text14 md:text-text16 text-[#111111]">
               SKU: <span class="text-[#565656] font-moderat_Regular text-text14">{{ $producto->sku }}</span>
