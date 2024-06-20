@@ -66,7 +66,7 @@
   </div>
 
   <div class="flex justify-end w-11/12 mx-auto z-10">
-    <div class="fixed bottom-6 sm:bottom-[2rem] lg:bottom-[4rem] z-20">
+    <div class="fixed bottom-6 sm:bottom-[2rem] lg:bottom-[4rem] z-20 fixed-whastapp">
       <a target="_blank"
         href="https://api.whatsapp.com/send?phone={{ $general->whatsapp }}&text={{ $general->mensaje_whatsapp }}"
         rel="noopener">
@@ -122,6 +122,32 @@
     </div>
   </div>
 
+  {{-- fixed-whastapp --}}
+
 
 </header>
+<script>
+  $(document).ready(function() {
+    const icon = $('.fixed-whastapp');
+    const footer = $('footer');
+    const offset = 24; // Offset from the bottom of the footer
+
+    $(window).on('scroll', function() {
+      const scrollTop = $(window).scrollTop();
+      const windowHeight = $(window).height();
+      const footerTop = footer.offset().top;
+
+      // Calculate the bottom position of the icon
+      const iconBottom = scrollTop + windowHeight - icon.outerHeight(true) - offset;
+
+      console.log(iconBottom, footerTop)
+      // Check if the icon is overlapping with the footer
+      if (iconBottom > footerTop) {
+        icon.css('bottom', (iconBottom - footerTop + offset * 6) + 'px');
+      } else {
+        icon.css('bottom', offset + 'px');
+      }
+    });
+  });
+</script>
 <script src="{{ asset('js/storage.extend.js') }}"></script>
