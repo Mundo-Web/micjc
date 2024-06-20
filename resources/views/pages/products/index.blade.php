@@ -29,9 +29,9 @@
 
                 <th>Precio</th>
 
-                <th>Costo por articulo</th>
+
                 <th>Stock</th>
-                <th>Peso</th>
+
                 <th>Imagen</th>
                 <th>Destacar</th>
                 <th>Liquidacion</th>
@@ -48,9 +48,9 @@
 
                   <td>{{ $item->precio }}</td>
 
-                  <td>{{ $item->costo_x_art }}</td>
+
                   <td>{{ $item->stock }}</td>
-                  <td>{{ $item->peso }}</td>
+
                   <td class="px-3 py-2"><img class="w-20" src="{{ asset($item->imagen) }}" alt=""></td>
                   <td>
                     <form method="POST" action="">
@@ -134,9 +134,9 @@
 
                 <th>Precio</th>
 
-                <th>Costo por articulo</th>
+
                 <th>Stock</th>
-                <th>Peso</th>
+
                 <th>Imagen</th>
                 <th>Destacar</th>
                 <th>Liquidacion</th>

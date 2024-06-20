@@ -40,13 +40,16 @@
     <section class="w-11/12 mx-auto gap-5 grid grid-cols-1 grid-rows-1  pt-60 px-10 lg:px-40">
       <div class="flex flex-col items-center gap-5 col-span-1 row-span-1 leading-relaxed" data-aos="fade-up"
         data-aos-offset="150">
-        {!! $politicas->content !!}
+        {!! $politicas->content ?? '' !!}
 
 
       </div>
     </section>
   </main>
-
+  <script>
+    var appUrl = '{{ env('APP_URL') }}';
+  </script>
+  <script src="{{ asset('js/carrito.js') }}"></script>
 
 
 

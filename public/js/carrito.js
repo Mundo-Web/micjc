@@ -1,4 +1,3 @@
-console.log(appUrl);
 let articulosCarrito = [];
 
     function mostrarTotalItems() {
@@ -89,7 +88,6 @@ let articulosCarrito = [];
 
   
     let url = window.location.href;
-    console.log(url.split('/'))
     
     $(document).ready(function() {
       articulosCarrito = Local.get('carrito') || [];
@@ -174,7 +172,6 @@ let articulosCarrito = [];
 
    
 
-      console.log(cantidad)
       // id='nodescuento'
      
 
@@ -191,7 +188,6 @@ let articulosCarrito = [];
         },
         success: function(success) {
 
-          console.log(success)
 
           let {
             producto,
@@ -213,8 +209,7 @@ let articulosCarrito = [];
             
           }
 
-          console.log(detalleProducto)
-          console.log(articulosCarrito)
+         
 
           // validar si es un color diferente y pintarlo 
           let existeArticulo = articulosCarrito.some(item => item.id === detalleProducto.id 
@@ -271,10 +266,8 @@ let articulosCarrito = [];
     function pintarCantidad() {
       let carritoCantidad = Local.get('carrito')
       
-      console.log('header exito', carritoCantidad)
 
       if (typeof carritoCantidad !== 'undefined' && carritoCantidad !== null) {
-        console.log('diferente a nulo')
         // La variable carritoCantidad está definida y no es null
        let total = carritoCantidad.length
         if (total == 0) {

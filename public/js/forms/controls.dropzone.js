@@ -269,7 +269,7 @@ class DropzoneControls {
           // let callback = null; // Optional callback when it's done
           // let crossOrigin = null; // Added to the `img` tag for crossOrigin handling
           // let resizeThumbnail = false; // Tells Dropzone whether it should resize the image first
-          // this.displayExistingFile(mockFile, "https://i.picsum.photos/id/959/120/120.jpg", callback, crossOrigin, resizeThumbnail);
+          //  this.displayExistingFile(mockFile, "http://127.0.0.1:8000/storage/images/gallery/NeUtQGtrwQ.webp",  callback, crossOrigin, resizeThumbnail);
 
           // If you use the maxFiles option, make sure you adjust it to the
           // correct amount:

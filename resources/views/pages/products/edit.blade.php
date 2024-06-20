@@ -1,4 +1,392 @@
 <x-app-layout title="Editar Producto">
+  @section('css')
+    <link rel="stylesheet" href="{{ asset('/css/vendor/dropzone.min.css') }}" />
+  @endsection
+
+  @section('js_vendor')
+    <script src="{{ asset('/js/cs/scrollspy.js') }}"></script>
+    <script src="{{ asset('/js/vendor/dropzone.min.js') }}"></script>
+    <script src="{{ asset('/js/vendor/singleimageupload.js') }}"></script>
+  @endsection
+
+  @section('js_page')
+    <script src="{{ asset('/js/cs/dropzone.templates.js') }}"></script>
+    <script src="{{ asset('/js/forms/controls.dropzone.js') }}"></script>
+  @endsection
+
+  <style>
+    .dropzone {
+      min-height: 90px;
+      border: 1px solid rgb(209 213 219 / 1) !important;
+      background: var(--foreground) !important;
+      padding: 14px !important;
+      border-radius: 20px !important;
+      color: var(--body) !important;
+      height: auto;
+      /* padding-right: initial !important;
+      padding-bottom: initial !important; */
+    }
+
+    .dropzone .img-thumbnail {
+      height: 58px;
+      width: 100% !important;
+      -o-object-fit: cover !important;
+      object-fit: cover !important;
+      padding: initial;
+      width: 100%;
+      height: 100%;
+      filter: initial !important;
+      transform: initial !important;
+      border-radius: 20px;
+      border-top-right-radius: initial;
+      border-bottom-right-radius: initial;
+      background-color: unset !important;
+    }
+
+    .dropzone .image-container {
+      width: 30%;
+    }
+
+    .dropzone:hover .dz-message {
+      color: var(--primary) !important;
+    }
+
+    .dropzone.dz-clickable .dz-message {
+      position: absolute;
+      margin: 0 auto;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: var(--body);
+    }
+
+    .dropzone.dz-clickable .dz-message span {
+      top: 50px !important;
+    }
+
+    .dropzone .dz-preview.dz-image-preview,
+    .dropzone .dz-preview.dz-file-preview {
+      max-width: 100%;
+      min-height: unset;
+      border: 1px solid rgb(209 213 219 / 1) !important;
+      border-radius: 20px !important;
+      background: var(--foreground) !important;
+      color: var(--body) !important;
+      margin: 1.75rem;
+      margin-left: initial !important;
+      margin-top: initial !important;
+    }
+
+    .dropzone .dz-preview.dz-image-preview>div,
+    .dropzone .dz-preview.dz-file-preview>div {
+      position: relative;
+    }
+
+    .dropzone .dz-preview.dz-image-preview .dz-image,
+    .dropzone .dz-preview.dz-file-preview .dz-image {
+      height: 100%;
+      width: 80px;
+      float: left;
+      border-radius: initial;
+    }
+
+    .dropzone .dz-preview.dz-image-preview .dz-image img,
+    .dropzone .dz-preview.dz-file-preview .dz-image img {
+      width: 100%;
+    }
+
+    .dropzone .dz-preview.dz-image-preview .preview-container,
+    .dropzone .dz-preview.dz-file-preview .preview-container {
+      transition: initial !important;
+      -webkit-animation: initial !important;
+      animation: initial !important;
+      margin-left: 0;
+      margin-top: 0;
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .dropzone .dz-preview.dz-image-preview .preview-container i,
+    .dropzone .dz-preview.dz-file-preview .preview-container i {
+      color: var(--primary);
+      font-size: 20px;
+      position: absolute;
+      left: 50%;
+      top: 29px;
+      transform: translateX(-50%) translateY(-50%) !important;
+      height: 22px;
+    }
+
+    .dropzone .dz-preview.dz-image-preview strong,
+    .dropzone .dz-preview.dz-file-preview strong {
+      font-weight: normal;
+    }
+
+    .dropzone .dz-preview.dz-image-preview .remove,
+    .dropzone .dz-preview.dz-file-preview .remove {
+      position: absolute;
+      right: 8px;
+      top: 8px;
+      color: var(--muted) !important;
+    }
+
+    .dropzone .dz-preview.dz-image-preview .remove i,
+    .dropzone .dz-preview.dz-file-preview .remove i {
+      cursor: pointer;
+    }
+
+    .dropzone .dz-preview.dz-image-preview .remove:hover,
+    .dropzone .dz-preview.dz-file-preview .remove:hover {
+      color: var(--primary) !important;
+    }
+
+    .dropzone .dz-preview.dz-image-preview .dz-details,
+    .dropzone .dz-preview.dz-file-preview .dz-details {
+      position: static;
+      display: block;
+      opacity: 1;
+      text-align: left;
+      min-width: unset;
+      z-index: initial;
+
+      float: left;
+      padding: 0.75rem 1rem;
+      width: 75%;
+    }
+
+    .dropzone .dz-preview.dz-image-preview .dz-details .dz-size,
+    .dropzone .dz-preview.dz-file-preview .dz-details .dz-size {
+      margin-bottom: 0;
+      font-size: 1em;
+    }
+
+    .dropzone .dz-preview.dz-image-preview .dz-details .dz-filename span,
+    .dropzone .dz-preview.dz-file-preview .dz-details .dz-filename span {
+      border: initial !important;
+      background: transparent !important;
+    }
+
+    .dropzone .dz-preview.dz-image-preview .dz-error-mark,
+    .dropzone .dz-preview.dz-image-preview .dz-success-mark,
+    .dropzone .dz-preview.dz-file-preview .dz-error-mark,
+    .dropzone .dz-preview.dz-file-preview .dz-success-mark {
+      color: var(--primary) !important;
+      margin-left: 0;
+      margin-top: 0;
+      bottom: initial;
+      right: initial;
+      top: 13px;
+      left: 23px;
+      padding: 7px 8px;
+      background: var(--foreground);
+      border-radius: var(--border-radius-xl);
+      line-height: 1;
+      position: absolute;
+    }
+
+    .dropzone .dz-preview.dz-image-preview .dz-error-mark i,
+    .dropzone .dz-preview.dz-image-preview .dz-success-mark i,
+    .dropzone .dz-preview.dz-file-preview .dz-error-mark i,
+    .dropzone .dz-preview.dz-file-preview .dz-success-mark i {
+      font-size: 18px !important;
+      color: var(--primary) !important;
+    }
+
+    .dropzone .dz-preview.dz-image-preview .dz-error-mark i,
+    .dropzone .dz-preview.dz-file-preview .dz-error-mark i {
+      color: var(--primary) !important;
+    }
+
+    .dropzone .dz-preview.dz-image-preview .dz-progress,
+    .dropzone .dz-preview.dz-file-preview .dz-progress {
+      width: 100%;
+      margin-left: 0;
+      margin-top: 0;
+      right: 0;
+      height: 2px !important;
+      left: 15px;
+      margin-top: 5px;
+      position: static;
+    }
+
+    .dropzone .dz-preview.dz-image-preview .dz-progress .dz-upload,
+    .dropzone .dz-preview.dz-file-preview .dz-progress .dz-upload {
+      width: 100%;
+      background: rgb(30 168 231) !important;
+    }
+
+    .dropzone .dz-preview.dz-image-preview .dz-error-message,
+    .dropzone .dz-preview.dz-file-preview .dz-error-message {
+      background: var(--foreground) !important;
+      border: 1px solid blue;
+      top: 60px;
+      color: var(--body);
+      padding: calc(var(--card-spacing-xs) / 2) var(--card-spacing-xs);
+      border-radius: var(--border-radius-md);
+      font-size: 0.875em;
+      display: block;
+    }
+
+    .dropzone .dz-preview.dz-image-preview .dz-error-message:after,
+    .dropzone .dz-preview.dz-file-preview .dz-error-message:after {
+      border-bottom: 6px solid blue !important;
+    }
+
+    .dropzone .dz-preview.dz-image-preview .dz-error-message:before,
+    .dropzone .dz-preview.dz-file-preview .dz-error-message:before {
+      content: " ";
+      position: absolute;
+      top: -5px;
+      left: 64px;
+      z-index: 1;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-bottom: 6px solid var(--foreground) !important;
+    }
+
+    .dropzone .dz-preview.dz-image-preview [data-dz-name],
+    .dropzone .dz-preview.dz-file-preview [data-dz-name] {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      width: calc(100% - 35px);
+      display: inline-block;
+      overflow: hidden;
+    }
+
+    .dropzone.dropzone-columns .dz-preview.dz-image-preview,
+    .dropzone.dropzone-columns .dz-preview.dz-file-preview {
+      margin-top: var(--bs-gutter-y) !important;
+      margin-bottom: initial !important;
+    }
+
+    .dropzone:not(.dropzone-columns) .dz-preview.dz-image-preview,
+    .dropzone:not(.dropzone-columns) .dz-preview.dz-file-preview {
+      width: 100%;
+    }
+
+    .dropzone .dz-preview.dz-file-preview .img-thumbnail {
+      display: none;
+    }
+
+    .dropzone .dz-error.dz-preview.dz-file-preview .preview-icon {
+      display: none;
+    }
+
+    .dropzone .dz-error.dz-preview.dz-file-preview .dz-error-mark,
+    .dropzone .dz-error.dz-preview.dz-file-preview .dz-success-mark {
+      color: var(--primary) !important;
+      right: 8px;
+      left: initial;
+      top: initial;
+      bottom: 3px;
+    }
+
+    .dropzone .dz-preview.dz-image-preview .preview-icon {
+      display: none;
+    }
+
+    .dropzone.dz-drag-hover {
+      border-color: rgba(var(--primary-rgb), 1) !important;
+    }
+
+    .dropzone.dz-drag-hover .dz-message {
+      color: var(--primary) !important;
+      opacity: 1;
+    }
+
+    .dropzone.dropzone-top-label {
+      padding: 2rem 0.5rem 0rem 1rem !important;
+      min-height: 103px !important;
+    }
+
+    .form-floating .dropzone.dropzone-floating-label {
+      padding: 1rem !important;
+      min-height: 101px !important;
+    }
+
+    .form-floating .dropzone.dropzone-floating-label.dz-started {
+      padding-top: 2rem !important;
+      padding-bottom: 0 !important;
+    }
+
+    .form-floating .dropzone.dropzone-floating-label.dz-started~label {
+      transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
+      color: var(--muted);
+    }
+
+    .dropzone.dropzone-filled {
+      border: 1px solid transparent !important;
+      background: var(--background-light) !important;
+      padding-left: 45px !important;
+    }
+
+    .dropzone.dropzone-filled .dz-message {
+      top: initial;
+      left: 45px;
+      transform: initial;
+      color: var(--muted) !important;
+      font-weight: 300;
+      top: 11px;
+    }
+
+    .dropzone.dropzone-filled+i {
+      margin-top: 0;
+      top: 14px;
+    }
+
+    .dropzone.dropzone-filled.dropzone.dz-drag-hover {
+      background: var(--foreground) !important;
+      border-color: rgba(var(--primary-rgb), 1) !important;
+    }
+
+    .dropzone .dz-preview:not(.dz-processing) .dz-progress {
+      -webkit-animation: initial;
+      animation: initial;
+    }
+
+    .dropzone.row {
+      min-height: 210px;
+    }
+
+    .dropzone.row.border-0 {
+      border: initial !important;
+    }
+
+    .dropzone.row.p-0 {
+      padding: initial !important;
+    }
+
+    .dropzone.row .dz-preview.dz-image-preview.col.border-0,
+    .dropzone.row .dz-preview.dz-file-preview.col.border-0 {
+      border: initial !important;
+    }
+
+    .dropzone.row .dz-preview.dz-image-preview .dz-error-mark,
+    .dropzone.row .dz-preview.dz-image-preview .dz-success-mark,
+    .dropzone.row .dz-preview.dz-file-preview .dz-error-mark,
+    .dropzone.row .dz-preview.dz-file-preview .dz-success-mark {
+      left: -16px;
+      margin-left: 50%;
+      top: 20px;
+      margin-top: 0;
+    }
+
+    .dropzone.row .dz-preview.dz-image-preview .remove,
+    .dropzone.row .dz-preview.dz-file-preview .remove {
+      bottom: 25px;
+      top: initial;
+      right: 20px;
+      left: initial;
+    }
+
+    .dropzone.row .dz-preview.dz-image-preview .dz-error-message,
+    .dropzone.row .dz-preview.dz-file-preview .dz-error-message {
+      left: 50%;
+      right: initial;
+      transform: translateX(-50%);
+    }
+  </style>
 
 
   <div class="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
@@ -90,6 +478,31 @@
                         aria-describedby="user_avatar_help" id="user_avatar" type="file">
                     </div>
                   </div>
+                  <div class="md:col-span-5 mt-2">
+                    <div class="flex justify-between gap-5">
+                      @foreach ($product->galeria as $item)
+                        <div id="portada-{{ $item->id }}">
+                          <i onclick="borrarImg({{ $item->id }})" class=" w-5 cursor-pointer"
+                            style="position: absolute;"><svg xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                              <path
+                                d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z" />
+                            </svg></i>
+
+
+                          <img src="{{ asset($item->imagen) }}" alt="" class="w-24">
+                        </div>
+                      @endforeach
+
+                    </div>
+
+                  </div>
+                  <div class="md:col-span-5">
+                    <label for="imagaleria">Galeria de imagenes</label>
+                    <div class="dropzone border-gray-300 dropzoneSecond cursor-pointer" id="dropzoneServerFilesGallery"
+                      name="imagaleria ">
+                    </div>
+                  </div>
 
 
                   <div class="">
@@ -108,19 +521,7 @@
 
                     </div>
                   </div>
-                  <div class="">
 
-                    <label for="recomendar">Recomendar</label>
-
-                    <div class="relative mb-2  mt-2">
-                      <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-
-                      </div>
-                      <input type="checkbox" id="recomendar" name="recomendar"
-                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                        @if ($product->recomendar) checked @endif>
-                    </div>
-                  </div>
 
 
                 </div>
@@ -679,4 +1080,5 @@
       });
     })
   </script>
+  @include('_layout.scripts')
 </x-app-layout>

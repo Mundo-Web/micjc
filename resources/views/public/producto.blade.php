@@ -9,7 +9,7 @@
   <main>
     <section class="w-11/12 md:w-10/12 mx-auto pt-5">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16">
-        <div class="flex flex-col md:flex-row justify-center items-center gap-5 md:gap-0">
+        <div class="flex flex-col md:flex-row justify-center  gap-5 md:gap-0">
           <div
             class=" flex flex-row justify-between md:flex-col md:justify-start md:items-center h-full md:gap-10 md:basis-1/4 order-2 md:order-1 w-full  ">
             @isset($producto->galeria)
@@ -32,10 +32,9 @@
 
           </div>
 
-          <div id="containerCaratula"
-            class="md:basis-3/4 flex justify-center items-center order-1 md:order-2 w-full object-cover">
-            <img src="{{ asset($producto->imagen) }}" alt="computer" class="w-full h-full " data-aos="fade-up"
-              data-aos-offset="150">
+          <div id="containerCaratula" class="md:basis-3/4 flex justify-start items-start order-1 md:order-2 w-full ">
+            <img src="{{ asset($producto->imagen) }}" alt="computer" class="w-[398px] h-[510px] object-cover "
+              data-aos="fade-up" data-aos-offset="150">
           </div>
         </div>
 
@@ -149,7 +148,7 @@
                 </div>
                 <div class="flex justify-center items-center py-10 md:py-20">
                   <a href="{{ route('producto', $item->id) }}"><img src="{{ asset($item->imagen) }}" alt="impresora"
-                      class="w-[120px] h-[90px]  md:w-[266px] md:h-[292px] object-cover  "></a>
+                      class="w-[120px] h-[90px]  md:w-[266px] md:h-[330px] object-cover  "></a>
 
                 </div>
               </div>
@@ -209,7 +208,7 @@
 
       let src = $(this).attr('src');
       console.log(src);
-      let imagen = `<img src="${src}" alt="computer" class="w-full h-full object-cover" data-aos="fade-up"
+      let imagen = `<img src="${src}" alt="computer" class="w-[398px] h-[510px] object-cover" data-aos="fade-up"
               data-aos-offset="150">`
 
       $('#containerCaratula').html(imagen)

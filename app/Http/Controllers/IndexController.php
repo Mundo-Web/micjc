@@ -550,215 +550,23 @@ class IndexController extends Controller
   }
 
 
-  /* public function catalogo($filtro, Request $request)
-  {
-    $categorias = null;
-    $productos = null;
-
-    $rangefrom = $request->query('rangefrom');
-    $rangeto = $request->query('rangeto');
+  public function buscarProductos(Request $request){
+    $dato = $request->valorInput;
+    $palabras = explode(' ',$dato);
 
 
 
-    try {
-      $general = General::all();
-      $faqs = Faqs::where('status', '=', 1)->where('visible', '=', 1)->get();
+    $productos = Products::where('status', '=' , 1);
 
-      $categorias = Category::all();
-
-      $testimonie = Testimony::where('status', '=', 1)->where('visible', '=', 1)->get();
-
-
-
-      if ($filtro == 0) {
-        $productos = Products::paginate(3);
-        $categoria = Category::all();
-      } else {
-        $productos = Products::where('categoria_id', '=', $filtro)->paginate(3);
-        $categoria = Category::findOrFail($filtro);
-      }
-
-
-
-      if ($rangefrom !== null && $rangeto !== null) {
-
-        if ($filtro == 0) {
-          $productos = Products::all();
-          $categoria = Category::all();
-        } else {
-          $productos = Products::where('categoria_id', '=', $filtro)->get();
-          $categoria = Category::findOrFail($filtro);
-        }
-
-        $cleanedData = $productos->filter(function ($value) use ($rangefrom, $rangeto) {
-
-          if ($value['descuento'] == 0) {
-
-            if ($value['precio'] <= $rangeto && $value['precio'] >= $rangefrom) {
-              return $value;
-            }
-          } else {
-
-            if ($value['descuento'] <= $rangeto && $value['descuento'] >= $rangefrom) {
-              return $value;
-            }
-          }
-        });
-
-        $currentPage = LengthAwarePaginator::resolveCurrentPage();
-        $productos = new LengthAwarePaginator(
-          $cleanedData->forPage($currentPage, 3),
-          $cleanedData->count(),
-          3,
-          $currentPage,
-          ['path' => request()->url()]
-        );
-      }
-
-
-
-      return view('public.catalogo', compact('general', 'faqs', 'categorias', 'testimonie', 'filtro', 'productos', 'categoria', 'rangefrom', 'rangeto'));
-    } catch (\Throwable $th) {
+    foreach ($palabras as $key => $value) {
+      # code...
+      $productos = $productos->where('producto' , 'like', "%$value%");
     }
+   $productos=  $productos->get();
+
+
+    return response()->json(['message'=> 'Busqueda realizada con exito ', 'data'=> $productos]);
   }
-
-  public function comentario()
-  {
-    $comentarios = Testimony::where('status', '=' ,1)->where('visible', '=' ,1)->paginate(15);
-    $contarcomentarios = count($comentarios);
-    return view('public.comentario', compact('comentarios', 'contarcomentarios'));
-  }
-
-  public function hacerComentario(Request $request){
-    $user = auth()->user();
-    
-    $newComentario = new Testimony();
-    if (isset($user)) {
-      $alert = null;
-      $request->validate([
-        'testimonie' => 'required',
-    ], [
-        'testimonie.required' => 'Ingresa tu comentario',
-    ]);
-
-        $newComentario->name = $user->name;
-        $newComentario->testimonie = $request->testimonie;
-        $newComentario->visible = 0;
-        $newComentario->status = 1;
-        $newComentario->email = $user->email;
-        $newComentario->save();
-
-        $mensaje = "Gracias. Tu comentario pasará por una validación y será publicado.";
-        $alert = 1;
-
-    }else{
-        $alert = 2;
-        $mensaje = "Inicia sesión para hacer un comentario";
-    }
-
-    return redirect()->route('comentario')->with(['mensaje' => $mensaje, 'alerta' => $alert]);
-  }
-
-  public function contacto()
-  {
-    $general = General::all();
-    return view('public.contact', compact('general'));
-  }
-
-  public function carrito()
-  {
-    //
-    $url_env = $_ENV['APP_URL'];
-    return view('public.checkout_carrito', compact('url_env'));
-  }
-
-  public function pago()
-  {
-
-    $detalleUsuario = [];
-    $user = auth()->user();
-    if (!isNull($user)) {
-      $detalleUsuario = UserDetails::where('email', $user->email)->get();
-    }
-    $distritos  = DB::select('select * from districts where active = ? order by 3', [1]);
-    $provincias = DB::select('select * from provinces where active = ? order by 3', [1]);
-    $departamento = DB::select('select * from departments where active = ? order by 2', [1]);
-
-
-    $url_env = $_ENV['APP_URL'];
-    return view('public.checkout_pago', compact('url_env', 'distritos', 'provincias', 'departamento', 'detalleUsuario'));
-  }
-
- 
-
-
-  
-
-  public function agradecimiento()
-  {
-    //
-    return view('public.checkout_agradecimiento');
-  }
-
-  
-
-  
-
-  public function micuenta()
-  {
-    $user = Auth::user();
-    return view('public.dashboard', compact('user'));
-  }
-
-
-  
-
-
-  public function direccion()
-  {
-    $user = Auth::user();
-    $direcciones = UserDetails::where('email', $user->email)->get();
-    
-    return view('public.dashboard_direccion', compact('user', 'direcciones'));
-  }
-
-  public function error()
-  {
-    //
-    return view('public.404');
-  }
-
-  public function producto(string $id)
-  {
-
-    $productos = Products::where('id', '=', $id)->get();
-   
-    $especificaciones = Specifications::where('product_id', '=', $id)
-    ->where(function ($query) {
-        $query->whereNotNull('tittle')
-            ->orWhereNotNull('specifications');
-    })
-    ->get();
-    $productosConGalerias = DB::select("
-            SELECT products.*, galeries.*
-            FROM products
-            INNER JOIN galeries ON products.id = galeries.product_id
-            WHERE products.id = :productId limit 5
-        ", ['productId' => $id]);
-
-
-    $IdProductosComplementarios = $productos->toArray();
-    $IdProductosComplementarios = $IdProductosComplementarios[0]['categoria_id'];
-
-    $ProdComplementarios = Products::where('categoria_id', '=', $IdProductosComplementarios)->get();
-    $atributos = Attributes::where("status", "=", true)->get();
-    $valorAtributo = AttributesValues::where("status", "=", true)->get();
-    $url_env = $_ENV['APP_URL'];
-
-
-
-    return view('public.product', compact('productos', 'atributos', 'valorAtributo', 'ProdComplementarios', 'productosConGalerias', 'especificaciones', 'url_env'));
-  } */
 
   //  --------------------------------------------
   /**

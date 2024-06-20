@@ -1,6 +1,7 @@
 import forms from "@tailwindcss/forms";
 import typography from "@tailwindcss/typography";
 const plugin = require("tailwindcss/plugin");
+const animated = require("tailwindcss-animated")
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -158,6 +159,7 @@ export default {
     plugins: [
         forms,
         typography,
+        animated,
         // add custom variant for expanding sidebar
         plugin(({ addVariant, e }) => {
             addVariant("sidebar-expanded", ({ modifySelectors, separator }) => {

@@ -216,7 +216,7 @@
                   </div>
                   <div class="flex justify-center items-center py-10 md:py-20">
                     <a href="{{ route('producto', $item->id) }}"><img src="{{ asset($item->imagen) }}" alt="impresora"
-                        class="w-[120px] h-[90px]  md:w-[266px] md:h-[292px] object-cover  "></a>
+                        class="w-[120px] h-[90px]  md:w-[266px] md:h-[330px] object-cover  "></a>
 
                   </div>
                 </div>

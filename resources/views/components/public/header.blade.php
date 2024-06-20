@@ -47,21 +47,9 @@
       </div>
 
       <div
-        class="flex justify-center items-center row-span-1 col-span-2 xl:row-span-1 xl:col-span-2 2xl:col-span-2 order-4 xl:order-3">
+        class="relative flex justify-center items-center row-span-1 col-span-2 xl:row-span-1 xl:col-span-2 2xl:col-span-2 order-4 xl:order-3">
         <form action="" class="w-full">
-          <div class="relative w-full border-2 border-[#CCCCCC] rounded-lg flex justify-center items-center">
-            <input type="text" placeholder="Buscar producto"
-              class="placeholder:text-[#CCCCCC] text-center w-full border-none outline-none focus:outline-none pl-10 pr-4 py-2 rounded-lg" />
-            <div class="absolute inset-y-0 left-[25%] sm:left-[35%] lg:left-0 flex items-center pl-3">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z"
-                  stroke="#CCCCCC" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M21.0004 21.0004L16.6504 16.6504" stroke="#CCCCCC" stroke-width="1.33333"
-                  stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            </div>
-          </div>
+          <x-header.buscador class=" w-full border-2 border-[#CCCCCC] rounded-lg flex justify-center items-center" />
         </form>
       </div>
 

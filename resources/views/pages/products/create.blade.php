@@ -24,7 +24,7 @@
       color: var(--body) !important;
       height: auto;
       /* padding-right: initial !important;
-  padding-bottom: initial !important; */
+      padding-bottom: initial !important; */
     }
 
     .dropzone .img-thumbnail {
@@ -502,18 +502,7 @@
 
                     </div>
                   </div>
-                  <div class="">
 
-                    <label for="recomendar">Recomendar</label>
-
-                    <div class="relative mb-2  mt-2">
-                      <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-
-                      </div>
-                      <input type="checkbox" id="recomendar" name="recomendar"
-                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                    </div>
-                  </div>
 
 
                 </div>

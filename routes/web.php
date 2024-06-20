@@ -96,6 +96,7 @@ Route::post('/getDistrito', [PriceController::class, 'getDistrito'])->name('pric
 Route::post('/calculeEnvio', [PriceController::class, 'calculeEnvio'])->name('prices.calculeEnvio');
 
 Route::post('/marca/marcadependiente', [MarcaController::class, 'marcaDependiente'])->name('marca.marcaDependiente');
+Route::post('/buscarProductos',[IndexController::class, 'buscarProductos']  )->name('buscarProductos');
 
 /*  */
 /* Route::get('/nosotros', [IndexController::class, 'nosotros'] )->name('nosotros');
