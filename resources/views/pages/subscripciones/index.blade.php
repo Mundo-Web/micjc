@@ -1,4 +1,16 @@
 <x-app-layout title="Subscripciones">
+
+  <script src="https://cdn.datatables.net/buttons/3.0.2/js/dataTables.buttons.js"></script>
+  <script src="https://cdn.datatables.net/buttons/3.0.2/js/buttons.dataTables.js"></script>
+  <script src="https://cdn.datatables.net/buttons/3.0.2/js/buttons.html5.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/3.0.2/js/buttons.print.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+  {{-- <script rel="stylesheet" src="https://cdn.datatables.net/buttons/3.0.2/css/buttons.dataTables.css"></script> --}}
+  {{-- <script src=""></script> --}}
+
+
   <div class="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
 
     <div
@@ -56,7 +68,7 @@
     $('document').ready(function() {
       new DataTable('#tabladatos', {
 
-        /* buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
+        // buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
         layout: {
           topStart: 'buttons'
         },
@@ -68,8 +80,8 @@
           "infoFiltered": "(filtrado de un total de _MAX_ registros)",
           "sSearch": "Buscar:",
           "sProcessing": "Procesando...",
-        }, */
-        /* buttons: [{
+        },
+        buttons: [{
             extend: 'excelHtml5',
             text: '<i class="fas fa-file-excel"></i> ',
             titleAttr: 'Exportar a Excel',
@@ -98,7 +110,7 @@
             titleAttr: 'Copiar',
             className: 'btn btn-success',
           },
-        ] */
+        ]
       });
 
 
