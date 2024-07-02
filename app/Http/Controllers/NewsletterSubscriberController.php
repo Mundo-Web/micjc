@@ -86,6 +86,8 @@ class NewsletterSubscriberController extends Controller
 
     private function envioCorreo($data)
     {
+      
+      
         $name = '';
         $mensaje = 'Gracias por comunicarte con MIC&JC';
         $mail = EmailConfig::config($name, $mensaje);
@@ -297,6 +299,7 @@ class NewsletterSubscriberController extends Controller
             $mail->send();
         } catch (\Throwable $th) {
             //throw $th;
+            // dump($th);
         }
     }
 

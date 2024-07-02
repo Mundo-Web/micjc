@@ -51,6 +51,7 @@ class IndexController extends Controller
   public function index()
   {
     // $productos = Products::all();
+    $slider = Slider::where('status', '=', 1)->where('visible', '=', 1)->get();
     $productos = Products::with('tags')->get();
     $productosDestacados = Products::where('status', '=', 1)->where('visible', '=', 1)->where('destacar', '=', 1)->orderBy('id', 'DESC')->limit(4)->get();
     $ofertasProductos = Products::where('status', '=', 1)->where('visible', '=', 1)->where('liquidacion', '=', 1)->orderBy('id', 'DESC')->limit(4)->get();
@@ -64,7 +65,7 @@ class IndexController extends Controller
 
     $category = Category::where('status', '=', 1)->where('visible', '=', 1)->where('destacar', '=', 1)->get();
 
-    return view('public.index', compact('productos', 'general', 'testimonios', 'logos', 'category', 'productosDestacados', 'ofertasProductos', 'blog'));
+    return view('public.index', compact('productos', 'general', 'testimonios','slider', 'logos', 'category', 'productosDestacados', 'ofertasProductos', 'blog'));
   }
 
   public function catalogo(Request $request)

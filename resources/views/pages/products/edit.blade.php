@@ -403,7 +403,7 @@
           </h2>
         </header>
         <div class="flex flex-col gap-2 p-3 ">
-          <div class="flex gap-2 p-3 ">
+          <div class="flex flex-col md:flex-row gap-2 p-3 ">
             <div class="basis-0 md:basis-3/5">
               <div class="rounded shadow-lg p-4 px-4 ">
 

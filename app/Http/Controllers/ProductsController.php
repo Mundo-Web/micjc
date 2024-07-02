@@ -398,7 +398,6 @@ class ProductsController extends Controller
     $atributos = null;
 
 
-    dump($data);
     $request->validate([
       'producto' => 'required',
     ]);

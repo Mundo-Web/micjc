@@ -147,7 +147,7 @@
           </li>
 
           <!-- Servicios -->
-          <li
+          {{-- <li
             class="px-3 py-2 rounded-sm mb-0.5 last:mb-0 @if (in_array(Request::segment(2), ['servicios'])) {{ 'bg-slate-900' }} @endif">
             <a class="block text-slate-200 hover:text-white truncate transition duration-150 @if (in_array(Request::segment(2), ['servicios'])) {{ 'hover:text-slate-200' }} @endif"
               href="{{ route('servicios.index') }}">
@@ -164,112 +164,13 @@
                   class="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Servicios</span>
               </div>
             </a>
-          </li>
+          </li> --}}
 
 
-          <!-- Testimony -->
-          <li
-            class="px-3 py-2 rounded-sm mb-0.5 last:mb-0 @if (in_array(Request::segment(2), ['testimonios'])) {{ 'bg-slate-900' }} @endif">
-            <a class="block text-slate-200 hover:text-white truncate transition duration-150 @if (in_array(Request::segment(2), ['testimonios'])) {{ 'hover:text-slate-200' }} @endif"
-              href="{{ route('testimonios.index') }}">
-              <div class="flex items-center">
-                <svg class="shrink-0 h-6 w-6" viewBox="0 0 24 24">
-                  <path
-                    class="fill-current @if (in_array(Request::segment(2), ['testimonios'])) {{ 'text-indigo-500' }}@else{{ 'text-slate-600' }} @endif"
-                    d="M1 3h22v20H1z" />
-                  <path
-                    class="fill-current @if (in_array(Request::segment(2), ['testimonios'])) {{ 'text-indigo-300' }}@else{{ 'text-slate-400' }} @endif"
-                    d="M21 3h2v4H1V3h2V1h4v2h10V1h4v2Z" />
-                </svg>
-                <span
-                  class="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Testimonios</span>
-              </div>
-            </a>
-          </li>
 
 
-          <!-- Category -->
-          <li
-            class="px-3 py-2 rounded-sm mb-0.5 last:mb-0 @if (in_array(Request::segment(2), ['categorias'])) {{ 'bg-slate-900' }} @endif">
-            <a class="block text-slate-200 hover:text-white truncate transition duration-150 @if (in_array(Request::segment(2), ['categorias'])) {{ 'hover:text-slate-200' }} @endif"
-              href="{{ route('categorias.index') }}">
-              <div class="flex items-center">
-                <svg class="shrink-0 h-6 w-6" viewBox="0 0 24 24">
-                  <path
-                    class="fill-current @if (in_array(Request::segment(2), ['categorias'])) {{ 'text-indigo-500' }}@else{{ 'text-slate-600' }} @endif"
-                    d="M1 3h22v20H1z" />
-                  <path
-                    class="fill-current @if (in_array(Request::segment(2), ['categorias'])) {{ 'text-indigo-300' }}@else{{ 'text-slate-400' }} @endif"
-                    d="M21 3h2v4H1V3h2V1h4v2h10V1h4v2Z" />
-                </svg>
-                <span
-                  class="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Categoría</span>
-              </div>
-            </a>
-          </li>
-          <li
-            class="px-3 py-2 rounded-sm mb-0.5 last:mb-0 @if (in_array(Request::segment(2), ['subcategoria'])) {{ 'bg-slate-900' }} @endif">
-            <a class="block text-slate-200 hover:text-white truncate transition duration-150 @if (in_array(Request::segment(2), ['subcategoria'])) {{ 'hover:text-slate-200' }} @endif"
-              href="{{ route('subcategoria.index') }}">
-              <div class="flex items-center">
-                <svg class="shrink-0 h-6 w-6" viewBox="0 0 24 24">
-                  <path
-                    class="fill-current @if (in_array(Request::segment(2), ['subcategoria'])) {{ 'text-indigo-500' }}@else{{ 'text-slate-600' }} @endif"
-                    d="M1 3h22v20H1z" />
-                  <path
-                    class="fill-current @if (in_array(Request::segment(2), ['subcategoria'])) {{ 'text-indigo-300' }}@else{{ 'text-slate-400' }} @endif"
-                    d="M21 3h2v4H1V3h2V1h4v2h10V1h4v2Z" />
-                </svg>
-                <span
-                  class="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Sub
-                  categoria</span>
-              </div>
-            </a>
-          </li>
 
-
-          <!-- Blog -->
-          <li
-            class="px-3 py-2 rounded-sm mb-0.5 last:mb-0 @if (in_array(Request::segment(2), ['blog'])) {{ 'bg-slate-900' }} @endif">
-            <a class="block text-slate-200 hover:text-white truncate transition duration-150 @if (in_array(Request::segment(2), ['blog'])) {{ 'hover:text-slate-200' }} @endif"
-              href="{{ route('blog.index') }}">
-              <div class="flex items-center">
-                <svg class="shrink-0 h-6 w-6" viewBox="0 0 24 24">
-                  <path
-                    class="fill-current @if (in_array(Request::segment(2), ['blog'])) {{ 'text-indigo-500' }}@else{{ 'text-slate-600' }} @endif"
-                    d="M1 3h22v20H1z" />
-                  <path
-                    class="fill-current @if (in_array(Request::segment(2), ['blog'])) {{ 'text-indigo-300' }}@else{{ 'text-slate-400' }} @endif"
-                    d="M21 3h2v4H1V3h2V1h4v2h10V1h4v2Z" />
-                </svg>
-                <span
-                  class="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Blog</span>
-              </div>
-            </a>
-          </li>
-
-          <li
-            class="px-3 py-2 rounded-sm mb-0.5 last:mb-0 @if (in_array(Request::segment(2), ['logos'])) {{ 'bg-slate-900' }} @endif">
-            <a class="block text-slate-200 hover:text-white truncate transition duration-150 @if (in_array(Request::segment(2), ['logos'])) {{ 'hover:text-slate-200' }} @endif"
-              href="{{ route('logos.index') }}">
-              <div class="flex items-center">
-                <svg class="shrink-0 h-6 w-6" viewBox="0 0 24 24">
-                  <path
-                    class="fill-current @if (in_array(Request::segment(2), ['logos'])) {{ 'text-indigo-500' }}@else{{ 'text-slate-600' }} @endif"
-                    d="M1 3h22v20H1z" />
-                  <path
-                    class="fill-current @if (in_array(Request::segment(2), ['logos'])) {{ 'text-indigo-300' }}@else{{ 'text-slate-400' }} @endif"
-                    d="M21 3h2v4H1V3h2V1h4v2h10V1h4v2Z" />
-                </svg>
-                <span
-                  class="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Logos
-                  Cliente</span>
-              </div>
-            </a>
-          </li>
-
-
-          <li
+          {{-- <li
             class="px-3 py-2 rounded-sm mb-0.5 last:mb-0 @if (in_array(Request::segment(2), ['staff'])) {{ 'bg-slate-900' }} @endif">
             <a class="block text-slate-200 hover:text-white truncate transition duration-150 @if (in_array(Request::segment(2), ['staff'])) {{ 'hover:text-slate-200' }} @endif"
               href="{{ route('staff.index') }}">
@@ -286,11 +187,11 @@
                   class="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Personal</span>
               </div>
             </a>
-          </li>
+          </li> --}}
 
 
 
-          <li
+          {{-- <li
             class="px-3 py-2 rounded-sm mb-0.5 last:mb-0 @if (in_array(Request::segment(2), ['strength'])) {{ 'bg-slate-900' }} @endif">
             <a class="block text-slate-200 hover:text-white truncate transition duration-150 @if (in_array(Request::segment(2), ['strength'])) {{ 'hover:text-slate-200' }} @endif"
               href="{{ route('strength.index') }}">
@@ -307,11 +208,11 @@
                   class="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Streng</span>
               </div>
             </a>
-          </li>
+          </li> --}}
 
 
 
-          <li
+          {{-- <li
             class="px-3 py-2 rounded-sm mb-0.5 last:mb-0 @if (in_array(Request::segment(2), ['aboutus'])) {{ 'bg-slate-900' }} @endif">
             <a class="block text-slate-200 hover:text-white truncate transition duration-150 @if (in_array(Request::segment(2), ['aboutus'])) {{ 'hover:text-slate-200' }} @endif"
               href="{{ route('aboutus.index') }}">
@@ -329,63 +230,10 @@
                 </span>
               </div>
             </a>
-          </li>
-          <li
-            class="px-3 py-2 rounded-sm mb-0.5 last:mb-0 @if (in_array(Request::segment(2), ['attributes'])) {{ 'bg-slate-900' }} @endif">
-            <a class="block text-slate-200 hover:text-white truncate transition duration-150 @if (in_array(Request::segment(2), ['attributes'])) {{ 'hover:text-slate-200' }} @endif"
-              href="{{ route('attributes.index') }}">
-              <div class="flex items-center">
-                <svg class="shrink-0 h-6 w-6" viewBox="0 0 24 24">
-                  <path
-                    class="fill-current @if (in_array(Request::segment(2), ['attributes'])) {{ 'text-indigo-500' }}@else{{ 'text-slate-600' }} @endif"
-                    d="M1 3h22v20H1z" />
-                  <path
-                    class="fill-current @if (in_array(Request::segment(2), ['attributes'])) {{ 'text-indigo-300' }}@else{{ 'text-slate-400' }} @endif"
-                    d="M21 3h2v4H1V3h2V1h4v2h10V1h4v2Z" />
-                </svg>
-                <span
-                  class="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Atributos</span>
-              </div>
-            </a>
-          </li>
-          <li
-            class="px-3 py-2 rounded-sm mb-0.5 last:mb-0 @if (in_array(Request::segment(2), ['valoresattributes'])) {{ 'bg-slate-900' }} @endif">
-            <a class="block text-slate-200 hover:text-white truncate transition duration-150 @if (in_array(Request::segment(2), ['valoresattributes'])) {{ 'hover:text-slate-200' }} @endif"
-              href="{{ route('valoresattributes.index') }}">
-              <div class="flex items-center">
-                <svg class="shrink-0 h-6 w-6" viewBox="0 0 24 24">
-                  <path
-                    class="fill-current @if (in_array(Request::segment(2), ['valoresattributes'])) {{ 'text-indigo-500' }}@else{{ 'text-slate-600' }} @endif"
-                    d="M1 3h22v20H1z" />
-                  <path
-                    class="fill-current @if (in_array(Request::segment(2), ['valoresattributes'])) {{ 'text-indigo-300' }}@else{{ 'text-slate-400' }} @endif"
-                    d="M21 3h2v4H1V3h2V1h4v2h10V1h4v2Z" />
-                </svg>
-                <span
-                  class="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                  Valor de atributo</span>
-              </div>
-            </a>
-          </li>
+          </li> --}}
 
-          <li
-            class="px-3 py-2 rounded-sm mb-0.5 last:mb-0 @if (in_array(Request::segment(2), ['products'])) {{ 'bg-slate-900' }} @endif">
-            <a class="block text-slate-200 hover:text-white truncate transition duration-150 @if (in_array(Request::segment(2), ['products'])) {{ 'hover:text-slate-200' }} @endif"
-              href="{{ route('products.index') }}">
-              <div class="flex items-center">
-                <svg class="shrink-0 h-6 w-6" viewBox="0 0 24 24">
-                  <path
-                    class="fill-current @if (in_array(Request::segment(2), ['products'])) {{ 'text-indigo-500' }}@else{{ 'text-slate-600' }} @endif"
-                    d="M1 3h22v20H1z" />
-                  <path
-                    class="fill-current @if (in_array(Request::segment(2), ['products'])) {{ 'text-indigo-300' }}@else{{ 'text-slate-400' }} @endif"
-                    d="M21 3h2v4H1V3h2V1h4v2h10V1h4v2Z" />
-                </svg>
-                <span
-                  class="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Productos</span>
-              </div>
-            </a>
-          </li>
+
+
           <li
             class="px-3 py-2 rounded-sm mb-0.5 last:mb-0 @if (in_array(Request::segment(2), ['tags'])) {{ 'bg-slate-900' }} @endif">
             <a class="block text-slate-200 hover:text-white truncate transition duration-150 @if (in_array(Request::segment(2), ['tags'])) {{ 'hover:text-slate-200' }} @endif"
@@ -441,6 +289,117 @@
               </div>
             </a>
           </li>
+
+
+
+
+
+
+
+
+
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-xs uppercase text-slate-500 font-semibold pl-3">
+          <span class="hidden lg:block lg:sidebar-expanded:hidden 2xl:hidden text-center w-6"
+            aria-hidden="true">•••</span>
+          <span class="lg:hidden lg:sidebar-expanded:block 2xl:block">Productos</span>
+        </h3>
+        <ul class="mt-3">
+          <li
+            class="px-3 py-2 rounded-sm mb-0.5 last:mb-0 @if (in_array(Request::segment(2), ['products'])) {{ 'bg-slate-900' }} @endif">
+            <a class="block text-slate-200 hover:text-white truncate transition duration-150 @if (in_array(Request::segment(2), ['products'])) {{ 'hover:text-slate-200' }} @endif"
+              href="{{ route('products.index') }}">
+              <div class="flex items-center">
+                <svg class="shrink-0 h-6 w-6" viewBox="0 0 24 24">
+                  <path
+                    class="fill-current @if (in_array(Request::segment(2), ['products'])) {{ 'text-indigo-500' }}@else{{ 'text-slate-600' }} @endif"
+                    d="M1 3h22v20H1z" />
+                  <path
+                    class="fill-current @if (in_array(Request::segment(2), ['products'])) {{ 'text-indigo-300' }}@else{{ 'text-slate-400' }} @endif"
+                    d="M21 3h2v4H1V3h2V1h4v2h10V1h4v2Z" />
+                </svg>
+                <span
+                  class="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Productos</span>
+              </div>
+            </a>
+          </li>
+          <!-- Category -->
+          <li
+            class="px-3 py-2 rounded-sm mb-0.5 last:mb-0 @if (in_array(Request::segment(2), ['categorias'])) {{ 'bg-slate-900' }} @endif">
+            <a class="block text-slate-200 hover:text-white truncate transition duration-150 @if (in_array(Request::segment(2), ['categorias'])) {{ 'hover:text-slate-200' }} @endif"
+              href="{{ route('categorias.index') }}">
+              <div class="flex items-center">
+                <svg class="shrink-0 h-6 w-6" viewBox="0 0 24 24">
+                  <path
+                    class="fill-current @if (in_array(Request::segment(2), ['categorias'])) {{ 'text-indigo-500' }}@else{{ 'text-slate-600' }} @endif"
+                    d="M1 3h22v20H1z" />
+                  <path
+                    class="fill-current @if (in_array(Request::segment(2), ['categorias'])) {{ 'text-indigo-300' }}@else{{ 'text-slate-400' }} @endif"
+                    d="M21 3h2v4H1V3h2V1h4v2h10V1h4v2Z" />
+                </svg>
+                <span
+                  class="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Categoría</span>
+              </div>
+            </a>
+          </li>
+          <li
+            class="px-3 py-2 rounded-sm mb-0.5 last:mb-0 @if (in_array(Request::segment(2), ['subcategoria'])) {{ 'bg-slate-900' }} @endif">
+            <a class="block text-slate-200 hover:text-white truncate transition duration-150 @if (in_array(Request::segment(2), ['subcategoria'])) {{ 'hover:text-slate-200' }} @endif"
+              href="{{ route('subcategoria.index') }}">
+              <div class="flex items-center">
+                <svg class="shrink-0 h-6 w-6" viewBox="0 0 24 24">
+                  <path
+                    class="fill-current @if (in_array(Request::segment(2), ['subcategoria'])) {{ 'text-indigo-500' }}@else{{ 'text-slate-600' }} @endif"
+                    d="M1 3h22v20H1z" />
+                  <path
+                    class="fill-current @if (in_array(Request::segment(2), ['subcategoria'])) {{ 'text-indigo-300' }}@else{{ 'text-slate-400' }} @endif"
+                    d="M21 3h2v4H1V3h2V1h4v2h10V1h4v2Z" />
+                </svg>
+                <span
+                  class="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Sub
+                  categoria</span>
+              </div>
+            </a>
+          </li>
+          <li
+            class="px-3 py-2 rounded-sm mb-0.5 last:mb-0 @if (in_array(Request::segment(2), ['attributes'])) {{ 'bg-slate-900' }} @endif">
+            <a class="block text-slate-200 hover:text-white truncate transition duration-150 @if (in_array(Request::segment(2), ['attributes'])) {{ 'hover:text-slate-200' }} @endif"
+              href="{{ route('attributes.index') }}">
+              <div class="flex items-center">
+                <svg class="shrink-0 h-6 w-6" viewBox="0 0 24 24">
+                  <path
+                    class="fill-current @if (in_array(Request::segment(2), ['attributes'])) {{ 'text-indigo-500' }}@else{{ 'text-slate-600' }} @endif"
+                    d="M1 3h22v20H1z" />
+                  <path
+                    class="fill-current @if (in_array(Request::segment(2), ['attributes'])) {{ 'text-indigo-300' }}@else{{ 'text-slate-400' }} @endif"
+                    d="M21 3h2v4H1V3h2V1h4v2h10V1h4v2Z" />
+                </svg>
+                <span
+                  class="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Atributos</span>
+              </div>
+            </a>
+          </li>
+          <li
+            class="px-3 py-2 rounded-sm mb-0.5 last:mb-0 @if (in_array(Request::segment(2), ['valoresattributes'])) {{ 'bg-slate-900' }} @endif">
+            <a class="block text-slate-200 hover:text-white truncate transition duration-150 @if (in_array(Request::segment(2), ['valoresattributes'])) {{ 'hover:text-slate-200' }} @endif"
+              href="{{ route('valoresattributes.index') }}">
+              <div class="flex items-center">
+                <svg class="shrink-0 h-6 w-6" viewBox="0 0 24 24">
+                  <path
+                    class="fill-current @if (in_array(Request::segment(2), ['valoresattributes'])) {{ 'text-indigo-500' }}@else{{ 'text-slate-600' }} @endif"
+                    d="M1 3h22v20H1z" />
+                  <path
+                    class="fill-current @if (in_array(Request::segment(2), ['valoresattributes'])) {{ 'text-indigo-300' }}@else{{ 'text-slate-400' }} @endif"
+                    d="M21 3h2v4H1V3h2V1h4v2h10V1h4v2Z" />
+                </svg>
+                <span
+                  class="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                  Valor de atributo</span>
+              </div>
+            </a>
+          </li>
           <li
             class="px-3 py-2 rounded-sm mb-0.5 last:mb-0 @if (in_array(Request::segment(2), ['galerie'])) {{ 'bg-slate-900' }} @endif">
             <a class="block text-slate-200 hover:text-white truncate transition duration-150 @if (in_array(Request::segment(2), ['galerie'])) {{ 'hover:text-slate-200' }} @endif"
@@ -477,6 +436,89 @@
               </div>
             </a>
           </li>
+
+        </ul>
+
+      </div>
+      <div>
+        <h3 class="text-xs uppercase text-slate-500 font-semibold pl-3">
+          <span class="hidden lg:block lg:sidebar-expanded:hidden 2xl:hidden text-center w-6"
+            aria-hidden="true">•••</span>
+          <span class="lg:hidden lg:sidebar-expanded:block 2xl:block">Administrables</span>
+        </h3>
+        <ul class="mt-3">
+          <!-- Testimony -->
+          <li
+            class="px-3 py-2 rounded-sm mb-0.5 last:mb-0 @if (in_array(Request::segment(2), ['testimonios'])) {{ 'bg-slate-900' }} @endif">
+            <a class="block text-slate-200 hover:text-white truncate transition duration-150 @if (in_array(Request::segment(2), ['testimonios'])) {{ 'hover:text-slate-200' }} @endif"
+              href="{{ route('testimonios.index') }}">
+              <div class="flex items-center">
+                <svg class="shrink-0 h-6 w-6" viewBox="0 0 24 24">
+                  <path
+                    class="fill-current @if (in_array(Request::segment(2), ['testimonios'])) {{ 'text-indigo-500' }}@else{{ 'text-slate-600' }} @endif"
+                    d="M1 3h22v20H1z" />
+                  <path
+                    class="fill-current @if (in_array(Request::segment(2), ['testimonios'])) {{ 'text-indigo-300' }}@else{{ 'text-slate-400' }} @endif"
+                    d="M21 3h2v4H1V3h2V1h4v2h10V1h4v2Z" />
+                </svg>
+                <span
+                  class="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Testimonios</span>
+              </div>
+            </a>
+          </li>
+
+
+
+
+
+          <!-- Blog -->
+          <li
+            class="px-3 py-2 rounded-sm mb-0.5 last:mb-0 @if (in_array(Request::segment(2), ['blog'])) {{ 'bg-slate-900' }} @endif">
+            <a class="block text-slate-200 hover:text-white truncate transition duration-150 @if (in_array(Request::segment(2), ['blog'])) {{ 'hover:text-slate-200' }} @endif"
+              href="{{ route('blog.index') }}">
+              <div class="flex items-center">
+                <svg class="shrink-0 h-6 w-6" viewBox="0 0 24 24">
+                  <path
+                    class="fill-current @if (in_array(Request::segment(2), ['blog'])) {{ 'text-indigo-500' }}@else{{ 'text-slate-600' }} @endif"
+                    d="M1 3h22v20H1z" />
+                  <path
+                    class="fill-current @if (in_array(Request::segment(2), ['blog'])) {{ 'text-indigo-300' }}@else{{ 'text-slate-400' }} @endif"
+                    d="M21 3h2v4H1V3h2V1h4v2h10V1h4v2Z" />
+                </svg>
+                <span
+                  class="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Blog</span>
+              </div>
+            </a>
+          </li>
+
+          <li
+            class="px-3 py-2 rounded-sm mb-0.5 last:mb-0 @if (in_array(Request::segment(2), ['logos'])) {{ 'bg-slate-900' }} @endif">
+            <a class="block text-slate-200 hover:text-white truncate transition duration-150 @if (in_array(Request::segment(2), ['logos'])) {{ 'hover:text-slate-200' }} @endif"
+              href="{{ route('logos.index') }}">
+              <div class="flex items-center">
+                <svg class="shrink-0 h-6 w-6" viewBox="0 0 24 24">
+                  <path
+                    class="fill-current @if (in_array(Request::segment(2), ['logos'])) {{ 'text-indigo-500' }}@else{{ 'text-slate-600' }} @endif"
+                    d="M1 3h22v20H1z" />
+                  <path
+                    class="fill-current @if (in_array(Request::segment(2), ['logos'])) {{ 'text-indigo-300' }}@else{{ 'text-slate-400' }} @endif"
+                    d="M21 3h2v4H1V3h2V1h4v2h10V1h4v2Z" />
+                </svg>
+                <span
+                  class="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Logos
+                  Cliente</span>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-xs uppercase text-slate-500 font-semibold pl-3">
+          <span class="hidden lg:block lg:sidebar-expanded:hidden 2xl:hidden text-center w-6"
+            aria-hidden="true">•••</span>
+          <span class="lg:hidden lg:sidebar-expanded:block 2xl:block">Mantenedores</span>
+        </h3>
+        <ul class="mt-3">
           <li
             class="px-3 py-2 rounded-sm mb-0.5 last:mb-0 @if (in_array(Request::segment(2), ['pedidos'])) {{ 'bg-slate-900' }} @endif">
             <a class="block text-slate-200 hover:text-white truncate transition duration-150 @if (in_array(Request::segment(2), ['pedidos'])) {{ 'hover:text-slate-200' }} @endif"
@@ -514,23 +556,31 @@
               </div>
             </a>
           </li>
-
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-xs uppercase text-slate-500 font-semibold pl-3">
+          <span class="hidden lg:block lg:sidebar-expanded:hidden 2xl:hidden text-center w-6"
+            aria-hidden="true">•••</span>
+          <span class="lg:hidden lg:sidebar-expanded:block 2xl:block">Legales</span>
+        </h3>
+        <ul class="mt-3">
           <li
-            class="px-3 py-2 rounded-sm mb-0.5 last:mb-0 @if (in_array(Request::segment(2), ['verPoliticasPrivacidad'])) {{ 'bg-slate-900' }} @endif">
-            <a class="block text-slate-200 hover:text-white truncate transition duration-150 @if (in_array(Request::segment(2), ['verPoliticasPrivacidad'])) {{ 'hover:text-slate-200' }} @endif"
-              href="{{ route('verPoliticasPrivacidad.index') }}">
+            class="px-3 py-2 rounded-sm mb-0.5 last:mb-0 @if (in_array(Request::segment(2), ['reclamo'])) {{ 'bg-slate-900' }} @endif">
+            <a class="block text-slate-200 hover:text-white truncate transition duration-150 @if (in_array(Request::segment(2), ['reclamo'])) {{ 'hover:text-slate-200' }} @endif"
+              href="{{ route('reclamo.index') }}">
               <div class="flex items-center">
                 <svg class="shrink-0 h-6 w-6" viewBox="0 0 24 24">
                   <path
-                    class="fill-current @if (in_array(Request::segment(2), ['verPoliticasPrivacidad'])) {{ 'text-indigo-500' }}@else{{ 'text-slate-600' }} @endif"
+                    class="fill-current @if (in_array(Request::segment(2), ['reclamo'])) {{ 'text-indigo-500' }}@else{{ 'text-slate-600' }} @endif"
                     d="M1 3h22v20H1z" />
                   <path
-                    class="fill-current @if (in_array(Request::segment(2), ['verPoliticasPrivacidad'])) {{ 'text-indigo-300' }}@else{{ 'text-slate-400' }} @endif"
+                    class="fill-current @if (in_array(Request::segment(2), ['reclamo'])) {{ 'text-indigo-300' }}@else{{ 'text-slate-400' }} @endif"
                     d="M21 3h2v4H1V3h2V1h4v2h10V1h4v2Z" />
                 </svg>
                 <span
-                  class="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Politicas
-                  de Privacidad</span>
+                  class="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Libro
+                  reclamaciones</span>
               </div>
             </a>
           </li>
@@ -554,25 +604,24 @@
             </a>
           </li>
           <li
-            class="px-3 py-2 rounded-sm mb-0.5 last:mb-0 @if (in_array(Request::segment(2), ['reclamo'])) {{ 'bg-slate-900' }} @endif">
-            <a class="block text-slate-200 hover:text-white truncate transition duration-150 @if (in_array(Request::segment(2), ['reclamo'])) {{ 'hover:text-slate-200' }} @endif"
-              href="{{ route('reclamo.index') }}">
+            class="px-3 py-2 rounded-sm mb-0.5 last:mb-0 @if (in_array(Request::segment(2), ['verPoliticasPrivacidad'])) {{ 'bg-slate-900' }} @endif">
+            <a class="block text-slate-200 hover:text-white truncate transition duration-150 @if (in_array(Request::segment(2), ['verPoliticasPrivacidad'])) {{ 'hover:text-slate-200' }} @endif"
+              href="{{ route('verPoliticasPrivacidad.index') }}">
               <div class="flex items-center">
                 <svg class="shrink-0 h-6 w-6" viewBox="0 0 24 24">
                   <path
-                    class="fill-current @if (in_array(Request::segment(2), ['reclamo'])) {{ 'text-indigo-500' }}@else{{ 'text-slate-600' }} @endif"
+                    class="fill-current @if (in_array(Request::segment(2), ['verPoliticasPrivacidad'])) {{ 'text-indigo-500' }}@else{{ 'text-slate-600' }} @endif"
                     d="M1 3h22v20H1z" />
                   <path
-                    class="fill-current @if (in_array(Request::segment(2), ['reclamo'])) {{ 'text-indigo-300' }}@else{{ 'text-slate-400' }} @endif"
+                    class="fill-current @if (in_array(Request::segment(2), ['verPoliticasPrivacidad'])) {{ 'text-indigo-300' }}@else{{ 'text-slate-400' }} @endif"
                     d="M21 3h2v4H1V3h2V1h4v2h10V1h4v2Z" />
                 </svg>
                 <span
-                  class="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Libro
-                  reclamaciones</span>
+                  class="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Politicas
+                  de Privacidad</span>
               </div>
             </a>
           </li>
-
 
         </ul>
       </div>

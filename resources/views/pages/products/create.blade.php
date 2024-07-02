@@ -402,7 +402,7 @@
           </h2>
         </header>
         <div class="flex flex-col gap-2 p-3 ">
-          <div class="flex gap-2 p-3 ">
+          <div class="flex  flex-col md:flex-row gap-2 p-3 ">
 
             <div class="basis-0 md:basis-3/5">
               <div class="rounded shadow-lg p-4 px-4 ">
@@ -1045,6 +1045,26 @@
         reader.readAsDataURL(blob);
       });
     }
+  </script>
+
+  <script>
+    //validar que producto,, categoria_id precio tengan datos antes de enviarce
+    $('form').on('submit', function(e) {
+      e.preventDefault();
+      let categoria = document.getElementById('categorias').value;
+      let producto = document.getElementById('producto').value;
+      let precio = document.getElementById('precio').value;
+
+      if (categoria === '' || producto === '' || precio === '') {
+
+        Swal.fire({
+          title: 'Los campos categoria, producto y precio son obligatorios',
+          icon: "warning"
+        });
+      } else {
+        this.submit();
+      }
+    })
   </script>
 
   @include('_layout.scripts')
