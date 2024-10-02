@@ -102,7 +102,7 @@ class ProductsSeeder extends Seeder
 
                 if (Text::nullOrEmpty($row[10])) return;
                 try {
-                    Specifications::where('products_id', $product->id)->delete();
+                    Specifications::where('product_id', $product->id)->delete();
                     $specs = \explode('/', $row[10]);
                     foreach ($specs as $value) {
                         [$tittle, $specifications] = \explode(':', $value);
