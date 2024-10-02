@@ -23,6 +23,9 @@ class ProductsSeeder extends Seeder
      */
     public function run(): void
     {
+
+        Specifications::where('status', true)->delete();
+        Products::where('status', true)->delete();
         Excel::import(new class implements ToModel
         {
             public function model(array $row)
