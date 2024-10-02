@@ -39,7 +39,8 @@ class DatabaseSeeder extends Seeder
             StatusOrdenes::class,
             MarcasSeeder::class,
             SubcategorySeeder::class, 
-            SubcategoriaXMarcas::class
+            SubcategoriaXMarcas::class,
+            ProductsSeeder::class,
             //ServiceSeeder::class,
         ]);
     }

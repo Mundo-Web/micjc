@@ -22,6 +22,7 @@
           <table id="tabladatos" class="display text-lg" style="width:100%">
             <thead>
               <tr>
+                <th>ID</th>
                 <th>Nombre</th>
                 <th>Descripción</th>
                 <th>Destacar</th>
@@ -34,6 +35,7 @@
 
               @foreach ($category as $item)
                 <tr>
+                  <td>{{ $item->id }}</td>
                   <td>{{ $item->name }}</td>
                   <td>{{ $item->description }}</td>
                   <td>
@@ -93,6 +95,7 @@
             </tbody>
             <tfoot>
               <tr>
+                <th>ID</th>
                 <th>Nombre</th>
                 <th>Descripción</th>
                 <th>Destacar</th>

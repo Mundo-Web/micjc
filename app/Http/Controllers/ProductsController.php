@@ -324,10 +324,12 @@ class ProductsController extends Controller
     }
   }
 
-  private function actualizarEspecificacion($especificaciones)
+  private function actualizarEspecificacion($especificaciones, $producto_id)
   {
     foreach ($especificaciones as $key => $value) {
       $espect = Specifications::find($key);
+      if (!$espect) $espect = new Specifications();
+      $espect->product_id = $producto_id;
       $espect->tittle = $value['tittle'];
       $espect->specifications = $value['specifications'];
 
@@ -535,7 +537,7 @@ class ProductsController extends Controller
     if (!is_null($tagsSeleccionados)) {
       $this->TagsXProducts($id, $tagsSeleccionados);
     }
-    $this->actualizarEspecificacion($especificaciones);
+    $this->actualizarEspecificacion($especificaciones, $id);
     return redirect()->route('products.index')->with('success', 'Producto editado exitosamente.');
   }
 
