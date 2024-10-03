@@ -225,9 +225,9 @@
 
             <div class="flex justify-end items-end md:items-center">
               <img src="{{ asset($category[0]->url_image . $category[0]->name_image) }}" alt="impresora"
-                class="w-full flex md:hidden object-cover">
+                class="w-full flex md:hidden object-cover aspect-video">
               <img src="{{ asset($category[0]->url_image . $category[0]->name_image) }}" alt="impresora"
-                class="w-full hidden md:flex">
+                class="w-full hidden md:flex object-cover aspect-video">
             </div>
 
             <div class="flex justify-start items-center">
@@ -249,9 +249,9 @@
         @elseif (count($category->take(3)) == 2)
           <div class="col-span-1 lg:row-span-2 lg:col-span-2 bg-[#F3F3F3] p-5 md:p-10 flex flex-col gap-5 justify-center"
             data-aos="fade-up" data-aos-offset="150">
-            <div class="flex flex-col gap-5 w-full md:w-1/2">
+            <div class="flex flex-col gap-5 w-full ">
               <a href="{{ route('catalogo', ['cat' => $category[0]->id]) }}">
-                <h2 class="text-text28 md:text-text32 font-moderat_700 w-1/2">{{ $category[0]->name }}</h2>
+                <h2 class="text-text28 md:text-text32 font-moderat_700">{{ $category[0]->name }}</h2>
               </a>
 
               <p class="font-moderat_Regular text-text12 md:text-text16">{!! $category[0]->description !!}</p>
@@ -264,9 +264,9 @@
 
             <div class="flex justify-end items-end md:items-center">
               <img src="{{ asset($category[0]->url_image . $category[0]->name_image) }}" alt="impresora"
-                class="w-full flex md:hidden object-cover">
+                class="w-full flex md:hidden object-cover aspect-video">
               <img src="{{ asset($category[0]->url_image . $category[0]->name_image) }}" alt="impresora"
-                class="w-full hidden md:flex">
+                class="w-full hidden md:flex object-cover aspect-video">
             </div>
 
             <div class="flex justify-start items-center">
@@ -287,9 +287,9 @@
           </div>
           <div class="col-span-1 lg:row-span-2 lg:col-span-2 bg-[#F3F3F3] p-5 md:p-10 flex flex-col gap-5 justify-center"
             data-aos="fade-up" data-aos-offset="150">
-            <div class="flex flex-col gap-5 w-full md:w-1/2">
+            <div class="flex flex-col gap-5 w-full ">
               <a href="{{ route('catalogo', ['cat' => $category[1]->id]) }}">
-                <h2 class="text-text28 md:text-text32 font-moderat_700 w-1/2">{{ $category[1]->name }}</h2>
+                <h2 class="text-text28 md:text-text32 font-moderat_700">{{ $category[1]->name }}</h2>
               </a>
 
               <p class="font-moderat_Regular text-text12 md:text-text16">{!! $category[1]->description !!}</p>
@@ -302,9 +302,9 @@
 
             <div class="flex justify-end items-end md:items-center">
               <img src="{{ asset($category[1]->url_image . $category[1]->name_image) }}" alt="impresora"
-                class="w-full flex md:hidden object-cover">
+                class="w-full flex md:hidden object-cover aspect-video">
               <img src="{{ asset($category[1]->url_image . $category[1]->name_image) }}" alt="impresora"
-                class="w-full hidden md:flex">
+                class="w-full hidden md:flex object-cover aspect-video">
             </div>
 
             <div class="flex justify-start items-center">
@@ -326,9 +326,9 @@
         @elseif (count($category->take(3)) == 3)
           <div class="col-span-1 lg:row-span-2 lg:col-span-2 bg-[#F3F3F3] p-5 md:p-10 flex flex-col gap-5 justify-center"
             data-aos="fade-up" data-aos-offset="150">
-            <div class="flex flex-col gap-5 w-full md:w-1/2">
+            <div class="flex flex-col gap-5 w-full">
               <a href="{{ route('catalogo', ['cat' => $category[0]->id]) }}">
-                <h2 class="text-text28 md:text-text32 font-moderat_700 w-1/2">{{ $category[0]->name }}</h2>
+                <h2 class="text-text28 md:text-text32 font-moderat_700">{{ $category[0]->name }}</h2>
               </a>
 
               <p class="font-moderat_Regular text-text12 md:text-text16">{!! $category[0]->description !!}</p>
@@ -341,9 +341,9 @@
 
             <div class="flex justify-end items-end md:items-center">
               <img src="{{ asset($category[0]->url_image . $category[0]->name_image) }}" alt="impresora"
-                class="w-full flex md:hidden object-cover">
+                class="w-full flex md:hidden object-cover aspect-video">
               <img src="{{ asset($category[0]->url_image . $category[0]->name_image) }}" alt="impresora"
-                class="w-full hidden md:flex">
+                class="w-full hidden md:flex object-cover aspect-video">
             </div>
 
             <div class="flex justify-start items-center">
@@ -364,7 +364,7 @@
           </div>
 
           <div
-            class="col-span-1 lg:row-span-1 lg:col-span-2 flex justify-between bg-[#F3F3F3] pl-5 py-5 md:p-10 md:gap-10"
+            class="col-span-1 lg:row-span-1 lg:col-span-2 flex justify-between bg-[#F3F3F3] pl-5 py-5 gap-2 md:p-10 md:gap-10"
             data-aos="fade-up" data-aos-offset="150">
 
             <div class="flex flex-col gap-5 justify-center basis-3/6 md:basis-2/6">
@@ -397,25 +397,25 @@
               </div>
             </div>
 
-            <div class="flex justify-end items-end md:items-center basis-3/6 md:basis-4/6">
+            <div class="flex justify-end items-center basis-3/6 md:basis-4/6">
               <img src="{{ asset($category[1]->url_image . $category[1]->name_image) }}" alt="impresora"
-                class="hidden md:block w-full object-cover">
+                class="hidden md:block w-full object-cover aspect-square md:aspect-video lg:aspect-square xl:aspect-[4/3]">
               <img src="{{ asset($category[1]->url_image . $category[1]->name_image) }}" alt="impresora"
-                class="block md:hidden w-full object-cover">
+                class="block md:hidden w-full object-cover aspect-square md:aspect-video lg:aspect-square xl:aspect-[4/3]">
             </div>
 
           </div>
 
           <div
-            class="col-span-1 lg:row-span-1 lg:col-span-2 bg-[#0051FF] flex justify-between text-white pr-5 py-5 gap-10 md:p-10 fondo__categorias-producto"{{-- 
+            class="col-span-1 lg:row-span-1 lg:col-span-2 bg-[#0051FF] flex justify-between text-white pr-5 py-5 gap-2 md:p-10 fondo__categorias-producto"{{-- 
                     style="background-image: url('{{ asset('images/img/image_9.png') }}'); background-repeat:no-repeat; background-size:cover;" --}}
             data-aos="fade-up" data-aos-offset="150">
 
-            <div class="flex justify-end items-end md:items-center basis-3/6 md:basis-4/6">
+            <div class="flex justify-end items-center basis-3/6 md:basis-4/6">
               <img src="{{ asset($category[2]->url_image . $category[2]->name_image) }}" alt="impresora"
-                class="hidden md:block w-full">
+                class="hidden md:block w-full object-cover aspect-square md:aspect-video lg:aspect-square xl:aspect-[4/3]">
               <img src="{{ asset($category[2]->url_image . $category[2]->name_image) }}" alt="impresora"
-                class="block md:hidden w-full">
+                class="block md:hidden w-full object-cover aspect-square md:aspect-video lg:aspect-square xl:aspect-[4/3]">
             </div>
 
             <div class="flex flex-col justify-center gap-5 basis-3/6 md:basis-2/6">
