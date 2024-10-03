@@ -17,11 +17,11 @@ class PriceController extends Controller
     {
         //
         $precios = Price::where("status", "=", true)->get();
-        
+
         $departamentos = DB::table('departments')->get();
         $provincias = DB::table('provinces')->get();
         $distritos = DB::table('districts')->get();
-       
+
         return view('pages.prices.index', compact('precios', 'departamentos', 'provincias', 'distritos'));
     }
 
@@ -40,32 +40,65 @@ class PriceController extends Controller
     {
         //
         //traemos las provincias de la tabla
-        
-        $provincias = DB::table('provinces')
-                    ->where('department_id', '=', $request->id)
-                    ->get();
 
-        return response()->json($provincias);
+
+        $provinces = Price::select([
+            'provinces.id AS id',
+            'provinces.description AS description',
+            'provinces.department_id AS department_id'
+        ])
+            ->join('districts', 'districts.id', 'prices.distrito_id')
+            ->join('provinces', 'provinces.id', 'districts.province_id')
+            ->where('provinces.active', 1)
+            ->where('provinces.department_id', $request->id)
+            ->groupBy(
+                'id',
+                'description',
+                'department_id'
+            )
+            ->get();
+
+        return response()->json($provinces);
     }
 
     public function getDistrito(Request $request)
     {
         //
         //traemos las provincias de la tabla
-        
-        $distritos = DB::table('districts')
-                    ->where('province_id', '=', $request->id)
-                    ->get();
 
-        return response()->json($distritos);
+        // $distritos = DB::table('districts')
+        //     ->where('province_id', '=', $request->id)
+        //     ->get();
+
+        $districts = Price::select([
+            'districts.id AS id',
+            'districts.description AS description',
+            'districts.province_id AS province_id',
+            'prices.id AS price_id',
+            'prices.price AS price'
+        ])
+            ->join('districts', 'districts.id', 'prices.distrito_id')
+            ->where('districts.active', 1)
+            ->where('districts.province_id', $request->id)
+            ->groupBy(
+                'id',
+                'description',
+                'province_id',
+                'price',
+                'price_id'
+            )
+            ->get();
+
+        return response()->json($districts);
     }
-    public function calculeEnvio(Request $request){
-        
-       $LocalidadParaEnvio = Price::where('distrito_id',$request->id)->get();
-        return response()->json(['message'=> 'LLegando Correctamente', 'LocalidadParaEnvio'=> $LocalidadParaEnvio]);
+    public function calculeEnvio(Request $request)
+    {
+
+        $LocalidadParaEnvio = Price::where('distrito_id', $request->id)->get();
+        return response()->json(['message' => 'LLegando Correctamente', 'LocalidadParaEnvio' => $LocalidadParaEnvio]);
     }
 
-    
+
 
     /**
      * Store a newly created resource in storage.
@@ -74,7 +107,7 @@ class PriceController extends Controller
     {
         //
         $request->validate([
-           'price' => 'required' 
+            'price' => 'required'
         ]);
         $price = new Price();
 
@@ -84,13 +117,12 @@ class PriceController extends Controller
         $price->visble = 1;
 
         //preguntamos si es lima o no ID=15
-        if($request->departamento_id == 15){
-            if($request->provincia_id == 1501){
+        if ($request->departamento_id == 15) {
+            if ($request->provincia_id == 1501) {
                 $price->local = 1;
-            }else{
+            } else {
                 $price->local = 0;
             }
-            
         }
 
         $price->save();

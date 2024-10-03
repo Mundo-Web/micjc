@@ -15,7 +15,7 @@
           Home
         </a>
         <span>></span>
-        <a href="carrito.html" class="font-moderat_700 text-[#141718]">Carrito</a>
+        <a href="/carrito" class="font-moderat_700 text-[#141718]">Carrito</a>
       </div>
       <div class="flex md:gap-20">
         <div
@@ -55,7 +55,7 @@
             <select name="departamento_id" id="departamento_id"
               class="selectpicker font-moderat_700 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
               <option value="">Seleccionar Departamento </option>
-              @foreach ($departamentos as $item)
+              @foreach ($departments as $item)
                 <option value="{{ $item->id }}">{{ $item->description }}</option>
               @endforeach
 
@@ -150,13 +150,14 @@
         class="flex flex-col md:flex-row justify-between items-center gap-5 pt-5 md:pt-10 pl-5 md:pl-10 pr-5 md:pr-10 mb-20">
         <div class="flex flex-col gap-6" data-aos="fade-up" data-aos-offset="150">
           <div class="flex flex-col gap-3">
-            <p class="text-[#02173C] font-moderat_700 text-text32 leading-[38px]">¿Aún tienes alguna duda?</h2>
-            <p class="text-[#02173C] font-moderat_Regular text-text18">Vestibulum ante ipsum primis in faucibus orci
-              luctus et ultrices posuere.</p>
+            <p class="text-[#02173C] font-moderat_700 text-text32 leading-[38px]">¿Aún tienes alguna duda?</p>
+            <p class="text-[#02173C] font-moderat_Regular text-text18">Estamos aquí para ayudarte. Si tienes alguna
+              pregunta sobre nuestros productos o servicios, no dudes en ponerte en contacto con nosotros. Estaremos
+              encantados de asistirte.</p>
           </div>
 
           <div class="flex justify-start items-center pb-8">
-            <a href="#"
+            <a href="/contacto"
               class="text-[#FFFFFF] font-moderat_Bold text-text16 py-3 bg-[#001232] px-5 w-full text-center md:inline-flex md:w-auto">Ponerse
               en contacto</a>
           </div>
@@ -353,7 +354,7 @@
                 entrgaLocal += `
                     <div class="flex items-center ps-4 border border-gray-200 rounded dark:border-gray-700">
                             <input type="radio" id="bordered-radio-2" name="bordered-radio" value="${envio.price}"
-                                class="background-radius w-5 h-5" />
+                                class="background-radius w-5 h-5"/>
                             <label for="bordered-radio-2"
                                 class="w-full py-4 ms-2 text-[16px] font-normal text-[#151515] flex justify-between items-center px-4">
                                 <span>${envio.local == 1 ? 'Entrega local': 'Envio Courier'}</span>
@@ -366,7 +367,7 @@
                 htmlContent += `
                   <div class="flex items-center ps-4 border border-gray-200 rounded dark:border-gray-700">
                           <input type="radio" id="bordered-radio-2" name="bordered-radio" value="${envio.price}"
-                              class="background-radius w-5 h-5" />
+                              class="background-radius w-5 h-5"/>
                           <label for="bordered-radio-2"
                               class="w-full py-4 ms-2 text-[16px] font-normal text-[#151515] flex justify-between items-center px-4">
                               <span>${envio.local == 1 ? 'Entrega local': 'Envio Courier'}</span>
@@ -397,6 +398,7 @@
   <script src="{{ asset('js/carrito.js') }}"></script>
 @section('scripts_importados')
   <script>
+    var checkedRadio = false;
     $("#btnSiguiente").on('click', function(e) {
 
 

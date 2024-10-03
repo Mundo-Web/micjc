@@ -24,7 +24,7 @@
           Home
         </a>
         <span>></span>
-        <a href="carrito.html" class="font-moderat_700 text-[#141718]">Carrito</a>
+        <a href="/carrito" class="font-moderat_700 text-[#141718]">Carrito</a>
       </div>
       <div class="flex lg:gap-44" data-aos="fade-up" data-aos-offset="150">
         <div
@@ -208,35 +208,35 @@
                       Método de pago
                     </h2>
                     <div class="w-full flex flex-col gap-5 border-dashed pb-10 border-b-2 border-[#E8ECEF]">
-                      <div class="flex items-center ps-4 border border-gray-200" data-aos="fade-up"
+                      <label for="bordered-radio-tarjeta" class="flex items-center ps-4 border border-gray-200 cursor-pointer" data-aos="fade-up"
                         data-aos-offset="150">
                         <input type="radio" id="bordered-radio-tarjeta" name="bordered-radio-tarjetas"
                           value="credit" class="focus:ring-transparent w-5 h-5 cursor-pointer  cuentas" />
-                        <label for="bordered-radio-tarjeta"
+                        <span 
                           class="w-full py-4 ms-2 text-text16 md:text-text18 font-moderat_Regular text-[#6C7275] flex justify-between items-center px-4">
                           <span>Tarjeta de crédito</span>
-                        </label>
-                      </div>
+                        </span>
+                      </label>
 
-                      <div class="flex items-center ps-4 border border-gray-200" data-aos="fade-up"
+                      <label for="bordered-radio-debito" class="flex items-center ps-4 border border-gray-200 cursor-pointer" data-aos="fade-up"
                         data-aos-offset="150">
                         <input type="radio" id="bordered-radio-debito" name="bordered-radio-tarjetas" value="debit"
                           class="focus:ring-transparent w-5 h-5 cursor-pointer cuentas" />
-                        <label for="bordered-radio-debito"
+                        <span 
                           class="w-full py-4 ms-2 text-text16 md:text-text18 font-moderat_Regular text-[#6C7275] flex justify-between items-center px-4">
                           <span>Tarjeta de Débito</span>
-                        </label>
-                      </div>
+                        </span>
+                      </label>
 
-                      <div class="flex items-center ps-4 border border-gray-200" data-aos="fade-up"
+                      <label for="bordered-radio-cuenta" class="flex items-center ps-4 border border-gray-200" data-aos="fade-up"
                         data-aos-offset="150">
                         <input type="radio" id="bordered-radio-cuenta" name="bordered-radio-tarjetas"
                           value="transfer" class="focus:ring-transparent w-5 h-5 cursor-pointer cuentas inputVoucher" />
-                        <label for="bordered-radio-cuenta"
+                        <span 
                           class="w-full py-4 ms-2 text-text16 md:text-text18 font-moderat_Regular text-[#6C7275] flex justify-between items-center px-4">
                           <span>Depósito a cuenta</span>
-                        </label>
-                      </div>
+                        </span>
+                      </l>
 
                       <div class="deposito__cuenta hidden">
                         <div class="flex justify-between items-center text-[#6C7275] px-16 voucher">
@@ -349,17 +349,20 @@
 
     <section class="bg-[#F3F3F3] w-11/12 mx-auto">
 
+      <section class="bg-[#F3F3F3] w-11/12 mx-auto">
+
       <div
         class="flex flex-col md:flex-row justify-between items-center gap-5 pt-5 md:pt-10 pl-5 md:pl-10 pr-5 md:pr-10 mb-20">
         <div class="flex flex-col gap-6" data-aos="fade-up" data-aos-offset="150">
           <div class="flex flex-col gap-3">
-            <p class="text-[#02173C] font-moderat_700 text-text32 leading-[38px]">¿Aún tienes alguna duda?</h2>
-            <p class="text-[#02173C] font-moderat_Regular text-text18">Vestibulum ante ipsum primis in faucibus orci
-              luctus et ultrices posuere.</p>
+            <p class="text-[#02173C] font-moderat_700 text-text32 leading-[38px]">¿Aún tienes alguna duda?</p>
+            <p class="text-[#02173C] font-moderat_Regular text-text18">Estamos aquí para ayudarte. Si tienes alguna
+              pregunta sobre nuestros productos o servicios, no dudes en ponerte en contacto con nosotros. Estaremos
+              encantados de asistirte.</p>
           </div>
 
           <div class="flex justify-start items-center pb-8">
-            <a href="#"
+            <a href="/contacto"
               class="text-[#FFFFFF] font-moderat_Bold text-text16 py-3 bg-[#001232] px-5 w-full text-center md:inline-flex md:w-auto">Ponerse
               en contacto</a>
           </div>

@@ -140,7 +140,6 @@
       // Calculate the bottom position of the icon
       const iconBottom = scrollTop + windowHeight - icon.outerHeight(true) - offset;
 
-      console.log(iconBottom, footerTop)
       // Check if the icon is overlapping with the footer
       if (iconBottom > footerTop) {
         icon.css('bottom', (iconBottom - footerTop + offset * 6) + 'px');

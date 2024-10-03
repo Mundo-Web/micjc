@@ -18,7 +18,7 @@
               Home
             </a>
             <span>></span>
-            <a href="carrito.html" class="font-moderat_700 text-[#141718]">Carrito</a>
+            <a href="/carrito" class="font-moderat_700 text-[#141718]">Carrito</a>
           </div>
 
           <div
@@ -356,7 +356,7 @@
 
           <div class="flex flex-col gap-5 pt-8 pb-5 md:pb-10">
             <div data-aos="fade-up" data-aos-offset="150">
-              <a href="catalogo.html"
+              <a href="/catalogo"
                 class="text-white bg-[#0051FF] w-full py-3 cursor-pointer font-moderat_Bold text-text18 md:text-text20 inline-block text-center">Seguir
                 comprando</a>
             </div>
@@ -376,13 +376,14 @@
         class="flex flex-col md:flex-row justify-between items-center gap-5 pt-5 md:pt-10 pl-5 md:pl-10 pr-5 md:pr-10 mb-20">
         <div class="flex flex-col gap-6" data-aos="fade-up" data-aos-offset="150">
           <div class="flex flex-col gap-3">
-            <p class="text-[#02173C] font-moderat_700 text-text32 leading-[38px]">¿Aún tienes alguna duda?</h2>
-            <p class="text-[#02173C] font-moderat_Regular text-text18">Vestibulum ante ipsum primis in faucibus orci
-              luctus et ultrices posuere.</p>
+            <p class="text-[#02173C] font-moderat_700 text-text32 leading-[38px]">¿Aún tienes alguna duda?</p>
+            <p class="text-[#02173C] font-moderat_Regular text-text18">Estamos aquí para ayudarte. Si tienes alguna
+              pregunta sobre nuestros productos o servicios, no dudes en ponerte en contacto con nosotros. Estaremos
+              encantados de asistirte.</p>
           </div>
 
           <div class="flex justify-start items-center pb-8">
-            <a href="#"
+            <a href="/contacto"
               class="text-[#FFFFFF] font-moderat_Bold text-text16 py-3 bg-[#001232] px-5 w-full text-center md:inline-flex md:w-auto">Ponerse
               en contacto</a>
           </div>

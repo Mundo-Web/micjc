@@ -23,6 +23,7 @@ use App\Models\DetalleOrden;
 use App\Models\Marca;
 use App\Models\Ordenes;
 use App\Models\politycsCondition;
+use App\Models\Price;
 use App\Models\Specifications;
 use App\Models\SubCategoria;
 use App\Models\termsCondition;
@@ -163,7 +164,43 @@ class IndexController extends Controller
   {
     $general = General::all()->first();
     $departamentos = DB::table('departments')->get();
-    return view('public.carrito', compact('general', 'departamentos'));
+
+    $departments = Price::select([
+      'departments.id AS id',
+      'departments.description AS description',
+    ])
+      ->join('districts', 'districts.id', 'prices.distrito_id')
+      ->join('provinces', 'provinces.id', 'districts.province_id')
+      ->join('departments', 'departments.id', 'provinces.department_id')
+      ->where('departments.active', 1)
+      ->where('status', 1)
+      ->groupBy('id', 'description')
+      ->get();
+
+    $provinces = Price::select([
+      'provinces.id AS id',
+      'provinces.description AS description',
+      'provinces.department_id AS department_id'
+    ])
+      ->join('districts', 'districts.id', 'prices.distrito_id')
+      ->join('provinces', 'provinces.id', 'districts.province_id')
+      ->where('provinces.active', 1)
+      ->groupBy('id', 'description', 'department_id')
+      ->get();
+
+    $districts = Price::select([
+      'districts.id AS id',
+      'districts.description AS description',
+      'districts.province_id AS province_id',
+      'prices.id AS price_id',
+      'prices.price AS price'
+    ])
+      ->join('districts', 'districts.id', 'prices.distrito_id')
+      ->where('districts.active', 1)
+      ->groupBy('id', 'description', 'province_id', 'price', 'price_id')
+      ->get();
+
+    return view('public.carrito', compact('general', 'departamentos', 'departments', 'provinces', 'districts'));
   }
 
   public function detallesPago(Request $request)
@@ -391,9 +428,9 @@ class IndexController extends Controller
       $existeUser = UserDetails::where('email', $email)->get()->toArray();
 
       if (count($existeUser) === 0) {
-        UserDetails::create($request->all());
         $datos = $request->all();
         $datos = $datos['data'];
+        UserDetails::create($datos);
         $this->guardarOrden();
         // $this-> envioCorreoCompra($datos);
         return response()->json(['message' => 'Data procesada correctamente', 'codigoCompra' => $codigoAleatorio],);
@@ -431,12 +468,11 @@ class IndexController extends Controller
             return response()->json(['message' => 'Todos los datos estan correctos', 'codigoCompra' => $codigoAleatorio],);
           }
         } else {
-          return response()->json(['errors' => 'Por favor registrese e inicie session '], 422);
+          return response()->json(['errors' => 'El email ingresado no esta resgistrado en MIC JC. Por favor registrese e inicie session '], 422);
         }
       }
     } catch (\Throwable $th) {
-
-      return response()->json(['message' => $th], 400);
+      return response()->json(['errors' => $th->getMessage()], 400);
     }
   }
 
