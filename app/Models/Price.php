@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Price extends Model
 {
     use HasFactory;
-
+    
     protected $fillable = [
         
         'distrito_id',
@@ -18,4 +18,8 @@ class Price extends Model
         'local',
     ];
 
+    public function district()
+    {
+        return $this->belongsTo(District::class, 'distrito_id');
+    }
 }

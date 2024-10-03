@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePriceRequest;
 use App\Http\Requests\UpdatePriceRequest;
+use App\Models\Department;
+use App\Models\District;
 use App\Models\Price;
+use App\Models\Province;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -28,12 +31,26 @@ class PriceController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function save(Request $request, $priceId = 0)
     {
-        //
-        //traemos las provincias de la tabla
-        $departamentos = DB::table('departments')->get();
-        return view('pages.prices.create', compact('departamentos'));
+        $price = Price::with(['district', 'district.province', 'district.province.department'])->find($priceId);
+        if (!$price) {
+            $price = new Price();
+            $price->district = new District();
+            $price->district->province = new Province();
+            $price->district->province->department = new Department();
+        }
+
+        $departments = Department::all();
+        if ($price) {
+            $provinces = Province::where('department_id', $price->district->province->department->id)->get();
+            $districts = District::where('province_id', $price->district->province->id)->get();
+        }
+        return view('pages.prices.save')
+            ->with('departments', $departments)
+            ->with('provinces', $provinces ?? [])
+            ->with('districts', $districts ?? [])
+            ->with('price', $price);
     }
 
     public function getProvincias(Request $request)
@@ -41,24 +58,11 @@ class PriceController extends Controller
         //
         //traemos las provincias de la tabla
 
-
-        $provinces = Price::select([
-            'provinces.id AS id',
-            'provinces.description AS description',
-            'provinces.department_id AS department_id'
-        ])
-            ->join('districts', 'districts.id', 'prices.distrito_id')
-            ->join('provinces', 'provinces.id', 'districts.province_id')
-            ->where('provinces.active', 1)
-            ->where('provinces.department_id', $request->id)
-            ->groupBy(
-                'id',
-                'description',
-                'department_id'
-            )
+        $provincias = DB::table('provinces')
+            ->where('department_id', '=', $request->id)
             ->get();
 
-        return response()->json($provinces);
+        return response()->json($provincias);
     }
 
     public function getDistrito(Request $request)
@@ -66,35 +70,16 @@ class PriceController extends Controller
         //
         //traemos las provincias de la tabla
 
-        // $distritos = DB::table('districts')
-        //     ->where('province_id', '=', $request->id)
-        //     ->get();
-
-        $districts = Price::select([
-            'districts.id AS id',
-            'districts.description AS description',
-            'districts.province_id AS province_id',
-            'prices.id AS price_id',
-            'prices.price AS price'
-        ])
-            ->join('districts', 'districts.id', 'prices.distrito_id')
-            ->where('districts.active', 1)
-            ->where('districts.province_id', $request->id)
-            ->groupBy(
-                'id',
-                'description',
-                'province_id',
-                'price',
-                'price_id'
-            )
+        $distritos = DB::table('districts')
+            ->where('province_id', '=', $request->id)
             ->get();
 
-        return response()->json($districts);
+        return response()->json($distritos);
     }
     public function calculeEnvio(Request $request)
     {
 
-        $LocalidadParaEnvio = Price::where('distrito_id', $request->id)->get();
+        $LocalidadParaEnvio = Price::where('distrito_id', $request->id)->where("status", true)->get();
         return response()->json(['message' => 'LLegando Correctamente', 'LocalidadParaEnvio' => $LocalidadParaEnvio]);
     }
 
@@ -149,7 +134,7 @@ class PriceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Price $price)
+    public function update(UpdatePriceRequest $request, Price $price)
     {
         //
     }
@@ -157,8 +142,11 @@ class PriceController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Price $price)
-    {
-        //
-    }
+    
+     public function deletePrice(Request $request){
+        $price = Price::find($request->id);
+        $price->status = 0;
+        $price->save();
+        return response()->json(['message' => 'Precio eliminado correctamente']);
+     }
 }

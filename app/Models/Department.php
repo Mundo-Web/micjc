@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Department extends Model
 {
     use HasFactory;
+    
+    protected $keyType = 'string';
+
+    protected $fillable = [      
+        'id',  
+        'description',
+        'active',
+    ];
 }
