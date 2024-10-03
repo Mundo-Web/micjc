@@ -156,24 +156,24 @@
 
     <section class="w-11/12 mx-auto py-5">
       <div class="grid grid-cols-2 md:grid-cols-4">
-        <div class="flex flex-col gap-3 items-start w-full">
-          <p class="text-[#0711E5] text-text52 font-moderat_700 text-center w-full md:text-left">1k+</p>
-          <p class="text-[#111111] text-text16 font-moderat_Medium w-full md:w-1/2 text-center md:text-left">
+        <div class="flex flex-col gap-3 items-center w-full">
+          <p class="text-[#0711E5] text-text52 font-moderat_700 text-center w-full md:text-center">1k+</p>
+          <p class="text-[#111111] text-text16 font-moderat_Medium w-full md:w-1/2 text-center md:text-center">
             Clientes activos</p>
         </div>
-        <div class="flex flex-col gap-3 items-end md:items-center w-full">
+        <div class="flex flex-col gap-3 items-center md:items-center w-full">
           <p class="text-[#0711E5] text-text52 font-moderat_700 w-full text-center">45+</p>
           <p class="text-[#111111] text-text16 font-moderat_Medium w-full md:w-1/2 text-center">Marcas exclusivas
           </p>
         </div>
-        <div class="flex flex-col gap-3 items-start md:items-center w-full">
+        <div class="flex flex-col gap-3 items-center md:items-center w-full">
           <p class="text-[#0711E5] text-text52 font-moderat_700 w-full text-center">10k+</p>
           <p class="text-[#111111] text-text16 font-moderat_Medium w-full md:w-1/2 text-center">Órdenes
             Procesadas
             Anualmente</p>
         </div>
-        <div class="flex flex-col gap-3 items-end w-full">
-          <p class="text-[#0711E5] text-text52 font-moderat_700 w-full text-center md:text-right">1.8M+</p>
+        <div class="flex flex-col gap-3 items-center w-full">
+          <p class="text-[#0711E5] text-text52 font-moderat_700 w-full text-center md:text-center">1.8M+</p>
           <p class="text-[#111111] text-text16 font-moderat_Medium w-full md:w-1/2 text-center">Unidades
             entregadas
             Anualmente</p>
@@ -181,7 +181,8 @@
       </div>
     </section>
 
-    <section class="w-11/12 mx-auto flex flex-col gap-7 pt-10">
+    @if (count($category) > 0)
+      <section class="w-11/12 mx-auto flex flex-col gap-7 pt-10">
 
       <div class="flex flex-col items-start md:flex-row md:justify-between md:items-center gap-5">
 
@@ -455,6 +456,7 @@
 
 
     </section>
+    @endif
 
     <section class="w-11/12 md:w-10/12 mx-auto pt-20">
 

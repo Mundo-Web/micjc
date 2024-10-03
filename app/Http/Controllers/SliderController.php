@@ -51,7 +51,7 @@ class SliderController extends Controller
 
             $nombreImagen = Str::random(10) . '_' . $request->file('imagen')->getClientOriginalName();
             $img =  $manager->read($request->file('imagen'));
-            $img->coverDown(780, 840, 'center');
+            // $img->coverDown(780, 840, 'center');
             $ruta = 'storage/images/slider/';
            
             if (!file_exists($ruta)) {
@@ -126,7 +126,7 @@ class SliderController extends Controller
             $rutanueva = 'storage/images/slider/';
             $nombreImagen = Str::random(10) . '_' . $request->file('imagen')->getClientOriginalName();
             $img =  $manager->read($request->file('imagen'));
-            $img->coverDown(780, 840, 'center');
+            // $img->coverDown(780, 840, 'center');
            
             if (!file_exists($rutanueva)) {
                 mkdir($rutanueva, 0777, true); // Se crea la ruta con permisos de lectura, escritura y ejecución
