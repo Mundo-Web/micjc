@@ -65,7 +65,7 @@ class IndexController extends Controller
 
     $category = Category::where('status', '=', 1)->where('visible', '=', 1)->where('destacar', '=', 1)->get();
 
-    return view('public.index', compact('productos', 'general', 'testimonios','slider', 'logos', 'category', 'productosDestacados', 'ofertasProductos', 'blog'));
+    return view('public.index', compact('productos', 'general', 'testimonios', 'slider', 'logos', 'category', 'productosDestacados', 'ofertasProductos', 'blog'));
   }
 
   public function catalogo(Request $request)
@@ -75,6 +75,7 @@ class IndexController extends Controller
     $subcategoria = $request->input('subcat');
     $marca = $request->input('marca');
     $orden = $request->input('order');
+    $search = $request->input('search');
 
 
     $general = General::all()->first();
@@ -90,20 +91,20 @@ class IndexController extends Controller
       $productos->where('marca_id', $marca);
     }
 
-    if(isset($orden)){
-      if($orden === 'mayorAmenor'){
+    if (isset($search)) {
+      $productos->where('producto', 'like', '%' . $search . '%');
+    }
+
+    if (isset($orden)) {
+      if ($orden === 'mayorAmenor') {
         $productos->orderBy('id', 'DESC');
-      }elseif($orden === 'menorAmayor'){
+      } elseif ($orden === 'menorAmayor') {
         $productos->orderBy('id', 'ASC');
-      }
-      elseif($orden === 'nameAsc'){
+      } elseif ($orden === 'nameAsc') {
         $productos->orderBy('producto', 'ASC');
-      }
-      elseif($orden === 'nameDesc'){
+      } elseif ($orden === 'nameDesc') {
         $productos->orderBy('producto', 'DESC');
       }
-      
-
     }
     $productos = $productos->paginate(12);
 
@@ -364,7 +365,7 @@ class IndexController extends Controller
   {
 
     $codigoAleatorio = $request->codigoCompra;
-   
+
     $mensajes2compra = [
       'email.required' => 'El campo Email es obligatorio.',
       'nombre.required' => 'El campo Nombre es obligatorio.',
@@ -439,9 +440,7 @@ class IndexController extends Controller
     }
   }
 
-  private function guardarOrden()
-  {
-  }
+  private function guardarOrden() {}
   public function cambiofoto(Request $request)
   {
 
@@ -472,7 +471,7 @@ class IndexController extends Controller
   public function actualizarPerfil(Request $request)
   {
 
-    $passChanged = false ; 
+    $passChanged = false;
     try {
       $name = $request->name;
       $lastname = $request->lastname;
@@ -492,7 +491,6 @@ class IndexController extends Controller
           $imprimir = "Cambio de contraseña exitosa";
           $alert = "success";
           $passChanged = true;
-
         }
       }
 
@@ -500,11 +498,10 @@ class IndexController extends Controller
       if ($user->name == $name &&  $user->lastname == $lastname) {
         if ($passChanged) {
           $imprimir = "Cambio de contraseña exitosa";
-        }else{
+        } else {
           $imprimir = "Sin datos que actualizar";
           $alert = "question";
         }
-        
       } else {
         $user->name = $name;
         $user->lastname = $lastname;
@@ -521,15 +518,17 @@ class IndexController extends Controller
     }
   }
 
-  public function politicaprivacidad(){
+  public function politicaprivacidad()
+  {
     $politicas = politycsCondition::first();
     $general = General::all()->first();
-    return view('public.politicaPriv', compact('politicas' , 'general'));
+    return view('public.politicaPriv', compact('politicas', 'general'));
   }
-  public function term_condiciones(){
+  public function term_condiciones()
+  {
     $terms = termsCondition::first();
     $general = General::all()->first();
-    return view('public.termsCondiciones', compact('terms', 'general' ));
+    return view('public.termsCondiciones', compact('terms', 'general'));
   }
 
   public function librodereclamaciones()
@@ -540,33 +539,34 @@ class IndexController extends Controller
   }
   public function obtenerProvincia($departmentId)
   {
-      $provinces = DB::select('select * from provinces where active = ? and department_id = ? order by description', [1, $departmentId]);
-      return response()->json($provinces);
+    $provinces = DB::select('select * from provinces where active = ? and department_id = ? order by description', [1, $departmentId]);
+    return response()->json($provinces);
   }
 
   public function obtenerDistritos($provinceId)
   {
-      $distritos = DB::select('select * from districts where active = ? and province_id = ? order by description', [1, $provinceId]);
-      return response()->json($distritos);
+    $distritos = DB::select('select * from districts where active = ? and province_id = ? order by description', [1, $provinceId]);
+    return response()->json($distritos);
   }
 
 
-  public function buscarProductos(Request $request){
+  public function buscarProductos(Request $request)
+  {
     $dato = $request->valorInput;
-    $palabras = explode(' ',$dato);
+    $palabras = explode(' ', $dato);
 
 
 
-    $productos = Products::where('status', '=' , 1);
+    $productos = Products::where('status', '=', 1);
 
     foreach ($palabras as $key => $value) {
       # code...
-      $productos = $productos->where('producto' , 'like', "%$value%");
+      $productos = $productos->where('producto', 'like', "%$value%");
     }
-   $productos=  $productos->get();
+    $productos =  $productos->get();
 
 
-    return response()->json(['message'=> 'Busqueda realizada con exito ', 'data'=> $productos]);
+    return response()->json(['message' => 'Busqueda realizada con exito ', 'data' => $productos]);
   }
 
   //  --------------------------------------------
