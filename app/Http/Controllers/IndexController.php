@@ -432,7 +432,7 @@ class IndexController extends Controller
         $datos = $datos['data'];
         UserDetails::create($datos);
         $this->guardarOrden();
-        // $this-> envioCorreoCompra($datos);
+        $this-> envioCorreoCompra($datos);
         return response()->json(['message' => 'Data procesada correctamente', 'codigoCompra' => $codigoAleatorio],);
       } else {
         $existeUsuario = User::where('email', $email)->get()->toArray();
@@ -464,7 +464,7 @@ class IndexController extends Controller
             $userdetailU->update($datos);
 
             $this->guardarOrden();
-            // $this-> envioCorreoCompra($datos);
+            $this-> envioCorreoCompra($datos);
             return response()->json(['message' => 'Todos los datos estan correctos', 'codigoCompra' => $codigoAleatorio],);
           }
         } else {
@@ -675,8 +675,9 @@ class IndexController extends Controller
       ];
       $request->validate($reglasValidacion, $mensajes);
       $formlanding = Message::create($data);
-      $this->envioCorreo($formlanding);
-      $this->envioCorreoInterno($formlanding);
+      // $this->envioCorreo($formlanding);
+      // $this->envioCorreoInterno($formlanding);
+      MailingController::notifyContact($formlanding);
 
       return response()->json(['message' => 'Mensaje enviado con exito']);
     } catch (ValidationException $e) {

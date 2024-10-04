@@ -21,8 +21,8 @@
         </div>
 
         <div class="flex justify-center items-center">
-          <img src="{{ asset($blog->url_image . $blog->name_image) }}" alt="blog" class="w-full block md:hidden">
-          <img src="{{ asset($blog->url_image . $blog->name_image) }}" alt="blog" class="w-full hidden md:block">
+          <img src="{{ asset($blog->url_image . $blog->name_image) }}" alt="blog" class="w-full block md:hidden aspect-video object-cover object-center">
+          <img src="{{ asset($blog->url_image . $blog->name_image) }}" alt="blog" class="w-full hidden md:block aspect-video object-cover object-center">
         </div>
 
         {!! $blog->description !!}
@@ -66,9 +66,11 @@
           <div class="flex flex-col gap-5 basis-8/12">
             <h2 class="font-moderat_700 text-text44 md:text-text52 text-[#111111] leading-none md:leading-tight">Últimas
               publicaciones</h2>
-            <p class="text-[#565656] text-text18 md:text-text22 font-moderat_400">Nam tempor diam quis urna maximus, ac
-              laoreet arcu convallis. Aenean dignissim nec sem quis consequat.</p>
+            <p class="text-[#565656] text-text18 md:text-text22 font-moderat_400">Explora nuestros artículos más recientes
+              sobre tecnología. Desde tintas y accesorios para impresoras hasta laptops y periféricos gamer, te mantenemos
+              al día con lo último en innovación tecnológica.</p>
           </div>
+
 
           <div class="flex justify-end items-center basis-4/12">
             <a href="{{ route('blog') }}

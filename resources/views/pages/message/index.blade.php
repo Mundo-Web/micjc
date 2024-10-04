@@ -26,12 +26,19 @@
                 <tr>
                   <td>
                     @if ($item->is_read == '0')
-                      <a href="{{ route('mensajes.show', $item->id) }}"><span class="mr-4"><i
-                            class="fa-regular fa-envelope"></i></span><span>{{ $item->full_name }}</span></a>
+                      <a href="{{ route('mensajes.show', $item->id) }}">
+                        <span class="mr-4">
+                          <i class="fa-regular fa-envelope-open"></i>
+                        </span>
+                        <span class="font-bold">{{ $item->full_name }}</span>
+                      </a>
                     @else
-                      <a href="{{ route('mensajes.show', $item->id) }}"><span class="mr-4"><i
-                            class="fa-regular fa-envelope-open"></i></span><span
-                          class="font-bold">{{ $item->full_name }}</span></a>
+                      <a href="{{ route('mensajes.show', $item->id) }}">
+                        <span class="mr-4">
+                          <i class="fa-regular fa-envelope"></i>
+                        </span>
+                        <span>{{ $item->full_name }}</span>
+                      </a>
                     @endif
 
                   </td>

@@ -11,7 +11,7 @@
     </svg>
   </div>
   <div id="resultadoBusqueda"
-    class=" absolute rounded-2xl top-11 left-0 w-full group z-60 overflow-y-scroll max-h-60 hidden animate-fade-up">
+    class=" absolute rounded-2xl top-11 left-0 w-full group z-60 overflow-y-scroll max-h-60 hidden animate-fade-up bg-white">
 
   </div>
 </div>

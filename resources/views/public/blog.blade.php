@@ -21,11 +21,12 @@
           <h2 class="text-[#111111] font-moderat_700 text-text44 md:text-text52 leading-[1.10] md:leading-tight">
             Descubre lo digital:
             <span class="block">
-              Publicaciones sobre el mundo Digital
+              Publicaciones sobre el mundo de la tecnología
             </span>
           </h2>
-          <p class="text-[#565656] font-moderat_Regular text-text18 md:text-text22">Nunc porta feugiat magna non hendrerit.
-            Nam tempor diam quis urna maximus, ac laoreet arcu convallis. Aenean dignissim nec sem quis consequat.</p>
+          <p class="text-[#565656] font-moderat_Regular text-text18 md:text-text22">Explora nuestros blogs llenos de
+            consejos, guías y novedades sobre laptops, periféricos gamer, tintas de impresoras, y lo último en tecnología
+            para tu oficina o setup personal.</p>
         </div>
 
         <div class="grid grid-cols-1 grid-rows-1 lg:grid-cols-2 lg:grid-rows-2 gap-10">
@@ -85,8 +86,9 @@
         <div class="flex flex-col gap-4 md:gap-2">
           <h2 class="font-moderat_700 text-[#111111] text-text44 md:text-text52 leading-none md:leading-tight">Últimas
             publicaciones</h2>
-          <p class="text-[#565656] font-moderat_Regular text-text18 md:text-text22">Nam tempor diam quis urna maximus, ac
-            laoreet arcu convallis. Aenean dignissim nec sem quis consequat.</p>
+          <p class="text-[#565656] font-moderat_Regular text-text18 md:text-text22">Entérate de las últimas tendencias en
+            tecnología. Desde novedades en teclados gamer y laptops hasta soluciones para impresoras y accesorios que
+            mejoran tu productividad.</p>
         </div>
 
         <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-10">

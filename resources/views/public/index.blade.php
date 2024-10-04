@@ -31,11 +31,11 @@
     }
 
     /*  .bg__mobile {
-                                                                                                                                                                                                                    background-repeat: no-repeat;
-                                                                                                                                                                                                                    background-size: cover;
-                                                                                                                                                                                                                    background-position: center;
-                                                                                                                                                                                                                    background-image: url({{ asset('images/img/image_3.png') }});
-                                                                                                                                                                                                                } */
+                                                                                                                                                                                                                              background-repeat: no-repeat;
+                                                                                                                                                                                                                              background-size: cover;
+                                                                                                                                                                                                                              background-position: center;
+                                                                                                                                                                                                                              background-image: url({{ asset('images/img/image_3.png') }});
+                                                                                                                                                                                                                          } */
 
     .fondo__slider-desktop {
       background-image: none;
@@ -184,206 +184,176 @@
     @if (count($category) > 0)
       <section class="w-11/12 mx-auto flex flex-col gap-7 pt-10">
 
-      <div class="flex flex-col items-start md:flex-row md:justify-between md:items-center gap-5">
+        <div class="flex flex-col items-start md:flex-row md:justify-between md:items-center gap-5">
 
-        <h2 class="text-[#111111] text-text32 md:text-text36 font-moderat_700 w-1/2">Nuestras Categorías</h2>
+          <h2 class="text-[#111111] text-text32 md:text-text36 font-moderat_700 w-1/2">Nuestras Categorías</h2>
 
-        <div class="flex justify-start items-center">
-          <a href="{{ route('catalogo') }}" class="flex justify-center items-center gap-2">
-            <span class="text-text16 text-[#0051FF] md:text-text20 font-moderat_Bold">Ver todas las
-              categorías</span>
-            <div>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 12H19" stroke="#0051FF" stroke-width="1.33333" stroke-linecap="round"
-                  stroke-linejoin="round" />
-                <path d="M12 5L19 12L12 19" stroke="#0051FF" stroke-width="1.33333" stroke-linecap="round"
-                  stroke-linejoin="round" />
-              </svg>
-            </div>
-          </a>
+          <div class="flex justify-start items-center">
+            <a href="{{ route('catalogo') }}" class="flex justify-center items-center gap-2">
+              <span class="text-text16 text-[#0051FF] md:text-text20 font-moderat_Bold">Ver todas las
+                categorías</span>
+              <div>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5 12H19" stroke="#0051FF" stroke-width="1.33333" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                  <path d="M12 5L19 12L12 19" stroke="#0051FF" stroke-width="1.33333" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+            </a>
+          </div>
+
         </div>
 
-      </div>
+        <div class="grid grid-cols-1 grid-rows-1 lg:grid-cols-4 lg:grid-rows-2 gap-5 md:gap-12">
 
-      <div class="grid grid-cols-1 grid-rows-1 lg:grid-cols-4 lg:grid-rows-2 gap-5 md:gap-12">
+          @if (count($category->take(3)) == 1)
+            <div
+              class="col-span-1 lg:row-span-4 lg:col-span-4 bg-[#F3F3F3] p-5 md:p-10 flex flex-col gap-5 justify-center"
+              data-aos="fade-up" data-aos-offset="150">
+              <div class="flex flex-col gap-5 w-full md:w-1/2">
+                <a href="{{ route('catalogo', ['cat' => $category[0]->id]) }}">
+                  <h2 class="text-text28 md:text-text32 font-moderat_700 w-1/2">{{ $category[0]->name }}</h2>
+                </a>
 
-        @if (count($category->take(3)) == 1)
-          <div class="col-span-1 lg:row-span-4 lg:col-span-4 bg-[#F3F3F3] p-5 md:p-10 flex flex-col gap-5 justify-center"
-            data-aos="fade-up" data-aos-offset="150">
-            <div class="flex flex-col gap-5 w-full md:w-1/2">
-              <a href="{{ route('catalogo', ['cat' => $category[0]->id]) }}">
-                <h2 class="text-text28 md:text-text32 font-moderat_700 w-1/2">{{ $category[0]->name }}</h2>
-              </a>
+                <p class="font-moderat_Regular text-text12 md:text-text16">{!! $category[0]->description !!}</p>
 
-              <p class="font-moderat_Regular text-text12 md:text-text16">{!! $category[0]->description !!}</p>
-
-              <div>
-                <p class="font-moderat_Regular text-text12 md:text-text16 text-[#111111]">Desde</p>
-                <p class="font-moderat_Bold text-text20 md:text-text24 text-[#111111]">S/. 99,99</p>
-              </div>
-            </div>
-
-            <div class="flex justify-end items-end md:items-center">
-              <img src="{{ asset($category[0]->url_image . $category[0]->name_image) }}" alt="impresora"
-                class="w-full flex md:hidden object-cover aspect-video">
-              <img src="{{ asset($category[0]->url_image . $category[0]->name_image) }}" alt="impresora"
-                class="w-full hidden md:flex object-cover aspect-video">
-            </div>
-
-            <div class="flex justify-start items-center">
-              <a href="{{ route('catalogo', ['cat' => $category[0]->id]) }}"
-                class="flex justify-center items-center gap-2">
-                <span class="text-text16 text-[#0051FF] md:text-text20 font-moderat_Bold">Ver productos</span>
                 <div>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5 12H19" stroke="#0051FF" stroke-width="1.33333" stroke-linecap="round"
-                      stroke-linejoin="round" />
-                    <path d="M12 5L19 12L12 19" stroke="#0051FF" stroke-width="1.33333" stroke-linecap="round"
-                      stroke-linejoin="round" />
-                  </svg>
+                  <p class="font-moderat_Regular text-text12 md:text-text16 text-[#111111]">Desde</p>
+                  <p class="font-moderat_Bold text-text20 md:text-text24 text-[#111111]">S/. 99,99</p>
                 </div>
-              </a>
-            </div>
-          </div>
-        @elseif (count($category->take(3)) == 2)
-          <div class="col-span-1 lg:row-span-2 lg:col-span-2 bg-[#F3F3F3] p-5 md:p-10 flex flex-col gap-5 justify-center"
-            data-aos="fade-up" data-aos-offset="150">
-            <div class="flex flex-col gap-5 w-full ">
-              <a href="{{ route('catalogo', ['cat' => $category[0]->id]) }}">
-                <h2 class="text-text28 md:text-text32 font-moderat_700">{{ $category[0]->name }}</h2>
-              </a>
-
-              <p class="font-moderat_Regular text-text12 md:text-text16">{!! $category[0]->description !!}</p>
-
-              <div>
-                <p class="font-moderat_Regular text-text12 md:text-text16 text-[#111111]">Desde</p>
-                <p class="font-moderat_Bold text-text20 md:text-text24 text-[#111111]">S/. 99,99</p>
-              </div>
-            </div>
-
-            <div class="flex justify-end items-end md:items-center">
-              <img src="{{ asset($category[0]->url_image . $category[0]->name_image) }}" alt="impresora"
-                class="w-full flex md:hidden object-cover aspect-video">
-              <img src="{{ asset($category[0]->url_image . $category[0]->name_image) }}" alt="impresora"
-                class="w-full hidden md:flex object-cover aspect-video">
-            </div>
-
-            <div class="flex justify-start items-center">
-              <a href="{{ route('catalogo', ['cat' => $category[0]->id]) }}"
-                class="flex justify-center items-center gap-2">
-                <span class="text-text16 text-[#0051FF] md:text-text20 font-moderat_Bold">Ver productos</span>
-                <div>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5 12H19" stroke="#0051FF" stroke-width="1.33333" stroke-linecap="round"
-                      stroke-linejoin="round" />
-                    <path d="M12 5L19 12L12 19" stroke="#0051FF" stroke-width="1.33333" stroke-linecap="round"
-                      stroke-linejoin="round" />
-                  </svg>
-                </div>
-              </a>
-            </div>
-          </div>
-          <div class="col-span-1 lg:row-span-2 lg:col-span-2 bg-[#F3F3F3] p-5 md:p-10 flex flex-col gap-5 justify-center"
-            data-aos="fade-up" data-aos-offset="150">
-            <div class="flex flex-col gap-5 w-full ">
-              <a href="{{ route('catalogo', ['cat' => $category[1]->id]) }}">
-                <h2 class="text-text28 md:text-text32 font-moderat_700">{{ $category[1]->name }}</h2>
-              </a>
-
-              <p class="font-moderat_Regular text-text12 md:text-text16">{!! $category[1]->description !!}</p>
-
-              <div>
-                <p class="font-moderat_Regular text-text12 md:text-text16 text-[#111111]">Desde</p>
-                <p class="font-moderat_Bold text-text20 md:text-text24 text-[#111111]">S/. 99,99</p>
-              </div>
-            </div>
-
-            <div class="flex justify-end items-end md:items-center">
-              <img src="{{ asset($category[1]->url_image . $category[1]->name_image) }}" alt="impresora"
-                class="w-full flex md:hidden object-cover aspect-video">
-              <img src="{{ asset($category[1]->url_image . $category[1]->name_image) }}" alt="impresora"
-                class="w-full hidden md:flex object-cover aspect-video">
-            </div>
-
-            <div class="flex justify-start items-center">
-              <a href="{{ route('catalogo', ['cat' => $category[0]->id]) }}"
-                class="flex justify-center items-center gap-2">
-                <span class="text-text16 text-[#0051FF] md:text-text20 font-moderat_Bold">Ver productos</span>
-                <div>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5 12H19" stroke="#0051FF" stroke-width="1.33333" stroke-linecap="round"
-                      stroke-linejoin="round" />
-                    <path d="M12 5L19 12L12 19" stroke="#0051FF" stroke-width="1.33333" stroke-linecap="round"
-                      stroke-linejoin="round" />
-                  </svg>
-                </div>
-              </a>
-            </div>
-          </div>
-        @elseif (count($category->take(3)) == 3)
-          <div class="col-span-1 lg:row-span-2 lg:col-span-2 bg-[#F3F3F3] p-5 md:p-10 flex flex-col gap-5 justify-center"
-            data-aos="fade-up" data-aos-offset="150">
-            <div class="flex flex-col gap-5 w-full">
-              <a href="{{ route('catalogo', ['cat' => $category[0]->id]) }}">
-                <h2 class="text-text28 md:text-text32 font-moderat_700">{{ $category[0]->name }}</h2>
-              </a>
-
-              <p class="font-moderat_Regular text-text12 md:text-text16">{!! $category[0]->description !!}</p>
-
-              <div>
-                <p class="font-moderat_Regular text-text12 md:text-text16 text-[#111111]">Desde</p>
-                <p class="font-moderat_Bold text-text20 md:text-text24 text-[#111111]">S/. 99,99</p>
-              </div>
-            </div>
-
-            <div class="flex justify-end items-end md:items-center">
-              <img src="{{ asset($category[0]->url_image . $category[0]->name_image) }}" alt="impresora"
-                class="w-full flex md:hidden object-cover aspect-video">
-              <img src="{{ asset($category[0]->url_image . $category[0]->name_image) }}" alt="impresora"
-                class="w-full hidden md:flex object-cover aspect-video">
-            </div>
-
-            <div class="flex justify-start items-center">
-              <a href="{{ route('catalogo', ['cat' => $category[0]->id]) }}"
-                class="flex justify-center items-center gap-2">
-                <span class="text-text16 text-[#0051FF] md:text-text20 font-moderat_Bold">Ver productos</span>
-                <div>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5 12H19" stroke="#0051FF" stroke-width="1.33333" stroke-linecap="round"
-                      stroke-linejoin="round" />
-                    <path d="M12 5L19 12L12 19" stroke="#0051FF" stroke-width="1.33333" stroke-linecap="round"
-                      stroke-linejoin="round" />
-                  </svg>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          <div
-            class="col-span-1 lg:row-span-1 lg:col-span-2 flex justify-between bg-[#F3F3F3] pl-5 py-5 gap-2 md:p-10 md:gap-10"
-            data-aos="fade-up" data-aos-offset="150">
-
-            <div class="flex flex-col gap-5 justify-center basis-3/6 md:basis-2/6">
-              <a href="{{ route('catalogo', ['cat' => $category[1]->id]) }}">
-                <h2 class="text-text28 md:text-text32 font-moderat_700">{{ $category[1]->name }}</h2>
-              </a>
-
-              <p class="font-moderat_Regular text-text12 md:text-text16">{!! $category[1]->description !!}</p>
-              <div>
-                <p class="font-moderat_Regular text-text12 md:text-text16 text-[#111111]">Desde</p>
-                <p class="font-moderat_Bold text-text20 md:text-text24 text-[#111111]">S/. 999,99</p>
               </div>
 
+              <div class="flex justify-end items-end md:items-center">
+                <img src="{{ asset($category[0]->url_image . $category[0]->name_image) }}" alt="impresora"
+                  class="w-full flex md:hidden object-cover aspect-video">
+                <img src="{{ asset($category[0]->url_image . $category[0]->name_image) }}" alt="impresora"
+                  class="w-full hidden md:flex object-cover aspect-video">
+              </div>
 
               <div class="flex justify-start items-center">
-                <a href="{{ route('catalogo', ['cat' => $category[1]->id]) }}"
+                <a href="{{ route('catalogo', ['cat' => $category[0]->id]) }}"
                   class="flex justify-center items-center gap-2">
-                  <span class="text-text16 text-[#0051FF] md:text-text20 font-moderat_Bold">Ver
-                    productos</span>
+                  <span class="text-text16 text-[#0051FF] md:text-text20 font-moderat_Bold">Ver productos</span>
+                  <div>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path d="M5 12H19" stroke="#0051FF" stroke-width="1.33333" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                      <path d="M12 5L19 12L12 19" stroke="#0051FF" stroke-width="1.33333" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    </svg>
+                  </div>
+                </a>
+              </div>
+            </div>
+          @elseif (count($category->take(3)) == 2)
+            <div
+              class="col-span-1 lg:row-span-2 lg:col-span-2 bg-[#F3F3F3] p-5 md:p-10 flex flex-col gap-5 justify-center"
+              data-aos="fade-up" data-aos-offset="150">
+              <div class="flex flex-col gap-5 w-full ">
+                <a href="{{ route('catalogo', ['cat' => $category[0]->id]) }}">
+                  <h2 class="text-text28 md:text-text32 font-moderat_700">{{ $category[0]->name }}</h2>
+                </a>
+
+                <p class="font-moderat_Regular text-text12 md:text-text16">{!! $category[0]->description !!}</p>
+
+                <div>
+                  <p class="font-moderat_Regular text-text12 md:text-text16 text-[#111111]">Desde</p>
+                  <p class="font-moderat_Bold text-text20 md:text-text24 text-[#111111]">S/. 99,99</p>
+                </div>
+              </div>
+
+              <div class="flex justify-end items-end md:items-center">
+                <img src="{{ asset($category[0]->url_image . $category[0]->name_image) }}" alt="impresora"
+                  class="w-full flex md:hidden object-cover aspect-video">
+                <img src="{{ asset($category[0]->url_image . $category[0]->name_image) }}" alt="impresora"
+                  class="w-full hidden md:flex object-cover aspect-video">
+              </div>
+
+              <div class="flex justify-start items-center">
+                <a href="{{ route('catalogo', ['cat' => $category[0]->id]) }}"
+                  class="flex justify-center items-center gap-2">
+                  <span class="text-text16 text-[#0051FF] md:text-text20 font-moderat_Bold">Ver productos</span>
+                  <div>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path d="M5 12H19" stroke="#0051FF" stroke-width="1.33333" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                      <path d="M12 5L19 12L12 19" stroke="#0051FF" stroke-width="1.33333" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    </svg>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div
+              class="col-span-1 lg:row-span-2 lg:col-span-2 bg-[#F3F3F3] p-5 md:p-10 flex flex-col gap-5 justify-center"
+              data-aos="fade-up" data-aos-offset="150">
+              <div class="flex flex-col gap-5 w-full ">
+                <a href="{{ route('catalogo', ['cat' => $category[1]->id]) }}">
+                  <h2 class="text-text28 md:text-text32 font-moderat_700">{{ $category[1]->name }}</h2>
+                </a>
+
+                <p class="font-moderat_Regular text-text12 md:text-text16">{!! $category[1]->description !!}</p>
+
+                <div>
+                  <p class="font-moderat_Regular text-text12 md:text-text16 text-[#111111]">Desde</p>
+                  <p class="font-moderat_Bold text-text20 md:text-text24 text-[#111111]">S/. 99,99</p>
+                </div>
+              </div>
+
+              <div class="flex justify-end items-end md:items-center">
+                <img src="{{ asset($category[1]->url_image . $category[1]->name_image) }}" alt="impresora"
+                  class="w-full flex md:hidden object-cover aspect-video">
+                <img src="{{ asset($category[1]->url_image . $category[1]->name_image) }}" alt="impresora"
+                  class="w-full hidden md:flex object-cover aspect-video">
+              </div>
+
+              <div class="flex justify-start items-center">
+                <a href="{{ route('catalogo', ['cat' => $category[0]->id]) }}"
+                  class="flex justify-center items-center gap-2">
+                  <span class="text-text16 text-[#0051FF] md:text-text20 font-moderat_Bold">Ver productos</span>
+                  <div>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path d="M5 12H19" stroke="#0051FF" stroke-width="1.33333" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                      <path d="M12 5L19 12L12 19" stroke="#0051FF" stroke-width="1.33333" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    </svg>
+                  </div>
+                </a>
+              </div>
+            </div>
+          @elseif (count($category->take(3)) == 3)
+            <div
+              class="col-span-1 lg:row-span-2 lg:col-span-2 bg-[#F3F3F3] p-5 md:p-10 flex flex-col gap-5 justify-center"
+              data-aos="fade-up" data-aos-offset="150">
+              <div class="flex flex-col gap-5 w-full">
+                <a href="{{ route('catalogo', ['cat' => $category[0]->id]) }}">
+                  <h2 class="text-text28 md:text-text32 font-moderat_700">{{ $category[0]->name }}</h2>
+                </a>
+
+                <p class="font-moderat_Regular text-text12 md:text-text16">{!! $category[0]->description !!}</p>
+
+                <div>
+                  <p class="font-moderat_Regular text-text12 md:text-text16 text-[#111111]">Desde</p>
+                  <p class="font-moderat_Bold text-text20 md:text-text24 text-[#111111]">S/. 99,99</p>
+                </div>
+              </div>
+
+              <div class="flex justify-end items-end md:items-center">
+                <img src="{{ asset($category[0]->url_image . $category[0]->name_image) }}" alt="impresora"
+                  class="w-full flex md:hidden object-cover aspect-video">
+                <img src="{{ asset($category[0]->url_image . $category[0]->name_image) }}" alt="impresora"
+                  class="w-full hidden md:flex object-cover aspect-video">
+              </div>
+
+              <div class="flex justify-start items-center">
+                <a href="{{ route('catalogo', ['cat' => $category[0]->id]) }}"
+                  class="flex justify-center items-center gap-2">
+                  <span class="text-text16 text-[#0051FF] md:text-text20 font-moderat_Bold">Ver productos</span>
                   <div>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                       xmlns="http://www.w3.org/2000/svg">
@@ -397,65 +367,99 @@
               </div>
             </div>
 
-            <div class="flex justify-end items-center basis-3/6 md:basis-4/6">
-              <img src="{{ asset($category[1]->url_image . $category[1]->name_image) }}" alt="impresora"
-                class="hidden md:block w-full object-cover aspect-square md:aspect-video lg:aspect-square xl:aspect-[4/3]">
-              <img src="{{ asset($category[1]->url_image . $category[1]->name_image) }}" alt="impresora"
-                class="block md:hidden w-full object-cover aspect-square md:aspect-video lg:aspect-square xl:aspect-[4/3]">
-            </div>
+            <div
+              class="col-span-1 lg:row-span-1 lg:col-span-2 flex justify-between bg-[#F3F3F3] pl-5 py-5 gap-2 md:p-10 md:gap-10"
+              data-aos="fade-up" data-aos-offset="150">
 
-          </div>
-
-          <div
-            class="col-span-1 lg:row-span-1 lg:col-span-2 bg-[#0051FF] flex justify-between text-white pr-5 py-5 gap-2 md:p-10 fondo__categorias-producto"{{-- 
-                    style="background-image: url('{{ asset('images/img/image_9.png') }}'); background-repeat:no-repeat; background-size:cover;" --}}
-            data-aos="fade-up" data-aos-offset="150">
-
-            <div class="flex justify-end items-center basis-3/6 md:basis-4/6">
-              <img src="{{ asset($category[2]->url_image . $category[2]->name_image) }}" alt="impresora"
-                class="hidden md:block w-full object-cover aspect-square md:aspect-video lg:aspect-square xl:aspect-[4/3]">
-              <img src="{{ asset($category[2]->url_image . $category[2]->name_image) }}" alt="impresora"
-                class="block md:hidden w-full object-cover aspect-square md:aspect-video lg:aspect-square xl:aspect-[4/3]">
-            </div>
-
-            <div class="flex flex-col justify-center gap-5 basis-3/6 md:basis-2/6">
-              <a href="{{ route('catalogo') }}">
-                <h2 class="text-text28 md:text-text32 font-moderat_700 text-right">{{ $category[2]->name }}</h2>
-              </a>
-
-              <p class="font-moderat_Regular text-text12 md:text-text16 text-right">{!! $category[2]->description !!}</p>
-              <div>
-                <p class="font-moderat_Regular text-text12 md:text-text16 text-right">Desde</p>
-                <p class="font-moderat_Bold text-text20 md:text-text24 text-right">S/. 999,99</p>
-              </div>
-
-              <div class="flex justify-end items-center">
-                <a href="{{ route('catalogo', ['cat' => $category[2]->id]) }}"
-                  class="flex justify-center items-center
-                  gap-2">
-                  <span class="text-text16 text-[#FFFFFF] md:text-text20 font-moderat_Bold text-right">Ver
-                    productos</span>
-                  <div>
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                      xmlns="http://www.w3.org/2000/svg">
-                      <path d="M5 12H19" stroke="#FFFFFF" stroke-width="1.33333" stroke-linecap="round"
-                        stroke-linejoin="round" />
-                      <path d="M12 5L19 12L12 19" stroke="#FFFFFF" stroke-width="1.33333" stroke-linecap="round"
-                        stroke-linejoin="round" />
-                    </svg>
-                  </div>
+              <div class="flex flex-col gap-5 justify-center basis-3/6 md:basis-2/6">
+                <a href="{{ route('catalogo', ['cat' => $category[1]->id]) }}">
+                  <h2 class="text-text28 md:text-text32 font-moderat_700">{{ $category[1]->name }}</h2>
                 </a>
+
+                <p class="font-moderat_Regular text-text12 md:text-text16">{!! $category[1]->description !!}</p>
+                <div>
+                  <p class="font-moderat_Regular text-text12 md:text-text16 text-[#111111]">Desde</p>
+                  <p class="font-moderat_Bold text-text20 md:text-text24 text-[#111111]">S/. 999,99</p>
+                </div>
+
+
+                <div class="flex justify-start items-center">
+                  <a href="{{ route('catalogo', ['cat' => $category[1]->id]) }}"
+                    class="flex justify-center items-center gap-2">
+                    <span class="text-text16 text-[#0051FF] md:text-text20 font-moderat_Bold">Ver
+                      productos</span>
+                    <div>
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 12H19" stroke="#0051FF" stroke-width="1.33333" stroke-linecap="round"
+                          stroke-linejoin="round" />
+                        <path d="M12 5L19 12L12 19" stroke="#0051FF" stroke-width="1.33333" stroke-linecap="round"
+                          stroke-linejoin="round" />
+                      </svg>
+                    </div>
+                  </a>
+                </div>
               </div>
+
+              <div class="flex justify-end items-center basis-3/6 md:basis-4/6">
+                <img src="{{ asset($category[1]->url_image . $category[1]->name_image) }}" alt="impresora"
+                  class="hidden md:block w-full object-cover aspect-square md:aspect-video lg:aspect-square xl:aspect-[4/3]">
+                <img src="{{ asset($category[1]->url_image . $category[1]->name_image) }}" alt="impresora"
+                  class="block md:hidden w-full object-cover aspect-square md:aspect-video lg:aspect-square xl:aspect-[4/3]">
+              </div>
+
             </div>
 
-          </div>
-        @endif
+            <div
+              class="col-span-1 lg:row-span-1 lg:col-span-2 bg-[#0051FF] flex justify-between text-white pr-5 py-5 gap-2 md:p-10 fondo__categorias-producto"{{-- 
+                    style="background-image: url('{{ asset('images/img/image_9.png') }}'); background-repeat:no-repeat; background-size:cover;" --}}
+              data-aos="fade-up" data-aos-offset="150">
 
-      </div>
+              <div class="flex justify-end items-center basis-3/6 md:basis-4/6">
+                <img src="{{ asset($category[2]->url_image . $category[2]->name_image) }}" alt="impresora"
+                  class="hidden md:block w-full object-cover aspect-square md:aspect-video lg:aspect-square xl:aspect-[4/3]">
+                <img src="{{ asset($category[2]->url_image . $category[2]->name_image) }}" alt="impresora"
+                  class="block md:hidden w-full object-cover aspect-square md:aspect-video lg:aspect-square xl:aspect-[4/3]">
+              </div>
+
+              <div class="flex flex-col justify-center gap-5 basis-3/6 md:basis-2/6">
+                <a href="{{ route('catalogo') }}">
+                  <h2 class="text-text28 md:text-text32 font-moderat_700 text-right">{{ $category[2]->name }}</h2>
+                </a>
+
+                <p class="font-moderat_Regular text-text12 md:text-text16 text-right">{!! $category[2]->description !!}</p>
+                <div>
+                  <p class="font-moderat_Regular text-text12 md:text-text16 text-right">Desde</p>
+                  <p class="font-moderat_Bold text-text20 md:text-text24 text-right">S/. 999,99</p>
+                </div>
+
+                <div class="flex justify-end items-center">
+                  <a href="{{ route('catalogo', ['cat' => $category[2]->id]) }}"
+                    class="flex justify-center items-center
+                  gap-2">
+                    <span class="text-text16 text-[#FFFFFF] md:text-text20 font-moderat_Bold text-right">Ver
+                      productos</span>
+                    <div>
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 12H19" stroke="#FFFFFF" stroke-width="1.33333" stroke-linecap="round"
+                          stroke-linejoin="round" />
+                        <path d="M12 5L19 12L12 19" stroke="#FFFFFF" stroke-width="1.33333" stroke-linecap="round"
+                          stroke-linejoin="round" />
+                      </svg>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          @endif
+
+        </div>
 
 
 
-    </section>
+      </section>
     @endif
 
     <section class="w-11/12 md:w-10/12 mx-auto pt-20">
@@ -505,11 +509,12 @@
                 <div class="flex flex-col gap-3">
                   <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">{{ $item->extracto }}</h3>
                   <a href="{{ route('producto', $item->id) }}">
-                    <h2 class="font-moderat_700 text-text16 md:text-text24 text-[#111111]">{{ $item->producto }}</h2>
+                    <h2 class="font-moderat_700 text-text16 md:text-text24 text-[#111111] line-clamp-3 h-[108px]">
+                      {{ $item->producto }}</h2>
                   </a>
 
-                  <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">
-                    {!! Str::limit($item->description, 150, '...') !!}
+                  <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656] line-clamp-4 h-[120px]">
+                    {!! $item->description !!}
                   </p>
                   <div class="flex justify-start items-center gap-2 md:gap-4">
 
@@ -529,15 +534,10 @@
       <section class="w-11/12 mx-auto bg-[#001232] text-white mt-20 fondo__marcas">
 
         <div class="flex flex-col gap-5 py-10 items-center" data-aos="fade-up" data-aos-offset="150">
-          <h2 class="text-white font-moderat_Bold text-text32 md:text-text44 text-center">Nuestras marcas
-            asociadas
-          </h2>
-          <p class="font-moderat_Regular text-text16 md:text-text20 text-center w-full md:w-2/3">Lorem ipsum
-            dolor
-            sit
-            amet, consectetur adipiscing elit. Vivamus eu fermentum justo, ac fermentum nulla. Sed sed
-            scelerisque
-            urna, vitae ultrices libero. Pellentesque vehicula et urna in venenatis.</p>
+          <h2 class="text-white font-moderat_Bold text-text32 md:text-text44 text-center">Nuestras marcas asociadas</h2>
+          <p class="font-moderat_Regular text-text16 md:text-text20 text-center w-full md:w-2/3">Colaboramos con una
+            amplia variedad de marcas reconocidas a nivel mundial, ofreciendo productos de alta calidad que se adaptan a
+            las necesidades tecnológicas de todos nuestros clientes.</p>
         </div>
 
         <div class="swiper productos_marcas w-10/12 mx-auto">
@@ -633,13 +633,11 @@
       <section class="bg-[#FBFBFB] pt-10 mt-10 pb-32">
         <div class="w-11/12 mx-auto flex flex-col gap-3 items-center" data-aos="fade-up" data-aos-offset="150">
           <h2 class="font-moderat_700 text-text32 md:text-text44 text-center">Clientes satisfechos</h2>
-          <p class="font-moderat_Regular text-text14 text-[#565656] text-center w-full md:w-2/3">Lorem ipsum
-            dolor sit
-            amet, consectetur adipiscing elit. Vivamus eu fermentum justo, ac fermentum nulla. Sed sed
-            scelerisque
-            urna, vitae ultrices libero. Pellentesque vehicula et urna in venenatis.
-          </p>
+          <p class="font-moderat_Regular text-text14 text-[#565656] text-center w-full md:w-2/3">Nuestros clientes
+            confían en nosotros por la calidad y el servicio que ofrecemos. Ya sea por la rápida entrega de accesorios
+            gamer o soluciones de impresión confiables, siempre estamos comprometidos con la satisfacción total.</p>
         </div>
+
 
 
         <div class="mt-16 w-11/12 lg:w-9/12 mx-auto  relative" data-aos="fade-up" data-aos-offset="150">
@@ -691,9 +689,10 @@
           <div class="flex flex-col justify-center gap-3 md:flex-row md:justify-between md:items-center">
             <div class="flex flex-col gap-5 basis-8/12">
               <h2 class="font-moderat_700 text-text44 md:text-text52 text-[#111111] leading-none md:leading-tight">
-                Últimas publicaciones</h2>
-              <p class="text-[#565656] text-text18 md:text-text22 font-moderat_Regular">Nam tempor diam quis urna
-                maximus, ac laoreet arcu convallis. Aenean dignissim nec sem quis consequat.</p>
+                Últimas Publicaciones</h2>
+              <p class="text-[#565656] text-text18 md:text-text22 font-moderat_Regular">Descubre las últimas novedades en
+                tecnología. Encuentra desde tintas y toners para impresoras hasta teclados mecánicos y accesorios gamer.
+                ¡Mejora tu setup con nuestros monitores de alta resolución y laptops de última generación!</p>
             </div>
 
             <div class="flex justify-end items-center basis-4/12">
@@ -708,7 +707,8 @@
             @foreach ($blog as $item)
               <div class="hidden lg:flex  flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
                 <div>
-                  <img src="{{ asset($item->url_image . $item->name_image) }} " alt="publicacion" class="w-full">
+                  <img src="{{ asset($item->url_image . $item->name_image) }} " alt="publicacion"
+                    class="w-full aspect-video object-cover object-center shadow-lg rounded-lg">
                 </div>
                 <div class="flex flex-col gap-2">
                   <p class="font-moderat_Bold text-text12 md:text-text20 text-[#0051FF]">{{ $item->categories->name }}
