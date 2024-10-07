@@ -18,7 +18,7 @@
 @section('content')
 
   <main>
-    <section class="w-11/12 mx-auto mt-5 mb-10 flex flex-col gap-10">
+    <form id="paymentForm" class="w-11/12 mx-auto mt-5 mb-10 flex flex-col gap-10">
       <div class="text-text14 md:text-text16" data-aos="fade-up" data-aos-offset="150">
         <a href="" class="font-moderat_500 text-[#565656]">
           Home
@@ -44,11 +44,11 @@
         <div class="lg:basis-5/12"></div>
       </div>
 
-      <div class="flex flex-col lg:flex-row lg:gap-44">
+      <div class="flex flex-col lg:flex-row lg:gap-20">
         <div class="basis-7/12 flex flex-col gap-10 ">
           <div class="flex flex-col gap-5">
             <div>
-              <form id="formHome">
+              <div>
                 <div class="flex flex-col gap-8">
 
                   <div class="flex flex-col gap-5 pb-10 border-b-2 border-[#565656]" data-aos="fade-up"
@@ -62,7 +62,7 @@
                         <div class="basis-1/2 flex flex-col gap-2" data-aos="fade-up" data-aos-offset="150">
                           <label for="nombre"
                             class="font-moderat_Medium text-text12 md:text-text14 text-[#565656]">Nombre</label>
-                          <input id="nombre" type="text" placeholder="Nombre" name="nombre"
+                          <input id="nombre" type="text" placeholder="Nombre" name="nombre" required
                             value="{{ $detalleUsuario[0]->nombre ?? '' }}"
                             class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-moderat_Regular text-text16 xl:text-text18 border-[1.5px] border-gray-200 text-[#565656] outline-none " />
                         </div>
@@ -70,7 +70,7 @@
                         <div class="basis-1/2 flex flex-col gap-2" data-aos="fade-up" data-aos-offset="150">
                           <label for="apellidos"
                             class="font-moderat_Medium text-text12 md:text-text14 text-[#565656]">Apellido</label>
-                          <input id="apellido" type="text" placeholder="Apellido" name="apellidos"
+                          <input id="apellidos" type="text" placeholder="Apellido" name="apellidos" required
                             value="{{ $detalleUsuario[0]->apellidos ?? '' }}"
                             class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-moderat_Regular text-text16 xl:text-text18 border-[1.5px] border-gray-200 text-[#565656]" />
                         </div>
@@ -79,7 +79,7 @@
                       <div class="flex flex-col gap-2" data-aos="fade-up" data-aos-offset="150">
                         <label for="email"
                           class="font-moderat_Medium text-text12 md:text-text14  text-[#565656]">E-mail</label>
-                        <input id="email" type="email" name='email' placeholder="Correo electrónico"
+                        <input id="email" type="email" name='email' placeholder="Correo electrónico" required
                           value="{{ $detalleUsuario[0]->email ?? '' }}"
                           class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-moderat_Regular text-text16 xl:text-text18 border-[1.5px] border-gray-200 text-[#565656]" />
                       </div>
@@ -87,7 +87,7 @@
                       <div class="flex flex-col gap-2" data-aos="fade-up" data-aos-offset="150">
                         <label for="celular"
                           class="font-moderat_Medium text-text12 md:text-text14  text-[#565656]">Celular</label>
-                        <input id="celular" name="phone" type="tel" placeholder="(+51) 000 000 000"
+                        <input id="celular" name="phone" type="tel" placeholder="(+51) 000 000 000" required
                           value="{{ $detalleUsuario[0]->phone ?? '' }}"
                           class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-moderat_Regular text-text16 xl:text-text18 border-[1.5px] border-gray-200 text-[#565656]" />
                       </div>
@@ -96,237 +96,223 @@
 
                   <div class="flex flex-col gap-5 pb-10 border-b-2 border-[#565656]" data-aos="fade-up"
                     data-aos-offset="150">
-                    <h2 class="font-moderat_700 text-text20 xl:text-text22 text-[#151515]">
+                    <h2 class="font-semibold text-[20px] text-[#151515]">
                       Dirección de envío
                     </h2>
-                    <div class="flex flex-col gap-5">
+                    <ul class="grid w-full gap-6 md:grid-cols-3">
+                      <li>
+                        <input type="radio" name="envio" id="recoger-option" value="recoger" class="hidden peer"
+                          required @if (!$hasDefaultAddress) checked @endif>
+                        <label for="recoger-option"
+                          class="border inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border-3 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-[#006BF6] hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                          <div class="block">
+                            <svg class="w-6 h-6 mb-2 text-gray-800 dark:text-white" aria-hidden="true"
+                              xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                              viewBox="0 0 24 24">
+                              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 10V6a3 3 0 0 1 3-3v0a3 3 0 0 1 3 3v4m3-2 .917 11.923A1 1 0 0 1 17.92 21H6.08a1 1 0 0 1-.997-1.077L6 8h12Z">
+                              </path>
+                            </svg>
+
+                            <div class="w-full text-lg font-semibold">Recojo en tienda</div>
+                            <div class="w-full text-sm">Envio gratis</div>
+                          </div>
+                        </label>
+                      </li>
+                      <li>
+                        <input type="radio" name="envio" id="express-option" value="express" class="hidden peer"
+                          @if ($hasDefaultAddress) checked @endif>
+                        <label for="express-option"
+                          class="border inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border-3 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-[#006BF6] hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                          <div class="block">
+                            <svg class="w-6 h-6 mb-2 text-gray-800 dark:text-white" aria-hidden="true"
+                              xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                              viewBox="0 0 24 24">
+                              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M10 21v-9m3-4H7.5a2.5 2.5 0 1 1 0-5c1.5 0 2.875 1.25 3.875 2.5M14 21v-9m-9 0h14v8a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-8ZM4 8h16a1 1 0 0 1 1 1v3H3V9a1 1 0 0 1 1-1Zm12.155-5c-3 0-5.5 5-5.5 5h5.5a2.5 2.5 0 0 0 0-5Z">
+                              </path>
+                            </svg>
+
+                            <div class="w-full text-lg font-semibold">Delivery</div>
+                            <div class="w-full text-sm">Sujeto a evaluacion</div>
+                          </div>
+                        </label>
+                      </li>
+                    </ul>
+                    <div id="direccionContainer" class="flex flex-col gap-5">
                       <div class="flex flex-col gap-5">
-                        <div class="flex flex-col gap-2 z-[45]" data-aos="fade-up" data-aos-offset="150">
-                          <label
-                            class="font-moderat_Medium text-text12 md:text-text14  text-[#565656]">Departamento</label>
+                        @if (count($addresses) > 0)
+                          <div class="flex flex-col gap-5 md:flex-row">
+                            <div class="basis-2/3 flex flex-col gap-2 z-[45]">
+                              <label class="font-medium text-[12px] text-[#6C7275]">Tu lista de direcciones<span
+                                  class="text-red-500">*</span></label>
+                              <div class="w-full">
+                                <div class="dropdown w-full">
+                                  <select id="addresses"
+                                    class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 select2-hidden-accessible"
+                                    data-address>
+                                    <option value>Agregar una nueva direccion</option>
+                                    @foreach ($addresses as $address)
+                                      <option value="{{ $address->id }}" data="{{ $address }}"
+                                        @if ($address->isDefault) selected @endif></option>
+                                    @endforeach
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        @endif
+                        <div data-show="new" class="flex flex-col gap-5 md:flex-row">
+                          @if ($departments->count() > 0)
+                            <div class="basis-1/3 flex flex-col gap-2 z-[45]">
+                              <label class="font-medium text-[12px] text-[#6C7275]">Departamento <span
+                                  class="text-red-500">*</span></label>
+
+                              <div>
+                                <!-- combo -->
+                                <div class="dropdown w-full">
+                                  <select name="departamento_id" id="departamento_id"
+                                    class="selectpicker mt-1 h-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 select2-hidden-accessible"
+                                    data-address>
+                                    <option value="" data-select2-id="select2-data-2-4o85">Seleccione un
+                                      departamento</option>
+                                    @foreach ($departments as $department)
+                                      <option value="{{ $department->id }}">{{ $department->description }}</option>
+                                    @endforeach
+                                  </select>
+                                </div>
+                              </div>
 
 
-                          <!-- combo -->
 
+                            </div>
 
-                          <select disabled
-                            class=" font-moderat_Regular text-text16 md:text-text18 mr-20 text-[#6C7275] border-[1.5px] border-gray-200  py-3 px-4"
-                            name="" id="">
-                            <option value="">selecciona un Departamento</option>
-                            @foreach ($departamento as $item)
-                              @if ($addresDetail->departamento_id == $item->id)
-                                <option value="{{ $item->id }} " selected>
-                                  {{ $item->description }}
-                                </option>
-                              @endif
-                            @endforeach
-                          </select>
+                            <div class="basis-1/3 flex flex-col gap-2 z-[40]">
+                              <label class="font-medium text-[12px] text-[#6C7275]">
+                                Provincia <span class="text-red-500">*</span>
+                              </label>
 
+                              <div>
+                                <!-- combo -->
+                                <div class="dropdown-provincia w-full">
+                                  <select name="provincia_id" id="provincia_id"
+                                    class="selectpicker mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 select2-hidden-accessible"
+                                    data-address>
+                                    <option value="" data-select2-id="select2-data-4-gokf">Seleccione una
+                                      provincia
+                                    </option>
 
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="basis-1/3 flex flex-col gap-2 z-[30]">
+                              <label class="font-medium text-[12px] text-[#6C7275]">
+                                Distrito <span class="text-red-500">*</span>
+                              </label>
+
+                              <div>
+                                <!-- combo -->
+                                <div class="dropdown-distrito w-full">
+                                  <select name="distrito_id" id="distrito_id"
+                                    class="selectpicker mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 select2-hidden-accessible"
+                                    data-address>
+                                    <option value="" data-select2-id="select2-data-6-ihrp">Seleccione un distrito
+                                    </option>
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
+                          @else
+                            <div><span> ** Configure los "Costos de Envio" para que pueda visualizar esta lista
+                                **</span>
+                            </div>
+                          @endif
 
                         </div>
 
-                        <div class="flex flex-col gap-2 z-[40]" data-aos="fade-up" data-aos-offset="150">
-                          <label class="font-moderat_Medium text-text12 md:text-text14 text-[#565656]">
-                            Provincia
-                          </label>
-                          <select disabled
-                            class=" font-moderat_Regular text-text16 md:text-text18 mr-20 text-[#6C7275] border-[1.5px] border-gray-200  py-3 px-4"
-                            name="" id="">
-                            <option value="">selecciona una Provincia</option>
-                            @foreach ($provincias as $item)
-                              @if ($addresDetail->provincia_id == $item->id)
-                                <option value="{{ $item->id }} " selected>
-                                  {{ $item->description }}
-                                </option>
-                              @endif
-                            @endforeach
-                          </select>
-                        </div>
+                        <div data-show="new" class="flex flex-col gap-2">
+                          <label for="nombre_calle" class="font-medium text-[12px] text-[#6C7275]">Avenida / Calle /
+                            Jirón <span class="text-red-500">*</span></label>
 
-                        <div class="flex flex-col gap-2 z-[30]" data-aos="fade-up" data-aos-offset="150">
-                          <label class="font-moderat_Medium text-text12 md:text-text14 text-[#565656]">
-                            Distrito
-                          </label>
-
-                          <select disabled
-                            class=" font-moderat_Regular text-text16 md:text-text18 mr-20 text-[#6C7275] border-[1.5px] border-gray-200  py-3 px-4"
-                            name="" id="">
-                            <option value="">selecciona un distrito</option>
-                            @foreach ($distritos as $item)
-                              @if ($addresDetail->distrito_id == $item->id)
-                                <option value="{{ $item->id }} " selected>
-                                  {{ $item->description }}
-                                </option>
-                              @endif
-                            @endforeach
-                          </select>
-                        </div>
-
-                        <div class="flex flex-col gap-2" data-aos="fade-up" data-aos-offset="150">
-                          <label for="nombre_calle"
-                            class="font-moderat_Medium text-text12 md:text-text14  text-[#565656]">Avenida / Calle /
-                            Jirón</label>
-
-                          <input id="nombre_calle" name="dir_av_calle" type="text"
+                          <input id="nombre_calle" type="text" name="dir_av_calle"
                             placeholder="Ingresa el nombre de la calle"
-                            class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-moderat_Regular text-text16 md:text-text18 border-[1.5px] border-gray-200 text-[#565656]"
-                            value="{{ $addresDetail->dir_av_calle ?? '' }}" />
+                            class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]"
+                            data-address>
                         </div>
                       </div>
                       <div>
-                        <div class="flex flex-col md:flex-row gap-5" data-aos="fade-up" data-aos-offset="150">
+                        <div data-show="new" class="flex flex-col md:flex-row gap-5">
                           <div class="basis-1/2 flex flex-col gap-2">
-                            <label for="numero_calle"
-                              class="font-moderat_Medium text-text12 md:text-text14  text-[#565656]">Número
-                            </label>
-
+                            <label for="numero_calle" class="font-medium text-[12px] text-[#6C7275]">Número <span
+                                class="text-red-500">*</span></label>
                             <input id="numero_calle" name="dir_numero" type="text"
-                              placeholder="Ingresa el número de la calle"
-                              class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-moderat_Regular text-text16 md:text-text18 border-[1.5px] border-gray-200 text-[#565656]"
-                              value="{{ $addresDetail->dir_numero ?? '' }}" />
+                              placeholder="Ingresa el número de la callle"
+                              class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]"
+                              data-address>
                           </div>
 
-                          <div class="basis-1/2 flex flex-col gap-2" data-aos="fade-up" data-aos-offset="150">
-                            <label for="direccion"
-                              class="font-moderat_Medium text-text12 md:text-text14  text-[#565656]">Dpto./
-                              Interior/ Piso/ Lote/ Bloque
+                          <div class="basis-1/2 flex flex-col gap-2">
+                            <label for="direccion" class="font-medium text-[12px] text-[#6C7275]">Dpto./ Interior/
+                              Piso/
+                              Lote/ Bloque
                               (opcional)</label>
-
                             <input id="direccion" type="text" name="dir_bloq_lote"
                               placeholder="Ejem. Casa 3, Dpto 101"
-                              class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-moderat_Regular text-text16 md:text-text18 border-[1.5px] border-gray-200 text-[#565656]"
-                              value="{{ $addresDetail->dir_bloq_lote ?? '' }}" />
+                              class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]">
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  {{-- <div class="flex flex-col gap-5 pb-10" data-aos="fade-up" data-aos-offset="150">
-                    <h2 class="font-moderat_700 text-text20 xl:text-text22 text-[#151515]">
-                      Método de pago
-                    </h2>
-                    <div class="w-full flex flex-col gap-5 border-dashed pb-10 border-b-2 border-[#E8ECEF]">
-                      <label for="bordered-radio-tarjeta"
-                        class="flex items-center ps-4 border border-gray-200 cursor-pointer" data-aos="fade-up"
-                        data-aos-offset="150">
-                        <input type="radio" id="bordered-radio-tarjeta" name="bordered-radio-tarjetas"
-                          value="credit" class="focus:ring-transparent w-5 h-5 cursor-pointer  cuentas" />
-                        <span
-                          class="w-full py-4 ms-2 text-text16 md:text-text18 font-moderat_Regular text-[#6C7275] flex justify-between items-center px-4">
-                          <span>Tarjeta de crédito</span>
-                        </span>
-                      </label>
 
-                      <label for="bordered-radio-debito"
-                        class="flex items-center ps-4 border border-gray-200 cursor-pointer" data-aos="fade-up"
-                        data-aos-offset="150">
-                        <input type="radio" id="bordered-radio-debito" name="bordered-radio-tarjetas" value="debit"
-                          class="focus:ring-transparent w-5 h-5 cursor-pointer cuentas" />
-                        <span
-                          class="w-full py-4 ms-2 text-text16 md:text-text18 font-moderat_Regular text-[#6C7275] flex justify-between items-center px-4">
-                          <span>Tarjeta de Débito</span>
-                        </span>
-                      </label>
-
-                      <label for="bordered-radio-cuenta" class="flex items-center ps-4 border border-gray-200"
-                        data-aos="fade-up" data-aos-offset="150">
-                        <input type="radio" id="bordered-radio-cuenta" name="bordered-radio-tarjetas"
-                          value="transfer" class="focus:ring-transparent w-5 h-5 cursor-pointer cuentas inputVoucher" />
-                        <span
-                          class="w-full py-4 ms-2 text-text16 md:text-text18 font-moderat_Regular text-[#6C7275] flex justify-between items-center px-4">
-                          <span>Depósito a cuenta</span>
-                        </span>
-                        </l>
-
-                        <div class="deposito__cuenta hidden">
-                          <div class="flex justify-between items-center text-[#6C7275] px-16 voucher">
-                            <div>
-                              <p class="font-moderat_Medium">Banco - Interbank</p>
-                              <p class="font-moderat_Regular">
-                                N. Cuenta Corriente
-                              </p>
-                              <p class="font-moderat_Regular">4394564564687656</p>
-                            </div>
-
-                            <div>
-                              <label for="upload" class="font-moderat_Bold text-text12 cursor-pointer">Envía tu
-                                comprobante</label>
-                              <input type="file" class="hidden" id="upload" />
-                            </div>
-                          </div>
-                        </div>
-                    </div>
-
-                    <div class="pt-5">
-                      <div class="flex flex-col gap-5">
-                        <div class="flex flex-col gap-2" data-aos="fade-up" data-aos-offset="150">
-                          <label for="nombre_tarjeta"
-                            class="font-moderat_Medium text-text12 md:text-text14 text-[#6C7275]">Nombre
-                            de la tarjeta</label>
-                          <input id="nombre_tarjeta" type="text" placeholder="Nombre"
-                            class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-moderat_Regular text-text16 md:text-text18 border-[1.5px] border-gray-200" />
-                        </div>
-
-                        <div class="flex flex-col gap-2" data-aos="fade-up" data-aos-offset="150">
-                          <label for="numero_tarjeta"
-                            class="font-moderat_Medium text-text12 md:text-text14 text-[#6C7275]">Número
-                            de tarjeta</label>
-                          <input id="numero_tarjeta" type="text" placeholder="1234 12345 1234"
-                            class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-moderat_Regular text-text16 md:text-text18 border-[1.5px] border-gray-200" />
-                        </div>
-
-                        <div class="flex flex-col md:flex-row gap-5" data-aos="fade-up" data-aos-offset="150">
-                          <div class="basis-1/2 flex flex-col gap-2">
-                            <label for="fecha_caducidad"
-                              class="font-moderat_Medium text-text12 md:text-text14 text-[#6C7275]">Fecha
-                              de caducidad</label>
-                            <input id="fecha_caducidad" type="text" placeholder="MM/AA"
-                              class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-moderat_Regular text-text16 md:text-text18 border-[1.5px] border-gray-200" />
-                          </div>
-
-                          <div class="basis-1/2 flex flex-col gap-2">
-                            <label for="CVC"
-                              class="font-moderat_Medium text-text12 md:text-text14 text-[#6C7275]">CVC</label>
-                            <input id="CVC" type="text" placeholder="Código CVC"
-                              class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-moderat_Regular text-text16 md:text-text18 border-[1.5px] border-gray-200" />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="pt-10" data-aos="fade-up" data-aos-offset="150">
-                      <button id="pagarProductos"
-                        class="text-white bg-[#0051FF] w-full py-3 cursor-pointer border-2 font-moderat_Bold text-text16 xl:text-text18 inline-block text-center border-none">
-                        Pagar
-                      </button>
-                    </div>
-                  </div> --}}
                 </div>
-              </form>
+              </div>
 
             </div>
           </div>
         </div>
 
-        <div class="basis-5/12 flex flex-col justify-start gap-10 pt-5 md:pt-0" data-aos="fade-up"
+        <div class="basis-5/12 flex flex-col justify-start gap-0 pt-5 md:pt-0" data-aos="fade-up"
           data-aos-offset="150">
           <h2 class="font-moderat_700 text-text28 xl:text-text30 text-[#151515]">
             Resumen del pedido
           </h2>
+          <div class="p-4 pb-0">
+            <hr>
+          </div>
+          <div class="p-4">
+            <label for="tipo-comprobante" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tipo de
+              comprobante</label>
+            <select id="tipo-comprobante" name="comprobante"
+              class="selectpicker bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              <option value="nota_venta">Nota de venta</option>
+              <option value="boleta">Boleta</option>
+              <option value="factura">Factura</option>
+            </select>
+          </div>
+          <div class="p-4 grid grid-cols-4" id="ElementosFacturacion">
+
+
+          </div>
+          <div class="p-4 py-0">
+            <hr>
+          </div>
 
           <div>
-            <div class="flex flex-col gap-10" id="itemsCarritocheck">
+            {{--  <div class="flex flex-col gap-10" id="itemsCarritocheck">
 
-            </div>
+            </div> --}}
 
             <div class="flex flex-col gap-5 mt-10">
               <div
                 class="text-[#141718] flex justify-between items-center border-b-[1px] border-[#E8ECEF] pb-5 text-text16 md:text-text18"
                 data-aos="fade-up" data-aos-offset="150">
                 <p class="font-moderat_Regular">Envío</p>
-                <p class="font-moderat_Bold" id='MontoEnvio'></p>
+                <p class="font-moderat_Bold" id='precioEnvio'> Gratis</p>
               </div>
 
               <div
@@ -340,20 +326,20 @@
                 class="text-[#141718] font-moderat_Medium text-text20 xl:text-text22 flex justify-between items-center pb-5"
                 data-aos="fade-up" data-aos-offset="150">
                 <p>Total</p>
-                <p id="totalDetalle">s/ 234.00</p>
+                <p id="totalDetalle">S/. 0</p>
               </div>
             </div>
           </div>
 
           <div data-aos="fade-up" data-aos-offset="150">
-            <button id="pagarProductos"
+            <button id="btnPagar"
               class="text-white bg-[#0051FF] w-full py-3 cursor-pointer border-2 font-moderat_Bold text-text16 xl:text-text18 inline-block text-center border-none">
               Pagar
             </button>
           </div>
         </div>
       </div>
-    </section>
+    </form>
 
 
     <section class="bg-[#F3F3F3] w-11/12 mx-auto">
@@ -388,6 +374,7 @@
 
 
 @section('scripts_importados')
+  <script src="https://checkout.culqi.com/js/v4"></script>
   <script>
     // Obtener el elemento input
     const cuentas = document.querySelectorAll(".cuentas");
@@ -602,7 +589,7 @@
 
     }
   </script>
-  <script>
+  {{--  <script>
     $('#pagarProductos').on('click', function(e) {
       console.log('pagando servicio');
       e.preventDefault()
@@ -747,6 +734,416 @@
       });
 
     })
+  </script> --}}
+
+  <script>
+    $('#direccionContainer').fadeOut(0)
+    const hasDefaultAddress = {{ $hasDefaultAddress ? 'true' : 'false' }};
+    Culqi.publicKey = "{{ $culqi_public_key }}";
+
+    const culqi = async () => {
+      try {
+        const carrito = Local.get('carrito') ?? []
+        if (Culqi.token) {
+          const body = {
+            _token: $('[name="_token"]').val(),
+            cart: carrito.map((x) => ({
+              id: x.id,
+              quantity: x.cantidad,
+              isCombo: x.isCombo || false
+            })),
+            contact: {
+              name: $('#nombre').val(),
+              lastname: $('#apellidos').val(),
+              email: $('#email').val(),
+              phone: $('#celular').val(),
+              doc_number: $('#DNI').val() || $('#RUC').val(),
+              doc_type: $('#tipo-comprobante').val() ?? 'nota_venta',
+              razon_fact: $('#razonFact').val(),
+              direccion_fact: $('#direccionFact').val(),
+
+
+            },
+            address: null,
+            saveAddress: !Boolean($('#addresses').val()),
+            culqi: Culqi.token,
+            tipo_comprobante: $('#tipo-comprobante').val()
+          }
+          if ($('[name="envio"]:checked').val() == 'express') {
+            body.address = {
+              id: $('#distrito_id option:selected').attr('price-id'),
+              city: $('#distrito_id option:selected').text(),
+              street: $('#nombre_calle').val(),
+              number: $('#numero_calle').val(),
+              description: $('#direccion').val()
+            }
+          }
+
+          const res = await fetch("{{ route('payment.culqi') }}", {
+            method: 'POST',
+            headers: {
+              'Content-type': 'application/json'
+            },
+            body: JSON.stringify(body)
+          })
+          const data = await res.json()
+          if (!res.ok) throw new Error(data?.message ?? 'Ocurrio un error inesperado al generar el cargo')
+
+          /* Swal.fire({
+            title: `Bien!!`,
+            text: `Se ha generado el cargo por S/. ${data.data.amount.toFixed(2)}`,
+            icon: "success",
+          }); */
+
+          Local.delete('carrito')
+
+          location.href = `/exito?codigoCompra=${data.data.reference_code}`
+
+        } else if (Culqi.order) { // ¡Objeto Order creado exitosamente!
+          const order = Culqi.order;
+          console.log('Se ha creado el objeto Order: ', order);
+
+        } else {
+          // Mostramos JSON de objeto error en consola
+          console.log('Error : ', Culqi.error);
+          throw new Error(Culqi.error.message);
+        }
+      } catch (error) {
+        Swal.fire({
+          title: `Error!!`,
+          text: error.message,
+          icon: "error",
+        });
+      }
+    }
+
+    const getTotalPrice = () => {
+      const carrito = Local.get('carrito') ?? []
+      const productPrice = carrito.reduce((total, x) => {
+        let price = Number(x.precio) * x.cantidad
+        if (Number(x.descuento)) {
+          price = Number(x.descuento) * x.cantidad
+        }
+        total += price
+        return total
+      }, 0)
+      return productPrice
+    }
+
+    const getCostoEnvio = () => {
+      console.log('getcostoEnvio', $('[name="envio"]:checked').val());
+
+      if ($('[name="envio"]:checked').val() == 'recoger') return 0
+      const priceStr = $('#distrito_id option:selected').attr('data-price')
+      const price = Number(priceStr) || 0
+      return price
+    }
+
+    $(document).on('change', '#tipo-comprobante', function() {
+      console.log('cambio', $(this).val())
+
+      let tipoComrobante = $(this).val()
+
+      // ElementosFacturacion
+      if (tipoComrobante == 'boleta') {
+        $("#ElementosFacturacion").html('')
+        $('#ElementosFacturacion').html(`
+          <div class="col-span-2 mb-2">
+            <label for="nombre" class="font-medium text-[12px] text-[#6C7275]">DNI<span class="text-red-500">*</span></label>
+            <input maxlength="8" id="DNI" type="number"  placeholder="DNI" name="DNI" value="" class="w-full py-2 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]" >
+
+            
+          </div>
+          <div class="col-span-4 mb-2">
+            <label for="nombre" class="font-medium text-[12px] text-[#6C7275]">Razon Social<span class="text-red-500">*</span></label>
+            <input  id="razonFact" type="text"  placeholder="Razon Social" name="razon_fact" value="" class="w-full py-2 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]" >
+
+            
+          </div>
+          <div class="col-span-4 mb-2">
+            <label for="nombre" class="font-medium text-[12px] text-[#6C7275]">Direccion Facturacion<span class="text-red-500">*</span></label>
+            <input  id="direccionFact" type="text"  placeholder="Direccion Boleta" name="direccion_fact" value="" class="w-full py-2 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]" >
+
+            
+          </div>
+        `)
+      } else if (tipoComrobante == 'factura') {
+        $("#ElementosFacturacion").html('')
+        $('#ElementosFacturacion').html(`
+          <div class="col-span-2 mb-2">
+            <label for="ruc" class="font-medium text-[12px] text-[#6C7275]">RUC <span class="text-red-500">*</span></label>
+            <input maxlength="11" id="RUC" type="number" placeholder="RUC" name="RUC" value="" class="w-full py-2 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]" >
+          </div>
+          <div class="col-span-4 mb-2">
+            <label for="nombre" class="font-medium text-[12px] text-[#6C7275]">Razon Social<span class="text-red-500">*</span></label>
+            <input  id="razonFact" type="text"  placeholder="Ingrese Razon Social" name="razon_fact" value="" class="w-full py-2 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]" >
+
+            
+          </div>
+          <div class="col-span-4 mb-2">
+            <label for="nombre" class="font-medium text-[12px] text-[#6C7275]">Direccion Facturacion<span class="text-red-500">*</span></label>
+            <input  id="direccionFact" type="text"  placeholder="Direccion Facturacion" name="direccion_fact" value="" class="w-full py-2 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]" >
+
+            
+          </div>
+          
+        `)
+      } else {
+        $("#ElementosFacturacion").html('')
+      }
+
+
+    })
+
+    $(document).on('keydown', '#DNI, #RUC', function(e) {
+      const controlKeys = ['Backspace', 'Delete', 'Tab', 'ArrowLeft', 'ArrowRight', 'Home', 'End'];
+      if (controlKeys.includes(e.key)) {
+        return;
+      }
+
+      if (e.key === '.' || e.key === ',') {
+        e.preventDefault();
+      }
+      console.log($(this.id))
+      if (this.id == 'DNI' && $(this).val().length > 7) {
+        e.preventDefault();
+      } else if (this.id == 'RUC' && $(this).val().length > 10) {
+        e.preventDefault();
+      }
+
+    });
+    $('#paymentForm').on('submit', function(e) {
+      e.preventDefault();
+
+      const precioProductos = getTotalPrice()
+      const precioEnvio = getCostoEnvio()
+
+
+      let existeRuc = $('#RUC').length == '' ? false : true
+      let ExisteDni = $('#DNI').length == '' ? false : true
+      let razonFact = $('#razonFact').length == '' ? false : true
+      let direccionFact = $('#direccionFact').length == '' ? false : true
+
+      if (ExisteDni) {
+        if ($('#tipo-comprobante').val() == 'boleta' && ($('#DNI').val() == '' || $('#DNI').val().length !== 8)) {
+          Swal.fire({
+            title: `Error!!`,
+            text: 'Ingrese su DNI Completo',
+            icon: "error",
+          });
+          return
+        }
+
+      }
+      if (existeRuc) {
+        if ($('#tipo-comprobante').val() == 'factura' && ($('#RUC').val() == '' || $('#RUC').val().length !== 11)) {
+          Swal.fire({
+            title: `Error!!`,
+            text: 'Ingrese su Ruc Completo',
+            icon: "error",
+          });
+          return
+        }
+
+      }
+
+      if (razonFact) {
+        if ($('#razonFact').val() == '') {
+          Swal.fire({
+            title: `Error!!`,
+            text: 'Ingrese su Razon Social',
+            icon: "error",
+          });
+          return
+        }
+
+      }
+      if (direccionFact) {
+        if ($('#direccionFact').val() == '') {
+          Swal.fire({
+            title: `Error!!`,
+            text: 'Ingrese su Direccion de Facturacion',
+            icon: "error",
+          });
+          return
+        }
+      }
+      const paymentMethods = { // las opciones se ordenan según se configuren
+        tarjeta: true,
+        yape: true,
+        billetera: true,
+        bancaMovil: true,
+        agente: true,
+        cuotealo: true,
+      }
+
+
+      Culqi.settings({
+        title: 'Boost .its more',
+        currency: 'PEN',
+        amount: Math.round((precioProductos + precioEnvio) * 100),
+      });
+      Culqi.options({
+        paymentMethods: paymentMethods,
+        paymentMethodsSort: Object.keys(paymentMethods),
+        style: {
+          logo: `${location.origin}/images/svg/favicon.svg`,
+          bannerColor: '#272727'
+
+        }
+      })
+      Culqi.open();
+    })
+
+    $('[name="envio"]').on('click', () => {
+      const value = $('[name="envio"]:checked').val()
+      if (value == 'express') {
+        $('#direccionContainer').fadeIn(125)
+        if ($('#distrito_id').val()) {
+          $('#distrito_id').trigger('change')
+        } else {
+          $('#precioEnvio').text(`Evaluando`)
+        }
+        $('[data-address]').prop('required', true)
+        // $('#addresses').prop('required', false)
+        $('#addresses').removeAttr('required');
+      } else {
+        $('#direccionContainer').fadeOut(125)
+        $('#precioEnvio').text('Gratis')
+        $('[data-address]').prop('required', false)
+
+      }
+      calcularTotal()
+    })
+
+    const provinces = @json($provinces);
+    const districts = @json($districts);
+
+    const addressTemplate = ({
+      id,
+      text,
+      element
+    }) => {
+      if (!id) return text
+
+      const data = JSON.parse(element.getAttribute('data'))
+      let price = 'Gratis'
+      let className = 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300'
+      if (data.price.price > 0) {
+        price = `S/. ${data.price.price.toFixed(2)}`
+        className = 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300'
+      }
+      return $(`<div class="relative">
+        <b class="block">
+          ${data.price.district.province.department.description},
+          ${data.price.district.province.description},
+          ${data.price.district.description}
+        </b>
+        ${data.street} #${data.number}
+        <span class="absolute right-2 top-[50%] translate-y-[-50%] w-max block mx-auto text-xs font-medium px-2.5 py-0.5 mb-1 rounded-full ${className}">
+          ${price}  
+        </span>
+      </div>`)
+    }
+
+    $('#addresses').select2({
+      templateResult: addressTemplate,
+      templateSelection: addressTemplate
+    })
+    $('#departamento_id').select2()
+    $('#provincia_id').select2()
+    $('#distrito_id').select2()
+
+    $('.selectpicker').select2()
+
+    $('#addresses').on('change', function() {
+      const address = $(this).val()
+      if (!address) {
+        $('[data-show="new"]').fadeIn()
+        $('#departamento_id')
+          .val(null)
+          .trigger('change')
+        $('#nombre_calle').val(null)
+        $('#numero_calle').val(null)
+        $('#direccion').val(null)
+        return
+      }
+      const data = JSON.parse($(this).find('option:selected').attr('data'))
+      $('[data-show="new"]').fadeOut()
+      $('#departamento_id')
+        .val(data.price.district.province.department.id)
+        .trigger('change')
+      $('#provincia_id')
+        .val(data.price.district.province.id)
+        .trigger('change')
+      $('#distrito_id')
+        .val(data.price.district.id)
+        .trigger('change')
+      $('#nombre_calle').val(data.street)
+      $('#numero_calle').val(data.number)
+      $('#direccion').val(data.description)
+    })
+
+    $('#departamento_id').on('change', function() {
+      $('#provincia_id').html('<option value>Seleccione una provincia</option>')
+      $('#distrito_id').html('<option value>Seleccione un distrito</option>')
+      $('#precioEnvio').text(`Evaluando`)
+      provinces.filter(x => x.department_id == this.value).forEach((province) => {
+        const option = $('<option>', {
+          value: province.id,
+          text: province.description
+        })
+        $('#provincia_id').append(option)
+      })
+      $('#provincia_id').select2()
+      calcularTotal()
+    })
+    $(document).on('change', '#addresses', function() {
+      console.log('change', $(this).val())
+    })
+
+    $('#provincia_id').on('change', function() {
+      $('#distrito_id').html('<option value>Seleccione un distrito</option>')
+      $('#precioEnvio').text(`Evaluando`)
+      districts.filter(x => x.province_id == this.value).forEach((district) => {
+        const option = $('<option>', {
+          value: district.id,
+          text: district.description,
+          'data-price': district.price,
+          'price-id': district.price_id
+        })
+        $('#distrito_id').append(option)
+      })
+      $('#distrito_id').select2()
+      calcularTotal()
+    })
+
+    $('#distrito_id').on('change', function() {
+      const priceStr = $('#distrito_id option:selected').attr('data-price')
+      const price = Number(priceStr) || 0
+      if (price == 0) {
+        $('#precioEnvio').text('Gratis')
+      } else {
+        $('#precioEnvio').text(`S/. ${price.toFixed(2)}`)
+      }
+      calcularTotal()
+    })
+
+    if (hasDefaultAddress) {
+      $('#express-option').trigger('click')
+      $('#addresses').trigger('change')
+    }
+
+    function calcularTotal() {
+      const precioProductos = getTotalPrice()
+      $('#itemSubtotal').text(`S/. ${precioProductos.toFixed(2)}`)
+      const precioEnvio = getCostoEnvio()
+      const total = precioProductos + precioEnvio
+
+      $('#itemTotal').text(`S/. ${total.toFixed(2)} `)
+      $('#itemsTotal').text(`S/. ${total.toFixed(2)} `)
+      $('#totalDetalle').text(`S/. ${total.toFixed(2)} `)
+    }
   </script>
 
 

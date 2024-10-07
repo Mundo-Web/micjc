@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helpers\EmailConfig;
 use App\Http\Requests\StoreIndexRequest;
 use App\Http\Requests\UpdateIndexRequest;
+use App\Models\Address;
 use App\Models\AddressUser;
 use App\Models\Attributes;
 use App\Models\AttributesValues;
@@ -203,7 +204,7 @@ class IndexController extends Controller
     return view('public.carrito', compact('general', 'departamentos', 'departments', 'provinces', 'districts'));
   }
 
-  public function detallesPago(Request $request)
+  /* public function detallesPago(Request $request)
   {
     $formToken = $request->input('token');
     $codigoCompra = $request->input('codigoCompra');
@@ -211,9 +212,7 @@ class IndexController extends Controller
     $detalleUsuario = [];
     $user = auth()->user();
     $N_orden = Ordenes::where('codigo_orden', '=', $codigoCompra)->get()->toArray();
-    /* if (!isNull($user)) {
-      $detalleUsuario = UserDetails::where('email', $user->email)->get();
-    } */
+   
     $detalleUsuario = UserDetails::where('id', $N_orden[0]['usuario_id'])->get();
 
     $distritos = DB::select('select * from districts where active = ? order by 3', [1]);
@@ -230,6 +229,84 @@ class IndexController extends Controller
     $url_env = $_ENV['APP_URL'];
     $general = General::all()->first();
     return view('public.detallesPago', compact('codigoCompra', 'general', 'detalleUsuario', 'distritos', 'provincias', 'departamento', 'N_orden', 'addresDetail'));
+  } */
+
+  public function detallesPago(){
+    //
+    $detalleUsuario = [];
+    $user = auth()->user();
+    $general = General::all()->first();
+
+    if (!is_null($user)) {
+      $detalleUsuario = UserDetails::where('email', $user->email)->get();
+    }
+
+    // $departamento = DB::select('select * from departments where active = ? order by 2', [1]);
+    $departments = Price::select([
+      'departments.id AS id',
+      'departments.description AS description',
+    ])
+      ->join('districts', 'districts.id', 'prices.distrito_id')
+      ->join('provinces', 'provinces.id', 'districts.province_id')
+      ->join('departments', 'departments.id', 'provinces.department_id')
+      ->where('departments.active', 1)
+      ->where('status', 1)
+      ->groupBy('id', 'description')
+      ->get();
+
+    $provinces = Price::select([
+      'provinces.id AS id',
+      'provinces.description AS description',
+      'provinces.department_id AS department_id'
+    ])
+      ->join('districts', 'districts.id', 'prices.distrito_id')
+      ->join('provinces', 'provinces.id', 'districts.province_id')
+      ->where('provinces.active', 1)
+      ->groupBy('id', 'description', 'department_id')
+      ->get();
+
+    $districts = Price::select([
+      'districts.id AS id',
+      'districts.description AS description',
+      'districts.province_id AS province_id',
+      'prices.id AS price_id',
+      'prices.price AS price'
+    ])
+      ->join('districts', 'districts.id', 'prices.distrito_id')
+      ->where('districts.active', 1)
+      ->groupBy('id', 'description', 'province_id', 'price', 'price_id')
+      ->get();
+
+    // $distritos  = DB::select('select * from districts where active = ? order by 3', [1]);
+    // $provincias = DB::select('select * from provinces where active = ? order by 3', [1]);
+
+    $categorias = Category::all();
+
+    $destacados = Products::where('destacar', '=', 1)->where('status', '=', 1)
+      ->where('visible', '=', 1)->with('tags')->activeDestacado()->get();
+
+
+    $url_env = env('APP_URL');
+    $culqi_public_key = env('CULQI_PUBLIC_KEY');
+
+    $addresses = [];
+    $hasDefaultAddress = false;
+    if (Auth::check()) {
+      $addresses = Address::with([
+        'price',
+        'price.district',
+        'price.district.province',
+        'price.district.province.department'
+      ])
+        ->where('email', $user->email)
+        ->get();
+      $hasDefaultAddress = Address::where('email', $user->email)
+        ->where('isDefault', true)
+        ->exists();
+    }
+
+    return view('public.detallesPago', compact('url_env', 'districts', 'provinces', 'departments', 'detalleUsuario', 'categorias', 
+    'destacados', 'culqi_public_key', 'addresses', 'hasDefaultAddress', 'general'));
   }
 
   public function exito(Request $request)
