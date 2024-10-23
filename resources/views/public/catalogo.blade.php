@@ -139,7 +139,7 @@
                     <h2 class="font-moderat_700 text-text16 md:text-text24 text-[#111111] line-clamp-3">
                       {{ $item->producto }}</h2>
                   </a>
-                  <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656] line-clamp-5">
+                  <p class="font-moderat_Regular text-text12 md:text-base text-[#565656] line-clamp-3">
                     {!! $item->description !!}
                   </p>
                   <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">
