@@ -509,11 +509,11 @@
                 <div class="flex flex-col gap-3">
                   <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">{{ $item->extracto }}</h3>
                   <a href="{{ route('producto', $item->id) }}">
-                    <h2 class="font-moderat_700 text-text16 md:text-text24 text-[#111111] line-clamp-3 h-[108px]">
+                    <h2 class="font-moderat_700 leading-normal text-text16 md:text-text20 text-[#111111] line-clamp-3 tracking-tight">
                       {{ $item->producto }}</h2>
                   </a>
 
-                  <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656] line-clamp-4 h-[120px]">
+                  <p class="font-moderat_Regular text-text12 md:text-base text-[#565656] line-clamp-3">
                     {!! $item->description !!}
                   </p>
                   <div class="flex justify-start items-center gap-2 md:gap-4">
