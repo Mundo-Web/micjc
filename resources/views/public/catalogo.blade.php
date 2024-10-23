@@ -136,7 +136,7 @@
                 <div class="flex flex-col gap-3">
                   <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">{{ $item->extracto }}</h3>
                   <a href="{{ route('producto', $item->id) }}" title="{{ $item->producto }}">
-                    <h2 class="font-moderat_700 text-text16 md:text-text24 text-[#111111] line-clamp-3">
+                    <h2 class="font-moderat_700 leading-normal text-text16 md:text-text20 text-[#111111] line-clamp-3">
                       {{ $item->producto }}</h2>
                   </a>
                   <p class="font-moderat_Regular text-text12 md:text-base text-[#565656] line-clamp-3">
