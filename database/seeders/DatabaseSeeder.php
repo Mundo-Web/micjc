@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
             CampaignMarketerSeeder::class,
             */
             RoleSeeder::class,
+            UsernewSeeder::class,
             UsersSeeder::class,
             MessageSeeder::class,
             GeneralSeeder::class,
