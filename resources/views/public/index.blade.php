@@ -715,12 +715,12 @@
                   <p class="font-moderat_Bold text-text12 md:text-text20 text-[#0051FF]">{{ $item->categories->name }}
                   </p>
                   <a href="{{ route('post', $item->id) }}">
-                    <h2 class="text-[#082252] font-moderat_Bold text-text16 md:text-text28">
+                    <h2 class="text-[#082252] font-moderat_Bold text-text16 md:text-text28 line-clamp-2">
                       {{ $item->title }}
                     </h2>
                   </a>
 
-                  <p class="text-[#565656] font-moderat_Regular text-text12 md:text-text20 line-clamp-2">
+                  <p class="text-[#565656] font-moderat_Regular text-text12 md:text-text20 line-clamp-2 h-12 text-ellipsis">
                     {!! $item->description !!}
                   </p>
                 </div>
@@ -747,13 +747,12 @@
                   <p class="font-moderat_Bold text-text12 md:text-text20 text-[#0051FF]">{{ $item->categories->name }}
                   </p>
                   <a href="{{ route('post', $item->id) }}">
-                    <h2 class="text-[#082252] font-moderat_Bold text-text16 md:text-text28">
+                    <h2 class="text-[#082252] font-moderat_Bold text-text16 md:text-text28 line-clamp-2">
                       {{ $item->title }}
                     </h2>
                   </a>
 
-                  <p class="text-[#565656] font-moderat_Regular text-text12 md:text-text20 line-clamp-2">
-
+                  <p class="text-[#565656] font-moderat_Regular text-text12 md:text-text20 line-clamp-2 h-12 text-ellipsis">
                     {!! $item->description !!}
                   </p>
                 </div>
