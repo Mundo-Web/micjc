@@ -721,7 +721,7 @@
                   </a>
 
                   <p
-                    class="text-[#565656] font-moderat_Regular text-text12 line-clamp-2 h-12 overflow-hidden text-ellipsis">
+                    class="text-[#565656] font-moderat_Regular text-sm line-clamp-2 h-12 overflow-hidden text-ellipsis">
                     {!! strip_tags($item->description) !!}
                   </p>
                 </div>
@@ -754,7 +754,7 @@
                   </a>
 
                   <p
-                    class=" text-[#565656] font-moderat_Regular text-text12 line-clamp-2 h-12 overflow-hidden text-ellipsis">
+                    class=" text-[#565656] font-moderat_Regular text-sm line-clamp-2 h-12 overflow-hidden text-ellipsis">
                     {!! strip_tags($item->description) !!}
                   </p>
                 </div>
