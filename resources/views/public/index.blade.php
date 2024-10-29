@@ -720,10 +720,10 @@
                     </h2>
                   </a>
 
-                  <div
+                  <p
                     class="text-[#565656] font-moderat_Regular text-text12 md:text-text20 line-clamp-2 h-12 overflow-hidden text-ellipsis">
                     {{ strip_tags($item->description) }}
-                  </div>
+                  </p>
                 </div>
 
                 <div
@@ -753,10 +753,10 @@
                     </h2>
                   </a>
 
-                  <div
+                  <p
                     class=" text-[#565656] font-moderat_Regular text-text12 md:text-text20 line-clamp-2 h-12 overflow-hidden text-ellipsis">
                     {{ strip_tags($item->description) }}
-                  </div>
+                  </p>
                 </div>
 
                 <div
