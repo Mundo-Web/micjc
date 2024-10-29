@@ -720,9 +720,9 @@
                     </h2>
                   </a>
 
-                  <p class="text-[#565656] font-moderat_Regular text-text12 md:text-text20 line-clamp-2 h-12 text-ellipsis">
+                  <div class="prose text-[#565656] font-moderat_Regular text-text12 md:text-text20 line-clamp-2 h-12 text-ellipsis">
                     {!! $item->description !!}
-                  </p>
+                  </div>
                 </div>
 
                 <div
@@ -752,9 +752,9 @@
                     </h2>
                   </a>
 
-                  <p class="text-[#565656] font-moderat_Regular text-text12 md:text-text20 line-clamp-2 h-12 text-ellipsis">
+                  <div class="prose text-[#565656] font-moderat_Regular text-text12 md:text-text20 line-clamp-2 h-12 text-ellipsis">
                     {!! $item->description !!}
-                  </p>
+                  </div>
                 </div>
 
                 <div
