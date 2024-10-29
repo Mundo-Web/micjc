@@ -31,11 +31,11 @@
     }
 
     /*  .bg__mobile {
-                                                                                                                                                                                                                              background-repeat: no-repeat;
-                                                                                                                                                                                                                              background-size: cover;
-                                                                                                                                                                                                                              background-position: center;
-                                                                                                                                                                                                                              background-image: url({{ asset('images/img/image_3.png') }});
-                                                                                                                                                                                                                          } */
+                                                                                                                                                                                                                                background-repeat: no-repeat;
+                                                                                                                                                                                                                                background-size: cover;
+                                                                                                                                                                                                                                background-position: center;
+                                                                                                                                                                                                                                background-image: url({{ asset('images/img/image_3.png') }});
+                                                                                                                                                                                                                            } */
 
     .fondo__slider-desktop {
       background-image: none;
@@ -509,7 +509,8 @@
                 <div class="flex flex-col gap-3">
                   <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">{{ $item->extracto }}</h3>
                   <a href="{{ route('producto', $item->id) }}">
-                    <h2 class="font-moderat_700 leading-normal text-text16 md:text-text20 text-[#111111] line-clamp-3 tracking-tight">
+                    <h2
+                      class="font-moderat_700 leading-normal text-text16 md:text-text20 text-[#111111] line-clamp-3 tracking-tight">
                       {{ $item->producto }}</h2>
                   </a>
 
@@ -719,8 +720,8 @@
                     </h2>
                   </a>
 
-                  <p class="text-[#565656] font-moderat_Regular text-text12 md:text-text20 ">
-                    {!! Str::limit($item->description, 150, '...') !!}
+                  <p class="text-[#565656] font-moderat_Regular text-text12 md:text-text20 line-clamp-2">
+                    {!! $item->description !!}
                   </p>
                 </div>
 
@@ -729,7 +730,7 @@
                   <p class="hidden lg:block">{{ Carbon::parse($item->created_at)->translatedFormat('d \d\e F \d\e Y') }}
                   </p>
                   <p class="block lg:hidden">{{ Carbon::parse($item->created_at)->format('d/m/Y') }}</p>
-                  <img src="{{ asset('images/svg/image_17.svg') }}" alt="point" class="w-[3px] md:w-[6px]">
+                  <img src="{{ asset('images/svg/image_17.svg') }}" alt="point" class="w-[3px] md:w-[6px]" />
                   {{-- <p>Leído hace 5 min</p> --}}
                 </div>
 
@@ -751,9 +752,9 @@
                     </h2>
                   </a>
 
-                  <p class="text-[#565656] font-moderat_Regular text-text12 md:text-text20 ">
+                  <p class="text-[#565656] font-moderat_Regular text-text12 md:text-text20 line-clamp-2">
 
-                    {!! Str::limit($item->description, 150, '...') !!}
+                    {!! $item->description !!}
                   </p>
                 </div>
 
