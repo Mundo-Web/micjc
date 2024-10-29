@@ -31,11 +31,11 @@
     }
 
     /*  .bg__mobile {
-                                                                                                                                                                                                                                background-repeat: no-repeat;
-                                                                                                                                                                                                                                background-size: cover;
-                                                                                                                                                                                                                                background-position: center;
-                                                                                                                                                                                                                                background-image: url({{ asset('images/img/image_3.png') }});
-                                                                                                                                                                                                                            } */
+                                                                                                                                                                                                                                    background-repeat: no-repeat;
+                                                                                                                                                                                                                                    background-size: cover;
+                                                                                                                                                                                                                                    background-position: center;
+                                                                                                                                                                                                                                    background-image: url({{ asset('images/img/image_3.png') }});
+                                                                                                                                                                                                                                } */
 
     .fondo__slider-desktop {
       background-image: none;
@@ -720,8 +720,9 @@
                     </h2>
                   </a>
 
-                  <div class="text-[#565656] font-moderat_Regular text-text12 md:text-text20 line-clamp-2 h-12 overflow-hidden text-ellipsis">
-                    {!! $item->description !!}
+                  <div
+                    class="text-[#565656] font-moderat_Regular text-text12 md:text-text20 line-clamp-2 h-12 overflow-hidden text-ellipsis">
+                    {{ strip_tags($item->description) }}
                   </div>
                 </div>
 
@@ -752,8 +753,9 @@
                     </h2>
                   </a>
 
-                  <div class=" text-[#565656] font-moderat_Regular text-text12 md:text-text20 line-clamp-2 h-12 overflow-hidden text-ellipsis">
-                    {!! $item->description !!}
+                  <div
+                    class=" text-[#565656] font-moderat_Regular text-text12 md:text-text20 line-clamp-2 h-12 overflow-hidden text-ellipsis">
+                    {{ strip_tags($item->description) }}
                   </div>
                 </div>
 
