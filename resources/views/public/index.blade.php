@@ -715,7 +715,7 @@
                   <p class="font-moderat_Bold text-text12 md:text-text20 text-[#0051FF]">{{ $item->categories->name }}
                   </p>
                   <a href="{{ route('post', $item->id) }}">
-                    <h2 class="text-[#082252] font-moderat_Bold text-text16 md:text-text28 line-clamp-2">
+                    <h2 class="text-[#082252] font-moderat_Bold text-text16 md:text-text28 line-clamp-2 h-[84px]">
                       {{ $item->title }}
                     </h2>
                   </a>
@@ -748,7 +748,7 @@
                   <p class="font-moderat_Bold text-text12 md:text-text20 text-[#0051FF]">{{ $item->categories->name }}
                   </p>
                   <a href="{{ route('post', $item->id) }}">
-                    <h2 class="text-[#082252] font-moderat_Bold text-text16 md:text-text28 line-clamp-2">
+                    <h2 class="text-[#082252] font-moderat_Bold text-text16 md:text-text28 line-clamp-2 h-[84px]">
                       {{ $item->title }}
                     </h2>
                   </a>
