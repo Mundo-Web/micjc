@@ -402,7 +402,7 @@
                 <img src="{{ asset($category[1]->url_image . $category[1]->name_image) }}" alt="impresora"
                   class="hidden md:block w-full object-contain object-right aspect-square md:aspect-video lg:aspect-square xl:aspect-[4/3] group-hover:scale-110 transition-transform duration-500">
                 <img src="{{ asset($category[1]->url_image . $category[1]->name_image) }}" alt="impresora"
-                  class="block md:hidden w-full object-contain object-right aspect-square md:aspect-video lg:aspect-square xl:aspect-[4/3] group-hover:scale-110 transition-transform duration-500">
+                  class="max-w-[70%] block md:hidden w-full object-contain object-right aspect-square md:aspect-video lg:aspect-square xl:aspect-[4/3] group-hover:scale-110 transition-transform duration-500">
               </div>
 
             </div>
@@ -415,7 +415,7 @@
                 <img src="{{ asset($category[2]->url_image . $category[2]->name_image) }}" alt="impresora"
                   class="hidden md:block w-full object-contain object-left aspect-square md:aspect-video lg:aspect-square xl:aspect-[4/3] group-hover:scale-110 transition-transform duration-500">
                 <img src="{{ asset($category[2]->url_image . $category[2]->name_image) }}" alt="impresora"
-                  class="block md:hidden w-full object-contain object-left aspect-square md:aspect-video lg:aspect-square xl:aspect-[4/3] group-hover:scale-110 transition-transform duration-500">
+                  class="max-w-[70%] block md:hidden w-full object-contain object-left aspect-square md:aspect-video lg:aspect-square xl:aspect-[4/3] group-hover:scale-110 transition-transform duration-500">
               </div>
 
               <div class="flex flex-col justify-center gap-2 basis-full md:basis-2/6 items-end py-5 pl-5">
