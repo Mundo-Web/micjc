@@ -155,29 +155,44 @@
     </section>
 
     <section class="w-11/12 mx-auto py-5">
-      <div class="grid grid-cols-2 md:grid-cols-4">
-        <div class="flex flex-col gap-3 items-center w-full">
-          <p class="text-[#0711E5] text-text52 font-moderat_700 text-center w-full md:text-center">1k+</p>
-          <p class="text-[#111111] text-text16 font-moderat_Medium w-full md:w-1/2 text-center md:text-center">
-            Clientes activos</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div class="flex flex-row items-center w-full border-r xl:border-[#0711E5]">
+            <div class="p-3"><img class="max-w-24" src="{{asset('images/img/1mic.png')}}"/></div>
+            <div class="flex flex-col gap-1 items-center justify-start pr-3">
+              <p class="text-[#0711E5] text-lg font-moderat_700 w-full">COMPRA Y RECOGE</p>
+              <p class="text-[#111111] text-base font-moderat_Medium w-full leading-none">
+                Separa tu producto y recojelo en nuestro punto
+              </p>
+            </div>
         </div>
-        <div class="flex flex-col gap-3 items-center md:items-center w-full">
-          <p class="text-[#0711E5] text-text52 font-moderat_700 w-full text-center">45+</p>
-          <p class="text-[#111111] text-text16 font-moderat_Medium w-full md:w-1/2 text-center">Marcas exclusivas
-          </p>
+        <div class="flex flex-row items-center w-full border-r xl:border-[#0711E5]">
+          <div class="p-3"><img class="max-w-24" src="{{asset('images/img/mic2.png')}}"/></div>
+          <div class="flex flex-col gap-1 items-center justify-start pr-3">
+            <p class="text-[#0711E5] text-lg font-moderat_700 w-full">DELIVERY GRATIS</p>
+            <p class="text-[#111111] text-base font-moderat_Medium w-full leading-none">
+              En productos seleccionados
+            </p>
+          </div>
         </div>
-        <div class="flex flex-col gap-3 items-center md:items-center w-full">
-          <p class="text-[#0711E5] text-text52 font-moderat_700 w-full text-center">10k+</p>
-          <p class="text-[#111111] text-text16 font-moderat_Medium w-full md:w-1/2 text-center">Órdenes
-            Procesadas
-            Anualmente</p>
+        <div class="flex flex-row items-center w-full border-r xl:border-[#0711E5]">
+          <div class="p-3"><img class="max-w-24" src="{{asset('images/img/mic3.png')}}"/></div>
+          <div class="flex flex-col gap-1 items-center justify-start pr-3">
+            <p class="text-[#0711E5] text-lg font-moderat_700 w-full">PAGO SEGURO</p>
+            <p class="text-[#111111] text-base font-moderat_Medium w-full leading-none">
+              Tarjeta crédito o débito, yape, plin, etc.
+            </p>
+          </div>
         </div>
-        <div class="flex flex-col gap-3 items-center w-full">
-          <p class="text-[#0711E5] text-text52 font-moderat_700 w-full text-center md:text-center">1.8M+</p>
-          <p class="text-[#111111] text-text16 font-moderat_Medium w-full md:w-1/2 text-center">Unidades
-            entregadas
-            Anualmente</p>
+        <div class="flex flex-row items-center w-full xl:border-[#0711E5]">
+          <div class="p-3"><img class="max-w-24" src="{{asset('images/img/mic4.png')}}"/></div>
+          <div class="flex flex-col gap-1 items-center justify-start pr-3">
+            <p class="text-[#0711E5] text-lg font-moderat_700 w-full">ASESORAMIENTO</p>
+            <p class="text-[#111111] text-base font-moderat_Medium w-full leading-none">
+              Toda la información necesaria para tu compra
+            </p>
+          </div>
         </div>
+
       </div>
     </section>
 

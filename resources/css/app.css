@@ -50,7 +50,7 @@
     /*  */
 
     .enlaces__after::after {
-        @apply content-[''] w-full h-[0.5px] bg-[#0051FF] block;
+        @apply content-[''] w-full h-[0.5px] bg-white block;
     }
 
     [type="radio"] {
