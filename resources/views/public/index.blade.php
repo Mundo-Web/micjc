@@ -224,7 +224,7 @@
 
           @if (count($category->take(3)) == 1)
             <div
-              class="group col-span-1 lg:col-span-4 bg-[#F3F3F3] hover:bg-[#0051FF] p-5 md:p-10 flex flex-col md:flex-row gap-5 justify-center overflow-hidden rounded-2xl"
+              class="group col-span-1 lg:col-span-4 bg-[#F3F3F3] hover:bg-[#0051FF] p-5 md:p-10 flex flex-col md:flex-row gap-5 md:gap-10 justify-center overflow-hidden rounded-2xl"
               data-aos="fade-up" data-aos-offset="150">
              
               <div class="flex flex-col gap-5 w-full md:w-1/2 items-start justify-center">
