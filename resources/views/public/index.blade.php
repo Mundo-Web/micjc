@@ -446,8 +446,8 @@
       </section>
     @endif
 
+    @if (count($productosDestacados) > 0)
     <section class="w-full px-[5%] py-10 lg:py-16 mt-10 lg:mt-20 bg-[#f3f3f3]">
-      @if (count($productosDestacados) > 0)
         <div class="flex flex-col md:flex-row md:justify-between items-start md:items-center py-5 gap-5 md:gap-0">
           <p class="font-moderat_700 text-text32 md:text-text36 tracking-tighter leading-normal">Las mejores impresoras del mes</p>
           <div class="flex justify-start items-center">
@@ -533,9 +533,8 @@
             </div>
           @endforeach
         </div>
-      @endif
     </section>
-
+    @endif
 
     @if (count($banners) > 0)
       <section class="w-full px-[5%] pt-10 md:pt-20">
@@ -627,90 +626,91 @@
       </section>
     @endif  
 
-    <section class="w-full px-[5%] py-10 lg:py-16 mt-10 lg:mt-20 bg-[#f3f3f3]">
-      <div class="grid grid-cols-1 md:grid-cols-6  gap-5 lg:gap-7">
-          <div class="md:col-span-2 flex flex-col items-center justify-center">
-            <img src="{{ asset('images/img/bannervertical.PNG') }}" alt="ss"
-                  class="w-full object-contain"
-                  onerror="this.onerror=null;this.src='/images/img/noimagen.jpg';" />
-          </div>
+    @if (count($ofertasProductos) > 0)
+      <section class="w-full px-[5%] py-10 lg:py-16 mt-10 lg:mt-20 bg-[#f3f3f3]">
+        <div class="grid grid-cols-1 md:grid-cols-6  gap-5 lg:gap-7">
+            <div class="md:col-span-2 flex flex-col items-center justify-center">
+              <img src="{{ asset('images/img/bannervertical.PNG') }}" alt="ss"
+                    class="w-full object-contain"
+                    onerror="this.onerror=null;this.src='/images/img/noimagen.jpg';" />
+            </div>
 
-          <div class="md:col-span-4 flex flex-col justify-center gap-5">
-            <p class="font-moderat_700 text-text32 md:text-text36">En Oferta</p>
-            <div>
-              <div class="swiper ofertas">
-                <div class="swiper-wrapper">
-    
-                @foreach ($ofertasProductos as $item)
-                  <div class="swiper-slide">
-                    <div class="flex flex-col gap-5 bg-white rounded-xl overflow-hidden" data-aos="fade-up" data-aos-offset="150">
-                      
-                      <div class="bg-white flex flex-col justify-center relative">
-                      
-                        <div class="flex justify-start items-center absolute top-[5%] left-[5%]">
-                          @foreach ($item->tags as $tag)
-                            <span class="font-moderat_500 text-text10 md:text-text20 bg-[#0051FF] text-white py-1 px-2">
-                              {{ $tag->name }}</span>
-                          @endforeach
+            <div class="md:col-span-4 flex flex-col justify-center gap-5">
+              <p class="font-moderat_700 text-text32 md:text-text36">En Oferta</p>
+              <div>
+                <div class="swiper ofertas">
+                  <div class="swiper-wrapper">
+      
+                  @foreach ($ofertasProductos as $item)
+                    <div class="swiper-slide">
+                      <div class="flex flex-col gap-5 bg-white rounded-xl overflow-hidden" data-aos="fade-up" data-aos-offset="150">
+                        
+                        <div class="bg-white flex flex-col justify-center relative">
+                        
+                          <div class="flex justify-start items-center absolute top-[5%] left-[5%]">
+                            @foreach ($item->tags as $tag)
+                              <span class="font-moderat_500 text-text10 md:text-text20 bg-[#0051FF] text-white py-1 px-2">
+                                {{ $tag->name }}</span>
+                            @endforeach
+                          </div>
+          
+                          <div>
+                            <div class="relative flex justify-center items-center aspect-square">
+                              @if ($item->imagen)
+                                <img x-show="{{ isset($item->imagen_ambiente) }} || !showAmbiente"
+                                  x-transition:enter="transition ease-out duration-300 transform"
+                                  x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+                                  x-transition:leave="transition ease-in duration-300 transform"
+                                  x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
+                                  src="{{ asset($item->imagen) }}" alt="{{ $item->name }}"
+                                  class="w-full object-contain md:object-cover absolute inset-0 aspect-square"
+                                  onerror="this.onerror=null;this.src='/images/img/noimagen.jpg';" />
+                              @else
+                                <img x-show="{{ isset($item->imagen_ambiente) }} || !showAmbiente"
+                                  x-transition:enter="transition ease-out duration-300 transform"
+                                  x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+                                  x-transition:leave="transition ease-in duration-300 transform"
+                                  x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
+                                  src="{{ asset('images/img/noimagen.jpg') }}" alt="imagen_alternativa"
+                                  class="w-full object-contain md:object-cover absolute inset-0 aspect-square" />
+                              @endif
+                            </div>
+                          </div>
                         </div>
-        
-                        <div>
-                          <div class="relative flex justify-center items-center aspect-square">
-                            @if ($item->imagen)
-                              <img x-show="{{ isset($item->imagen_ambiente) }} || !showAmbiente"
-                                x-transition:enter="transition ease-out duration-300 transform"
-                                x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
-                                x-transition:leave="transition ease-in duration-300 transform"
-                                x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
-                                src="{{ asset($item->imagen) }}" alt="{{ $item->name }}"
-                                class="w-full object-contain md:object-cover absolute inset-0 aspect-square"
-                                onerror="this.onerror=null;this.src='/images/img/noimagen.jpg';" />
+                        
+                        <div class="flex flex-col bg-white  p-2 md:p-3">
+                          <div class="flex flex-col gap-2">
+                            
+                            <a href="/catalogo?marca={{$item->marca_id}}"><h3 class="font-moderat_Medium text-text12 md:text-sm text-[#111111]">{{ $item->marca->name ?? "S/M" }}</h3></a>
+          
+                            <a href="{{ route('producto', $item->id) }}">
+                              <h2
+                                class="font-moderat_700 leading-normal text-text16 md:text-lg text-[#111111] line-clamp-2 tracking-tight">
+                                {{ $item->producto }}</h2>
+                            </a>
+                        
+                            @if ($item->descuento == 0)
+                                <span class="text-[#111111] text-text16 md:text-xl font-space_grotesk font-bold md:font-medium"> S/. {{ $item->precio }}</span>
                             @else
-                              <img x-show="{{ isset($item->imagen_ambiente) }} || !showAmbiente"
-                                x-transition:enter="transition ease-out duration-300 transform"
-                                x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
-                                x-transition:leave="transition ease-in duration-300 transform"
-                                x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
-                                src="{{ asset('images/img/noimagen.jpg') }}" alt="imagen_alternativa"
-                                class="w-full object-contain md:object-cover absolute inset-0 aspect-square" />
+                              <div class="flex flex-row gap-2 items-center">
+                                <span class="text-[#111111] text-text14 line-through font-space_grotesk font-bold md:font-medium">S/. {{ $item->descuento }}</span>
+                                <span class="text-[#111111] text-text16 md:text-xl font-space_grotesk font-bold md:font-medium">S/. {{ $item->precio }}</span>
+                              </div>
                             @endif
                           </div>
                         </div>
+          
                       </div>
-                      
-                      <div class="flex flex-col bg-white  p-2 md:p-3">
-                        <div class="flex flex-col gap-2">
-                          
-                          <a href="/catalogo?marca={{$item->marca_id}}"><h3 class="font-moderat_Medium text-text12 md:text-sm text-[#111111]">{{ $item->marca->name ?? "S/M" }}</h3></a>
-        
-                          <a href="{{ route('producto', $item->id) }}">
-                            <h2
-                              class="font-moderat_700 leading-normal text-text16 md:text-lg text-[#111111] line-clamp-2 tracking-tight">
-                              {{ $item->producto }}</h2>
-                          </a>
-                      
-                          @if ($item->descuento == 0)
-                              <span class="text-[#111111] text-text16 md:text-xl font-space_grotesk font-bold md:font-medium"> S/. {{ $item->precio }}</span>
-                          @else
-                            <div class="flex flex-row gap-2 items-center">
-                              <span class="text-[#111111] text-text14 line-through font-space_grotesk font-bold md:font-medium">S/. {{ $item->descuento }}</span>
-                              <span class="text-[#111111] text-text16 md:text-xl font-space_grotesk font-bold md:font-medium">S/. {{ $item->precio }}</span>
-                            </div>
-                          @endif
-                        </div>
-                      </div>
-        
                     </div>
+                  @endforeach
+
                   </div>
-                @endforeach
-
                 </div>
-              </div>
-            </div> 
-          </div>
-      </div>
-    </section>
-
+              </div> 
+            </div>
+        </div>
+      </section>
+    @endif  
 
     {{-- <section class="w-full px-[5%] pt-20">
       @if (count($ofertasProductos))
@@ -876,103 +876,104 @@
       </section>
     @endif
 
+    @if (count($blog) > 0)
+      <section class="w-11/12 mx-auto py-16">
+        
 
-    <section class="w-11/12 mx-auto py-16">
-      @if (count($blog) > 0)
 
+          <div class="flex flex-col gap-10">
+            <div class="flex flex-col justify-center gap-3 md:flex-row md:justify-between md:items-center">
+              <div class="flex flex-col gap-5 basis-8/12">
+                <h2 class="font-moderat_700 text-text32 md:text-text44 text-[#111111] leading-none md:leading-tight">
+                  Últimas Publicaciones</h2>
+                <p class="text-[#565656] text-text18 font-moderat_Regular">Descubre las últimas novedades en
+                  tecnología. Encuentra desde tintas y toners para impresoras hasta teclados mecánicos y accesorios gamer.
+                  ¡Mejora tu setup con nuestros monitores de alta resolución y laptops de última generación!</p>
+              </div>
 
-        <div class="flex flex-col gap-10">
-          <div class="flex flex-col justify-center gap-3 md:flex-row md:justify-between md:items-center">
-            <div class="flex flex-col gap-5 basis-8/12">
-              <h2 class="font-moderat_700 text-text32 md:text-text44 text-[#111111] leading-none md:leading-tight">
-                Últimas Publicaciones</h2>
-              <p class="text-[#565656] text-text18 font-moderat_Regular">Descubre las últimas novedades en
-                tecnología. Encuentra desde tintas y toners para impresoras hasta teclados mecánicos y accesorios gamer.
-                ¡Mejora tu setup con nuestros monitores de alta resolución y laptops de última generación!</p>
+              <div class="flex justify-end items-center basis-4/12">
+                <a href="{{ route('blog') }}"
+                  class="font-moderat_Bold text-base md:text-lg py-3 rounded-xl px-5 bg-[#0051FF] text-white md:w-auto text-center w-full">Ver
+                  más Publicaciones</a>
+              </div>
             </div>
 
-            <div class="flex justify-end items-center basis-4/12">
-              <a href="{{ route('blog') }}"
-                class="font-moderat_Bold text-base md:text-lg py-3 rounded-xl px-5 bg-[#0051FF] text-white md:w-auto text-center w-full">Ver
-                más Publicaciones</a>
+            <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-10">
+
+              @foreach ($blog as $item)
+                <div class="hidden lg:flex  flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
+                  <div>
+                    <img src="{{ asset($item->url_image . $item->name_image) }} " alt="publicacion"
+                      class="w-full aspect-video object-cover object-center shadow-lg rounded-lg">
+                  </div>
+                  <div class="flex flex-col gap-2">
+                    <p class="font-moderat_Bold text-text12 md:text-text20 text-[#0051FF]">{{ $item->categories->name ?? "Sin categoria"}}
+                    </p>
+                    <a href="{{ route('post', $item->id) }}">
+                      <h2 class="text-[#082252] font-moderat_Bold text-text16 md:text-text28 line-clamp-2 h-[84px]">
+                        {{ $item->title }}
+                      </h2>
+                    </a>
+
+                    <p
+                      class="text-[#565656] font-moderat_Regular text-sm line-clamp-2 h-12 overflow-hidden text-ellipsis">
+                      {!! strip_tags($item->description) !!}
+                    </p>
+                  </div>
+
+                  <div
+                    class="flex justify-start items-center text-text10 md:text-text14 text-[#0051FF] font-moderat_Medium gap-1 md:gap-2">
+                    <p class="hidden lg:block">{{ Carbon::parse($item->created_at)->translatedFormat('d \d\e F \d\e Y') }}
+                    </p>
+                    <p class="block lg:hidden">{{ Carbon::parse($item->created_at)->format('d/m/Y') }}</p>
+                    <img src="{{ asset('images/svg/image_17.svg') }}" alt="point" class="w-[3px] md:w-[6px]" />
+                    {{-- <p>Leído hace 5 min</p> --}}
+                  </div>
+
+                </div>
+              @endforeach
+
+
+              @foreach ($blog as $item)
+                <div class="flex lg:hidden flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
+                  <div>
+                    <img src="{{ asset($item->url_image . $item->name_image) }} " alt="publicacion" class="w-full">
+                  </div>
+                  <div class="flex flex-col gap-2">
+                    <p class="font-moderat_Bold text-text12 md:text-text20 text-[#0051FF]">{{ $item->categories->name }}
+                    </p>
+                    <a href="{{ route('post', $item->id) }}">
+                      <h2 class="text-[#082252] font-moderat_Bold text-text16 md:text-text28 line-clamp-2 h-[84px]">
+                        {{ $item->title }}
+                      </h2>
+                    </a>
+
+                    <p
+                      class=" text-[#565656] font-moderat_Regular text-sm line-clamp-2 h-12 overflow-hidden text-ellipsis">
+                      {!! strip_tags($item->description) !!}
+                    </p>
+                  </div>
+
+                  <div
+                    class="flex justify-start items-center text-text10 md:text-text14 text-[#0051FF] font-moderat_Medium gap-1 md:gap-2">
+                    <p class="hidden lg:block">{{ Carbon::parse($item->created_at)->translatedFormat('d \d\e F \d\e Y') }}
+                    </p>
+                    <p class="block lg:hidden">{{ Carbon::parse($item->created_at)->format('d/m/Y') }}</p>
+                    <img src="{{ asset('images/svg/image_17.svg') }}" alt="point" class="w-[3px] md:w-[6px]">
+                    {{-- <p>Leído hace 5 min</p> --}}
+                  </div>
+
+                </div>
+              @endforeach
+
             </div>
           </div>
 
-          <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-10">
+      
 
-            @foreach ($blog as $item)
-              <div class="hidden lg:flex  flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
-                <div>
-                  <img src="{{ asset($item->url_image . $item->name_image) }} " alt="publicacion"
-                    class="w-full aspect-video object-cover object-center shadow-lg rounded-lg">
-                </div>
-                <div class="flex flex-col gap-2">
-                  <p class="font-moderat_Bold text-text12 md:text-text20 text-[#0051FF]">{{ $item->categories->name ?? "Sin categoria"}}
-                  </p>
-                  <a href="{{ route('post', $item->id) }}">
-                    <h2 class="text-[#082252] font-moderat_Bold text-text16 md:text-text28 line-clamp-2 h-[84px]">
-                      {{ $item->title }}
-                    </h2>
-                  </a>
-
-                  <p
-                    class="text-[#565656] font-moderat_Regular text-sm line-clamp-2 h-12 overflow-hidden text-ellipsis">
-                    {!! strip_tags($item->description) !!}
-                  </p>
-                </div>
-
-                <div
-                  class="flex justify-start items-center text-text10 md:text-text14 text-[#0051FF] font-moderat_Medium gap-1 md:gap-2">
-                  <p class="hidden lg:block">{{ Carbon::parse($item->created_at)->translatedFormat('d \d\e F \d\e Y') }}
-                  </p>
-                  <p class="block lg:hidden">{{ Carbon::parse($item->created_at)->format('d/m/Y') }}</p>
-                  <img src="{{ asset('images/svg/image_17.svg') }}" alt="point" class="w-[3px] md:w-[6px]" />
-                  {{-- <p>Leído hace 5 min</p> --}}
-                </div>
-
-              </div>
-            @endforeach
-
-
-            @foreach ($blog as $item)
-              <div class="flex lg:hidden flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
-                <div>
-                  <img src="{{ asset($item->url_image . $item->name_image) }} " alt="publicacion" class="w-full">
-                </div>
-                <div class="flex flex-col gap-2">
-                  <p class="font-moderat_Bold text-text12 md:text-text20 text-[#0051FF]">{{ $item->categories->name }}
-                  </p>
-                  <a href="{{ route('post', $item->id) }}">
-                    <h2 class="text-[#082252] font-moderat_Bold text-text16 md:text-text28 line-clamp-2 h-[84px]">
-                      {{ $item->title }}
-                    </h2>
-                  </a>
-
-                  <p
-                    class=" text-[#565656] font-moderat_Regular text-sm line-clamp-2 h-12 overflow-hidden text-ellipsis">
-                    {!! strip_tags($item->description) !!}
-                  </p>
-                </div>
-
-                <div
-                  class="flex justify-start items-center text-text10 md:text-text14 text-[#0051FF] font-moderat_Medium gap-1 md:gap-2">
-                  <p class="hidden lg:block">{{ Carbon::parse($item->created_at)->translatedFormat('d \d\e F \d\e Y') }}
-                  </p>
-                  <p class="block lg:hidden">{{ Carbon::parse($item->created_at)->format('d/m/Y') }}</p>
-                  <img src="{{ asset('images/svg/image_17.svg') }}" alt="point" class="w-[3px] md:w-[6px]">
-                  {{-- <p>Leído hace 5 min</p> --}}
-                </div>
-
-              </div>
-            @endforeach
-
-          </div>
-        </div>
-
-      @endif
-
-    </section>
-
+      </section>
+    @endif
+    
   </main>
 
 @section('scripts_importados')
