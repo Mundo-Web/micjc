@@ -816,7 +816,7 @@
               <div class="swiper-slide">
                 <a href="/catalogo?marca={{$logo->id}}">
                 <div class="flex justify-center items-center">
-                  <img src="{{ asset($logo->description) }}" alt="marcas">
+                  <img src="{{ asset($logo->description) }}" onerror="this.onerror=null;this.src='/images/img/noimagen.jpg';" alt="marcas">
                 </div>
                 </a>
               </div>
