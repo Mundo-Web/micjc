@@ -3,7 +3,7 @@
 
     <section class="py-4 border-b border-slate-100 dark:border-slate-700">
       <a href="{{ route('logos.create') }}"
-        class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded text-sm">Agregar logo</a>
+        class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded text-sm">Agregar banner</a>
     </section>
 
 
@@ -12,7 +12,7 @@
 
 
       <header class="px-5 py-4 border-b border-slate-100 dark:border-slate-700">
-        <h2 class="font-semibold text-slate-800 dark:text-slate-100 text-2xl tracking-tight">Logos</h2>
+        <h2 class="font-semibold text-slate-800 dark:text-slate-100 text-2xl tracking-tight">Banners</h2>
       </header>
       <div class="p-3">
 
@@ -23,7 +23,7 @@
             <thead>
               <tr>
                 <th>Titulo</th>
-                <th>Descripcion</th>
+                <th>Redireccion</th>
                 <th>Imagen</th>
                 <th>Acciones</th>
               </tr>
@@ -33,10 +33,7 @@
                 <tr>
                   <td>{{ $logo->title }}</td>
                   <td class="truncate w-10">{{ $logo->description }}</td>
-
-
-
-                  <td><img src="{{ asset($logo->url_image) }}" alt=""></td>
+                  <td><img class="w-60 h-16 object-cover" src="{{ asset($logo->url_image) }}" alt=""></td>
                   <td>
                     <form action=" " method="POST">
                       @csrf
@@ -55,7 +52,7 @@
             <tfoot>
               <tr>
                 <th>Titulo</th>
-                <th>Descripcion</th>
+                <th>Redireccion</th>
                 <th>Imagen</th>
                 <th>Acciones</th>
               </tr>

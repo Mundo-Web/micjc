@@ -38,7 +38,7 @@ class LogosClientController extends Controller
     {
         $manager = new ImageManager(new Driver());
         $img = $manager->read($file);
-        $img->coverDown(160, 40, 'center'); /* recorte de imageness ->avisar */
+       
 
         if (!file_exists($route)) {
             mkdir($route, 0777, true); // Se crea la ruta con permisos de lectura, escritura y ejecución
@@ -70,6 +70,7 @@ class LogosClientController extends Controller
         $post->status = 1;
 
         $post->save();
+        
         return redirect()->route('logos.index')->with('success', 'Publicación creado exitosamente.');
     }
 

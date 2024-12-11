@@ -23,7 +23,7 @@
             <thead>
               <tr>
                 <th>Nombre</th>
-                <th>Descripción</th>
+                <th>Imagen</th>
 
                 <th>Visible</th>
 
@@ -35,7 +35,7 @@
               @foreach ($marcas as $item)
                 <tr>
                   <td>{{ $item->name }}</td>
-                  <td>{{ $item->description }}</td>
+                  <td><div><img class="w-40 h-16 object-contain" src="{{asset($item->description)}}" onerror="this.onerror=null;this.src='/images/img/noimagen.jpg';"/></div></td>
 
                   <td>
                     <form method="POST" action="">
@@ -77,7 +77,7 @@
             <tfoot>
               <tr>
                 <th>Nombre</th>
-                <th>Descripción</th>
+                <th>Imagen</th>
 
                 <th>Visible</th>
                 <th>Acciones</th>

@@ -56,18 +56,19 @@ class IndexController extends Controller
     $slider = Slider::where('status', '=', 1)->where('visible', '=', 1)->get();
     $productos = Products::with('tags')->get();
     $productosDestacados = Products::where('status', '=', 1)->where('visible', '=', 1)->where('destacar', '=', 1)->orderBy('id', 'DESC')->limit(4)->get();
-    $ofertasProductos = Products::where('status', '=', 1)->where('visible', '=', 1)->where('liquidacion', '=', 1)->orderBy('id', 'DESC')->limit(4)->get();
+    $ofertasProductos = Products::where('status', '=', 1)->where('visible', '=', 1)->where('liquidacion', '=', 1)->orderBy('id', 'DESC')->get();
+    $cyber = Products::where('status', '=', 1)->where('visible', '=', 1)->where('cyber', '=', 1)->orderBy('id', 'DESC')->get();
 
     $general = General::all()->first();
 
     $testimonios = Testimony::where('status', '=', 1)->where('visible', '=', 1)->get();
     $blog = Blog::where('status', '=', 1)->where('visible', '=', 1)->orderBy('id', 'DESC')->limit(3)->get();
 
-    $logos = ClientLogos::where('status', 1)->get();
-
+    $logos = Marca::where('status', 1)->where('visible', '=', 1)->get();
+    $banners = ClientLogos::where('status', 1)->get();
     $category = Category::where('status', '=', 1)->where('visible', '=', 1)->where('destacar', '=', 1)->get();
 
-    return view('public.index', compact('productos', 'general', 'testimonios', 'slider', 'logos', 'category', 'productosDestacados', 'ofertasProductos', 'blog'));
+    return view('public.index', compact('cyber', 'banners', 'productos', 'general', 'testimonios', 'slider', 'logos', 'category', 'productosDestacados', 'ofertasProductos', 'blog'));
   }
 
   public function catalogo(Request $request)

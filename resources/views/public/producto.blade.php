@@ -7,7 +7,7 @@
 
 
   <main>
-    <section class="w-11/12 md:w-10/12 mx-auto pt-5">
+    <section class="w-11/12 md:w-10/12 mx-auto pt-10">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16">
         <div class="flex flex-col md:flex-row justify-center  gap-5 md:gap-0">
           <div
@@ -41,10 +41,21 @@
         <div class="flex flex-col gap-5">
           <div class="flex flex-col gap-5 pb-10 border-b-2 border-[#DDDDDD]" data-aos="fade-up" data-aos-offset="150">
             <h2 class="font-moderat_700 text-text40 md:text-text44 text-[#111111]">{{ $producto->producto }}</h2>
-            <p class="font-moderat_Bold text-text24 md:text-text28 text-[#111111]">S/ {{ $producto->precio }}</p>
-            <div class="flex justify-start items-center gap-5">
-
-            </div>
+            
+            @if ($producto->descuento == 0)
+                <span class="font-moderat_Bold text-text24 md:text-text28 text-[#111111]">S/ {{ $producto->precio }}</span>
+            @else
+            @php
+                $porcentajeDescuento = round((($producto->precio - $producto->descuento) / $producto->precio) * 100);
+            @endphp
+              <div class="flex flex-row gap-2 items-center">
+                <span class="font-moderat_Bold text-text24 md:text-text28 text-[#111111]">S/. {{ $producto->descuento }}</span>
+                <span class="text-[#111111] text-text14 line-through font-space_grotesk font-bold md:font-medium">S/. {{ $producto->precio }}</span>
+                <span class="text-white bg-[#0051FF] px-3 py-1 rounded-lg font-space_grotesk font-bold">-{{ $porcentajeDescuento }}%</span>
+              </div>
+            @endif
+           
+            
             <div>
               <input type="number" id="cantidadInput" class="border-2 rounded-lg w-16" value="01" step="1">
             </div>
@@ -138,42 +149,66 @@
 
 
           @foreach ($productosRelacionados as $item)
-            <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
-              <div class="bg-[#F3F3F3] md:w-[266px] md:h-[312px] flex flex-col justify-center pt-5 gap-20 relative">
+            <div class="flex flex-col gap-5 bg-white rounded-xl overflow-hidden" data-aos="fade-up" data-aos-offset="150">
+                    
+              <div class="bg-white flex flex-col justify-center relative">
+              
                 <div class="flex justify-start items-center absolute top-[5%] left-[5%]">
                   @foreach ($item->tags as $tag)
                     <span class="font-moderat_500 text-text10 md:text-text20 bg-[#0051FF] text-white py-1 px-2">
                       {{ $tag->name }}</span>
                   @endforeach
                 </div>
-                <div class="flex justify-center items-center py-10 md:py-20">
-                  <a href="{{ route('producto', $item->id) }}"><img src="{{ asset($item->imagen) }}" alt="impresora"
-                      class="w-[120px] h-[90px]  md:w-[266px] md:h-[330px] object-cover  "></a>
 
+                <div>
+                  <div class="relative flex justify-center items-center aspect-square">
+                    @if ($item->imagen)
+                      <img x-show="{{ isset($item->imagen_ambiente) }} || !showAmbiente"
+                        x-transition:enter="transition ease-out duration-300 transform"
+                        x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+                        x-transition:leave="transition ease-in duration-300 transform"
+                        x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
+                        src="{{ asset($item->imagen) }}" alt="{{ $item->name }}"
+                        class="w-full object-contain md:object-cover absolute inset-0 aspect-square"
+                        onerror="this.onerror=null;this.src='/images/img/noimagen.jpg';" />
+                    @else
+                      <img x-show="{{ isset($item->imagen_ambiente) }} || !showAmbiente"
+                        x-transition:enter="transition ease-out duration-300 transform"
+                        x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+                        x-transition:leave="transition ease-in duration-300 transform"
+                        x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
+                        src="{{ asset('images/img/noimagen.jpg') }}" alt="imagen_alternativa"
+                        class="w-full object-contain md:object-cover absolute inset-0 aspect-square" />
+                    @endif
+                  </div>
                 </div>
               </div>
 
-              <div class="flex flex-col gap-6">
-                <div class="flex flex-col gap-3">
-                  <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">{{ $item->extracto }}</h3>
+              <div class="flex flex-col bg-white  p-2 md:p-3">
+                <div class="flex flex-col gap-2">
+                  
+                  <a href="/catalogo?marca={{$item->marca_id}}"><h3 class="font-moderat_Medium text-text12 md:text-sm text-[#111111]">{{ $item->marca->name ?? "S/M" }}</h3></a>
+
                   <a href="{{ route('producto', $item->id) }}">
-                    <h2 class="font-moderat_700 leading-normal text-text16 md:text-text20 text-[#111111] line-clamp-3 tracking-tight">{{ $item->producto }}</h2>
+                    <h2
+                      class="font-moderat_700 leading-normal text-text16 md:text-lg text-[#111111] line-clamp-2 tracking-tight">
+                      {{ $item->producto }}</h2>
                   </a>
-
-                  <p class="font-moderat_Regular text-text12 md:text-base text-[#565656] line-clamp-3">
-                    {!! Str::limit($item->description, 150, '...') !!}
-                  </p>
-                  <div class="flex justify-start items-center gap-2 md:gap-4">
-
-                  </div>
-                  <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">
-                    S/ {{ $item->precio }}</p>
+              
+                  @if ($item->descuento == 0)
+                      <span class="text-[#111111] text-text16 md:text-xl font-space_grotesk font-bold md:font-medium"> S/. {{ $item->precio }}</span>
+                  @else
+                    <div class="flex flex-row gap-2 items-center">
+                      <span class="text-[#111111] text-text14 line-through font-space_grotesk font-bold md:font-medium">S/. {{ $item->descuento }}</span>
+                      <span class="text-[#111111] text-text16 md:text-xl font-space_grotesk font-bold md:font-medium">S/. {{ $item->precio }}</span>
+                    </div>
+                  @endif
                 </div>
               </div>
 
             </div>
           @endforeach
-          <div data-aos="fade-up" data-aos-offset="150" class="py-10">
+          <div data-aos="fade-up" data-aos-offset="150" class="py-10 col-span-2 lg:col-span-4">
             {{ $productosRelacionados }}
 
           </div>

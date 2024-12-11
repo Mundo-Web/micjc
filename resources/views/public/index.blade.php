@@ -198,11 +198,9 @@
 
     @if (count($category) > 0)
       <section class="w-11/12 mx-auto flex flex-col gap-7 pt-10">
-
+        
         <div class="flex flex-col items-start md:flex-row md:justify-between md:items-center gap-5">
-
           <h2 class="text-[#111111] text-text32 md:text-text36 font-moderat_700 w-1/2">Nuestras Categorías</h2>
-
           <div class="flex justify-start items-center">
             <a href="{{ route('catalogo') }}" class="flex justify-center items-center gap-2">
               <span class="text-text16 text-[#0051FF] md:text-text20 font-moderat_Bold">Ver todas las
@@ -217,11 +215,9 @@
               </div>
             </a>
           </div>
-
         </div>
 
         <div class="grid grid-cols-1 grid-rows-1 lg:grid-cols-4 lg:grid-rows-2 gap-5 md:gap-12">
-
           @if (count($category->take(3)) == 1)
             <div
               class="group col-span-1 lg:col-span-4 bg-[#F3F3F3] hover:bg-[#0051FF] p-5 md:p-10 flex flex-col md:flex-row gap-5 md:gap-10 justify-center overflow-hidden rounded-2xl"
@@ -443,28 +439,22 @@
                   </a>
                 </div>
               </div>
-
             </div>
-
           @endif
-
         </div>
-
-
 
       </section>
     @endif
 
-    <section class="w-11/12 md:w-10/12 mx-auto pt-20">
-
+    <section class="w-full px-[5%] py-10 lg:py-16 mt-10 lg:mt-20 bg-[#f3f3f3]">
       @if (count($productosDestacados) > 0)
-        <div class="flex justify-between items-center py-5">
-          <p class="font-moderat_700 text-text32 md:text-text36">Destacados</p>
+        <div class="flex flex-col md:flex-row md:justify-between items-start md:items-center py-5 gap-5 md:gap-0">
+          <p class="font-moderat_700 text-text32 md:text-text36 tracking-tighter leading-normal">Las mejores impresoras del mes</p>
           <div class="flex justify-start items-center">
             <a href="{{ route('catalogo') }}" class="flex justify-center items-center gap-2">
               <p
                 class="text-[#3374FF] text-text16 font-moderat_Bold md:text-text20 flex justify-center items-center gap-3">
-                <span>Ver todos</span>
+               Ver todos
                 <span class="hidden md:block">los productos</span>
               </p>
               <div>
@@ -479,84 +469,252 @@
             </a>
           </div>
         </div>
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-5">
 
-
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-7">
           @foreach ($productosDestacados as $item)
-            <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
-              <div class="bg-[#F3F3F3] md:w-[266px] md:h-[312px] flex flex-col justify-center pt-5 gap-20 relative">
+            <div class="flex flex-col rounded-xl gap-5 overflow-hidden bg-white">
+              
+              <div class="bg-white flex flex-col justify-center relative">
+               
                 <div class="flex justify-start items-center absolute top-[5%] left-[5%]">
                   @foreach ($item->tags as $tag)
                     <span class="font-moderat_500 text-text10 md:text-text20 bg-[#0051FF] text-white py-1 px-2">
                       {{ $tag->name }}</span>
                   @endforeach
                 </div>
-                <div class="flex justify-center items-center py-10 md:py-20">
-                  <a href="{{ route('producto', $item->id) }}"><img src="{{ asset($item->imagen) }}" alt="impresora"
-                      class="w-[120px] h-[90px]  md:w-[266px] md:h-[330px] object-cover  "></a>
 
+                <div>
+                  <div class="relative flex justify-center items-center aspect-square">
+                    @if ($item->imagen)
+                      <img x-show="{{ isset($item->imagen_ambiente) }} || !showAmbiente"
+                        x-transition:enter="transition ease-out duration-300 transform"
+                        x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+                        x-transition:leave="transition ease-in duration-300 transform"
+                        x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
+                        src="{{ asset($item->imagen) }}" alt="{{ $item->name }}"
+                        class="w-full object-contain md:object-cover absolute inset-0 aspect-square"
+                        onerror="this.onerror=null;this.src='/images/img/noimagen.jpg';" />
+                    @else
+                      <img x-show="{{ isset($item->imagen_ambiente) }} || !showAmbiente"
+                        x-transition:enter="transition ease-out duration-300 transform"
+                        x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+                        x-transition:leave="transition ease-in duration-300 transform"
+                        x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
+                        src="{{ asset('images/img/noimagen.jpg') }}" alt="imagen_alternativa"
+                        class="w-full object-contain md:object-cover absolute inset-0 aspect-square" />
+                    @endif
+                  </div>
                 </div>
+
               </div>
 
-              <div class="flex flex-col gap-6">
-                <div class="flex flex-col gap-3">
-                  <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">{{ $item->extracto }}</h3>
+              <div class="flex flex-col bg-white p-2 md:p-5">
+                <div class="flex flex-col gap-1 md:gap-2">
+                  {{-- <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">{{ $item->extracto }}</h3> --}}
+                  <a href="/catalogo?marca={{$item->marca_id}}"><h3 class="font-moderat_Medium text-text12 md:text-sm text-[#111111]">{{ $item->marca->name ?? "S/M" }}</h3></a>
+
                   <a href="{{ route('producto', $item->id) }}">
                     <h2
-                      class="font-moderat_700 leading-normal text-text16 md:text-text20 text-[#111111] line-clamp-3 tracking-tight">
+                      class="font-moderat_700 leading-normal text-sm md:text-lg text-[#111111] line-clamp-2 tracking-tight">
                       {{ $item->producto }}</h2>
                   </a>
 
-                  <p class="font-moderat_Regular text-text12 md:text-base text-[#565656] line-clamp-3">
-                    {!! $item->description !!}
-                  </p>
-                  <div class="flex justify-start items-center gap-2 md:gap-4">
-
-                  </div>
-                  <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">
-                    S/ {{ $item->precio }}</p>
+                  @if ($item->descuento == 0)
+                      <span class="text-[#111111] text-text16 md:text-xl font-space_grotesk font-bold md:font-medium"> S/. {{ $item->precio }}</span>
+                  @else
+                    <div class="flex flex-col md:flex-row gap-0 md:gap-2 items-start md:items-center">
+                      <span class="text-[#111111] text-text14 line-through font-space_grotesk font-bold md:font-medium">S/. {{ $item->descuento }}</span>
+                      <span class="text-[#111111] text-text16 md:text-xl font-space_grotesk font-bold md:font-medium">S/. {{ $item->precio }}</span>
+                    </div>
+                  @endif
                 </div>
               </div>
 
             </div>
           @endforeach
-
+        </div>
       @endif
     </section>
 
-    @if (count($logos) > 0)
-      <section class="w-11/12 mx-auto bg-[#001232] text-white mt-20 fondo__marcas">
 
-        <div class="flex flex-col gap-5 py-10 items-center" data-aos="fade-up" data-aos-offset="150">
-          <h2 class="text-white font-moderat_Bold text-text32 md:text-text44 text-center">Nuestras marcas asociadas</h2>
-          <p class="font-moderat_Regular text-text16 md:text-text20 text-center w-full md:w-2/3">Colaboramos con una
-            amplia variedad de marcas reconocidas a nivel mundial, ofreciendo productos de alta calidad que se adaptan a
-            las necesidades tecnológicas de todos nuestros clientes.</p>
-        </div>
-
-        <div class="swiper productos_marcas w-10/12 mx-auto">
-          <div class="swiper-wrapper pt-5 pb-10">
-            @foreach ($logos as $logo)
-              <div class="swiper-slide">
-                <div class="flex justify-center items-center">
-                  <img src="{{ asset($logo->url_image) }}" alt="marcas">
-                </div>
-              </div>
-            @endforeach
-
-
-          </div>
+    @if (count($banners) > 0)
+      <section class="w-full px-[5%] pt-10 md:pt-20">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-7">
+          @foreach ($banners as $banner)
+            <div class="w-full">
+              <a href="{{$banner->description}}">
+                <img class="object-contain h-auto" src="{{asset($banner->url_image)}}" />
+              </a>
+            </div>
+          @endforeach
         </div>
       </section>
     @endif
 
+    @if (count($cyber) > 0)
+      <section class="w-full px-[5%] pt-10 md:pt-20">
+        <div class="bg-[#0051FF] rounded-xl overflow-hidden px-5 md:px-10 pt-3 pb-5 md:pt-5 md:pb-10 ">
 
-    <section class="w-11/12 md:w-10/12 mx-auto pt-20">
+          <div class="flex flex-col md:flex-row md:justify-between items-start md:items-center pt-5 pb-7 gap-2">
+            <p class="font-moderat_400 text-base md:text-lg text-white ">¡PROMOS POR <span class="font-moderat_700">CYBER WOW TIEMPO LIMITADO!</span></p>
+            <div class="flex justify-start items-center">
+              
+                <div class="countup flex flex-row gap-1 items-center" id="stopwatch">
+                  <div class="bg-white text-[#0711E5] p-1 rounded-lg">
+                    <span id="hour" class="timeel hours font-moderat_700">00</span>
+                    <span class="timeel timeRefHours font-moderat_400">HR</span>
+                  </div>
+                  <span class="text-white font-moderat_700">:</span>
+                  <div class="bg-white text-[#0711E5] p-1 rounded-lg">
+                    <span id="min" class="timeel minutes font-moderat_700">00</span>
+                    <span class="timeel timeRefMinutes font-moderat_400">MN</span>
+                  </div>
+                  <span class="text-white font-moderat_700">:</span>
+                  <div class="bg-white text-[#0711E5] p-1 rounded-lg">
+                    <span id="sec" class="timeel seconds font-moderat_700">00</span>
+                    <span class="timeel timeRefSeconds font-moderat_400">SEG</span>
+                  </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="swiper cyber">
+              <div class="swiper-wrapper">
+                @foreach ($cyber as $item)
+                  <div class="swiper-slide">
+                    <div class="flex flex-row bg-white rounded-lg overflow-hidden p-2 gap-2">
+                      
+                      <div class="w-2/5">
+                        <img src="{{ asset($item->imagen) }}" alt="ss"
+                          class="w-full object-contain md:object-contain aspect-square p-3"
+                          onerror="this.onerror=null;this.src='/images/img/noimagen.jpg';" />
+                      </div>
+                    
+                      <div class="w-3/5 flex flex-col justify-center items-start">
+                        <div class="flex flex-col gap-1">
+
+                          <a href="/catalogo?marca={{$item->marca_id}}">
+                            <h3 class="font-moderat_Medium text-text12 md:text-sm text-[#111111]">{{ $item->marca->name ?? "S/M" }}</h3>
+                          </a>
+
+                          <a href="{{ route('producto', $item->id) }}">
+                            <h2 class="font-moderat_700 leading-normal text-sm md:text-base text-[#111111] line-clamp-2 tracking-tight">
+                              {{ $item->producto }}
+                            </h2>
+                          </a>
+                      
+                          @if ($item->descuento == 0)
+                              <span class="text-[#111111] text-text16 md:text-xl font-space_grotesk font-bold md:font-medium"> S/. {{ $item->precio }}</span>
+                          @else
+                            <div class="flex flex-row gap-2 items-center">
+                              <span class="text-[#111111] text-text14 line-through font-space_grotesk font-bold md:font-medium">S/. {{ $item->descuento }}</span>
+                              <span class="text-[#111111] text-text16 md:text-xl font-space_grotesk font-bold md:font-medium">S/. {{ $item->precio }}</span>
+                            </div>
+                          @endif
+
+                        </div>
+                      </div>  
+                      
+                    </div>
+                  </div>
+                @endforeach
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    @endif  
+
+    <section class="w-full px-[5%] py-10 lg:py-16 mt-10 lg:mt-20 bg-[#f3f3f3]">
+      <div class="grid grid-cols-1 md:grid-cols-6  gap-5 lg:gap-7">
+          <div class="md:col-span-2 flex flex-col items-center justify-center">
+            <img src="{{ asset('images/img/bannervertical.PNG') }}" alt="ss"
+                  class="w-full object-contain"
+                  onerror="this.onerror=null;this.src='/images/img/noimagen.jpg';" />
+          </div>
+
+          <div class="md:col-span-4 flex flex-col justify-center gap-5">
+            <p class="font-moderat_700 text-text32 md:text-text36">En Oferta</p>
+            <div>
+              <div class="swiper ofertas">
+                <div class="swiper-wrapper">
+    
+                @foreach ($ofertasProductos as $item)
+                  <div class="swiper-slide">
+                    <div class="flex flex-col gap-5 bg-white rounded-xl overflow-hidden" data-aos="fade-up" data-aos-offset="150">
+                      
+                      <div class="bg-white flex flex-col justify-center relative">
+                      
+                        <div class="flex justify-start items-center absolute top-[5%] left-[5%]">
+                          @foreach ($item->tags as $tag)
+                            <span class="font-moderat_500 text-text10 md:text-text20 bg-[#0051FF] text-white py-1 px-2">
+                              {{ $tag->name }}</span>
+                          @endforeach
+                        </div>
+        
+                        <div>
+                          <div class="relative flex justify-center items-center aspect-square">
+                            @if ($item->imagen)
+                              <img x-show="{{ isset($item->imagen_ambiente) }} || !showAmbiente"
+                                x-transition:enter="transition ease-out duration-300 transform"
+                                x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+                                x-transition:leave="transition ease-in duration-300 transform"
+                                x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
+                                src="{{ asset($item->imagen) }}" alt="{{ $item->name }}"
+                                class="w-full object-contain md:object-cover absolute inset-0 aspect-square"
+                                onerror="this.onerror=null;this.src='/images/img/noimagen.jpg';" />
+                            @else
+                              <img x-show="{{ isset($item->imagen_ambiente) }} || !showAmbiente"
+                                x-transition:enter="transition ease-out duration-300 transform"
+                                x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+                                x-transition:leave="transition ease-in duration-300 transform"
+                                x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
+                                src="{{ asset('images/img/noimagen.jpg') }}" alt="imagen_alternativa"
+                                class="w-full object-contain md:object-cover absolute inset-0 aspect-square" />
+                            @endif
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div class="flex flex-col bg-white  p-2 md:p-3">
+                        <div class="flex flex-col gap-2">
+                          
+                          <a href="/catalogo?marca={{$item->marca_id}}"><h3 class="font-moderat_Medium text-text12 md:text-sm text-[#111111]">{{ $item->marca->name ?? "S/M" }}</h3></a>
+        
+                          <a href="{{ route('producto', $item->id) }}">
+                            <h2
+                              class="font-moderat_700 leading-normal text-text16 md:text-lg text-[#111111] line-clamp-2 tracking-tight">
+                              {{ $item->producto }}</h2>
+                          </a>
+                      
+                          @if ($item->descuento == 0)
+                              <span class="text-[#111111] text-text16 md:text-xl font-space_grotesk font-bold md:font-medium"> S/. {{ $item->precio }}</span>
+                          @else
+                            <div class="flex flex-row gap-2 items-center">
+                              <span class="text-[#111111] text-text14 line-through font-space_grotesk font-bold md:font-medium">S/. {{ $item->descuento }}</span>
+                              <span class="text-[#111111] text-text16 md:text-xl font-space_grotesk font-bold md:font-medium">S/. {{ $item->precio }}</span>
+                            </div>
+                          @endif
+                        </div>
+                      </div>
+        
+                    </div>
+                  </div>
+                @endforeach
+
+                </div>
+              </div>
+            </div> 
+          </div>
+      </div>
+    </section>
 
 
+    {{-- <section class="w-full px-[5%] pt-20">
       @if (count($ofertasProductos))
-
-        <div class="flex justify-between items-center py-5">
+        <div class="flex flex-col md:flex-row md:justify-between items-start md:items-center py-5">
           <p class="font-moderat_700 text-text32 md:text-text36">En Oferta</p>
           <div class="flex justify-start items-center">
             <a href="{{ route('catalogo') }}" class="flex justify-center items-center gap-2">
@@ -580,37 +738,58 @@
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-5">
           @foreach ($ofertasProductos as $item)
             <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
-              <div class="bg-[#F3F3F3] md:w-[266px] md:h-[312px] flex flex-col justify-center pt-5 gap-20 relative">
+              <div class="bg-[#F3F3F3] flex flex-col justify-center relative">
+               
                 <div class="flex justify-start items-center absolute top-[5%] left-[5%]">
                   @foreach ($item->tags as $tag)
                     <span class="font-moderat_500 text-text10 md:text-text20 bg-[#0051FF] text-white py-1 px-2">
                       {{ $tag->name }}</span>
                   @endforeach
                 </div>
-                <div class="flex justify-center items-center py-10 md:py-20">
-                  <a href="{{ route('producto', $item->id) }}">
-                    <img src="{{ asset($item->imagen) }}" alt="impresora"
-                      class="w-[120px] h-[90px]  md:w-[266px] md:h-[330px] object-cover  ">
-                  </a>
 
+                <div>
+                  <div class="relative flex justify-center items-center aspect-square">
+                    @if ($item->imagen)
+                      <img x-show="{{ isset($item->imagen_ambiente) }} || !showAmbiente"
+                        x-transition:enter="transition ease-out duration-300 transform"
+                        x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+                        x-transition:leave="transition ease-in duration-300 transform"
+                        x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
+                        src="{{ asset($item->imagen) }}" alt="{{ $item->name }}"
+                        class="w-full object-contain md:object-cover absolute inset-0 aspect-square"
+                        onerror="this.onerror=null;this.src='/images/img/noimagen.jpg';" />
+                    @else
+                      <img x-show="{{ isset($item->imagen_ambiente) }} || !showAmbiente"
+                        x-transition:enter="transition ease-out duration-300 transform"
+                        x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+                        x-transition:leave="transition ease-in duration-300 transform"
+                        x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
+                        src="{{ asset('images/img/noimagen.jpg') }}" alt="imagen_alternativa"
+                        class="w-full object-contain md:object-cover absolute inset-0 aspect-square" />
+                    @endif
+                  </div>
                 </div>
               </div>
 
-              <div class="flex flex-col gap-6">
-                <div class="flex flex-col gap-3">
-                  <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">{{ $item->extracto }}</h3>
+              <div class="flex flex-col">
+                <div class="flex flex-col gap-2">
+                  
+                  <a href="/catalogo?marca={{$item->marca_id}}"><h3 class="font-moderat_Medium text-text12 md:text-sm text-[#111111]">{{ $item->marca->name ?? "S/M" }}</h3></a>
+
                   <a href="{{ route('producto', $item->id) }}">
-                    <h2 class="font-moderat_700 text-text16 md:text-text24 text-[#111111]">{{ $item->producto }}</h2>
+                    <h2
+                      class="font-moderat_700 leading-normal text-text16 md:text-lg text-[#111111] line-clamp-2 tracking-tight">
+                      {{ $item->producto }}</h2>
                   </a>
-
-                  <p class="font-moderat_Regular text-text12 md:text-text20 text-[#565656]">
-                    {!! Str::limit($item->description, 150, '...') !!}
-                  </p>
-                  <div class="flex justify-start items-center gap-2 md:gap-4">
-
-                  </div>
-                  <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">
-                    S/ {{ $item->precio }}</p>
+              
+                  @if ($item->descuento == 0)
+                      <span class="text-[#111111] text-text16 md:text-xl font-space_grotesk font-bold md:font-medium"> S/. {{ $item->precio }}</span>
+                  @else
+                    <div class="flex flex-row gap-2 items-center">
+                      <span class="text-[#111111] text-text14 line-through font-space_grotesk font-bold md:font-medium">S/. {{ $item->descuento }}</span>
+                      <span class="text-[#111111] text-text16 md:text-xl font-space_grotesk font-bold md:font-medium">S/. {{ $item->precio }}</span>
+                    </div>
+                  @endif
                 </div>
               </div>
 
@@ -620,14 +799,39 @@
         </div>
       @endif
 
-    </section>
+    </section> --}}
+
+    @if (count($logos) > 0)
+      <section class="w-11/12 mx-auto bg-[#001232] text-white mt-20 fondo__marcas">
+        <div class="flex flex-col gap-5 py-10 items-center" data-aos="fade-up" data-aos-offset="150">
+          <h2 class="text-white font-moderat_Bold text-text32 md:text-text44 text-center">Nuestras marcas asociadas</h2>
+          <p class="font-moderat_Regular text-base md:text-lg text-center w-full md:w-2/3">Colaboramos con una
+            amplia variedad de marcas reconocidas a nivel mundial, ofreciendo productos de alta calidad que se adaptan a
+            las necesidades tecnológicas de todos nuestros clientes.</p>
+        </div>
+
+        <div class="swiper productos_marcas w-10/12 mx-auto">
+          <div class="swiper-wrapper pt-5 pb-10">
+            @foreach ($logos as $logo)
+              <div class="swiper-slide">
+                <a href="/catalogo?marca={{$logo->id}}">
+                <div class="flex justify-center items-center">
+                  <img src="{{ asset($logo->description) }}" alt="marcas">
+                </div>
+                </a>
+              </div>
+            @endforeach
+          </div>
+        </div>
+      </section>
+    @endif
 
 
     @if (count($testimonios) > 0)
-      <section class="bg-[#FBFBFB] pt-10 mt-10 pb-32">
+      <section class="bg-[#f3f3f3] py-10 md:py-20 mt-10 md:mt-20">
         <div class="w-11/12 mx-auto flex flex-col gap-3 items-center" data-aos="fade-up" data-aos-offset="150">
-          <h2 class="font-moderat_700 text-text32 md:text-text44 text-center">Clientes satisfechos</h2>
-          <p class="font-moderat_Regular text-text14 text-[#565656] text-center w-full md:w-2/3">Nuestros clientes
+          <h2 class="font-moderat_700 text-text32 md:text-text44 text-center">Clientes Satisfechos</h2>
+          <p class="font-moderat_Regular text-base md:text-lg text-[#565656] text-center w-full md:w-2/3">Nuestros clientes
             confían en nosotros por la calidad y el servicio que ofrecemos. Ya sea por la rápida entrega de accesorios
             gamer o soluciones de impresión confiables, siempre estamos comprometidos con la satisfacción total.</p>
         </div>
@@ -673,8 +877,6 @@
     @endif
 
 
-
-
     <section class="w-11/12 mx-auto py-16">
       @if (count($blog) > 0)
 
@@ -682,16 +884,16 @@
         <div class="flex flex-col gap-10">
           <div class="flex flex-col justify-center gap-3 md:flex-row md:justify-between md:items-center">
             <div class="flex flex-col gap-5 basis-8/12">
-              <h2 class="font-moderat_700 text-text44 md:text-text52 text-[#111111] leading-none md:leading-tight">
+              <h2 class="font-moderat_700 text-text32 md:text-text44 text-[#111111] leading-none md:leading-tight">
                 Últimas Publicaciones</h2>
-              <p class="text-[#565656] text-text18 md:text-text22 font-moderat_Regular">Descubre las últimas novedades en
+              <p class="text-[#565656] text-text18 font-moderat_Regular">Descubre las últimas novedades en
                 tecnología. Encuentra desde tintas y toners para impresoras hasta teclados mecánicos y accesorios gamer.
                 ¡Mejora tu setup con nuestros monitores de alta resolución y laptops de última generación!</p>
             </div>
 
             <div class="flex justify-end items-center basis-4/12">
               <a href="{{ route('blog') }}"
-                class="font-moderat_Bold text-text16 md:text-text20 py-3 px-5 bg-[#0051FF] text-white md:w-auto text-center w-full">Ver
+                class="font-moderat_Bold text-base md:text-lg py-3 rounded-xl px-5 bg-[#0051FF] text-white md:w-auto text-center w-full">Ver
                 más Publicaciones</a>
             </div>
           </div>
@@ -705,7 +907,7 @@
                     class="w-full aspect-video object-cover object-center shadow-lg rounded-lg">
                 </div>
                 <div class="flex flex-col gap-2">
-                  <p class="font-moderat_Bold text-text12 md:text-text20 text-[#0051FF]">{{ $item->categories->name }}
+                  <p class="font-moderat_Bold text-text12 md:text-text20 text-[#0051FF]">{{ $item->categories->name ?? "Sin categoria"}}
                   </p>
                   <a href="{{ route('post', $item->id) }}">
                     <h2 class="text-[#082252] font-moderat_Bold text-text16 md:text-text28 line-clamp-2 h-[84px]">
@@ -770,6 +972,7 @@
       @endif
 
     </section>
+
   </main>
 
 @section('scripts_importados')
@@ -837,12 +1040,94 @@
       },
 
     });
+
+    var swiper = new Swiper(".ofertas", {
+      slidesPerView: 3,
+      spaceBetween: 30,
+      loop: true,
+      grabCursor: true,
+      centeredSlides: false,
+      initialSlide: 0,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      breakpoints: {
+        0: {
+          slidesPerView: 2,
+          spaceBetween: 15
+        },
+       
+        1200: {
+          slidesPerView: 3,
+          spaceBetween: 20
+        },
+      },
+
+    });
+
+    var swiper = new Swiper(".cyber", {
+      slidesPerView: 3,
+      spaceBetween: 30,
+      loop: true,
+      grabCursor: true,
+      centeredSlides: false,
+      initialSlide: 0,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      breakpoints: {
+        0: {
+          slidesPerView: 1,
+          spaceBetween: 15
+        },
+
+        800: {
+          slidesPerView: 2,
+          spaceBetween: 15
+        },
+       
+        1200: {
+          slidesPerView: 3,
+          spaceBetween: 20
+        },
+      },
+
+    });
   </script>
   <script>
     var appUrl = '{{ env('APP_URL') }}';
   </script>
   <script src="{{ asset('js/carrito.js') }}"></script>
 
+  <script>
+      // Configuración inicial: tiempo total en segundos (por ejemplo, 1 hora)
+      let totalTime = 36000; // 1 hora en segundos
+
+      function updateCountdown() {
+          // Calculamos horas, minutos y segundos restantes
+          const hours = Math.floor(totalTime / 3600);
+          const minutes = Math.floor((totalTime % 3600) / 60);
+          const seconds = totalTime % 60;
+
+          // Actualizamos los elementos en el DOM
+          document.getElementById('hour').textContent = String(hours).padStart(2, '0');
+          document.getElementById('min').textContent = String(minutes).padStart(2, '0');
+          document.getElementById('sec').textContent = String(seconds).padStart(2, '0');
+
+          // Reducimos el tiempo en 1 segundo
+          totalTime--;
+
+          // Si el tiempo llega a cero, detener el contador
+          if (totalTime < 0) {
+              clearInterval(countdown);
+          }
+      }
+
+      // Actualizamos el contador cada segundo
+      const countdown = setInterval(updateCountdown, 1000);
+  </script>
 
 @stop
 

@@ -29,7 +29,8 @@ class Products extends Model
     'collection_id',
     'sku',
     'sub_cat_id',
-    'marca_id'
+    'marca_id',
+    'cyber'
   ];
 
 

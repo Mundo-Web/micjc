@@ -28,7 +28,7 @@
 
 @section('content')
   <main>
-    <section class="w-11/12 mx-auto pb-16">
+    <section class="w-full px-[5%] pb-16 pt-10">
       <div class="bg-[#0051FF] py-5 fondo__catalogo-desktop" {{-- style="background-image: url({{asset('images/img/image_16.png')}}); background-repeat: no-repeat; background-size:cover;" --}}>
         <div class="grid grid-cols-1 lg:grid-cols-2" data-aos="fade-up" data-aos-offset="150">
           <div class="flex flex-col justify-center gap-5 order-1 lg:order-2 px-5 md:z-50 lg:-mx-[100px] w-full lg:w-11/12">
@@ -37,21 +37,6 @@
               Catálogo</h1>
             <p class="text-white text-text14 md:text-text16 font-moderat_Regular w-full lg:w-5/6 hidden lg:block">
               Productos digitales</p>
-
-            <div class="flex lg:hidden justify-start items-center">
-              <a href="#" class="flex justify-center items-center gap-2">
-                <span class="text-white text-text16 font-moderat_Bold">Ver productos</span>
-                <div>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5 12H19" stroke="white" stroke-width="1.33333" stroke-linecap="round"
-                      stroke-linejoin="round" />
-                    <path d="M12 5L19 12L12 19" stroke="white" stroke-width="1.33333" stroke-linecap="round"
-                      stroke-linejoin="round" />
-                  </svg>
-                </div>
-              </a>
-            </div>
           </div>
 
           <div class="flex justify-end md:justify-end  items-center py-10 order-2 lg:order-1 relative lg:z-10 pr-5"
@@ -66,14 +51,17 @@
       </div>
     </section>
 
-    <section class="w-11/12 md:w-10/12 mx-auto">
-      <div>
-        <div class="flex flex-col gap-5 lg:flex-row lg:justify-between lg:gap-0 pb-10">
-          <div class="flex flex-col lg:flex-row lg:justify-start gap-3">
+    <section class="w-full px-[5%]">
+
+      <div class="grid grid-cols-1 lg:grid-cols-5">
+        
+        <div class="lg:col-span-1 flex flex-col gap-3 pb-10 pr-5">
+         
+          <div class="flex flex-col gap-3">
             <div class="relative inline-block text-left w-full lg:w-auto">
               <select id="categorias"
                 class="select2 focus:outline-none font-moderat_Bold text-text16 xl:text-text18 text-[#0051FF] border-[1.5px] border-gray-200 py-3 px-4 w-full lg:w-[200px]">
-                <option value="">SELECCIONAR CATEGORIA</option>
+                <option value="">Categorías</option>
                 @foreach ($categorias as $cat)
                   <option value="{{ $cat->id }}" @if (isset($_GET['cat']) && $cat->id == $_GET['cat']) selected @endif>
                     {{ strtoupper($cat->name) }}
@@ -85,76 +73,109 @@
             <div class="relative inline-block text-left w-full lg:w-auto">
               <select id="subCategoria"
                 class="select2 focus:outline-none font-moderat_Bold text-text16 xl:text-text18 text-[#0051FF] border-[1.5px] border-gray-200 py-3 px-4 w-full lg:w-[200px]">
-                <option value="">SELECCIONAR SUBCATEGORIA</option>
+                <option value="">Subcategorías</option>
               </select>
             </div>
 
             <div class="relative inline-block text-left w-full lg:w-auto">
               <select id="selectMarcas"
                 class="select2 focus:outline-none font-moderat_Bold text-text16 xl:text-text18 text-[#0051FF] border-[1.5px] border-gray-200 py-3 px-4 w-full lg:w-[200px]">
-                <option value="">SELECCIONAR MARCA</option>
+                <option value="">Marca</option>
               </select>
             </div>
           </div>
 
-          <div class="flex flex-col lg:flex-row gap-3 items-center">
-            <div class="relative inline-block text-left w-full lg:w-auto">
+          <div class="flex flex-col gap-3 items-center">
+            <div class="relative inline-block text-left w-full">
               <select id="ordenItems"
-                class="select2 focus:outline-none font-moderat_Bold text-text16 xl:text-text18 text-[#0051FF] border-[1.5px] border-gray-200 py-3 px-4 w-full lg:w-[200px]">
-                <option value="">ORDENAR</option>
-                <option value="menorAmayor">DE MENOR A MAYOR</option>
-                <option value="mayorAmenor">DE MAYOR A MENOR</option>
+                class="select2 focus:outline-none font-moderat_Bold text-text16 xl:text-text18 text-[#0051FF] border-[1.5px] border-gray-200 py-3 px-4 w-full ">
+                <option value="">Ordenar</option>
+                <option value="menorAmayor">De Menor a Mayor</option>
+                <option value="mayorAmenor">De Mayor a Menor</option>
                 <option value="nameAsc">A - Z</option>
                 <option value="nameDesc">Z - A</option>
               </select>
             </div>
 
-            <div class="flex w-full lg:w-auto -mt-2">
-              <input type="text" id="searchInput" placeholder="Buscar productos" class="w-full lg:w-[200px] focus:outline-none font-moderat_Bold text-text16  text-[#0051FF] border-[1.5px] border-gray-200 py-2 px-3" value="{{$_GET['search'] ?? ''}}">
-              <button id="searchButton" class="bg-[#0051FF] text-white font-moderat_Bold text-text16  py-2 px-3 ml-2">Buscar</button>
+            <div class="flex w-full">
+              {{-- <input type="text" id="searchInput" placeholder="Buscar productos" class="w-full lg:w-[200px] focus:outline-none font-moderat_Bold text-text16  text-[#0051FF] border-[1.5px] border-gray-200 py-2 px-3" value="{{$_GET['search'] ?? ''}}"> --}}
+              <button id="searchButton" class="bg-[#0051FF] text-white font-moderat_Bold text-text16 w-full  py-2 px-3 ">Buscar</button>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="lg:col-span-4">
+          <div class="grid grid-cols-2 md:grid-cols-3  gap-5 md:gap-7">
+            @foreach ($productos as $item)
+            <div class="flex flex-col gap-5 bg-white rounded-xl overflow-hidden" data-aos="fade-up" data-aos-offset="150">
+                  
+              <div class="bg-white flex flex-col justify-center relative">
+               
+                <div class="flex justify-start items-center absolute top-[5%] left-[5%]">
+                  @foreach ($item->tags as $tag)
+                    <span class="font-moderat_500 text-text10 md:text-text20 bg-[#0051FF] text-white py-1 px-2">
+                      {{ $tag->name }}</span>
+                  @endforeach
+                </div>
+
+                <div>
+                  <div class="relative flex justify-center items-center aspect-square">
+                    @if ($item->imagen)
+                      <img x-show="{{ isset($item->imagen_ambiente) }} || !showAmbiente"
+                        x-transition:enter="transition ease-out duration-300 transform"
+                        x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+                        x-transition:leave="transition ease-in duration-300 transform"
+                        x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
+                        src="{{ asset($item->imagen) }}" alt="{{ $item->name }}"
+                        class="w-full object-contain md:object-cover absolute inset-0 aspect-square"
+                        onerror="this.onerror=null;this.src='/images/img/noimagen.jpg';" />
+                    @else
+                      <img x-show="{{ isset($item->imagen_ambiente) }} || !showAmbiente"
+                        x-transition:enter="transition ease-out duration-300 transform"
+                        x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+                        x-transition:leave="transition ease-in duration-300 transform"
+                        x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
+                        src="{{ asset('images/img/noimagen.jpg') }}" alt="imagen_alternativa"
+                        class="w-full object-contain md:object-cover absolute inset-0 aspect-square" />
+                    @endif
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex flex-col bg-white  p-2 md:p-3">
+                <div class="flex flex-col gap-2">
+                  
+                  <a href="/catalogo?marca={{$item->marca_id}}"><h3 class="font-moderat_Medium text-text12 md:text-sm text-[#111111]">{{ $item->marca->name ?? "S/M" }}</h3></a>
+
+                  <a href="{{ route('producto', $item->id) }}">
+                    <h2
+                      class="font-moderat_700 leading-normal text-text16 md:text-lg text-[#111111] line-clamp-2 tracking-tight">
+                      {{ $item->producto }}</h2>
+                  </a>
+              
+                  @if ($item->descuento == 0)
+                      <span class="text-[#111111] text-text16 md:text-xl font-space_grotesk font-bold md:font-medium"> S/. {{ $item->precio }}</span>
+                  @else
+                    <div class="flex flex-row gap-2 items-center">
+                      <span class="text-[#111111] text-text14 line-through font-space_grotesk font-bold md:font-medium">S/. {{ $item->descuento }}</span>
+                      <span class="text-[#111111] text-text16 md:text-xl font-space_grotesk font-bold md:font-medium">S/. {{ $item->precio }}</span>
+                    </div>
+                  @endif
+                </div>
+              </div>
+
+            </div>
+            @endforeach
+
+            <div data-aos="fade-up" data-aos-offset="150" class="py-10 md:col-span-3">
+              {{ $productos }}
             </div>
           </div>
         </div>
 
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-10">
-          @foreach ($productos as $item)
-            <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
-              <div class="bg-[#F3F3F3] aspect-square relative overflow-hidden">
-                <div class="flex justify-start items-center absolute top-[5%] left-[5%] z-10">
-                  @foreach ($item->tags as $tag)
-                    <span class="font-moderat_500 text-text10 md:text-text20 bg-[#0051FF] text-white py-1 px-2">
-                      {{ $tag->name }}
-                    </span>
-                  @endforeach
-                </div>
-                <a href="{{ route('producto', $item->id) }}" class="block w-full h-full">
-                  <img src="{{ asset($item->imagen) }}" alt="{{ $item->producto }}" class="w-full h-full object-cover">
-                </a>
-              </div>
-
-              <div class="flex flex-col gap-6">
-                <div class="flex flex-col gap-3">
-                  <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">{{ $item->extracto }}</h3>
-                  <a href="{{ route('producto', $item->id) }}" title="{{ $item->producto }}">
-                    <h2 class="font-moderat_700 leading-normal text-text16 md:text-text20 text-[#111111] line-clamp-3 tracking-tight">
-                      {{ $item->producto }}</h2>
-                  </a>
-                  <p class="font-moderat_Regular text-text12 md:text-base text-[#565656] line-clamp-3">
-                    {!! $item->description !!}
-                  </p>
-                  <p class="text-[#111111] text-text16 md:text-text28 font-space_grotesk font-bold md:font-medium">
-                    S/ {{ $item->precio }}
-                  </p>
-                </div>
-              </div>
-            </div>
-          @endforeach
-        </div>
-
-        <div data-aos="fade-up" data-aos-offset="150" class="py-10">
-          {{ $productos }}
-        </div>
       </div>
+
     </section>
   </main>
 @endsection
