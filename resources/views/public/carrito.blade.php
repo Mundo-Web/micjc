@@ -571,11 +571,11 @@
 
       // Iterar sobre los radio buttons para encontrar el que está seleccionado
       let valorSeleccionado = 0;
-      opciones.forEach(opcion => {
-        if (opcion.checked) {
-          valorSeleccionado = opcion.value;
-        }
-      });
+      // opciones.forEach(opcion => {
+      //   if (opcion.checked) {
+      //     valorSeleccionado = opcion.value;
+      //   }
+      // });
 
       // El valor de valorSeleccionado es el valor del radio button seleccionado
 
