@@ -453,6 +453,7 @@ class IndexController extends Controller
       $precioEnvio = $montoT - $subMonto;
       $email = $request->email;
 
+      $usuario = null;
       if ($email) {
         $usuario = UserDetails::where('email', '=', $email)->get(); // obtenemos usuario para validarlo si no agregarlo
   
