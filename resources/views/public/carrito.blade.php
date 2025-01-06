@@ -594,6 +594,8 @@
 
     }
 
+    calcularTotal2()
+
     $(document).on('click', 'input[type="radio"][name="bordered-radio"]', function() {
       // Obtener el valor del radio button seleccionado
       const valorSeleccionado = $(this).val();
