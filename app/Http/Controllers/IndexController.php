@@ -454,6 +454,7 @@ class IndexController extends Controller
       $email = $request->email;
 
       $usuario = null;
+      $addres = null;
       if ($email) {
         $usuario = UserDetails::where('email', '=', $email)->get(); // obtenemos usuario para validarlo si no agregarlo
   
@@ -487,7 +488,7 @@ class IndexController extends Controller
       return response()->json(['mensaje' => "Intente de nuevo mas tarde , estamos trabajando en una solucion , $message"], 400);
     }
   }
-  private function GuardarOrdenAndDetalleOrden($codigoOrden, $montoT, $precioEnvio, $usuario = null, $carrito, $addres)
+  private function GuardarOrdenAndDetalleOrden($codigoOrden, $montoT, $precioEnvio, $usuario = null, $carrito, $addres= null)
   {
 
     $data['codigo_orden'] = $codigoOrden;
@@ -495,7 +496,7 @@ class IndexController extends Controller
     $data['precio_envio'] = $precioEnvio;
     $data['status_id'] = '1';
     $data['usuario_id'] = $usuario[0]['id'] ?? null;
-    $data['address_id'] = $addres['id'];
+    $data['address_id'] = $addres['id'] ?? null;
 
     $orden = Ordenes::create($data);
 
