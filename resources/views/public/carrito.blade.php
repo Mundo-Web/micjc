@@ -17,7 +17,7 @@
         <span>></span>
         <a href="/carrito" class="font-moderat_700 text-[#141718]">Carrito</a>
       </div>
-      <div class="flex md:gap-20">
+      {{-- <div class="flex md:gap-20">
         <div
           class="flex flex-col md:flex-row md:justify-between md:items-center md:basis-7/12 w-full md:w-auto text-text18">
           <p class="font-moderat_700 text-[#21201E] border-b-[1px] border-[#6C7275] py-4 basis-1/3 h-full text-center">
@@ -34,8 +34,8 @@
           </p>
         </div>
         <div class="md:basis-5/12"></div>
-      </div>
-      <div class="flex flex-col font-moderat_700">
+      </div> --}}
+      {{-- <div class="flex flex-col font-moderat_700">
         <label for="email" class=" font-medium text-[12px] text-[#6C7275]">E-mail</label>
 
         <input id="email" type="email" placeholder="Correo electrónico" required name="email" value=""
@@ -45,8 +45,8 @@
       </div>
       <h2 class="font-moderat_700 font-semibold text-[20px] text-[#151515]" hidden>
         Dirección de envío
-      </h2>
-      <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5" hidden>
+      </h2> --}}
+      {{-- <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5" hidden>
 
 
         <div class="md:col-span-1">
@@ -80,9 +80,6 @@
             <select name="distrito_id" id="distrito_id"
               class="selectpicker mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
               <option value="">Seleccionar Distrito </option>
-              {{-- @foreach ($departamentos as $item)
-                    <option value="{{ $item->id }}">{{ $item->description }}</option>
-                  @endforeach --}}
 
             </select>
           </div>
@@ -92,7 +89,7 @@
 
 
 
-      </div>
+      </div> --}}
       <div class="flex flex-col md:flex-row gap-10 md:gap-20">
         <div class="basis-7/12 flex flex-col" id="itemsCarritocheck">
 
