@@ -877,6 +877,36 @@
 
   </div>
   <script>
+    function borrarImg(id) {
+            console.log('borranmdo ', id)
+
+            $.ajax({
+                url: "{{ route('activity.borrarimg') }}",
+                method: 'POST',
+                data: {
+                    _token: $('input[name="_token"]').val(),
+                    status: status,
+                    id: id,
+
+                },
+                success: function(success) {
+                    Swal.fire({
+
+                        icon: "success",
+                        title: 'Img borrada exitosamente',
+                        showConfirmButton: false,
+                        timer: 1500
+
+                    });
+                    $(`#portada-${id}`).remove()
+                },
+                error: function(error) {
+                    console.log(error)
+                }
+
+            })
+        }
+        
     $('#tags_id').select2();
     // Obtener los enlaces de pestaña
     const generalTab = document.getElementById('general-tab');
@@ -1104,5 +1134,90 @@
       });
     })
   </script>
+  <script>
+
+    $(document).ready(function() {
+        function initializeDropzone(element, nameValue) {
+
+
+            new Dropzone(element, {
+                url: 'https://httpbin.org/post',
+
+                autoProcessQueue: false,
+                thumbnailWidth: 160,
+                previewTemplate: DropzoneTemplates.previewTemplate,
+                init: function() {
+                    this.on('success', function(file, responseText) {
+                        console.log(responseText);
+                    });
+                    let container = 0
+                    this.on('addedfile', async (file) => {
+                        console.log('addedfile', file)
+                        if (container < 5) {
+                            container++
+                            console.log(container)
+                            const input = document.createElement('input')
+                            input.name = `${nameValue}[]`
+                            input.value = await File.toBase64(file)
+                            input.type = 'hidden'
+
+
+                            $(element).append($(input))
+                            // Showing file preview if it is not image
+                            if (file.type && !file.type.match(/image.*/)) {
+                                if (!file.documentPrev) {
+                                    file.previewTemplate.classList.remove(
+                                        'dz-image-preview');
+                                    file.previewTemplate.classList.add(
+                                        'dz-file-preview');
+                                    file.previewTemplate.classList.add('dz-complete');
+                                    file.documentPrev = true;
+                                    this.emit('addedfile', file);
+                                    this.removeFile(file);
+
+
+                                }
+                            }
+                        }
+
+                    });
+
+
+                    this.element.classList.add('dz-started');
+
+
+                },
+            });
+        }
+
+        function initializeAllDropzones() {
+            $('.dropzoneSecond').each(function() {
+
+
+                let $element = $(this);
+                let nameValue = $element.attr('name');
+                console.log(nameValue);
+                initializeDropzone(this, nameValue);
+            });
+        }
+
+        initializeAllDropzones();
+
+    })
+</script>
+<script>
+    File.toBase64 = function(blob) {
+        return new Promise((resolve, reject) => {
+            let reader = new FileReader();
+            reader.onloadend = () => {
+                resolve(reader.result);
+            }
+            reader.onerror = () => {
+                reject(new Error('No se pudo convertir el archivo en base64'));
+            }
+            reader.readAsDataURL(blob);
+        });
+    }
+</script>
   @include('_layout.scripts')
 </x-app-layout>

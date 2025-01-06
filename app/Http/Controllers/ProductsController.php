@@ -154,7 +154,7 @@ class ProductsController extends Controller
 
       $producto = Products::create($cleanedData);
 
-    
+      
 
       if (isset($atributos)) {
         foreach ($atributos as $atributo => $valores) {
@@ -263,6 +263,8 @@ class ProductsController extends Controller
       return redirect()->route('products.create')->with('error', 'Llenar campos obligatorios');
     }
   }
+
+
   private function GuardarCombinacion($producto_id, $combinacion)
   {
     Combinacion::create([
@@ -273,6 +275,7 @@ class ProductsController extends Controller
       'stock' => $combinacion['stock'],
     ]);
   }
+  
   private function GuardarGaleria($file, $producto_id, $colorId)
   {
 
@@ -399,7 +402,8 @@ class ProductsController extends Controller
     $data = $request->all();
     $atributos = null;
 
-
+ 
+    
     $request->validate([
       'producto' => 'required',
     ]);
@@ -418,6 +422,31 @@ class ProductsController extends Controller
       $nombreImagen = 'noimagen.jpg';
 
       $data['imagen'] = $routeImg . $nombreImagen;
+    }
+
+    if (isset($data['filesGallery'])) {
+
+      foreach ($data['filesGallery'] as $file) {
+      
+        [$first, $code] = explode(';base64,', $file);
+ 
+        $imageData = base64_decode($code);
+
+        $routeImg = 'storage/images/gallery/';
+        $ext = ExtendFile::getExtention(str_replace("data:", '', $first));
+        $nombreImagen = Str::random(10) . '.' . $ext;
+        // Verificar si la ruta no existe y crearla si es necesario
+        if (!file_exists($routeImg)) {
+          mkdir($routeImg, 0777, true); 
+        }
+        
+        // Guardar los datos binarios en un archivo
+        file_put_contents($routeImg . $nombreImagen, $imageData);
+        $dataGalerie['imagen'] = $routeImg . $nombreImagen;
+        $dataGalerie['product_id'] = $product->id;
+        // $dataGalerie['type_img'] = 'gall';
+        Galerie::create($dataGalerie);
+      }
     }
 
     foreach ($request->all() as $key => $value) {
@@ -508,9 +537,6 @@ class ProductsController extends Controller
     $cleanedData['description'] = $data['description'];
     $cleanedData['sku'] = $data['sku'];
 
-    
-
-    
     $product->update($cleanedData);
 
     DB::delete('delete from attribute_product_values where product_id = ?', [$product->id]);
@@ -532,6 +558,8 @@ class ProductsController extends Controller
         }
       }
     }
+
+
 
     DB::delete('delete from tags_xproducts where producto_id = ?', [$id]);
     if (!is_null($tagsSeleccionados)) {
@@ -577,8 +605,8 @@ class ProductsController extends Controller
   public function borrarimg(Request $request){
     try {
       //code...
-      $imagenGaleria = ImagenProducto::find($request->id);
-      $rutaCompleta  = $imagenGaleria->name_imagen;
+      $imagenGaleria = Galerie::find($request->id);
+      $rutaCompleta  = $imagenGaleria->imagen;
       if (file_exists($rutaCompleta)) {
         // Intentar eliminar el archivo
         if (unlink($rutaCompleta)) {
@@ -594,4 +622,7 @@ class ProductsController extends Controller
 
     }
   }
+
+
+  
 }
