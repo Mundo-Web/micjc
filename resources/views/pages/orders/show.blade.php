@@ -31,12 +31,12 @@
                   </div>
                   <div class="border-b-2 border-gray-300 pb-3 mb-3">
                     <h2 class="text-xl font-bold mb-4">Informacion del cliente</h2>
-                    <div class="ml-1 text-slate-800 dark:text-slate-100 text-sm">{{ $orders->usuarioPedido->name }}
-                      {{ $orders->usuarioPedido->lastname }}</div>
+                    <div class="ml-1 text-slate-800 dark:text-slate-100 text-sm">{{ $orders->usuarioPedido?->name ?? '' }}
+                      {{ $orders->usuarioPedido?->lastname ?? '' }}</div>
                     <div class="ml-1 text-slate-800 dark:text-slate-100 text-sm">{{ $direccion->dir_av_calle }} -
                       {{ $direccion->dir_numero }}</div>
                     <div class="ml-1 text-slate-800 dark:text-slate-100 text-sm">{{ $direccion->dir_bloq_lote }}</div>
-                    <div class="ml-1 text-slate-800 dark:text-slate-100 text-sm">{{ $orders->usuarioPedido->email }}
+                    <div class="ml-1 text-slate-800 dark:text-slate-100 text-sm">{{ $orders->usuarioPedido?->email ?? 'Sin correo' }}
                     </div>
                   </div>
 
