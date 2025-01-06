@@ -400,26 +400,26 @@
 
 
 
-      let email = $('#email').val()
-      if (email == '' || email == null) {
-        e.preventDefault()
-        Swal.fire({
-          icon: "warning",
-          title: "Opss ",
-          text: 'Recuerde ingresar un correo'
-        });
-        return
-      }
-      if (!checkedRadio) {
-        e.preventDefault()
-        Swal.fire({
-          icon: "warning",
-          title: "Opss ",
-          text: 'Recuerde elegir un metodo de envio'
-        });
-        return
-      }
-      $(this).addClass('opacity-50 cursor-not-allowed').prop('disabled', true);
+      // let email = $('#email').val()
+      // if (email == '' || email == null) {
+      //   e.preventDefault()
+      //   Swal.fire({
+      //     icon: "warning",
+      //     title: "Opss ",
+      //     text: 'Recuerde ingresar un correo'
+      //   });
+      //   return
+      // }
+      // if (!checkedRadio) {
+      //   e.preventDefault()
+      //   Swal.fire({
+      //     icon: "warning",
+      //     title: "Opss ",
+      //     text: 'Recuerde elegir un metodo de envio'
+      //   });
+      //   return
+      // }
+      // $(this).addClass('opacity-50 cursor-not-allowed').prop('disabled', true);
       let totalCarrito = calcularTotal2()
 
       $.ajax({
