@@ -110,7 +110,7 @@
         <a href="{{ route('catalogo') }}"
           class="{{ request()->routeIs('catalogo') ? 'enlaces__after text-white' : 'text-white' }}">Productos</a>
         @if ($blogCount > 0)
-          <a href="{{ route('blog') }}"
+          <a href="{{ route('blog', 0) }}"
             class="{{ request()->routeIs('blog') ? 'enlaces__after text-white' : 'text-white' }}">Blog
           </a>
         @endif

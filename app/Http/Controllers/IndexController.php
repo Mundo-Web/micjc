@@ -140,11 +140,56 @@ class IndexController extends Controller
     return view('public.producto', compact('general', 'producto', 'especificaciones', 'productosRelacionados'));
   }
 
-  public function blog()
+  public function blog($filtro)
   {
-    $blogs = Blog::where('status', '=', 1)->where('visible', '=', 1)->get();
-    $general = General::all()->first();
-    return view('public.blog', compact('general', 'blogs'));
+    try {
+      $categorias = Category::where('status', '=', 1)->where('visible', '=', 1)->get();
+      $general = General::first();
+      if ($filtro == 0) {
+
+        $categoria = Category::where('status', '=', 1)->where('visible', '=', 1)->get();
+
+        $lastposts = Blog::where('status', '=', 1)
+          ->where('visible', '=', 1)
+          ->orderBy('created_at', 'desc')
+          ->take(2)
+          ->get();
+
+
+
+        $posts = Blog::where('status', '=', 1)
+          ->where('visible', '=', 1)
+          ->orderBy('created_at', 'desc')
+          ->skip(2)
+          ->limit(500)
+          ->get();
+      } else {
+
+        $categoria = Category::where('status', '=', 1)
+          ->where('visible', '=', 1)
+          ->where('id', '=', $filtro)
+          ->orderBy('created_at', 'desc')
+          ->get();
+
+        $lastposts = Blog::where('status', '=', 1)
+          ->where('visible', '=', 1)
+          ->where('category_id', '=', $filtro)
+          ->orderBy('created_at', 'desc')
+          ->take(2)
+          ->get();
+
+        $posts = Blog::where('status', '=', 1)
+          ->where('visible', '=', 1)
+          ->where('category_id', '=', $filtro)
+          ->orderBy('created_at', 'desc')
+          ->skip(2)
+          ->limit(500)
+          ->get();
+      }
+
+      return view('public.blog', compact('general', 'posts', 'categoria', 'categorias', 'filtro', 'lastposts'));
+    } catch (\Throwable $th) {
+    }
   }
 
   public function post(string $id)

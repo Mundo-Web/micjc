@@ -64,7 +64,7 @@ class BlogController extends Controller
       $ruta = 'storage/images/posts/';
       if (!file_exists($ruta)) {
         mkdir($ruta, 0777, true); // Se crea la ruta con permisos de lectura, escritura y ejecución
-    }
+      }
 
       $img->save($ruta . $nombreImagen);
 

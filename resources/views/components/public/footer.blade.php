@@ -57,7 +57,7 @@
       <a href="{{ route('index') }}" class="font-moderat_Regular text-text12 md:text-text14">Inicio</a>
       <a href="{{ route('index') }}" class="font-moderat_Regular text-text12 md:text-text14">Nosotros</a>
       <a href="{{ route('catalogo') }}" class="font-moderat_Regular text-text12 md:text-text14">Productos</a>
-      <a href="{{ route('blog') }}" class="font-moderat_Regular text-text12 md:text-text14">Blog</a>
+      <a href="{{ route('blog', 0) }}" class="font-moderat_Regular text-text12 md:text-text14">Blog</a>
       <a href="{{ route('contacto') }}" class="font-moderat_Regular text-text12 md:text-text14">Contáctanos</a>
     </div>
 
