@@ -480,7 +480,8 @@ class IndexController extends Controller
       return response()->json(['mensaje' => 'Orden generada correctamente',  'codigoOrden' => $codigoOrden, 'primeraVez' => $primeraVez]);
     } catch (\Throwable $th) {
       //throw $th;
-      return response()->json(['mensaje' => "Intente de nuevo mas tarde , estamos trabajando en una solucion , $th"], 400);
+      $message = $th->getMessage();
+      return response()->json(['mensaje' => "Intente de nuevo mas tarde , estamos trabajando en una solucion , $message"], 400);
     }
   }
   private function GuardarOrdenAndDetalleOrden($codigoOrden, $montoT, $precioEnvio, $usuario, $carrito, $addres)

@@ -17,7 +17,7 @@
         <span>></span>
         <a href="/carrito" class="font-moderat_700 text-[#141718]">Carrito</a>
       </div>
-      <div class="flex md:gap-20">
+      {{-- <div class="flex md:gap-20">
         <div
           class="flex flex-col md:flex-row md:justify-between md:items-center md:basis-7/12 w-full md:w-auto text-text18">
           <p class="font-moderat_700 text-[#21201E] border-b-[1px] border-[#6C7275] py-4 basis-1/3 h-full text-center">
@@ -34,8 +34,8 @@
           </p>
         </div>
         <div class="md:basis-5/12"></div>
-      </div>
-      <div class="flex flex-col font-moderat_700">
+      </div> --}}
+      {{-- <div class="flex flex-col font-moderat_700">
         <label for="email" class=" font-medium text-[12px] text-[#6C7275]">E-mail</label>
 
         <input id="email" type="email" placeholder="Correo electrónico" required name="email" value=""
@@ -43,10 +43,10 @@
 
 
       </div>
-      <h2 class="font-moderat_700 font-semibold text-[20px] text-[#151515]">
+      <h2 class="font-moderat_700 font-semibold text-[20px] text-[#151515]" hidden>
         Dirección de envío
-      </h2>
-      <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
+      </h2> --}}
+      {{-- <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5" hidden>
 
 
         <div class="md:col-span-1">
@@ -80,9 +80,6 @@
             <select name="distrito_id" id="distrito_id"
               class="selectpicker mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
               <option value="">Seleccionar Distrito </option>
-              {{-- @foreach ($departamentos as $item)
-                    <option value="{{ $item->id }}">{{ $item->description }}</option>
-                  @endforeach --}}
 
             </select>
           </div>
@@ -92,7 +89,7 @@
 
 
 
-      </div>
+      </div> --}}
       <div class="flex flex-col md:flex-row gap-10 md:gap-20">
         <div class="basis-7/12 flex flex-col" id="itemsCarritocheck">
 
@@ -108,7 +105,7 @@
 
           <div>
             <div class="flex flex-col gap-5">
-              <div class="w-full flex flex-col gap-5" id="contenedorEnvios">
+              <div class="w-full flex flex-col gap-5" id="contenedorEnvios" hidden>
 
                 <span class="font-bold "> Seleccione una opcion para el envio </span>
                 {{-- <div class="flex items-center ps-4 border border-gray-200 rounded dark:border-gray-700">
@@ -232,7 +229,7 @@
                     Precio
                   </p>
                   <p class="font-moderat_Bold text-text18 xl:text-text20 text-[#151515]">
-                    S/<span>${element.precio}</span>
+                    S/<span>${Number(element.precio).toFixed(2)}</span>
                   </p>
                 </div>
 
@@ -241,7 +238,7 @@
                     Sub Total
                   </p>
                   <p class="font-moderat_Bold text-text18 xl:text-text20 text-[#151515]">
-                    S/<span>${element.cantidad * element.precio}</span>
+                    S/<span>${Number(element.cantidad * element.precio).toFixed(2)}</span>
                   </p>
                 </div>
               </div>
@@ -403,26 +400,26 @@
 
 
 
-      let email = $('#email').val()
-      if (email == '' || email == null) {
-        e.preventDefault()
-        Swal.fire({
-          icon: "warning",
-          title: "Opss ",
-          text: 'Recuerde ingresar un correo'
-        });
-        return
-      }
-      if (!checkedRadio) {
-        e.preventDefault()
-        Swal.fire({
-          icon: "warning",
-          title: "Opss ",
-          text: 'Recuerde elegir un metodo de envio'
-        });
-        return
-      }
-      $(this).addClass('opacity-50 cursor-not-allowed').prop('disabled', true);
+      // let email = $('#email').val()
+      // if (email == '' || email == null) {
+      //   e.preventDefault()
+      //   Swal.fire({
+      //     icon: "warning",
+      //     title: "Opss ",
+      //     text: 'Recuerde ingresar un correo'
+      //   });
+      //   return
+      // }
+      // if (!checkedRadio) {
+      //   e.preventDefault()
+      //   Swal.fire({
+      //     icon: "warning",
+      //     title: "Opss ",
+      //     text: 'Recuerde elegir un metodo de envio'
+      //   });
+      //   return
+      // }
+      // $(this).addClass('opacity-50 cursor-not-allowed').prop('disabled', true);
       let totalCarrito = calcularTotal2()
 
       $.ajax({
@@ -431,10 +428,10 @@
         data: {
           _token: $('input[name="_token"]').val(),
           carrito: Local.get('carrito'),
-          email,
-          distrito: $('#distrito_id').val(),
-          departamento: $('#departamento_id').val(),
-          provincia: $('#provincia_id').val(),
+          // email,
+          // distrito: $('#distrito_id').val(),
+          // departamento: $('#departamento_id').val(),
+          // provincia: $('#provincia_id').val(),
           total: JSON.stringify(totalCarrito)
         },
         success: function(response) {
@@ -506,7 +503,7 @@
       limpiarcheckout2()
       PintarCarrito()
       pintarCarritoCheckout(articulosCarrito)
-
+      calcularTotal2()
 
 
     }
@@ -523,6 +520,7 @@
       limpiarcheckout2()
       PintarCarrito()
       pintarCarritoCheckout(articulosCarrito)
+      calcularTotal2()
 
     }
 
@@ -544,6 +542,7 @@
       limpiarcheckout2()
       PintarCarrito()
       pintarCarritoCheckout(articulosCarrito)
+      calcularTotal2()
 
 
 
@@ -569,16 +568,16 @@
       })
       const suma = total.reduce((total, elemento) => total + elemento, 0);
 
-      $('#itemSubtotal').text(`S/. ${suma} `)
+      $('#itemSubtotal').text(`S/. ${suma.toFixed(2)} `)
       const opciones = document.getElementsByName('bordered-radio');
 
       // Iterar sobre los radio buttons para encontrar el que está seleccionado
       let valorSeleccionado = 0;
-      opciones.forEach(opcion => {
-        if (opcion.checked) {
-          valorSeleccionado = opcion.value;
-        }
-      });
+      // opciones.forEach(opcion => {
+      //   if (opcion.checked) {
+      //     valorSeleccionado = opcion.value;
+      //   }
+      // });
 
       // El valor de valorSeleccionado es el valor del radio button seleccionado
 
@@ -589,13 +588,15 @@
       // carrito = [...carrito, carrito.total]
       Local.set("carrito", carrito)
 
-      $('#itemsTotalCheck').text(`S/. ${total} `)
+      $('#itemsTotalCheck').text(`S/. ${total.toFixed(2)} `)
       return {
         total,
         suma
       }
 
     }
+
+    calcularTotal2()
 
     $(document).on('click', 'input[type="radio"][name="bordered-radio"]', function() {
       // Obtener el valor del radio button seleccionado
