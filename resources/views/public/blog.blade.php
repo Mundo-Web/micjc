@@ -60,11 +60,11 @@
                           src="{{ asset($post->url_image . $post->name_image) }}"
                           onerror="this.onerror=null;this.src='{{ asset('images/imagen/noimagen.jpg') }}';" alt="{{ $post->title }}" />
 
-                      <h2 class="text-[#052F4E] text-base font-moderat_Regular font-semibold mt-3">
+                      <h2 class="text-[#052F4E] text-sm font-moderat_Regular font-semibold mt-3">
                           {{ $post->categories->name ?? 'Sin categoría' }}
                       </h2>
 
-                      <h2 class="text-[#052F4E] text-xl font-galano_bold line-clamp-2 md:line-clamp-1">
+                      <h2 class="text-[#052F4E] text-xl font-moderat_Bold line-clamp-2 md:line-clamp-1">
                           {{ $post->title }}
                       </h2>
 
