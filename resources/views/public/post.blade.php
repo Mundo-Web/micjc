@@ -121,7 +121,7 @@
                     {{ $blog->title }} </h2>
                 </a>
 
-                <p class="text-[#565656] font-moderat_Regular text-text12 md:text-text20 ">{!! $blog->description !!}</p>
+                <div class="text-[#565656] font-moderat_Regular text-text12 md:text-text20 line-clamp-3">{!! $blog->description !!}</div>
               </div>
 
               <div
