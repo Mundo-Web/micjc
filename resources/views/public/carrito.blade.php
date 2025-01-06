@@ -229,7 +229,7 @@
                     Precio
                   </p>
                   <p class="font-moderat_Bold text-text18 xl:text-text20 text-[#151515]">
-                    S/<span>${element.precio}</span>
+                    S/<span>${Number(element.precio).toFixed(2)}</span>
                   </p>
                 </div>
 
@@ -238,7 +238,7 @@
                     Sub Total
                   </p>
                   <p class="font-moderat_Bold text-text18 xl:text-text20 text-[#151515]">
-                    S/<span>${element.cantidad * element.precio}</span>
+                    S/<span>${Number(element.cantidad * element.precio).toFixed(2)}</span>
                   </p>
                 </div>
               </div>
@@ -568,7 +568,7 @@
       })
       const suma = total.reduce((total, elemento) => total + elemento, 0);
 
-      $('#itemSubtotal').text(`S/. ${suma} `)
+      $('#itemSubtotal').text(`S/. ${suma.toFixed(2)} `)
       const opciones = document.getElementsByName('bordered-radio');
 
       // Iterar sobre los radio buttons para encontrar el que está seleccionado
@@ -588,7 +588,7 @@
       // carrito = [...carrito, carrito.total]
       Local.set("carrito", carrito)
 
-      $('#itemsTotalCheck').text(`S/. ${total} `)
+      $('#itemsTotalCheck').text(`S/. ${total.toFixed(2)} `)
       return {
         total,
         suma
