@@ -453,24 +453,26 @@ class IndexController extends Controller
       $precioEnvio = $montoT - $subMonto;
       $email = $request->email;
 
+      if ($email) {
+        $usuario = UserDetails::where('email', '=', $email)->get(); // obtenemos usuario para validarlo si no agregarlo
+  
+        //si tiene usuario registrad
+        if (!$usuario->isNotEmpty()) {
+          $usuario = UserDetails::create(['email' => $email]);
+          $primeraVez = true;
+        }
 
-      $usuario = UserDetails::where('email', '=', $email)->get(); // obtenemos usuario para validarlo si no agregarlo
-
-      //si tiene usuario registrad
-
-      if (!$usuario->isNotEmpty()) {
-        $usuario = UserDetails::create(['email' => $email]);
-        $primeraVez = true;
+        //agregar si tiene una direccion 
+        $addres = AddressUser::create([
+          'departamento_id' => (int)$request->departamento,
+          'provincia_id' => (int)$request->provincia,
+          'distrito_id' => (int)$request->distrito,
+          'user_id' => $usuario[0]['id']
+        ]);
       }
 
-      //agregar si tiene una direccion 
 
-      $addres = AddressUser::create([
-        'departamento_id' => (int)$request->departamento,
-        'provincia_id' => (int)$request->provincia,
-        'distrito_id' => (int)$request->distrito,
-        'user_id' => $usuario[0]['id']
-      ]);
+
       $this->GuardarOrdenAndDetalleOrden($codigoOrden, $montoT, $precioEnvio, $usuario, $request->carrito, $addres);
 
       // Generar el token para izypay
@@ -484,14 +486,14 @@ class IndexController extends Controller
       return response()->json(['mensaje' => "Intente de nuevo mas tarde , estamos trabajando en una solucion , $message"], 400);
     }
   }
-  private function GuardarOrdenAndDetalleOrden($codigoOrden, $montoT, $precioEnvio, $usuario, $carrito, $addres)
+  private function GuardarOrdenAndDetalleOrden($codigoOrden, $montoT, $precioEnvio, $usuario = null, $carrito, $addres)
   {
 
     $data['codigo_orden'] = $codigoOrden;
     $data['monto'] = $montoT;
     $data['precio_envio'] = $precioEnvio;
     $data['status_id'] = '1';
-    $data['usuario_id'] = $usuario[0]['id'];
+    $data['usuario_id'] = $usuario[0]['id'] ?? null;
     $data['address_id'] = $addres['id'];
 
     $orden = Ordenes::create($data);
