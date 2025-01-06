@@ -103,15 +103,15 @@
               <div class="grid grid-cols-1 lg:grid-cols-2" data-aos="fade-up" data-aos-offset="150">
                 <div
                   class="flex flex-col justify-center gap-5 order-1 lg:order-2 px-5 md:z-50 lg:-mx-[100px] w-full lg:w-11/12">
-                  <p class="text-white text-text18 md:text-text20 font-moderat_Bold">{{ $item->botontext1 }}</p>
-                  <h1 class="text-text40 md:text-text48 font-moderat_700 text-white leading-[56px] md:leading-tight">
+                  <p class="text-white text-text18 md:text-text20 font-Montserrat_Bold">{{ $item->botontext1 }}</p>
+                  <h1 class="text-text40 md:text-text48 font-Montserrat_SemiBold text-white leading-[56px] md:leading-tight">
                     {{ $item->title }}</h1>
-                  <p class="text-white text-text14 md:text-text16 font-moderat_Regular w-full lg:w-5/6">
+                  <p class="text-white text-text14 md:text-text16 font-Montserrat_Regular w-full lg:w-5/6">
                     {{ $item->description }}</p>
 
                   <div class="flex justify-start items-center">
                     <a href="{{ $item->link2 }}" class="flex justify-center items-center gap-2">
-                      <span class="text-white text-text16 font-moderat_Bold">{{ $item->botontext2 }}</span>
+                      <span class="text-white text-text16 font-Montserrat_Bold">{{ $item->botontext2 }}</span>
                       <div>
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                           xmlns="http://www.w3.org/2000/svg">
@@ -159,8 +159,8 @@
         <div class="flex flex-row items-center w-full border-r xl:border-[#0711E5]">
             <div class="p-3"><img class="max-w-24" src="{{asset('images/img/1mic.png')}}"/></div>
             <div class="flex flex-col gap-1 items-center justify-start pr-3">
-              <p class="text-[#0711E5] text-lg font-moderat_700 w-full">COMPRA Y RECOGE</p>
-              <p class="text-[#111111] text-base font-moderat_Medium w-full leading-none">
+              <p class="text-[#111111] text-base font-Montserrat_Bold w-full">COMPRA Y RECOGE</p>
+              <p class="text-[#111111] text-sm font-Montserrat_Regular w-full leading-none">
                 Separa tu producto y recojelo en nuestro punto
               </p>
             </div>
@@ -168,8 +168,8 @@
         <div class="flex flex-row items-center w-full border-r xl:border-[#0711E5]">
           <div class="p-3"><img class="max-w-24" src="{{asset('images/img/mic2.png')}}"/></div>
           <div class="flex flex-col gap-1 items-center justify-start pr-3">
-            <p class="text-[#0711E5] text-lg font-moderat_700 w-full">DELIVERY GRATIS</p>
-            <p class="text-[#111111] text-base font-moderat_Medium w-full leading-none">
+            <p class="text-[#111111] text-base font-Montserrat_Bold w-full">DELIVERY GRATIS</p>
+            <p class="text-[#111111] text-sm font-Montserrat_Regular w-full leading-none">
               En productos seleccionados
             </p>
           </div>
@@ -177,8 +177,8 @@
         <div class="flex flex-row items-center w-full border-r xl:border-[#0711E5]">
           <div class="p-3"><img class="max-w-24" src="{{asset('images/img/mic3.png')}}"/></div>
           <div class="flex flex-col gap-1 items-center justify-start pr-3">
-            <p class="text-[#0711E5] text-lg font-moderat_700 w-full">PAGO SEGURO</p>
-            <p class="text-[#111111] text-base font-moderat_Medium w-full leading-none">
+            <p class="text-[#111111] text-base font-Montserrat_Bold w-full">PAGO SEGURO</p>
+            <p class="text-[#111111] text-sm font-Montserrat_Regular w-full leading-none">
               Tarjeta crédito o débito, yape, plin, etc.
             </p>
           </div>
@@ -186,8 +186,8 @@
         <div class="flex flex-row items-center w-full xl:border-[#0711E5]">
           <div class="p-3"><img class="max-w-24" src="{{asset('images/img/mic4.png')}}"/></div>
           <div class="flex flex-col gap-1 items-center justify-start pr-3">
-            <p class="text-[#0711E5] text-lg font-moderat_700 w-full">ASESORAMIENTO</p>
-            <p class="text-[#111111] text-base font-moderat_Medium w-full leading-none">
+            <p class="text-[#111111] text-base font-Montserrat_Bold w-full">ASESORAMIENTO</p>
+            <p class="text-[#111111] text-sm font-Montserrat_Regular w-full leading-none">
               Toda la información necesaria para tu compra
             </p>
           </div>
@@ -200,10 +200,10 @@
       <section class="w-11/12 mx-auto flex flex-col gap-7 pt-10">
         
         <div class="flex flex-col items-start md:flex-row md:justify-between md:items-center gap-5">
-          <h2 class="text-[#111111] text-text32 md:text-text36 font-moderat_700 w-1/2">Nuestras Categorías</h2>
+          <h2 class="text-[#111111] text-text32 md:text-text36 font-Montserrat_Bold w-1/2">Nuestras Categorías</h2>
           <div class="flex justify-start items-center">
             <a href="{{ route('catalogo') }}" class="flex justify-center items-center gap-2">
-              <span class="text-text16 text-[#0051FF] md:text-text20 font-moderat_Bold">Ver todas las
+              <span class="text-text16 text-[#0051FF] md:text-text20 font-Montserrat_Bold">Ver todas las
                 categorías</span>
               <div>
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -225,10 +225,10 @@
              
               <div class="flex flex-col gap-5 w-full md:w-1/2 items-start justify-center">
                 <a href="{{ route('catalogo', ['cat' => $category[0]->id]) }}">
-                  <h2 class="text-text28 md:text-text32 font-moderat_700 group-hover:text-white">{{ $category[0]->name }}</h2>
+                  <h2 class="text-text28 md:text-text32 font-Montserrat_Bold group-hover:text-white">{{ $category[0]->name }}</h2>
                 </a>
 
-                <p class="font-moderat_Regular text-sm md:text-text16 group-hover:text-white">{!! $category[0]->description !!}</p>
+                <p class="font-Montserrat_Regular text-sm md:text-text16 group-hover:text-white">{!! $category[0]->description !!}</p>
 
                 <div class="flex flex-row justify-center items-center bg-[#0051FF] group-hover:bg-white rounded-lg overflow-hidden w-40  py-2">
                   <a href="{{ route('catalogo', ['cat' => $category[0]->id]) }}" class="flex justify-center items-center gap-1">
@@ -264,10 +264,10 @@
               data-aos="fade-up" data-aos-offset="150">
               <div class="flex flex-col gap-5 w-full ">
                 <a href="{{ route('catalogo', ['cat' => $category[0]->id]) }}">
-                  <h2 class="text-text28 md:text-text32 font-moderat_700 group-hover:text-white">{{ $category[0]->name }}</h2>
+                  <h2 class="text-text28 md:text-text32 font-Montserrat_Bold group-hover:text-white">{{ $category[0]->name }}</h2>
                 </a>
 
-                <p class="font-moderat_Regular text-sm md:text-text16 group-hover:text-white">{!! $category[0]->description !!}</p>
+                <p class="font-Montserrat_Regular text-sm md:text-text16 group-hover:text-white">{!! $category[0]->description !!}</p>
               </div>
 
               <div class="flex justify-end items-end md:items-center">
@@ -299,10 +299,10 @@
               data-aos="fade-up" data-aos-offset="150">
               <div class="flex flex-col gap-5 w-full ">
                 <a href="{{ route('catalogo', ['cat' => $category[1]->id]) }}">
-                  <h2 class="text-text28 md:text-text32 font-moderat_700 group-hover:text-white">{{ $category[1]->name }}</h2>
+                  <h2 class="text-text28 md:text-text32 font-Montserrat_Bold group-hover:text-white">{{ $category[1]->name }}</h2>
                 </a>
 
-                <p class="font-moderat_Regular text-sm md:text-text16 group-hover:text-white">{!! $category[1]->description !!}</p>
+                <p class="font-Montserrat_Regular text-[15px] group-hover:text-white">{!! $category[1]->description !!}</p>
               </div>
 
               <div class="flex justify-end items-end md:items-center">
@@ -314,7 +314,7 @@
 
               <div class="flex flex-row justify-center items-center bg-[#0051FF] group-hover:bg-white rounded-lg overflow-hidden w-40 py-2">
                 <a href="{{ route('catalogo', ['cat' => $category[1]->id]) }}" class="flex justify-center items-center gap-1">
-                  <span class="text-text16 text-white group-hover:text-[#0051FF] md:text-text18 font-moderat_Bold">
+                  <span class="text-text16 text-white group-hover:text-[#0051FF] md:text-base font-moderat_Bold">
                     Ver productos
                   </span>
                   <div>
@@ -335,10 +335,10 @@
               data-aos="fade-up" data-aos-offset="150">
               <div class="flex flex-col gap-2 w-full">
                 <a href="{{ route('catalogo', ['cat' => $category[0]->id]) }}">
-                  <h2 class="text-text28 md:text-text32 font-moderat_700 group-hover:text-white">{{ $category[0]->name }}</h2>
+                  <h2 class="text-text28 md:text-text32 font-Montserrat_Bold group-hover:text-white">{{ $category[0]->name }}</h2>
                 </a>
 
-                <p class="font-moderat_Regular text-sm md:text-text16  group-hover:text-white">{!! $category[0]->description !!}</p>
+                <p class="font-Montserrat_Regular text-[15px] group-hover:text-white">{!! $category[0]->description !!}</p>
               </div>
 
               <div class="flex justify-end items-end md:items-center">
@@ -350,7 +350,7 @@
 
               <div class="flex flex-row justify-center items-center bg-[#0051FF] group-hover:bg-white rounded-lg overflow-hidden w-40 py-2">
                 <a href="{{ route('catalogo', ['cat' => $category[0]->id]) }}" class="flex justify-center items-center gap-1">
-                  <span class="text-text16 text-white group-hover:text-[#0051FF] md:text-text18 font-moderat_Bold">
+                  <span class="text-text16 text-white group-hover:text-[#0051FF] md:text-base font-moderat_Bold">
                     Ver productos
                   </span>
                   <div>
@@ -371,14 +371,14 @@
             
               <div class="flex flex-col gap-2 justify-center w-full  md:w-2/6 py-5 pr-5">
                 <a href="{{ route('catalogo', ['cat' => $category[1]->id]) }}">
-                  <h2 class="text-text28 md:text-text28 font-moderat_700 group-hover:text-white">{{ $category[1]->name }}</h2>
+                  <h2 class="text-text28 md:text-text28 font-Montserrat_Bold group-hover:text-white">{{ $category[1]->name }}</h2>
                 </a>
 
-                <p class="font-moderat_Regular text-sm md:text-text16 group-hover:text-white">{!! $category[1]->description !!}</p>
+                <p class="font-Montserrat_Regular text-[15px] group-hover:text-white">{!! $category[1]->description !!}</p>
 
                 <div class="flex flex-row justify-center items-center bg-[#0051FF] group-hover:bg-white rounded-lg overflow-hidden w-40  py-2">
                   <a href="{{ route('catalogo', ['cat' => $category[1]->id]) }}" class="flex justify-center items-center gap-1">
-                    <span class="text-text16 text-white group-hover:text-[#0051FF] md:text-text18 font-moderat_Bold">
+                    <span class="text-text16 text-white group-hover:text-[#0051FF] md:text-base font-moderat_Bold">
                       Ver productos
                     </span>
                     <div>
@@ -416,15 +416,15 @@
 
               <div class="flex flex-col justify-center gap-2 basis-full md:basis-2/6 items-end py-5 pl-5">
                 <a href="{{ route('catalogo') }}">
-                  <h2 class="text-text28 md:text-text28 font-moderat_700 text-right group-hover:text-white">{{ $category[2]->name }}</h2>
+                  <h2 class="text-text28 md:text-text28 font-Montserrat_Bold text-right group-hover:text-white">{{ $category[2]->name }}</h2>
                 </a>
 
-                <p class="font-moderat_Regular text-sm md:text-text16 text-right group-hover:text-white">{!! $category[2]->description !!}</p>
+                <p class="font-Montserrat_Regular text-[15px] text-right group-hover:text-white">{!! $category[2]->description !!}</p>
                
 
                 <div class="flex flex-row justify-center items-center bg-[#0051FF] group-hover:bg-white rounded-lg overflow-hidden w-40  py-2">
                   <a href="{{ route('catalogo', ['cat' => $category[2]->id]) }}" class="flex justify-center items-center gap-1">
-                    <span class="text-text16 text-white group-hover:text-[#0051FF] md:text-text18 font-moderat_Bold">
+                    <span class="text-text16 text-white group-hover:text-[#0051FF] md:text-base font-moderat_Bold">
                       Ver productos
                     </span>
                     <div>
@@ -448,12 +448,12 @@
 
     @if (count($productosDestacados) > 0)
     <section class="w-full px-[5%] py-10 lg:py-16 mt-10 lg:mt-20 bg-[#f3f3f3]">
-        <div class="flex flex-col md:flex-row md:justify-between items-start md:items-center py-5 gap-5 md:gap-0">
-          <p class="font-moderat_700 text-text32 md:text-text36 tracking-tighter leading-normal">Las mejores impresoras del mes</p>
-          <div class="flex justify-start items-center">
+        <div class="flex flex-col md:flex-row md:justify-center items-start md:items-center pb-10 gap-5 md:gap-0">
+          <p class="font-Montserrat_Bold text-text32 md:text-text36 tracking-wide leading-normal uppercase text-[#0711E5]">Las mejores impresoras del mes</p>
+          {{-- <div class="flex justify-start items-center">
             <a href="{{ route('catalogo') }}" class="flex justify-center items-center gap-2">
               <p
-                class="text-[#3374FF] text-text16 font-moderat_Bold md:text-text20 flex justify-center items-center gap-3">
+                class="text-[#3374FF] text-text16 font-Montserrat_Bold md:text-text20 flex justify-center items-center gap-3">
                Ver todos
                 <span class="hidden md:block">los productos</span>
               </p>
@@ -467,7 +467,7 @@
                 </svg>
               </div>
             </a>
-          </div>
+          </div> --}}
         </div>
 
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-7">
@@ -567,7 +567,7 @@
         <div class="bg-[#0051FF] rounded-xl overflow-hidden px-5 md:px-10 pt-3 pb-5 md:pt-5 md:pb-10 ">
 
           <div class="flex flex-col md:flex-row md:justify-between items-start md:items-center pt-5 pb-7 gap-2">
-            <p class="font-moderat_400 text-base md:text-lg text-white ">¡PROMOS POR <span class="font-moderat_700">CYBER WOW TIEMPO LIMITADO!</span></p>
+            <p class="font-Montserrat_Bold text-base md:text-lg text-white ">¡PROMOS POR <span class="font-Montserrat_Bold">CYBER WOW TIEMPO LIMITADO!</span></p>
             <div class="flex justify-start items-center">
               
                 {{-- <div class="countup flex flex-row gap-1 items-center" id="stopwatch">
@@ -606,21 +606,21 @@
                         <div class="flex flex-col gap-1">
 
                           <a href="/catalogo?marca={{$item->marca_id}}">
-                            <h3 class="font-moderat_Medium text-text12 md:text-sm text-[#111111]">{{ $item->marca->name ?? "S/M" }}</h3>
+                            <h3 class="font-Montserrat_Regular text-text12 md:text-sm text-[#111111]">{{ $item->marca->name ?? "S/M" }}</h3>
                           </a>
 
                           <a href="{{ route('producto', $item->id) }}">
-                            <h2 class="font-moderat_700 leading-normal text-sm md:text-base text-[#111111] line-clamp-2 tracking-tight">
+                            <h2 class="font-Montserrat_Bold leading-normal text-sm  text-[#111111] line-clamp-2 tracking-tight">
                               {{ $item->producto }}
                             </h2>
                           </a>
                       
                           @if ($item->descuento == 0)
-                              <span class="text-[#111111] text-text16 md:text-xl font-space_grotesk font-bold md:font-medium"> S/. {{ $item->precio }}</span>
+                              <span class="text-[#111111] text-text16 md:text-xl font-Montserrat_Bold font-bold md:font-medium"> S/. {{ $item->precio }}</span>
                           @else
                             <div class="flex flex-row gap-2 items-center">
-                              <span class="text-[#111111] text-text14 line-through font-space_grotesk font-bold md:font-medium">S/. {{ $item->descuento }}</span>
-                              <span class="text-[#111111] text-text16 md:text-xl font-space_grotesk font-bold md:font-medium">S/. {{ $item->precio }}</span>
+                              <span class="text-[#111111] text-text14 line-through font-Montserrat_Bold font-bold md:font-medium">S/. {{ $item->descuento }}</span>
+                              <span class="text-[#111111] text-text16 md:text-xl font-moderat_Regular font-bold md:font-medium">S/. {{ $item->precio }}</span>
                             </div>
                           @endif
 
@@ -648,7 +648,9 @@
             </div>
 
             <div class="md:col-span-4 flex flex-col justify-center gap-5">
-              <p class="font-moderat_700 text-text32 md:text-text36">En Oferta</p>
+              <div class="flex flex-row justify-center">
+                <p class="font-Montserrat_Bold text-text32 tracking-normal leading-normal uppercase text-[#0711E5]">LOS MEJORES MONITORES DEL MES</p>
+              </div>
               <div>
                 <div class="swiper ofertas">
                   <div class="swiper-wrapper">
@@ -759,10 +761,10 @@
     @if (count($logos) > 0)
       <section class="w-11/12 mx-auto bg-[#001232] text-white mt-20 fondo__marcas">
         <div class="flex flex-col gap-5 py-10 items-center" data-aos="fade-up" data-aos-offset="150">
-          <h2 class="text-white font-moderat_Bold text-text32 md:text-text44 text-center">Nuestras marcas asociadas</h2>
-          <p class="font-moderat_Regular text-base md:text-lg text-center w-full md:w-2/3">Colaboramos con una
+          <h2 class="text-white font-moderat_Bold text-text32 md:text-text44 text-center">Aliados estratégicos con las marcas</h2>
+          {{-- <p class="font-moderat_Regular text-base md:text-lg text-center w-full md:w-2/3">Colaboramos con una
             amplia variedad de marcas reconocidas a nivel mundial, ofreciendo productos de alta calidad que se adaptan a
-            las necesidades tecnológicas de todos nuestros clientes.</p>
+            las necesidades tecnológicas de todos nuestros clientes.</p> --}}
         </div>
 
         <div class="swiper productos_marcas w-10/12 mx-auto">
@@ -785,8 +787,8 @@
     @if (count($testimonios) > 0)
       <section class="bg-[#f3f3f3] py-10 md:py-20 mt-10 md:mt-20">
         <div class="w-11/12 mx-auto flex flex-col gap-3 items-center" data-aos="fade-up" data-aos-offset="150">
-          <h2 class="font-moderat_700 text-text32 md:text-text44 text-center">Clientes Satisfechos</h2>
-          <p class="font-moderat_Regular text-base md:text-lg text-[#565656] text-center w-full md:w-2/3">Nuestros clientes
+          <h2 class="font-Montserrat_Bold text-text32 md:text-text40 text-center">Clientes Satisfechos</h2>
+          <p class="font-Montserrat_Regular text-base md:text-lg text-[#565656] text-center w-full md:w-2/3">Nuestros clientes
             confían en nosotros por la calidad y el servicio que ofrecemos. Ya sea por la rápida entrega de accesorios
             gamer o soluciones de impresión confiables, siempre estamos comprometidos con la satisfacción total.</p>
         </div>
@@ -805,15 +807,15 @@
                         <img src="{{ asset($item->imagen) }}" alt="usuario" class="rounded-full">
                       </div>
                       <div class="flex flex-col gap-2 justify-center">
-                        <h3 class="font-moderat_Medium text-text24 md:text-text32 text-[#111111]">
+                        <h3 class="font-Montserrat_Bold text-text24 md:text-text32 text-[#111111]">
                           {{ $item->name }}</h3>
-                        <p class="font-moderat_Regular text-text12 md:text-text16 text-[#111111]">
+                        <p class="font-Montserrat_Regular text-text12 md:text-text16 text-[#111111]">
                           {{ $item->departamento }} - {{ $item->country }}
                         </p>
                       </div>
                     </div>
                     <div>
-                      <p class="text-[#565656] font-moderat_Regular text-text14 md:text-text18">
+                      <p class="text-[#565656] font-Montserrat_Regular text-text14 md:text-text18">
                         {!! $item->testimonie !!}
                       </p>
                     </div>
@@ -839,16 +841,16 @@
           <div class="flex flex-col gap-10">
             <div class="flex flex-col justify-center gap-3 md:flex-row md:justify-between md:items-center">
               <div class="flex flex-col gap-5 basis-8/12">
-                <h2 class="font-moderat_700 text-text32 md:text-text44 text-[#111111] leading-none md:leading-tight">
+                <h2 class="font-Montserrat_Bold text-text32 md:text-text40 text-[#111111] leading-none md:leading-tight">
                   Últimas Publicaciones</h2>
-                <p class="text-[#565656] text-text18 font-moderat_Regular">Descubre las últimas novedades en
+                <p class="text-[#565656] text-text18 font-Montserrat_Regular">Descubre las últimas novedades en
                   tecnología. Encuentra desde tintas y toners para impresoras hasta teclados mecánicos y accesorios gamer.
                   ¡Mejora tu setup con nuestros monitores de alta resolución y laptops de última generación!</p>
               </div>
 
               <div class="flex justify-end items-center basis-4/12">
                 <a href="{{ route('blog', 0) }}"
-                  class="font-moderat_Bold text-base md:text-lg py-3 rounded-xl px-5 bg-[#0051FF] text-white md:w-auto text-center w-full">Ver
+                  class="font-Montserrat_Bold text-base md:text-lg py-3 rounded-xl px-5 bg-[#0051FF] text-white md:w-auto text-center w-full">Ver
                   más Publicaciones</a>
               </div>
             </div>

@@ -78,7 +78,37 @@
 
     @font-face {
       font-family: "moderat-Bold";
-      src: url({{ asset('fonts/Moderat-Bold.woff') }}) format("woff");
+      src: url({{ asset('fonts/moderat-Bold.woff') }}) format("woff");
+    }
+    /* ----------------- */
+    @font-face {
+      font-family: "Montserrat-Bold";
+      src: url({{ asset('fonts/Montserrat-Bold.woff') }}) format("woff");
+    }
+
+    @font-face {
+      font-family: "Montserrat-SemiBold";
+      src: url({{ asset('fonts/Montserrat-SemiBold.woff') }}) format("woff");
+    }
+    
+    @font-face {
+      font-family: "Montserrat-Medium";
+      src: url({{ asset('fonts/Montserrat-Medium.woff') }}) format("woff");
+    }
+
+    @font-face {
+      font-family: "Montserrat-Regular";
+      src: url({{ asset('fonts/Montserrat-Regular.woff') }}) format("woff");
+    }
+
+    @font-face {
+      font-family: "Montserrat-Light";
+      src: url({{ asset('fonts/Montserrat-Light.woff') }}) format("woff");
+    }
+
+    @font-face {
+      font-family: "Montserrat-Black";
+      src: url({{ asset('fonts/Montserrat-Black.woff') }}) format("woff");
     }
   </style>
 
