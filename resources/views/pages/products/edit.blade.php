@@ -497,7 +497,8 @@
                     </div>
 
                   </div>
-                  <div class="md:col-span-5">
+                  
+                  <div class="md:col-span-5" id="uploadedFilesGallery">
                     <label for="imagaleria">Galeria de imagenes</label>
                     <div class="dropzone border-gray-300 dropzoneSecond cursor-pointer" id="dropzoneServerFilesGallery"
                       name="imagaleria ">
@@ -1135,7 +1136,6 @@
     })
   </script>
   <script>
-
     $(document).ready(function() {
         function initializeDropzone(element, nameValue) {
 

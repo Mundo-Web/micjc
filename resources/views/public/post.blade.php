@@ -1,4 +1,4 @@
-@extends('components.public.matrix')
+  @extends('components.public.matrix')
 
 @section('title', 'Post | ' . config('app.name', 'Laravel'))
 
@@ -73,7 +73,7 @@
 
 
           <div class="flex justify-end items-center basis-4/12">
-            <a href="{{ route('blog') }}
+            <a href="{{ route('blog', 0) }}
               class="font-moderat_Bold text-text16 md:text-text20 py-3 px-5
               bg-[#0051FF] text-white md:w-auto text-center w-full">Ver
               más Publicaciones</a>
@@ -121,7 +121,7 @@
                     {{ $blog->title }} </h2>
                 </a>
 
-                <p class="text-[#565656] font-moderat_Regular text-text12 md:text-text20 ">{!! $blog->description !!}</p>
+                <div class="text-[#565656] font-moderat_Regular text-text12 md:text-text20 line-clamp-3">{!! $blog->description !!}</div>
               </div>
 
               <div

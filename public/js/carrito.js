@@ -159,8 +159,8 @@ let articulosCarrito = [];
     }
 
 
-
-
+    
+    
 
 
     $('#btnAgregarCarrito').on('click', function(e) {

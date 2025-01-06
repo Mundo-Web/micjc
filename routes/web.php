@@ -64,9 +64,10 @@ Route::get('/productotest', [IndexController::class, 'producto'] )->name('produc
 
 
 // Blog
-Route::get('/blog', [IndexController::class, 'blog'] )->name('blog');
+// Route::get('/blog', [IndexController::class, 'blog'] )->name('blog');
+Route::get('/blog/{filtro}', [IndexController::class, 'blog'])->name('blog');
 Route::get('/post/{id}', [IndexController::class, 'post'] )->name('post');
-    
+// Route::get('/post/{id}', [IndexController::class, 'detalleBlog'])->name('detalleBlog');    
 
 // Contacto
 Route::get('/contacto', [IndexController::class, 'contacto'] )->name('contacto');
