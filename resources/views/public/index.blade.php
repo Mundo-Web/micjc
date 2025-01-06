@@ -470,15 +470,21 @@
           </div>
         </div>
 
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-7">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-7">
           @foreach ($productosDestacados as $item)
-            <div class="flex flex-col rounded-xl gap-5 overflow-hidden bg-white">
+            {{-- <div class="flex flex-col rounded-xl gap-2 sm:gap-5 overflow-hidden bg-white">
               
               <div class="bg-white flex flex-col justify-center relative">
                
-                <div class="flex justify-start items-center absolute top-[5%] left-[5%]">
+                <div class="flex justify-start items-center absolute top-[5%] left-[5%] z-10">
+                  @if ($item->descuento > 0)
+                    <span class="font-moderat_500 text-[13px] rounded-l-lg rounded-br-lg tracking-tight  bg-black text-white py-1 px-2">
+                      AHORRA 
+                        {{ round((($item->precio - $item->descuento) / $item->precio) * 100) }}%
+                    </span>
+                  @endif
                   @foreach ($item->tags as $tag)
-                    <span class="font-moderat_500 text-text10 md:text-text20 bg-[#0051FF] text-white py-1 px-2">
+                    <span class="font-moderat_500 text-[13px] tracking-tight  rounded-lg bg-black text-white py-1 px-2">
                       {{ $tag->name }}</span>
                   @endforeach
                 </div>
@@ -510,8 +516,15 @@
 
               <div class="flex flex-col bg-white p-2 md:p-5">
                 <div class="flex flex-col gap-1 md:gap-2">
-                  {{-- <h3 class="font-moderat_Medium text-text12 md:text-text20 text-[#1F1F1F]">{{ $item->extracto }}</h3> --}}
-                  <a href="/catalogo?marca={{$item->marca_id}}"><h3 class="font-moderat_Medium text-text12 md:text-sm text-[#111111]">{{ $item->marca->name ?? "S/M" }}</h3></a>
+
+                  @if ($item->descuento == 0)
+                      <span class="text-[#111111] text-text16 md:text-xl font-space_grotesk font-bold "> S/. {{ $item->precio }}</span>
+                  @else
+                    <div class="flex flex-col md:flex-row gap-0 md:gap-2 items-start md:items-center">
+                      <span class="text-[#111111] text-text16 md:text-xl font-space_grotesk font-bold ">S/. {{ $item->descuento }}</span>
+                      <span class="text-[#111111] text-text14 line-through font-space_grotesk font-bold md:font-medium">S/. {{ $item->precio }}</span>
+                    </div>
+                  @endif
 
                   <a href="{{ route('producto', $item->id) }}">
                     <h2
@@ -519,18 +532,17 @@
                       {{ $item->producto }}</h2>
                   </a>
 
-                  @if ($item->descuento == 0)
-                      <span class="text-[#111111] text-text16 md:text-xl font-space_grotesk font-bold md:font-medium"> S/. {{ $item->precio }}</span>
-                  @else
-                    <div class="flex flex-col md:flex-row gap-0 md:gap-2 items-start md:items-center">
-                      <span class="text-[#111111] text-text14 line-through font-space_grotesk font-bold md:font-medium">S/. {{ $item->descuento }}</span>
-                      <span class="text-[#111111] text-text16 md:text-xl font-space_grotesk font-bold md:font-medium">S/. {{ $item->precio }}</span>
-                    </div>
-                  @endif
+                  <a href="/catalogo?marca={{$item->marca_id}}"><h3 class="font-moderat_Medium text-text12 md:text-sm text-[#111111]">{{ $item->marca->name ?? "S/M" }}</h3></a>
+
+                  <div class="flex flex-row items-center justify-center cursor-pointer">
+                    <span class="uppercase text-white text-xs md:text-sm font-moderat_Medium font-semibold bg-[#0051FF] px-2 sm:px-3 py-2 rounded-lg">Añadir al carrito</span>
+                  </div>
+
                 </div>
               </div>
 
-            </div>
+            </div> --}}
+            <x-product.cardproduct  bgcolor="bg-[#FFFFFF]" :item="$item" />
           @endforeach
         </div>
     </section>
@@ -558,7 +570,7 @@
             <p class="font-moderat_400 text-base md:text-lg text-white ">¡PROMOS POR <span class="font-moderat_700">CYBER WOW TIEMPO LIMITADO!</span></p>
             <div class="flex justify-start items-center">
               
-                <div class="countup flex flex-row gap-1 items-center" id="stopwatch">
+                {{-- <div class="countup flex flex-row gap-1 items-center" id="stopwatch">
                   <div class="bg-white text-[#0711E5] p-1 rounded-lg">
                     <span id="hour" class="timeel hours font-moderat_700">00</span>
                     <span class="timeel timeRefHours font-moderat_400">HR</span>
@@ -573,7 +585,7 @@
                     <span id="sec" class="timeel seconds font-moderat_700">00</span>
                     <span class="timeel timeRefSeconds font-moderat_400">SEG</span>
                   </div>
-              </div>
+                </div> --}}
             </div>
           </div>
 
@@ -643,64 +655,7 @@
       
                   @foreach ($ofertasProductos as $item)
                     <div class="swiper-slide">
-                      <div class="flex flex-col gap-5 bg-white rounded-xl overflow-hidden" data-aos="fade-up" data-aos-offset="150">
-                        
-                        <div class="bg-white flex flex-col justify-center relative">
-                        
-                          <div class="flex justify-start items-center absolute top-[5%] left-[5%]">
-                            @foreach ($item->tags as $tag)
-                              <span class="font-moderat_500 text-text10 md:text-text20 bg-[#0051FF] text-white py-1 px-2">
-                                {{ $tag->name }}</span>
-                            @endforeach
-                          </div>
-          
-                          <div>
-                            <div class="relative flex justify-center items-center aspect-square">
-                              @if ($item->imagen)
-                                <img x-show="{{ isset($item->imagen_ambiente) }} || !showAmbiente"
-                                  x-transition:enter="transition ease-out duration-300 transform"
-                                  x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
-                                  x-transition:leave="transition ease-in duration-300 transform"
-                                  x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
-                                  src="{{ asset($item->imagen) }}" alt="{{ $item->name }}"
-                                  class="w-full object-contain md:object-cover absolute inset-0 aspect-square"
-                                  onerror="this.onerror=null;this.src='/images/img/noimagen.jpg';" />
-                              @else
-                                <img x-show="{{ isset($item->imagen_ambiente) }} || !showAmbiente"
-                                  x-transition:enter="transition ease-out duration-300 transform"
-                                  x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
-                                  x-transition:leave="transition ease-in duration-300 transform"
-                                  x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
-                                  src="{{ asset('images/img/noimagen.jpg') }}" alt="imagen_alternativa"
-                                  class="w-full object-contain md:object-cover absolute inset-0 aspect-square" />
-                              @endif
-                            </div>
-                          </div>
-                        </div>
-                        
-                        <div class="flex flex-col bg-white  p-2 md:p-3">
-                          <div class="flex flex-col gap-2">
-                            
-                            <a href="/catalogo?marca={{$item->marca_id}}"><h3 class="font-moderat_Medium text-text12 md:text-sm text-[#111111]">{{ $item->marca->name ?? "S/M" }}</h3></a>
-          
-                            <a href="{{ route('producto', $item->id) }}">
-                              <h2
-                                class="font-moderat_700 leading-normal text-text16 md:text-lg text-[#111111] line-clamp-2 tracking-tight">
-                                {{ $item->producto }}</h2>
-                            </a>
-                        
-                            @if ($item->descuento == 0)
-                                <span class="text-[#111111] text-text16 md:text-xl font-space_grotesk font-bold md:font-medium"> S/. {{ $item->precio }}</span>
-                            @else
-                              <div class="flex flex-row gap-2 items-center">
-                                <span class="text-[#111111] text-text14 line-through font-space_grotesk font-bold md:font-medium">S/. {{ $item->descuento }}</span>
-                                <span class="text-[#111111] text-text16 md:text-xl font-space_grotesk font-bold md:font-medium">S/. {{ $item->precio }}</span>
-                              </div>
-                            @endif
-                          </div>
-                        </div>
-          
-                      </div>
+                      <x-product.cardproduct  bgcolor="bg-[#FFFFFF]" :item="$item" />
                     </div>
                   @endforeach
 

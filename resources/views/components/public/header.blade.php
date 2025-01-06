@@ -74,7 +74,19 @@
                 </div>
               </div>
             @endif
+
+
+            <div class="flex justify-center items-center min-w-[38px]">
+              <div id="open-cart" class="relative inline-block cursor-pointer pr-3">
+                <span id="itemsCount"
+                  class="bg-[#0051FF] text-xs font-medium text-white text-center px-[7px] py-[2px]  rounded-full absolute bottom-0 right-0 ml-3">0</span>
+                <img src="{{ asset('images/svg/bag_boost.svg') }}"
+                  class="bg-white rounded-lg p-1 max-w-full h-auto cursor-pointer" />
+              </div>
+            </div>
       </div>
+
+      
 
     </div>
 
@@ -156,9 +168,131 @@
 
   {{-- fixed-whastapp --}}
 
+  <div id="cart-modal"
+    class="bag !absolute top-0 right-0 md:w-[450px] cartContainer border shadow-2xl  !rounded-sm !p-0 !z-30"
+    style="display: none">
+    <div class="p-4 flex flex-col h-[90vh] justify-between gap-2">
+      <div class="flex flex-col">
+        <div class="flex justify-between ">
+          <h2 class="font-semibold font-Inter_Medium text-[28px] text-[#151515] pb-5">Carrito</h2>
+          <div id="close-cart" class="cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="w-6 h-6">
+              <path stroke="#272727" stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+          </div>
+        </div>
+        <div class="overflow-y-scroll h-[calc(90vh-200px)] scroll__carrito">
+          <table class="w-full">
+            <tbody id="itemsCarrito">
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="flex flex-col gap-2 pt-2">
+        <div class="text-[#006BF6]  text-xl flex justify-between items-center">
+          <p class="font-Inter_Medium font-semibold">Total</p>
+          <p class="font-Inter_Medium font-semibold" id="itemsTotal">S/ 0.00</p>
+        </div>
+        <div>
+          <a href="/carrito"
+            class="font-normal font-Inter_Medium text-lg bg-[#006BF6] py-3 px-5 rounded-2xl text-white cursor-pointer w-full inline-block text-center">Ver
+            Carrito</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </header>
 <script>
+  function agregarAlCarritoPr(item, cantidad) {
+    $.ajax({
+
+      url: `{{ route('carrito.buscarProducto') }}`,
+      method: 'POST',
+      data: {
+        _token: $('input[name="_token"]').val(),
+        id: item,
+        cantidad
+
+      },
+      success: function(success) {
+        let {
+          producto,
+          id,
+          descuento,
+          precio,
+          imagen,
+          color,
+          precio_reseller
+        } = success.data
+        let is_reseller = success.is_reseller
+
+
+        if (is_reseller) {
+          descuento = precio_reseller
+        }
+
+        let cantidad = Number(success.cantidad)
+        let detalleProducto = {
+          id,
+          producto,
+          isCombo: false,
+          descuento,
+          precio,
+          imagen,
+          cantidad,
+          color
+
+        }
+        let existeArticulo = articulosCarrito.some(item => item.id === detalleProducto.id && item.isCombo ==
+          false, )
+        if (existeArticulo) {
+          //sumar al articulo actual 
+          const prodRepetido = articulosCarrito.map(item => {
+            if (item.id === detalleProducto.id && item.isCombo == false) {
+              item.cantidad += Number(detalleProducto.cantidad);
+              // retorna el objeto actualizado 
+            }
+            return item; // retorna los objetos que no son duplicados 
+
+
+          });
+        } else {
+          articulosCarrito = [...articulosCarrito, detalleProducto]
+
+        }
+
+        Local.set('carrito', articulosCarrito)
+        let itemsCarrito = $('#itemsCarrito')
+        let ItemssubTotal = $('#ItemssubTotal')
+        let itemsTotal = $('#itemsTotal')
+        limpiarHTML()
+        PintarCarrito()
+        mostrarTotalItems()
+
+        // Notify.add({
+        //   icon: '/images/svg/Boost.svg',
+        //   title: 'Producto agregado',
+        //   body: 'El producto se agregó correctamente al carrito',
+        //   type: 'primary',
+        // })
+
+         Swal.fire({
+
+          icon: "success",
+          title: `Producto agregado correctamente`,
+          showConfirmButton: true
+        });
+
+      },
+      error: function(error) {
+        console.log(error)
+      }
+
+    })
+  }
+
   $(document).ready(function() {
     const icon = $('.fixed-whastapp');
     const footer = $('footer');
@@ -180,5 +314,18 @@
       }
     });
   });
+
+  $(document).on('click', '#btnAgregarCarrito', function() {
+      let item = $(this).data('id')
+
+      let cantidad = 1
+      try {
+        agregarAlCarritoPr(item, cantidad)
+
+      } catch (error) {
+        console.log(error)
+
+      }
+  })
 </script>
 <script src="{{ asset('js/storage.extend.js') }}"></script>
