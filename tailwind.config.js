@@ -41,6 +41,13 @@ export default {
                 moderat_Regular: ["moderat-Regular", "sans-serif"],
                 moderat_Bold: ["moderat-Bold", "sans-serif"],
                 moderatItalic_500: ["moderat-italic", "sans-serif"],
+                Montserrat_Bold: ["Montserrat-Bold", "sans-serif"],
+                Montserrat_SemiBold: ["Montserrat-SemiBold", "sans-serif"],
+                Montserrat_Medium: ["Montserrat-Medium", "sans-serif"],
+                Montserrat_Regular: ["Montserrat-Regular", "sans-serif"],
+                Montserrat_Light: ["Montserrat-Light", "sans-serif"],
+                Montserrat_Black: ["Montserrat-Black", "sans-serif"],
+
             },
             fontSize: {
                 xs: ["0.75rem", { lineHeight: "1.5" }],

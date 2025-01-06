@@ -4,7 +4,7 @@
     <div class="flex justify-between items-center w-full px-[5%] text-white">
       <div class="min-w-20 hidden md:flex "></div>
       <div class="min-w-96 w-full max-w-3xl">
-        <marquee class="text-base font-moderat_500">Grandes dispositivos para grandes decisiones</marquee>
+        <marquee class="text-base font-Montserrat_Bold italic">¡Grandes dispositivos para grandes decisiones!</marquee>
       </div>
       <div class="flex justify-center items-center gap-2">
         <div class="min-w-20 hidden md:flex justify-center items-center gap-2">
@@ -104,7 +104,7 @@
   </div>
 
 
-   <div class="bg-[#0051FF] h-10 flex px-[5%] justify-between lg:justify-center lg:gap-10 items-center text-base md:text-lg font-moderat_500">
+   <div class="bg-[#0051FF] h-10 flex px-[5%] justify-between lg:justify-center lg:gap-10 items-center text-base md:text-lg font-Montserrat_SemiBold">
         <a href="{{ route('index') }}"
           class=" {{ request()->routeIs('index') ? 'enlaces__after text-white' : 'text-white' }}">Inicio</a>
         <a href="{{ route('catalogo') }}"

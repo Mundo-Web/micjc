@@ -5,13 +5,13 @@
     
     <div class="flex justify-start items-center absolute top-2 left-2 z-10">
         @if ($item->descuento > 0)
-          <span class="font-moderat_500 text-[13px] rounded-l-lg rounded-br-lg tracking-tight  bg-black text-white py-1 px-2">
+          <span class="font-Montserrat_Light text-[13px] rounded-l-lg rounded-br-lg tracking-tight  bg-black text-white py-1 px-2">
             AHORRA 
               {{ round((($item->precio - $item->descuento) / $item->precio) * 100) }}%
           </span>
         @endif
         @foreach ($item->tags as $tag)
-          <span class="font-moderat_500 text-[13px] tracking-tight  rounded-lg text-white py-1 px-2" style="background-color: {{ $tag->color }}">
+          <span class="font-Montserrat_Light text-[13px] tracking-tight  rounded-lg text-white py-1 px-2" style="background-color: {{ $tag->color }}">
             {{ $tag->name }}</span>
         @endforeach
     </div>
@@ -68,26 +68,26 @@
     <div class="flex flex-col gap-2 md:gap-2">
 
       @if ($item->descuento == 0)
-          <span class="text-[#111111] text-text16 md:text-xl font-space_grotesk font-bold "> S/. {{ $item->precio }}</span>
+          <span class="text-[#111111] text-text16 md:text-xl font-Montserrat_Bold font-bold "> S/. {{ $item->precio }}</span>
       @else
         <div class="flex flex-row gap-2  justify-start items-center">
-          <span class="text-[#111111] text-sm md:text-xl font-space_grotesk font-bold ">S/. {{ $item->descuento }}</span>
-          <span class="text-[#111111] text-xs line-through font-space_grotesk font-bold md:font-medium">S/. {{ $item->precio }}</span>
+          <span class="text-[#111111] text-sm md:text-xl font-Montserrat_Bold font-bold ">S/. {{ $item->descuento }}</span>
+          <span class="text-[#111111] text-xs line-through font-Montserrat_Regular font-bold md:font-medium">S/. {{ $item->precio }}</span>
         </div>
       @endif
 
       <a href="{{ route('producto', $item->id) }}">
         <h2
-          class="font-moderat_700 leading-normal text-sm md:text-lg text-[#111111] line-clamp-2 tracking-tight">
+          class="font-Montserrat_Bold leading-normal text-sm md:text-base text-[#111111] line-clamp-2 tracking-tight">
           {{ $item->producto }}</h2>
       </a>
 
-      <a href="/catalogo?marca={{$item->marca_id}}"><h3 class="font-moderat_Medium text-text12 md:text-sm text-[#111111]">{{ $item->marca->name ?? "S/M" }}</h3></a>
+      <a href="/catalogo?marca={{$item->marca_id}}"><h3 class="font-Montserrat_SemiBold text-text12 md:text-sm text-[#111111]">{{ $item->marca->name ?? "S/M" }}</h3></a>
 
 
-      <div class="addProduct flex flex-row items-center justify-center cursor-pointer">
+      <div class="addProduct flex flex-row items-center justify-center cursor-pointer py-2">
         <button  data-id="{{ $item->id }}" type="button" id='agregarAlCarritoPr'>
-            <span class="uppercase text-white text-xs md:text-sm font-moderat_Medium font-semibold bg-[#0051FF] px-2 sm:px-3 py-2 rounded-lg">Añadir al carrito</span>
+            <span class="uppercase text-white text-xs md:text-sm font-Montserrat_Bold font-semibold bg-[#0051FF] px-2 sm:px-5 py-3 rounded-xl">Añadir al carrito</span>
         </button>    
       </div>
 
