@@ -55,7 +55,7 @@
 
               @foreach ($lastposts as $post)
                   <div class="flex flex-col gap-1">
-                    <a href="{{ route('detalleBlog', $post->id) }}" class="w-full">
+                    <a href="{{ route('post', $post->id) }}" class="w-full">
                       <img class="w-full h-[250px] lg:h-[300px] object-cover"
                           src="{{ asset($post->url_image . $post->name_image) }}"
                           onerror="this.onerror=null;this.src='{{ asset('images/imagen/noimagen.jpg') }}';" alt="{{ $post->title }}" />
