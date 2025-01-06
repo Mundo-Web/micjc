@@ -864,22 +864,22 @@
                       class="w-full aspect-video object-cover object-center shadow-lg rounded-lg">
                   </div>
                   <div class="flex flex-col gap-2">
-                    <p class="font-moderat_Bold text-text12 md:text-text20 text-[#0051FF]">{{ $item->categories->name ?? "Sin categoria"}}
+                    <p class="font-Montserrat_Bold text-text12 md:text-text20 text-[#0051FF]">{{ $item->categories->name ?? "Sin categoria"}}
                     </p>
                     <a href="{{ route('post', $item->id) }}">
-                      <h2 class="text-[#082252] font-moderat_Bold text-text16 md:text-text28 line-clamp-2 h-[84px]">
+                      <h2 class="text-[#082252] font-Montserrat_Bold text-text16 md:text-text28 line-clamp-2 h-[84px]">
                         {{ $item->title }}
                       </h2>
                     </a>
 
                     <p
-                      class="text-[#565656] font-moderat_Regular text-sm line-clamp-2 h-12 overflow-hidden text-ellipsis">
+                      class="text-[#565656] font-Montserrat_Regular text-sm line-clamp-2 h-12 overflow-hidden text-ellipsis">
                       {!! strip_tags($item->description) !!}
                     </p>
                   </div>
 
                   <div
-                    class="flex justify-start items-center text-text10 md:text-text14 text-[#0051FF] font-moderat_Medium gap-1 md:gap-2">
+                    class="flex justify-start items-center text-text10 md:text-text14 text-[#0051FF] font-Montserrat_Regular gap-1 md:gap-2">
                     <p class="hidden lg:block">{{ Carbon::parse($item->created_at)->translatedFormat('d \d\e F \d\e Y') }}
                     </p>
                     <p class="block lg:hidden">{{ Carbon::parse($item->created_at)->format('d/m/Y') }}</p>
@@ -897,22 +897,22 @@
                     <img src="{{ asset($item->url_image . $item->name_image) }} " alt="publicacion" class="w-full">
                   </div>
                   <div class="flex flex-col gap-2">
-                    <p class="font-moderat_Bold text-text12 md:text-text20 text-[#0051FF]">{{ $item->categories->name }}
+                    <p class="font-Montserrat_Bold text-text12 md:text-text20 text-[#0051FF]">{{ $item->categories->name }}
                     </p>
                     <a href="{{ route('post', $item->id) }}">
-                      <h2 class="text-[#082252] font-moderat_Bold text-text16 md:text-text28 line-clamp-2 h-[84px]">
+                      <h2 class="text-[#082252] font-Montserrat_Bold text-text16 md:text-text28 line-clamp-2 h-[84px]">
                         {{ $item->title }}
                       </h2>
                     </a>
 
                     <p
-                      class=" text-[#565656] font-moderat_Regular text-sm line-clamp-2 h-12 overflow-hidden text-ellipsis">
+                      class=" text-[#565656] font-Montserrat_Regular text-sm line-clamp-2 h-12 overflow-hidden text-ellipsis">
                       {!! strip_tags($item->description) !!}
                     </p>
                   </div>
 
                   <div
-                    class="flex justify-start items-center text-text10 md:text-text14 text-[#0051FF] font-moderat_Medium gap-1 md:gap-2">
+                    class="flex justify-start items-center text-text10 md:text-text14 text-[#0051FF] font-Montserrat_Regular gap-1 md:gap-2">
                     <p class="hidden lg:block">{{ Carbon::parse($item->created_at)->translatedFormat('d \d\e F \d\e Y') }}
                     </p>
                     <p class="block lg:hidden">{{ Carbon::parse($item->created_at)->format('d/m/Y') }}</p>
