@@ -43,10 +43,10 @@
 
 
       </div>
-      <h2 class="font-moderat_700 font-semibold text-[20px] text-[#151515]">
+      <h2 class="font-moderat_700 font-semibold text-[20px] text-[#151515]" hidden>
         Dirección de envío
       </h2>
-      <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
+      <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5" hidden>
 
 
         <div class="md:col-span-1">
@@ -108,7 +108,7 @@
 
           <div>
             <div class="flex flex-col gap-5">
-              <div class="w-full flex flex-col gap-5" id="contenedorEnvios">
+              <div class="w-full flex flex-col gap-5" id="contenedorEnvios" hidden>
 
                 <span class="font-bold "> Seleccione una opcion para el envio </span>
                 {{-- <div class="flex items-center ps-4 border border-gray-200 rounded dark:border-gray-700">

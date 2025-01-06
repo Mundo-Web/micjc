@@ -12,7 +12,7 @@
     }
 
     div:where(.swal2-container) {
-      z-index: 9999999999;
+      z-index: 9999999999 !important;
     }
   </style>
 
