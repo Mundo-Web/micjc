@@ -761,7 +761,7 @@
     @if (count($logos) > 0)
       <section class="w-11/12 mx-auto bg-[#001232] text-white mt-20 fondo__marcas">
         <div class="flex flex-col gap-5 py-10 items-center" data-aos="fade-up" data-aos-offset="150">
-          <h2 class="text-white font-moderat_Bold text-text32 md:text-text44 text-center">Aliados estratégicos con las marcas</h2>
+          <h2 class="text-white font-Montserrat_Bold text-text32 md:text-text44 text-center">Aliados estratégicos con las marcas</h2>
           {{-- <p class="font-moderat_Regular text-base md:text-lg text-center w-full md:w-2/3">Colaboramos con una
             amplia variedad de marcas reconocidas a nivel mundial, ofreciendo productos de alta calidad que se adaptan a
             las necesidades tecnológicas de todos nuestros clientes.</p> --}}
