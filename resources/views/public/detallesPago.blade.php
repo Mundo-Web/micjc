@@ -10,6 +10,10 @@
     .input-box-distrito::before {
       background-image: url({{ asset('images/svg/image_31.svg') }});
     }
+
+    div:where(.swal2-container) {
+      z-index: 9999999999;
+    }
   </style>
 
 @stop
