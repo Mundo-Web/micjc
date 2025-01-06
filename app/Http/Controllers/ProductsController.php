@@ -417,12 +417,7 @@ class ProductsController extends Controller
 
       $data['imagen'] = $routeImg . $nombreImagen;
       // $AboutUs->name_image = $nombreImagen;
-    } else {
-      $routeImg = 'images/img/';
-      $nombreImagen = 'noimagen.jpg';
-
-      $data['imagen'] = $routeImg . $nombreImagen;
-    }
+    } 
 
     if (isset($data['filesGallery'])) {
 
