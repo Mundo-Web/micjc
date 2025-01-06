@@ -29,7 +29,7 @@
       </div>
   </section>
 
-  <section class="px-[5%] pt-12 xl:pt-16 w-full">
+  <section class="px-[5%] py-12 xl:py-16 w-full">
       <div class="flex flex-col justify-start gap-12">
 
           <div class="flex flex-wrap gap-3 lg:gap-5 justify-center" data-aos="fade-up" data-aos-duration="150">
@@ -60,19 +60,19 @@
                           src="{{ asset($post->url_image . $post->name_image) }}"
                           onerror="this.onerror=null;this.src='{{ asset('images/imagen/noimagen.jpg') }}';" alt="{{ $post->title }}" />
 
-                      <h2 class="text-[#052F4E] text-base font-galano_regular font-semibold mt-3">
+                      <h2 class="text-[#052F4E] text-base font-moderat_Regular font-semibold mt-3">
                           {{ $post->categories->name ?? 'Sin categoría' }}
                       </h2>
 
-                      <h2 class="text-[#052F4E] text-2xl font-galano_bold line-clamp-2 md:line-clamp-1">
+                      <h2 class="text-[#052F4E] text-xl font-galano_bold line-clamp-2 md:line-clamp-1">
                           {{ $post->title }}
                       </h2>
 
-                      <p class="text-[#052F4E] text-lg font-galano_regular line-clamp-3">
+                      <p class="text-[#052F4E] text-base font-moderat_Regular line-clamp-3">
                           {{ $post->extract ?? 'No hay descripción disponible.' }}
                       </p>
 
-                      <h2 class="text-[#052F4E] text-base font-galano_regular font-semibold mt-1">
+                      <h2 class="text-[#052F4E] text-base font-moderat_Regular font-semibold mt-1">
                           Publicado {{ \Carbon\Carbon::parse($post->created_at)->diffForHumans() }}
                       </h2>
                     </a>
