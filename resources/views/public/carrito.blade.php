@@ -428,10 +428,10 @@
         data: {
           _token: $('input[name="_token"]').val(),
           carrito: Local.get('carrito'),
-          email,
-          distrito: $('#distrito_id').val(),
-          departamento: $('#departamento_id').val(),
-          provincia: $('#provincia_id').val(),
+          // email,
+          // distrito: $('#distrito_id').val(),
+          // departamento: $('#departamento_id').val(),
+          // provincia: $('#provincia_id').val(),
           total: JSON.stringify(totalCarrito)
         },
         success: function(response) {
@@ -503,7 +503,7 @@
       limpiarcheckout2()
       PintarCarrito()
       pintarCarritoCheckout(articulosCarrito)
-
+      calcularTotal2()
 
 
     }
@@ -520,6 +520,7 @@
       limpiarcheckout2()
       PintarCarrito()
       pintarCarritoCheckout(articulosCarrito)
+      calcularTotal2()
 
     }
 
@@ -541,6 +542,7 @@
       limpiarcheckout2()
       PintarCarrito()
       pintarCarritoCheckout(articulosCarrito)
+      calcularTotal2()
 
 
 
