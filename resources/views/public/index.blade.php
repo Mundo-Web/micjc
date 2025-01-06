@@ -847,7 +847,7 @@
               </div>
 
               <div class="flex justify-end items-center basis-4/12">
-                <a href="{{ route('blog') }}"
+                <a href="{{ route('blog', 0) }}"
                   class="font-moderat_Bold text-base md:text-lg py-3 rounded-xl px-5 bg-[#0051FF] text-white md:w-auto text-center w-full">Ver
                   más Publicaciones</a>
               </div>
