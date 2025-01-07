@@ -34,6 +34,7 @@ use App\Http\Controllers\PedidosController;
 use App\Http\Controllers\PoliticasdePrivacidadController;
 use App\Http\Controllers\PriceController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\SaleController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\StrengthController;
