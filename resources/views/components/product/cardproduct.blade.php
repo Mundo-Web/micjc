@@ -78,7 +78,7 @@
 
       <a href="{{ route('producto', $item->id) }}">
         <h2
-          class="font-Montserrat_Bold leading-normal text-sm md:text-lg text-[#111111] line-clamp-2 tracking-tight">
+          class="font-Montserrat_SemiBold leading-normal text-sm md:text-base text-[#111111] line-clamp-2 tracking-tight">
           {{ $item->producto }}</h2>
       </a>
 
