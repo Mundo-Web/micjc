@@ -57,39 +57,40 @@ use App\Models\AboutUs;
 */
 
 /* Las rutas publicas */
-Route::get('/', [IndexController::class, 'index'] )->name('index');
-Route::get('/catalogo', [IndexController::class, 'catalogo'] )->name('catalogo');
-Route::get('/producto/{id}', [IndexController::class, 'producto'] )->name('producto');
-Route::get('/productotest', [IndexController::class, 'producto'] )->name('productotest');
+
+Route::get('/', [IndexController::class, 'index'])->name('index');
+Route::get('/catalogo', [IndexController::class, 'catalogo'])->name('catalogo');
+Route::get('/producto/{id}', [IndexController::class, 'producto'])->name('producto');
+Route::get('/productotest', [IndexController::class, 'producto'])->name('productotest');
 
 
 // Blog
 // Route::get('/blog', [IndexController::class, 'blog'] )->name('blog');
 Route::get('/blog/{filtro}', [IndexController::class, 'blog'])->name('blog');
-Route::get('/post/{id}', [IndexController::class, 'post'] )->name('post');
+Route::get('/post/{id}', [IndexController::class, 'post'])->name('post');
 // Route::get('/post/{id}', [IndexController::class, 'detalleBlog'])->name('detalleBlog');    
 
 // Contacto
-Route::get('/contacto', [IndexController::class, 'contacto'] )->name('contacto');
+Route::get('/contacto', [IndexController::class, 'contacto'])->name('contacto');
 
 // Carrito
-Route::get('/carrito', [IndexController::class, 'carrito'] )->name('carrito');
+Route::get('/carrito', [IndexController::class, 'carrito'])->name('carrito');
 
-Route::get('/detallesPago', [IndexController::class, 'detallesPago'] )->name('detallesPago');
-Route::post('/procesar/pago',[IndexController::class, 'procesarPago'])->name('procesar.pago');
-Route::get('/exito', [IndexController::class, 'exito'] )->name('exito');
+Route::get('/detallesPago', [IndexController::class, 'detallesPago'])->name('detallesPago');
+Route::post('/procesar/pago', [IndexController::class, 'procesarPago'])->name('procesar.pago');
+Route::get('/exito', [IndexController::class, 'exito'])->name('exito');
 
 
 
-Route::get('/crearCuenta', [IndexController::class, 'crearCuenta'] )->name('crearCuenta');
-Route::get('/ingresar', [IndexController::class, 'ingresar'] )->name('ingresar');
-Route::get('/olvide', [IndexController::class, 'olvide'] )->name('olvide');
-Route::get('/restaurar', [IndexController::class, 'restaurar'] )->name('restaurar');
+Route::get('/crearCuenta', [IndexController::class, 'crearCuenta'])->name('crearCuenta');
+Route::get('/ingresar', [IndexController::class, 'ingresar'])->name('ingresar');
+Route::get('/olvide', [IndexController::class, 'olvide'])->name('olvide');
+Route::get('/restaurar', [IndexController::class, 'restaurar'])->name('restaurar');
 
-Route::post('guardarContactos', [IndexController::class, 'guardarContacto'] )->name('guardarContactos'); 
+Route::post('guardarContactos', [IndexController::class, 'guardarContacto'])->name('guardarContactos');
 Route::post('guardarUserNewsLetter', [NewsletterSubscriberController::class, 'guardarUserNewsLetter'])->name('guardarUserNewsLetter');
 
-Route::post('carrito/buscarProducto', [CarritoController::class, 'buscarProducto'] )->name('carrito.buscarProducto'); 
+Route::post('carrito/buscarProducto', [CarritoController::class, 'buscarProducto'])->name('carrito.buscarProducto');
 Route::post('/procesarcarrito', [IndexController::class, 'procesarCarrito'])->name('procesar.carrito');
 
 Route::post('/getProvincia', [PriceController::class, 'getProvincias'])->name('prices.getProvincias');
@@ -97,7 +98,7 @@ Route::post('/getDistrito', [PriceController::class, 'getDistrito'])->name('pric
 Route::post('/calculeEnvio', [PriceController::class, 'calculeEnvio'])->name('prices.calculeEnvio');
 
 Route::post('/marca/marcadependiente', [MarcaController::class, 'marcaDependiente'])->name('marca.marcaDependiente');
-Route::post('/buscarProductos',[IndexController::class, 'buscarProductos']  )->name('buscarProductos');
+Route::post('/buscarProductos', [IndexController::class, 'buscarProductos'])->name('buscarProductos');
 
 /*  */
 /* Route::get('/nosotros', [IndexController::class, 'nosotros'] )->name('nosotros');
@@ -123,7 +124,7 @@ Route::get('/catalogo/{filtro}', [IndexController::class, 'catalogo'] )->name('c
 Route::get('/politica_privacidad', [IndexController::class, 'politicaprivacidad'])->name('politica_privacidad');
 Route::get('/term_condiciones', [IndexController::class, 'term_condiciones'])->name('term_condiciones');
 
-Route::get('/libro-de-reclamaciones', [IndexController::class, 'librodereclamaciones'] )->name('librodereclamaciones');
+Route::get('/libro-de-reclamaciones', [IndexController::class, 'librodereclamaciones'])->name('librodereclamaciones');
 
 Route::get('/obtenerProvincia/{departmentId}', [IndexController::class, 'obtenerProvincia'])->name('obtenerProvincia');
 Route::get('/obtenerDistritos/{provinceId}', [IndexController::class, 'obtenerDistritos'])->name('obtenerDistritos');
@@ -134,7 +135,7 @@ Route::post('/subcategoria/obtenerd', [SubCategoriaController::class, 'obtenerD'
 Route::middleware(['auth:sanctum', 'verified', 'can:Admin'])->group(function () {
 
     Route::prefix('admin')->group(function () {
-        
+
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::get('/dashboard/analytics', [DashboardController::class, 'analytics'])->name('analytics');
         Route::get('/dashboard/fintech', [DashboardController::class, 'fintech'])->name('fintech');
@@ -147,31 +148,31 @@ Route::middleware(['auth:sanctum', 'verified', 'can:Admin'])->group(function () 
 
         //Testimonies
         Route::resource('/testimonios', TestimonyController::class);
-        Route::post('/testimonios/deleteTestimony', [TestimonyController::class, 'deleteTestimony'] )->name('testimonios.deleteTestimony');
-        Route::post('/testimonios/updateVisible', [TestimonyController::class, 'updateVisible'] )->name('testimonios.updateVisible');
+        Route::post('/testimonios/deleteTestimony', [TestimonyController::class, 'deleteTestimony'])->name('testimonios.deleteTestimony');
+        Route::post('/testimonios/updateVisible', [TestimonyController::class, 'updateVisible'])->name('testimonios.updateVisible');
 
         //Categorías
         Route::resource('/categorias', CategoryController::class);
-        Route::post('/categorias/deleteCategory', [CategoryController::class, 'deleteCategory'] )->name('categorias.deleteCategory');
-        Route::post('/categorias/updateVisible', [CategoryController::class, 'updateVisible'] )->name('categorias.updateVisible');
-        Route::get('/categorias/contarCategorias', [CategoryController::class, 'contarCategoriasDestacadas'] )->name('categorias.contarCategoriasDestacadas');
+        Route::post('/categorias/deleteCategory', [CategoryController::class, 'deleteCategory'])->name('categorias.deleteCategory');
+        Route::post('/categorias/updateVisible', [CategoryController::class, 'updateVisible'])->name('categorias.updateVisible');
+        Route::get('/categorias/contarCategorias', [CategoryController::class, 'contarCategoriasDestacadas'])->name('categorias.contarCategoriasDestacadas');
 
 
 
         //Servicios
         Route::resource('/servicios', ServiceController::class);
-        Route::post('/servicios/deleteService', [ServiceController::class, 'deleteService'] )->name('servicio.deleteService');
-        Route::post('/servicios/updateVisible', [ServiceController::class, 'updateVisible'] )->name('servicio.updateVisible');
+        Route::post('/servicios/deleteService', [ServiceController::class, 'deleteService'])->name('servicio.deleteService');
+        Route::post('/servicios/updateVisible', [ServiceController::class, 'updateVisible'])->name('servicio.updateVisible');
 
 
         //Blog
         Route::resource('/blog', BlogController::class);
-        Route::post('/blog/deleteBlog', [BlogController::class, 'deleteBlog'] )->name('blog.deleteBlog');
-        Route::post('/blog/updateVisible', [BlogController::class, 'updateVisible'] )->name('blog.updateVisible');
+        Route::post('/blog/deleteBlog', [BlogController::class, 'deleteBlog'])->name('blog.deleteBlog');
+        Route::post('/blog/updateVisible', [BlogController::class, 'updateVisible'])->name('blog.updateVisible');
 
         //Crud Logos
         Route::resource('/logos', LogosClientController::class);
-        Route::post('/logos/deleteLogo', [LogosClientController::class, 'deleteLogo'] )->name('logos.deleteLogo');
+        Route::post('/logos/deleteLogo', [LogosClientController::class, 'deleteLogo'])->name('logos.deleteLogo');
 
         //Equipo
         Route::resource('/staff', StaffController::class);
@@ -181,13 +182,13 @@ Route::middleware(['auth:sanctum', 'verified', 'can:Admin'])->group(function () 
         Route::resource('/strength', StrengthController::class);
         Route::post('/strength/updateVisible', [StrengthController::class, 'updateVisible'])->name('strength.updateVisible');
         Route::post('/strength/borrar', [StrengthController::class, 'borrar'])->name('strength.borrar');
-      
-        
+
+
         //Nosotros
         Route::resource('/aboutus', AboutUsController::class);
         Route::post('/aboutus/updateVisible', [AboutUsController::class, 'updateVisible'])->name('aboutus.updateVisible');
         Route::post('/aboutus/borrar', [AboutUsController::class, 'borrar'])->name('aboutus.borrar');
-       
+
         //Atributes
         Route::resource('/attributes', AttributesController::class);
         Route::post('/attributes/updateVisible', [AttributesController::class, 'updateVisible'])->name('attributes.updateVisible');
@@ -224,35 +225,37 @@ Route::middleware(['auth:sanctum', 'verified', 'can:Admin'])->group(function () 
         Route::post('/galerie/borrar', [GalerieController::class, 'borrar'])->name('galerie.borrar');
 
 
-         /* subscripciones */
-        Route::get('/subscripciones', [NewsletterSubscriberController::class, 'showSubscripciones'])->name('subscripciones') ;
+        /* subscripciones */
+        Route::get('/subscripciones', [NewsletterSubscriberController::class, 'showSubscripciones'])->name('subscripciones');
 
         Route::resource('/subcategoria', SubCategoriaController::class);
         Route::post('/subcategoria/obtener', [SubCategoriaController::class, 'obtener'])->name('subcategoria.obtener');
         Route::post('/subcategoria/deleteSubCategory', [SubCategoriaController::class, 'deleteSubCategory'])->name('subcategoria.deleteSubCategory');
-        
+
         Route::resource('/marcas', MarcaController::class);
-        Route::post('/marcas/deleteMarca', [MarcaController::class, 'deleteMarca'] )->name('marcas.deleteMarca');
-        Route::post('/marcas/updateVisible', [MarcaController::class, 'updateVisible'] )->name('marcas.updateVisible');
-        Route::post('/marcas/obtener', [MarcaController::class, 'obtener'] )->name('marcas.obtener');
+        Route::post('/marcas/deleteMarca', [MarcaController::class, 'deleteMarca'])->name('marcas.deleteMarca');
+        Route::post('/marcas/updateVisible', [MarcaController::class, 'updateVisible'])->name('marcas.updateVisible');
+        Route::post('/marcas/obtener', [MarcaController::class, 'obtener'])->name('marcas.obtener');
 
         //Pedidos
         Route::get('/orders', [PedidosController::class, 'listadoPedidos'])->name('orders');
         Route::get('/orders/{id}', [PedidosController::class, 'verPedido'])->name('verPedido');
 
-        
+
         Route::resource('/verPoliticasPrivacidad', PoliticasdePrivacidadController::class);
         Route::post('verPoliticasPrivacidad/delete', [PoliticasdePrivacidadController::class, 'delete'])->name('PoliticasPrivacidad.delete');
 
 
         Route::resource('terminoscondiciones', TerminosycondicionesController::class);
         Route::post('terminoscondiciones/delete', [TerminosycondicionesController::class, 'delete'])->name('terminoscondiciones.delete');
-       
-        Route::post('guardarformulario', [LibroReclamacionesController::class, 'storePublic'] )->name('guardarFormReclamo');
+
+        Route::post('guardarformulario', [LibroReclamacionesController::class, 'storePublic'])->name('guardarFormReclamo');
 
         Route::resource('/reclamo', LibroReclamacionesController::class);
         Route::post('/reclamo/borrar', [LibroReclamacionesController::class, 'borrar'])->name('reclamo.borrar');
 
+
+        Route::resource('/pedidos', SaleController::class);
 
         //Precios
         Route::resource('/prices', PriceController::class);
@@ -263,32 +266,27 @@ Route::middleware(['auth:sanctum', 'verified', 'can:Admin'])->group(function () 
         // Route::post('/calculeEnvio', [PriceController::class, 'calculeEnvio'])->name('prices.calculeEnvio');
         Route::post('/deletePrice', [PriceController::class, 'deletePrice'])->name('prices.deletePrice');
 
-        
-        Route::fallback(function() {
+
+        Route::fallback(function () {
             return view('pages/utility/404');
         });
-        
     });
-
-    
 });
 
 
 Route::middleware(['auth:sanctum', 'verified', 'can:Customer'])->group(function () {
 
- Route::get('/micuenta', [IndexController::class, 'micuenta'] )->name('miCuenta');
- Route::get('/miDireccion', [IndexController::class, 'miDireccion'] )->name('miDireccion');
-Route::get('/historial', [IndexController::class, 'historial'] )->name('historial');
- 
- Route::get('/micuenta/pedidos', [IndexController::class, 'pedidos'] )->name('pedidos');
- Route::get('/micuenta/direccion', [IndexController::class, 'direccion'] )->name('direccion');
+    Route::get('/micuenta', [IndexController::class, 'micuenta'])->name('miCuenta');
+    Route::get('/miDireccion', [IndexController::class, 'miDireccion'])->name('miDireccion');
+    Route::get('/historial', [IndexController::class, 'historial'])->name('historial');
 
- Route::post('/micuenta/cambiofoto', [IndexController::class, 'cambiofoto'] )->name('cambiofoto');
- Route::post('/micuenta/direccion/cambiofoto', [IndexController::class, 'cambiofoto'] )->name('cambiofoto');
- Route::post('/micuenta/pedidos/cambiofoto', [IndexController::class, 'cambiofoto'] )->name('cambiofoto');
+    Route::get('/micuenta/pedidos', [IndexController::class, 'pedidos'])->name('pedidos');
+    Route::get('/micuenta/direccion', [IndexController::class, 'direccion'])->name('direccion');
 
-
- Route::post('/micuenta/actualizarPerfil', [IndexController::class, 'actualizarPerfil'] )->name('actualizarPerfil');
+    Route::post('/micuenta/cambiofoto', [IndexController::class, 'cambiofoto'])->name('cambiofoto');
+    Route::post('/micuenta/direccion/cambiofoto', [IndexController::class, 'cambiofoto'])->name('cambiofoto');
+    Route::post('/micuenta/pedidos/cambiofoto', [IndexController::class, 'cambiofoto'])->name('cambiofoto');
 
 
+    Route::post('/micuenta/actualizarPerfil', [IndexController::class, 'actualizarPerfil'])->name('actualizarPerfil');
 });
