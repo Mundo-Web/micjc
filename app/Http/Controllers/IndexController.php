@@ -55,7 +55,7 @@ class IndexController extends Controller
     // $productos = Products::all();
     $slider = Slider::where('status', '=', 1)->where('visible', '=', 1)->get();
     $productos = Products::with('tags')->get();
-    $productosDestacados = Products::where('status', '=', 1)->where('visible', '=', 1)->where('destacar', '=', 1)->orderBy('id', 'DESC')->limit(4)->get();
+    $productosDestacados = Products::where('status', '=', 1)->where('visible', '=', 1)->where('destacar', '=', 1)->orderBy('id', 'DESC')->limit(5)->get();
     $ofertasProductos = Products::where('status', '=', 1)->where('visible', '=', 1)->where('liquidacion', '=', 1)->orderBy('id', 'DESC')->get();
     $cyber = Products::where('status', '=', 1)->where('visible', '=', 1)->where('cyber', '=', 1)->orderBy('id', 'DESC')->get();
 

@@ -3,15 +3,15 @@
   <div class="{{ $bgcolor }} flex flex-col justify-center relative product_container">
 
     
-    <div class="flex justify-start items-center absolute top-2 left-2 z-10">
+    <div class="flex flex-row justify-end items-center absolute top-2 right-2 z-10">
         @if ($item->descuento > 0)
-          <span class="font-Montserrat_Light text-[13px] rounded-l-lg rounded-br-lg tracking-tight  bg-black text-white py-1 px-2">
+          <span class="font-Montserrat_Bold text-[13px] rounded-l-full rounded-br-full tracking-tight  bg-black text-white py-1 px-2">
             AHORRA 
               {{ round((($item->precio - $item->descuento) / $item->precio) * 100) }}%
           </span>
         @endif
         @foreach ($item->tags as $tag)
-          <span class="font-Montserrat_Light text-[13px] tracking-tight  rounded-lg text-white py-1 px-2" style="background-color: {{ $tag->color }}">
+          <span class="font-Montserrat_Bold text-[13px] rounded-l-full rounded-br-full text-white py-1 px-2" style="background-color: {{ $tag->color }}">
             {{ $tag->name }}</span>
         @endforeach
     </div>
@@ -78,16 +78,16 @@
 
       <a href="{{ route('producto', $item->id) }}">
         <h2
-          class="font-Montserrat_Bold leading-normal text-sm md:text-base text-[#111111] line-clamp-2 tracking-tight">
+          class="font-Montserrat_Bold leading-normal text-sm md:text-lg text-[#111111] line-clamp-2 tracking-tight">
           {{ $item->producto }}</h2>
       </a>
 
-      <a href="/catalogo?marca={{$item->marca_id}}"><h3 class="font-Montserrat_SemiBold text-text12 md:text-sm text-[#111111]">{{ $item->marca->name ?? "S/M" }}</h3></a>
+      <a href="/catalogo?marca={{$item->marca_id}}"><h3 class="font-Montserrat_SemiBold text-text12 md:text-sm text-opacity-50 text-[#111111]">{{ $item->marca->name ?? "S/M" }}</h3></a>
 
 
-      <div class="addProduct flex flex-row items-center justify-center cursor-pointer py-2">
+      <div class="addProduct flex flex-row items-center justify-center cursor-pointer py-2 sm:mb-4">
         <button  data-id="{{ $item->id }}" type="button" id='agregarAlCarritoPr'>
-            <span class="uppercase text-white text-xs md:text-sm font-Montserrat_Bold font-semibold bg-[#0051FF] px-2 sm:px-5 py-3 rounded-xl">Añadir al carrito</span>
+            <span class="uppercase text-white text-[11px] md:text-sm font-Montserrat_Bold font-semibold bg-[#0051FF] px-2 md:px-3 py-3 rounded-3xl">Añadir al carrito</span>
         </button>    
       </div>
 

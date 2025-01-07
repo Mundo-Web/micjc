@@ -470,7 +470,7 @@
           </div> --}}
         </div>
 
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-7">
+        <div class="grid grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-3 lg:gap-5">
           @foreach ($productosDestacados as $item)
             {{-- <div class="flex flex-col rounded-xl gap-2 sm:gap-5 overflow-hidden bg-white">
               
