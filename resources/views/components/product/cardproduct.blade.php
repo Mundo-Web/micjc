@@ -3,7 +3,7 @@
   <div class="{{ $bgcolor }} flex flex-col justify-center relative product_container">
 
     
-    <div class="flex flex-row justify-end items-center absolute top-[5%] right-[5%] z-10">
+    <div class="flex flex-row justify-end items-center absolute top-5 right-[5%] z-10">
         @if ($item->descuento > 0)
           <span class="font-Montserrat_Bold text-[13px] rounded-l-full rounded-br-full tracking-tight  bg-black text-white py-1 px-2">
             AHORRA 
