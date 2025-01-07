@@ -1,120 +1,120 @@
 let articulosCarrito = [];
 
-    function mostrarTotalItems() {
-      let articulos = Local.get('carrito')
-      let contarArticulos = articulos.reduce((total, articulo) => {
-        return total + articulo.cantidad;
-      }, 0);
+function mostrarTotalItems() {
+  let articulos = Local.get('carrito')
+  let contarArticulos = articulos.reduce((total, articulo) => {
+    return total + articulo.cantidad;
+  }, 0);
 
-      $('#itemsCount').text(contarArticulos)
-    }
-    $(document).ready(function() {
-      mostrarTotalItems()
-    })
+  $('#itemsCount').text(contarArticulos)
+}
+$(document).ready(function () {
+  mostrarTotalItems()
+})
 
 
-    
 
-    function calcularTotal() {
-      let articulos = Local.get('carrito')
-      let total = articulos.map(item => {
-        let monto
-        if (Number(item.descuento) !== 0) {
-          monto = item.cantidad * Number(item.descuento)
-        } else {
-          monto = item.cantidad * Number(item.precio)
 
-        }
-        return monto
-
-      })
-      const suma = total.reduce((total, elemento) => total + elemento, 0);
-
-      $('#itemsTotal').text(`S/. ${suma} `)
+function calcularTotal() {
+  let articulos = Local.get('carrito')
+  let total = articulos.map(item => {
+    let monto
+    if (Number(item.descuento) !== 0) {
+      monto = item.cantidad * Number(item.descuento)
+    } else {
+      monto = item.cantidad * Number(item.precio)
 
     }
+    return monto
 
-    function deleteOnCarBtn(id, operacion) {
-      const prodRepetido = articulosCarrito.map(item => {
-        if (item.id === id && item.cantidad > 0 ) {
-          item.cantidad -= Number(1);
-          if (item.cantidad == 0) return null;
-          return item; // retorna el objeto actualizado 
-        } else {
-          return item; // retorna los objetos que no son duplicados 
-        }
+  })
+  const suma = total.reduce((total, elemento) => total + elemento, 0);
 
-      }).filter(Boolean);
-      Local.set('carrito', articulosCarrito)
-      limpiarHTML()
-      PintarCarrito()
+  $('#itemsTotal').text(`S/. ${suma} `)
 
+}
 
+function deleteOnCarBtn(id, operacion) {
+  const prodRepetido = articulosCarrito.map(item => {
+    if (item.id === id && item.cantidad > 0) {
+      item.cantidad -= Number(1);
+      if (item.cantidad == 0) return null;
+      return item; // retorna el objeto actualizado 
+    } else {
+      return item; // retorna los objetos que no son duplicados 
     }
 
-    function addOnCarBtn(id, operacion) {
-
-     
-
-      const prodRepetido = articulosCarrito.map(item => {
-        if (item.id === id ) {
-          item.cantidad += Number(1);
-          return item; // retorna el objeto actualizado 
-        } else {
-          return item; // retorna los objetos que no son duplicados 
-        }
-
-      });
-      Local.set('carrito', articulosCarrito)
-      // localStorage.setItem('carrito', JSON.stringify(articulosCarrito));
-      limpiarHTML()
-      PintarCarrito()
+  }).filter(Boolean);
+  Local.set('carrito', articulosCarrito)
+  limpiarHTML()
+  PintarCarrito()
 
 
+}
+
+function addOnCarBtn(id, operacion) {
+
+
+
+  const prodRepetido = articulosCarrito.map(item => {
+    if (item.id === id) {
+      item.cantidad += Number(1);
+      return item; // retorna el objeto actualizado 
+    } else {
+      return item; // retorna los objetos que no son duplicados 
     }
 
-    function deleteItem(id) {
-
-      
-      articulosCarrito = articulosCarrito.filter(objeto => {
-        return !(objeto.id === id );
-
-      } );
-
-      Local.set('carrito', articulosCarrito)
-      limpiarHTML()
-      PintarCarrito()
-      pintarCantidad()
-    }
-
-  
-    let url = window.location.href;
-    
-    $(document).ready(function() {
-      articulosCarrito = Local.get('carrito') || [];
-
-      PintarCarrito();
-    });
-
-    function limpiarHTML() {
-      //forma lenta 
-      /* contenedorCarrito.innerHTML=''; */
-      $('#itemsCarrito').html('')
+  });
+  Local.set('carrito', articulosCarrito)
+  // localStorage.setItem('carrito', JSON.stringify(articulosCarrito));
+  limpiarHTML()
+  PintarCarrito()
 
 
-    }
+}
+
+function deleteItem(id) {
+
+
+  articulosCarrito = articulosCarrito.filter(objeto => {
+    return !(objeto.id === id);
+
+  });
+
+  Local.set('carrito', articulosCarrito)
+  limpiarHTML()
+  PintarCarrito()
+  pintarCantidad()
+}
+
+
+let url = window.location.href;
+
+$(document).ready(function () {
+  articulosCarrito = Local.get('carrito') || [];
+
+  PintarCarrito();
+});
+
+function limpiarHTML() {
+  //forma lenta 
+  /* contenedorCarrito.innerHTML=''; */
+  $('#itemsCarrito').html('')
+
+
+}
 
 
 
-    function PintarCarrito() {
+function PintarCarrito() {
 
-      let itemsCarrito = $('#itemsCarrito')
-      
-      let articulosCarrito = (Local.get('carrito') ?? []).filter(x => x.cantidad > 0);
-      Local.set('carrito', articulosCarrito);
+  let itemsCarrito = $('#itemsCarrito')
 
-      articulosCarrito.forEach(element => {
-        let plantilla = `<div class="flex justify-between border-b-[1px] py-1">
+  let articulosCarrito = (Local.get('carrito') ?? []).filter(x => x.cantidad > 0);
+  Local.set('carrito', articulosCarrito);
+
+  articulosCarrito.forEach(element => {
+    let plantilla = `<div class="flex justify-between border-b-[1px] py-1">
               <div class="flex flex-row justify-center items-center gap-2">
                 
                 <div class="bg-[#F3F5F7] rounded-md p-1 min-w-20">
@@ -133,7 +133,7 @@ let articulosCarrito = [];
                       <span  class="text-[20px]">-</span>
                     </button>
                     <div class="w-8 h-8 flex justify-center items-center">
-                      <span  class="font-semibold text-[12px]">${element.cantidad }</span>
+                      <span  class="font-semibold text-[12px]">${element.cantidad}</span>
                     </div>
                     <button type="button" onClick="(addOnCarBtn(${element.id}, '+'))" class="  w-8 h-8 flex justify-center items-center ">
                       <span class="text-[20px]">+</span>
@@ -157,144 +157,144 @@ let articulosCarrito = [];
               </div>
             </div>`
 
-        itemsCarrito.append(plantilla)
+    itemsCarrito.append(plantilla)
 
-      });
+  });
 
-      calcularTotal()
-      mostrarTotalItems()
-    }
-
-
-    
-    
-
-
-    $('#btnAgregarCarrito').on('click', function(e) {
-      let url = window.location.href;
-      let partesURl = url.split('/')
-      let item = partesURl[partesURl.length - 1]
-      let cantidad = Number($('#cantidadInput').val())
-      item = item.replace('#', '')
-
-   
-
-      // id='nodescuento'
-     
-
-      $.ajax({
-
-        url: "/carrito/buscarProducto",
-        method: 'POST',
-        data: {
-          _token: $('input[name="_token"]').val(),
-          id: item,
-          cantidad,
-          
-
-        },
-        success: function(success) {
-
-
-          let {
-            producto,
-            id,
-            descuento,
-            precio,
-            imagen,
-            
-          } = success.data
-
-          let cantidad = Number(success.cantidad)
-          let detalleProducto = {
-            id,
-            producto,
-            descuento,
-            precio,
-            imagen,
-            cantidad,
-            
-          }
-
-         
-
-          // validar si es un color diferente y pintarlo 
-          let existeArticulo = articulosCarrito.some(item => item.id === detalleProducto.id 
-          )
-          if (existeArticulo) {
-            //sumar al articulo actual 
-            const prodRepetido = articulosCarrito.map(item => {
-              if (item.id === detalleProducto.id) {
-                item.cantidad += Number(detalleProducto.cantidad);
-                return item; // retorna el objeto actualizado 
-              } else {
-                return item; // retorna los objetos que no son duplicados 
-              }
-
-            });
-          } else {
-            articulosCarrito = [...articulosCarrito, detalleProducto]
-
-          }
-
-          Local.set('carrito', articulosCarrito)
-          let itemsCarrito = $('#itemsCarrito')
-          let ItemssubTotal = $('#ItemssubTotal')
-          let itemsTotal = $('#itemsTotal')
-          limpiarHTML()
-          PintarCarrito()
-          mostrarTotalItems()
-
-          //actualizar contador de articulos carrito
-          pintarCantidad()
-
-          Swal.fire({
-
-            icon: "success",
-            title: `Producto agregado correctamente`,
-            showConfirmButton: true
-
-
-          });
-        },
-        error: function(error) {
-          console.log(error)
-        }
-
-      })
+  calcularTotal()
+  mostrarTotalItems()
+}
 
 
 
-      // articulosCarrito = {...articulosCarrito , detalleProducto }
-    })
-
-   
-  
-    function pintarCantidad() {
-      let carritoCantidad = Local.get('carrito')
-      
-
-      if (typeof carritoCantidad !== 'undefined' && carritoCantidad !== null) {
-        // La variable carritoCantidad está definida y no es null
-       let total = carritoCantidad.length
-        if (total == 0) {
-
-          $('#imgCantidad').attr('hidden', true);
 
 
-        } else {
-          $('#imgCantidad').attr('hidden', false);
 
-          $('#spanCantidad').text(total)
+$('#btnAgregarCarrito').on('click', function (e) {
+  let url = window.location.href;
+  let partesURl = url.split('/')
+  let item = partesURl[partesURl.length - 1]
+  let cantidad = Number($('#cantidadInput').val())
+  item = item.replace('#', '')
 
-        }
 
 
-      } else {
+  // id='nodescuento'
 
-        $('#imgCantidad').attr('hidden', true);
+
+  $.ajax({
+
+    url: "/carrito/buscarProducto",
+    method: 'POST',
+    data: {
+      _token: $('input[name="_token"]').val(),
+      id: item,
+      cantidad,
+
+
+    },
+    success: function (success) {
+
+
+      let {
+        producto,
+        id,
+        descuento,
+        precio,
+        imagen,
+
+      } = success.data
+
+      let cantidad = Number(success.cantidad)
+      let detalleProducto = {
+        id,
+        producto,
+        descuento,
+        precio,
+        imagen,
+        cantidad,
+
       }
 
+
+
+      // validar si es un color diferente y pintarlo 
+      let existeArticulo = articulosCarrito.some(item => item.id === detalleProducto.id
+      )
+      if (existeArticulo) {
+        //sumar al articulo actual 
+        const prodRepetido = articulosCarrito.map(item => {
+          if (item.id === detalleProducto.id) {
+            item.cantidad += Number(detalleProducto.cantidad);
+            return item; // retorna el objeto actualizado 
+          } else {
+            return item; // retorna los objetos que no son duplicados 
+          }
+
+        });
+      } else {
+        articulosCarrito = [...articulosCarrito, detalleProducto]
+
+      }
+
+      Local.set('carrito', articulosCarrito)
+      let itemsCarrito = $('#itemsCarrito')
+      let ItemssubTotal = $('#ItemssubTotal')
+      let itemsTotal = $('#itemsTotal')
+      limpiarHTML()
+      PintarCarrito()
+      mostrarTotalItems()
+
+      //actualizar contador de articulos carrito
+      pintarCantidad()
+
+      Swal.fire({
+
+        icon: "success",
+        title: `Producto agregado correctamente`,
+        showConfirmButton: true
+
+
+      });
+    },
+    error: function (error) {
+      console.log(error)
     }
-    pintarCantidad()
- 
+
+  })
+
+
+
+  // articulosCarrito = {...articulosCarrito , detalleProducto }
+})
+
+
+
+function pintarCantidad() {
+  let carritoCantidad = Local.get('carrito')
+
+
+  if (typeof carritoCantidad !== 'undefined' && carritoCantidad !== null) {
+    // La variable carritoCantidad está definida y no es null
+    let total = carritoCantidad.length
+    if (total == 0) {
+
+      $('#imgCantidad').attr('hidden', true);
+
+
+    } else {
+      $('#imgCantidad').attr('hidden', false);
+
+      $('#spanCantidad').text(total)
+
+    }
+
+
+  } else {
+
+    $('#imgCantidad').attr('hidden', true);
+  }
+
+}
+pintarCantidad()
+
