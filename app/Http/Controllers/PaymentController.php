@@ -8,6 +8,7 @@ use App\Models\Price;
 use App\Models\Products;
 use App\Models\Sale;
 use App\Models\SaleDetail;
+use App\Models\User;
 use Culqi\Culqi;
 use Exception;
 use Illuminate\Http\Request;
@@ -89,9 +90,12 @@ class PaymentController extends Controller
         }
       }
 
+      $user = User::where('email', Auth::check() ? Auth::user()->email : $body['contact']['email'])->first();
+
       $sale->name = $body['contact']['name'];
       $sale->lastname = $body['contact']['lastname'];
-      $sale->email = Auth::check() ? Auth::user()->email : $body['contact']['email'];
+      $sale->email = $user->email ?? $body['contact']['email'];
+      $sale->usuario_id = $user->id ?? null;
       $sale->phone = $body['contact']['phone'];
       $sale->address_price = 0;
       $sale->total = $totalCost;
