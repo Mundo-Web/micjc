@@ -48,6 +48,7 @@
   @livewireStyles
 
   <script src="/js/tippy.all.min.js"></script>
+  <script src="/js/cookies.extend.js"></script>
 
   <script>
     if (localStorage.getItem('dark-mode') === 'false' || !('dark-mode' in localStorage)) {

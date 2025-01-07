@@ -38,6 +38,7 @@
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 
   <script src="/js/tippy.all.min.js"></script>
+  <script src="/js/cookies.extend.js"></script>
 
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
