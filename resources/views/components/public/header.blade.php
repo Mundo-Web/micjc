@@ -211,6 +211,25 @@
 
 </header>
 <script>
+  function calcularTotal() {
+    let articulos = Local.get('carrito')
+    let total = articulos.map(item => {
+      let monto
+      if (Number(item.descuento) !== 0) {
+        monto = item.cantidad * Number(item.descuento)
+      } else {
+        monto = item.cantidad * Number(item.precio)
+
+      }
+      return monto
+
+    })
+    const suma = total.reduce((total, elemento) => total + elemento, 0);
+
+    $('#itemsTotal').text(`S/. ${suma} `)
+
+  }
+
   function PintarCarrito() {
 
     let itemsCarrito = $('#itemsCarrito')
