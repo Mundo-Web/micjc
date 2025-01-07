@@ -53,6 +53,12 @@
   <script src="/js/tippy.all.min.js"></script>
   <script src="/js/cookies.extend.js"></script>
 
+  <style>
+    .jquery-modal.blocker.current {
+      z-index: 40;
+    }
+  </style>
+
   <script>
     if (localStorage.getItem('dark-mode') === 'false' || !('dark-mode' in localStorage)) {
       document.querySelector('html').classList.remove('dark');
