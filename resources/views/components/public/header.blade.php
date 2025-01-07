@@ -459,6 +459,10 @@
     });
   });
 
+  function limpiarHTML() {
+    $('#itemsCarrito').html('')
+  }
+
   $(document).on('click', '#btnAgregarCarrito', function() {
     let item = $(this).data('id')
 
