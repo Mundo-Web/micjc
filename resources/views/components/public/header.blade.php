@@ -211,6 +211,20 @@
 
 </header>
 <script>
+  function deleteItem(id) {
+
+
+    articulosCarrito = articulosCarrito.filter(objeto => {
+      return !(objeto.id === id);
+
+    });
+
+    Local.set('carrito', articulosCarrito)
+    limpiarHTML()
+    PintarCarrito()
+    pintarCantidad()
+  }
+
   function calcularTotal() {
     let articulos = Local.get('carrito')
     let total = articulos.map(item => {
@@ -284,6 +298,44 @@
 
     calcularTotal()
     mostrarTotalItems()
+  }
+
+  function deleteOnCarBtn(id, operacion) {
+    const prodRepetido = articulosCarrito.map(item => {
+      if (item.id === id && item.cantidad > 0) {
+        item.cantidad -= Number(1);
+        return item; // retorna el objeto actualizado 
+      } else {
+        return item; // retorna los objetos que no son duplicados 
+      }
+
+    });
+    Local.set('carrito', articulosCarrito)
+    limpiarHTML()
+    PintarCarrito()
+
+
+  }
+
+  function addOnCarBtn(id, operacion) {
+
+
+
+    const prodRepetido = articulosCarrito.map(item => {
+      if (item.id === id) {
+        item.cantidad += Number(1);
+        return item; // retorna el objeto actualizado 
+      } else {
+        return item; // retorna los objetos que no son duplicados 
+      }
+
+    });
+    Local.set('carrito', articulosCarrito)
+    // localStorage.setItem('carrito', JSON.stringify(articulosCarrito));
+    limpiarHTML()
+    PintarCarrito()
+
+
   }
 
   function mostrarTotalItems() {
