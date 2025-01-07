@@ -138,7 +138,7 @@
   <div></div>
   @include('components.public.header')
 
-  <div class="main">
+  <div class="main pt-40">
     {{-- Aqui va el contenido de cada pagina --}}
     @yield('content')
 

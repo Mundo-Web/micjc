@@ -40,26 +40,32 @@
 
         <div class="flex flex-col gap-5">
           <div class="flex flex-col gap-5 pb-10 border-b-2 border-[#DDDDDD]" data-aos="fade-up" data-aos-offset="150">
-            <h2 class="font-Montserrat_Bold text-text40 md:text-text44 leading-tight text-[#111111]">{{ $producto->producto }}</h2>
-            
+            <h2 class="font-Montserrat_Bold text-text40 md:text-text44 leading-tight text-[#111111]">
+              {{ $producto->producto }}</h2>
+
             @if ($producto->descuento == 0)
-                <span class="font-Montserrat_Bold text-text24 md:text-text36 text-[#111111]">S/ {{ $producto->precio }}</span>
+              <span class="font-Montserrat_Bold text-lg md:text-text36 text-[#111111]">S/ {{ $producto->precio }}</span>
             @else
-            @php
+              @php
                 $porcentajeDescuento = round((($producto->precio - $producto->descuento) / $producto->precio) * 100);
-            @endphp
+              @endphp
               <div class="flex flex-col gap-2 items-start">
                 <div class="flex flex-row gap-2 justify-start items-center">
-                  <span class="text-[#111111] text-text30 line-through font-Montserrat_Regular">S/. {{ $producto->precio }}</span>
-                  <span class="text-white bg-[#0051FF] px-3 py-1 rounded-lg font-Montserrat_SemiBold">- {{ $porcentajeDescuento }}%</span>
+                  <span class="text-[#333333] text-text30 line-through font-Montserrat_Regular">S/.
+                    {{ $producto->precio }}</span>
+                  <span class="text-white bg-[#0051FF] px-3 py-1 rounded-lg font-Montserrat_SemiBold">-
+                    {{ $porcentajeDescuento }}%</span>
                 </div>
-                <span class="font-Montserrat_Bold text-text24 md:text-text36 text-[#111111]">S/. {{ $producto->descuento }}</span>
+                <span class="font-Montserrat_Bold text-text24 md:text-text36 text-[#111111]">S/.
+                  {{ $producto->descuento }}</span>
               </div>
             @endif
-           
-            
-            <div>
-              <input type="number" id="cantidadInput" class="border-2 rounded-lg w-16" value="01" step="1">
+
+
+            <div class="flex items-center gap-4">
+              <span class="text-[#25D366] font-moderat_Bold text-xl ">En stock {{ round($producto->stock) }}</span>
+              <input type="number" id="cantidadInput" class="border-2 border-gray-400 w-20 px-3 py-1 rounded-full text-center" value="1"
+                step="1">
             </div>
 
             <p class="text-[#565656] text-text16 md:text-text20 font-Montserrat_Regular">{{ $producto->extract }}</p>
@@ -96,18 +102,19 @@
             <p class="font-Montserrat_Bold text-text14 md:text-text16 text-[#111111]">
               Marca: @isset($producto->marca->name)
                 <span class="text-[#565656] font-Montserrat_Regular text-text14">
-                  {{ $producto->marca->name ?? 'Sin marca'}}</span>
+                  {{ $producto->marca->name ?? 'Sin marca' }}</span>
               @endisset
             </p>
           </div>
         </div>
       </div>
 
-      <div class="flex flex-col gap-5 pt-10 md:pt-16 font-Montserrat_Regular text-[#565656]" data-aos="fade-up" data-aos-offset="150">
+      <div class="flex flex-col gap-5 pt-10 md:pt-16 font-Montserrat_Regular text-[#565656]" data-aos="fade-up"
+        data-aos-offset="150">
         {!! $producto->description !!}
       </div>
 
-      <div class="pt-10 md:pt-16 flex flex-col gap-5">
+      <div class="pt-10 md:pt-16 flex flex-col gap-5 mb-10 md:mb-16">
         <h3 class="font-Montserrat_Bold text-text28 md:text-text32 text-[#111111]">Características técnicas</h3>
         <div class="mx-6" data-aos="fade-up" data-aos-offset="150">
           <ul class="font-Montserrat_Regular text-text16 list-disc text-[#111111]">
@@ -124,7 +131,8 @@
       </div>
     </section>
 
-    <section class="w-11/12 md:w-10/12 mx-auto pt-10 pb-16 md:pt-16 md:pb-24">
+    @if (count($productosRelacionados) > 0)
+    <section class="w-11/12 md:w-10/12 mx-auto  pb-16  md:pb-24">
       <div class="flex flex-col gap-5">
         <div class="flex flex-col items-start md:flex-row md:justify-start md:items-center py-5 gap-2">
           <p class="font-Montserrat_Bold text-text32 md:text-text36">Productos relacionados</p>
@@ -150,7 +158,7 @@
 
 
           @foreach ($productosRelacionados as $item)
-            <x-product.cardproduct  bgcolor="bg-[#FFFFFF]" :item="$item" />
+            <x-product.cardproduct bgcolor="bg-[#FFFFFF]" :item="$item" />
           @endforeach
           <div data-aos="fade-up" data-aos-offset="150" class="py-10 col-span-2 lg:col-span-4">
             {{ $productosRelacionados }}
@@ -159,6 +167,7 @@
         </div>
       </div>
     </section>
+    @endif
   </main>
 
 

@@ -86,8 +86,11 @@
 
 
       <div class="addProduct flex flex-row items-center justify-center cursor-pointer py-2 sm:mb-4">
-        <button  data-id="{{ $item->id }}" type="button" id='agregarAlCarritoPr'>
-            <span class="uppercase text-white text-[11px] md:text-sm font-Montserrat_Bold font-semibold bg-[#0051FF] px-2 md:px-3 py-3 rounded-3xl">Añadir al carrito</span>
+        <button  data-id="{{ $item->id }}" type="button" id='btnAgregarCarrito'>
+            <span class="uppercase text-white text-[11px] md:text-sm font-Montserrat_Bold font-semibold bg-[#0051FF] px-4 py-3 rounded-3xl">
+              <i class="fa fa-cart"></i>
+              Añadir al carrito
+            </span>
         </button>    
       </div>
 
