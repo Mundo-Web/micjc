@@ -251,6 +251,7 @@
           color
 
         }
+        let articulosCarrito = Local.get('carrito') ?? []
         let existeArticulo = articulosCarrito.some(item => item.id === detalleProducto.id && item.isCombo ==
           false, )
         if (existeArticulo) {
