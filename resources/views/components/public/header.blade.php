@@ -214,7 +214,7 @@
   function PintarCarrito() {
 
     let itemsCarrito = $('#itemsCarrito')
-
+    let articulosCarrito = Local.get('carrito') ?? [];
     articulosCarrito.forEach(element => {
       let plantilla = `<div class="flex justify-between border-b-[1px] py-1">
               <div class="flex flex-row justify-center items-center gap-2">
