@@ -225,6 +225,33 @@
     pintarCantidad()
   }
 
+  function pintarCantidad() {
+    let carritoCantidad = Local.get('carrito')
+
+
+    if (typeof carritoCantidad !== 'undefined' && carritoCantidad !== null) {
+      // La variable carritoCantidad está definida y no es null
+      let total = carritoCantidad.length
+      if (total == 0) {
+
+        $('#imgCantidad').attr('hidden', true);
+
+
+      } else {
+        $('#imgCantidad').attr('hidden', false);
+
+        $('#spanCantidad').text(total)
+
+      }
+
+
+    } else {
+
+      $('#imgCantidad').attr('hidden', true);
+    }
+
+  }
+
   function calcularTotal() {
     let articulos = Local.get('carrito')
     let total = articulos.map(item => {
@@ -307,6 +334,7 @@
     const prodRepetido = articulosCarrito.map(item => {
       if (item.id === id && item.cantidad > 0) {
         item.cantidad -= Number(1);
+        console.log(item.cantidad)
         if (item.cantidad == 0) return null;
         return item; // retorna el objeto actualizado 
       } else {
