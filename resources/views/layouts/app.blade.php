@@ -47,6 +47,8 @@
   <!-- Styles -->
   @livewireStyles
 
+  <script src="/js/tippy.all.min.js"></script>
+
   <script>
     if (localStorage.getItem('dark-mode') === 'false' || !('dark-mode' in localStorage)) {
       document.querySelector('html').classList.remove('dark');
