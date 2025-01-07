@@ -3,7 +3,7 @@
   $statuses = isset($statuses) ? $statuses : [];
 @endphp
 
-<div id="invoice-modal" class="modal !w-full !max-w-[800px] relative !opacity-100">
+<div id="invoice-modal" class="modal !w-full !max-w-[800px] h-max max-h-screen relative !opacity-100">
   @csrf
   <input type="hidden" id="invoice-id" value="">
   <div class="relative md:absolute border rounded-lg right-8 top-6 py-2 px-3 mb-2 text-center">
