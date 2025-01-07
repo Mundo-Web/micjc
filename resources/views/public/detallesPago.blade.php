@@ -569,7 +569,7 @@
       })
       const suma = total.reduce((total, elemento) => total + elemento, 0);
 
-      $('#subtotalDetalle').text(`S/. ${suma} `)
+      $('#subtotalDetalle').text(`S/. ${suma.toFixed(2)} `)
       const opciones = document.getElementsByName('bordered-radio');
 
       // Iterar sobre los radio buttons para encontrar el que está seleccionado
