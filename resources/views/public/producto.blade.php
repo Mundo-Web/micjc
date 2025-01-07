@@ -40,18 +40,20 @@
 
         <div class="flex flex-col gap-5">
           <div class="flex flex-col gap-5 pb-10 border-b-2 border-[#DDDDDD]" data-aos="fade-up" data-aos-offset="150">
-            <h2 class="font-moderat_700 text-text40 md:text-text44 text-[#111111]">{{ $producto->producto }}</h2>
+            <h2 class="font-Montserrat_Bold text-text40 md:text-text44 leading-tight text-[#111111]">{{ $producto->producto }}</h2>
             
             @if ($producto->descuento == 0)
-                <span class="font-moderat_Bold text-text24 md:text-text28 text-[#111111]">S/ {{ $producto->precio }}</span>
+                <span class="font-Montserrat_Bold text-text24 md:text-text36 text-[#111111]">S/ {{ $producto->precio }}</span>
             @else
             @php
                 $porcentajeDescuento = round((($producto->precio - $producto->descuento) / $producto->precio) * 100);
             @endphp
-              <div class="flex flex-row gap-2 items-center">
-                <span class="font-moderat_Bold text-text24 md:text-text28 text-[#111111]">S/. {{ $producto->descuento }}</span>
-                <span class="text-[#111111] text-text14 line-through font-space_grotesk font-bold md:font-medium">S/. {{ $producto->precio }}</span>
-                <span class="text-white bg-[#0051FF] px-3 py-1 rounded-lg font-space_grotesk font-bold">-{{ $porcentajeDescuento }}%</span>
+              <div class="flex flex-col gap-2 items-start">
+                <div class="flex flex-row gap-2 justify-start items-center">
+                  <span class="text-[#111111] text-text30 line-through font-Montserrat_Regular">S/. {{ $producto->precio }}</span>
+                  <span class="text-white bg-[#0051FF] px-3 py-1 rounded-lg font-Montserrat_SemiBold">- {{ $porcentajeDescuento }}%</span>
+                </div>
+                <span class="font-Montserrat_Bold text-text24 md:text-text36 text-[#111111]">S/. {{ $producto->descuento }}</span>
               </div>
             @endif
            
@@ -60,10 +62,10 @@
               <input type="number" id="cantidadInput" class="border-2 rounded-lg w-16" value="01" step="1">
             </div>
 
-            <p class="text-[#565656] text-text16 md:text-text20 font-moderat_Regular">{{ $producto->extract }}</p>
+            <p class="text-[#565656] text-text16 md:text-text20 font-Montserrat_Regular">{{ $producto->extract }}</p>
 
             <div
-              class="flex justify-between items-center text-white font-moderat_Bold text-text14 md:text-text16 gap-5 pt-3"
+              class="flex justify-between items-center text-white font-Montserrat_Bold text-text14 md:text-text16 gap-5 pt-3"
               data-aos="fade-up" data-aos-offset="150">
               <button href="#" id='btnAgregarCarrito'
                 class="bg-[#0051FF] w-full py-3 px-2 md:px-10 text-center">Quiero comprar</button>
@@ -83,33 +85,32 @@
           </div>
 
 
-          <div class="pt-5" data-aos="fade-up" data-aos-offset="150">
-            <p class="font-inter font-medium text-text14 md:text-text16 text-[#111111]">
+          <div class="pt-2" data-aos="fade-up" data-aos-offset="150">
+            <p class="font-Montserrat_Bold text-text14 md:text-text16 text-[#111111]">
               Categoría: <span
-                class="text-[#565656] font-moderat_Regular text-text14">{{ $producto->categoria->name ?? '' }}</span>
+                class="text-[#565656] font-Montserrat_Regular text-text14">{{ $producto->categoria->name ?? '' }}</span>
             </p>
-            <p class="font-inter font-medium text-text14 md:text-text16 text-[#111111]">
-              SKU: <span class="text-[#565656] font-moderat_Regular text-text14">{{ $producto->sku }}</span>
+            <p class="font-Montserrat_Bold text-text14 md:text-text16 text-[#111111]">
+              SKU: <span class="text-[#565656] font-Montserrat_Regular text-text14">{{ $producto->sku }}</span>
             </p>
-            <p class="font-inter font-medium text-text14 md:text-text16 text-[#111111]">
+            <p class="font-Montserrat_Bold text-text14 md:text-text16 text-[#111111]">
               Marca: @isset($producto->marca->name)
-                <span class="text-[#565656] font-moderat_400 text-text14">
-                  {{ $producto->marca->name }}</span>
+                <span class="text-[#565656] font-Montserrat_Regular text-text14">
+                  {{ $producto->marca->name ?? 'Sin marca'}}</span>
               @endisset
             </p>
           </div>
         </div>
       </div>
 
-      <div class="flex flex-col gap-5 pt-10 md:pt-16" data-aos="fade-up" data-aos-offset="150">
+      <div class="flex flex-col gap-5 pt-10 md:pt-16 font-Montserrat_Regular text-[#565656]" data-aos="fade-up" data-aos-offset="150">
         {!! $producto->description !!}
-
       </div>
 
       <div class="pt-10 md:pt-16 flex flex-col gap-5">
-        <h3 class="font-moderat_700 text-text28 md:text-text32 text-[#111111]">Características técnicas</h3>
+        <h3 class="font-Montserrat_Bold text-text28 md:text-text32 text-[#111111]">Características técnicas</h3>
         <div class="mx-6" data-aos="fade-up" data-aos-offset="150">
-          <ul class="font-moderat_Regular text-text16 md:text-text20 list-disc text-[#565656]">
+          <ul class="font-Montserrat_Regular text-text16 list-disc text-[#111111]">
             @foreach ($especificaciones as $espec)
               <li>
                 {{ $espec->tittle }} : {{ $espec->specifications }}
@@ -126,7 +127,7 @@
     <section class="w-11/12 md:w-10/12 mx-auto pt-10 pb-16 md:pt-16 md:pb-24">
       <div class="flex flex-col gap-5">
         <div class="flex flex-col items-start md:flex-row md:justify-start md:items-center py-5 gap-2">
-          <p class="font-moderat_700 text-text32 md:text-text36">Productos relacionados</p>
+          <p class="font-Montserrat_Bold text-text32 md:text-text36">Productos relacionados</p>
           <div class="flex md:hidden justify-start items-center">
             <a href="#" class="flex flex-row justify-center items-center gap-2">
               <p

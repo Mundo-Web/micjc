@@ -27,6 +27,8 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 
   {{-- Alpine --}}
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -110,6 +112,24 @@
       font-family: "Montserrat-Black";
       src: url({{ asset('fonts/Montserrat-Black.woff') }}) format("woff");
     }
+
+    /* @media (max-width: 400px) {
+      #cart-modal {
+        width: 302px !important;
+        right: 25% !important;
+        top: 5px !important;
+       
+      }
+    }
+
+    @media (min-width: 400px) and (max-width: 700px) {
+      #cart-modal {
+        width: 302px !important;
+        right: 16% !important;
+        top: 5px;
+        
+      }
+    } */
   </style>
 
 </head>

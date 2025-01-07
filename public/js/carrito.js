@@ -110,15 +110,17 @@ let articulosCarrito = [];
       let itemsCarrito = $('#itemsCarrito')
 
       articulosCarrito.forEach(element => {
-        let plantilla = `<div class="flex justify-between border-b-[1px] pb-5">
-              <div class="flex justify-center items-center gap-5">
-                <div class="bg-[#F3F5F7] rounded-md p-4">
+        let plantilla = `<div class="flex justify-between border-b-[1px] py-1">
+              <div class="flex flex-row justify-center items-center gap-2">
+                
+                <div class="bg-[#F3F5F7] rounded-md p-1 min-w-20">
                   
-                  <img src="${appUrl}/${element.imagen}" alt="producto" class="w-24" />
+                  <img src="${appUrl}/${element.imagen}" alt="producto" class="w-20" />
 
                 </div>
-                <div class="flex flex-col gap-3 py-2">
-                  <h3 class="font-semibold text-[14px] text-[#151515]">
+
+                <div class="flex flex-col gap-1 py-2">
+                  <h3 class="font-semibold font-Montserrat_Regular text-[12px] uppercase text-[#151515] line-clamp-2 max-w-40">
                     ${element.producto} 
                   </h3>
                  
@@ -135,8 +137,9 @@ let articulosCarrito = [];
                   </div>
                 </div>
               </div>
-              <div class="flex flex-col justify-start py-2 gap-5 items-center pr-2">
-                <p class="font-semibold text-[14px] text-[#151515]">
+
+              <div class="flex flex-col justify-center py-2 gap-2 items-center pr-2 min-w-20">
+                <p class="font-semibold font-Montserrat_Regular text-[14px] text-[#151515]">
                   S/ ${Number(element.descuento) !== 0 ? element.descuento : element.precio}
                 </p>
                 <div class="flex items-center">

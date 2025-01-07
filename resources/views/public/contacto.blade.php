@@ -67,9 +67,9 @@
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-44">
         <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
-          <h2 class="font-moderat_700 text-text40 md:text-text52 text-[#111111] leading-[56px]">Escríbenos para
+          <h2 class="font-moderat_700 text-text40 md:text-text44 text-[#111111] leading-[44px]">Escríbenos para
             ayudarte</h2>
-          <p class="text-[#565656] text-text18 md:text-text20 font-moderat_Regular">Si deseas contactarte con
+          <p class="text-[#565656] text-lg font-moderat_Regular">Si deseas contactarte con
             nosotros, puedes comunicarte con alguno de nuestros representantes, los cuales solucionarán
             cualquier duda</p>
 
@@ -107,8 +107,8 @@
 
         <div class="flex flex-col gap-5">
           <div class="flex flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
-            <h2 class="font-moderat_700 text-text32 md:text-text36 text-[#111111]">Datos de contacto</h2>
-            <p class="text-[#565656] text-text18 md:text-text20 font-moderat_Regular">Si deseas contactarte con
+            <h2 class="font-moderat_700 text-text32 md:text-text44 text-[#111111]">Datos de contacto</h2>
+            <p class="text-[#565656] text-text18  font-moderat_Regular">Si deseas contactarte con
               nosotros, puedes comunicarte con alguno de nuestros representantes, los cuales solucionarán
               cualquier duda</p>
           </div>
@@ -123,9 +123,9 @@
                 </svg>
               </div>
               <div class="flex flex-col gap-2">
-                <p class="font-moderat_500 text-text18 md:text-text20 text-[#111111] leading-none">Dirección
+                <p class="font-Montserrat_SemiBold text-text18  text-[#111111] leading-none">Dirección
                 </p>
-                <p class="font-moderat_Regular text-text14 md:text-text18 text-[#565656] leading-[20px]">
+                <p class="font-moderat_Regular text-text14 md:text-base text-[#565656] leading-[20px]">
                   {{ $general->address }} {{ $general->inside }} - {{ $general->district }}, Perú
 
                 </p>
@@ -142,9 +142,9 @@
                 </svg>
               </div>
               <div class="flex flex-col gap-2">
-                <p class="font-moderat_500 text-text18 md:text-text20 text-[#111111] leading-none">Número
+                <p class="font-Montserrat_SemiBold text-text18  text-[#111111] leading-none">Número
                   de Teléfono</p>
-                <p class="font-moderat_Regular text-text14 md:text-text18 text-[#565656] leading-[20px]">
+                <p class="font-moderat_Regular text-text14 md:text-base text-[#565656] leading-[20px]">
                   +51 {{ $general->cellphone }} | +51 {{ $general->office_phone }} | +51
                   {{ $general->whatsapp }}
                 </p>
@@ -162,9 +162,9 @@
 
               </div>
               <div class="flex flex-col gap-2">
-                <p class="font-moderat_500 text-text18 md:text-text20 text-[#111111] leading-none">Correo
+                <p class="font-Montserrat_SemiBold text-text18  text-[#111111] leading-none">Correo
                   Electrónico</p>
-                <p class="font-moderat_Regular text-text14 md:text-text18 text-[#565656] leading-[20px]">
+                <p class="font-moderat_Regular text-text14 md:text-base text-[#565656] leading-[20px]">
                   {{ $general->email }} </p>
               </div>
             </div>
@@ -179,7 +179,7 @@
                 </svg>
               </div>
               <div class="flex flex-col gap-2">
-                <p class="font-moderat_500 text-text18 md:text-text20 text-[#111111] leading-none">Horario
+                <p class="font-Montserrat_SemiBold text-text18  text-[#111111] leading-none">Horario
                   de Atención</p>
                 {{-- <p class="font-moderat_Regular text-text14 md:text-text18 text-[#565656] leading-[20px]">
                                     Lunes a viernes: 8:00 am - 6:00 pm 
@@ -188,7 +188,7 @@
                                     Sábados: 8:00 am - 01:30 pm
                                 </p>  --}}
 
-                <p class="font-moderat_Regular text-text14 md:text-text18 text-[#565656] leading-[20px]">
+                <p class="font-moderat_Regular text-text14 md:text-base text-[#565656] leading-[20px]">
                   {{ $general->schedule }}
                 </p>
               </div>

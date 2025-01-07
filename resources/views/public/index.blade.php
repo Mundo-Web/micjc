@@ -1059,7 +1059,7 @@
   </script>
   <script src="{{ asset('js/carrito.js') }}"></script>
 
-  <script>
+  {{-- <script>
       // Configuración inicial: tiempo total en segundos (por ejemplo, 1 hora)
       let totalTime = 36000; // 1 hora en segundos
 
@@ -1085,7 +1085,7 @@
 
       // Actualizamos el contador cada segundo
       const countdown = setInterval(updateCountdown, 1000);
-  </script>
+  </script> --}}
 
 @stop
 
