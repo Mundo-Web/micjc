@@ -300,6 +300,8 @@
     mostrarTotalItems()
   }
 
+  PintarCarrito()
+
   function deleteOnCarBtn(id, operacion) {
     let articulosCarrito = Local.get('carrito') ?? []
     const prodRepetido = articulosCarrito.map(item => {
