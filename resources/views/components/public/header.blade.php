@@ -221,7 +221,7 @@
                 
                 <div class="bg-[#F3F5F7] rounded-md p-1 min-w-20">
                   
-                  <img src="${appUrl}/${element.imagen}" alt="producto" class="w-20" />
+                  <img src="/${element.imagen}" alt="producto" class="w-20" />
 
                 </div>
 
