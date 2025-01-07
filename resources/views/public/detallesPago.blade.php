@@ -579,7 +579,7 @@
       // El valor de valorSeleccionado es el valor del radio button seleccionado
 
 
-      total = Number(suma) + Number(valorSeleccionado)
+      total = Number(suma) + (Number(valorSeleccionado) || 0)
 
       let carrito = Local.get('carrito')
       // carrito = [...carrito, carrito.total]
