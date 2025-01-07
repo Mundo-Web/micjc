@@ -95,7 +95,7 @@ class PaymentController extends Controller
       $sale->name = $body['contact']['name'];
       $sale->lastname = $body['contact']['lastname'];
       $sale->email = $user->email ?? $body['contact']['email'];
-      $sale->usuario_id = $user->id ?? null;
+      // $sale->usuario_id = $user->id ?? null;
       $sale->phone = $body['contact']['phone'];
       $sale->address_price = 0;
       $sale->total = $totalCost;
