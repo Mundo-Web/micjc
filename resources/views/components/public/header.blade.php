@@ -301,6 +301,7 @@
   }
 
   function deleteOnCarBtn(id, operacion) {
+    let articulosCarrito = Local.get('carrito') ?? []
     const prodRepetido = articulosCarrito.map(item => {
       if (item.id === id && item.cantidad > 0) {
         item.cantidad -= Number(1);
@@ -319,7 +320,7 @@
 
   function addOnCarBtn(id, operacion) {
 
-
+    let articulosCarrito = Local.get('carrito') ?? []
 
     const prodRepetido = articulosCarrito.map(item => {
       if (item.id === id) {
@@ -339,7 +340,7 @@
   }
 
   function mostrarTotalItems() {
-    let articulos = Local.get('carrito')
+    let articulos = Local.get('carrito') ?? []
     let contarArticulos = articulos.reduce((total, articulo) => {
       return total + articulo.cantidad;
     }, 0);
