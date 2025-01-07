@@ -585,7 +585,7 @@
       // carrito = [...carrito, carrito.total]
       Local.set("carrito", carrito)
 
-      $('#totalDetalle').text(`S/. ${total} `)
+      $('#totalDetalle').text(`S/. ${total.toFixed(2)} `)
       return {
         total,
         suma
