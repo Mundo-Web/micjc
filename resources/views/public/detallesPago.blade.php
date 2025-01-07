@@ -1142,7 +1142,7 @@
       const precioProductos = getTotalPrice()
       $('#itemSubtotal').text(`S/. ${precioProductos.toFixed(2)}`)
       const precioEnvio = getCostoEnvio()
-      const total = precioProductos + precioEnvio
+      const total = Number(precioProductos) + (Number(precioEnvio) || 0)
 
       $('#itemTotal').text(`S/. ${total.toFixed(2)} `)
       $('#itemsTotal').text(`S/. ${total.toFixed(2)} `)
