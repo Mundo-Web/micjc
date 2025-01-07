@@ -213,8 +213,7 @@
 <script src="{{ asset('js/storage.extend.js') }}"></script>
 <script>
   function deleteItem(id) {
-
-
+    let articulosCarrito = Local.get('carrito') ?? []
     articulosCarrito = articulosCarrito.filter(objeto => {
       return !(objeto.id === id);
 
@@ -308,12 +307,13 @@
     const prodRepetido = articulosCarrito.map(item => {
       if (item.id === id && item.cantidad > 0) {
         item.cantidad -= Number(1);
+        if (item.cantidad == 0) return null;
         return item; // retorna el objeto actualizado 
       } else {
         return item; // retorna los objetos que no son duplicados 
       }
 
-    });
+    }).filter(Boolean);
     Local.set('carrito', articulosCarrito)
     limpiarHTML()
     PintarCarrito()
