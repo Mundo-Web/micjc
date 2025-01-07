@@ -210,6 +210,7 @@
   </div>
 
 </header>
+<script src="{{ asset('js/storage.extend.js') }}"></script>
 <script>
   function deleteItem(id) {
 
@@ -478,7 +479,6 @@
     }
   })
 </script>
-<script src="{{ asset('js/storage.extend.js') }}"></script>
 <script>
   $('#open-cart').on('click', () => {
     $('#cart-modal').modal({
