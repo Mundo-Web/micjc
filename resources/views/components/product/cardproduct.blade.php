@@ -22,7 +22,7 @@
           $category = $item->categoria();
         @endphp
         @if ($item->imagen)
-          <img x-show="{{ isset($item->imagen_ambiente) }} || !showAmbiente"
+          <img x-show="{{ isset($item->image_texture) }} || !showAmbiente"
             x-transition:enter="transition ease-out duration-300 transform"
             x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
             x-transition:leave="transition ease-in duration-300 transform"
@@ -31,7 +31,7 @@
             class="w-full object-contain md:object-cover absolute inset-0 aspect-square"
             onerror="this.onerror=null;this.src='{{ asset('images/img/noimagen.jpg') }}';" />
         @else
-          <img x-show="{{ isset($item->imagen_ambiente) }} || !showAmbiente"
+          <img x-show="{{ isset($item->image_texture) }} || !showAmbiente"
             x-transition:enter="transition ease-out duration-300 transform"
             x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
             x-transition:leave="transition ease-in duration-300 transform"
@@ -39,14 +39,14 @@
             src="{{ asset('images/img/noimagen.jpg') }}" alt="imagen_alternativa"
             class="w-full object-contain md:object-cover absolute inset-0 aspect-square" />
         @endif
-        @isset($item->imagen_ambiente)
+        @isset($item->image_texture)
         
-          @if ($item->imagen_ambiente)
+          @if ($item->image_texture)
             <img x-show="showAmbiente" x-transition:enter="transition ease-out duration-300 transform"
               x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
               x-transition:leave="transition ease-in duration-300 transform"
               x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
-              src="{{ asset($item->imagen_ambiente) }}" alt="{{ $item->name }}"
+              src="{{ asset($item->image_texture) }}" alt="{{ $item->name }}"
               class="w-full object-contain md:object-cover absolute inset-0 aspect-square"
               onerror="this.onerror=null;this.src='{{ asset('images/img/noimagen.jpg') }}';" />
           @else
@@ -64,7 +64,7 @@
   </div>
 
 
-  <div class="flex flex-col bg-white p-2 md:p-5 pb-3 sm:pb-0">
+  <div class="flex flex-col bg-white p-2 md:px-5 pb-3 sm:pb-0">
     <div class="flex flex-col gap-2 md:gap-2">
 
       @if ($item->descuento == 0)
