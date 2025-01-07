@@ -194,7 +194,8 @@
           })
           div.append(dateContainer)
           container.html(div)
-        }
+        },
+        sortOrder: 'desc'
       },
       {
         dataField: 'status.name',
