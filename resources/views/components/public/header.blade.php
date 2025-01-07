@@ -274,7 +274,8 @@
   function PintarCarrito() {
 
     let itemsCarrito = $('#itemsCarrito')
-    let articulosCarrito = Local.get('carrito') ?? [];
+    let articulosCarrito = (Local.get('carrito') ?? []).filter(x => x.cantidad > 0);
+    Local.set('carrito', articulosCarrito);
     articulosCarrito.forEach(element => {
       let plantilla = `<div class="flex justify-between border-b-[1px] py-1">
               <div class="flex flex-row justify-center items-center gap-2">
@@ -334,7 +335,6 @@
     const prodRepetido = articulosCarrito.map(item => {
       if (item.id === id && item.cantidad > 0) {
         item.cantidad -= Number(1);
-        console.log(item.cantidad)
         if (item.cantidad == 0) return null;
         return item; // retorna el objeto actualizado 
       } else {
