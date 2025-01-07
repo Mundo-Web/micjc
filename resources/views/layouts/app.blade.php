@@ -83,7 +83,7 @@
   </script>
 
   <!-- Page wrapper -->
-  <div class="flex h-[100dvh] overflow-hidden">
+  <div class="flex h-[100vh] overflow-hidden">
 
     <x-app.sidebar />
 
