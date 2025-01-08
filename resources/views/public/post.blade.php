@@ -21,8 +21,8 @@
         </div>
 
         <div class="flex justify-center items-center">
-          <img src="{{ asset($blog->url_image . $blog->name_image) }}" alt="blog" class="w-full block md:hidden aspect-video object-cover object-center">
-          <img src="{{ asset($blog->url_image . $blog->name_image) }}" alt="blog" class="w-full hidden md:block aspect-video object-cover object-center">
+          <img src="{{ asset($blog->url_image . $blog->name_image) }}" alt="blog" class="w-full block md:hidden aspect-video object-cover object-center()">
+          <img src="{{ asset($blog->url_image . $blog->name_image) }}" alt="blog" class="w-full hidden md:block aspect-video object-cover object-center()">
         </div>
 
         {!! $blog->description !!}
