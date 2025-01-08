@@ -183,7 +183,7 @@ $('#btnAgregarCarrito').on('click', function (e) {
 
   // id='nodescuento'
 
-
+  console.log('agregando')
   $.ajax({
 
     url: "/carrito/buscarProducto",
