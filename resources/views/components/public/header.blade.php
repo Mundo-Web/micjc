@@ -215,7 +215,6 @@
   function deleteItem(id) {
     let articulosCarrito = Local.get('carrito') ?? []
     articulosCarrito = articulosCarrito.filter(objeto => objeto.id != id);
-    console.log(articulosCarrito)
 
     Local.set('carrito', articulosCarrito)
     limpiarHTML()

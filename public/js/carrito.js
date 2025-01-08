@@ -74,8 +74,7 @@ function addOnCarBtn(id, operacion) {
 }
 
 function deleteItem(id) {
-  console.log(id)
-
+  let articulosCarrito = Local.get('carrito') ?? []
   articulosCarrito = articulosCarrito.filter(objeto => objeto.id != id);
 
   Local.set('carrito', articulosCarrito)
