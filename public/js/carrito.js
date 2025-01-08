@@ -74,12 +74,9 @@ function addOnCarBtn(id, operacion) {
 }
 
 function deleteItem(id) {
+  console.log(id)
 
-
-  articulosCarrito = articulosCarrito.filter(objeto => {
-    return !(objeto.id === id);
-
-  });
+  articulosCarrito = articulosCarrito.filter(objeto => objeto.id != id);
 
   Local.set('carrito', articulosCarrito)
   limpiarHTML()
