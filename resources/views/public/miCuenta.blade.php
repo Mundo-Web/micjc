@@ -41,7 +41,7 @@
             <div class="flex flex-col gap-2" data-aos="fade-up" data-aos-offset="150">
               <label for="nombre_user"
                 class="font-moderat_Medium text-text12 md:text-text14 text-[#6C7275]">Nombre</label>
-              <input id="nombre_user" name="name" type="text" placeholder="Nombre" value="{{ $userDetail->nombre }}"
+              <input id="nombre_user" name="name" type="text" placeholder="Nombre" value="{{ Auth::user()->name }}"
                 class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-moderat_Regular text-text16 md:text-text18 border-[1px] border-gray-200 text-[#6C7275] focus:ring-0  focus:border-black" />
             </div>
 
@@ -49,7 +49,7 @@
               <label for="apellido_user"
                 class="font-moderat_Medium text-text12 md:text-text14 text-[#6C7275]">Apellido</label>
               <input id="apellido_user" name="lastname" type="text" placeholder="Apellido"
-                value="{{ $userDetail->apellidos }}"
+                value="{{ Auth::user()->lastname }}"
                 class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-moderat_Regular text-text16 md:text-text18 border-[1px] border-gray-200 text-[#6C7275] focus:ring-0  focus:border-black" />
             </div>
 
