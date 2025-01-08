@@ -20,11 +20,11 @@
 
         <div class="text-[#111111]">
           <p class="font-moderat_700 text-text24 xl:text-text28">
-            {{ $userDetail->nombre }} {{ $userDetail->apellidos }}
+            {{ Auth::user()->name }} {{ Auth::user()->lastname }}
           </p>
 
           <p class="font-moderat_Medium text-text12 md:text-text16 text-[#8896A8]">
-            {{ $userDetail->email }}
+            {{ Auth::user()->email }}
           </p>
         </div>
       </div>
