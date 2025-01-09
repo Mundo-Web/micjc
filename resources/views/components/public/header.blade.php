@@ -58,7 +58,7 @@
                 @click.outside="open = false" @keydown.escape.window="open = false" x-show="open">
                 <ul>
                   <li class="hover:bg-gray-100">
-                    <a class="font-medium text-sm text-black flex items-center py-1 px-3" href="{{ route('miCuenta') }}"
+                    <a class="font-medium text-sm text-black flex items-center py-1 px-3" href="{{ route('micuenta') }}"
                       @click="open = false" @focus="open = true" @focusout="open = false">Mi Cuenta</a>
                   </li>
 
