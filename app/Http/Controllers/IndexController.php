@@ -444,9 +444,11 @@ class IndexController extends Controller
       $array[] = $value['products']['id'];
     }
 
+    $general = General::all()->first();
+
 
     $productos = Products::with('tags')->whereIn('id', $array)->get();
-    return view('public.dashboard_wishlist', compact('user', 'wishlistItems', 'productos'));
+    return view('public.dashboard_wishlist', compact('user', 'wishlistItems', 'productos', 'general'));
   }
 
   public function direccion()
