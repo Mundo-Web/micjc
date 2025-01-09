@@ -10,7 +10,7 @@
 
 
   <main>
-    <form id="modal-address" class="!max-w-[600px] font-Urbanist_Regular" style="display: none; padding: 0">
+    <form id="modal-address" class="!max-w-[600px] !w-full h-max font-Urbanist_Regular max-h-screen relative !opacity-100" style="display: none; padding: 0">
       @csrf
       <input type="hidden" id="id" name="id" value="">
       <div class="flex flex-col gap-4 p-8">
