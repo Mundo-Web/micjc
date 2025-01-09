@@ -410,7 +410,7 @@ class IndexController extends Controller
       ->get()
       ->toArray();
 
-    $ordenes = Ordenes::where('usuario_id', $detalleUsuario[0]['id'])
+    $ordenes = Ordenes::where('usuario_id', Auth::user()->id)
       ->with('DetalleOrden')
       ->with('statusOrdenes')
       ->get();
