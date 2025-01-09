@@ -616,7 +616,8 @@ class IndexController extends Controller
     $user = Auth::user();
     $categorias = Category::all();
     $statuses = [];
-    return view('public.dashboard_order',  compact('user', 'categorias', 'statuses'));
+    $general = General::all()->first();
+    return view('public.dashboard_order',  compact('user', 'categorias', 'statuses', 'general'));
   }
 
   public function procesarPago(Request $request)
