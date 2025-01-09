@@ -44,10 +44,10 @@
           </span>
         </div>
         <div
-          class=" text-textBlack py-3 px-5 rounded-2xl cursor-pointer border-none md:w-80 flex justify-between items-center w-full  @if (in_array(Request::segment(1), ['miDireccion'])) {{ 'bg-[#0051FF]', 'text-textWhite' }} @endif"
+          class=" text-textBlack py-3 px-5 rounded-2xl cursor-pointer border-none md:w-80 flex justify-between items-center w-full  @if (in_array(Request::segment(1), ['direccion'])) {{ 'bg-[#0051FF]', 'text-textWhite' }} @endif"
           py-3 px-5 cursor-pointer border-none md:w-80 w-full flex justify-between items-center">
-          <a href="{{ route('miDireccion') }}"
-            class="font-moderat_Bold text-text16 md:text-text18 text-[#565656] @if (in_array(Request::segment(1), ['miDireccion'])) {{ ' text-white' }} @endif">
+          <a href="{{ route('direccion') }}"
+            class="font-moderat_Bold text-text16 md:text-text18 text-[#565656] @if (in_array(Request::segment(1), ['direccion'])) {{ ' text-white' }} @endif">
             Dirección
           </a>
           <span>
@@ -59,9 +59,9 @@
           </span>
         </div>
         <div
-          class="text-textBlack py-3 px-5 rounded-2xl cursor-pointer border-none md:w-80 flex justify-between items-center w-full @if (in_array(Request::segment(1), ['historial'])) {{ 'bg-[#0051FF]', 'text-textWhite' }} @endif">
-          <a href="{{ route('historial') }}"
-            class="font-moderat_Bold text-text16 md:text-text18 text-[#565656] @if (in_array(Request::segment(1), ['historial'])) {{ ' text-white' }} @endif"">
+          class="text-textBlack py-3 px-5 rounded-2xl cursor-pointer border-none md:w-80 flex justify-between items-center w-full @if (in_array(Request::segment(1), ['pedidos'])) {{ 'bg-[#0051FF]', 'text-textWhite' }} @endif">
+          <a href="{{ route('pedidos') }}"
+            class="font-moderat_Bold text-text16 md:text-text18 text-[#565656] @if (in_array(Request::segment(1), ['pedidos'])) {{ ' text-white' }} @endif"">
             Historial de pedidos
           </a>
           <span>
