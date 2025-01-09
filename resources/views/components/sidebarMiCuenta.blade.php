@@ -31,7 +31,7 @@
       <div class="flex flex-col gap-4">
         <div
           class="text-textBlack py-3 px-5 rounded-2xl cursor-pointer border-none md:w-80 flex justify-between items-center w-full  @if (in_array(Request::segment(1), ['micuenta'])) {{ 'bg-[#0051FF]', 'text-textWhite' }} @endif">
-          <a href="{{ route('miCuenta') }}"
+          <a href="{{ route('micuenta') }}"
             class="font-moderat_Bold text-text16 md:text-text18 text-[#565656] @if (in_array(Request::segment(1), ['micuenta'])) {{ ' text-white' }} @endif"">
             Mi cuenta
           </a>
