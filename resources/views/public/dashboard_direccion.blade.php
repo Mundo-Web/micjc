@@ -8,13 +8,14 @@
 @section('content')
 
   <style>
-    .select2.select2-container.select2-container--default.select2-container--below {
+    .select2.select2-container {
       width: 100% !important;
     }
   </style>
 
   <main>
-    <form id="modal-address" class="!max-w-[600px] !w-full h-max font-Urbanist_Regular max-h-screen relative !opacity-100" style="display: none; padding: 0">
+    <form id="modal-address" class="!max-w-[600px] !w-full h-max font-Urbanist_Regular max-h-screen relative !opacity-100"
+      style="display: none; padding: 0">
       @csrf
       <input type="hidden" id="id" name="id" value="">
       <div class="flex flex-col gap-4 p-8">
