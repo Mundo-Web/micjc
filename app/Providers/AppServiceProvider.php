@@ -55,7 +55,7 @@ class AppServiceProvider extends ServiceProvider
             // }])
             ->get();
 
-            $marcas = ClientLogos::where('status', true)->where('visible', true)->get();
+            // $marcas = ClientLogos::where('status', true)->where('visible', true)->get();
 
             $tags = Tag::where('is_menu', 1)
             ->where("status", "=", true)
@@ -73,7 +73,7 @@ class AppServiceProvider extends ServiceProvider
                 'blog' => $blog,
                 'categoriasMenu' => $categoriasMenu,
                 'tags' => $tags,
-                'marcas' => $marcas,
+                // 'marcas' => $marcas,
                 'offerExists' => $offerExists,
                 'categorias' => $categorias,
             ]);
