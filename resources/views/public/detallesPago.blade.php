@@ -14,6 +14,10 @@
     div:where(.swal2-container) {
       z-index: 9999999999 !important;
     }
+
+    .select2.select2-container {
+      width: 100% !important;
+    }
   </style>
 
 @stop
