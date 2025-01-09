@@ -497,7 +497,9 @@ class IndexController extends Controller
       ->get();
     $categorias = Category::all();
 
-    return view('public.dashboard_direccion', compact('user', 'addresses', 'categorias', 'departments', 'provinces', 'districts'));
+    $general = General::all()->first();
+
+    return view('public.dashboard_direccion', compact('user', 'addresses', 'categorias', 'departments', 'provinces', 'districts', 'general'));
   }
 
   public function crearCuenta()

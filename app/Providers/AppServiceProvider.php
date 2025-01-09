@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-       
+
         View::composer('components.public.footer', function ($view) {
             // Obtener los datos del footer
             $datosgenerales = General::all(); // Suponiendo que tienes un modelo Footer y un método footerData() en él
@@ -37,21 +37,27 @@ class AppServiceProvider extends ServiceProvider
 
             $user = auth()->user();
             $userDetail = UserDetails::where('email', $user->email)->first();
-            $view->with(['userDetail'=> $userDetail, 'user'=> $user]);
+            $view->with(['userDetail' => $userDetail, 'user' => $user]);
         });
         View::composer('components.public.header', function ($view) {
 
             $user = auth()->user();
-            $userDetail= [];
-            if(isset($user)){
+            $userDetail = [];
+            if (isset($user)) {
                 $userDetail = UserDetails::where('email', $user->email)->first();
             }
-            
-            $blogCount =Blog::all()->count();
-            $view->with(['userDetail'=> $userDetail, 'user'=> $user, 'blogCount'=> $blogCount]);
+
+            $blogCount = Blog::all()->count();
+            $general = General::all()->first();
+            $view->with([
+                'userDetail' => $userDetail,
+                'user' => $user,
+                'blogCount' => $blogCount,
+                'general' => $general
+            ]);
         });
 
 
-         PaginationPaginator::useTailwind();   
+        PaginationPaginator::useTailwind();
     }
 }
