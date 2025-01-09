@@ -35,6 +35,7 @@ function calcularTotal() {
 }
 
 function deleteOnCarBtn(id, operacion) {
+  let articulosCarrito = Local.get('carrito') ?? []
   const prodRepetido = articulosCarrito.map(item => {
     if (item.id === id && item.cantidad > 0) {
       item.cantidad -= Number(1);
@@ -54,8 +55,7 @@ function deleteOnCarBtn(id, operacion) {
 
 function addOnCarBtn(id, operacion) {
 
-
-
+let articulosCarrito = Local.get('carrito') ?? []
   const prodRepetido = articulosCarrito.map(item => {
     if (item.id === id) {
       item.cantidad += Number(1);
