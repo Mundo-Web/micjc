@@ -57,8 +57,9 @@ class AppServiceProvider extends ServiceProvider
 
             // $marcas = ClientLogos::where('status', true)->where('visible', true)->get();
 
-            $tags = Tag::where('is_menu', 1)
-            ->where("status", "=", true)
+            $tags = Tag::
+            // where('is_menu', 1)
+            where("status", "=", true)
             ->where("visible", "=", true)
             ->whereHas('productos')
             ->get();
