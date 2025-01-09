@@ -277,12 +277,10 @@ Route::middleware(['auth:sanctum', 'verified', 'can:Admin'])->group(function () 
 
 Route::middleware(['auth:sanctum', 'verified', 'can:Customer'])->group(function () {
 
-    Route::get('/micuenta', [IndexController::class, 'micuenta'])->name('miCuenta');
-    Route::get('/miDireccion', [IndexController::class, 'miDireccion'])->name('miDireccion');
-    Route::get('/historial', [IndexController::class, 'historial'])->name('historial');
-
+    Route::get('/micuenta', [IndexController::class, 'micuenta'])->name('micuenta');
     Route::get('/micuenta/pedidos', [IndexController::class, 'pedidos'])->name('pedidos');
     Route::get('/micuenta/direccion', [IndexController::class, 'direccion'])->name('direccion');
+    Route::get('/micuenta/listadeseos', [IndexController::class, 'listadeseos'])->name('listadeseos');
 
     Route::post('/micuenta/cambiofoto', [IndexController::class, 'cambiofoto'])->name('cambiofoto');
     Route::post('/micuenta/direccion/cambiofoto', [IndexController::class, 'cambiofoto'])->name('cambiofoto');
@@ -290,4 +288,5 @@ Route::middleware(['auth:sanctum', 'verified', 'can:Customer'])->group(function 
 
 
     Route::post('/micuenta/actualizarPerfil', [IndexController::class, 'actualizarPerfil'])->name('actualizarPerfil');
+    Route::post('/micuenta/wishList', [IndexController::class, 'wishListAdd'])->name('wishlist.store');
 });

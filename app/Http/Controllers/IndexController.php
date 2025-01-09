@@ -25,6 +25,7 @@ use App\Models\Marca;
 use App\Models\Ordenes;
 use App\Models\politycsCondition;
 use App\Models\Price;
+use App\Models\Sale;
 use App\Models\Specifications;
 use App\Models\SubCategoria;
 use App\Models\termsCondition;
@@ -277,7 +278,8 @@ class IndexController extends Controller
     return view('public.detallesPago', compact('codigoCompra', 'general', 'detalleUsuario', 'distritos', 'provincias', 'departamento', 'N_orden', 'addresDetail'));
   } */
 
-  public function detallesPago(){
+  public function detallesPago()
+  {
     //
     $detalleUsuario = [];
     $user = auth()->user();
@@ -351,8 +353,19 @@ class IndexController extends Controller
         ->exists();
     }
 
-    return view('public.detallesPago', compact('url_env', 'districts', 'provinces', 'departments', 'detalleUsuario', 'categorias', 
-    'destacados', 'culqi_public_key', 'addresses', 'hasDefaultAddress', 'general'));
+    return view('public.detallesPago', compact(
+      'url_env',
+      'districts',
+      'provinces',
+      'departments',
+      'detalleUsuario',
+      'categorias',
+      'destacados',
+      'culqi_public_key',
+      'addresses',
+      'hasDefaultAddress',
+      'general'
+    ));
   }
 
   public function exito(Request $request)
@@ -410,11 +423,79 @@ class IndexController extends Controller
       ->get()
       ->toArray();
 
-    $ordenes = Ordenes::where('usuario_id', Auth::user()->id)
+    $ordenes = Sale::where('usuario_id', Auth::user()->id)
       ->with('DetalleOrden')
       ->with('statusOrdenes')
       ->get();
     return view('public.historial', compact('general', 'ordenes', 'detalleUsuario'));
+  }
+
+  public function listadeseos()
+  {
+    $user = Auth::user();
+
+
+    $usuario = User::find($user->id);
+
+    $wishlistItems = $usuario->wishlistItems()->with('products')->get();
+    $arrayWishlist = $wishlistItems->toArray();
+    $array = [];
+    foreach ($arrayWishlist as $key => $value) {
+      $array[] = $value['products']['id'];
+    }
+
+
+    $productos = Products::with('tags')->whereIn('id', $array)->get();
+    return view('public.dashboard_wishlist', compact('user', 'wishlistItems', 'productos'));
+  }
+
+  public function direccion()
+  {
+    $user = Auth::user();
+    $addresses = Address::with([
+      'price.district',
+      'price.district.province',
+      'price.district.province.department'
+    ])
+      ->where('email', $user->email)
+      ->get();
+
+    $departments = Price::select([
+      'departments.id AS id',
+      'departments.description AS description',
+    ])
+      ->join('districts', 'districts.id', 'prices.distrito_id')
+      ->join('provinces', 'provinces.id', 'districts.province_id')
+      ->join('departments', 'departments.id', 'provinces.department_id')
+      ->where('departments.active', 1)
+      ->groupBy('id', 'description')
+      ->get();
+
+    $provinces = Price::select([
+      'provinces.id AS id',
+      'provinces.description AS description',
+      'provinces.department_id AS department_id'
+    ])
+      ->join('districts', 'districts.id', 'prices.distrito_id')
+      ->join('provinces', 'provinces.id', 'districts.province_id')
+      ->where('provinces.active', 1)
+      ->groupBy('id', 'description', 'department_id')
+      ->get();
+
+    $districts = Price::select([
+      'districts.id AS id',
+      'districts.description AS description',
+      'districts.province_id AS province_id',
+      'prices.id AS price_id',
+      'prices.price AS price'
+    ])
+      ->join('districts', 'districts.id', 'prices.distrito_id')
+      ->where('districts.active', 1)
+      ->groupBy('id', 'description', 'province_id', 'price', 'price_id')
+      ->get();
+    $categorias = Category::all();
+
+    return view('public.dashboard_direccion', compact('user', 'addresses', 'categorias', 'departments', 'provinces', 'districts'));
   }
 
   public function crearCuenta()
@@ -457,7 +538,7 @@ class IndexController extends Controller
       $addres = null;
       if ($email) {
         $usuario = UserDetails::where('email', '=', $email)->get(); // obtenemos usuario para validarlo si no agregarlo
-  
+
         //si tiene usuario registrad
         if (!$usuario->isNotEmpty()) {
           $usuario = UserDetails::create(['email' => $email]);
@@ -488,7 +569,7 @@ class IndexController extends Controller
       return response()->json(['mensaje' => "Intente de nuevo mas tarde , estamos trabajando en una solucion , $message"], 400);
     }
   }
-  private function GuardarOrdenAndDetalleOrden($codigoOrden, $montoT, $precioEnvio, $usuario = null, $carrito, $addres= null)
+  private function GuardarOrdenAndDetalleOrden($codigoOrden, $montoT, $precioEnvio, $usuario = null, $carrito, $addres = null)
   {
 
     $data['codigo_orden'] = $codigoOrden;
@@ -526,6 +607,14 @@ class IndexController extends Controller
     return $codigoAleatorio;
   }
 
+  public function pedidos()
+  {
+    $user = Auth::user();
+    $categorias = Category::all();
+    $statuses = [];
+    return view('public.dashboard_order',  compact('user', 'categorias', 'statuses'));
+  }
+
   public function procesarPago(Request $request)
   {
 
@@ -560,7 +649,7 @@ class IndexController extends Controller
         $datos = $datos['data'];
         UserDetails::create($datos);
         $this->guardarOrden();
-        $this-> envioCorreoCompra($datos);
+        $this->envioCorreoCompra($datos);
         return response()->json(['message' => 'Data procesada correctamente', 'codigoCompra' => $codigoAleatorio],);
       } else {
         $existeUsuario = User::where('email', $email)->get()->toArray();
@@ -592,7 +681,7 @@ class IndexController extends Controller
             $userdetailU->update($datos);
 
             $this->guardarOrden();
-            $this-> envioCorreoCompra($datos);
+            $this->envioCorreoCompra($datos);
             return response()->json(['message' => 'Todos los datos estan correctos', 'codigoCompra' => $codigoAleatorio],);
           }
         } else {
