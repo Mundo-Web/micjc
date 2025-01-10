@@ -91,7 +91,7 @@
 
         //ejecutamos el ajax
         $.ajax({
-          url: "{{ route('prices.getProvincias') }}",
+          url: "{{ route('prices.getProvincias', 'backend') }}",
           dataType: "json",
           method:'POST',
           data: {
@@ -120,7 +120,7 @@
 
         //ejecutamos el ajax
         $.ajax({
-          url: "{{ route('prices.getDistrito') }}",
+          url: "{{ route('prices.getDistrito', 'backend') }}",
           dataType: "json",
           method:'POST',
           data: {

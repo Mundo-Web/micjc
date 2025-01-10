@@ -26,40 +26,42 @@
         @if ($item->imagen)
           <img x-show="{{ isset($item->image_texture) ? 'true' : 'false' }} || !showAmbiente"
             x-transition:enter="transition ease-out duration-300 transform"
-            x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+            x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-105"
             x-transition:leave="transition ease-in duration-300 transform"
-            x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
+            x-transition:leave-start="opacity-100 scale-105" x-transition:leave-end="opacity-0 scale-95"
             src="{{ asset($item->imagen) }}" alt="{{ $item->name }}"
             class="w-full object-contain md:object-cover absolute inset-0 aspect-square"
             onerror="this.onerror=null;this.src='{{ asset('images/img/noimagen.jpg') }}';" />
         @else
           <img x-show="{{ isset($item->image_texture) ? 'true' : 'false' }} || !showAmbiente"
             x-transition:enter="transition ease-out duration-300 transform"
-            x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+            x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-105"
             x-transition:leave="transition ease-in duration-300 transform"
-            x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
+            x-transition:leave-start="opacity-100 scale-105" x-transition:leave-end="opacity-0 scale-95"
             src="{{ asset('images/img/noimagen.jpg') }}" alt="imagen_alternativa"
             class="w-full object-contain md:object-cover absolute inset-0 aspect-square" />
         @endif
-        @isset($item->image_texture)
+        {{-- @isset($item->image_texture) --}}
 
-          @if ($item->image_texture)
+          {{-- @if ($item->imagen) --}}
+          @if ($item->imagen)
             <img x-show="showAmbiente" x-transition:enter="transition ease-out duration-300 transform"
-              x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+              x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-105"
               x-transition:leave="transition ease-in duration-300 transform"
-              x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
-              src="{{ asset($item->image_texture) }}" alt="{{ $item->name }}"
-              class="w-full object-contain md:object-cover absolute inset-0 aspect-square"
+              x-transition:leave-start="opacity-100 scale-105" x-transition:leave-end="opacity-0 scale-95"
+              {{-- src="{{ asset($item->image_texture) }}" alt="{{ $item->name }}" --}}
+              src="{{ asset($item->imagen) }}" alt="{{ $item->name }}"
+              class="w-full object-cover md:object-cover absolute inset-0 aspect-square"
               onerror="this.onerror=null;this.src='{{ asset('images/img/noimagen.jpg') }}';" />
           @else
             <img x-show="showAmbiente" x-transition:enter="transition ease-out duration-300 transform"
-              x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+              x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-105"
               x-transition:leave="transition ease-in duration-300 transform"
-              x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
+              x-transition:leave-start="opacity-100 scale-105" x-transition:leave-end="opacity-0 scale-95"
               src="{{ asset('images/img/noimagen.jpg') }}" alt="imagen_alternativa"
-              class="w-full object-contain md:object-cover absolute inset-0 aspect-square" />
+              class="w-full object-cover md:object-cover absolute inset-0 aspect-square" />
           @endif
-        @endisset
+        {{-- @endisset --}}
 
       </div>
     </div>

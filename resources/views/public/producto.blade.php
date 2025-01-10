@@ -74,7 +74,7 @@
               class="flex justify-between items-center text-white font-Montserrat_Bold text-text14 md:text-text16 gap-5 pt-3"
               data-aos="fade-up" data-aos-offset="150">
               <button href="#" id='btnAgregarCarrito'
-                class="bg-[#0051FF] w-full py-3 px-2 md:px-10 text-center">Quiero comprar</button>
+                class="bg-[#0051FF] w-full py-3 px-2 md:px-10 text-center">Agregar al carrito</button>
               <a href="#"
                 class="bg-[#25D366] flex justify-center items-center w-full py-3 px-2 md:px-10 text-center gap-2">
                 <span>Cotizar aquí</span>

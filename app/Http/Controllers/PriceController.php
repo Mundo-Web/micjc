@@ -53,51 +53,51 @@ class PriceController extends Controller
             ->with('price', $price);
     }
 
-    public function getProvincias(Request $request)
+    public function getProvincias(Request $request, string $env = null)
     {
-        //
-        //traemos las provincias de la tabla
+        if ($env == 'backend') {
+            $provinces = DB::table('provinces')
+                ->where('department_id', '=', $request->id)
+                ->get();
+        } else {
+            $provinces = Price::select([
+                'provinces.id AS id',
+                'provinces.description AS description',
+                'provinces.department_id AS department_id'
+            ])
+                ->join('districts', 'districts.id', 'prices.distrito_id')
+                ->join('provinces', 'provinces.id', 'districts.province_id')
+                ->where('provinces.active', 1)
+                ->where('provinces.department_id', '=', $request->id)
+                ->groupBy('id', 'description', 'department_id')
+                ->get();
+        }
 
-        // $provincias = DB::table('provinces')
-        //     ->where('department_id', '=', $request->id)
-        //     ->get();
-
-        $provinces = Price::select([
-            'provinces.id AS id',
-            'provinces.description AS description',
-            'provinces.department_id AS department_id'
-        ])
-            ->join('districts', 'districts.id', 'prices.distrito_id')
-            ->join('provinces', 'provinces.id', 'districts.province_id')
-            ->where('provinces.active', 1)
-            ->where('provinces.department_id', '=', $request->id)
-            ->groupBy('id', 'description', 'department_id')
-            ->get();
 
         return response()->json($provinces);
     }
 
-    public function getDistrito(Request $request)
+    public function getDistrito(Request $request, string $env = null)
     {
-        //
-        //traemos las provincias de la tabla
+        if ($env == 'backend') {
+            $districts = DB::table('districts')
+                ->where('province_id', '=', $request->id)
+                ->get();
+        } else {
+            $districts = Price::select([
+                'districts.id AS id',
+                'districts.description AS description',
+                'districts.province_id AS province_id',
+                'prices.id AS price_id',
+                'prices.price AS price'
+            ])
+                ->join('districts', 'districts.id', 'prices.distrito_id')
+                ->where('districts.active', 1)
+                ->where('districts.province_id', '=', $request->id)
+                ->groupBy('id', 'description', 'province_id', 'price', 'price_id')
+                ->get();
+        }
 
-        // $distritos = DB::table('districts')
-        //     ->where('province_id', '=', $request->id)
-        //     ->get();
-
-        $districts = Price::select([
-            'districts.id AS id',
-            'districts.description AS description',
-            'districts.province_id AS province_id',
-            'prices.id AS price_id',
-            'prices.price AS price'
-        ])
-            ->join('districts', 'districts.id', 'prices.distrito_id')
-            ->where('districts.active', 1)
-            ->where('districts.province_id', '=', $request->id)
-            ->groupBy('id', 'description', 'province_id', 'price', 'price_id')
-            ->get();
 
         return response()->json($districts);
     }

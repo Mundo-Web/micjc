@@ -94,8 +94,8 @@ Route::post('guardarUserNewsLetter', [NewsletterSubscriberController::class, 'gu
 Route::post('carrito/buscarProducto', [CarritoController::class, 'buscarProducto'])->name('carrito.buscarProducto');
 Route::post('/procesarcarrito', [IndexController::class, 'procesarCarrito'])->name('procesar.carrito');
 
-Route::post('/getProvincia', [PriceController::class, 'getProvincias'])->name('prices.getProvincias');
-Route::post('/getDistrito', [PriceController::class, 'getDistrito'])->name('prices.getDistrito');
+Route::post('/getProvincia/{env?}', [PriceController::class, 'getProvincias'])->name('prices.getProvincias');
+Route::post('/getDistrito/{env?}', [PriceController::class, 'getDistrito'])->name('prices.getDistrito');
 Route::post('/calculeEnvio', [PriceController::class, 'calculeEnvio'])->name('prices.calculeEnvio');
 
 Route::post('/marca/marcadependiente', [MarcaController::class, 'marcaDependiente'])->name('marca.marcaDependiente');
