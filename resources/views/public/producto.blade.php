@@ -76,7 +76,7 @@
               <button href="#" id='btnAgregarCarrito'
                 class="bg-[#0051FF] w-full py-3 px-2 md:px-10 text-center">Agregar al carrito</button>
               @if ($general->whatsapp)
-                <a href="//wa.me/51{{ htmlentities($general->whatsapp) }}?text=Estoy+interesado+en+cotizar+el+producto:+{{ htmlentities($producto->producto) }}"
+                <a href="//wa.me/51{{ $general->whatsapp }}?text={{ rawurlencode('Estoy interesado en cotizar el producto: ' . htmlentities($producto->producto)) }}"
                   class="bg-[#25D366] flex justify-center items-center w-full py-3 px-2 md:px-10 text-center gap-2">
                   <span>Cotizar aquí</span>
                   <div>
