@@ -67,7 +67,7 @@
   </div>
 
 
-  <div class="flex flex-col bg-white p-2 md:px-5 pb-3 sm:pb-0">
+  <div class="flex flex-col bg-white p-2 md:px-5 pb-3 sm:pb-0 z-[2]">
     <div class="flex flex-col gap-2 md:gap-2">
 
       @if ($item->descuento == 0)
