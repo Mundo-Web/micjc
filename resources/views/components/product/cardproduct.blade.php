@@ -3,7 +3,7 @@
   <div class="{{ $bgcolor }} flex flex-col justify-center relative product_container">
 
 
-    <div class="flex flex-row justify-end items-center absolute top-5 right-[5%] z-10">
+    <div class="flex flex-row justify-end items-center absolute top-5 right-[5%] z-[1]">
       @if ($item->descuento > 0)
         <span
           class="font-Montserrat_Bold text-[13px] rounded-l-full rounded-br-full tracking-tight  bg-black text-white py-1 px-2">
@@ -19,51 +19,50 @@
     </div>
 
     <div>
-      <div class="relative flex justify-center items-center aspect-square">
+      <a href="{{ route('producto', $item->id) }}" class="relative flex justify-center items-center aspect-square">
         @php
           $category = $item->categoria();
         @endphp
         @if ($item->imagen)
           <img x-show="{{ isset($item->image_texture) ? 'true' : 'false' }} || !showAmbiente"
             x-transition:enter="transition ease-out duration-300 transform"
-            x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-105"
+            x-transition:enter-start="opacity-0 scale-100" x-transition:enter-end="opacity-100 scale-100"
             x-transition:leave="transition ease-in duration-300 transform"
-            x-transition:leave-start="opacity-100 scale-105" x-transition:leave-end="opacity-0 scale-95"
+            x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-100"
             src="{{ asset($item->imagen) }}" alt="{{ $item->name }}"
-            class="w-full object-contain md:object-cover absolute inset-0 aspect-square"
+            class="w-full object-contain md:object-cover absolute inset-0 aspect-square transition-transform duration-300 ease-in-out transform hover:scale-110"
             onerror="this.onerror=null;this.src='{{ asset('images/img/noimagen.jpg') }}';" />
         @else
           <img x-show="{{ isset($item->image_texture) ? 'true' : 'false' }} || !showAmbiente"
             x-transition:enter="transition ease-out duration-300 transform"
+            x-transition:enter-start="opacity-0 scale-100" x-transition:enter-end="opacity-100 scale-100"
+            x-transition:leave="transition ease-in duration-300 transform"
+            x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-100"
+            src="{{ asset('images/img/noimagen.jpg') }}" alt="imagen_alternativa"
+            class="w-full object-contain md:object-cover absolute inset-0 aspect-square transition-transform duration-300 ease-in-out transform hover:scale-110" />
+        @endif
+        {{-- @isset($item->image_texture) --}}
+
+        {{-- @if ($item->imagen) --}}
+        @if ($item->imagen)
+          <img x-show="showAmbiente" x-transition:enter="transition ease-out duration-300 transform"
+            x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-105"
+            x-transition:leave="transition ease-in duration-300 transform"
+            x-transition:leave-start="opacity-100 scale-105" x-transition:leave-end="opacity-0 scale-95"
+            {{-- src="{{ asset($item->image_texture) }}" alt="{{ $item->name }}" --}} src="{{ asset($item->imagen) }}" alt="{{ $item->name }}"
+            class="w-full object-cover md:object-cover absolute inset-0 aspect-square transition-transform duration-300 ease-in-out transform hover:scale-110"
+            onerror="this.onerror=null;this.src='{{ asset('images/img/noimagen.jpg') }}';" />
+        @else
+          <img x-show="showAmbiente" x-transition:enter="transition ease-out duration-300 transform"
             x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-105"
             x-transition:leave="transition ease-in duration-300 transform"
             x-transition:leave-start="opacity-100 scale-105" x-transition:leave-end="opacity-0 scale-95"
             src="{{ asset('images/img/noimagen.jpg') }}" alt="imagen_alternativa"
-            class="w-full object-contain md:object-cover absolute inset-0 aspect-square" />
+            class="w-full object-cover md:object-cover absolute inset-0 aspect-square transition-transform duration-300 ease-in-out transform hover:scale-110" />
         @endif
-        {{-- @isset($item->image_texture) --}}
-
-          {{-- @if ($item->imagen) --}}
-          @if ($item->imagen)
-            <img x-show="showAmbiente" x-transition:enter="transition ease-out duration-300 transform"
-              x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-105"
-              x-transition:leave="transition ease-in duration-300 transform"
-              x-transition:leave-start="opacity-100 scale-105" x-transition:leave-end="opacity-0 scale-95"
-              {{-- src="{{ asset($item->image_texture) }}" alt="{{ $item->name }}" --}}
-              src="{{ asset($item->imagen) }}" alt="{{ $item->name }}"
-              class="w-full object-cover md:object-cover absolute inset-0 aspect-square"
-              onerror="this.onerror=null;this.src='{{ asset('images/img/noimagen.jpg') }}';" />
-          @else
-            <img x-show="showAmbiente" x-transition:enter="transition ease-out duration-300 transform"
-              x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-105"
-              x-transition:leave="transition ease-in duration-300 transform"
-              x-transition:leave-start="opacity-100 scale-105" x-transition:leave-end="opacity-0 scale-95"
-              src="{{ asset('images/img/noimagen.jpg') }}" alt="imagen_alternativa"
-              class="w-full object-cover md:object-cover absolute inset-0 aspect-square" />
-          @endif
         {{-- @endisset --}}
 
-      </div>
+      </a>
     </div>
   </div>
 

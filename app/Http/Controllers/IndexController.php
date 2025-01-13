@@ -813,6 +813,9 @@ class IndexController extends Controller
     $dato = $request->valorInput;
     $palabras = explode(' ', $dato);
 
+    $skip = $request->skip;
+    $take = $request->take;
+
 
 
     $productos = Products::where('status', '=', 1);
@@ -821,7 +824,7 @@ class IndexController extends Controller
       # code...
       $productos = $productos->where('producto', 'like', "%$value%");
     }
-    $productos =  $productos->get();
+    $productos = $productos->skip($skip)->take($take)->get();
 
 
     return response()->json(['message' => 'Busqueda realizada con exito ', 'data' => $productos]);

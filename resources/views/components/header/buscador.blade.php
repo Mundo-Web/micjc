@@ -11,82 +11,120 @@
     </svg>
   </div>
   <div id="resultadoBusqueda"
-    class=" absolute rounded-2xl top-11 left-0 w-full group z-60 overflow-y-scroll max-h-60 hidden animate-fade-up bg-white">
+    class=" absolute rounded-2xl top-14 left-0 w-full group z-60 overflow-y-scroll max-h-60 hidden animate-fade-up bg-white">
 
   </div>
 </div>
 
 <script>
-  let timerInput
+  let timerInput;
+  let controller = new AbortController(); // Controlador para abortar la solicitud
+  let skip = 0; // Inicializar skip
 
-  $('#resultadoBusqueda').on('mouseleave', function() {
-    $('#resultadoBusqueda').addClass('animate-alternate-reverse animate-delay-1000');
+  function buscarProductos(valorInput, take = 10, skip = 0) {
+    controller.abort(); // Abortamos la solicitud anterior si existe
+    controller = new AbortController(); // Creamos un nuevo controlador
 
-    // Puedes ejecutar aquí cualquier acción adicional que desees realizar
-  });
-  $("#inputHeader").on('keyup', function(e) {
-
-    clearTimeout(timerInput);
-    let parent = document.getElementById('resultadoBusqueda')
-    parent.classList.remove("animate-alternate-reverse");
-    parent.classList.remove("animate-delay-1000");
-    parent.classList.add("hidden");
-
-
-
-    let valorInput = e.target.value
-
-    timerInput = setTimeout(() => {
-      $.ajax({
-
-        url: "{{ route('buscarProductos') }}",
+    fetch("{{ route('buscarProductos') }}", {
         method: 'POST',
-        data: {
-          valorInput
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-TOKEN': '{{ csrf_token() }}' // Asegúrate de incluir el token CSRF
         },
+        body: JSON.stringify({
+          valorInput,
+          take,
+          skip
+        }),
+        signal: controller.signal // Añadimos la señal del controlador
+      })
+      .then(response => response.json())
+      .then(success => {
+        $('#resultadoBusqueda').removeClass('hidden');
 
+        let container2 = document.createElement('div');
+        container2.id = "listContainer";
+        container2.className = "flex flex-col justify-start z-[100]";
 
-        success: function(success) {
-
-
-
-          $('#resultadoBusqueda').removeClass('hidden');
-
-          let container2 = document.createElement('div');
-          container2.id = "listContainer"
-          container2.className = "flex flex-col justify-start z-[100]";
-
+        // Verificar si hay resultados
+        if (success.data.length === 0) {
+          if (skip === 0) {
+            // Mensaje para la primera búsqueda vacía
+            container2.innerHTML = '<p class="text-center text-gray-500 py-2 px-4">No hay resultados.</p>';
+          } else {
+            // Mensaje para el scroll loading sin más resultados
+            container2.innerHTML =
+              '<p class="text-center text-gray-500 py-2 px-4">No se encontraron más resultados.</p>';
+          }
+        } else {
           // Agregar enlaces a container2
           success.data.forEach(element => {
-            // $('#resultadoBusqueda').removeClass('animate-reverse');
+            let link = $('<a>', {
+              href: `/producto/${element.id}`,
+              class: "bg-[#0051FF] w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16",
+            }).html(`<div class="flex gap-4">
+              <img src="/${element.imagen}" class="w-12 h-12 object-cover object-center rounded"/>
+              <div>
+                <p class="line-clamp-1 text-ellipsis">${element.producto}</p>
+                <span class="font-extraligth">S/. ${element.precio}</span>
+              </div>
+            <div>`);
 
-            let link = document.createElement('a');
-            link.href = `/producto/${element.id}`;
-            link.className =
-              "bg-[#0051FF] bg-opacity-25 w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16";
-            link.textContent = element.producto;
-            container2.appendChild(link);
+            $(container2).append(link);
           });
-
-          // Insertar container2 dentro de container1
-          //   container1.appendChild(container2);
-
-          // Actualizar el contenido del contenedor con id="resultadoBusqueda"
-          //   $('#resultadoBusqueda').appendChild(container1);
-
-          //   console.log(container1)
-          $('#resultadoBusqueda').html('')
-          parent.appendChild(container2);
-
-
-        },
-        error: function(error) {
-          console.log(error)
         }
 
+        // Si skip es 0, limpiar el contenedor, de lo contrario, agregar los nuevos resultados
+        if (skip === 0) {
+          $('#resultadoBusqueda').html(container2); // Limpiar y agregar nuevos resultados
+        } else {
+          $('#resultadoBusqueda').append(container2); // Agregar nuevos resultados
+        }
+
+        let parent = document.getElementById('resultadoBusqueda');
+        if (parent) {
+          parent.appendChild(container2);
+        } else {
+          console.error("El elemento 'resultadoBusqueda' no se encontró en el DOM.");
+        }
       })
-    }, 1000);
+      .catch(error => {
+        console.log(error);
+      });
+  }
 
+  function showResults(e) {
+    clearTimeout(timerInput);
+    let valorInput = e.target.value;
+    let parent = document.getElementById('resultadoBusqueda');
+    parent.classList.remove("animate-alternate-reverse");
+    parent.classList.remove("animate-delay-100");
+    parent.classList.add("hidden");
+    if (valorInput.length == 0) return
 
-  })
+    skip = 0; // Reiniciar skip al realizar una nueva búsqueda
+    buscarProductos(valorInput, 10, skip);
+  }
+
+  $("#inputHeader").on('keyup', showResults);
+  $('#inputHeader').on('focus', showResults);
+
+  $('#resultadoBusqueda').on('scroll', function() {
+    let scrollTop = $(this).scrollTop();
+    let scrollHeight = $(this)[0].scrollHeight;
+    let offsetHeight = $(this).outerHeight();
+
+    // Verificar si se ha llegado al final del contenedor
+    if (scrollTop + offsetHeight >= scrollHeight) {
+      skip += 10; // Incrementar skip para cargar más productos
+      let valorInput = $("#inputHeader").val(); // Obtener el valor actual del input
+      buscarProductos(valorInput, 10, skip); // Llamar a la función para cargar más productos
+    }
+  });
+
+  $(document).on('click', function(event) {
+    if (!$(event.target).closest('#resultadoBusqueda, #inputHeader').length) {
+      $('#resultadoBusqueda').addClass('animate-alternate-reverse animate-delay-100');
+    }
+  });
 </script>
