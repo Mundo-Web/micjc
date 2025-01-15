@@ -10,25 +10,25 @@
     <section class="w-11/12 md:w-10/12 mx-auto pt-10">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16">
         <div class="flex flex-col md:flex-row justify-center  gap-5 md:gap-0">
-          <div
+          {{-- <div
             class=" flex flex-row justify-between md:flex-col md:justify-start md:items-center h-full md:gap-10 md:basis-1/4 order-2 md:order-1 w-full  ">
             @isset($producto->galeria)
               <img id="imgGaleria" src="{{ asset($producto->imagen) }}" alt="computer"
                 class="w-[70px] h-[90px] object-cover  hover:scale-110 transition-all duration-300 cursor-pointer "
                 data-aos-offset="150">
-              {{-- @foreach ($producto->galeria->take(3) as $item)
+              @foreach ($producto->galeria->take(3) as $item)
                 <div class="">
                   <img id="imgGaleria" src="{{ asset($item->imagen) }}" alt="computer"
                     class="w-[70px] h-[90px] object-cover hover:scale-110 transition-all duration-300 cursor-pointer "
                     data-aos-offset="150">
                 </div>
-              @endforeach --}}
+              @endforeach
 
             @endisset
 
 
 
-          </div>
+          </div> --}}
 
           <div id="containerCaratula" class="md:basis-3/4 flex justify-start items-start order-1 md:order-2 w-full ">
             <img src="{{ asset($producto->imagen) }}" alt="computer" class="w-[398px] h-[510px] object-cover "
