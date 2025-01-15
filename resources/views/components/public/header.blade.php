@@ -194,13 +194,13 @@
     <div x-data="{ openCatalogo: false, openSubMenu: null }"
       class="bg-[#0051FF] h-10 flex px-[5%] justify-between lg:justify-center lg:gap-10 items-center text-base md:text-lg font-Montserrat_SemiBold">
       <a href="{{ route('index') }}"
-        class=" {{ request()->routeIs('index') ? 'enlaces__after text-white' : 'text-white' }}">Inicio</a>
+        class=" px-3 py-2 hover:bg-white hover:text-[#0051FF] {{ request()->routeIs('index') ? 'enlaces__after text-white' : 'text-white' }}">Inicio</a>
       {{-- <a href="{{ route('catalogo') }}"
         class="{{ request()->routeIs('catalogo') ? 'enlaces__after text-white' : 'text-white' }}">Productos</a> --}}
 
-      <nav @mouseenter="openCatalogo = true" @mouseleave="openCatalogo = false" class="px-3 py-5">
+      <nav @mouseenter="openCatalogo = true" @mouseleave="openCatalogo = false" class="block">
         <a href="javascript:void(0)" @click="openCatalogo = true"
-          class="font-medium font-Montserrat_SemiBold text-white hover:opacity-75 {{ request()->routeIs('catalogo') ? 'enlaces__after' : '' }}"
+          class="block font-medium px-3 py-2 font-Montserrat_SemiBold text-white hover:bg-white hover:text-[#0051FF] {{ request()->routeIs('catalogo') ? 'enlaces__after text-white' : 'text-white' }}"
           aria-haspopup="true">
           Productos
         </a>
@@ -211,7 +211,7 @@
           @foreach ($categorias as $category)
             @if (count($category->subcategories))
               <ul class="border-t pt-2">
-                <a href="/catalogo?cat={{ $category->id }}" class="block w-full mb-2">
+                <a href="/catalogo?cat={{ $category->id }}" class="block w-full mb-2 text-[16px]">
                   <span class="underline-this">{{ $category->name }}</span>
                 </a>
                 @foreach ($category->subcategories as $subcategory)
@@ -299,12 +299,12 @@
 
       @if ($blogCount > 0)
         <a href="{{ route('blog', 0) }}"
-          class="{{ request()->routeIs('blog') ? 'enlaces__after text-white' : 'text-white' }}">Blog
+          class="px-3 py-2 hover:bg-white hover:text-[#0051FF] {{ request()->routeIs('blog') ? 'enlaces__after text-white' : 'text-white' }}">Blog
         </a>
       @endif
 
       <a href="{{ route('contacto') }}"
-        class="{{ request()->routeIs('contacto') ? 'enlaces__after text-white' : 'text-white' }}">Contáctanos</a>
+        class="px-3 py-2 hover:bg-white hover:text-[#0051FF] {{ request()->routeIs('contacto') ? 'enlaces__after text-white' : 'text-white' }}">Contáctanos</a>
     </div>
   </div>
 
