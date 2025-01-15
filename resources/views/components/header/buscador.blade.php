@@ -11,7 +11,7 @@
     </svg>
   </div>
   <div id="resultadoBusqueda"
-    class=" absolute rounded-2xl top-14 left-0 w-full group z-60 overflow-y-scroll max-h-60 hidden animate-fade-up bg-white">
+    class=" absolute rounded-2xl top-14 left-0 w-full group z-60 overflow-y-scroll max-h-80 hidden animate-fade-up bg-white shadow">
 
   </div>
 </div>
@@ -23,6 +23,7 @@
 
   function buscarProductos(valorInput, take = 10, skip = 0) {
     controller.abort(); // Abortamos la solicitud anterior si existe
+    if (valorInput.length == 0) return
     controller = new AbortController(); // Creamos un nuevo controlador
 
     fetch("{{ route('buscarProductos') }}", {
@@ -100,7 +101,6 @@
     parent.classList.remove("animate-alternate-reverse");
     parent.classList.remove("animate-delay-100");
     parent.classList.add("hidden");
-    if (valorInput.length == 0) return
 
     skip = 0; // Reiniciar skip al realizar una nueva búsqueda
     buscarProductos(valorInput, 10, skip);

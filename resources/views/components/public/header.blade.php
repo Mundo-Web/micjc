@@ -1,3 +1,44 @@
+<style>
+  nav a .underline-this {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    text-decoration: none;
+    /* padding-bottom: 4px; */
+  }
+
+  nav a .underline-this::before,
+  nav a .underline-this::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #0051FF;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+
+  nav a .underline-this::after {
+    transform-origin: right;
+  }
+
+  nav a:hover .underline-this::before,
+  nav a:hover .underline-this::after {
+    transform: scaleX(1);
+  }
+
+  nav a:hover .underline-this::before {
+    transform-origin: left;
+  }
+
+  nav li {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+</style>
+
 <header class="{{-- z-[600] relative --}}">
   <div class="fixed top-0 w-full z-10">
     <div class="bg-[#0051FF] h-10 my-auto flex flex-col justify-center items-center">
@@ -23,20 +64,73 @@
     </div>
 
     <div class="px-[5%] w-full py-2 bg-white">
-      <div class="grid grid-cols-1 md:grid-cols-12">
+      <div class="md:flex justify-between items-center">
 
-        <div class="flex justify-start items-center md:col-span-3 pb-2 md:pb-0">
-          <a href="{{ route('index') }}"><img class="w-full min-w-40" src="{{ asset('images/svg/image_3.svg') }}"
-              alt="MICJC"></a>
+        <div class="flex justify-between">
+          <div class="flex justify-center items-center  pb-2 md:pb-0">
+            <a href="{{ route('index') }}"><img class="w-full min-w-40" src="{{ asset('images/svg/image_3.svg') }}"
+                alt="MICJC"></a>
+          </div>
+  
+          <div class=" flex md:hidden flex-row justify-end items-center gap-5 !font-moderat">
+            @if (Auth::user() == null)
+              <a class="flex" href="{{ route('login') }}">
+                <i class="fa-solid fa-circle-user text-4xl text-[#CCCCCC]"></i></a>
+            @else
+              <div class="relative !font-moderat_400 inline-flex" x-data="{ open: false }">
+                <button class="px-3 py-5 inline-flex justify-center items-center group" aria-haspopup="true"
+                  @click.prevent="open = !open" :aria-expanded="open">
+                  <div class="flex items-center truncate">
+                    <span id="username"
+                      class="truncate ml-2 text-sm font-medium dark:text-slate-300 group-hover:opacity-75 dark:group-hover:text-slate-200 text-[#272727] ">
+                      {{ explode(' ', Auth::user()->name)[0] }}</span>
+                    <svg class="w-3 h-3 shrink-0 ml-1 fill-current text-slate-400" viewBox="0 0 12 12">
+                      <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z" />
+                    </svg>
+                  </div>
+                </button>
+                <div
+                  class="origin-top-left z-10 right-0 absolute top-full min-w-44 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 py-1.5 rounded shadow-lg overflow-hidden mt-1"
+                  @click.outside="open = false" @keydown.escape.window="open = false" x-show="open">
+                  <ul>
+                    <li class="hover:bg-gray-100">
+                      <a class="font-medium text-sm text-black flex items-center py-1 px-3" href="{{ route('micuenta') }}"
+                        @click="open = false" @focus="open = true" @focusout="open = false">Mi Cuenta</a>
+                    </li>
+  
+                    <li class="hover:bg-gray-100">
+                      <form method="POST" action="{{ route('logout') }}" x-data>
+                        @csrf
+                        <button type="submit" class="font-medium text-sm text-black flex items-center py-1 px-3"
+                          @click.prevent="$root.submit(); open = false">
+                          {{ __('Cerrar sesión') }}
+                        </button>
+                      </form>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            @endif
+  
+  
+            <div class="flex justify-center items-center min-w-[38px]">
+              <div id="open-cart" class="relative inline-block cursor-pointer pr-3">
+                <span id="itemsCount"
+                  class="bg-[#0051FF] text-xs font-medium text-white text-center px-[7px] py-[2px]  rounded-full absolute bottom-0 right-0 ml-3">0</span>
+                <img src="{{ asset('images/svg/bag_boost.svg') }}"
+                  class="bg-white rounded-lg p-1 max-w-full h-auto cursor-pointer" />
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="relative flex justify-center items-center md:col-span-6">
+        <div class="relative flex justify-center items-center w-[400px]">
           <form action="" class="w-full">
             <x-header.buscador class=" w-full border-2 border-[#CCCCCC] rounded-2xl flex justify-center items-center" />
           </form>
         </div>
 
-        <div class="flex flex-row justify-end items-center gap-5 md:col-span-3 !font-moderat">
+        <div class="hidden md:flex flex-row justify-end items-center gap-5 !font-moderat">
           @if (Auth::user() == null)
             <a class="hidden md:flex" href="{{ route('login') }}">
               <i class="fa-solid fa-circle-user text-4xl text-[#CCCCCC]"></i></a>
@@ -94,12 +188,94 @@
 
     </div>
 
-    <div
+    <div x-data="{ openCatalogo: false, openSubMenu: null }"
       class="bg-[#0051FF] h-10 flex px-[5%] justify-between lg:justify-center lg:gap-10 items-center text-base md:text-lg font-Montserrat_SemiBold">
       <a href="{{ route('index') }}"
         class=" {{ request()->routeIs('index') ? 'enlaces__after text-white' : 'text-white' }}">Inicio</a>
-      <a href="{{ route('catalogo') }}"
-        class="{{ request()->routeIs('catalogo') ? 'enlaces__after text-white' : 'text-white' }}">Productos</a>
+      {{-- <a href="{{ route('catalogo') }}"
+        class="{{ request()->routeIs('catalogo') ? 'enlaces__after text-white' : 'text-white' }}">Productos</a> --}}
+
+      <div @mouseenter="openCatalogo = true" @mouseleave="openCatalogo = false" class="px-3 py-5">
+        <a href="javascript:void(0)" @click="openCatalogo = true"
+          class="font-medium font-Montserrat_SemiBold text-white hover:opacity-75 {{ request()->routeIs('catalogo') ? 'enlaces__after' : '' }}"
+          aria-haspopup="true">
+          <span class="underline-this">Productos</span>
+        </a>
+        <div x-show="openCatalogo"
+          class="origin-top-right absolute top-full left-0 w-screen max-h-[calc(100vh-300px)] overflow-y-auto mt-0 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-8 shadow-lg overflow-hidden grid gap-8 grid-cols-1 md:grid-cols-12 z-50"
+          @click.outside="openCatalogo = false" @keydown.escape.window="openCatalogo = false">
+
+          <div class="md:col-span-3">
+            <a href="{{ route('catalogo') }}" class="h4 text-[#272727] px-3 py-1">Ver productos ➚</a>
+            <hr class="mx-3 my-3">
+            <ul>
+              @foreach ($categorias as $category)
+                @if (count($category->subcategories))
+                  <li>
+                    <a @click="openSubMenu === {{ $category->id }} ? openSubMenu = null : openSubMenu = {{ $category->id }}"
+                      href="javascript:void(0)"
+                      class="text-[#272727] flex justify-between items-center py-2 px-3 hover:opacity-75 transition-opacity duration-300">
+                      <span class="underline-this">{{ $category->name }}</span>
+                      <span :class="{ 'rotate-180': openSubMenu === {{ $category->id }} }"
+                        class="ms-1 inline-block transform transition-transform duration-300">↓</span>
+                    </a>
+                    <ul x-show="openSubMenu === {{ $category->id }}" x-transition
+                      class="ml-3 mt-1 space-y-1 border-l border-gray-300">
+                      <li>
+                        <a href="/catalogo/{{ $category->slug }}"
+                          class="text-[#272727] flex items-center py-2 px-3 hover:opacity-75 transition-opacity duration-300">
+                          <span class="underline-this">Ver todo {{ $category->name }}</span>
+                        </a>
+                      </li>
+                      @foreach ($category->subcategories as $subcategory)
+                        <li>
+                          <a href="/catalogo/{{ $category->slug }}/{{ $subcategory->slug }}"
+                            class="text-[#272727] flex items-center py-2 px-3 hover:opacity-75 transition-opacity duration-300">
+                            <span class="underline-this">{{ $subcategory->name }}</span>
+                          </a>
+                        </li>
+                      @endforeach
+                    </ul>
+                  </li>
+                @else
+                  <li>
+                    <a href="{{ route('catalogo', $category->slug) }}"
+                      class="text-[#272727] flex items-center py-2 px-3 hover:opacity-75 transition-opacity duration-300">
+                      <span class="underline-this">{{ $category->name }}</span>
+                    </a>
+                  </li>
+                @endif
+              @endforeach
+            </ul>
+          </div>
+
+          <div class="md:col-span-9">
+            <div class="categories-header swiper w-full">
+              <div class="swiper-wrapper mt-2 mb-4 w-full">
+                @foreach ($categorias as $category)
+                  @if ($category->destacar)
+                    <div class="swiper-slide rounded-2xl w-full md:w-[unset]">
+                      <x-category.container :item="$category" />
+                    </div>
+                  @endif
+                @endforeach
+              </div>
+              <div class="swiper-scrollbar-categories-header h-2"></div>
+              <div class="mt-4 text-end">
+                <button type="button"
+                  class="swiper-button-prev-categories-header text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm px-4 py-2 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700 ">
+                  ←
+                </button>
+                <button type="button"
+                  class="swiper-button-next-categories-header text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm px-4 py-2 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700 ">
+                  →
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       @if ($blogCount > 0)
         <a href="{{ route('blog', 0) }}"
           class="{{ request()->routeIs('blog') ? 'enlaces__after text-white' : 'text-white' }}">Blog
@@ -517,5 +693,40 @@
   $('#close-cart').on('click', () => {
     $('.jquery-modal.blocker.current').trigger('click');
     $('body').removeClass('modal-open');
+  });
+
+  new Swiper('.categories-header', {
+    slidesPerView: 1,
+    spaceBetween: 10,
+    loop: true,
+    grab: false,
+
+    centeredSlides: false,
+    initialSlide: 0, // Empieza en el cuarto slide (índice 3)
+    // pagination: {
+    //   el: '.swiper-pagination-categories-header',
+    //   clickable: true,
+    // },
+    navigation: {
+      nextEl: '.swiper-button-next-categories-header',
+      prevEl: '.swiper-button-prev-categories-header',
+    },
+    scrollbar: {
+      el: '.swiper-scrollbar-categories-header',
+    },
+    breakpoints: {
+      512: {
+        slidesPerView: 1
+      },
+      768: {
+        slidesPerView: 2
+      },
+      1024: {
+        slidesPerView: 3
+      },
+      1280: {
+        slidesPerView: 4
+      },
+    },
   });
 </script>

@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Blog;
+use App\Models\Category;
 use App\Models\General;
 use App\Models\UserDetails;
 use Illuminate\Contracts\Pagination\Paginator;
@@ -49,11 +50,18 @@ class AppServiceProvider extends ServiceProvider
 
             $blogCount = Blog::all()->count();
             $general = General::all()->first();
+
+            $categorias = Category::with(['subcategories'])
+                ->where('visible', true)
+                ->where('status', true)
+                ->get();
+
             $view->with([
                 'userDetail' => $userDetail,
                 'user' => $user,
                 'blogCount' => $blogCount,
-                'general' => $general
+                'general' => $general,
+                'categorias' => $categorias,
             ]);
         });
 
