@@ -126,7 +126,7 @@
           </div>
         </div>
 
-        <div class="relative flex justify-center items-center w-[400px]">
+        <div class="relative flex justify-center items-center w-full max-w-[400px]">
           <form action="" class="w-full">
             <x-header.buscador class=" w-full border-2 border-[#CCCCCC] rounded-2xl flex justify-center items-center" />
           </form>
@@ -200,7 +200,7 @@
 
       <nav @mouseenter="openCatalogo = true" @mouseleave="openCatalogo = false" class="block">
         <a href="javascript:void(0)" @click="openCatalogo = true"
-          class="block font-medium px-4 py-2 font-Montserrat_SemiBold text-white hover:bg-white hover:text-[#0051FF] {{ request()->routeIs('catalogo') ? 'enlaces__after text-white' : 'text-white' }}"
+          class="block font-medium px-2 md:px-4 py-2 font-Montserrat_SemiBold text-white hover:bg-white hover:text-[#0051FF] {{ request()->routeIs('catalogo') ? 'enlaces__after text-white' : 'text-white' }}"
           aria-haspopup="true">
           Productos
         </a>

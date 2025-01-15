@@ -16,15 +16,13 @@
               <img id="imgGaleria" src="{{ asset($producto->imagen) }}" alt="computer"
                 class="w-[70px] h-[90px] object-cover  hover:scale-110 transition-all duration-300 cursor-pointer "
                 data-aos-offset="150">
-              @foreach ($producto->galeria->take(3) as $item)
+              {{-- @foreach ($producto->galeria->take(3) as $item)
                 <div class="">
                   <img id="imgGaleria" src="{{ asset($item->imagen) }}" alt="computer"
                     class="w-[70px] h-[90px] object-cover hover:scale-110 transition-all duration-300 cursor-pointer "
                     data-aos-offset="150">
-                  {{-- <span><img src="{{ asset($item->imagen) }}" alt="computer" data-aos-offset="150"
-                      style="max-width: 150%;"></span> --}}
                 </div>
-              @endforeach
+              @endforeach --}}
 
             @endisset
 
@@ -40,7 +38,7 @@
 
         <div class="flex flex-col gap-5">
           <div class="flex flex-col gap-5 pb-10 border-b-2 border-[#DDDDDD]" data-aos="fade-up" data-aos-offset="150">
-            <h2 class="font-Montserrat_Bold text-text40 md:text-text44 leading-tight text-[#111111]">
+            <h2 class="font-Montserrat_Bold text-3xl md:text-4xl leading-tight text-[#111111]">
               {{ $producto->producto }}</h2>
 
             @if ($producto->descuento == 0)
