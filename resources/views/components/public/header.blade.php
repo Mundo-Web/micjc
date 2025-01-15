@@ -71,7 +71,7 @@
             <a href="{{ route('index') }}"><img class="w-full min-w-40" src="{{ asset('images/svg/image_3.svg') }}"
                 alt="MICJC"></a>
           </div>
-  
+
           <div class=" flex md:hidden flex-row justify-end items-center gap-5 !font-moderat">
             @if (Auth::user() == null)
               <a class="flex" href="{{ route('login') }}">
@@ -94,10 +94,11 @@
                   @click.outside="open = false" @keydown.escape.window="open = false" x-show="open">
                   <ul>
                     <li class="hover:bg-gray-100">
-                      <a class="font-medium text-sm text-black flex items-center py-1 px-3" href="{{ route('micuenta') }}"
-                        @click="open = false" @focus="open = true" @focusout="open = false">Mi Cuenta</a>
+                      <a class="font-medium text-sm text-black flex items-center py-1 px-3"
+                        href="{{ route('micuenta') }}" @click="open = false" @focus="open = true"
+                        @focusout="open = false">Mi Cuenta</a>
                     </li>
-  
+
                     <li class="hover:bg-gray-100">
                       <form method="POST" action="{{ route('logout') }}" x-data>
                         @csrf
@@ -111,8 +112,8 @@
                 </div>
               </div>
             @endif
-  
-  
+
+
             <div class="flex justify-center items-center min-w-[38px]">
               <div id="open-cart" class="relative inline-block cursor-pointer pr-3">
                 <span id="itemsCount"
@@ -152,8 +153,9 @@
                 @click.outside="open = false" @keydown.escape.window="open = false" x-show="open">
                 <ul>
                   <li class="hover:bg-gray-100">
-                    <a class="font-medium text-sm text-black flex items-center py-1 px-3" href="{{ route('micuenta') }}"
-                      @click="open = false" @focus="open = true" @focusout="open = false">Mi Cuenta</a>
+                    <a class="font-medium text-sm text-black flex items-center py-1 px-3"
+                      href="{{ route('micuenta') }}" @click="open = false" @focus="open = true"
+                      @focusout="open = false">Mi Cuenta</a>
                   </li>
 
                   <li class="hover:bg-gray-100">
@@ -222,14 +224,14 @@
                     <ul x-show="openSubMenu === {{ $category->id }}" x-transition
                       class="ml-3 mt-1 space-y-1 border-l border-gray-300">
                       <li>
-                        <a href="/catalogo/{{ $category->slug }}"
+                        <a href="/catalogo?cat={{ $category->id }}"
                           class="text-[#272727] flex items-center py-2 px-3 hover:opacity-75 transition-opacity duration-300">
                           <span class="underline-this">Ver todo {{ $category->name }}</span>
                         </a>
                       </li>
                       @foreach ($category->subcategories as $subcategory)
                         <li>
-                          <a href="/catalogo/{{ $category->slug }}/{{ $subcategory->slug }}"
+                          <a href="/catalogo?cat={{ $category->id }}&subcat={{ $subcategory->id }}"
                             class="text-[#272727] flex items-center py-2 px-3 hover:opacity-75 transition-opacity duration-300">
                             <span class="underline-this">{{ $subcategory->name }}</span>
                           </a>
@@ -239,7 +241,7 @@
                   </li>
                 @else
                   <li>
-                    <a href="{{ route('catalogo', $category->slug) }}"
+                    <a href="/catalogo?cat={{ $category->id }}"
                       class="text-[#272727] flex items-center py-2 px-3 hover:opacity-75 transition-opacity duration-300">
                       <span class="underline-this">{{ $category->name }}</span>
                     </a>
