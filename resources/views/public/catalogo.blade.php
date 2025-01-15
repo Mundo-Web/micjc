@@ -111,9 +111,9 @@
               <x-product.cardproduct  bgcolor="bg-[#FFFFFF]" :item="$item" />
             @endforeach
 
-            <div data-aos="fade-up" data-aos-offset="150" class="py-10 md:col-span-3">
-              {{ $productos }}
-            </div>
+          </div>
+          <div data-aos="fade-up" data-aos-offset="150" class="py-10 w-full">
+            {{ $productos }}
           </div>
         </div>
 
