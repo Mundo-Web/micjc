@@ -216,7 +216,7 @@
                 </a>
                 @foreach ($category->subcategories as $subcategory)
                   <li>
-                    <a class="font-Montserrat_Regular"
+                    <a class="font-Montserrat_Regular text-[14px]"
                       href="/catalogo?cat={{ $category->id }}&subcat={{ $subcategory->id }}">
                       <span class="py-0.5 underline-this">{{ $subcategory->name }}</span>
                     </a>
