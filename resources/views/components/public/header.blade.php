@@ -13,6 +13,7 @@
     position: absolute;
     bottom: 0;
     left: 0;
+    right: 0;
     width: 100%;
     height: 2px;
     background-color: #0051FF;
@@ -197,17 +198,35 @@
       {{-- <a href="{{ route('catalogo') }}"
         class="{{ request()->routeIs('catalogo') ? 'enlaces__after text-white' : 'text-white' }}">Productos</a> --}}
 
-      <div @mouseenter="openCatalogo = true" @mouseleave="openCatalogo = false" class="px-3 py-5">
+      <nav @mouseenter="openCatalogo = true" @mouseleave="openCatalogo = false" class="px-3 py-5">
         <a href="javascript:void(0)" @click="openCatalogo = true"
           class="font-medium font-Montserrat_SemiBold text-white hover:opacity-75 {{ request()->routeIs('catalogo') ? 'enlaces__after' : '' }}"
           aria-haspopup="true">
-          <span class="underline-this">Productos</span>
+          Productos
         </a>
         <div x-show="openCatalogo"
-          class="origin-top-right absolute top-full left-0 w-screen max-h-[calc(100vh-300px)] overflow-y-auto mt-0 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-8 shadow-lg overflow-hidden grid gap-8 grid-cols-1 md:grid-cols-12 z-50"
+          class="origin-top-right absolute top-full left-0 w-screen max-h-[calc(100vh-300px)] overflow-y-auto mt-0 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-8 shadow-lg overflow-hidden grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 z-50"
           @click.outside="openCatalogo = false" @keydown.escape.window="openCatalogo = false">
 
-          <div class="md:col-span-3">
+          @foreach ($categorias as $category)
+            @if (count($category->subcategories))
+              <ul class="border-t pt-2">
+                <a href="/catalogo?cat={{ $category->id }}" class="block w-full mb-2">
+                  <span class="underline-this">{{ $category->name }}</span>
+                </a>
+                @foreach ($category->subcategories as $subcategory)
+                  <li>
+                    <a class="font-Montserrat_Regular"
+                      href="/catalogo?cat={{ $category->id }}&subcat={{ $subcategory->id }}">
+                      <span class="py-0.5 underline-this">{{ $subcategory->name }}</span>
+                    </a>
+                  </li>
+                @endforeach
+              </ul>
+            @endif
+          @endforeach
+
+          {{-- <div class="md:col-span-3">
             <a href="{{ route('catalogo') }}" class="h4 text-[#272727] px-3 py-1">Ver productos ➚</a>
             <hr class="mx-3 my-3">
             <ul>
@@ -274,9 +293,9 @@
                 </button>
               </div>
             </div>
-          </div>
+          </div> --}}
         </div>
-      </div>
+      </nav>
 
       @if ($blogCount > 0)
         <a href="{{ route('blog', 0) }}"
