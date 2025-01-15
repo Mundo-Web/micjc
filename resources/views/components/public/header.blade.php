@@ -192,7 +192,7 @@
     </div>
 
     <div x-data="{ openCatalogo: false, openSubMenu: null }"
-      class="bg-[#0051FF] h-10 flex px-[5%] justify-between lg:justify-center lg:gap-10 items-center text-base md:text-lg font-Montserrat_SemiBold">
+      class="bg-[#0051FF] h-10 flex px-[5%] justify-between lg:justify-center lg:gap-10 items-center text-base md:text-lg font-Montserrat_SemiBold overflow-x-auto">
       <a href="{{ route('index') }}"
         class=" px-4 py-2 hover:bg-white hover:text-[#0051FF] {{ request()->routeIs('index') ? 'enlaces__after text-white' : 'text-white' }}">Inicio</a>
       {{-- <a href="{{ route('catalogo') }}"
