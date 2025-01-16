@@ -31,11 +31,11 @@
     }
 
     /*  .bg__mobile {
-                                                                                                                                                                                                                                    background-repeat: no-repeat;
-                                                                                                                                                                                                                                    background-size: cover;
-                                                                                                                                                                                                                                    background-position: center;
-                                                                                                                                                                                                                                    background-image: url({{ asset('images/img/image_3.png') }});
-                                                                                                                                                                                                                                } */
+                                                                                                                                                                                                                                      background-repeat: no-repeat;
+                                                                                                                                                                                                                                      background-size: cover;
+                                                                                                                                                                                                                                      background-position: center;
+                                                                                                                                                                                                                                      background-image: url({{ asset('images/img/image_3.png') }});
+                                                                                                                                                                                                                                  } */
 
     .fondo__slider-desktop {
       background-image: none;
@@ -104,7 +104,8 @@
                 <div
                   class="flex flex-col justify-center gap-5 order-1 lg:order-2 px-5 md:z-50 lg:-mx-[100px] w-full lg:w-11/12">
                   <p class="text-white text-text18 md:text-text20 font-Montserrat_Bold">{{ $item->botontext1 }}</p>
-                  <h1 class="text-text40 md:text-text48 font-Montserrat_SemiBold text-white leading-[56px] md:leading-tight">
+                  <h1
+                    class="text-text40 md:text-text48 font-Montserrat_SemiBold text-white leading-[56px] md:leading-tight">
                     {{ $item->title }}</h1>
                   <p class="text-white text-text14 md:text-text16 font-Montserrat_Regular w-full lg:w-5/6">
                     {{ $item->description }}</p>
@@ -157,16 +158,16 @@
     <section class="w-11/12 mx-auto py-5">
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         <div class="flex flex-row items-center w-full border-r xl:border-[#0711E5]">
-            <div class="p-3"><img class="max-w-24" src="{{asset('images/img/1mic.png')}}"/></div>
-            <div class="flex flex-col gap-1 items-center justify-start pr-3">
-              <p class="text-[#111111] text-base font-Montserrat_Bold w-full">COMPRA Y RECOGE</p>
-              <p class="text-[#111111] text-sm font-Montserrat_Regular w-full leading-none">
-                Separa tu producto y recojelo en nuestro punto
-              </p>
-            </div>
+          <div class="p-3"><img class="max-w-24" src="{{ asset('images/img/1mic.png') }}" /></div>
+          <div class="flex flex-col gap-1 items-center justify-start pr-3">
+            <p class="text-[#111111] text-base font-Montserrat_Bold w-full">COMPRA Y RECOGE</p>
+            <p class="text-[#111111] text-sm font-Montserrat_Regular w-full leading-none">
+              Separa tu producto y recojelo en nuestro punto
+            </p>
+          </div>
         </div>
         <div class="flex flex-row items-center w-full border-r xl:border-[#0711E5]">
-          <div class="p-3"><img class="max-w-24" src="{{asset('images/img/mic2.png')}}"/></div>
+          <div class="p-3"><img class="max-w-24" src="{{ asset('images/img/mic2.png') }}" /></div>
           <div class="flex flex-col gap-1 items-center justify-start pr-3">
             <p class="text-[#111111] text-base font-Montserrat_Bold w-full">DELIVERY GRATIS</p>
             <p class="text-[#111111] text-sm font-Montserrat_Regular w-full leading-none">
@@ -175,7 +176,7 @@
           </div>
         </div>
         <div class="flex flex-row items-center w-full border-r xl:border-[#0711E5]">
-          <div class="p-3"><img class="max-w-24" src="{{asset('images/img/mic3.png')}}"/></div>
+          <div class="p-3"><img class="max-w-24" src="{{ asset('images/img/mic3.png') }}" /></div>
           <div class="flex flex-col gap-1 items-center justify-start pr-3">
             <p class="text-[#111111] text-base font-Montserrat_Bold w-full">PAGO SEGURO</p>
             <p class="text-[#111111] text-sm font-Montserrat_Regular w-full leading-none">
@@ -184,7 +185,7 @@
           </div>
         </div>
         <div class="flex flex-row items-center w-full xl:border-[#0711E5]">
-          <div class="p-3"><img class="max-w-24" src="{{asset('images/img/mic4.png')}}"/></div>
+          <div class="p-3"><img class="max-w-24" src="{{ asset('images/img/mic4.png') }}" /></div>
           <div class="flex flex-col gap-1 items-center justify-start pr-3">
             <p class="text-[#111111] text-base font-Montserrat_Bold w-full">ASESORAMIENTO</p>
             <p class="text-[#111111] text-sm font-Montserrat_Regular w-full leading-none">
@@ -198,7 +199,7 @@
 
     @if (count($category) > 0)
       <section class="w-11/12 mx-auto flex flex-col gap-7 pt-10">
-        
+
         <div class="flex flex-col items-start md:flex-row md:justify-between md:items-center gap-5">
           <h2 class="text-[#111111] text-text32 md:text-text36 font-Montserrat_Bold w-1/2">Nuestras Categorías</h2>
           <div class="flex justify-start items-center">
@@ -222,26 +223,30 @@
             <div
               class="group col-span-1 lg:col-span-4 bg-[#F3F3F3] hover:bg-[#0051FF] p-5 md:p-10 flex flex-col md:flex-row gap-5 md:gap-10 justify-center overflow-hidden rounded-2xl"
               data-aos="fade-up" data-aos-offset="150">
-             
+
               <div class="flex flex-col gap-5 w-full md:w-1/2 items-start justify-center">
                 <a href="{{ route('catalogo', ['cat' => $category[0]->id]) }}">
-                  <h2 class="text-text28 md:text-text32 font-Montserrat_Bold group-hover:text-white">{{ $category[0]->name }}</h2>
+                  <h2 class="text-text28 md:text-text32 font-Montserrat_Bold group-hover:text-white">
+                    {{ $category[0]->name }}</h2>
                 </a>
 
-                <p class="font-Montserrat_Regular text-sm md:text-text16 group-hover:text-white">{!! $category[0]->description !!}</p>
+                <p class="font-Montserrat_Regular text-sm md:text-text16 group-hover:text-white">{!! $category[0]->description !!}
+                </p>
 
-                <div class="flex flex-row justify-center items-center bg-[#0051FF] group-hover:bg-white rounded-lg overflow-hidden w-40  py-2">
-                  <a href="{{ route('catalogo', ['cat' => $category[0]->id]) }}" class="flex justify-center items-center gap-1">
+                <div
+                  class="flex flex-row justify-center items-center bg-[#0051FF] group-hover:bg-white rounded-lg overflow-hidden w-40  py-2">
+                  <a href="{{ route('catalogo', ['cat' => $category[0]->id]) }}"
+                    class="flex justify-center items-center gap-1">
                     <span class="text-text16 text-white group-hover:text-[#0051FF] md:text-text18 font-moderat_Bold ">
                       Ver productos
                     </span>
                     <div>
                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5 12H19" stroke="white" class="group-hover:stroke-[#0051FF]"  stroke-width="1.33333" stroke-linecap="round"
-                          stroke-linejoin="round" />
-                        <path d="M12 5L19 12L12 19" stroke="white" class="group-hover:stroke-[#0051FF]"  stroke-width="1.33333" stroke-linecap="round"
-                          stroke-linejoin="round" />
+                        <path d="M5 12H19" stroke="white" class="group-hover:stroke-[#0051FF]" stroke-width="1.33333"
+                          stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M12 5L19 12L12 19" stroke="white" class="group-hover:stroke-[#0051FF]"
+                          stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
                       </svg>
                     </div>
                   </a>
@@ -257,17 +262,18 @@
               </div>
 
             </div>
-
           @elseif (count($category->take(3)) == 2)
             <div
               class="group col-span-1 lg:row-span-2 lg:col-span-2 bg-[#F3F3F3] hover:bg-[#0051FF] p-5 flex flex-col gap-5 justify-center overflow-hidden rounded-2xl"
               data-aos="fade-up" data-aos-offset="150">
               <div class="flex flex-col gap-5 w-full ">
                 <a href="{{ route('catalogo', ['cat' => $category[0]->id]) }}">
-                  <h2 class="text-text28 md:text-text32 font-Montserrat_Bold group-hover:text-white">{{ $category[0]->name }}</h2>
+                  <h2 class="text-text28 md:text-text32 font-Montserrat_Bold group-hover:text-white">
+                    {{ $category[0]->name }}</h2>
                 </a>
 
-                <p class="font-Montserrat_Regular text-sm md:text-text16 group-hover:text-white">{!! $category[0]->description !!}</p>
+                <p class="font-Montserrat_Regular text-sm md:text-text16 group-hover:text-white">{!! $category[0]->description !!}
+                </p>
               </div>
 
               <div class="flex justify-end items-end md:items-center">
@@ -277,18 +283,20 @@
                   class="w-full hidden md:flex object-contain aspect-video group-hover:scale-110 transition-transform duration-500">
               </div>
 
-              <div class="flex flex-row justify-center items-center bg-[#0051FF] group-hover:bg-white rounded-lg overflow-hidden w-40  py-2">
-                <a href="{{ route('catalogo', ['cat' => $category[1]->id]) }}" class="flex justify-center items-center gap-1">
+              <div
+                class="flex flex-row justify-center items-center bg-[#0051FF] group-hover:bg-white rounded-lg overflow-hidden w-40  py-2">
+                <a href="{{ route('catalogo', ['cat' => $category[1]->id]) }}"
+                  class="flex justify-center items-center gap-1">
                   <span class="text-text16 text-white group-hover:text-[#0051FF] md:text-text18 font-moderat_Bold ">
                     Ver productos
                   </span>
                   <div>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                       xmlns="http://www.w3.org/2000/svg">
-                      <path d="M5 12H19" stroke="white" class="group-hover:stroke-[#0051FF]"  stroke-width="1.33333" stroke-linecap="round"
-                        stroke-linejoin="round" />
-                      <path d="M12 5L19 12L12 19" stroke="white" class="group-hover:stroke-[#0051FF]"  stroke-width="1.33333" stroke-linecap="round"
-                        stroke-linejoin="round" />
+                      <path d="M5 12H19" stroke="white" class="group-hover:stroke-[#0051FF]" stroke-width="1.33333"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                      <path d="M12 5L19 12L12 19" stroke="white" class="group-hover:stroke-[#0051FF]"
+                        stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                   </div>
                 </a>
@@ -299,7 +307,8 @@
               data-aos="fade-up" data-aos-offset="150">
               <div class="flex flex-col gap-5 w-full ">
                 <a href="{{ route('catalogo', ['cat' => $category[1]->id]) }}">
-                  <h2 class="text-text28 md:text-text32 font-Montserrat_Bold group-hover:text-white">{{ $category[1]->name }}</h2>
+                  <h2 class="text-text28 md:text-text32 font-Montserrat_Bold group-hover:text-white">
+                    {{ $category[1]->name }}</h2>
                 </a>
 
                 <p class="font-Montserrat_Regular text-[15px] group-hover:text-white">{!! $category[1]->description !!}</p>
@@ -312,18 +321,20 @@
                   class="w-full hidden md:flex object-contain aspect-video group-hover:scale-110 transition-transform duration-500">
               </div>
 
-              <div class="flex flex-row justify-center items-center bg-[#0051FF] group-hover:bg-white rounded-lg overflow-hidden w-40 py-2">
-                <a href="{{ route('catalogo', ['cat' => $category[1]->id]) }}" class="flex justify-center items-center gap-1">
+              <div
+                class="flex flex-row justify-center items-center bg-[#0051FF] group-hover:bg-white rounded-lg overflow-hidden w-40 py-2">
+                <a href="{{ route('catalogo', ['cat' => $category[1]->id]) }}"
+                  class="flex justify-center items-center gap-1">
                   <span class="text-text16 text-white group-hover:text-[#0051FF] md:text-base font-moderat_Bold">
                     Ver productos
                   </span>
                   <div>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                       xmlns="http://www.w3.org/2000/svg">
-                      <path d="M5 12H19" stroke="white" class="group-hover:stroke-[#0051FF]" stroke-width="1.33333" stroke-linecap="round"
-                        stroke-linejoin="round" />
-                      <path d="M12 5L19 12L12 19" stroke="white" class="group-hover:stroke-[#0051FF]" stroke-width="1.33333" stroke-linecap="round"
-                        stroke-linejoin="round" />
+                      <path d="M5 12H19" stroke="white" class="group-hover:stroke-[#0051FF]" stroke-width="1.33333"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                      <path d="M12 5L19 12L12 19" stroke="white" class="group-hover:stroke-[#0051FF]"
+                        stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                   </div>
                 </a>
@@ -335,7 +346,8 @@
               data-aos="fade-up" data-aos-offset="150">
               <div class="flex flex-col gap-2 w-full">
                 <a href="{{ route('catalogo', ['cat' => $category[0]->id]) }}">
-                  <h2 class="text-text28 md:text-text32 font-Montserrat_Bold group-hover:text-white">{{ $category[0]->name }}</h2>
+                  <h2 class="text-text28 md:text-text32 font-Montserrat_Bold group-hover:text-white">
+                    {{ $category[0]->name }}</h2>
                 </a>
 
                 <p class="font-Montserrat_Regular text-[15px] group-hover:text-white">{!! $category[0]->description !!}</p>
@@ -348,46 +360,52 @@
                   class="w-full hidden md:flex object-contain aspect-video group-hover:scale-110 transition-transform duration-500">
               </div>
 
-              <div class="flex flex-row justify-center items-center bg-[#0051FF] group-hover:bg-white rounded-lg overflow-hidden w-40 py-2">
-                <a href="{{ route('catalogo', ['cat' => $category[0]->id]) }}" class="flex justify-center items-center gap-1">
+              <div
+                class="flex flex-row justify-center items-center bg-[#0051FF] group-hover:bg-white rounded-lg overflow-hidden w-40 py-2">
+                <a href="{{ route('catalogo', ['cat' => $category[0]->id]) }}"
+                  class="flex justify-center items-center gap-1">
                   <span class="text-text16 text-white group-hover:text-[#0051FF] md:text-base font-moderat_Bold">
                     Ver productos
                   </span>
                   <div>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                       xmlns="http://www.w3.org/2000/svg">
-                      <path d="M5 12H19" stroke="white" class="group-hover:stroke-[#0051FF]" stroke-width="1.33333" stroke-linecap="round"
-                        stroke-linejoin="round" />
-                      <path d="M12 5L19 12L12 19" stroke="white" class="group-hover:stroke-[#0051FF]" stroke-width="1.33333" stroke-linecap="round"
-                        stroke-linejoin="round" />
+                      <path d="M5 12H19" stroke="white" class="group-hover:stroke-[#0051FF]" stroke-width="1.33333"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                      <path d="M12 5L19 12L12 19" stroke="white" class="group-hover:stroke-[#0051FF]"
+                        stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                   </div>
                 </a>
               </div>
             </div>
 
-            <div class="group col-span-1 lg:row-span-1 lg:col-span-2 flex flex-col md:flex-row justify-between bg-[#F3F3F3] hover:bg-[#0051FF] pl-[5%] py-1 gap-2 md:gap-5 overflow-hidden rounded-2xl"
+            <div
+              class="group col-span-1 lg:row-span-1 lg:col-span-2 flex flex-col md:flex-row justify-between bg-[#F3F3F3] hover:bg-[#0051FF] pl-[5%] py-1 gap-2 md:gap-5 overflow-hidden rounded-2xl"
               data-aos="fade-up" data-aos-offset="150">
-            
+
               <div class="flex flex-col gap-2 justify-center w-full  md:w-2/6 py-5 pr-5">
                 <a href="{{ route('catalogo', ['cat' => $category[1]->id]) }}">
-                  <h2 class="text-text28 md:text-text28 font-Montserrat_Bold group-hover:text-white">{{ $category[1]->name }}</h2>
+                  <h2 class="text-text28 md:text-text28 font-Montserrat_Bold group-hover:text-white">
+                    {{ $category[1]->name }}</h2>
                 </a>
 
                 <p class="font-Montserrat_Regular text-[15px] group-hover:text-white">{!! $category[1]->description !!}</p>
 
-                <div class="flex flex-row justify-center items-center bg-[#0051FF] group-hover:bg-white rounded-lg overflow-hidden w-40  py-2">
-                  <a href="{{ route('catalogo', ['cat' => $category[1]->id]) }}" class="flex justify-center items-center gap-1">
+                <div
+                  class="flex flex-row justify-center items-center bg-[#0051FF] group-hover:bg-white rounded-lg overflow-hidden w-40  py-2">
+                  <a href="{{ route('catalogo', ['cat' => $category[1]->id]) }}"
+                    class="flex justify-center items-center gap-1">
                     <span class="text-text16 text-white group-hover:text-[#0051FF] md:text-base font-moderat_Bold">
                       Ver productos
                     </span>
                     <div>
                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5 12H19" stroke="white" class="group-hover:stroke-[#0051FF]" stroke-width="1.33333" stroke-linecap="round"
-                          stroke-linejoin="round" />
-                        <path d="M12 5L19 12L12 19" stroke="white" class="group-hover:stroke-[#0051FF]" stroke-width="1.33333" stroke-linecap="round"
-                          stroke-linejoin="round" />
+                        <path d="M5 12H19" stroke="white" class="group-hover:stroke-[#0051FF]" stroke-width="1.33333"
+                          stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M12 5L19 12L12 19" stroke="white" class="group-hover:stroke-[#0051FF]"
+                          stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
                       </svg>
                     </div>
                   </a>
@@ -405,7 +423,8 @@
 
 
             <div
-              class="group col-span-1 lg:row-span-1 lg:col-span-2 flex flex-col md:flex-row justify-between bg-[#F3F3F3] hover:bg-[#0051FF] pr-[5%] py-1 gap-2 md:gap-5 overflow-hidden rounded-2xl" data-aos="fade-up" data-aos-offset="150">
+              class="group col-span-1 lg:row-span-1 lg:col-span-2 flex flex-col md:flex-row justify-between bg-[#F3F3F3] hover:bg-[#0051FF] pr-[5%] py-1 gap-2 md:gap-5 overflow-hidden rounded-2xl"
+              data-aos="fade-up" data-aos-offset="150">
 
               <div class="flex justify-end items-center basis-full md:basis-4/6">
                 <img src="{{ asset($category[2]->url_image . $category[2]->name_image) }}" alt="impresora"
@@ -416,24 +435,28 @@
 
               <div class="flex flex-col justify-center gap-2 basis-full md:basis-2/6 items-end py-5 pl-5">
                 <a href="{{ route('catalogo') }}">
-                  <h2 class="text-text28 md:text-text28 font-Montserrat_Bold text-right group-hover:text-white">{{ $category[2]->name }}</h2>
+                  <h2 class="text-text28 md:text-text28 font-Montserrat_Bold text-right group-hover:text-white">
+                    {{ $category[2]->name }}</h2>
                 </a>
 
-                <p class="font-Montserrat_Regular text-[15px] text-right group-hover:text-white">{!! $category[2]->description !!}</p>
-               
+                <p class="font-Montserrat_Regular text-[15px] text-right group-hover:text-white">{!! $category[2]->description !!}
+                </p>
 
-                <div class="flex flex-row justify-center items-center bg-[#0051FF] group-hover:bg-white rounded-lg overflow-hidden w-40  py-2">
-                  <a href="{{ route('catalogo', ['cat' => $category[2]->id]) }}" class="flex justify-center items-center gap-1">
+
+                <div
+                  class="flex flex-row justify-center items-center bg-[#0051FF] group-hover:bg-white rounded-lg overflow-hidden w-40  py-2">
+                  <a href="{{ route('catalogo', ['cat' => $category[2]->id]) }}"
+                    class="flex justify-center items-center gap-1">
                     <span class="text-text16 text-white group-hover:text-[#0051FF] md:text-base font-moderat_Bold">
                       Ver productos
                     </span>
                     <div>
                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5 12H19" stroke="white" class="group-hover:stroke-[#0051FF]" stroke-width="1.33333" stroke-linecap="round"
-                          stroke-linejoin="round" />
-                        <path d="M12 5L19 12L12 19" stroke="white" class="group-hover:stroke-[#0051FF]" stroke-width="1.33333" stroke-linecap="round"
-                          stroke-linejoin="round" />
+                        <path d="M5 12H19" stroke="white" class="group-hover:stroke-[#0051FF]" stroke-width="1.33333"
+                          stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M12 5L19 12L12 19" stroke="white" class="group-hover:stroke-[#0051FF]"
+                          stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
                       </svg>
                     </div>
                   </a>
@@ -447,9 +470,11 @@
     @endif
 
     @if (count($productosDestacados) > 0)
-    <section class="w-full px-[5%] py-10 lg:py-16 mt-10 lg:mt-20 bg-[#f3f3f3]">
+      <section class="w-full px-[5%] py-10 lg:py-16 mt-10 lg:mt-20 bg-[#f3f3f3]">
         <div class="flex flex-col md:flex-row md:justify-center items-start md:items-center pb-10 gap-5 md:gap-0">
-          <p class="font-Montserrat_Bold text-text32 md:text-text36 tracking-wide leading-normal uppercase text-[#0711E5]">Las mejores impresoras del mes</p>
+          <p
+            class="font-Montserrat_Bold text-text32 md:text-text36 tracking-wide leading-normal uppercase text-[#0711E5]">
+            Las mejores impresoras del mes</p>
           {{-- <div class="flex justify-start items-center">
             <a href="{{ route('catalogo') }}" class="flex justify-center items-center gap-2">
               <p
@@ -542,10 +567,10 @@
               </div>
 
             </div> --}}
-            <x-product.cardproduct  bgcolor="bg-[#FFFFFF]" :item="$item" />
+            <x-product.cardproduct bgcolor="bg-[#FFFFFF]" :item="$item" />
           @endforeach
         </div>
-    </section>
+      </section>
     @endif
 
     @if (count($banners) > 0)
@@ -553,8 +578,8 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-7">
           @foreach ($banners as $banner)
             <div class="w-full">
-              <a href="{{$banner->description}}">
-                <img class="object-contain h-auto" src="{{asset($banner->url_image)}}" />
+              <a href="{{ $banner->description }}">
+                <img class="object-contain h-auto" src="{{ asset($banner->url_image) }}" />
               </a>
             </div>
           @endforeach
@@ -567,10 +592,11 @@
         <div class="bg-[#0051FF] rounded-xl overflow-hidden px-5 md:px-10 pt-3 pb-5 md:pt-5 md:pb-10 ">
 
           <div class="flex flex-col md:flex-row md:justify-between items-start md:items-center pt-5 pb-7 gap-2">
-            <p class="font-Montserrat_Bold text-base md:text-lg text-white ">¡PROMOS POR <span class="font-Montserrat_Bold">CYBER WOW TIEMPO LIMITADO!</span></p>
+            <p class="font-Montserrat_Bold text-base md:text-lg text-white ">¡PROMOS POR <span
+                class="font-Montserrat_Bold">CYBER WOW TIEMPO LIMITADO!</span></p>
             <div class="flex justify-start items-center">
-              
-                {{-- <div class="countup flex flex-row gap-1 items-center" id="stopwatch">
+
+              {{-- <div class="countup flex flex-row gap-1 items-center" id="stopwatch">
                   <div class="bg-white text-[#0711E5] p-1 rounded-lg">
                     <span id="hour" class="timeel hours font-moderat_700">00</span>
                     <span class="timeel timeRefHours font-moderat_400">HR</span>
@@ -595,38 +621,46 @@
                 @foreach ($cyber as $item)
                   <div class="swiper-slide">
                     <div class="flex flex-row bg-white rounded-lg overflow-hidden p-2 gap-2">
-                      
+
                       <div class="w-2/5">
                         <img src="{{ asset($item->imagen) }}" alt="ss"
                           class="w-full object-contain md:object-contain aspect-square p-3"
                           onerror="this.onerror=null;this.src='/images/img/noimagen.jpg';" />
                       </div>
-                    
+
                       <div class="w-3/5 flex flex-col justify-center items-start">
                         <div class="flex flex-col gap-1">
 
-                          <a href="/catalogo?marca={{$item->marca_id}}">
-                            <h3 class="font-Montserrat_Regular text-text12 md:text-sm text-[#111111]">{{ $item->marca->name ?? "S/M" }}</h3>
+                          <a href="/catalogo?marca={{ $item->marca_id }}">
+                            <h3 class="font-Montserrat_Regular text-text12 md:text-sm text-[#111111]">
+                              {{ $item->marca->name ?? 'S/M' }}</h3>
                           </a>
 
                           <a href="{{ route('producto', $item->id) }}">
-                            <h2 class="font-Montserrat_Bold leading-normal text-sm  text-[#111111] line-clamp-2 tracking-tight">
+                            <h2
+                              class="font-Montserrat_Bold leading-normal text-sm  text-[#111111] line-clamp-2 tracking-tight">
                               {{ $item->producto }}
                             </h2>
                           </a>
-                      
+
                           @if ($item->descuento == 0)
-                              <span class="text-[#111111] text-text16 md:text-xl font-Montserrat_Bold font-bold md:font-medium"> S/. {{ $item->precio }}</span>
+                            <span
+                              class="text-[#111111] text-text16 md:text-xl font-Montserrat_Bold font-bold md:font-medium">
+                              S/. {{ $item->precio }}</span>
                           @else
                             <div class="flex flex-row gap-2 items-center">
-                              <span class="text-[#111111] text-text14 line-through font-Montserrat_Bold font-bold md:font-medium">S/. {{ $item->descuento }}</span>
-                              <span class="text-[#111111] text-text16 md:text-xl font-moderat_Regular font-bold md:font-medium">S/. {{ $item->precio }}</span>
+                              <span
+                                class="text-[#111111] text-text14 line-through font-Montserrat_Bold font-bold md:font-medium">S/.
+                                {{ $item->descuento }}</span>
+                              <span
+                                class="text-[#111111] text-text16 md:text-xl font-moderat_Regular font-bold md:font-medium">S/.
+                                {{ $item->precio }}</span>
                             </div>
                           @endif
 
                         </div>
-                      </div>  
-                      
+                      </div>
+
                     </div>
                   </div>
                 @endforeach
@@ -636,38 +670,38 @@
 
         </div>
       </section>
-    @endif  
+    @endif
 
     @if (count($ofertasProductos) > 0)
       <section class="w-full px-[5%] py-10 lg:py-16 mt-10 lg:mt-20 bg-[#f3f3f3]">
         <div class="grid grid-cols-1 md:grid-cols-6  gap-5 lg:gap-7">
-            <div class="md:col-span-2 flex flex-col items-center justify-center">
-              <img src="{{ asset('images/img/bannervertical.PNG') }}" alt="ss"
-                    class="w-full object-contain"
-                    onerror="this.onerror=null;this.src='/images/img/noimagen.jpg';" />
-            </div>
+          <div class="md:col-span-2 flex flex-col items-center justify-center">
+            <img src="{{ asset('images/img/bannervertical.PNG') }}" alt="ss" class="w-full object-contain"
+              onerror="this.onerror=null;this.src='/images/img/noimagen.jpg';" />
+          </div>
 
-            <div class="md:col-span-4 flex flex-col justify-center gap-5">
-              <div class="flex flex-row justify-center">
-                <p class="font-Montserrat_Bold text-text32 tracking-normal leading-normal uppercase text-[#0711E5]">LOS MEJORES MONITORES DEL MES</p>
-              </div>
-              <div>
-                <div class="swiper ofertas">
-                  <div class="swiper-wrapper">
-      
+          <div class="md:col-span-4 flex flex-col justify-center gap-5">
+            <div class="flex flex-row justify-center">
+              <p class="font-Montserrat_Bold text-text32 tracking-normal leading-normal uppercase text-[#0711E5]">LOS
+                MEJORES MONITORES DEL MES</p>
+            </div>
+            <div>
+              <div class="swiper ofertas">
+                <div class="swiper-wrapper">
+
                   @foreach ($ofertasProductos as $item)
                     <div class="swiper-slide">
-                      <x-product.cardproduct  bgcolor="bg-[#FFFFFF]" :item="$item" />
+                      <x-product.cardproduct bgcolor="bg-[#FFFFFF]" :item="$item" />
                     </div>
                   @endforeach
 
-                  </div>
                 </div>
-              </div> 
+              </div>
             </div>
+          </div>
         </div>
       </section>
-    @endif  
+    @endif
 
     {{-- <section class="w-full px-[5%] pt-20">
       @if (count($ofertasProductos))
@@ -761,7 +795,8 @@
     @if (count($logos) > 0)
       <section class="w-11/12 mx-auto bg-[#001232] text-white mt-20 fondo__marcas">
         <div class="flex flex-col gap-5 py-10 items-center" data-aos="fade-up" data-aos-offset="150">
-          <h2 class="text-white font-Montserrat_Bold text-text32 md:text-text44 text-center">Aliados estratégicos con las marcas</h2>
+          <h2 class="text-white font-Montserrat_Bold text-text32 md:text-text44 text-center">Aliados estratégicos con las
+            marcas</h2>
           {{-- <p class="font-moderat_Regular text-base md:text-lg text-center w-full md:w-2/3">Colaboramos con una
             amplia variedad de marcas reconocidas a nivel mundial, ofreciendo productos de alta calidad que se adaptan a
             las necesidades tecnológicas de todos nuestros clientes.</p> --}}
@@ -771,10 +806,11 @@
           <div class="swiper-wrapper pt-5 pb-10">
             @foreach ($logos as $logo)
               <div class="swiper-slide">
-                <a href="/catalogo?marca={{$logo->id}}">
-                <div class="flex justify-center items-center">
-                  <img src="{{ asset($logo->description) }}" onerror="this.onerror=null;this.src='/images/img/noimagen.jpg';" alt="marcas">
-                </div>
+                <a href="/catalogo?marca={{ $logo->id }}">
+                  <div class="flex justify-center items-center">
+                    <img src="{{ asset($logo->description) }}"
+                      onerror="this.onerror=null;this.src='/images/img/noimagen.jpg';" alt="marcas">
+                  </div>
                 </a>
               </div>
             @endforeach
@@ -788,7 +824,8 @@
       <section class="bg-[#f3f3f3] py-10 md:py-20 mt-10 md:mt-20">
         <div class="w-11/12 mx-auto flex flex-col gap-3 items-center" data-aos="fade-up" data-aos-offset="150">
           <h2 class="font-Montserrat_Bold text-text32 md:text-text40 text-center">Clientes Satisfechos</h2>
-          <p class="font-Montserrat_Regular text-base md:text-lg text-[#565656] text-center w-full md:w-2/3">Nuestros clientes
+          <p class="font-Montserrat_Regular text-base md:text-lg text-[#565656] text-center w-full md:w-2/3">Nuestros
+            clientes
             confían en nosotros por la calidad y el servicio que ofrecemos. Ya sea por la rápida entrega de accesorios
             gamer o soluciones de impresión confiables, siempre estamos comprometidos con la satisfacción total.</p>
         </div>
@@ -835,102 +872,104 @@
 
     @if (count($blog) > 0)
       <section class="w-11/12 mx-auto py-16">
-        
 
 
-          <div class="flex flex-col gap-10">
-            <div class="flex flex-col justify-center gap-3 md:flex-row md:justify-between md:items-center">
-              <div class="flex flex-col gap-5 basis-8/12">
-                <h2 class="font-Montserrat_Bold text-text32 md:text-text40 text-[#111111] leading-none md:leading-tight">
-                  Últimas Publicaciones</h2>
-                <p class="text-[#565656] text-text18 font-Montserrat_Regular">Descubre las últimas novedades en
-                  tecnología. Encuentra desde tintas y toners para impresoras hasta teclados mecánicos y accesorios gamer.
-                  ¡Mejora tu setup con nuestros monitores de alta resolución y laptops de última generación!</p>
-              </div>
 
-              <div class="flex justify-end items-center basis-4/12">
-                <a href="{{ route('blog', 0) }}"
-                  class="font-Montserrat_Bold text-base md:text-lg py-3 rounded-xl px-5 bg-[#0051FF] text-white md:w-auto text-center w-full">Ver
-                  más Publicaciones</a>
-              </div>
+        <div class="flex flex-col gap-10">
+          <div class="flex flex-col justify-center gap-3 md:flex-row md:justify-between md:items-center">
+            <div class="flex flex-col gap-5 basis-8/12">
+              <h2 class="font-Montserrat_Bold text-text32 md:text-text40 text-[#111111] leading-none md:leading-tight">
+                Últimas Publicaciones</h2>
+              <p class="text-[#565656] text-text18 font-Montserrat_Regular">Descubre las últimas novedades en
+                tecnología. Encuentra desde tintas y toners para impresoras hasta teclados mecánicos y accesorios gamer.
+                ¡Mejora tu setup con nuestros monitores de alta resolución y laptops de última generación!</p>
             </div>
 
-            <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-10">
-
-              @foreach ($blog as $item)
-                <div class="hidden lg:flex  flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
-                  <div>
-                    <img src="{{ asset($item->url_image . $item->name_image) }} " alt="publicacion"
-                      class="w-full aspect-video object-cover object-center shadow-lg rounded-lg">
-                  </div>
-                  <div class="flex flex-col gap-2">
-                    <p class="font-Montserrat_Bold text-text12 md:text-text20 text-[#0051FF]">{{ $item->categories->name ?? "Sin categoria"}}
-                    </p>
-                    <a href="{{ route('post', $item->id) }}">
-                      <h2 class="text-[#082252] font-Montserrat_Bold text-text16 md:text-text28 line-clamp-2 h-[84px]">
-                        {{ $item->title }}
-                      </h2>
-                    </a>
-
-                    <p
-                      class="text-[#565656] font-Montserrat_Regular text-sm line-clamp-2 h-12 overflow-hidden text-ellipsis">
-                      {!! strip_tags($item->description) !!}
-                    </p>
-                  </div>
-
-                  <div
-                    class="flex justify-start items-center text-text10 md:text-text14 text-[#0051FF] font-Montserrat_Regular gap-1 md:gap-2">
-                    <p class="hidden lg:block">{{ Carbon::parse($item->created_at)->translatedFormat('d \d\e F \d\e Y') }}
-                    </p>
-                    <p class="block lg:hidden">{{ Carbon::parse($item->created_at)->format('d/m/Y') }}</p>
-                    <img src="{{ asset('images/svg/image_17.svg') }}" alt="point" class="w-[3px] md:w-[6px]" />
-                    {{-- <p>Leído hace 5 min</p> --}}
-                  </div>
-
-                </div>
-              @endforeach
-
-
-              @foreach ($blog as $item)
-                <div class="flex lg:hidden flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
-                  <div>
-                    <img src="{{ asset($item->url_image . $item->name_image) }} " alt="publicacion" class="w-full">
-                  </div>
-                  <div class="flex flex-col gap-2">
-                    <p class="font-Montserrat_Bold text-text12 md:text-text20 text-[#0051FF]">{{ $item->categories->name }}
-                    </p>
-                    <a href="{{ route('post', $item->id) }}">
-                      <h2 class="text-[#082252] font-Montserrat_Bold text-text16 md:text-text28 line-clamp-2 h-[84px]">
-                        {{ $item->title }}
-                      </h2>
-                    </a>
-
-                    <p
-                      class=" text-[#565656] font-Montserrat_Regular text-sm line-clamp-2 h-12 overflow-hidden text-ellipsis">
-                      {!! strip_tags($item->description) !!}
-                    </p>
-                  </div>
-
-                  <div
-                    class="flex justify-start items-center text-text10 md:text-text14 text-[#0051FF] font-Montserrat_Regular gap-1 md:gap-2">
-                    <p class="hidden lg:block">{{ Carbon::parse($item->created_at)->translatedFormat('d \d\e F \d\e Y') }}
-                    </p>
-                    <p class="block lg:hidden">{{ Carbon::parse($item->created_at)->format('d/m/Y') }}</p>
-                    <img src="{{ asset('images/svg/image_17.svg') }}" alt="point" class="w-[3px] md:w-[6px]">
-                    {{-- <p>Leído hace 5 min</p> --}}
-                  </div>
-
-                </div>
-              @endforeach
-
+            <div class="flex justify-end items-center basis-4/12">
+              <a href="{{ route('blog', 0) }}"
+                class="font-Montserrat_Bold text-base md:text-lg py-3 rounded-xl px-5 bg-[#0051FF] text-white md:w-auto text-center w-full">Ver
+                más Publicaciones</a>
             </div>
           </div>
 
-      
+          <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-10">
+
+            @foreach ($blog as $item)
+              <div class="hidden lg:flex  flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
+                <div>
+                  <img src="{{ asset($item->url_image . $item->name_image) }} " alt="publicacion"
+                    class="w-full aspect-video object-cover object-center shadow-lg rounded-lg">
+                </div>
+                <div class="flex flex-col gap-2">
+                  <p class="font-Montserrat_Bold text-text12 md:text-text20 text-[#0051FF]">
+                    {{ $item->categories->name ?? 'Sin categoria' }}
+                  </p>
+                  <a href="{{ route('post', $item->id) }}">
+                    <h2 class="text-[#082252] font-Montserrat_Bold text-text16 md:text-text28 line-clamp-2 h-[84px]">
+                      {{ $item->title }}
+                    </h2>
+                  </a>
+
+                  <p
+                    class="text-[#565656] font-Montserrat_Regular text-sm line-clamp-2 h-12 overflow-hidden text-ellipsis">
+                    {!! strip_tags($item->description) !!}
+                  </p>
+                </div>
+
+                <div
+                  class="flex justify-start items-center text-text10 md:text-text14 text-[#0051FF] font-Montserrat_Regular gap-1 md:gap-2">
+                  <p class="hidden lg:block">{{ Carbon::parse($item->created_at)->translatedFormat('d \d\e F \d\e Y') }}
+                  </p>
+                  <p class="block lg:hidden">{{ Carbon::parse($item->created_at)->format('d/m/Y') }}</p>
+                  <img src="{{ asset('images/svg/image_17.svg') }}" alt="point" class="w-[3px] md:w-[6px]" />
+                  {{-- <p>Leído hace 5 min</p> --}}
+                </div>
+
+              </div>
+            @endforeach
+
+
+            @foreach ($blog as $item)
+              <div class="flex lg:hidden flex-col gap-5" data-aos="fade-up" data-aos-offset="150">
+                <div>
+                  <img src="{{ asset($item->url_image . $item->name_image) }} " alt="publicacion" class="w-full">
+                </div>
+                <div class="flex flex-col gap-2">
+                  <p class="font-Montserrat_Bold text-text12 md:text-text20 text-[#0051FF]">
+                    {{ $item->categories->name }}
+                  </p>
+                  <a href="{{ route('post', $item->id) }}">
+                    <h2 class="text-[#082252] font-Montserrat_Bold text-text16 md:text-text28 line-clamp-2 h-[84px]">
+                      {{ $item->title }}
+                    </h2>
+                  </a>
+
+                  <p
+                    class=" text-[#565656] font-Montserrat_Regular text-sm line-clamp-2 h-12 overflow-hidden text-ellipsis">
+                    {!! strip_tags($item->description) !!}
+                  </p>
+                </div>
+
+                <div
+                  class="flex justify-start items-center text-text10 md:text-text14 text-[#0051FF] font-Montserrat_Regular gap-1 md:gap-2">
+                  <p class="hidden lg:block">{{ Carbon::parse($item->created_at)->translatedFormat('d \d\e F \d\e Y') }}
+                  </p>
+                  <p class="block lg:hidden">{{ Carbon::parse($item->created_at)->format('d/m/Y') }}</p>
+                  <img src="{{ asset('images/svg/image_17.svg') }}" alt="point" class="w-[3px] md:w-[6px]">
+                  {{-- <p>Leído hace 5 min</p> --}}
+                </div>
+
+              </div>
+            @endforeach
+
+          </div>
+        </div>
+
+
 
       </section>
     @endif
-    
+
   </main>
 
 @section('scripts_importados')
@@ -1015,7 +1054,7 @@
           slidesPerView: 2,
           spaceBetween: 15
         },
-       
+
         1200: {
           slidesPerView: 3,
           spaceBetween: 20
@@ -1045,7 +1084,7 @@
           slidesPerView: 2,
           spaceBetween: 15
         },
-       
+
         1200: {
           slidesPerView: 3,
           spaceBetween: 20
@@ -1057,7 +1096,7 @@
   <script>
     var appUrl = '{{ env('APP_URL') }}';
   </script>
-  <script src="{{ asset('js/carrito.js') }}"></script>
+  <script src="{{ asset('js/carrito.js') }}?v=totalcount.fixed"></script>
 
   {{-- <script>
       // Configuración inicial: tiempo total en segundos (por ejemplo, 1 hora)

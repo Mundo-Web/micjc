@@ -392,7 +392,7 @@
   </script>
 
 
-  <script src="{{ asset('js/carrito.js') }}"></script>
+  <script src="{{ asset('js/carrito.js') }}?v=totalcount.fixed"></script>
 @section('scripts_importados')
   <script>
     function PintarCarrito() {

@@ -51,7 +51,7 @@
   <script>
     var appUrl = '{{ env('APP_URL') }}';
   </script>
-  <script src="{{ asset('js/carrito.js') }}"></script>
+  <script src="{{ asset('js/carrito.js') }}?v=totalcount.fixed"></script>
 
 
 @section('scripts_improtados')
