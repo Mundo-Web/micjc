@@ -571,7 +571,7 @@
       return total + articulo.cantidad;
     }, 0);
 
-    $('#itemsCount').text(contarArticulos)
+    $('[id="itemsCount"]').text(contarArticulos)
   }
 
   function agregarAlCarritoPr(item, cantidad) {
@@ -703,7 +703,7 @@
   })
 </script>
 <script>
-  $('#open-cart').on('click', () => {
+  $('[id="open-cart"]').on('click', () => {
     $('#cart-modal').modal({
       showClose: false,
       fadeDuration: 100

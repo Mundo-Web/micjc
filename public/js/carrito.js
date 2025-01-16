@@ -6,7 +6,7 @@ function mostrarTotalItems() {
     return total + articulo.cantidad;
   }, 0);
 
-  $('#itemsCount').text(contarArticulos)
+  $('[id="itemsCount"]').text(contarArticulos)
 }
 $(document).ready(function () {
   mostrarTotalItems()

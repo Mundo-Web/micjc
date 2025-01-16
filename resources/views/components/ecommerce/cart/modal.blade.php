@@ -75,7 +75,7 @@
       return total + articulo.cantidad;
     }, 0);
 
-    $('#itemsCount').text(contarArticulos)
+    $('[id="itemsCount"]').text(contarArticulos)
   }
 
   function PintarCarrito() {
