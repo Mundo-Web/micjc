@@ -162,10 +162,10 @@
             @foreach ($productosRelacionados as $item)
               <x-product.cardproduct bgcolor="bg-[#FFFFFF]" :item="$item" />
             @endforeach
-            <div data-aos="fade-up" data-aos-offset="150" class="py-10 col-span-2 lg:col-span-4">
+            {{-- <div data-aos="fade-up" data-aos-offset="150" class="py-10 col-span-2 lg:col-span-4">
               {{ $productosRelacionados }}
 
-            </div>
+            </div> --}}
           </div>
         </div>
       </section>
