@@ -835,9 +835,9 @@ class IndexController extends Controller
     $skip = $request->skip;
     $take = $request->take;
 
-    $categories = $request->categories;
-    $subcategories = $request->subcategories;
-    $brands = $request->brands;
+    $categories = $request->categories ?? [];
+    $subcategories = $request->subcategories ?? [];
+    $brands = $request->brands ?? [];
 
     $triggeredBy = $request->triggeredBy;
 
@@ -893,7 +893,7 @@ class IndexController extends Controller
       $productos = $productos->where('producto', 'like', "%$value%");
     }
 
-    [$fieldTO, $dirTO] = explode('|', $request->order);
+    [$fieldTO, $dirTO] = explode('|', $request->order ?? 'producto|asc');
 
     $productos = $productos
       ->orderBy($fieldTO, $dirTO)
