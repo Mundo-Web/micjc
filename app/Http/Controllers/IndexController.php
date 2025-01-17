@@ -848,42 +848,38 @@ class IndexController extends Controller
     ])
       ->where('products.status', '=', 1);
 
+    $queryBF = clone $productos;
     if (count($categories) > 0) {
-      $productos = $productos->where(function ($query) use ($categories) {
-        foreach ($categories as $id) {
-          $query->orWhere('categoria_id', $id);
-        }
-      });
+      $productos = $productos->whereIn('categoria_id', $categories);
     }
 
     if (count($subcategories) > 0) {
-      $productos = $productos->where(function ($query) use ($subcategories) {
-        foreach ($subcategories as $id) {
-          $query->orWhere('sub_cat_id', $id);
-        }
-      });
+      $productos = $productos->whereIn('sub_cat_id', $subcategories);
     }
 
     if (count($brands) > 0) {
-      $productos = $productos->where(function ($query) use ($brands) {
-        foreach ($brands as $id) {
-          $query->orWhere('marca_id', $id);
-        }
-      });
+      $productos = $productos->whereIn('marca_id', $brands);
     }
 
     $brandsList = [];
     $categoriesList = [];
 
     if ($triggeredBy == 'category') {
-      $query2 = clone $productos;
-      $brandsList = $query2->select('marcas.id')
+      if (count($categories) > 0) {
+        $queryBF = $queryBF->whereIn('categoria_id', $categories);
+      }
+      if (count($subcategories) > 0) {
+        $queryBF = $queryBF->whereIn('sub_cat_id', $subcategories);
+      }
+      $brandsList = $queryBF->select('marcas.id')
         ->distinct()
         ->join('marcas', 'marcas.id', 'products.marca_id')
         ->get();
     } else if ($triggeredBy == 'brand') {
-      $query2 = clone $productos;
-      $categoriesList = $query2->select('categories.id')
+      if (count($brands) > 0) {
+        $queryBF = $queryBF->whereIn('marca_id', $brands);
+      }
+      $categoriesList = $queryBF->select('categories.id')
         ->distinct()
         ->join('categories', 'categories.id', 'products.categoria_id')
         ->get();
@@ -895,6 +891,8 @@ class IndexController extends Controller
 
     [$fieldTO, $dirTO] = explode('|', $request->order ?? 'producto|asc');
 
+    $totalCount = $productos->count();
+
     $productos = $productos
       ->orderBy($fieldTO, $dirTO)
       ->skip($skip)
@@ -905,6 +903,7 @@ class IndexController extends Controller
     return response()->json([
       'message' => 'Busqueda realizada con exito ',
       'data' => $productos,
+      'totalCount' => $totalCount,
       'brands' => $triggeredBy == 'category' ? $brandsList : null,
       'categories' => $triggeredBy == 'brand' ?  $categoriesList : null,
     ]);
