@@ -115,7 +115,8 @@
             @endif
 
 
-            <div class="flex justify-center items-center min-w-[38px]">
+            <div
+              class="{{ request()->routeIs('carrito') ? 'hidden' : 'flex' }} justify-center items-center min-w-[38px]">
               <div id="open-cart" class="relative inline-block cursor-pointer pr-3">
                 <span id="itemsCount"
                   class="bg-[#0051FF] text-xs font-medium text-white text-center px-[7px] py-[2px]  rounded-full absolute bottom-0 right-0 ml-3">0</span>
@@ -174,7 +175,7 @@
           @endif
 
 
-          <div class="flex justify-center items-center min-w-[38px]">
+          <div class="{{ request()->routeIs('carrito') ? 'hidden' : 'flex' }} justify-center items-center min-w-[38px]">
             <div id="open-cart" class="relative inline-block cursor-pointer pr-3">
               <span id="itemsCount"
                 class="bg-[#0051FF] text-xs font-medium text-white text-center px-[7px] py-[2px]  rounded-full absolute bottom-0 right-0 ml-3">0</span>

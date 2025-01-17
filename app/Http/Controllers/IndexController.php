@@ -124,9 +124,10 @@ class IndexController extends Controller
 
 
     $categorias = Category::with(['subcategories'])
-      ->join('products', 'products.categoria_id', '=', 'categories.id')
       ->select('categories.id', 'categories.name')
-      ->distinct()->get();
+      ->join('products', 'products.categoria_id', '=', 'categories.id')
+      ->distinct()
+      ->get();
 
     // $SubCategorias = SubCategoria::where('status','1')->where('visible','1')->get();
     $marcas = Marca::select('marcas.*')
