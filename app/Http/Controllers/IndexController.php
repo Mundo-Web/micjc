@@ -123,7 +123,9 @@ class IndexController extends Controller
 
 
 
-    $categorias = Category::with(['subcategories'])
+    $categorias = Category::with(['subcategories' => function ($query) {
+      $query->has('products');
+    }])
       ->select('categories.id', 'categories.name')
       ->join('products', 'products.categoria_id', '=', 'categories.id')
       ->distinct()
