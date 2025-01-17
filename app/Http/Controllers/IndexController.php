@@ -75,6 +75,15 @@ class IndexController extends Controller
   public function catalogo(Request $request)
   {
 
+    DB::table('products')
+      ->update([
+        'preciofiltro' => DB::raw('CASE 
+                WHEN precio > 0 AND (descuento = 0 OR descuento > precio) THEN precio 
+                WHEN descuento > 0 THEN descuento 
+                ELSE 0 
+            END')
+      ]);
+
     $categoria = $request->input('cat');
     $subcategoria = $request->input('subcat');
     $marca = $request->input('marca');
@@ -114,12 +123,22 @@ class IndexController extends Controller
 
 
 
-    $categorias = Category::join('products', 'products.categoria_id', '=', 'categories.id')
+    $categorias = Category::with(['subcategories'])
+      ->join('products', 'products.categoria_id', '=', 'categories.id')
       ->select('categories.id', 'categories.name')
       ->distinct()->get();
 
     // $SubCategorias = SubCategoria::where('status','1')->where('visible','1')->get();
-    $marcas = Marca::where('status', '1')->where('visible', '1')->get();
+    $marcas = Marca::select('marcas.*')
+      ->distinct()
+      ->leftJoin('products', 'products.marca_id', 'marcas.id')
+      ->whereNotNull('products.id')
+      ->where('products.status', '1')
+      ->where('products.status', '1')
+      ->where('marcas.status', '1')
+      ->where('marcas.visible', '1')
+      ->orderBy('marcas.name', 'asc')
+      ->get();
 
 
 
@@ -816,18 +835,79 @@ class IndexController extends Controller
     $skip = $request->skip;
     $take = $request->take;
 
+    $categories = $request->categories;
+    $subcategories = $request->subcategories;
+    $brands = $request->brands;
 
+    $triggeredBy = $request->triggeredBy;
 
-    $productos = Products::where('status', '=', 1);
+    $productos = Products::with([
+      'categoria',
+      'marca',
+      'tags'
+    ])
+      ->where('products.status', '=', 1);
+
+    if (count($categories) > 0) {
+      $productos = $productos->where(function ($query) use ($categories) {
+        foreach ($categories as $id) {
+          $query->orWhere('categoria_id', $id);
+        }
+      });
+    }
+
+    if (count($subcategories) > 0) {
+      $productos = $productos->where(function ($query) use ($subcategories) {
+        foreach ($subcategories as $id) {
+          $query->orWhere('sub_cat_id', $id);
+        }
+      });
+    }
+
+    if (count($brands) > 0) {
+      $productos = $productos->where(function ($query) use ($brands) {
+        foreach ($brands as $id) {
+          $query->orWhere('marca_id', $id);
+        }
+      });
+    }
+
+    $brandsList = [];
+    $categoriesList = [];
+
+    if ($triggeredBy == 'category') {
+      $query2 = clone $productos;
+      $brandsList = $query2->select('marcas.id')
+        ->distinct()
+        ->join('marcas', 'marcas.id', 'products.marca_id')
+        ->get();
+    } else if ($triggeredBy == 'brand') {
+      $query2 = clone $productos;
+      $categoriesList = $query2->select('categories.id')
+        ->distinct()
+        ->join('categories', 'categories.id', 'products.categoria_id')
+        ->get();
+    }
 
     foreach ($palabras as $key => $value) {
-      # code...
       $productos = $productos->where('producto', 'like', "%$value%");
     }
-    $productos = $productos->skip($skip)->take($take)->get();
+
+    [$fieldTO, $dirTO] = explode('|', $request->order);
+
+    $productos = $productos
+      ->orderBy($fieldTO, $dirTO)
+      ->skip($skip)
+      ->take($take)
+      ->get();
 
 
-    return response()->json(['message' => 'Busqueda realizada con exito ', 'data' => $productos]);
+    return response()->json([
+      'message' => 'Busqueda realizada con exito ',
+      'data' => $productos,
+      'brands' => $triggeredBy == 'category' ? $brandsList : null,
+      'categories' => $triggeredBy == 'brand' ?  $categoriesList : null,
+    ]);
   }
 
   //  --------------------------------------------

@@ -23,6 +23,10 @@
     .ordenar::before {
       background-image: url({{ asset('images/svg/image_50.svg') }});
     }
+
+    .children-container {
+      display: none;
+    }
   </style>
 @endsection
 
@@ -54,77 +58,385 @@
     <section class="w-full px-[5%]">
 
       <div class="grid grid-cols-1 lg:grid-cols-5">
-        
+
         <div class="lg:col-span-1 flex flex-col gap-3 pb-10 pr-5">
-         
-          <div class="flex flex-col gap-3">
+
+          <div class=" flex flex-col gap-4">
             <div class="relative inline-block text-left w-full lg:w-auto">
-              <select id="categorias"
-                class="select2 focus:outline-none font-moderat_Bold text-text16 xl:text-text18 text-[#0051FF] border-[1.5px] border-gray-200 py-3 px-4 w-full lg:w-[200px]">
-                <option value="">Categorías</option>
-                @foreach ($categorias as $cat)
-                  <option value="{{ $cat->id }}" @if (isset($_GET['cat']) && $cat->id == $_GET['cat']) selected @endif>
-                    {{ strtoupper($cat->name) }}
-                  </option>
+              <input id="input-search-catalogo" type="text"
+                class="py-2 px-3 rounded-none w-full border-gray-300 font-Montserrat_Regular text-[16px]"
+                placeholder="Buscar producto...">
+            </div>
+            <div class="relative flex flex-col gap-4">
+              <div id="filter-blocker"
+                class="absolute top-0 -left-1 -right-1 h-full z-10 flex items-center justify-center bg-white opacity-50 cursor-not-allowed"
+                style="display: none">
+                <i class="fa fa-spinner fa-spin"> </i>
+              </div>
+
+              <div class="relative inline-block text-left w-full lg:w-auto">
+                <h4 class="mb-2 font-Montserrat_Bold">CATEGORIA</h4>
+                @foreach ($categorias as $category)
+                  <div class="block-container">
+                    <label class="block font-Montserrat_Regular py-0.5 cursor-pointer text-[16px]">
+                      <input class="rounded w-5 h-5 border-gray-300 cursor-pointer me-1" type="checkbox" name="category"
+                        value="{{ $category->id }}">
+                      <span>{{ strtoupper($category->name) }}</span>
+                    </label>
+                    @if ($category->subcategories)
+                      <div class="ps-7 py-1 children-container">
+                        @foreach ($category->subcategories->take(6) as $subcategory)
+                          <label class="block font-Montserrat_Regular py-0.5 cursor-pointer text-[14px] text-gray-600">
+                            <input class="rounded w-4 h-4 border-gray-300 cursor-pointer me-1" type="checkbox"
+                              name="subcategory" value="{{ $subcategory->id }}" parent-id="{{ $category->id }}">
+                            <span>{{ $subcategory->name }}</span>
+                          </label>
+                        @endforeach
+                        @if ($category->subcategories->count() > 6)
+                          <button
+                            class="ms-7 py-0.5 font-Montserrat_SemiBold border-b text-[14px] text-gray-600 btn-filters"
+                            data-modal="categories">
+                            + Ver más
+                          </button>
+                        @endif
+                      </div>
+                    @endif
+                  </div>
                 @endforeach
-              </select>
-            </div>
+                {{-- <select id="categorias"
+                  class="select2 focus:outline-none font-moderat_Bold text-text16 xl:text-text18 text-[#0051FF] border-[1.5px] border-gray-200 py-3 px-4 w-full lg:w-[200px]">
+                  <option value="">Categorías</option>
+                  @foreach ($categorias as $cat)
+                    <option value="{{ $cat->id }}" @if (isset($_GET['cat']) && $cat->id == $_GET['cat']) selected @endif>
+                      {{ strtoupper($cat->name) }}
+                    </option>
+                  @endforeach
+                </select> --}}
+              </div>
 
+              {{-- <div class="relative inline-block text-left w-full lg:w-auto">
+                <select id="subCategoria"
+                  class="select2 focus:outline-none font-moderat_Bold text-text16 xl:text-text18 text-[#0051FF] border-[1.5px] border-gray-200 py-3 px-4 w-full lg:w-[200px]">
+                  <option value="">Subcategorías</option>
+                </select>
+              </div> --}}
+
+              <div class="relative inline-block text-left w-full lg:w-auto">
+                <h4 class="mb-2 font-Montserrat_SemiBold">MARCAS</h4>
+                <div id="brands-list">
+                  @foreach ($marcas->take(6) as $brand)
+                    <label class="block font-Montserrat_Regular py-0.5 cursor-pointer text-[16px]">
+                      <input class="rounded w-5 h-5 border-gray-300 cursor-pointer me-1" type="checkbox" name="brand"
+                        value="{{ $brand->id }}">
+                      <span>{{ strtoupper($brand->name) }}</span>
+                    </label>
+                  @endforeach
+                </div>
+                @if ($marcas->count() > 6)
+                  <button class="ms-7 py-0.5 font-Montserrat_SemiBold border-b text-[16px] btn-filters"
+                    data-modal="brands">
+                    + VER MÁS
+                  </button>
+                @endif
+                {{-- <select id="selectMarcas"
+                  class="select2 focus:outline-none font-moderat_Bold text-text16 xl:text-text18 text-[#0051FF] border-[1.5px] border-gray-200 py-3 px-4 w-full lg:w-[200px]">
+                  <option value="">Marca</option>
+                </select> --}}
+              </div>
+            </div>
             <div class="relative inline-block text-left w-full lg:w-auto">
-              <select id="subCategoria"
-                class="select2 focus:outline-none font-moderat_Bold text-text16 xl:text-text18 text-[#0051FF] border-[1.5px] border-gray-200 py-3 px-4 w-full lg:w-[200px]">
-                <option value="">Subcategorías</option>
-              </select>
-            </div>
-
-            <div class="relative inline-block text-left w-full lg:w-auto">
-              <select id="selectMarcas"
-                class="select2 focus:outline-none font-moderat_Bold text-text16 xl:text-text18 text-[#0051FF] border-[1.5px] border-gray-200 py-3 px-4 w-full lg:w-[200px]">
-                <option value="">Marca</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="flex flex-col gap-3 items-center">
-            <div class="relative inline-block text-left w-full">
+              <h4 class="mb-2 font-Montserrat_SemiBold">ORDENAR</h4>
               <select id="ordenItems"
-                class="select2 focus:outline-none font-moderat_Bold text-text16 xl:text-text18 text-[#0051FF] border-[1.5px] border-gray-200 py-3 px-4 w-full ">
-                <option value="">Ordenar</option>
-                <option value="menorAmayor">De Menor a Mayor</option>
-                <option value="mayorAmenor">De Mayor a Menor</option>
-                <option value="nameAsc">A - Z</option>
-                <option value="nameDesc">Z - A</option>
+                class="select2 focus:outline-none font-Montserrat_Regular text-text16 xl:text-text18 text-[#0051FF] border-[1.5px] border-gray-200 py-3 px-4 w-full ">
+                <option value="preciofiltro|asc">DE MENOR A MAYOR</option>
+                <option value="preciofiltro|desc">DE MAYOR A MENOR</option>
+                <option value="producto|asc" selected>POR NOMBRE (A - Z)</option>
+                <option value="producto|desc">POR NOMBRE (Z - A)</option>
               </select>
             </div>
 
-            <div class="flex w-full">
-              {{-- <input type="text" id="searchInput" placeholder="Buscar productos" class="w-full lg:w-[200px] focus:outline-none font-moderat_Bold text-text16  text-[#0051FF] border-[1.5px] border-gray-200 py-2 px-3" value="{{$_GET['search'] ?? ''}}"> --}}
-              <button id="searchButton" class="bg-[#0051FF] text-white font-moderat_Bold text-text16 w-full  py-2 px-3 ">Buscar</button>
-            </div>
+            {{-- <div class="flex w-full">
+              <button id="searchButton"
+                class="bg-[#0051FF] text-white font-moderat_Bold text-text16 w-full  py-2 px-3 ">Buscar</button>
+            </div> --}}
           </div>
 
         </div>
 
         <div class="lg:col-span-4">
-          <div class="grid grid-cols-2 md:grid-cols-3  gap-5 md:gap-7">
-            @foreach ($productos as $item)
-              <x-product.cardproduct  bgcolor="bg-[#FFFFFF]" :item="$item" />
-            @endforeach
+          <div class="grid grid-cols-2 md:grid-cols-3  gap-5 md:gap-7" id="catalogo-result">
+            {{-- @foreach ($productos as $item)
+              <x-product.cardproduct bgcolor="bg-[#FFFFFF]" :item="$item" />
+            @endforeach --}}
 
           </div>
-          <div data-aos="fade-up" data-aos-offset="150" class="py-10 w-full">
+          {{-- <div data-aos="fade-up" data-aos-offset="150" class="py-10 w-full">
             {{ $productos }}
-          </div>
+          </div> --}}
         </div>
 
       </div>
 
     </section>
+
+    <div id="filters-modal-categories"
+      class="modal bg-white !opacity-100 h-max !max-w-[720px] min-h-[300px] max-h-[calc(100vh-200px)]">
+      <h4 class="mb-2 font-Montserrat_Bold">CATEGORIA</h4>
+      <div class="grid md:grid-cols-2 gap-4">
+        @foreach ($categorias as $category)
+          <div class="block-container">
+            <label class="block font-Montserrat_Regular py-0.5 cursor-pointer text-[16px]">
+              <input class="rounded w-5 h-5 border-gray-300 cursor-pointer me-1" type="checkbox" name="category"
+                value="{{ $category->id }}">
+              <span>{{ strtoupper($category->name) }}</span>
+            </label>
+            @if ($category->subcategories)
+              <div class="ps-7 py-1">
+                @foreach ($category->subcategories as $subcategory)
+                  <label class="block font-Montserrat_Regular py-0.5 cursor-pointer text-[14px] text-gray-600">
+                    <input class="rounded w-4 h-4 border-gray-300 cursor-pointer me-1" type="checkbox" name="subcategory"
+                      value="{{ $subcategory->id }}" parent-id="{{ $category->id }}">
+                    <span>{{ $subcategory->name }}</span>
+                  </label>
+                @endforeach
+              </div>
+            @endif
+          </div>
+        @endforeach
+      </div>
+    </div>
+
+    <div id="filters-modal-brands"
+      class="modal bg-white !opacity-100 h-max !max-w-[720px] min-h-[300px] max-h-[calc(100vh-200px)]">
+      <h4 class="mb-2 font-Montserrat_SemiBold">MARCAS</h4>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-1">
+        @foreach ($marcas as $brand)
+          <label class="block font-Montserrat_Regular py-0.5 cursor-pointer text-[16px]">
+            <input class="rounded w-5 h-5 border-gray-300 cursor-pointer me-1" type="checkbox" name="brand"
+              value="{{ $brand->id }}">
+            <span>{{ strtoupper($brand->name) }}</span>
+          </label>
+        @endforeach
+      </div>
+    </div>
   </main>
 @endsection
 
 @section('scripts_importados')
   <script>
+    var brandsDB = @json($marcas);
+    $(document).on('click', '.btn-filters', (e) => $(`#filters-modal-${$(e.target).data('modal')}`).modal('show'))
+
+    var triggeredBy = null;
+    let controllerCatalogo = new AbortController();
+    $(document).on('change', '[name="category"]', e => {
+      const childrenContainer = $(`[name="category"][value="${e.target.value}"]`).parents('.block-container').find(
+        '.children-container')
+      if (e.target.checked) {
+        childrenContainer.show(125)
+      } else {
+        childrenContainer.hide(125)
+        $(`[name="subcategory"][parent-id="${e.target.value}"]`).prop('checked', false)
+      }
+      $(`[name="category"][value="${e.target.value}"]`).prop('checked', e.target.checked)
+      triggeredBy = 'category'
+      obtenerProductosCatalogo()
+    })
+
+    $(document).on('change', '[name="subcategory"]', e => {
+      $(`[name="subcategory"][value="${e.target.value}"]`).prop('checked', e.target.checked)
+      if (e.target.checked) {
+        $(`[name="category"][value="${$(e.target).attr('parent-id')}"]`).prop('checked', true)
+      }
+      triggeredBy = 'category'
+      obtenerProductosCatalogo()
+    })
+
+    $(document).on('change', '[name="brand"]', e => {
+      $(`[name="brand"][value="${e.target.value}"]`).prop('checked', e.target.checked)
+      triggeredBy = 'brand'
+      obtenerProductosCatalogo()
+    })
+
+    $(document).on('keyup', '#input-search-catalogo', e => {
+      // triggeredBy = null
+      obtenerProductosCatalogo()
+    })
+
+    $(document).on('change', '#ordenItems', e => {
+      // triggeredBy = null
+      obtenerProductosCatalogo()
+    })
+
+    const obtenerProductosCatalogo = async () => {
+      $('#filter-blocker').show(0)
+
+      const search = $('#input-search-catalogo').val()
+      const categories = [...new Set([...$('[name="category"]:checked')].map(e => e.value))]
+      const subcategories = [...new Set([...$('[name="subcategory"]:checked')].map(e => e.value))]
+      const brandsSelected = [...new Set([...$('[name="brand"]:checked')].map(e => e.value))]
+      const order = $('#ordenItems').val()
+
+      if (categories.length == 0 && subcategories.length == 0 && brandsSelected.length == 0) {
+        triggeredBy = null
+      }
+
+      controllerCatalogo.abort();
+      controllerCatalogo = new AbortController();
+
+      try {
+        const res = await fetch("{{ route('buscarProductos') }}", {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            body: JSON.stringify({
+              valorInput: search,
+              categories,
+              subcategories,
+              brands: brandsSelected,
+              take: 12,
+              skip,
+              order,
+              triggeredBy
+            }),
+            signal: controllerCatalogo.signal
+          })
+          .then(response => response.json())
+          .then(({
+            data,
+            categories,
+            brands
+          }) => {
+            $('#catalogo-result').html('')
+            data.forEach(x => {
+              $('#catalogo-result').append(`<div x-data="{ showAmbiente: false }" @mouseenter="showAmbiente = true" @mouseleave="showAmbiente = false"
+                class="flex flex-col rounded-xl gap-3  overflow-hidden  bg-[#FFFFFF]">
+                <div class="bg-[#FFFFFF] flex flex-col justify-center relative product_container">
+
+
+                  <div class="flex flex-row justify-end items-center absolute top-5 right-[5%] z-[1]">
+                    ${
+                    x.descuento > 0 ? `<span
+                                                    class="font-Montserrat_Bold text-[13px] rounded-l-full rounded-br-full tracking-tight  bg-black text-white py-1 px-2">
+                                                    AHORRA
+                                                    ${Math.round((x.precio - x.descuento) / x.precio) * 100 }%
+                                                  </span>`: x.tags?.map(tag => {
+                        return `<span class="font-Montserrat_Bold text-[13px] rounded-l-full rounded-br-full text-white py-1 px-2"
+                                                      style="background-color: ${tag.color}">
+                                                        ${tag.name}
+                                                      </span>`
+                      }).join('')
+                    }
+                  </div>
+
+                  <div>
+                    <a href="/producto/${x.id}" class="relative flex justify-center items-center aspect-square group">
+                      <img
+                        class="w-full object-contain md:object-cover absolute inset-0 aspect-square transition-transform duration-300 ease-in-out transform group-hover:scale-[115%] hover:transition-transform hover:duration-300"
+                        src="${x.imagen ? `/${x.imagen}`: '/images/img/noimagen.jpg'}"
+                        alt="${ x.imagen ? x.producto : 'Imagen alternativa' }"
+                        onerror="this.onerror=null;this.src='/images/img/noimagen.jpg';"
+                        style="view-transition-name: product-detail-${x.id}" />
+                      <img
+                        class="w-full object-cover md:object-cover absolute inset-0 aspect-square transition-transform duration-300 ease-in-out transform group-hover:scale-[115%] hover:transition-transform hover:duration-300"
+                        src="${x.imagen ? `/${x.imagen}`: '/images/img/noimagen.jpg'}"
+                        alt="${ x.imagen ? x.producto : 'Imagen alternativa' }"
+                        style="view-transition-name: product-detail-${x.id}" />
+                    </a>
+                  </div>
+                </div>
+
+
+                <div class="flex flex-col bg-white p-2 md:px-5 pb-3 sm:pb-0 z-[2]">
+                  <div class="flex flex-col gap-2 md:gap-2">
+                    ${
+                      x.descuento == 0 ? `<span class="text-[#111111] text-text16 md:text-xl font-Montserrat_Bold font-bold ">
+                                                      S/. ${Number(x.precio).toFixed(2)}
+                                                    </span>`: `<div class="flex flex-row gap-2  justify-start items-center">
+                                                      <span class="text-[#111111] text-sm md:text-xl font-Montserrat_Bold font-bold ">
+                                                        S/. ${Number(x.descuento).toFixed(2)}
+                                                      </span>
+                                                      <span class="text-[#111111] text-xs line-through font-Montserrat_Regular font-bold md:font-medium">
+                                                        S/. ${Number(x.precio).toFixed(2)}
+                                                      </span>
+                                                    </div>`
+                    }
+                    <a href="/producto/${x.id}">
+                      <h2
+                        class="font-Montserrat_SemiBold leading-normal uppercase text-sm md:text-base text-[#111111] line-clamp-2 tracking-tight">
+                        ${x.producto}
+                      </h2>
+                    </a>
+
+                    <a href="/catalogo?marca=${x.marca_id}">
+                      <h3 class="font-Montserrat_SemiBold text-text12 md:text-sm text-opacity-50 text-[#111111]">
+                        ${x?.marca?.name ?? 'S/M'}
+                      </h3>
+                    </a>
+
+
+                    <div class="addProduct flex flex-row items-center justify-center cursor-pointer py-2 sm:mb-4">
+                      <button data-id="${x.id}" type="button" id='btnAgregarCarrito'
+                        class="uppercase text-white text-[11px] md:text-sm font-Montserrat_Bold font-semibold bg-[#0051FF] px-4 py-3 rounded-3xl">
+                        <i class="fa fa-cart"></i>
+                        Añadir al carrito
+                      </button>
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>`)
+            })
+
+            $('#brands-list').html('')
+            const brandsTD = brandsDB.filter(x => brands == null || brands.find(b => b.id == x.id));
+            brandsTD.slice(0, 6).map(b => {
+              $('#brands-list').append(`<label class="block font-Montserrat_Regular py-0.5 cursor-pointer text-[16px]">
+                  <input class="rounded w-5 h-5 border-gray-300 cursor-pointer me-1" type="checkbox" name="brand"
+                    value="${b.id}" ${brandsSelected.includes(String(b.id)) ? 'checked' : ''}>
+                  <span>${b.name.toUpperCase()}</span>
+                </label>`)
+            })
+
+            if (brandsTD.length > 6) $('[data-modal="brands"]').show()
+            else $('[data-modal="brands"]').hide()
+
+            if (triggeredBy == null) {
+              $('[name="category"]').parents('.block-container').show()
+              $('[name="brand"]').parent().show()
+            }
+
+            if (categories != null) {
+              $('[name="category"]').parents('.block-container').hide()
+              categories.map(({
+                id
+              }) => {
+                $(`[name="category"][value="${id}"]`).parents('.block-container').show()
+              })
+            }
+
+            if (brands != null) {
+              $('[name="brand"]').parent().hide()
+              brands.map(({
+                id
+              }) => {
+                $(`[name="brand"][value="${id}"]`).parent().show()
+              })
+            }
+
+          })
+
+      } catch (error) {
+
+      }
+      $('#filter-blocker').hide(0)
+    }
+
+    obtenerProductosCatalogo()
+
     const obtenerSubcategorias = () => {
       let categoria = $('#categorias').val();
       $.ajax({
@@ -183,7 +495,8 @@
     $(document).ready(function() {
       $('.select2').select2({
         width: '100%',
-        dropdownParent: $('body')
+        dropdownParent: $('body'),
+        minimumResultsForSearch: -1
       });
 
       $("#categorias").on('change', () => obtenerSubcategorias());

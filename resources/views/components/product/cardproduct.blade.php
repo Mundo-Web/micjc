@@ -27,11 +27,13 @@
           class="w-full object-contain md:object-cover absolute inset-0 aspect-square transition-transform duration-300 ease-in-out transform group-hover:scale-[115%] hover:transition-transform hover:duration-300"
           src="{{ $item->imagen ? asset($item->imagen) : asset('images/img/noimagen.jpg') }}"
           alt="{{ $item->imagen ? $item->name : 'imagen_alternativa' }}"
-          onerror="this.onerror=null;this.src='{{ asset('images/img/noimagen.jpg') }}';" />
+          onerror="this.onerror=null;this.src='{{ asset('images/img/noimagen.jpg') }}';"
+          style="view-transition-name: product-detail-{{ $item->id }}" />
         <img
           class="w-full object-cover md:object-cover absolute inset-0 aspect-square transition-transform duration-300 ease-in-out transform group-hover:scale-[115%] hover:transition-transform hover:duration-300"
           src="{{ $item->imagen ? asset($item->imagen) : asset('images/img/noimagen.jpg') }}"
-          alt="{{ $item->imagen ? $item->name : 'imagen_alternativa' }}" />
+          alt="{{ $item->imagen ? $item->name : 'imagen_alternativa' }}"
+          style="view-transition-name: product-detail-{{ $item->id }}" />
       </a>
     </div>
   </div>

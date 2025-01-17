@@ -206,7 +206,7 @@
         </a>
         <div x-show="openCatalogo"
           class="origin-top-right absolute top-full left-0 w-screen max-h-[calc(100vh-300px)] overflow-y-auto mt-0 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-8 shadow-lg overflow-hidden grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 z-50"
-          @click.outside="openCatalogo = false" @keydown.escape.window="openCatalogo = false">
+          @click.outside="openCatalogo = false" @keydown.escape.window="openCatalogo = false" style="display: none;">
 
           @foreach ($categorias as $category)
             @if (count($category->subcategories))

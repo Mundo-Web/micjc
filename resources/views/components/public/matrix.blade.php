@@ -42,9 +42,10 @@
 
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-
-
   <style>
+    @view-transition {
+      navigation: auto;
+    }
     @font-face {
       font-family: "moderat-700";
       src: url({{ asset('fonts/Moderat-Mono-Bold.woff') }}) format("woff");

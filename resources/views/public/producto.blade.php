@@ -32,7 +32,8 @@
 
           <div id="containerCaratula" class="md:basis-3/4 flex justify-start items-start order-1 md:order-2 w-full ">
             <img src="{{ asset($producto->imagen) }}" alt="computer" class="w-[398px] h-[510px] object-cover "
-              data-aos="fade-up" data-aos-offset="150">
+              {{-- data-aos="fade-up" data-aos-offset="150" --}}
+              style="view-transition-name: product-detail-{{$producto->id}}">
           </div>
         </div>
 
