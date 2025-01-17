@@ -80,7 +80,7 @@
                   <div class="block-container">
                     <label class="block font-Montserrat_Regular py-0.5 cursor-pointer text-[16px]">
                       <input class="rounded w-5 h-5 border-gray-300 cursor-pointer me-1" type="checkbox" name="category"
-                        value="{{ $category->id }}">
+                        value="{{ $category->id }}" {{ isset($_GET['cat']) && $_GET['cat'] == $category->id ? 'checked' : '' }}>
                       <span>{{ strtoupper($category->name) }}</span>
                     </label>
                     @if ($category->subcategories)
@@ -88,7 +88,7 @@
                         @foreach ($category->subcategories->take(6) as $subcategory)
                           <label class="block font-Montserrat_Regular py-0.5 cursor-pointer text-[14px] text-gray-600">
                             <input class="rounded w-4 h-4 border-gray-300 cursor-pointer me-1" type="checkbox"
-                              name="subcategory" value="{{ $subcategory->id }}" parent-id="{{ $category->id }}">
+                              name="subcategory" value="{{ $subcategory->id }}" parent-id="{{ $category->id }}" {{ isset($_GET['subcat']) && $_GET['subcat'] == $subcategory->id ? 'checked' : '' }}>
                             <span>{{ $subcategory->name }}</span>
                           </label>
                         @endforeach
@@ -187,7 +187,7 @@
           <div class="block-container">
             <label class="block font-Montserrat_Regular py-0.5 cursor-pointer text-[16px]">
               <input class="rounded w-5 h-5 border-gray-300 cursor-pointer me-1" type="checkbox" name="category"
-                value="{{ $category->id }}">
+                value="{{ $category->id }}" {{ isset($_GET['cat']) && $_GET['cat'] == $category->id ? 'checked' : '' }}>
               <span>{{ strtoupper($category->name) }}</span>
             </label>
             @if ($category->subcategories)
@@ -195,7 +195,7 @@
                 @foreach ($category->subcategories as $subcategory)
                   <label class="block font-Montserrat_Regular py-0.5 cursor-pointer text-[14px] text-gray-600">
                     <input class="rounded w-4 h-4 border-gray-300 cursor-pointer me-1" type="checkbox" name="subcategory"
-                      value="{{ $subcategory->id }}" parent-id="{{ $category->id }}">
+                      value="{{ $subcategory->id }}" parent-id="{{ $category->id }}" {{ isset($_GET['subcat']) && $_GET['subcat'] == $subcategory->id ? 'checked' : '' }}>
                     <span>{{ $subcategory->name }}</span>
                   </label>
                 @endforeach
@@ -319,14 +319,14 @@
                   <div class="flex flex-row justify-end items-center absolute top-5 right-[5%] z-[1]">
                     ${
                     x.descuento > 0 ? `<span
-                                                    class="font-Montserrat_Bold text-[13px] rounded-l-full rounded-br-full tracking-tight  bg-black text-white py-1 px-2">
-                                                    AHORRA
-                                                    ${Math.round((x.precio - x.descuento) / x.precio) * 100 }%
-                                                  </span>`: x.tags?.map(tag => {
+                                                      class="font-Montserrat_Bold text-[13px] rounded-l-full rounded-br-full tracking-tight  bg-black text-white py-1 px-2">
+                                                      AHORRA
+                                                      ${Math.round((x.precio - x.descuento) / x.precio) * 100 }%
+                                                    </span>`: x.tags?.map(tag => {
                         return `<span class="font-Montserrat_Bold text-[13px] rounded-l-full rounded-br-full text-white py-1 px-2"
-                                                      style="background-color: ${tag.color}">
-                                                        ${tag.name}
-                                                      </span>`
+                                                        style="background-color: ${tag.color}">
+                                                          ${tag.name}
+                                                        </span>`
                       }).join('')
                     }
                   </div>
@@ -353,15 +353,15 @@
                   <div class="flex flex-col gap-2 md:gap-2">
                     ${
                       x.descuento == 0 ? `<span class="text-[#111111] text-text16 md:text-xl font-Montserrat_Bold font-bold ">
-                                                      S/. ${Number(x.precio).toFixed(2)}
-                                                    </span>`: `<div class="flex flex-row gap-2  justify-start items-center">
-                                                      <span class="text-[#111111] text-sm md:text-xl font-Montserrat_Bold font-bold ">
-                                                        S/. ${Number(x.descuento).toFixed(2)}
-                                                      </span>
-                                                      <span class="text-[#111111] text-xs line-through font-Montserrat_Regular font-bold md:font-medium">
                                                         S/. ${Number(x.precio).toFixed(2)}
-                                                      </span>
-                                                    </div>`
+                                                      </span>`: `<div class="flex flex-row gap-2  justify-start items-center">
+                                                        <span class="text-[#111111] text-sm md:text-xl font-Montserrat_Bold font-bold ">
+                                                          S/. ${Number(x.descuento).toFixed(2)}
+                                                        </span>
+                                                        <span class="text-[#111111] text-xs line-through font-Montserrat_Regular font-bold md:font-medium">
+                                                          S/. ${Number(x.precio).toFixed(2)}
+                                                        </span>
+                                                      </div>`
                     }
                     <a href="/producto/${x.id}">
                       <h2
