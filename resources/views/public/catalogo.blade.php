@@ -239,7 +239,7 @@
         $(`[name="subcategory"][parent-id="${e.target.value}"]`).prop('checked', false)
       }
       $(`[name="category"][value="${e.target.value}"]`).prop('checked', e.target.checked)
-      triggeredBy = 'category'
+      triggeredBy = triggeredBy == null ? 'category' : triggeredBy
       obtenerProductosCatalogo()
     })
 
@@ -248,13 +248,13 @@
       if (e.target.checked) {
         $(`[name="category"][value="${$(e.target).attr('parent-id')}"]`).prop('checked', true)
       }
-      triggeredBy = 'category'
+      triggeredBy = triggeredBy == null ? 'category' : triggeredBy
       obtenerProductosCatalogo()
     })
 
     $(document).on('change', '[name="brand"]', e => {
       $(`[name="brand"][value="${e.target.value}"]`).prop('checked', e.target.checked)
-      triggeredBy = 'brand'
+      triggeredBy = triggeredBy == null ? 'brand' : triggeredBy
       obtenerProductosCatalogo()
     })
 
