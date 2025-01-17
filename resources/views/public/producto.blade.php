@@ -9,15 +9,15 @@
   <main>
     <section class="w-11/12 md:w-10/12 mx-auto pt-10">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16">
-        <div class="hidden md:flex flex-col md:flex-row justify-center gap-5 md:gap-0">
+        <div class="flex flex-col md:flex-row justify-center gap-5 md:gap-0">
           <div
-            class="flex flex-row justify-between md:flex-col md:justify-start md:items-center h-full md:gap-10 md:basis-1/4 order-2 md:order-1 w-full">
+            class="hidden md:flex flex-row justify-between md:flex-col md:justify-start md:items-center h-full md:gap-10 md:basis-1/4 order-2 md:order-1 w-full">
             @isset($producto->galeria)
-              <img src="{{ asset($producto->imagen) }}" alt="computer"
+              <img src="{{ asset($producto->imagen) }}" alt="{{ $producto->producto }}"
                 class="w-[80px] aspect-square object-cover hover:scale-110 transition-all duration-300 cursor-pointer">
               @foreach ($producto->galeria->take(3) as $item)
                 <div class="">
-                  <img src="{{ asset($item->imagen) }}" alt="computer"
+                  <img src="{{ asset($item->imagen) }}" alt="{{ $producto->producto }}"
                     class="w-[80px] aspect-square object-cover hover:scale-110 transition-all duration-300 cursor-pointer">
                 </div>
               @endforeach
@@ -26,7 +26,7 @@
 
           <div id="containerCaratula"
             class="md:basis-3/4 flex justify-start items-start order-1 md:order-2 w-full relative overflow-hidden">
-            <img id="zoomImage" src="{{ asset($producto->imagen) }}" alt="computer"
+            <img id="zoomImage" src="{{ asset($producto->imagen) }}" alt="{{ $producto->producto }}"
               class="w-full aspect-square object-contain bg-gray-100">
           </div>
         </div>
@@ -44,9 +44,11 @@
             /* Animación de suavizado para el zoom */
           }
 
-          #containerCaratula:hover #zoomImage {
-            transform: scale(2);
-            /* Ajusta el nivel de zoom */
+          @media (min-width: 768px) {
+            #containerCaratula:hover #zoomImage {
+              transform: scale(2);
+              /* Ajusta el nivel de zoom */
+            }
           }
         </style>
 
@@ -56,15 +58,18 @@
             const container = document.getElementById('containerCaratula');
             const image = document.getElementById('zoomImage');
 
+            // Verifica si el ancho de la ventana es mayor a 768px (tamaño típico de escritorio)
             container.addEventListener('mousemove', (e) => {
-              const rect = container.getBoundingClientRect();
-              const offsetX = e.clientX - rect.left; // Posición X del mouse relativa al contenedor
-              const offsetY = e.clientY - rect.top; // Posición Y del mouse relativa al contenedor
+              if (window.innerWidth > 768) {
+                const rect = container.getBoundingClientRect();
+                const offsetX = e.clientX - rect.left; // Posición X del mouse relativa al contenedor
+                const offsetY = e.clientY - rect.top; // Posición Y del mouse relativa al contenedor
 
-              const percentX = offsetX / rect.width * 100; // Porcentaje X
-              const percentY = offsetY / rect.height * 100; // Porcentaje Y
+                const percentX = offsetX / rect.width * 100; // Porcentaje X
+                const percentY = offsetY / rect.height * 100; // Porcentaje Y
 
-              image.style.transformOrigin = `${percentX}% ${percentY}%`; // Fija el punto de zoom
+                image.style.transformOrigin = `${percentX}% ${percentY}%`; // Fija el punto de zoom
+              }
             });
 
             container.addEventListener('mouseleave', () => {
