@@ -68,8 +68,8 @@
                 placeholder="Buscar producto...">
             </div>
             <div class="relative flex flex-col gap-4">
-              <div id="filter-blocker"
-                class="absolute top-0 -left-1 -right-1 h-full z-10 flex items-center justify-center bg-white opacity-50 cursor-not-allowed"
+              <div
+                class="filter-blocker absolute top-0 -left-1 -right-1 h-full z-10 flex items-center justify-center bg-white opacity-50 cursor-not-allowed"
                 style="display: none">
                 <i class="fa fa-spinner fa-spin"> </i>
               </div>
@@ -195,170 +195,35 @@
             @endforeach --}}
 
           </div>
-          <div class="w-full font-medium flex flex-row justify-center items-center mt-[2.5%] mb-[5%]">
+          <div class="relative w-full font-medium flex flex-row justify-center items-center mt-[2.5%] mb-[5%]">
             <nav aria-label="Page navigation example w-full">
-              <ul class="flex flex-wrap items-center gap-1 -space-x-px text-base justify-center">
-                <li><button
+              <div
+                class="filter-blocker absolute top-0 -left-1 -right-1 h-full z-10 flex items-center justify-center bg-white opacity-50 cursor-not-allowed"
+                style="display: none">
+                <i class="fa fa-spinner fa-spin"> </i>
+              </div>
+              <ul id="pages-filter" class="flex flex-wrap items-center gap-1 -space-x-px text-base justify-center">
+                <li>
+                  <button
                     class="cursor-pointer flex items-center justify-center px-4 h-10 w-10 leading-tight text-gray-500 hover:bg-white rounded-full bg-gray-100 hover:text-gray-700"
-                    type="button"><span class="sr-only">Previous</span><svg class="w-3 h-3 rtl:rotate-180"
-                      aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M5 1 1 5l4 4"></path>
-                    </svg></button></li>
-                <li class="hidden"><button aria-current="page"
+                    type="button">
+                    ←
+                  </button>
+                </li>
+                <li class="block">
+                  <button aria-current="page"
                     class="cursor-pointer z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-gray-100 text-gray-500 hover:text-gray-700"
-                    type="button">1</button></li>
-                <li class="hidden"><button aria-current="page"
-                    class="cursor-pointer z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-gray-100 text-gray-500 hover:text-gray-700"
-                    type="button">2</button></li>
-                <li class="hidden"><button aria-current="page"
-                    class="cursor-pointer z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-gray-100 text-gray-500 hover:text-gray-700"
-                    type="button">3</button></li>
-                <li class="hidden"><button aria-current="page"
-                    class="cursor-pointer z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-gray-100 text-gray-500 hover:text-gray-700"
-                    type="button">4</button></li>
-                <li class="hidden"><button aria-current="page"
-                    class="cursor-pointer z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-gray-100 text-gray-500 hover:text-gray-700"
-                    type="button">5</button></li>
-                <li class="hidden"><button aria-current="page"
-                    class="cursor-pointer z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-gray-100 text-gray-500 hover:text-gray-700"
-                    type="button">6</button></li>
-                <li class="hidden"><button aria-current="page"
-                    class="cursor-pointer z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-gray-100 text-gray-500 hover:text-gray-700"
-                    type="button">7</button></li>
-                <li><button aria-current="page"
-                    class="z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-transparent text-gray-500 hover:text-gray-700"
-                    type="button">···</button></li>
-                <li class="block"><button aria-current="page"
-                    class="cursor-pointer z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-gray-100 text-gray-500 hover:text-gray-700"
-                    type="button">9</button></li>
-                <li class="block"><button aria-current="page"
-                    class="cursor-pointer z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-gray-100 text-gray-500 hover:text-gray-700"
-                    type="button">10</button></li>
-                <li class="block"><button aria-current="page"
-                    class="cursor-pointer z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-gray-100 text-gray-500 hover:text-gray-700"
-                    type="button">11</button></li>
-                <li class="block"><button aria-current="page"
-                    class="cursor-pointer z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-[#006BF6] text-white"
-                    type="button">12</button></li>
-                <li class="block"><button aria-current="page"
-                    class="cursor-pointer z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-gray-100 text-gray-500 hover:text-gray-700"
-                    type="button">13</button></li>
-                <li class="block"><button aria-current="page"
-                    class="cursor-pointer z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-gray-100 text-gray-500 hover:text-gray-700"
-                    type="button">14</button></li>
-                <li class="block"><button aria-current="page"
-                    class="cursor-pointer z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-gray-100 text-gray-500 hover:text-gray-700"
-                    type="button">15</button></li>
-                <li><button aria-current="page"
-                    class="z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-transparent text-gray-500 hover:text-gray-700"
-                    type="button">···</button></li>
-                <li class="hidden"><button aria-current="page"
-                    class="cursor-pointer z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-gray-100 text-gray-500 hover:text-gray-700"
-                    type="button">17</button></li>
-                <li class="hidden"><button aria-current="page"
-                    class="cursor-pointer z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-gray-100 text-gray-500 hover:text-gray-700"
-                    type="button">18</button></li>
-                <li class="hidden"><button aria-current="page"
-                    class="cursor-pointer z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-gray-100 text-gray-500 hover:text-gray-700"
-                    type="button">19</button></li>
-                <li class="hidden"><button aria-current="page"
-                    class="cursor-pointer z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-gray-100 text-gray-500 hover:text-gray-700"
-                    type="button">20</button></li>
-                <li class="hidden"><button aria-current="page"
-                    class="cursor-pointer z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-gray-100 text-gray-500 hover:text-gray-700"
-                    type="button">21</button></li>
-                <li class="hidden"><button aria-current="page"
-                    class="cursor-pointer z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-gray-100 text-gray-500 hover:text-gray-700"
-                    type="button">22</button></li>
-                <li class="hidden"><button aria-current="page"
-                    class="cursor-pointer z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-gray-100 text-gray-500 hover:text-gray-700"
-                    type="button">23</button></li>
-                <li class="hidden"><button aria-current="page"
-                    class="cursor-pointer z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-gray-100 text-gray-500 hover:text-gray-700"
-                    type="button">24</button></li>
-                <li class="hidden"><button aria-current="page"
-                    class="cursor-pointer z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-gray-100 text-gray-500 hover:text-gray-700"
-                    type="button">25</button></li>
-                <li class="hidden"><button aria-current="page"
-                    class="cursor-pointer z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-gray-100 text-gray-500 hover:text-gray-700"
-                    type="button">26</button></li>
-                <li class="hidden"><button aria-current="page"
-                    class="cursor-pointer z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-gray-100 text-gray-500 hover:text-gray-700"
-                    type="button">27</button></li>
-                <li class="hidden"><button aria-current="page"
-                    class="cursor-pointer z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-gray-100 text-gray-500 hover:text-gray-700"
-                    type="button">28</button></li>
-                <li class="hidden"><button aria-current="page"
-                    class="cursor-pointer z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-gray-100 text-gray-500 hover:text-gray-700"
-                    type="button">29</button></li>
-                <li class="hidden"><button aria-current="page"
-                    class="cursor-pointer z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-gray-100 text-gray-500 hover:text-gray-700"
-                    type="button">30</button></li>
-                <li class="hidden"><button aria-current="page"
-                    class="cursor-pointer z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-gray-100 text-gray-500 hover:text-gray-700"
-                    type="button">31</button></li>
-                <li class="hidden"><button aria-current="page"
-                    class="cursor-pointer z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-gray-100 text-gray-500 hover:text-gray-700"
-                    type="button">32</button></li>
-                <li class="hidden"><button aria-current="page"
-                    class="cursor-pointer z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-gray-100 text-gray-500 hover:text-gray-700"
-                    type="button">33</button></li>
-                <li class="hidden"><button aria-current="page"
-                    class="cursor-pointer z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-gray-100 text-gray-500 hover:text-gray-700"
-                    type="button">34</button></li>
-                <li class="hidden"><button aria-current="page"
-                    class="cursor-pointer z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-gray-100 text-gray-500 hover:text-gray-700"
-                    type="button">35</button></li>
-                <li class="hidden"><button aria-current="page"
-                    class="cursor-pointer z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-gray-100 text-gray-500 hover:text-gray-700"
-                    type="button">36</button></li>
-                <li class="hidden"><button aria-current="page"
-                    class="cursor-pointer z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-gray-100 text-gray-500 hover:text-gray-700"
-                    type="button">37</button></li>
-                <li class="hidden"><button aria-current="page"
-                    class="cursor-pointer z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-gray-100 text-gray-500 hover:text-gray-700"
-                    type="button">38</button></li>
-                <li class="hidden"><button aria-current="page"
-                    class="cursor-pointer z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-gray-100 text-gray-500 hover:text-gray-700"
-                    type="button">39</button></li>
-                <li class="hidden"><button aria-current="page"
-                    class="cursor-pointer z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-gray-100 text-gray-500 hover:text-gray-700"
-                    type="button">40</button></li>
-                <li class="hidden"><button aria-current="page"
-                    class="cursor-pointer z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-gray-100 text-gray-500 hover:text-gray-700"
-                    type="button">41</button></li>
-                <li class="hidden"><button aria-current="page"
-                    class="cursor-pointer z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-gray-100 text-gray-500 hover:text-gray-700"
-                    type="button">42</button></li>
-                <li class="hidden"><button aria-current="page"
-                    class="cursor-pointer z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-gray-100 text-gray-500 hover:text-gray-700"
-                    type="button">43</button></li>
-                <li class="hidden"><button aria-current="page"
-                    class="cursor-pointer z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-gray-100 text-gray-500 hover:text-gray-700"
-                    type="button">44</button></li>
-                <li class="hidden"><button aria-current="page"
-                    class="cursor-pointer z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-gray-100 text-gray-500 hover:text-gray-700"
-                    type="button">45</button></li>
-                <li class="hidden"><button aria-current="page"
-                    class="cursor-pointer z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-gray-100 text-gray-500 hover:text-gray-700"
-                    type="button">46</button></li>
-                <li class="hidden"><button aria-current="page"
-                    class="cursor-pointer z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-gray-100 text-gray-500 hover:text-gray-700"
-                    type="button">47</button></li>
-                <li class="hidden"><button aria-current="page"
-                    class="cursor-pointer z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-gray-100 text-gray-500 hover:text-gray-700"
-                    type="button">48</button></li>
-                <li class="hidden"><button aria-current="page"
-                    class="cursor-pointer z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-gray-100 text-gray-500 hover:text-gray-700"
-                    type="button">49</button></li>
-                <li><button
+                    type="button">
+                    1
+                  </button>
+                </li>
+                <li>
+                  <button
                     class="cursor-pointer flex items-center justify-center px-4 h-10 w-10 leading-tight text-gray-500 hover:bg-white rounded-full bg-gray-100 hover:text-gray-700"
-                    type="button"><span class="sr-only">Next</span><svg class="w-3 h-3 rtl:rotate-180"
-                      aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="m1 9 4-4-4-4"></path>
-                    </svg></button></li>
+                    type="button">
+                    →
+                  </button>
+                </li>
               </ul>
             </nav>
           </div>
@@ -423,6 +288,7 @@
 
     var triggeredBy = null;
     let controllerCatalogo = new AbortController();
+    var currentPage = 1;
     $(document).on('change', '[name="category"]', e => {
       const childrenContainer = $(`[name="category"][value="${e.target.value}"]`).parents('.block-container').find(
         '.children-container')
@@ -434,6 +300,7 @@
       }
       $(`[name="category"][value="${e.target.value}"]`).prop('checked', e.target.checked)
       triggeredBy = triggeredBy == null ? 'category' : triggeredBy
+      currentPage = 1;
       obtenerProductosCatalogo()
     })
 
@@ -443,27 +310,53 @@
         $(`[name="category"][value="${$(e.target).attr('parent-id')}"]`).prop('checked', true)
       }
       triggeredBy = triggeredBy == null ? 'category' : triggeredBy
+      currentPage = 1;
       obtenerProductosCatalogo()
     })
 
     $(document).on('change', '[name="brand"]', e => {
       $(`[name="brand"][value="${e.target.value}"]`).prop('checked', e.target.checked)
       triggeredBy = triggeredBy == null ? 'brand' : triggeredBy
+      currentPage = 1;
       obtenerProductosCatalogo()
     })
 
     $(document).on('keyup', '#input-search-catalogo', e => {
       // triggeredBy = null
+      currentPage = 1;
       obtenerProductosCatalogo()
     })
 
     $(document).on('change', '[name="ordenItems"]', e => {
       // triggeredBy = null
+      currentPage = 1;
+      obtenerProductosCatalogo()
+    })
+
+    $(document).on('change', '[name="paginator"]', e => {
+      currentPage = e.target.value;
+    })
+
+    $(document).on('click', '[data-pagination]', e => {
+      const action = $(e.target).data('pagination')
+
+      switch (action) {
+        case 'add':
+          currentPage++;
+          break;
+        case 'reduce':
+          currentPage--;
+          break;
+        default:
+          currentPage = parseInt($(e.target).val())
+          break;
+      }
+
       obtenerProductosCatalogo()
     })
 
     const obtenerProductosCatalogo = async () => {
-      $('#filter-blocker').show(0)
+      $('.filter-blocker').show(0)
 
       const search = $('#input-search-catalogo').val()
       const categories = [...new Set([...$('[name="category"]:checked')].map(e => e.value))]
@@ -491,7 +384,7 @@
               subcategories,
               brands: brandsSelected,
               take: 12,
-              skip,
+              skip: 12 * (currentPage - 1),
               order,
               triggeredBy
             }),
@@ -501,7 +394,8 @@
           .then(({
             data,
             categories,
-            brands
+            brands,
+            totalCount
           }) => {
             $('#catalogo-result').html('')
             data.forEach(x => {
@@ -513,14 +407,14 @@
                   <div class="flex flex-row justify-end items-center absolute top-5 right-[5%] z-[1]">
                     ${
                     x.descuento > 0 ? `<span
-                                                        class="font-Montserrat_Bold text-[13px] rounded-l-full rounded-br-full tracking-tight  bg-black text-white py-1 px-2">
-                                                        AHORRA
-                                                        ${Math.round((x.precio - x.descuento) / x.precio) * 100 }%
-                                                      </span>`: x.tags?.map(tag => {
+                                                                                                class="font-Montserrat_Bold text-[13px] rounded-l-full rounded-br-full tracking-tight  bg-black text-white py-1 px-2">
+                                                                                                AHORRA
+                                                                                                ${Math.round((x.precio - x.descuento) / x.precio) * 100 }%
+                                                                                              </span>`: x.tags?.map(tag => {
                         return `<span class="font-Montserrat_Bold text-[13px] rounded-l-full rounded-br-full text-white py-1 px-2"
-                                                          style="background-color: ${tag.color}">
-                                                            ${tag.name}
-                                                          </span>`
+                                                                                                  style="background-color: ${tag.color}">
+                                                                                                    ${tag.name}
+                                                                                                  </span>`
                       }).join('')
                     }
                   </div>
@@ -547,15 +441,15 @@
                   <div class="flex flex-col gap-2 md:gap-2">
                     ${
                       x.descuento == 0 ? `<span class="text-[#111111] text-text16 md:text-xl font-Montserrat_Bold font-bold ">
-                                                          S/. ${Number(x.precio).toFixed(2)}
-                                                        </span>`: `<div class="flex flex-row gap-2  justify-start items-center">
-                                                          <span class="text-[#111111] text-sm md:text-xl font-Montserrat_Bold font-bold ">
-                                                            S/. ${Number(x.descuento).toFixed(2)}
-                                                          </span>
-                                                          <span class="text-[#111111] text-xs line-through font-Montserrat_Regular font-bold md:font-medium">
-                                                            S/. ${Number(x.precio).toFixed(2)}
-                                                          </span>
-                                                        </div>`
+                                                                                                  S/. ${Number(x.precio).toFixed(2)}
+                                                                                                </span>`: `<div class="flex flex-row gap-2  justify-start items-center">
+                                                                                                  <span class="text-[#111111] text-sm md:text-xl font-Montserrat_Bold font-bold ">
+                                                                                                    S/. ${Number(x.descuento).toFixed(2)}
+                                                                                                  </span>
+                                                                                                  <span class="text-[#111111] text-xs line-through font-Montserrat_Regular font-bold md:font-medium">
+                                                                                                    S/. ${Number(x.precio).toFixed(2)}
+                                                                                                  </span>
+                                                                                                </div>`
                     }
                     <a href="/producto/${x.id}">
                       <h2
@@ -621,12 +515,74 @@
               })
             }
 
+            const pages = Math.ceil(totalCount / 12);
+            let paginationArray = [];
+            const maxElements = 9;
+            const maxOffset = 3; // Máximo de 3 páginas más/menos
+            const startPage = Math.max(1, currentPage - maxOffset);
+            const endPage = Math.min(pages, currentPage + maxOffset);
+
+            for (let i = startPage; i <= endPage; i++) {
+              paginationArray.push(i);
+            }
+
+            // Agregar null al inicio si no es la primera página
+            if (paginationArray[0] > 1) {
+              paginationArray.unshift(null); // Añadir null para los puntos suspensivos
+            }
+
+            // Agregar null al final si no es la última página
+            if (paginationArray[paginationArray.length - 1] < pages) {
+              paginationArray.push(null); // Añadir null para los puntos suspensivos
+            }
+
+            // Asegurarse de que no exceda el número máximo de elementos
+            while (paginationArray.length > maxElements) {
+              paginationArray.shift(); // Eliminar el primer elemento si excede el máximo
+            }
+            $('#pages-filter').html(`<li>
+              <button
+                data-pagination="reduce"
+                class="flex items-center justify-center px-4 h-10 w-10 leading-tight text-gray-500 hover:bg-white rounded-full bg-gray-100 hover:text-gray-700"
+                type="button" ${currentPage <= 1 ? 'disabled' : ''}>
+                ←
+              </button>
+            </li>`)
+            paginationArray.forEach(page => {
+              if (page == null) {
+                $('#pages-filter').append(`<li>
+                  <button aria-current="page"
+                    class="z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight  hover:bg-white rounded-full bg-transparent text-gray-500 hover:text-gray-700"
+                    type="button" disabled>
+                    ···
+                  </button>
+                </li>`)
+              } else {
+                $('#pages-filter').append(`<li class="block">
+                  <button aria-current="page"
+                    data-pagination="apply"
+                    class="z-10 flex items-center justify-center px-4 h-10 w-10 leading-tight rounded-full ${page == currentPage ? 'bg-[#006BF6] text-white': 'hover:bg-white bg-gray-100 text-gray-500 hover:text-gray-700'}  text-gray-500 "
+                    type="button" value="${page}" ${page == currentPage ? 'disabled': ''}>
+                    ${page}
+                  </button>
+                </li>`)
+              }
+            })
+            $('#pages-filter').append(`<li>
+              <button
+                data-pagination="add"
+                class="flex items-center justify-center px-4 h-10 w-10 leading-tight text-gray-500 hover:bg-white rounded-full bg-gray-100 hover:text-gray-700"
+                type="button" ${currentPage >= pages ? 'disabled': ''}>
+                →
+              </button>
+            </li>`)
+
           })
 
       } catch (error) {
 
       }
-      $('#filter-blocker').hide(0)
+      $('.filter-blocker').hide(0)
     }
 
     obtenerProductosCatalogo()
