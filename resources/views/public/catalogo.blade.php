@@ -84,7 +84,7 @@
                       <span>{{ strtoupper($category->name) }}</span>
                     </label>
                     @if ($category->subcategories)
-                      <div class="ps-7 py-1 children-container">
+                      <div class="ps-7 py-1 children-container" style="{{ isset($_GET['cat']) && $_GET['cat'] == $category->id ? "display: block" : '' }}">
                         @foreach ($category->subcategories->take(6) as $subcategory)
                           <label class="block font-Montserrat_Regular py-0.5 cursor-pointer text-[14px] text-gray-600">
                             <input class="rounded w-4 h-4 border-gray-300 cursor-pointer me-1" type="checkbox"
