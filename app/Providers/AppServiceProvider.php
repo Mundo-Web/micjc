@@ -51,7 +51,9 @@ class AppServiceProvider extends ServiceProvider
             $blogCount = Blog::all()->count();
             $general = General::all()->first();
 
-            $categorias = Category::with(['subcategories'])
+            $categorias = Category::with(['subcategories' => function ($query) {
+                $query->has('products');
+            }])
                 ->where('visible', true)
                 ->where('status', true)
                 ->get();

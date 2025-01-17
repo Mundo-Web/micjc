@@ -9,33 +9,69 @@
   <main>
     <section class="w-11/12 md:w-10/12 mx-auto pt-10">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16">
-        <div class="flex flex-col md:flex-row justify-center  gap-5 md:gap-0">
-          {{-- <div
-            class=" flex flex-row justify-between md:flex-col md:justify-start md:items-center h-full md:gap-10 md:basis-1/4 order-2 md:order-1 w-full  ">
+        <div class="hidden md:flex flex-col md:flex-row justify-center gap-5 md:gap-0">
+          <div
+            class="flex flex-row justify-between md:flex-col md:justify-start md:items-center h-full md:gap-10 md:basis-1/4 order-2 md:order-1 w-full">
             @isset($producto->galeria)
-              <img id="imgGaleria" src="{{ asset($producto->imagen) }}" alt="computer"
-                class="w-[70px] h-[90px] object-cover  hover:scale-110 transition-all duration-300 cursor-pointer "
-                data-aos-offset="150">
+              <img src="{{ asset($producto->imagen) }}" alt="computer"
+                class="w-[80px] aspect-square object-cover hover:scale-110 transition-all duration-300 cursor-pointer">
               @foreach ($producto->galeria->take(3) as $item)
                 <div class="">
-                  <img id="imgGaleria" src="{{ asset($item->imagen) }}" alt="computer"
-                    class="w-[70px] h-[90px] object-cover hover:scale-110 transition-all duration-300 cursor-pointer "
-                    data-aos-offset="150">
+                  <img src="{{ asset($item->imagen) }}" alt="computer"
+                    class="w-[80px] aspect-square object-cover hover:scale-110 transition-all duration-300 cursor-pointer">
                 </div>
               @endforeach
-
             @endisset
+          </div>
 
-
-
-          </div> --}}
-
-          <div id="containerCaratula" class="md:basis-3/4 flex justify-start items-start order-1 md:order-2 w-full ">
-            <img src="{{ asset($producto->imagen) }}" alt="computer" class="w-[398px] h-[510px] object-cover "
-              {{-- data-aos="fade-up" data-aos-offset="150" --}}
-              style="view-transition-name: product-detail-{{$producto->id}}">
+          <div id="containerCaratula"
+            class="md:basis-3/4 flex justify-start items-start order-1 md:order-2 w-full relative overflow-hidden">
+            <img id="zoomImage" src="{{ asset($producto->imagen) }}" alt="computer"
+              class="w-full aspect-square object-contain bg-gray-100">
           </div>
         </div>
+
+        <!-- Estilos CSS -->
+        <style>
+          #containerCaratula {
+            position: relative;
+            overflow: hidden;
+            /* Oculta las partes de la imagen que sobresalgan */
+          }
+
+          #zoomImage {
+            transition: transform 0.3s ease;
+            /* Animación de suavizado para el zoom */
+          }
+
+          #containerCaratula:hover #zoomImage {
+            transform: scale(2);
+            /* Ajusta el nivel de zoom */
+          }
+        </style>
+
+        <!-- Script JavaScript -->
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('containerCaratula');
+            const image = document.getElementById('zoomImage');
+
+            container.addEventListener('mousemove', (e) => {
+              const rect = container.getBoundingClientRect();
+              const offsetX = e.clientX - rect.left; // Posición X del mouse relativa al contenedor
+              const offsetY = e.clientY - rect.top; // Posición Y del mouse relativa al contenedor
+
+              const percentX = offsetX / rect.width * 100; // Porcentaje X
+              const percentY = offsetY / rect.height * 100; // Porcentaje Y
+
+              image.style.transformOrigin = `${percentX}% ${percentY}%`; // Fija el punto de zoom
+            });
+
+            container.addEventListener('mouseleave', () => {
+              image.style.transformOrigin = 'center'; // Restaura el punto de zoom al centro
+            });
+          });
+        </script>
 
         <div class="flex flex-col gap-5">
           <div class="flex flex-col gap-5 pb-10 border-b-2 border-[#DDDDDD]" data-aos="fade-up" data-aos-offset="150">

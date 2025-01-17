@@ -286,7 +286,12 @@
     var brandsDB = @json($marcas);
     $(document).on('click', '.btn-filters', (e) => $(`#filters-modal-${$(e.target).data('modal')}`).modal('show'))
 
-    var triggeredBy = null;
+    var triggeredBy =
+      @if (isset($_GET['cat']) || isset($_GET['subcat']))
+        'category'
+      @else
+        null
+      @endif ;
     let controllerCatalogo = new AbortController();
     var currentPage = 1;
     $(document).on('change', '[name="category"]', e => {
@@ -407,14 +412,14 @@
                   <div class="flex flex-row justify-end items-center absolute top-5 right-[5%] z-[1]">
                     ${
                     x.descuento > 0 ? `<span
-                                                                                                class="font-Montserrat_Bold text-[13px] rounded-l-full rounded-br-full tracking-tight  bg-black text-white py-1 px-2">
-                                                                                                AHORRA
-                                                                                                ${Math.round((x.precio - x.descuento) / x.precio) * 100 }%
-                                                                                              </span>`: x.tags?.map(tag => {
+                                                                                                  class="font-Montserrat_Bold text-[13px] rounded-l-full rounded-br-full tracking-tight  bg-black text-white py-1 px-2">
+                                                                                                  AHORRA
+                                                                                                  ${Math.round((x.precio - x.descuento) / x.precio) * 100 }%
+                                                                                                </span>`: x.tags?.map(tag => {
                         return `<span class="font-Montserrat_Bold text-[13px] rounded-l-full rounded-br-full text-white py-1 px-2"
-                                                                                                  style="background-color: ${tag.color}">
-                                                                                                    ${tag.name}
-                                                                                                  </span>`
+                                                                                                    style="background-color: ${tag.color}">
+                                                                                                      ${tag.name}
+                                                                                                    </span>`
                       }).join('')
                     }
                   </div>
@@ -441,15 +446,15 @@
                   <div class="flex flex-col gap-2 md:gap-2">
                     ${
                       x.descuento == 0 ? `<span class="text-[#111111] text-text16 md:text-xl font-Montserrat_Bold font-bold ">
-                                                                                                  S/. ${Number(x.precio).toFixed(2)}
-                                                                                                </span>`: `<div class="flex flex-row gap-2  justify-start items-center">
-                                                                                                  <span class="text-[#111111] text-sm md:text-xl font-Montserrat_Bold font-bold ">
-                                                                                                    S/. ${Number(x.descuento).toFixed(2)}
-                                                                                                  </span>
-                                                                                                  <span class="text-[#111111] text-xs line-through font-Montserrat_Regular font-bold md:font-medium">
                                                                                                     S/. ${Number(x.precio).toFixed(2)}
-                                                                                                  </span>
-                                                                                                </div>`
+                                                                                                  </span>`: `<div class="flex flex-row gap-2  justify-start items-center">
+                                                                                                    <span class="text-[#111111] text-sm md:text-xl font-Montserrat_Bold font-bold ">
+                                                                                                      S/. ${Number(x.descuento).toFixed(2)}
+                                                                                                    </span>
+                                                                                                    <span class="text-[#111111] text-xs line-through font-Montserrat_Regular font-bold md:font-medium">
+                                                                                                      S/. ${Number(x.precio).toFixed(2)}
+                                                                                                    </span>
+                                                                                                  </div>`
                     }
                     <a href="/producto/${x.id}">
                       <h2
