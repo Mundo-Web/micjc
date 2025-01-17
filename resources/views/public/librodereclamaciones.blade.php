@@ -6,7 +6,7 @@
 
 
 @section('content')
-  <section class="w-11/12 mx-auto gap-5 grid grid-cols-1 grid-rows-1  lg:gap-10 pt-60">
+  <section class="w-11/12 mx-auto gap-5 grid grid-cols-1 grid-rows-1 pt-20 md:pt-[2.5%] lg:gap-10">
     @if ($errors->has('g-recaptcha-response'))
       <span class="help-block">
         <strong>{{ $errors->first('g-recaptcha-response') }}</strong>

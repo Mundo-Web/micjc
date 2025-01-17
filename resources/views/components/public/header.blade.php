@@ -126,7 +126,7 @@
           </div>
         </div>
 
-        <div class="relative flex justify-center items-center w-full max-w-[400px]">
+        <div class="relative flex justify-center items-center w-full max-w-[600px]">
           <form action="" class="w-full">
             <x-header.buscador class=" w-full border-2 border-[#CCCCCC] rounded-2xl flex justify-center items-center" />
           </form>

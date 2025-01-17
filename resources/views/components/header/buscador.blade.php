@@ -62,12 +62,12 @@
           success.data.forEach(element => {
             let link = $('<a>', {
               href: `/producto/${element.id}`,
-              class: "bg-[#0051FF] w-full py-3 text-left px-4 text-white font-moderat_Bold hover:bg-[#3374FF] text-text16",
+              class: "bg-white w-full py-3 text-left px-4 text-opacity-80 hover:text-white hover:bg-[#3374FF] text-text16 border-b",
             }).html(`<div class="flex gap-4">
-              <img src="/${element.imagen}" class="w-12 h-12 object-cover object-center rounded"/>
+              <img src="/${element.imagen}" class="w-12 h-12 object-cover object-center rounded shadow"/>
               <div>
-                <p class="line-clamp-1 text-ellipsis">${element.producto}</p>
-                <span class="font-extraligth">S/. ${element.precio}</span>
+                <p class="line-clamp-1 text-ellipsis font-Montserrat_Bold">${element.producto}</p>
+                <span class="font-extraligth font-Montserrat_Normal">S/. ${element.precio}</span>
               </div>
             <div>`);
 
