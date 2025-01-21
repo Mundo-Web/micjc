@@ -59,6 +59,16 @@
               <a target="_blank" href="https://{{ $general->instagram }}"><img class="w-8"
                   src="{{ asset('images/svg/image_2.svg') }}" alt="instagram" class="cursor-pointer"></a>
             @endif
+
+            @if ($general->youtube != null)
+              <a target="_blank" href="https://{{ $general->youtube }}"><img class="w-8"
+                  src="{{ asset('images/svg/youtube.svg') }}" alt="YouTube" class="cursor-pointer"></a>
+            @endif
+
+            @if ($general->twitter != null)
+              <a target="_blank" href="https://{{ $general->twitter }}"><img class="w-8"
+                  src="{{ asset('images/svg/tiktok.svg') }}" alt="Tiktok" class="cursor-pointer"></a>
+            @endif
           </div>
         </div>
       </div>

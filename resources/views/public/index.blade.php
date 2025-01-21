@@ -682,8 +682,9 @@
 
           <div class="md:col-span-4 flex flex-col justify-center gap-5">
             <div class="flex flex-row justify-center">
-              <p class="font-Montserrat_Bold text-text32 tracking-normal leading-normal uppercase text-[#0711E5]">LOS
-                MEJORES MONITORES DEL MES</p>
+              <p class="font-Montserrat_Bold text-text32 tracking-normal leading-normal uppercase text-[#0711E5]">
+                LOS MEJORES MONITORES DEL MES
+              </p>
             </div>
             <div>
               <div class="swiper ofertas">
