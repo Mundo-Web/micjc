@@ -31,11 +31,11 @@
     }
 
     /*  .bg__mobile {
-                                                                                                                                                                                                                                        background-repeat: no-repeat;
-                                                                                                                                                                                                                                        background-size: cover;
-                                                                                                                                                                                                                                        background-position: center;
-                                                                                                                                                                                                                                        background-image: url({{ asset('images/img/image_3.png') }});
-                                                                                                                                                                                                                                    } */
+                                                                                                                                                                                                                                          background-repeat: no-repeat;
+                                                                                                                                                                                                                                          background-size: cover;
+                                                                                                                                                                                                                                          background-position: center;
+                                                                                                                                                                                                                                          background-image: url({{ asset('images/img/image_3.png') }});
+                                                                                                                                                                                                                                      } */
 
     .fondo__slider-desktop {
       background-image: none;
@@ -472,11 +472,11 @@
     @if (count($productosDestacados) > 0)
       <section class="w-full px-[5%] py-10 lg:py-16 mt-10 lg:mt-20 bg-[#f3f3f3]">
         @if ($general->titulo_destacados)
-        <div class="flex flex-col md:flex-row md:justify-center items-start md:items-center pb-10 gap-5 md:gap-0">
-          <p
-            class="font-Montserrat_Bold text-text32 md:text-text36 tracking-wide leading-normal uppercase text-[#0711E5]">
-            {{$general->titulo_destacados}}</p>
-          {{-- <div class="flex justify-start items-center">
+          <div class="flex flex-col md:flex-row md:justify-center items-start md:items-center pb-10 gap-5 md:gap-0">
+            <p
+              class="font-Montserrat_Bold text-text32 md:text-text36 tracking-wide leading-normal uppercase text-[#0711E5]">
+              {{ $general->titulo_destacados }}</p>
+            {{-- <div class="flex justify-start items-center">
             <a href="{{ route('catalogo') }}" class="flex justify-center items-center gap-2">
               <p
                 class="text-[#3374FF] text-text16 font-Montserrat_Bold md:text-text20 flex justify-center items-center gap-3">
@@ -494,10 +494,10 @@
               </div>
             </a>
           </div> --}}
-        </div>          
+          </div>
         @endif
 
-        <div class="grid grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-3 lg:gap-5">
+        <div class="grid grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-3 lg:gap-5 destacados">
           @foreach ($productosDestacados as $item)
             {{-- <div class="flex flex-col rounded-xl gap-2 sm:gap-5 overflow-hidden bg-white">
               
@@ -1093,6 +1093,41 @@
         1200: {
           slidesPerView: 3,
           spaceBetween: 20
+        },
+      },
+
+    });
+
+    var swiper = new Swiper(".destacados", {
+      slidesPerView: 5,
+      spaceBetween: 30,
+      loop: true,
+      grabCursor: true,
+      centeredSlides: false,
+      initialSlide: 0,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      breakpoints: {
+        0: {
+          slidesPerView: 2,
+          spaceBetween: 15
+        },
+
+        640: {
+          slidesPerView: 3,
+          spaceBetween: 15
+        },
+
+        768: {
+          slidesPerView: 4,
+          spaceBetween: 20
+        },
+
+        1024: {
+          slidesPerView: 5,
+          spaceBetween: 30
         },
       },
 
