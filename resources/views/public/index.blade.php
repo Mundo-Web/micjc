@@ -31,11 +31,11 @@
     }
 
     /*  .bg__mobile {
-                                                                                                                                                                                                                                      background-repeat: no-repeat;
-                                                                                                                                                                                                                                      background-size: cover;
-                                                                                                                                                                                                                                      background-position: center;
-                                                                                                                                                                                                                                      background-image: url({{ asset('images/img/image_3.png') }});
-                                                                                                                                                                                                                                  } */
+                                                                                                                                                                                                                                        background-repeat: no-repeat;
+                                                                                                                                                                                                                                        background-size: cover;
+                                                                                                                                                                                                                                        background-position: center;
+                                                                                                                                                                                                                                        background-image: url({{ asset('images/img/image_3.png') }});
+                                                                                                                                                                                                                                    } */
 
     .fondo__slider-desktop {
       background-image: none;
@@ -681,11 +681,13 @@
           </div>
 
           <div class="md:col-span-4 flex flex-col justify-center gap-5">
-            <div class="flex flex-row justify-center">
-              <p class="font-Montserrat_Bold text-text32 tracking-normal leading-normal uppercase text-[#0711E5]">
-                LOS MEJORES MONITORES DEL MES
-              </p>
-            </div>
+            @if ($general->titulo_liquidacion)
+              <div class="flex flex-row justify-center">
+                <p class="font-Montserrat_Bold text-text32 tracking-normal leading-normal uppercase text-[#0711E5]">
+                  {{ $general->titulo_liquidacion }}
+                </p>
+              </div>
+            @endif
             <div>
               <div class="swiper ofertas">
                 <div class="swiper-wrapper">
