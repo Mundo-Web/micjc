@@ -31,11 +31,11 @@
     }
 
     /*  .bg__mobile {
-                                                                                                                                                                                                                                          background-repeat: no-repeat;
-                                                                                                                                                                                                                                          background-size: cover;
-                                                                                                                                                                                                                                          background-position: center;
-                                                                                                                                                                                                                                          background-image: url({{ asset('images/img/image_3.png') }});
-                                                                                                                                                                                                                                      } */
+                                                                                                                                                                                                                                            background-repeat: no-repeat;
+                                                                                                                                                                                                                                            background-size: cover;
+                                                                                                                                                                                                                                            background-position: center;
+                                                                                                                                                                                                                                            background-image: url({{ asset('images/img/image_3.png') }});
+                                                                                                                                                                                                                                        } */
 
     .fondo__slider-desktop {
       background-image: none;
@@ -497,80 +497,14 @@
           </div>
         @endif
 
-        <div class="grid grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-3 lg:gap-5 destacados">
-          @foreach ($productosDestacados as $item)
-            {{-- <div class="flex flex-col rounded-xl gap-2 sm:gap-5 overflow-hidden bg-white">
-              
-              <div class="bg-white flex flex-col justify-center relative">
-               
-                <div class="flex justify-start items-center absolute top-[5%] left-[5%] z-10">
-                  @if ($item->descuento > 0)
-                    <span class="font-moderat_500 text-[13px] rounded-l-lg rounded-br-lg tracking-tight  bg-black text-white py-1 px-2">
-                      AHORRA 
-                        {{ round((($item->precio - $item->descuento) / $item->precio) * 100) }}%
-                    </span>
-                  @endif
-                  @foreach ($item->tags as $tag)
-                    <span class="font-moderat_500 text-[13px] tracking-tight  rounded-lg bg-black text-white py-1 px-2">
-                      {{ $tag->name }}</span>
-                  @endforeach
-                </div>
-
-                <div>
-                  <div class="relative flex justify-center items-center aspect-square">
-                    @if ($item->imagen)
-                      <img x-show="{{ isset($item->imagen_ambiente) }} || !showAmbiente"
-                        x-transition:enter="transition ease-out duration-300 transform"
-                        x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
-                        x-transition:leave="transition ease-in duration-300 transform"
-                        x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
-                        src="{{ asset($item->imagen) }}" alt="{{ $item->name }}"
-                        class="w-full object-contain md:object-cover absolute inset-0 aspect-square"
-                        onerror="this.onerror=null;this.src='/images/img/noimagen.jpg';" />
-                    @else
-                      <img x-show="{{ isset($item->imagen_ambiente) }} || !showAmbiente"
-                        x-transition:enter="transition ease-out duration-300 transform"
-                        x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
-                        x-transition:leave="transition ease-in duration-300 transform"
-                        x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
-                        src="{{ asset('images/img/noimagen.jpg') }}" alt="imagen_alternativa"
-                        class="w-full object-contain md:object-cover absolute inset-0 aspect-square" />
-                    @endif
-                  </div>
-                </div>
-
+        <div class="grid grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-3 lg:gap-5 swiper destacados">
+          <div class="swiper-wrapper">
+            @foreach ($productosDestacados as $item)
+              <div class="swiper-slide">
+                <x-product.cardproduct bgcolor="bg-[#FFFFFF]" :item="$item" />
               </div>
-
-              <div class="flex flex-col bg-white p-2 md:p-5">
-                <div class="flex flex-col gap-1 md:gap-2">
-
-                  @if ($item->descuento == 0)
-                      <span class="text-[#111111] text-text16 md:text-xl font-space_grotesk font-bold "> S/. {{ $item->precio }}</span>
-                  @else
-                    <div class="flex flex-col md:flex-row gap-0 md:gap-2 items-start md:items-center">
-                      <span class="text-[#111111] text-text16 md:text-xl font-space_grotesk font-bold ">S/. {{ $item->descuento }}</span>
-                      <span class="text-[#111111] text-text14 line-through font-space_grotesk font-bold md:font-medium">S/. {{ $item->precio }}</span>
-                    </div>
-                  @endif
-
-                  <a href="{{ route('producto', $item->id) }}">
-                    <h2
-                      class="font-moderat_700 leading-normal text-sm md:text-lg text-[#111111] line-clamp-2 tracking-tight">
-                      {{ $item->producto }}</h2>
-                  </a>
-
-                  <a href="/catalogo?marca={{$item->marca_id}}"><h3 class="font-moderat_Medium text-text12 md:text-sm text-[#111111]">{{ $item->marca->name ?? "S/M" }}</h3></a>
-
-                  <div class="flex flex-row items-center justify-center cursor-pointer">
-                    <span class="uppercase text-white text-xs md:text-sm font-moderat_Medium font-semibold bg-[#0051FF] px-2 sm:px-3 py-2 rounded-lg">Añadir al carrito</span>
-                  </div>
-
-                </div>
-              </div>
-
-            </div> --}}
-            <x-product.cardproduct bgcolor="bg-[#FFFFFF]" :item="$item" />
-          @endforeach
+            @endforeach
+          </div>
         </div>
       </section>
     @endif
