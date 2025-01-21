@@ -128,6 +128,7 @@ class IndexController extends Controller
     }])
       ->select('categories.id', 'categories.name')
       ->join('products', 'products.categoria_id', '=', 'categories.id')
+      ->where('categories.visible', true)
       ->distinct()
       ->get();
 
