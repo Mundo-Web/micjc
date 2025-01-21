@@ -105,7 +105,7 @@
           </li>
 
           {{-- subscripciones --}}
-          <li
+          {{-- <li
             class="px-3 py-2 rounded-sm mb-0.5 last:mb-0 @if (in_array(Request::segment(2), ['subscripciones'])) {{ 'bg-slate-900' }} @endif">
             <a class="block text-slate-200 hover:text-white truncate transition duration-150 @if (in_array(Request::segment(2), ['subscripciones'])) {{ 'hover:text-slate-200' }} @endif"
               href="{{ route('subscripciones') }}">
@@ -123,7 +123,7 @@
                 </span>
               </div>
             </a>
-          </li>
+          </li> --}}
 
           <!-- Datos generales -->
           <li
@@ -363,7 +363,7 @@
               </div>
             </a>
           </li>
-          <li
+          {{-- <li
             class="px-3 py-2 rounded-sm mb-0.5 last:mb-0 @if (in_array(Request::segment(2), ['attributes'])) {{ 'bg-slate-900' }} @endif">
             <a class="block text-slate-200 hover:text-white truncate transition duration-150 @if (in_array(Request::segment(2), ['attributes'])) {{ 'hover:text-slate-200' }} @endif"
               href="{{ route('attributes.index') }}">
@@ -399,7 +399,7 @@
                   Valor de atributo</span>
               </div>
             </a>
-          </li>
+          </li> --}}
           <li
             class="px-3 py-2 rounded-sm mb-0.5 last:mb-0 @if (in_array(Request::segment(2), ['galerie'])) {{ 'bg-slate-900' }} @endif">
             <a class="block text-slate-200 hover:text-white truncate transition duration-150 @if (in_array(Request::segment(2), ['galerie'])) {{ 'hover:text-slate-200' }} @endif"

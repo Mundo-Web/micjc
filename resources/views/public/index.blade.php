@@ -471,10 +471,11 @@
 
     @if (count($productosDestacados) > 0)
       <section class="w-full px-[5%] py-10 lg:py-16 mt-10 lg:mt-20 bg-[#f3f3f3]">
+        @if ($general->titulo_destacados)
         <div class="flex flex-col md:flex-row md:justify-center items-start md:items-center pb-10 gap-5 md:gap-0">
           <p
             class="font-Montserrat_Bold text-text32 md:text-text36 tracking-wide leading-normal uppercase text-[#0711E5]">
-            Las mejores impresoras del mes</p>
+            {{$general->titulo_destacados}}</p>
           {{-- <div class="flex justify-start items-center">
             <a href="{{ route('catalogo') }}" class="flex justify-center items-center gap-2">
               <p
@@ -493,7 +494,8 @@
               </div>
             </a>
           </div> --}}
-        </div>
+        </div>          
+        @endif
 
         <div class="grid grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-3 lg:gap-5">
           @foreach ($productosDestacados as $item)
