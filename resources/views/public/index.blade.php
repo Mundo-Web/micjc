@@ -31,11 +31,11 @@
     }
 
     /*  .bg__mobile {
-                                                                                                                                                                                                                                            background-repeat: no-repeat;
-                                                                                                                                                                                                                                            background-size: cover;
-                                                                                                                                                                                                                                            background-position: center;
-                                                                                                                                                                                                                                            background-image: url({{ asset('images/img/image_3.png') }});
-                                                                                                                                                                                                                                        } */
+                                                                                                                                                                                                                                              background-repeat: no-repeat;
+                                                                                                                                                                                                                                              background-size: cover;
+                                                                                                                                                                                                                                              background-position: center;
+                                                                                                                                                                                                                                              background-image: url({{ asset('images/img/image_3.png') }});
+                                                                                                                                                                                                                                          } */
 
     .fondo__slider-desktop {
       background-image: none;
@@ -612,8 +612,8 @@
       <section class="w-full px-[5%] py-10 lg:py-16 mt-10 lg:mt-20 bg-[#f3f3f3]">
         <div class="grid grid-cols-1 md:grid-cols-6  gap-5 lg:gap-7">
           <div class="md:col-span-2 flex flex-col items-center justify-center">
-            <img src="{{ asset('images/img/bannervertical.PNG') }}" alt="ss" class="w-full object-contain"
-              onerror="this.onerror=null;this.src='/images/img/noimagen.jpg';" />
+            <img src="{{ asset('images/img/bannervertical.PNG') }}?v={{ uniqid() }}" alt="ss"
+              class="w-full object-cover aspect-[3/4] rounded-xl object-center" onerror="this.onerror=null;this.src='/images/img/noimagen.jpg';" />
           </div>
 
           <div class="md:col-span-4 flex flex-col justify-center gap-5">

@@ -16,8 +16,8 @@ class GeneralController extends Controller
     public function index()
     {
         //llames a los registros para mostrarlos en tabla
-        
-        
+
+
     }
 
     /**
@@ -51,16 +51,15 @@ class GeneralController extends Controller
     {
         //El que muestra el form para editar
         //return "mostrar el unico registro";
-    
+
         $general = General::find(1);
 
         // if (!$general) {
         //     return redirect()->back()->with('error', 'El registro no existe');
         // }
 
-        
+
         return view('pages.general.edit', compact('general'));
-        
     }
 
     /**
@@ -69,16 +68,19 @@ class GeneralController extends Controller
     public function update(Request $request, $id)
     {
 
-            $general = General::findOrfail($id); 
+        $general = General::findOrfail($id);
 
-            // Actualizar los campos del registro con los datos del formulario
-            $general->update($request->all());
+        // Actualizar los campos del registro con los datos del formulario
+        $general->update($request->all());
 
-            // Guardar 
-            $general->save();  
+        // Guardar 
+        $general->save();
 
-            return back()->with('success', 'Registro actualizado correctamente');
+        if ($request->hasFile('imagen_liquidacion')) {
+            $path = $request->file('imagen_liquidacion')->move(public_path('images/img'), 'bannervertical.PNG');
+        }
 
+        return back()->with('success', 'Registro actualizado correctamente');
     }
 
     /**

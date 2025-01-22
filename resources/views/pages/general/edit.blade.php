@@ -1,6 +1,6 @@
 <x-app-layout title="Datos Generales">
   <div class="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
-    <form action="{{ route('datosgenerales.update', $general->id) }}" method="POST">
+    <form action="{{ route('datosgenerales.update', $general->id) }}" method="POST" enctype="multipart/form-data">
       @csrf
       @method('PUT')
       <div
@@ -228,7 +228,8 @@
                                   </path>
                                 </svg>
                               </div>
-                              <input type="text" id="titulo_destacados" name="titulo_destacados" value="{{ $general->titulo_destacados }}"
+                              <input type="text" id="titulo_destacados" name="titulo_destacados"
+                                value="{{ $general->titulo_destacados }}"
                                 class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="Titulo destacados">
                             </div>
@@ -246,9 +247,24 @@
                                   </path>
                                 </svg>
                               </div>
-                              <input type="text" id="titulo_liquidacion" name="titulo_liquidacion" value="{{ $general->titulo_liquidacion }}"
+                              <input type="text" id="titulo_liquidacion" name="titulo_liquidacion"
+                                value="{{ $general->titulo_liquidacion }}"
                                 class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="Titulo liquidacion">
+                            </div>
+                          </div>
+
+                          <div class="md:col-span-5">
+                            <label for="imagen_liquidacion" class="cursor-pointer">Imagen liquidacion</label>
+                            <div class="relative mb-2">
+                              <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none">
+                                <img src="/images/img/bannervertical.PNG?={{ uniqid() }}"
+                                  class="w-full h-full aspect-[3/4] object-cover object-center rounded-s-lg"
+                                  onerror="this.onerror = null; this.src = '/images/img/noimagen.jpg';">
+                              </div>
+                              <input type="file" id="imagen_liquidacion" name="imagen_liquidacion"
+                                class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 cursor-pointer"
+                                accept="image/*">
                             </div>
                           </div>
 
@@ -372,6 +388,8 @@
                                             </button>
                                             </div>
                                         </div> -->
+
+
 
                           <!-- <div class="md:col-span-2">
                                             <label for="state">State / province</label>
