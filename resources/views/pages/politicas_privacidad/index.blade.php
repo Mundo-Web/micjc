@@ -80,7 +80,7 @@
         responsive: true
       });
 
-      $(".btn_delete").on("click", function(e) {
+      $(document).on('click', '.btn_delete', function(e) {
 
         var id = $(this).attr('data-idService');
 

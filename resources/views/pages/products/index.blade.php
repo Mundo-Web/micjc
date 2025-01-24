@@ -225,7 +225,7 @@
       })
     });
 
-    $(".btn_delete").on("click", function(e) {
+    $(document).on('click', '.btn_delete', function(e) {
       e.preventDefault()
 
       let id = $(this).attr('data-idService');

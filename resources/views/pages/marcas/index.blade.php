@@ -35,7 +35,10 @@
               @foreach ($marcas as $item)
                 <tr>
                   <td>{{ $item->name }}</td>
-                  <td><div><img class="w-40 h-16 object-contain" src="{{asset($item->description)}}" onerror="this.onerror=null;this.src='/images/img/noimagen.jpg';"/></div></td>
+                  <td>
+                    <div><img class="w-40 h-16 object-contain" src="{{ asset($item->description) }}"
+                        onerror="this.onerror=null;this.src='/images/img/noimagen.jpg';" /></div>
+                  </td>
 
                   <td>
                     <form method="POST" action="">
@@ -98,7 +101,7 @@
         responsive: true
       });
 
-      $(".btn_delete").on("click", function(e) {
+      $(document).on('click', '.btn_delete', function(e) {
 
         var id = $(this).attr('data-idService');
 
@@ -143,7 +146,7 @@
 
       // $('.check_d:not(:checked)').prop('disabled', true);
 
-      $(".btn_swithc").on("change", function() {
+      $(document).on('change', '.btn_swithc', function() {
 
         var status = 0;
         var id = $(this).attr('data-idService');

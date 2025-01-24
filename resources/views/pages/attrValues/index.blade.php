@@ -3,7 +3,8 @@
 
     <section class="py-4 border-b border-slate-100 dark:border-slate-700">
       <a href="{{ route('valoresattributes.create') }}"
-        class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded text-sm">Agregar valores a atributo</a>
+        class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded text-sm">Agregar valores a
+        atributo</a>
     </section>
 
 
@@ -108,7 +109,7 @@
       responsive: true
     });
 
-    $(".btn_swithc").on("change", function() {
+    $(document).on('change', '.btn_swithc', function() {
 
       console.log('swithc')
 
@@ -148,7 +149,7 @@
       })
     });
 
-    $(".btn_delete").on("click", function(e) {
+    $(document).on('click', '.btn_delete', function(e) {
       e.preventDefault()
 
       let id = $(this).attr('data-idService');
