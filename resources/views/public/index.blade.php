@@ -103,7 +103,7 @@
               $hasContent = !!$item->title || !!$item->description;
             @endphp
             <div
-              class="swiper-slide bg-[#0051FF] pt-5 pb-20 md:py-24 fondo__slider-desktop {{ !$hasContent ? 'cursor-pointer' : '' }}"
+              class="swiper-slide bg-[#0051FF] pt-5 pb-20 md:py-24 fondo__slider-desktop rounded-2xl {{ !$hasContent ? 'cursor-pointer' : '' }}"
               @if (!$hasContent) style="background-image: url('{{ asset($item->url_image . $item->name_image) }}'); background-repeat: no-repeat; background-size:cover" onclick="location.href = '{{ $item->link1 }}'" @endif>
               <div class="grid grid-cols-1 lg:grid-cols-2" data-aos="fade-up" data-aos-offset="150">
                 <div
