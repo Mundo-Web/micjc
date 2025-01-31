@@ -31,11 +31,11 @@
     }
 
     /*  .bg__mobile {
-                                                                                                                                                                                                                                                                  background-repeat: no-repeat;
-                                                                                                                                                                                                                                                                  background-size: cover;
-                                                                                                                                                                                                                                                                  background-position: center;
-                                                                                                                                                                                                                                                                  background-image: url({{ asset('images/img/image_3.png') }});
-                                                                                                                                                                                                                                                              } */
+                                                                                                                                                                                                                                                                    background-repeat: no-repeat;
+                                                                                                                                                                                                                                                                    background-size: cover;
+                                                                                                                                                                                                                                                                    background-position: center;
+                                                                                                                                                                                                                                                                    background-image: url({{ asset('images/img/image_3.png') }});
+                                                                                                                                                                                                                                                                } */
 
     .fondo__slider-desktop {
       background-image: none;
@@ -116,13 +116,15 @@
 
                   <div class="flex justify-start items-center gap-4">
                     @if ($item->botontext1)
-                      <a href="{{ $item->link1 }}" class="flex justify-center gap-2 items-center text-text16 bg-[#0051FF] hover:bg-white text-white hover:text-[#0051FF]  rounded-lg overflow-hidden py-2 px-6 hover:stroke-[#0051FF]">
+                      <a href="{{ $item->link1 }}"
+                        class="flex justify-center gap-2 items-center text-text16 bg-[#0051FF] hover:bg-white text-white hover:text-[#0051FF]  rounded-lg overflow-hidden py-2 px-6 hover:stroke-[#0051FF]">
                         <span class="font-Montserrat_Bold">{{ $item->botontext1 }}</span>
                         <i class="fa fas fa-angle-right"></i>
                       </a>
                     @endif
                     @if ($item->botontext2)
-                      <a href="{{ $item->link2 }}" class="flex justify-center items-center text-white text-text16 gap-2 py-2 px-6">
+                      <a href="{{ $item->link2 }}"
+                        class="flex justify-center items-center text-white text-text16 gap-2 py-2 px-6">
                         <span class="font-Montserrat_Bold">{{ $item->botontext2 }}</span>
                         <i class="fa fas fa-angle-right"></i>
                       </a>
@@ -132,12 +134,13 @@
 
                 <div class="flex justify-end md:justify-end  items-center py-10 order-2 lg:order-1 relative lg:z-10 pr-5"
                   {{-- style="background-image: url({{asset('images/img/image_3.png')}}); background-repeat: no-repeat; background-size:cover;" --}}>
-                  <img src="{{ asset('images/svg/image_18.svg') }}" alt="impresora"
+                  <img src="{{ asset('images/svg/image_18.svg') }}" alt="Ciculo {{ env('APP_NAME') }}"
                     class="w-[200px] h-[200px] md:w-[450px] md:h-[450px] {{ !$item->title && !$item->description ? 'opacity-0' : '' }}">
-                  <img src="{{ asset('images/img/image_59.png') }}" alt="impresora"
+                  <img src="{{ asset('images/img/image_59.png') }}" alt="Ciculo {{ env('APP_NAME') }}"
                     class="block md:hidden absolute mt-12 mr-16 w-[226px] h-[228px] {{ !$item->title && !$item->description ? 'opacity-0' : '' }}">
-                  <img src="{{ asset($item->url_image . $item->name_image) }}" alt="impresora"
-                    class="hidden md:block absolute mr-24 {{ !$item->title && !$item->description ? 'opacity-0' : '' }}">
+                  <img src="{{ asset($item->url_image . $item->name_image) }}"
+                    alt="{{ $item->title ? $item->title : env('APP_NAME') }}"
+                    class="hidden md:block absolute mr-24 rounded-l-2xl {{ !$item->title && !$item->description ? 'opacity-0' : '' }}">
                 </div>
               </div>
             </div>
@@ -207,8 +210,7 @@
               <span class="text-text16 text-[#0051FF] md:text-text20 font-Montserrat_Bold">Ver todas las
                 categorías</span>
               <div>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                  xmlns="http://www.w3.org/2000/svg">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M5 12H19" stroke="#0051FF" stroke-width="1.33333" stroke-linecap="round"
                     stroke-linejoin="round" />
                   <path d="M12 5L19 12L12 19" stroke="#0051FF" stroke-width="1.33333" stroke-linecap="round"
