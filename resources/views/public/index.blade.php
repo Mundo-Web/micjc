@@ -31,11 +31,11 @@
     }
 
     /*  .bg__mobile {
-                                                                                                                                                                                                                                              background-repeat: no-repeat;
-                                                                                                                                                                                                                                              background-size: cover;
-                                                                                                                                                                                                                                              background-position: center;
-                                                                                                                                                                                                                                              background-image: url({{ asset('images/img/image_3.png') }});
-                                                                                                                                                                                                                                          } */
+                                                                                                                                                                                                                                                                  background-repeat: no-repeat;
+                                                                                                                                                                                                                                                                  background-size: cover;
+                                                                                                                                                                                                                                                                  background-position: center;
+                                                                                                                                                                                                                                                                  background-image: url({{ asset('images/img/image_3.png') }});
+                                                                                                                                                                                                                                                              } */
 
     .fondo__slider-desktop {
       background-image: none;
@@ -99,49 +99,49 @@
       <div class="swiper productos__main-mobile">
         <div class="swiper-wrapper">
           @foreach ($slider as $item)
-            <div class="swiper-slide bg-[#0051FF] pt-5 pb-20 md:py-24 fondo__slider-desktop" {{-- style="background-image: url({{asset('images/img/image_16.png')}}); background-repeat: no-repeat; background-size:cover;" --}}>
+            @php
+              $hasContent = !!$item->title || !!$item->description;
+            @endphp
+            <div
+              class="swiper-slide bg-[#0051FF] pt-5 pb-20 md:py-24 fondo__slider-desktop {{ !$hasContent ? 'cursor-pointer' : '' }}"
+              @if (!$hasContent) style="background-image: url('{{ asset($item->url_image . $item->name_image) }}'); background-repeat: no-repeat; background-size:cover" onclick="location.href = '{{ $item->link1 }}'" @endif>
               <div class="grid grid-cols-1 lg:grid-cols-2" data-aos="fade-up" data-aos-offset="150">
                 <div
                   class="flex flex-col justify-center gap-5 order-1 lg:order-2 px-5 md:z-50 lg:-mx-[100px] w-full lg:w-11/12">
-                  <p class="text-white text-text18 md:text-text20 font-Montserrat_Bold">{{ $item->botontext1 }}</p>
                   <h1
                     class="text-text40 md:text-text48 font-Montserrat_SemiBold text-white leading-[56px] md:leading-tight">
                     {{ $item->title }}</h1>
                   <p class="text-white text-text14 md:text-text16 font-Montserrat_Regular w-full lg:w-5/6">
                     {{ $item->description }}</p>
 
-                  <div class="flex justify-start items-center">
-                    <a href="{{ $item->link2 }}" class="flex justify-center items-center gap-2">
-                      <span class="text-white text-text16 font-Montserrat_Bold">{{ $item->botontext2 }}</span>
-                      <div>
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                          xmlns="http://www.w3.org/2000/svg">
-                          <path d="M5 12H19" stroke="white" stroke-width="1.33333" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                          <path d="M12 5L19 12L12 19" stroke="white" stroke-width="1.33333" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                        </svg>
-                      </div>
-                    </a>
+                  <div class="flex justify-start items-center gap-4">
+                    @if ($item->botontext1)
+                      <a href="{{ $item->link1 }}" class="flex justify-center gap-2 items-center text-text16 bg-[#0051FF] hover:bg-white text-white hover:text-[#0051FF]  rounded-lg overflow-hidden py-2 px-6 hover:stroke-[#0051FF]">
+                        <span class="font-Montserrat_Bold">{{ $item->botontext1 }}</span>
+                        <i class="fa fas fa-angle-right"></i>
+                      </a>
+                    @endif
+                    @if ($item->botontext2)
+                      <a href="{{ $item->link2 }}" class="flex justify-center items-center text-white text-text16 gap-2 py-2 px-6">
+                        <span class="font-Montserrat_Bold">{{ $item->botontext2 }}</span>
+                        <i class="fa fas fa-angle-right"></i>
+                      </a>
+                    @endif
                   </div>
                 </div>
 
                 <div class="flex justify-end md:justify-end  items-center py-10 order-2 lg:order-1 relative lg:z-10 pr-5"
                   {{-- style="background-image: url({{asset('images/img/image_3.png')}}); background-repeat: no-repeat; background-size:cover;" --}}>
-                  <img src="{{ asset('images/svg/image_18.svg') }}" alt="impresora"
-                    class="w-[200px] h-[200px] md:w-[450px] md:h-[450px]">
-                  <img src="{{ asset('images/img/image_59.png') }}" alt="impresora"
-                    class="block md:hidden absolute mt-12 mr-16 w-[226px] h-[228px]">
                   <img src="{{ asset($item->url_image . $item->name_image) }}" alt="impresora"
-                    class="hidden md:block absolute mr-24">
+                    class="w-[200px] h-[200px] md:w-[450px] md:h-[450px] {{ !$item->title && !$item->description ? 'opacity-0' : '' }}">
+                  <img src="{{ asset($item->url_image . $item->name_image) }}" alt="impresora"
+                    class="block md:hidden absolute mt-12 mr-16 w-[226px] h-[228px] {{ !$item->title && !$item->description ? 'opacity-0' : '' }}">
+                  <img src="{{ asset($item->url_image . $item->name_image) }}" alt="impresora"
+                    class="hidden md:block absolute mr-24 {{ !$item->title && !$item->description ? 'opacity-0' : '' }}">
                 </div>
               </div>
             </div>
           @endforeach
-
-
-
-
         </div>
         <div class="relative pagination__mobile">
           <div class="swiper-pagination flex !items-center !justify-center !bottom-[30px] md:!bottom-[50px]">
@@ -207,7 +207,8 @@
               <span class="text-text16 text-[#0051FF] md:text-text20 font-Montserrat_Bold">Ver todas las
                 categorías</span>
               <div>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
                   <path d="M5 12H19" stroke="#0051FF" stroke-width="1.33333" stroke-linecap="round"
                     stroke-linejoin="round" />
                   <path d="M12 5L19 12L12 19" stroke="#0051FF" stroke-width="1.33333" stroke-linecap="round"
@@ -613,7 +614,8 @@
         <div class="grid grid-cols-1 md:grid-cols-6  gap-5 lg:gap-7">
           <div class="md:col-span-2 flex flex-col items-center justify-center">
             <img src="{{ asset('images/img/bannervertical.PNG') }}?v={{ uniqid() }}" alt="ss"
-              class="w-full object-cover aspect-[3/4] rounded-xl object-center" onerror="this.onerror=null;this.src='/images/img/noimagen.jpg';" />
+              class="w-full object-cover aspect-[3/4] rounded-xl object-center"
+              onerror="this.onerror=null;this.src='/images/img/noimagen.jpg';" />
           </div>
 
           <div class="md:col-span-4 flex flex-col justify-center gap-5">
@@ -924,7 +926,11 @@
       navigation: {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
-      }
+      },
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
 
     });
 
