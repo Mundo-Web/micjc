@@ -32,8 +32,8 @@
 
 @section('content')
   <main>
-    <section class="w-full px-[5%] pb-16 pt-10">
-      <div class="bg-[#0051FF] py-5 fondo__catalogo-desktop" {{-- style="background-image: url({{asset('images/img/image_16.png')}}); background-repeat: no-repeat; background-size:cover;" --}}>
+    {{-- <section class="w-full px-[5%] pb-16 pt-10">
+      <div class="bg-[#0051FF] py-5 fondo__catalogo-desktop">
         <div class="grid grid-cols-1 lg:grid-cols-2" data-aos="fade-up" data-aos-offset="150">
           <div class="flex flex-col justify-center gap-5 order-1 lg:order-2 px-5 md:z-50 lg:-mx-[100px] w-full lg:w-11/12">
             <p class="text-white text-text18 md:text-text20 font-moderat_Bold blobk lg:hidden">Accesorios</p>
@@ -44,7 +44,6 @@
           </div>
 
           <div class="flex justify-end md:justify-end  items-center py-10 order-2 lg:order-1 relative lg:z-10 pr-5"
-            {{-- style="background-image: url({{asset('images/img/image_3.png')}}); background-repeat: no-repeat; background-size:cover;" --}}>
             <img src="{{ asset('images/svg/image_18.svg') }}" alt="impresora"
               class="w-[200px] h-[200px] md:w-[450px] md:h-[450px]">
             <img src="{{ asset('images/img/image_59.png') }}" alt="impresora"
@@ -53,7 +52,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> --}}
 
     <section class="w-full px-[5%]">
 
