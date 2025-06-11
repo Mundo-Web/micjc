@@ -54,7 +54,7 @@
       </div>
     </section> --}}
 
-    <section class="w-full px-[5%]">
+    <section class="w-full pt-8 px-[5%]">
 
       <div class="grid grid-cols-1 lg:grid-cols-5">
 
@@ -64,7 +64,7 @@
             <div class="relative inline-block text-left w-full lg:w-auto">
               <input id="input-search-catalogo" type="text"
                 class="py-2 px-3 rounded-none w-full border-gray-300 font-Montserrat_Regular text-[16px]"
-                placeholder="Buscar producto...">
+                placeholder="Buscar producto..." value="{{$_GET['search'] ?? ''}}">
             </div>
             <div class="relative flex flex-col gap-4">
               <div

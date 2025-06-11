@@ -1,5 +1,5 @@
 <div class="{{ $class }}">
-  <input type="text" placeholder="Buscar producto" id="inputHeader" autocomplete="off"
+  <input type="text" placeholder="Buscar producto" id="inputHeader" name="search" autocomplete="off"
     class="placeholder:text-[#CCCCCC] font-moderat_400 text-center text-[#CCCCCC] w-full border-none outline-none focus:outline-none pl-5 pr-4 py-2 rounded-2xl focus:border-[#CCCCCC] focus:ring-[#CCCCCC]" />
   <div class="absolute inset-y-0 left-5 sm:left-[35%] lg:left-0 flex items-center pl-3">
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
