@@ -155,9 +155,8 @@ class IndexController extends Controller
 
     $general = General::all()->first();
 
-    $producto = Products::find($id);
+    $producto = Products::with(['galeria'])->find($id);
     $especificaciones = Specifications::where('product_id', '=', $id)->get();
-
 
     $productosRelacionados = Products::where('marca_id', '=', $producto->marca_id)->where('id', '!=', $id)->paginate(4);
 

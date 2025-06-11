@@ -499,9 +499,9 @@
                   </div>
                   
                   <div class="md:col-span-5" id="uploadedFilesGallery">
-                    <label for="imagaleria">Galeria de imagenes</label>
+                    <label for="filesGallery">Galeria de imagenes</label>
                     <div class="dropzone border-gray-300 dropzoneSecond cursor-pointer" id="dropzoneServerFilesGallery"
-                      name="imagaleria ">
+                      name="filesGallery">
                     </div>
                   </div>
 

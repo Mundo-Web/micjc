@@ -14,11 +14,13 @@
             class="hidden md:flex flex-row justify-between md:flex-col md:justify-start md:items-center h-full md:gap-10 md:basis-1/4 order-2 md:order-1 w-full">
             @isset($producto->galeria)
               <img src="{{ asset($producto->imagen) }}" alt="{{ $producto->producto }}"
-                class="w-[80px] aspect-square object-cover hover:scale-110 transition-all duration-300 cursor-pointer">
+                class="w-[80px] aspect-square object-cover hover:scale-110 transition-all duration-300 cursor-pointer"
+                onerror="this.src='/images/img/noimagen.jpg'" onclick="zoomImage.src = this.src">
               @foreach ($producto->galeria->take(3) as $item)
                 <div class="">
                   <img src="{{ asset($item->imagen) }}" alt="{{ $producto->producto }}"
-                    class="w-[80px] aspect-square object-cover hover:scale-110 transition-all duration-300 cursor-pointer">
+                    class="w-[80px] aspect-square object-cover hover:scale-110 transition-all duration-300 cursor-pointer"
+                    onerror="this.src='/images/img/noimagen.jpg'" onclick="zoomImage.src = this.src">
                 </div>
               @endforeach
             @endisset
@@ -27,7 +29,7 @@
           <div id="containerCaratula"
             class="md:basis-3/4 flex justify-start items-start order-1 md:order-2 w-full relative overflow-hidden">
             <img id="zoomImage" src="{{ asset($producto->imagen) }}" alt="{{ $producto->producto }}"
-              class="w-full aspect-square object-contain bg-gray-100">
+              class="w-full aspect-square object-contain bg-gray-100" onerror="this.src='/images/img/noimagen.jpg'">
           </div>
         </div>
 
