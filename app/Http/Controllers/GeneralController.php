@@ -67,7 +67,6 @@ class GeneralController extends Controller
      */
     public function update(Request $request, $id)
     {
-
         $general = General::findOrfail($id);
 
         // Actualizar los campos del registro con los datos del formulario
@@ -76,8 +75,17 @@ class GeneralController extends Controller
         // Guardar 
         $general->save();
 
+        // Manejar la imagen de liquidación
         if ($request->hasFile('imagen_liquidacion')) {
             $path = $request->file('imagen_liquidacion')->move(public_path('images/img'), 'bannervertical.PNG');
+        }
+
+        // Manejar la imagen de Open Graph para SEO
+        if ($request->hasFile('og_image')) {
+            $ogImageName = 'og-image-' . time() . '.' . $request->og_image->extension();
+            $path = $request->file('og_image')->move(public_path('images/seo'), $ogImageName);
+            $general->og_image = '/images/seo/' . $ogImageName;
+            $general->save();
         }
 
         return back()->with('success', 'Registro actualizado correctamente');

@@ -26,7 +26,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-
+        // Registrar el compositor SEO para todas las vistas que usan matrix como layout
+        View::composer(['components.public.matrix', 'components.public.*'], \App\Http\View\Composers\SeoComposer::class);
+        
         View::composer('components.public.footer', function ($view) {
             // Obtener los datos del footer
             $datosgenerales = General::all(); // Suponiendo que tienes un modelo Footer y un método footerData() en él

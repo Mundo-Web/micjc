@@ -6,9 +6,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   @vite(['resources/css/app.css', 'resources/js/app.js'])
-  <title>@yield('title', config('app.name', 'Laravel'))</title>
-  {{-- <title>{{ $attributes['title'] ?? 'Pagina' }} | {{ config('app.name', 'Laravel') }}</title> --}}
-
+  
+  <!-- SEO Metadata -->
+  <title>@yield('title', $general->meta_title ?? config('app.name', 'Laravel'))</title>
+  <meta name="description" content="@yield('meta_description', $general->meta_description ?? '')">
+  <meta name="keywords" content="@yield('meta_keywords', $general->meta_keywords ?? '')">
+  
+  <!-- Canonical URL -->
+  @if(!empty($general->canonical_url))
+  <link rel="canonical" href="{{ $general->canonical_url }}">
+  @endif
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ url()->current() }}">
+  <meta property="og:title" content="@yield('og_title', $general->og_title ?? $general->meta_title ?? config('app.name', 'Laravel'))">
+  <meta property="og:description" content="@yield('og_description', $general->og_description ?? $general->meta_description ?? '')">
+  @if(!empty($general->og_image))
+  <meta property="og:image" content="{{ url($general->og_image) }}">
+  @endif
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="{{ url()->current() }}">
+  <meta property="twitter:title" content="@yield('twitter_title', $general->og_title ?? $general->meta_title ?? config('app.name', 'Laravel'))">
+  <meta property="twitter:description" content="@yield('twitter_description', $general->og_description ?? $general->meta_description ?? '')">
+  @if(!empty($general->og_image))
+  <meta property="twitter:image" content="{{ url($general->og_image) }}">
+  @endif
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
