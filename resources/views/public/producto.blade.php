@@ -1,7 +1,17 @@
 @extends('components.public.matrix')
 
-@section('title', 'Producto | ' . config('app.name', 'Laravel'))
+@section('title', $producto->meta_title ?? $producto->producto . ' | ' . config('app.name', 'Laravel'))
 
+<!-- SEO específico para producto -->
+<x-seo 
+  :title="$producto->meta_title ?? $producto->producto . ' - ' . config('app.name')"
+  :description="$producto->meta_description ?? $producto->extract ?? 'Descubre ' . $producto->producto"
+  :keywords="$producto->meta_keywords ?? $producto->producto . ', ' . ($producto->categoria->name ?? '') . ', ' . ($producto->marca->name ?? '')"
+  :og-title="$producto->og_title ?? $producto->meta_title ?? $producto->producto"
+  :og-description="$producto->og_description ?? $producto->meta_description ?? $producto->extract"
+  :og-image="$producto->og_image ?? $producto->imagen"
+  :canonical-url="$producto->canonical_url ?? url()->current()"
+/>
 
 @section('content')
 
@@ -175,7 +185,7 @@
       </div>
     </section>
 
-    @if (count($productosRelacionados) > 0)
+    @if ($productosRelacionados->count() > 0)
       <section class="w-11/12 md:w-10/12 mx-auto  pb-16  md:pb-24">
         <div class="flex flex-col gap-5">
           <div class="flex flex-col items-start md:flex-row md:justify-start md:items-center py-5 gap-2">
@@ -200,15 +210,9 @@
           </div>
 
           <div class="grid grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-5">
-
-
             @foreach ($productosRelacionados as $item)
               <x-product.cardproduct bgcolor="bg-[#FFFFFF]" :item="$item" />
             @endforeach
-            {{-- <div data-aos="fade-up" data-aos-offset="150" class="py-10 col-span-2 lg:col-span-4">
-              {{ $productosRelacionados }}
-
-            </div> --}}
           </div>
         </div>
       </section>

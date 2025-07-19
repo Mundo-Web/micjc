@@ -23,6 +23,10 @@
       border-radius: 20px !important;
       color: var(--body) !important;
       height: auto;
+      width: 100% !important;
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+      position: relative !important;
       /* padding-right: initial !important;
       padding-bottom: initial !important; */
     }
@@ -52,12 +56,19 @@
     }
 
     .dropzone.dz-clickable .dz-message {
-      position: absolute;
+      position: absolute !important;
       margin: 0 auto;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       color: var(--body);
+      width: calc(100% - 28px);
+      max-width: calc(100% - 28px);
+      text-align: center;
+      box-sizing: border-box;
+      padding: 0 10px;
+      z-index: 1;
+      pointer-events: none;
     }
 
     .dropzone.dz-clickable .dz-message span {
@@ -386,10 +397,86 @@
       right: initial;
       transform: translateX(-50%);
     }
+
+    /* Estilos específicos para secciones SEO y productos relacionados */
+    .seo-section {
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      color: #374151;
+      border-radius: 8px;
+    }
+
+    .seo-section h4 {
+      color: #1e40af !important;
+    }
+
+    .related-products-section {
+      background: #fef3c7;
+      border: 1px solid #fbbf24;
+      color: #374151;
+      border-radius: 8px;
+    }
+
+    .related-products-section h4 {
+      color: #d97706 !important;
+    }
+
+    .field-counter {
+      font-size: 11px;
+      color: #6b7280;
+      float: right;
+      margin-top: 2px;
+    }
+
+    .field-counter.warning {
+      color: #f59e0b;
+    }
+
+    .field-counter.error {
+      color: #ef4444;
+    }
+
+    /* Estilos para Select2 */
+    .select2-container {
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .select2-selection--multiple {
+      min-height: 40px !important;
+      border: 1px solid #d1d5db !important;
+      border-radius: 0.5rem !important;
+    }
+
+    .select2-selection--multiple .select2-selection__choice {
+      background-color: #3b82f6 !important;
+      border-color: #3b82f6 !important;
+      color: white !important;
+    }
+
+    /* Prevenir que aparezcan mensajes de dropzone fuera de lugar */
+    .dz-message {
+      position: relative !important;
+      transform: none !important;
+      top: auto !important;
+      left: auto !important;
+      width: auto !important;
+      max-width: none !important;
+    }
+
+    /* Asegurar que solo el dropzone específico tenga el mensaje posicionado */
+    #dropzoneServerFilesGallery .dz-message {
+      position: absolute !important;
+      top: 50% !important;
+      left: 50% !important;
+      transform: translate(-50%, -50%) !important;
+      width: calc(100% - 28px) !important;
+      max-width: calc(100% - 28px) !important;
+    }
   </style>
 
   <div class="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
-    <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
+    <form id="formProduct" action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
       @csrf
 
       <div
@@ -402,10 +489,10 @@
           </h2>
         </header>
         <div class="flex flex-col gap-2 p-3 ">
-          <div class="flex  flex-col md:flex-row gap-2 p-3 ">
+          <div class="  grid grid-cols-1 md:grid-cols-2 gap-2 p-3 ">
 
-            <div class="basis-0 md:basis-3/5">
-              <div class="rounded shadow-lg p-4 px-4 ">
+            <div class="basis-0 ">
+              <div class="rounded-lg shadow-sm p-4 px-4 bg-white border border-gray-200">
 
 
                 <div id='general' class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5 ">
@@ -480,7 +567,7 @@
 
                   <div class="md:col-span-5">
                     <label for="filesGallery">Galeria de imagenes</label>
-                    <div class="dropzone border-gray-300 dropzoneSecond cursor-pointer" id="dropzoneServerFilesGallery"
+                    <div class="dropzone border-gray-300 dropzoneSecond cursor-pointer w-full" id="dropzoneServerFilesGallery"
                       name="filesGallery">
                     </div>
                   </div>
@@ -507,12 +594,33 @@
 
                 </div>
 
+                  <!-- Sección Productos Relacionados -->
+              <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5 rounded-lg shadow-sm p-4 px-4 mt-4 related-products-section">
+                <h4 class="font-semibold text-slate-800 dark:text-slate-100 text-xl tracking-tight md:col-span-5">
+                  Productos Relacionados
+                </h4>
+                
+                <div class="md:col-span-5">
+                  <label for="productos_relacionados" class="block text-sm font-medium text-gray-700 mb-2">
+                    Seleccionar Productos Relacionados
+                  </label>
+                  <div class="relative mb-2 mt-2">
+                    <select id="productos_relacionados" name="productos_relacionados[]" multiple class="mt-1 w-full">
+                      <!-- Los productos se cargarán dinámicamente con JavaScript -->
+                    </select>
+                  </div>
+               
+                </div>
+
+             
+              </div>
+
 
               </div>
             </div>
 
-            <div class="basis-0 md:basis-2/5">
-              <div class=" grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5 rounded shadow-lg p-4 px-4 ">
+            <div class="basis-0 ">
+              <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5 rounded-lg shadow-sm p-4 px-4 bg-white border border-gray-200">
                 <div class="md:col-span-5 flex justify-between gap-4">
                   <div class="w-full">
                     <label for="precio">Precio</label>
@@ -700,7 +808,7 @@
 
                 </div>
               </div>
-              <div class=" grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5 rounded shadow-lg p-4 px-4 ">
+              <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5 rounded-lg shadow-sm p-4 px-4 bg-white border border-gray-200 mt-4">
                 <h4 class="font-semibold text-slate-800 dark:text-slate-100 text-xl tracking-tight">
                   Inventario</h4>
                 <div class="md:col-span-5 flex justify-between gap-4">
@@ -760,7 +868,7 @@
                 </div>
               </div>
 
-              <div class=" grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5 rounded shadow-lg p-4 px-4 ">
+              <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5 rounded-lg shadow-sm p-4 px-4 bg-white border border-gray-200 mt-4">
                 <h4 class="font-semibold text-slate-800 dark:text-slate-100 text-xl tracking-tight">
                   Tags</h4>
                 <div class="md:col-span-5 flex justify-between gap-4">
@@ -777,6 +885,121 @@
 
 
                   </div>
+                </div>
+              </div>
+
+           
+            
+
+            </div>
+            <div class="col-span-1 md:col-span-2">
+              <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5 rounded-lg shadow-sm p-4 px-4 mt-4 seo-section">
+                <h4 class="font-semibold text-slate-800 dark:text-slate-100 text-xl tracking-tight md:col-span-5">
+                SEO - Optimización para Motores de Búsqueda
+                </h4>
+                
+                <!-- Primera fila: Meta Title y Meta Description -->
+                <div class="md:col-span-3">
+                  <label for="meta_title" class="block text-sm font-medium text-gray-700 mb-2">
+                    Título SEO (Meta Title) <span class="text-red-500">*</span>
+                  </label>
+                  <div class="relative mb-2 mt-2">
+                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                      <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.99 1.99 0 013 12V7a4 4 0 014-4z"></path>
+                      </svg>
+                    </div>
+                    <input type="text" id="meta_title" name="meta_title" value=""
+                      class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5"
+                      placeholder="Título optimizado para SEO (50-60 caracteres)" maxlength="60">
+                  </div>
+                  <small class="text-gray-500">Recomendado: 50-60 caracteres</small>
+                </div>
+
+                <div class="md:col-span-2">
+                  <label for="meta_keywords" class="block text-sm font-medium text-gray-700 mb-2">
+                    Palabras Clave
+                  </label>
+                  <div class="relative mb-2 mt-2">
+                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                      <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"></path>
+                      </svg>
+                    </div>
+                    <input type="text" id="meta_keywords" name="meta_keywords" value=""
+                      class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5"
+                      placeholder="palabra1, palabra2, palabra3">
+                  </div>
+                  <small class="text-gray-500">Separadas por comas</small>
+                </div>
+
+                <!-- Segunda fila: Meta Description -->
+                <div class="md:col-span-5">
+                  <label for="meta_description" class="block text-sm font-medium text-gray-700 mb-2">
+                    Descripción SEO (Meta Description) <span class="text-red-500">*</span>
+                  </label>
+                  <textarea id="meta_description" name="meta_description" rows="3" 
+                    class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 resize-none"
+                    placeholder="Descripción atractiva para motores de búsqueda (150-160 caracteres)" maxlength="160"></textarea>
+                  <small class="text-gray-500">Recomendado: 150-160 caracteres</small>
+                </div>
+
+                <!-- Tercera fila: Open Graph -->
+                <div class="md:col-span-3">
+                  <label for="og_title" class="block text-sm font-medium text-gray-700 mb-2">
+                    Título para Redes Sociales
+                  </label>
+                  <div class="relative mb-2 mt-2">
+                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                      <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2a1 1 0 011-1h4a1 1 0 011 1v2M7 4h10M7 4v16a1 1 0 001 1h8a1 1 0 001-1V4M7 4H5a1 1 0 00-1 1v14a1 1 0 001 1h2"></path>
+                      </svg>
+                    </div>
+                    <input type="text" id="og_title" name="og_title" value=""
+                      class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5"
+                      placeholder="Título al compartir en redes sociales">
+                  </div>
+                  <small class="text-gray-500">Si está vacío, se usará el título SEO</small>
+                </div>
+
+                <div class="md:col-span-2">
+                  <label for="canonical_url" class="block text-sm font-medium text-gray-700 mb-2">
+                    URL Canónica
+                  </label>
+                  <div class="relative mb-2 mt-2">
+                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                      <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+                      </svg>
+                    </div>
+                    <input type="text" id="canonical_url" name="canonical_url" value=""
+                      class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5"
+                      placeholder="https://www.ejemplo.com/producto">
+                  </div>
+                  <small class="text-gray-500">URL oficial del producto</small>
+                </div>
+
+                <!-- Cuarta fila: OG Description y OG Image -->
+                <div class="md:col-span-3">
+                  <label for="og_description" class="block text-sm font-medium text-gray-700 mb-2">
+                    Descripción para Redes Sociales
+                  </label>
+                  <textarea id="og_description" name="og_description" rows="3" 
+                    class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 resize-none"
+                    placeholder="Descripción al compartir en redes sociales"></textarea>
+                  <small class="text-gray-500">Si está vacío, se usará la descripción SEO</small>
+                </div>
+
+                <div class="md:col-span-2">
+                  <label for="og_image" class="block text-sm font-medium text-gray-700 mb-2">
+                    Imagen para Redes Sociales
+                  </label>
+                  <div class="relative mb-2 mt-2">
+                    <input type="file" id="og_image" name="og_image"
+                      class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none"
+                      accept="image/*">
+                  </div>
+                  <small class="text-gray-500">1200x630px recomendado</small>
                 </div>
               </div>
 
@@ -810,6 +1033,50 @@
     $('#tags_id').select2({
       placeholder: 'Seleccionar Tag...',
     });
+
+    // Configurar Select2 para productos relacionados
+    $('#productos_relacionados').select2({
+      placeholder: 'Buscar productos relacionados...',
+      ajax: {
+        url: '{{ route("products.search") }}', // Necesitaremos crear esta ruta
+        dataType: 'json',
+        delay: 250,
+        data: function (params) {
+          return {
+            search: params.term,
+            page: params.page || 1
+          };
+        },
+        processResults: function (data, params) {
+          params.page = params.page || 1;
+          return {
+            results: data.products.map(function(product) {
+              return {
+                id: product.id,
+                text: product.producto + ' - $' + product.precio
+              };
+            }),
+            pagination: {
+              more: data.has_more
+            }
+          };
+        },
+        cache: true
+      },
+      minimumInputLength: 2,
+      language: {
+        inputTooShort: function () {
+          return 'Ingresa al menos 2 caracteres para buscar productos';
+        },
+        noResults: function () {
+          return 'No se encontraron productos';
+        },
+        searching: function () {
+          return 'Buscando productos...';
+        }
+      }
+    });
+
     // Obtener los enlaces de pestaña
     const generalTab = document.getElementById('general-tab');
     const attributesTab = document.getElementById('attributes-tab');
@@ -1048,23 +1315,59 @@
   </script>
 
   <script>
-    //validar que producto,, categoria_id precio tengan datos antes de enviarce
+    //validar que producto, categoria_id, precio, meta_title y meta_description tengan datos antes de enviarse
     $('form').on('submit', function(e) {
       e.preventDefault();
       let categoria = document.getElementById('categorias').value;
       let producto = document.getElementById('producto').value;
       let precio = document.getElementById('precio').value;
+      let metaTitle = document.getElementById('meta_title').value;
+      let metaDescription = document.getElementById('meta_description').value;
 
-      if (categoria === '' || producto === '' || precio === '') {
+      // Validar campos obligatorios
+      let camposFaltantes = [];
+      
+      if (categoria === '') camposFaltantes.push('Categoría');
+      if (producto === '') camposFaltantes.push('Nombre del producto');
+      if (precio === '') camposFaltantes.push('Precio');
+      if (metaTitle === '') camposFaltantes.push('Título SEO');
+      if (metaDescription === '') camposFaltantes.push('Descripción SEO');
 
+      if (camposFaltantes.length > 0) {
         Swal.fire({
-          title: 'Los campos categoria, producto y precio son obligatorios',
-          icon: "warning"
+          title: '¡Campos obligatorios faltantes!',
+          html: 'Los siguientes campos son obligatorios:<br><br><strong>' + camposFaltantes.join('<br>') + '</strong>',
+          icon: "warning",
+          confirmButtonText: 'Entendido'
         });
       } else {
+        // Validar longitud de campos SEO
+        if (metaTitle.length > 60) {
+          Swal.fire({
+            title: 'Título SEO muy largo',
+            text: 'El título SEO debe tener máximo 60 caracteres. Actualmente tiene ' + metaTitle.length + ' caracteres.',
+            icon: "warning"
+          });
+          return;
+        }
+        
+        if (metaDescription.length > 160) {
+          Swal.fire({
+            title: 'Descripción SEO muy larga',
+            text: 'La descripción SEO debe tener máximo 160 caracteres. Actualmente tiene ' + metaDescription.length + ' caracteres.',
+            icon: "warning"
+          });
+          return;
+        }
+        
         this.submit();
       }
     })
+
+    // Deshabilitar auto-detección de Dropzone para evitar mensajes flotantes
+    if (typeof Dropzone !== 'undefined') {
+      Dropzone.autoDiscover = false;
+    }
   </script>
 
   @include('_layout.scripts')

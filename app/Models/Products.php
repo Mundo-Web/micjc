@@ -30,7 +30,17 @@ class Products extends Model
     'sku',
     'sub_cat_id',
     'marca_id',
-    'cyber'
+    'cyber',
+    // Campos SEO
+    'meta_title',
+    'meta_description',
+    'meta_keywords',
+    'og_title',
+    'og_description',
+    'og_image',
+    'canonical_url',
+    // Campo para productos relacionados personalizados
+    'productos_relacionados'
   ];
 
 
@@ -55,6 +65,49 @@ class Products extends Model
   public function tags()
   {
       return $this->belongsToMany(Tag::class, 'tags_xproducts', 'producto_id', 'tag_id');
+  }
+  
+  // Relación para productos relacionados personalizados
+  public function productosRelacionadosPersonalizados()
+  {
+      // Decodifica el JSON de productos_relacionados para obtener IDs
+      $relacionadosIds = json_decode($this->productos_relacionados, true) ?? [];
+      
+      if (empty($relacionadosIds)) {
+          return collect([]);
+      }
+      
+      return Products::whereIn('id', $relacionadosIds)
+          ->where('status', true)
+          ->where('visible', true)
+          ->get();
+  }
+  
+  // Método para obtener productos relacionados automáticos (por marca)
+  public function getProductosRelacionadosAutomaticos($limit = 4)
+  {
+      return Products::where('marca_id', $this->marca_id)
+          ->where('id', '!=', $this->id)
+          ->where('status', true)
+          ->where('visible', true)
+          ->inRandomOrder()
+          ->limit($limit)
+          ->get();
+  }
+  
+  // Método que combina productos relacionados personalizados y automáticos
+  public function getProductosRelacionados($limit = 4)
+  {
+      $personalizados = $this->productosRelacionadosPersonalizados();
+      
+      if ($personalizados->count() >= $limit) {
+          return $personalizados->take($limit);
+      }
+      
+      $faltantes = $limit - $personalizados->count();
+      $automaticos = $this->getProductosRelacionadosAutomaticos($faltantes);
+      
+      return $personalizados->merge($automaticos);
   }
   
   public function scopeActiveDestacado($query)

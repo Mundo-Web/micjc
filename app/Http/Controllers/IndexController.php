@@ -152,13 +152,13 @@ class IndexController extends Controller
 
   public function producto(Request $request, String $id)
   {
-
     $general = General::all()->first();
 
     $producto = Products::with(['galeria'])->find($id);
     $especificaciones = Specifications::where('product_id', '=', $id)->get();
 
-    $productosRelacionados = Products::where('marca_id', '=', $producto->marca_id)->where('id', '!=', $id)->paginate(4);
+    // Usar la nueva lógica de productos relacionados del modelo
+    $productosRelacionados = $producto->getProductosRelacionados(4);
 
     return view('public.producto', compact('general', 'producto', 'especificaciones', 'productosRelacionados'));
   }

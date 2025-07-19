@@ -1,12 +1,16 @@
 <x-app-layout title="Editar Producto">
   @section('css')
     <link rel="stylesheet" href="{{ asset('/css/vendor/dropzone.min.css') }}" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
   @endsection
 
   @section('js_vendor')
     <script src="{{ asset('/js/cs/scrollspy.js') }}"></script>
     <script src="{{ asset('/js/vendor/dropzone.min.js') }}"></script>
     <script src="{{ asset('/js/vendor/singleimageupload.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   @endsection
 
   @section('js_page')
@@ -23,6 +27,10 @@
       border-radius: 20px !important;
       color: var(--body) !important;
       height: auto;
+      width: 100% !important;
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+      position: relative !important;
       /* padding-right: initial !important;
       padding-bottom: initial !important; */
     }
@@ -52,12 +60,19 @@
     }
 
     .dropzone.dz-clickable .dz-message {
-      position: absolute;
+      position: absolute !important;
       margin: 0 auto;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       color: var(--body);
+      width: calc(100% - 28px);
+      max-width: calc(100% - 28px);
+      text-align: center;
+      box-sizing: border-box;
+      padding: 0 10px;
+      z-index: 1;
+      pointer-events: none;
     }
 
     .dropzone.dz-clickable .dz-message span {
@@ -386,6 +401,82 @@
       right: initial;
       transform: translateX(-50%);
     }
+
+    /* Estilos específicos para secciones SEO y productos relacionados */
+    .seo-section {
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      color: #374151;
+      border-radius: 8px;
+    }
+
+    .seo-section h4 {
+      color: #1e40af !important;
+    }
+
+    .related-products-section {
+      background: #fef3c7;
+      border: 1px solid #fbbf24;
+      color: #374151;
+      border-radius: 8px;
+    }
+
+    .related-products-section h4 {
+      color: #d97706 !important;
+    }
+
+    .field-counter {
+      font-size: 11px;
+      color: #6b7280;
+      float: right;
+      margin-top: 2px;
+    }
+
+    .field-counter.warning {
+      color: #f59e0b;
+    }
+
+    .field-counter.error {
+      color: #ef4444;
+    }
+
+    /* Estilos para Select2 */
+    .select2-container {
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .select2-selection--multiple {
+      min-height: 40px !important;
+      border: 1px solid #d1d5db !important;
+      border-radius: 0.5rem !important;
+    }
+
+    .select2-selection--multiple .select2-selection__choice {
+      background-color: #3b82f6 !important;
+      border-color: #3b82f6 !important;
+      color: white !important;
+    }
+
+    /* Prevenir que aparezcan mensajes de dropzone fuera de lugar */
+    .dz-message {
+      position: relative !important;
+      transform: none !important;
+      top: auto !important;
+      left: auto !important;
+      width: auto !important;
+      max-width: none !important;
+    }
+
+    /* Asegurar que solo el dropzone específico tenga el mensaje posicionado */
+    #dropzoneServerFilesGallery .dz-message {
+      position: absolute !important;
+      top: 50% !important;
+      left: 50% !important;
+      transform: translate(-50%, -50%) !important;
+      width: calc(100% - 28px) !important;
+      max-width: calc(100% - 28px) !important;
+    }
   </style>
 
 
@@ -403,9 +494,9 @@
           </h2>
         </header>
         <div class="flex flex-col gap-2 p-3 ">
-          <div class="flex flex-col md:flex-row gap-2 p-3 ">
-            <div class="basis-0 md:basis-3/5">
-              <div class="rounded shadow-lg p-4 px-4 ">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2 p-3 ">
+            <div class="col-span-1">
+              <div class="rounded-lg shadow-sm p-4 px-4 bg-white border border-gray-200">
 
 
                 <div id='general' class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5 ">
@@ -500,7 +591,7 @@
                   
                   <div class="md:col-span-5" id="uploadedFilesGallery">
                     <label for="filesGallery">Galeria de imagenes</label>
-                    <div class="dropzone border-gray-300 dropzoneSecond cursor-pointer" id="dropzoneServerFilesGallery"
+                    <div class="dropzone border-gray-300 dropzoneSecond cursor-pointer w-full" id="dropzoneServerFilesGallery"
                       name="filesGallery">
                     </div>
                   </div>
@@ -526,12 +617,46 @@
 
 
                 </div>
+                  <!-- Sección Productos Relacionados -->
+              <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5 rounded-lg shadow-sm p-4 px-4 mt-4 related-products-section">
+                <h4 class="font-semibold text-slate-800 dark:text-slate-100 text-xl tracking-tight md:col-span-5">
+              
+                  Productos Relacionados
+                </h4>
+                
+                <div class="md:col-span-5">
+                  <label for="productos_relacionados" class="block text-sm font-medium text-gray-700 mb-2">
+                    Seleccionar Productos Relacionados
+                  </label>
+                  <div class="relative mb-2 mt-2">
+                    <select id="productos_relacionados" name="productos_relacionados[]" multiple class="mt-1 w-full">
+                      @if($product->productos_relacionados)
+                        @php
+                          $relacionados = json_decode($product->productos_relacionados, true) ?? [];
+                        @endphp
+                        @foreach($relacionados as $relacionado)
+                          @php
+                            $prod = \App\Models\Products::find($relacionado);
+                          @endphp
+                          @if($prod)
+                            <option value="{{ $prod->id }}" selected>{{ $prod->producto }}</option>
+                          @endif
+                        @endforeach
+                      @endif
+                    </select>
+                  </div>
+               
+                </div>
+
+             
+              </div>
+
 
 
               </div>
             </div>
-            <div class="basis-0 md:basis-2/5">
-              <div class=" grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5 rounded shadow-lg p-4 px-4 ">
+            <div class="col-span-1">
+              <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5 rounded-lg shadow-sm p-4 px-4 bg-white border border-gray-200">
                 <div class="md:col-span-5 flex justify-between gap-4">
                   <div class="w-full">
                     <label for="precio">Precio</label>
@@ -756,7 +881,7 @@
                 </div>
 
               </div>
-              <div class=" grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5 rounded shadow-lg p-4 px-4 ">
+              <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5 rounded-lg shadow-sm p-4 px-4 bg-white border border-gray-200 mt-4">
                 <h4 class="font-semibold text-slate-800 dark:text-slate-100 text-xl tracking-tight">
                   Inventario</h4>
                 <div class="md:col-span-5 flex justify-between gap-4">
@@ -856,6 +981,88 @@
                 </select>
               </div>
 
+          
+
+            
+            </div>
+
+            <div class="col-span-1 md:col-span-2">
+
+                  <!-- Sección SEO -->
+              <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5 rounded-lg shadow-sm p-4 px-4 mt-4 seo-section">
+                <h4 class="font-semibold text-slate-800 dark:text-slate-100 text-xl tracking-tight md:col-span-5">
+                 
+                  Configuración SEO
+                </h4>
+                
+                <div class="md:col-span-3">
+                  <label for="meta_title" class="block text-sm font-medium text-gray-700 mb-2">
+                    Título SEO
+                  </label>
+                  <input type="text" id="meta_title" name="meta_title" value="{{ $product->meta_title ?? '' }}"
+                    class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                    placeholder="Título para motores de búsqueda" maxlength="60" onkeyup="updateCounter('meta_title', 60)">
+                  <small class="text-gray-500">Máximo 60 caracteres. <span id="meta_title_counter" class="field-counter">0/60</span></small>
+                </div>
+
+                <div class="md:col-span-2">
+                  <label for="meta_keywords" class="block text-sm font-medium text-gray-700 mb-2">
+                    Palabras Clave
+                  </label>
+                  <input type="text" id="meta_keywords" name="meta_keywords" value="{{ $product->meta_keywords ?? '' }}"
+                    class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                    placeholder="palabra1, palabra2, palabra3">
+                  <small class="text-gray-500">Separadas por comas</small>
+                </div>
+
+                <div class="md:col-span-3">
+                  <label for="meta_description" class="block text-sm font-medium text-gray-700 mb-2">
+                    Descripción SEO
+                  </label>
+                  <textarea id="meta_description" name="meta_description" rows="3" 
+                    class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 resize-none"
+                    placeholder="Descripción para motores de búsqueda" maxlength="160" onkeyup="updateCounter('meta_description', 160)">{{ $product->meta_description ?? '' }}</textarea>
+                  <small class="text-gray-500">Máximo 160 caracteres. <span id="meta_description_counter" class="field-counter">0/160</span></small>
+                </div>
+
+                <div class="md:col-span-2">
+                  <label for="canonical_url" class="block text-sm font-medium text-gray-700 mb-2">
+                    URL Canónica
+                  </label>
+                  <input type="url" id="canonical_url" name="canonical_url" value="{{ $product->canonical_url ?? '' }}"
+                    class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                    placeholder="https://ejemplo.com/producto">
+                  <small class="text-gray-500">URL preferida para SEO</small>
+                </div>
+
+                <div class="md:col-span-3">
+                  <label for="og_description" class="block text-sm font-medium text-gray-700 mb-2">
+                    Descripción para Redes Sociales
+                  </label>
+                  <textarea id="og_description" name="og_description" rows="3" 
+                    class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 resize-none"
+                    placeholder="Descripción al compartir en redes sociales">{{ $product->og_description ?? '' }}</textarea>
+                  <small class="text-gray-500">Si está vacío, se usará la descripción SEO</small>
+                </div>
+
+                <div class="md:col-span-2">
+                  <label for="og_image" class="block text-sm font-medium text-gray-700 mb-2">
+                    Imagen para Redes Sociales
+                  </label>
+                  <div class="relative mb-2 mt-2">
+                    <input type="file" id="og_image" name="og_image"
+                      class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none"
+                      accept="image/*">
+                  </div>
+                  <small class="text-gray-500">1200x630px recomendado</small>
+                  @if($product->og_image)
+                    <div class="mt-2">
+                      <img src="{{ asset($product->og_image) }}" alt="Imagen OG actual" class="w-16 h-16 object-cover rounded">
+                      <small class="text-gray-500 block">Imagen actual</small>
+                    </div>
+                  @endif
+                </div>
+              </div>
             </div>
           </div>
 
@@ -1218,6 +1425,111 @@
             reader.readAsDataURL(blob);
         });
     }
+</script>
+
+<script>
+  $(document).ready(function() {
+    console.log('jQuery version:', $.fn.jquery);
+    console.log('Select2 disponible:', typeof $.fn.select2);
+    
+    // Configurar CSRF token para todas las peticiones AJAX
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
+    
+    // Verificar que el elemento existe
+    console.log('Elemento productos_relacionados:', $('#productos_relacionados').length);
+    
+    // Configurar Select2 para productos relacionados
+    $('#productos_relacionados').select2({
+      placeholder: 'Buscar productos...',
+      allowClear: true,
+      ajax: {
+        url: '{{ route("products.search") }}',
+        type: 'GET',
+        dataType: 'json',
+        delay: 250,
+        data: function(params) {
+          console.log('Búsqueda:', params.term);
+          return {
+            q: params.term,
+            current_id: {{ $product->id }} // Excluir el producto actual
+          };
+        },
+        processResults: function(data) {
+          console.log('Datos recibidos:', data);
+          return {
+            results: data.map(function(product) {
+              return {
+                id: product.id,
+                text: product.producto + ' - S/. ' + product.precio
+              };
+            })
+          };
+        },
+        error: function(xhr, status, error) {
+          console.error('Error en AJAX:', error);
+          console.error('Response:', xhr.responseText);
+        },
+        cache: true
+      },
+      minimumInputLength: 2
+    });
+
+    // Función para actualizar contadores de caracteres
+    window.updateCounter = function(fieldId, maxLength) {
+      const field = document.getElementById(fieldId);
+      const counter = document.getElementById(fieldId + '_counter');
+      const currentLength = field.value.length;
+      
+      counter.textContent = currentLength + '/' + maxLength;
+      
+      // Cambiar color según el límite
+      counter.className = 'field-counter';
+      if (currentLength > maxLength * 0.9) {
+        counter.classList.add('error');
+      } else if (currentLength > maxLength * 0.8) {
+        counter.classList.add('warning');
+      }
+    };
+
+    // Inicializar contadores
+    updateCounter('meta_title', 60);
+    updateCounter('meta_description', 160);
+
+    // Deshabilitar auto-detección de Dropzone para evitar mensajes flotantes
+    if (typeof Dropzone !== 'undefined') {
+      Dropzone.autoDiscover = false;
+    }
+
+    // Validación del formulario antes del envío
+    $('form').on('submit', function(e) {
+      const metaTitle = $('#meta_title').val();
+      const metaDescription = $('#meta_description').val();
+      
+      if (metaTitle.length > 60) {
+        Swal.fire({
+          title: 'Título SEO muy largo',
+          text: 'El título SEO debe tener máximo 60 caracteres. Actualmente tiene ' + metaTitle.length + ' caracteres.',
+          icon: "warning"
+        });
+        e.preventDefault();
+        return false;
+      }
+      
+      if (metaDescription.length > 160) {
+        Swal.fire({
+          title: 'Descripción SEO muy larga',
+          text: 'La descripción SEO debe tener máximo 160 caracteres. Actualmente tiene ' + metaDescription.length + ' caracteres.',
+          icon: "warning"
+        });
+        e.preventDefault();
+        return false;
+      }
+    });
+  });
 </script>
   @include('_layout.scripts')
 </x-app-layout>

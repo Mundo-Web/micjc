@@ -30,9 +30,31 @@ class ProductsController extends Controller
   /**
    * Display a listing of the resource.
    */
-  public function index()
+  public function index(Request $request)
   {
-    $products =  Products::where("status", "=", true)->get();
+    // Optimizamos la consulta usando select específico, eager loading y paginación
+    $query = Products::select([
+        'id', 'producto', 'extract', 'precio', 'descuento', 'stock', 'imagen', 
+        'cyber', 'destacar', 'liquidacion', 'visible', 'status', 'categoria_id', 'marca_id'
+      ])
+      ->with(['categoria:id,name', 'marca:id,name'])
+      ->where("status", "=", true);
+
+    // Si hay búsqueda, aplicarla
+    if ($request->has('search') && !empty($request->search)) {
+      $search = $request->search;
+      $query->where(function($q) use ($search) {
+        $q->where('producto', 'LIKE', "%{$search}%")
+          ->orWhere('extract', 'LIKE', "%{$search}%")
+          ->orWhere('sku', 'LIKE', "%{$search}%");
+      });
+    }
+
+    $products = $query->paginate(20); // Aumentamos a 50 para mejor rendimiento
+    
+    // Mantener parámetros de búsqueda en la paginación
+    $products->appends($request->query());
+      
     return view('pages.products.index', compact('products'));
   }
 
@@ -91,6 +113,17 @@ class ProductsController extends Controller
         'producto' => 'required',
         'categoria_id' => 'required', 
         'precio' => 'min:0|required|numeric',
+        // Validaciones SEO
+        'meta_title' => 'required|max:60',
+        'meta_description' => 'required|max:160',
+        'meta_keywords' => 'nullable|string',
+        'og_title' => 'nullable|string|max:60',
+        'og_description' => 'nullable|string|max:160',
+        'canonical_url' => 'nullable|url',
+        'og_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        // Validación productos relacionados
+        'productos_relacionados' => 'nullable|array',
+        'productos_relacionados.*' => 'exists:products,id',
         // 'descuento' => 'lt:' . $request->input('precio'),
       ]);
 
@@ -108,6 +141,25 @@ class ProductsController extends Controller
         $nombreImagen = 'noimagen.jpg';
 
         $data['imagen'] = $routeImg . $nombreImagen;
+      }
+
+      // Manejar imagen Open Graph para SEO
+      if ($request->hasFile('og_image')) {
+        $ogFile = $request->file('og_image');
+        $routeOgImg = 'storage/images/seo/';
+        $nombreOgImagen = 'og_' . Str::random(10) . '_' . $ogFile->getClientOriginalName();
+
+        if (!file_exists($routeOgImg)) {
+          mkdir($routeOgImg, 0777, true);
+        }
+
+        $ogFile->move(public_path($routeOgImg), $nombreOgImagen);
+        $data['og_image'] = $routeOgImg . $nombreOgImagen;
+      }
+
+      // Procesar productos relacionados
+      if ($request->has('productos_relacionados') && !empty($request->productos_relacionados)) {
+        $data['productos_relacionados'] = json_encode($request->productos_relacionados);
       }
 
 
@@ -618,6 +670,45 @@ class ProductsController extends Controller
     }
   }
 
+  /**
+   * Buscar productos para select2 en productos relacionados
+   */
+  public function search(Request $request)
+  {
+    $search = $request->get('q', $request->get('search', ''));
+    $currentId = $request->get('current_id');
+    $page = $request->get('page', 1);
+    $perPage = 20;
+
+    $query = Products::select('id', 'producto', 'precio')
+        ->where('status', true)
+        ->where('visible', true);
+
+    // Excluir el producto actual si se proporciona
+    if ($currentId) {
+        $query->where('id', '!=', $currentId);
+    }
+
+    if (!empty($search)) {
+        $query->where('producto', 'LIKE', "%{$search}%");
+    }
+
+    $total = $query->count();
+    $products = $query->offset(($page - 1) * $perPage)
+                     ->limit($perPage)
+                     ->get();
+
+    // Formato para Select2
+    if ($request->has('q')) {
+        return response()->json($products);
+    }
+
+    // Formato original para compatibilidad
+    return response()->json([
+        'products' => $products,
+        'has_more' => ($page * $perPage) < $total
+    ]);
+  }
 
   
 }
