@@ -218,8 +218,6 @@
 
 
 </x-app-layout>
-<script>
-  $('document').ready(function() {
 
 <script>
   $('document').ready(function() {
