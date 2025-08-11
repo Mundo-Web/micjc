@@ -126,11 +126,11 @@ class ProductsController extends Controller
         'categoria_id' => 'required',
         'precio' => 'min:0|required|numeric',
         // Validaciones SEO
-        'meta_title' => 'required|max:60',
-        'meta_description' => 'required|max:160',
+        'meta_title' => 'required|max:80',
+        'meta_description' => 'required|max:200',
         'meta_keywords' => 'nullable|string',
-        'og_title' => 'nullable|string|max:60',
-        'og_description' => 'nullable|string|max:160',
+        'og_title' => 'nullable|string|max:80',
+        'og_description' => 'nullable|string|max:200',
         'canonical_url' => 'nullable|url',
         'og_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         // Validación productos relacionados
