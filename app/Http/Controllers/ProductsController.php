@@ -34,16 +34,28 @@ class ProductsController extends Controller
   {
     // Optimizamos la consulta usando select específico, eager loading y paginación
     $query = Products::select([
-        'id', 'producto', 'extract', 'precio', 'descuento', 'stock', 'imagen', 
-        'cyber', 'destacar', 'liquidacion', 'visible', 'status', 'categoria_id', 'marca_id'
-      ])
+      'id',
+      'producto',
+      'extract',
+      'precio',
+      'descuento',
+      'stock',
+      'imagen',
+      'cyber',
+      'destacar',
+      'liquidacion',
+      'visible',
+      'status',
+      'categoria_id',
+      'marca_id'
+    ])
       ->with(['categoria:id,name', 'marca:id,name'])
       ->where("status", "=", true);
 
     // Si hay búsqueda, aplicarla
     if ($request->has('search') && !empty($request->search)) {
       $search = $request->search;
-      $query->where(function($q) use ($search) {
+      $query->where(function ($q) use ($search) {
         $q->where('producto', 'LIKE', "%{$search}%")
           ->orWhere('extract', 'LIKE', "%{$search}%")
           ->orWhere('sku', 'LIKE', "%{$search}%");
@@ -51,10 +63,10 @@ class ProductsController extends Controller
     }
 
     $products = $query->paginate(20); // Aumentamos a 50 para mejor rendimiento
-    
+
     // Mantener parámetros de búsqueda en la paginación
     $products->appends($request->query());
-      
+
     return view('pages.products.index', compact('products'));
   }
 
@@ -71,8 +83,8 @@ class ProductsController extends Controller
 
 
 
-    $marcas= Marca::where('status', 1 )->get();
-    
+    $marcas = Marca::where('status', 1)->get();
+
     return view('pages.products.create', compact('atributos', 'valorAtributo', 'categoria', 'tags', 'marcas'));
   }
 
@@ -100,18 +112,18 @@ class ProductsController extends Controller
     $tagsSeleccionados = $request->input('tags_id');
     $onlyOneCaratula = false;
 
-   /*  if(is_null($request->input('descuento'))){
+    /*  if(is_null($request->input('descuento'))){
       $request->merge(['descuento' => 0]);
       $data['descuento'];
     } */
-   
+
 
     // $valorprecio = $request->input('precio') - 0.1;
 
     try {
       $request->validate([
         'producto' => 'required',
-        'categoria_id' => 'required', 
+        'categoria_id' => 'required',
         'precio' => 'min:0|required|numeric',
         // Validaciones SEO
         'meta_title' => 'required|max:60',
@@ -206,7 +218,7 @@ class ProductsController extends Controller
 
       $producto = Products::create($cleanedData);
 
-      
+
 
       if (isset($atributos)) {
         foreach ($atributos as $atributo => $valores) {
@@ -229,7 +241,7 @@ class ProductsController extends Controller
 
       $this->GuardarEspecificaciones($producto->id, $especificaciones);
 
-     /*  if (!is_null($tagsSeleccionados)) {
+      /*  if (!is_null($tagsSeleccionados)) {
         $this->TagsXProducts($producto->id, $tagsSeleccionados);
       } */
 
@@ -306,12 +318,14 @@ class ProductsController extends Controller
 
       return redirect()->route('products.index')->with('success', 'Publicación creado exitosamente.');
     } catch (ValidationException $e) {
+      dump($e);
       // Redirigir con los errores de validación y los datos de entrada
       return redirect()->back()
         ->withErrors($e->validator)
         ->withInput();
     } catch (\Throwable $th) {
       //throw $th;
+      dump($th);
       return redirect()->route('products.create')->with('error', 'Llenar campos obligatorios');
     }
   }
@@ -327,7 +341,7 @@ class ProductsController extends Controller
       'stock' => $combinacion['stock'],
     ]);
   }
-  
+
   private function GuardarGaleria($file, $producto_id, $colorId)
   {
 
@@ -354,7 +368,7 @@ class ProductsController extends Controller
       $dataGalerie['type_imagen'] = 'secondary';
       $dataGalerie['caratula'] = 0;
       $dataGalerie['color_id'] = $colorId;
-      
+
       // $dataGalerie['type_img'] = 'gall';
       ImagenProducto::create($dataGalerie);
     } catch (\Throwable $th) {
@@ -436,7 +450,7 @@ class ProductsController extends Controller
     $allMarcas = Marca::all();
     $categoria = Category::all();
     $allSubcategorias = SubCategoria::all();
-    
+
 
     return view('pages.products.edit', compact('product', 'atributos', 'valorAtributo', 'allTags', 'categoria', 'especificacion', 'allMarcas', 'allSubcategorias'));
   }
@@ -446,7 +460,7 @@ class ProductsController extends Controller
    */
   public function update(Request $request, string $id)
   {
-    $onlyOneCaratula= false;
+    $onlyOneCaratula = false;
     $cleanGaleria = true;
     $especificaciones = [];
     $product = Products::find($id);
@@ -454,8 +468,8 @@ class ProductsController extends Controller
     $data = $request->all();
     $atributos = null;
 
- 
-    
+
+
     $request->validate([
       'producto' => 'required',
     ]);
@@ -469,14 +483,14 @@ class ProductsController extends Controller
 
       $data['imagen'] = $routeImg . $nombreImagen;
       // $AboutUs->name_image = $nombreImagen;
-    } 
+    }
 
     if (isset($data['filesGallery'])) {
 
       foreach ($data['filesGallery'] as $file) {
-      
+
         [$first, $code] = explode(';base64,', $file);
- 
+
         $imageData = base64_decode($code);
 
         $routeImg = 'storage/images/gallery/';
@@ -484,9 +498,9 @@ class ProductsController extends Controller
         $nombreImagen = Str::random(10) . '.' . $ext;
         // Verificar si la ruta no existe y crearla si es necesario
         if (!file_exists($routeImg)) {
-          mkdir($routeImg, 0777, true); 
+          mkdir($routeImg, 0777, true);
         }
-        
+
         // Guardar los datos binarios en un archivo
         file_put_contents($routeImg . $nombreImagen, $imageData);
         $dataGalerie['imagen'] = $routeImg . $nombreImagen;
@@ -511,21 +525,21 @@ class ProductsController extends Controller
 
           $num = substr($key, strrpos($key, '-') + 1); // Obtener el número de la especificación
           $especificaciones[$num]['specifications'] = $value; // Agregar las especificaciones al array asociativo
-        }elseif(strpos($key, 'conbinacion-') === 0 ){
-           $num = substr($key, strrpos($key, '-') + 1);
-           $combinacion = Combinacion::find($num)->update([ 'color_id' => $value["color"] ,
-           'talla_id' => $value["talla"] ,
-           'stock' => $value["stock"] ,]);
-
- 
-        }elseif(strpos($key, 'updateComb-') === 0 ){
-          Combinacion::create([
-            "product_id" =>$id,
-            "color_id" =>$value["color"],
-            "talla_id" =>$value["talla"],
-            "stock" =>$value["stock"],
+        } elseif (strpos($key, 'conbinacion-') === 0) {
+          $num = substr($key, strrpos($key, '-') + 1);
+          $combinacion = Combinacion::find($num)->update([
+            'color_id' => $value["color"],
+            'talla_id' => $value["talla"],
+            'stock' => $value["stock"],
           ]);
-        }elseif (strpos($key, 'imagenP-') === 0) {
+        } elseif (strpos($key, 'updateComb-') === 0) {
+          Combinacion::create([
+            "product_id" => $id,
+            "color_id" => $value["color"],
+            "talla_id" => $value["talla"],
+            "stock" => $value["stock"],
+          ]);
+        } elseif (strpos($key, 'imagenP-') === 0) {
           $colorId = substr($key, strrpos($key, '-') + 1);
           $isCaratula = 0;
           if ($colorId == isset($data['caratula']) && $onlyOneCaratula == false) {
@@ -549,19 +563,18 @@ class ProductsController extends Controller
             $cleanGaleria = false ; 
             DB::delete('delete from imagen_productos where product_id = ?', [$id]);
           } */
-         
+
           ImagenProducto::create($dataGalerie);
-        }elseif(strpos($key, 'attrid-') === 0) {
+        } elseif (strpos($key, 'attrid-') === 0) {
           $colorId = substr($key, strrpos($key, '-') + 1);
           foreach ($value as $file) {
             $this->GuardarGaleria($file, $id, $colorId);
           }
         }
-        
       }
     }
 
-    
+
     $jsonAtributos = json_encode($atributos);
 
 
@@ -649,7 +662,8 @@ class ProductsController extends Controller
     return response()->json(['message' => 'registro actualizado']);
   }
 
-  public function borrarimg(Request $request){
+  public function borrarimg(Request $request)
+  {
     try {
       //code...
       $imagenGaleria = Galerie::find($request->id);
@@ -657,16 +671,15 @@ class ProductsController extends Controller
       if (file_exists($rutaCompleta)) {
         // Intentar eliminar el archivo
         if (unlink($rutaCompleta)) {
-            // Archivo eliminado con éxito
-           
-        } 
+          // Archivo eliminado con éxito
+
+        }
       }
       $imagenGaleria->delete();
-      return response()->json(['message'=>'imagen eliminada con exito ']);
+      return response()->json(['message' => 'imagen eliminada con exito ']);
     } catch (\Throwable $th) {
       //throw $th;
-      return response()->json(['message'=>'no se ha podido eliminar la imagen '], 400);
-
+      return response()->json(['message' => 'no se ha podido eliminar la imagen '], 400);
     }
   }
 
@@ -681,34 +694,32 @@ class ProductsController extends Controller
     $perPage = 20;
 
     $query = Products::select('id', 'producto', 'precio')
-        ->where('status', true)
-        ->where('visible', true);
+      ->where('status', true)
+      ->where('visible', true);
 
     // Excluir el producto actual si se proporciona
     if ($currentId) {
-        $query->where('id', '!=', $currentId);
+      $query->where('id', '!=', $currentId);
     }
 
     if (!empty($search)) {
-        $query->where('producto', 'LIKE', "%{$search}%");
+      $query->where('producto', 'LIKE', "%{$search}%");
     }
 
     $total = $query->count();
     $products = $query->offset(($page - 1) * $perPage)
-                     ->limit($perPage)
-                     ->get();
+      ->limit($perPage)
+      ->get();
 
     // Formato para Select2
     if ($request->has('q')) {
-        return response()->json($products);
+      return response()->json($products);
     }
 
     // Formato original para compatibilidad
     return response()->json([
-        'products' => $products,
-        'has_more' => ($page * $perPage) < $total
+      'products' => $products,
+      'has_more' => ($page * $perPage) < $total
     ]);
   }
-
-  
 }
