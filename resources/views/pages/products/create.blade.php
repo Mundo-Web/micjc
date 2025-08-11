@@ -903,7 +903,7 @@
                   <label for="meta_title" class="block text-sm font-medium text-gray-700 mb-2">
                     Título SEO
                   </label>
-                  <input type="text" id="meta_title" name="meta_title" value="{{ $product->meta_title ?? '' }}"
+                  <input type="text" id="meta_title" name="meta_title"
                     class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                     placeholder="Título para motores de búsqueda" maxlength="60" onkeyup="updateCounter('meta_title', 60)">
                   <small class="text-gray-500">Máximo 60 caracteres. <span id="meta_title_counter" class="field-counter">0/60</span></small>
@@ -913,7 +913,7 @@
                   <label for="meta_keywords" class="block text-sm font-medium text-gray-700 mb-2">
                     Palabras Clave
                   </label>
-                  <input type="text" id="meta_keywords" name="meta_keywords" value="{{ $product->meta_keywords ?? '' }}"
+                  <input type="text" id="meta_keywords" name="meta_keywords"
                     class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                     placeholder="palabra1, palabra2, palabra3">
                   <small class="text-gray-500">Separadas por comas</small>
@@ -925,7 +925,7 @@
                   </label>
                   <textarea id="meta_description" name="meta_description" rows="3" 
                     class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 resize-none"
-                    placeholder="Descripción para motores de búsqueda" maxlength="160" onkeyup="updateCounter('meta_description', 160)">{{ $product->meta_description ?? '' }}</textarea>
+                    placeholder="Descripción para motores de búsqueda" maxlength="160" onkeyup="updateCounter('meta_description', 160)"></textarea>
                   <small class="text-gray-500">Máximo 160 caracteres. <span id="meta_description_counter" class="field-counter">0/160</span></small>
                 </div>
 
@@ -933,7 +933,7 @@
                   <label for="canonical_url" class="block text-sm font-medium text-gray-700 mb-2">
                     URL Canónica
                   </label>
-                  <input type="url" id="canonical_url" name="canonical_url" value="{{ $product->canonical_url ?? '' }}"
+                  <input type="url" id="canonical_url" name="canonical_url"
                     class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                     placeholder="https://ejemplo.com/producto">
                   <small class="text-gray-500">URL preferida para SEO</small>
@@ -945,7 +945,7 @@
                   </label>
                   <textarea id="og_description" name="og_description" rows="3" 
                     class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 resize-none"
-                    placeholder="Descripción al compartir en redes sociales">{{ $product->og_description ?? '' }}</textarea>
+                    placeholder="Descripción al compartir en redes sociales"></textarea>
                   <small class="text-gray-500">Si está vacío, se usará la descripción SEO</small>
                 </div>
 
@@ -959,12 +959,6 @@
                       accept="image/*">
                   </div>
                   <small class="text-gray-500">1200x630px recomendado</small>
-                  @if($product->og_image)
-                    <div class="mt-2">
-                      <img src="{{ asset($product->og_image) }}" alt="Imagen OG actual" class="w-16 h-16 object-cover rounded">
-                      <small class="text-gray-500 block">Imagen actual</small>
-                    </div>
-                  @endif
                 </div>
               </div>
             </div>
