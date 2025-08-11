@@ -895,98 +895,57 @@
             <div class="col-span-1 md:col-span-2">
               <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5 rounded-lg shadow-sm p-4 px-4 mt-4 seo-section">
                 <h4 class="font-semibold text-slate-800 dark:text-slate-100 text-xl tracking-tight md:col-span-5">
-                SEO - Optimización para Motores de Búsqueda
+                 
+                  Configuración SEO
                 </h4>
                 
-                <!-- Primera fila: Meta Title y Meta Description -->
                 <div class="md:col-span-3">
                   <label for="meta_title" class="block text-sm font-medium text-gray-700 mb-2">
-                    Título SEO (Meta Title) <span class="text-red-500">*</span>
+                    Título SEO
                   </label>
-                  <div class="relative mb-2 mt-2">
-                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                      <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.99 1.99 0 013 12V7a4 4 0 014-4z"></path>
-                      </svg>
-                    </div>
-                    <input type="text" id="meta_title" name="meta_title" value=""
-                      class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5"
-                      placeholder="Título optimizado para SEO (50-60 caracteres)" maxlength="60">
-                  </div>
-                  <small class="text-gray-500">Recomendado: 50-60 caracteres</small>
+                  <input type="text" id="meta_title" name="meta_title" value="{{ $product->meta_title ?? '' }}"
+                    class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                    placeholder="Título para motores de búsqueda" maxlength="60" onkeyup="updateCounter('meta_title', 60)">
+                  <small class="text-gray-500">Máximo 60 caracteres. <span id="meta_title_counter" class="field-counter">0/60</span></small>
                 </div>
 
                 <div class="md:col-span-2">
                   <label for="meta_keywords" class="block text-sm font-medium text-gray-700 mb-2">
                     Palabras Clave
                   </label>
-                  <div class="relative mb-2 mt-2">
-                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                      <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"></path>
-                      </svg>
-                    </div>
-                    <input type="text" id="meta_keywords" name="meta_keywords" value=""
-                      class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5"
-                      placeholder="palabra1, palabra2, palabra3">
-                  </div>
+                  <input type="text" id="meta_keywords" name="meta_keywords" value="{{ $product->meta_keywords ?? '' }}"
+                    class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                    placeholder="palabra1, palabra2, palabra3">
                   <small class="text-gray-500">Separadas por comas</small>
                 </div>
 
-                <!-- Segunda fila: Meta Description -->
-                <div class="md:col-span-5">
+                <div class="md:col-span-3">
                   <label for="meta_description" class="block text-sm font-medium text-gray-700 mb-2">
-                    Descripción SEO (Meta Description) <span class="text-red-500">*</span>
+                    Descripción SEO
                   </label>
                   <textarea id="meta_description" name="meta_description" rows="3" 
                     class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 resize-none"
-                    placeholder="Descripción atractiva para motores de búsqueda (150-160 caracteres)" maxlength="160"></textarea>
-                  <small class="text-gray-500">Recomendado: 150-160 caracteres</small>
-                </div>
-
-                <!-- Tercera fila: Open Graph -->
-                <div class="md:col-span-3">
-                  <label for="og_title" class="block text-sm font-medium text-gray-700 mb-2">
-                    Título para Redes Sociales
-                  </label>
-                  <div class="relative mb-2 mt-2">
-                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                      <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2a1 1 0 011-1h4a1 1 0 011 1v2M7 4h10M7 4v16a1 1 0 001 1h8a1 1 0 001-1V4M7 4H5a1 1 0 00-1 1v14a1 1 0 001 1h2"></path>
-                      </svg>
-                    </div>
-                    <input type="text" id="og_title" name="og_title" value=""
-                      class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5"
-                      placeholder="Título al compartir en redes sociales">
-                  </div>
-                  <small class="text-gray-500">Si está vacío, se usará el título SEO</small>
+                    placeholder="Descripción para motores de búsqueda" maxlength="160" onkeyup="updateCounter('meta_description', 160)">{{ $product->meta_description ?? '' }}</textarea>
+                  <small class="text-gray-500">Máximo 160 caracteres. <span id="meta_description_counter" class="field-counter">0/160</span></small>
                 </div>
 
                 <div class="md:col-span-2">
                   <label for="canonical_url" class="block text-sm font-medium text-gray-700 mb-2">
                     URL Canónica
                   </label>
-                  <div class="relative mb-2 mt-2">
-                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                      <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
-                      </svg>
-                    </div>
-                    <input type="text" id="canonical_url" name="canonical_url" value=""
-                      class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5"
-                      placeholder="https://www.ejemplo.com/producto">
-                  </div>
-                  <small class="text-gray-500">URL oficial del producto</small>
+                  <input type="url" id="canonical_url" name="canonical_url" value="{{ $product->canonical_url ?? '' }}"
+                    class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                    placeholder="https://ejemplo.com/producto">
+                  <small class="text-gray-500">URL preferida para SEO</small>
                 </div>
 
-                <!-- Cuarta fila: OG Description y OG Image -->
                 <div class="md:col-span-3">
                   <label for="og_description" class="block text-sm font-medium text-gray-700 mb-2">
                     Descripción para Redes Sociales
                   </label>
                   <textarea id="og_description" name="og_description" rows="3" 
                     class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 resize-none"
-                    placeholder="Descripción al compartir en redes sociales"></textarea>
+                    placeholder="Descripción al compartir en redes sociales">{{ $product->og_description ?? '' }}</textarea>
                   <small class="text-gray-500">Si está vacío, se usará la descripción SEO</small>
                 </div>
 
@@ -1000,9 +959,14 @@
                       accept="image/*">
                   </div>
                   <small class="text-gray-500">1200x630px recomendado</small>
+                  @if($product->og_image)
+                    <div class="mt-2">
+                      <img src="{{ asset($product->og_image) }}" alt="Imagen OG actual" class="w-16 h-16 object-cover rounded">
+                      <small class="text-gray-500 block">Imagen actual</small>
+                    </div>
+                  @endif
                 </div>
               </div>
-
             </div>
 
           </div>
@@ -1076,6 +1040,27 @@
         }
       }
     });
+
+// Función para actualizar contadores de caracteres
+    window.updateCounter = function(fieldId, maxLength) {
+      const field = document.getElementById(fieldId);
+      const counter = document.getElementById(fieldId + '_counter');
+      const currentLength = field.value.length;
+      
+      counter.textContent = currentLength + '/' + maxLength;
+      
+      // Cambiar color según el límite
+      counter.className = 'field-counter';
+      if (currentLength > maxLength * 0.9) {
+        counter.classList.add('error');
+      } else if (currentLength > maxLength * 0.8) {
+        counter.classList.add('warning');
+      }
+    };
+
+    // Inicializar contadores
+    updateCounter('meta_title', 60);
+    updateCounter('meta_description', 160);
 
     // Obtener los enlaces de pestaña
     const generalTab = document.getElementById('general-tab');

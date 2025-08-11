@@ -318,14 +318,12 @@ class ProductsController extends Controller
 
       return redirect()->route('products.index')->with('success', 'Publicación creado exitosamente.');
     } catch (ValidationException $e) {
-      dump($e);
       // Redirigir con los errores de validación y los datos de entrada
       return redirect()->back()
         ->withErrors($e->validator)
         ->withInput();
     } catch (\Throwable $th) {
       //throw $th;
-      dump($th);
       return redirect()->route('products.create')->with('error', 'Llenar campos obligatorios');
     }
   }
